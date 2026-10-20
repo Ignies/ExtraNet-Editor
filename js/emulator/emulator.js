@@ -47,6 +47,17 @@ function terminalNumber() {
 let current = null;
 
 /**
+ * What the terminal keeps while nobody is at it, as the server does (CMUPersonalComputerComponent): whether it is
+ * on and since when, the card in the reader, and the programs left open on screen. Leaving the emulator is walking
+ * away from the computer; coming back finds it as it was left, as long as the OS, colony and deep access are the
+ * same machine.
+ */
+let kept = null;
+
+/** A machine switched on this recently boots again for whoever opens it (CMUPersonalComputerWindow.JustSwitchedOn). */
+const JUST_SWITCHED_ON = 2;
+
+/**
  * Opens the emulator over the editor. onClose: called when its back button is pressed. userSites(): the user's
  * own sites as library entries, asked for on every page load so edits show up.
  */
@@ -62,6 +73,7 @@ export async function openEmulator({ onClose, userSites = () => [] } = {}) {
 
 export function closeEmulator() {
   if (!current) return;
+  kept = current.kept();
   current.root.remove();
   current.dispose();
   // Leaving the emulator silences it, the hum included.
@@ -122,6 +134,8 @@ class Emulator {
       if (e.key.length === 1 || ['Backspace', 'Delete', 'Enter', 'Space'].includes(e.key)) sound.keystroke(this.sounds);
     }, true);
     this.machine.screen.addEventListener('pointerdown', e => {
+      // a machine found running starts its sound on the first touch, if the browser held it back
+      if (this.state !== 'off') sound.unlock();
       if (e.button !== 0 || !e.target.closest) return;
       if (e.target.closest('button, .netlink, .emu-icon, .emu-win-bar, select, .term-tab')) this.click();
     }, true);
@@ -166,6 +180,52 @@ class Emulator {
     await this.configure();
     this.fit();
     this.status.textContent = this.idleStatus();
+    const left = kept;
+    kept = null;
+    if (left && left.os === this.settings.os && left.colony === this.settings.colony && left.deep === this.settings.deep) this.resume(left);
+  }
+
+  /** The terminal's state for whoever comes to it next: see kept. */
+  kept() {
+    return {
+      os: this.settings.os,
+      colony: this.settings.colony,
+      deep: this.settings.deep,
+      on: this.state !== 'off',
+      poweredAt: this.poweredAt,
+      cardIn: this.cardIn,
+      // only a running session keeps its screen; the server clears it at power on, power off and log off
+      screen: this.state === 'on' && this.cardIn && this.desktop ? this.desktop.snapshot() : [],
+    };
+  }
+
+  /**
+   * Back at a terminal left running (CMUPersonalComputerWindow.UpdatePower): switched on just now, it boots for us;
+   * a little longer ago, the hum straight away and the rest of the boot; long enough ago, straight to whatever is
+   * on screen, with the windows the session left open.
+   */
+  resume(left) {
+    this.cardIn = left.cardIn;
+    this.machine.setCard(left.cardIn, false);
+    if (!left.on) return;
+    this.poweredAt = left.poweredAt;
+    this.screenKept = left.screen;
+    this.quietLogin = true;
+    sound.unlock();
+    sound.preload(this.sounds);
+    const since = (performance.now() - left.poweredAt) / 1000;
+    if (since < JUST_SWITCHED_ON) {
+      this.bootUp(true);
+      return;
+    }
+    if (since < this.sounds.bootLength) {
+      this.bootUp(false);
+      return;
+    }
+    this.state = 'on';
+    this.machine.on = true;
+    sound.startHum(this.sounds.running);
+    this.showSession();
   }
 
   idleStatus() {
@@ -232,25 +292,39 @@ class Emulator {
       this.shutDown();
       return;
     }
-    this.state = 'booting';
-    this.status.textContent = 'Booting… (click the screen to skip)';
+    // Switched on: a fresh screen, nothing kept from before.
+    this.poweredAt = performance.now();
+    this.screenKept = [];
+    this.quietLogin = false;
     // The power key is the gesture browsers wait for before they play sound.
     sound.unlock();
     sound.preload(this.sounds);
-    sound.stopHum();
-    sound.play(this.sounds.boot, sound.VOLUME.boot);
-    if (this.settings.deep) sound.play(this.sounds.glitch, sound.VOLUME.glitch);
-    // The running hum takes over where the boot sound settles, for as long as the machine stays on.
+    await this.bootUp(true);
+  }
+
+  /** The boot splash, then the session. withSound: the boot sound and the hum after it; else the hum at once. */
+  async bootUp(withSound) {
+    this.state = 'booting';
+    this.status.textContent = 'Booting… (click the screen to skip)';
     const run = this.boots = (this.boots || 0) + 1;
-    setTimeout(() => {
-      if (run === this.boots && this.state !== 'off') sound.startHum(this.sounds.running);
-    }, this.sounds.bootLength * 1000);
+    if (withSound) {
+      sound.stopHum();
+      sound.play(this.sounds.boot, sound.VOLUME.boot);
+      if (this.settings.deep) sound.play(this.sounds.glitch, sound.VOLUME.glitch);
+      // The running hum takes over where the boot sound settles, for as long as the machine stays on.
+      setTimeout(() => {
+        if (run === this.boots && this.state !== 'off') sound.startHum(this.sounds.running);
+      }, this.sounds.bootLength * 1000);
+      this.machine.pulse(3);
+    } else {
+      // already running when we got there: just the hum
+      sound.startHum(this.sounds.running);
+    }
     this.machine.on = true;
-    this.machine.pulse(3);
     this.screen();
     const boot = this.machine.screen;
     await bootSplash(boot, this.theme, this.data.strings, { corrupted: this.settings.deep });
-    if (this.state !== 'booting') return;
+    if (this.state !== 'booting' || run !== this.boots) return;
     this.state = 'on';
     this.showSession();
   }
@@ -265,6 +339,7 @@ class Emulator {
     this.state = 'off';
     this.machine.on = false;
     this.desktop = null;
+    this.screenKept = [];
     this.machine.screen.replaceChildren();
   }
 
@@ -281,6 +356,9 @@ class Emulator {
     if (this.state !== 'on') return;
     if (!this.cardIn) {
       this.status.textContent = 'Click the card reader to insert an ID card.';
+      // the session ended: whatever it had open is gone
+      this.screenKept = [];
+      this.quietLogin = false;
       this.desktop = null;
       this.screen(loginScreen(this.theme, this.data.strings, this.terminal));
       return;
@@ -300,12 +378,27 @@ class Emulator {
       onShutDown: () => this.shutDown(),
       onLogOff: () => this.reader(),
       busy: seconds => this.machine.pulse(seconds),
+      poweredAt: this.poweredAt,
       sounds: {
         mail: () => sound.play(this.sounds.mail, sound.VOLUME.mail),
         error: () => sound.play(this.sounds.error, sound.VOLUME.error),
       },
     });
-    this.status.textContent = `Logged in as ${this.settings.name}. Double click an icon; the card reader logs off.`;
+    // whatever the session left open, for whoever looks at the terminal now; once, then this desktop keeps it
+    if (this.screenKept && this.screenKept.length) {
+      const screen = this.screenKept;
+      const desktop = this.desktop;
+      this.screenKept = [];
+      requestAnimationFrame(() => desktop.restoreScreen(screen));
+    }
+    const how = this.theme.shell === 'Seegson' ? 'Click a menu entry' : 'Double click an icon';
+    this.status.textContent = `Logged in as ${this.settings.name}. ${how}; the card reader logs off.`;
+    // back at a session already logged in: no login notice
+    if (this.quietLogin) {
+      this.quietLogin = false;
+      this.screen(this.desktop.root);
+      return;
+    }
     const popup = el('div.emu-login-popup', { text: (this.data.strings['cmu-pc-login-popup'] || 'Logged in as {$name}.').replace(/\{\s*\$name\s*\}/, this.settings.name) });
     this.screen(this.desktop.root, popup);
     setTimeout(() => popup.remove(), 2500);

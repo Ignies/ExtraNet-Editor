@@ -7,8 +7,8 @@ import { PROTOTYPES, fill } from '../library.js';
 import { rgba, mix } from '../util.js';
 
 const FALLBACK_OS = [
-  { id: 'CMUOsSeegson', name: 'cmu-os-seegson-name', startLabel: 'cmu-os-seegson-start', namedAfterColony: true, logos: ['/Textures/CMU14/PersonalComputers/Logos/seegson.png', 'name'], documents: [{ name: 'README.TXT', path: '/ServerInfo/CMU14/ExtraNet/Documents/seegson_readme.xml' }], homePage: 'colony.seegson.net', networks: ['CMUNetPublic'], phosphor: '#3FE05A', background: '#0A0E12', bootLines: [1, 2, 3, 4, 5, 6].map(i => `cmu-os-seegson-boot-${i}`) },
-  { id: 'CMUOsWeyland', name: 'cmu-os-weyland-name', startLabel: 'cmu-os-weyland-start', logos: ['/Textures/CMU14/PersonalComputers/Logos/weyland.png'], documents: [{ name: 'SECURITY.DOC', path: '/ServerInfo/CMU14/ExtraNet/Documents/weyland_security.xml' }], homePage: 'intranet.wy', casing: 'Weyland', networks: ['CMUNetPublic', 'CMUNetWeylandYutani'], phosphor: '#FFB547', background: '#120A02', bootLines: [1, 2, 3, 4, 5, 6].map(i => `cmu-os-weyland-boot-${i}`) },
+  { id: 'CMUOsSeegson', name: 'cmu-os-seegson-name', shell: 'Seegson', startLabel: 'cmu-os-seegson-start', namedAfterColony: true, logos: ['/Textures/CMU14/PersonalComputers/Logos/seegson.png', 'name'], documents: [{ name: 'README.TXT', path: '/ServerInfo/CMU14/ExtraNet/Documents/seegson_readme.xml' }], homePage: 'colony.seegson.net', networks: ['CMUNetPublic'], phosphor: '#3FE05A', background: '#0A0E12', bootLines: [1, 2, 3, 4, 5, 6].map(i => `cmu-os-seegson-boot-${i}`) },
+  { id: 'CMUOsWeyland', name: 'cmu-os-weyland-name', shell: 'Weyland', startLabel: 'cmu-os-weyland-start', logos: ['/Textures/CMU14/PersonalComputers/Logos/weyland.png'], documents: [{ name: 'SECURITY.DOC', path: '/ServerInfo/CMU14/ExtraNet/Documents/weyland_security.xml' }], homePage: 'intranet.wy', casing: 'Weyland', networks: ['CMUNetPublic', 'CMUNetWeylandYutani'], phosphor: '#FFB547', background: '#120A02', bootLines: [1, 2, 3, 4, 5, 6].map(i => `cmu-os-weyland-boot-${i}`) },
   { id: 'CMUOsCMB', name: 'cmu-os-cmb-name', startLabel: 'cmu-os-cmb-start', homePage: 'cmb.bureau', casing: 'Cmb', networks: ['CMUNetPublic', 'CMUNetCMB'], phosphor: '#8FC4FF', background: '#050A14', bootLines: [1, 2, 3].map(i => `cmu-os-cmb-boot-${i}`) },
 ];
 
@@ -75,7 +75,10 @@ function hex(c) {
   return `#${v.slice(0, 3).join('')}`;
 }
 
-/** CMUComputerTheme for an OS: colours, names and casing. */
+/** CMUComputerShell: how the desktop is laid out. */
+const SHELLS = ['Classic', 'Seegson', 'Weyland'];
+
+/** CMUComputerTheme for an OS: colours, names, casing and the desktop shell. */
 export function theme(os, strings, colony) {
   const phosphor = rgba(os.phosphor) || [0.25, 0.88, 0.35, 1];
   const background = rgba(os.background) || [0.04, 0.05, 0.07, 1];
@@ -93,6 +96,9 @@ export function theme(os, strings, colony) {
     dim: hex(mix(background, phosphor, 0.45)),
     text: hex(mix(phosphor, [1, 1, 1, 1], 0.15)),
     heading: hex(mix(phosphor, [1, 1, 1, 1], 0.35)),
+    // between the phosphor and white, for what the shell lifts out: headers and highlights
+    bright: hex(mix(phosphor, [1, 1, 1, 1], 0.55)),
+    shell: SHELLS.includes(os.shell) ? os.shell : 'Classic',
     bar: hex(mix(background, accent, 0.12)),
     casing: (os.casing || 'Seegson').toLowerCase(),
     home: os.homePage || '',

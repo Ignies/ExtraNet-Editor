@@ -1,9 +1,17 @@
 // The OS desktop (CMUComputerDesktop, CMUDesktopWindow, CMUDesktopIcon, CMUComputerApps): wallpaper, program
-// icons and saved links filling down columns, program windows that drag, resize, maximize and minimize, and a
-// taskbar with the start menu and the shift clock. Also the login screen that waits for an ID card.
+// icons and saved links, program windows that drag, resize, maximize and minimize, the open programs and the
+// shift clock, laid out by the OS's shell (CMUComputerShell):
+// - Classic: icons filling down columns, a start button, the start menu and a taskbar.
+// - Seegson (Sevastolink): the network name across a header, a numbered main menu down the left that opens with
+//   one click, chunky boxed windows with inverted capitals titles, and a strip of the open programs.
+// - Weyland (a MU/TH/UR style Company workstation): the logo and slogan across the top, Semiotic Standard tiles
+//   down a dock, thin double ruled windows, and along the bottom the directory, the open programs and the
+//   inquiry line.
+// Also the login screen that waits for an ID card.
 
 import { el } from '../util.js';
 import { imageUrl } from '../repo.js';
+import { ensureFont } from '../fonts.js';
 import { renderDocument, themeColours } from '../render.js';
 import { L } from './data.js';
 import { NetBrowser } from './netbrowser.js';
@@ -11,6 +19,8 @@ import { gameIcons } from './gamedownloads.js';
 
 const ICON_ROOT = '/Textures/CMU14/PersonalComputers/Icons/';
 const SIZES = { browser: [640, 440], files: [560, 380], mail: [620, 420], deeps: [640, 440], system: [560, 300] };
+/** The programs a terminal keeps on screen for the next viewer (CMUComputerDesktop.Snapshot). */
+const KEPT_APPS = ['browser', 'deeps', 'files', 'mail', 'system'];
 
 function store(key, fallback) {
   try {
@@ -66,43 +76,90 @@ function iconNode(theme, app) {
   return holder;
 }
 
+/**
+ * CMUComputerTheme.Logo: the OS's first logo image, for the shell's header, removed when it has none. Sized as the
+ * header's TextureRect sizes it: the image's own size held between its minimum and maximum, the image fitted in.
+ */
+function shellLogo(theme, spec, [minWidth, minHeight], maxHeight) {
+  const img = el(`img${spec}`, { alt: '' });
+  img.hidden = true;
+  img.addEventListener('load', () => {
+    img.style.width = `${Math.max(minWidth, img.naturalWidth)}px`;
+    img.style.height = `${Math.max(minHeight, Math.min(maxHeight, img.naturalHeight))}px`;
+    img.hidden = false;
+  });
+  (async () => {
+    for (const logo of theme.logos) {
+      if (logo === 'name') continue;
+      try {
+        img.src = await imageUrl(logo);
+        return;
+      } catch {
+        // a missing file is skipped
+      }
+    }
+    img.remove();
+  })();
+  return img;
+}
+
+/** The Semiotic Standard plate of a Company tile: 44 by 40 with its corners cut, the icon in its middle. */
+function tilePlate(art) {
+  const span = el('span.emu-tile-plate');
+  span.innerHTML = '<svg viewBox="0 0 45 41" width="45" height="41" shape-rendering="crispEdges"><polygon points="5.5,0.5 39.5,0.5 44.5,5.5 44.5,35.5 39.5,40.5 5.5,40.5 0.5,35.5 0.5,5.5"/></svg>';
+  span.append(art);
+  return span;
+}
+
 export class Desktop {
   /**
    * ctx = { net, theme, deepTheme, strings, user: { name, job }, terminal, colony, deep, widget(name, args, style),
-   *         wallpapers: Map, onShutDown(), onLogOff(), busy(seconds) }
+   *         wallpapers: Map, onShutDown(), onLogOff(), busy(seconds), poweredAt }
    */
   constructor(ctx) {
     this.ctx = ctx;
     this.theme = ctx.theme;
     this.strings = ctx.strings;
+    this.shell = (this.theme.shell || 'Classic').toLowerCase();
     this.windows = [];
     this.z = 10;
     this.booted = performance.now();
+    // the shift clock runs from when the machine came on, through logins and walking away
+    this.clockFrom = ctx.poweredAt ?? this.booted;
+    ensureFont('Mono');
+    if (this.shell === 'seegson') {
+      ensureFont('Pixel');
+      ensureFont('Terminal');
+    }
+    if (this.shell === 'weyland') ensureFont('Display');
     this.area = el('div.emu-area');
     this.icons = el('div.emu-icons');
     this.tasks = el('div.emu-tasks');
     this.clock = el('span.emu-clock');
-    this.startMenu = this.buildStartMenu();
-    this.startMenu.hidden = true;
-    const start = el('button.emu-start', { type: 'button', text: this.theme.startLabel, onclick: e => {
-      e.stopPropagation();
-      this.startMenu.hidden = !this.startMenu.hidden;
-    } });
-    this.area.append(this.icons, this.startMenu);
+    // Sevastolink's menu is always on screen: no start button, no start menu.
+    this.startMenu = this.shell === 'seegson' ? null : this.buildStartMenu();
+    if (this.startMenu) {
+      this.startMenu.hidden = true;
+      this.area.append(this.startMenu);
+    }
     this.area.addEventListener('pointerdown', e => {
       if (e.target === this.area || e.target === this.icons) {
         this.select(null);
-        this.startMenu.hidden = true;
+        if (this.startMenu) this.startMenu.hidden = true;
       }
     });
-    this.root = el('div.emu-desktop', {}, this.area, el('div.emu-rule'), el('div.emu-taskbar', {}, start, this.tasks, this.clock));
+    this.root = el(`div.emu-desktop.emu-shell-${this.shell}`);
+    this.root.style.setProperty('--bright', this.theme.bright || this.theme.heading);
+    if (this.shell === 'seegson') this.buildSeegson();
+    else if (this.shell === 'weyland') this.buildWeyland();
+    else this.buildClassic();
     this.applyWallpaper();
     this.buildIcons();
     this.startMail();
     const tick = () => {
       if (!this.root.isConnected && this.attached) return;
       if (this.root.isConnected) this.attached = true;
-      this.clock.textContent = shiftClock(this.booted);
+      this.clock.textContent = shiftClock(this.clockFrom);
       setTimeout(tick, 1000);
     };
     tick();
@@ -110,6 +167,95 @@ export class Desktop {
 
   t(id, vars) {
     return L(this.strings, id, vars);
+  }
+
+  /** Capitals outside the classic shell, the way both companies' terminals letter their menus. */
+  letter(text) {
+    return this.shell === 'classic' ? text : text.toUpperCase();
+  }
+
+  toggleStartMenu() {
+    if (!this.startMenu) return;
+    this.startMenu.hidden = !this.startMenu.hidden;
+  }
+
+  // ------------------------------------------------------------ shells
+
+  /** Icons on the wallpaper, a start button and a taskbar along the bottom. */
+  buildClassic() {
+    const start = el('button.emu-start', { type: 'button', text: this.theme.startLabel, onclick: e => {
+      e.stopPropagation();
+      this.toggleStartMenu();
+    } });
+    this.area.prepend(this.icons);
+    this.root.append(this.area, el('div.emu-rule'), el('div.emu-taskbar', {}, start, this.tasks, this.clock));
+  }
+
+  /**
+   * Sevastolink, the way Seegson's terminals look on Sevastopol: the network name across a header bar, a numbered
+   * main menu in inverted blocks down the left that opens with one click, and the open programs listed in a strip
+   * along the bottom. No start button: the session's controls sit under the menu.
+   */
+  buildSeegson() {
+    const header = el('div.emu-sg-header', {},
+      shellLogo(this.theme, '.emu-sg-logo', [64, 14], 16),
+      el('span.emu-sg-name', { text: this.theme.name.toUpperCase() }),
+      el('span.emu-sg-terminal', { text: this.t('cmu-os-shell-terminal', { id: this.ctx.terminal }) }),
+      this.clock);
+    const menu = el('div.emu-sg-menu', {},
+      el('div.emu-sg-heading', { text: ` ${this.t('cmu-os-seegson-menu').toUpperCase()}` }),
+      el('div.emu-sg-scroll', {}, this.icons),
+      el('div.emu-rule.emu-sg-menu-rule'),
+      el('div.emu-sg-user', { text: this.t('cmu-os-shell-user', { name: this.ctx.user.name.toUpperCase() }) }),
+      ...this.sessionButtons());
+    const strip = el('div.emu-sg-strip', {},
+      el('span.emu-sg-dim', { text: this.t('cmu-os-seegson-active') }),
+      this.tasks,
+      el('span.emu-sg-dim', { text: this.t('cmu-os-seegson-maker') }));
+    this.root.append(
+      el('div.emu-sg-band', {}, header),
+      el('div.emu-rule'),
+      el('div.emu-rule.emu-sg-second-rule'),
+      el('div.emu-shell-main', {}, el('div.emu-sg-column', {}, menu), this.area),
+      el('div.emu-rule'),
+      el('div.emu-sg-band', {}, strip));
+  }
+
+  /**
+   * A Company workstation in the MU/TH/UR manner: the winged logo and slogan across the top, the programs as
+   * Semiotic Standard tiles down a dock on the left, and along the bottom the directory, the open programs and the
+   * inquiry line.
+   */
+  buildWeyland() {
+    const header = el('div.emu-wy-header', {},
+      shellLogo(this.theme, '.emu-wy-logo', [46, 16], 32),
+      el('div.emu-wy-brand', {},
+        el('div.emu-wy-company', { text: this.t('cmu-os-weyland-company') }),
+        el('div.emu-wy-dim', { text: this.t('cmu-os-weyland-slogan') })),
+      el('div.emu-wy-right', {},
+        this.clock,
+        el('div.emu-wy-dim', { text: this.t('cmu-os-weyland-station', { id: this.ctx.terminal }) })));
+    const directory = el('button.emu-wy-directory', { type: 'button', text: this.t('cmu-os-weyland-directory'), onclick: e => {
+      e.stopPropagation();
+      this.toggleStartMenu();
+    } });
+    // the cursor blinks on for 0.55 of every second
+    const inquiry = el('span.emu-wy-inquiry', {}, this.t('cmu-os-weyland-inquiry', { id: this.ctx.terminal }), el('span.emu-wy-cursor', { text: '_' }));
+    this.root.append(
+      header,
+      el('div.emu-shell-main', {}, el('div.emu-wy-dock', {}, this.icons), this.area),
+      el('div.emu-wy-rule'),
+      el('div.emu-wy-bar', {}, directory, this.tasks, inquiry));
+  }
+
+  /** Log off and shut down: the start menu's last entries, and under Sevastolink's menu. */
+  sessionButtons() {
+    const logOff = el('button.emu-btn.emu-shell-btn', { type: 'button', text: this.letter(this.t('cmu-pc-start-log-off')), onclick: () => {
+      if (this.startMenu) this.startMenu.hidden = true;
+      this.ctx.onLogOff();
+    } });
+    const shutDown = el('button.emu-btn.emu-shell-btn', { type: 'button', text: this.letter(this.t('cmu-pc-start-shut-down')), onclick: () => this.ctx.onShutDown() });
+    return [logOff, shutDown];
   }
 
   /** The sample inbox, and a notice that arrives a little after login with the mail sound, as new mail does. */
@@ -123,7 +269,7 @@ export class Desktop {
     ];
     const arrive = () => {
       if (!this.root.isConnected) return;
-      this.inbox.unshift({ from: 'Colony Maintenance', to: user, subject: 'Water pumps: scheduled shutdown', body: 'The east side pumps go down for maintenance at the end of this shift. Fill your containers before then.', time: shiftClock(this.booted) });
+      this.inbox.unshift({ from: 'Colony Maintenance', to: user, subject: 'Water pumps: scheduled shutdown', body: 'The east side pumps go down for maintenance at the end of this shift. Fill your containers before then.', time: shiftClock(this.clockFrom) });
       if (this.ctx.sounds) this.ctx.sounds.mail();
       for (const redraw of this.mailViews) redraw();
     };
@@ -156,6 +302,7 @@ export class Desktop {
     return store('extranet-emulator-shortcuts', []);
   }
 
+  /** Programs, then saved links, then downloaded games: on the desktop in columns, or down the shell's menu or dock. */
   buildIcons() {
     this.icons.replaceChildren();
     const programs = [['browser', 'cmu-pc-app-browser'], ['files', 'cmu-pc-app-files'], ['system', 'cmu-pc-app-system'], ['mail', 'cmu-pc-app-mail']];
@@ -164,6 +311,7 @@ export class Desktop {
     for (const shortcut of this.shortcuts()) {
       const deep = this.ctx.deep && (/^deeps:\/\//.test(shortcut.address) || /\.ad$|\.deep$/.test(shortcut.address.split('/')[0]));
       const icon = this.icon(deep ? 'deeps' : 'browser', shortcut.title, () => this.openLink(shortcut.address, deep), `${shortcut.title}\n${shortcut.address}`);
+      icon.classList.add('emu-link');
       icon.addEventListener('contextmenu', e => {
         e.preventDefault();
         keep('extranet-emulator-shortcuts', this.shortcuts().filter(s => s.address !== shortcut.address));
@@ -171,17 +319,42 @@ export class Desktop {
       });
       this.icons.append(icon);
     }
-    this.icons.append(...gameIcons(this));
+    // a downloaded game's icon carries its address, like a saved link
+    for (const icon of gameIcons(this)) {
+      icon.classList.add('emu-link');
+      this.icons.append(icon);
+    }
   }
 
+  /**
+   * CMUDesktopIcon. Classic: the icon over its name, double click opens. Seegson: a numbered menu row in capitals,
+   * inverted under the mouse, one click opens; a link has a mark at the end. Weyland: the icon on a cut cornered
+   * plate with its name in capitals under it, double click opens.
+   */
   icon(app, label, open, tip = label) {
-    const short = label.length <= 13 ? label : label.slice(0, 12) + '~';
-    const node = el('button.emu-icon', { type: 'button', title: tip }, iconNode(this.theme, app), el('span.emu-icon-label', { text: short }));
-    node.addEventListener('click', () => this.select(node));
-    node.addEventListener('dblclick', () => {
-      this.ctx.busy(0.4);
-      open();
+    const max = this.shell === 'weyland' ? 11 : 13;
+    const text = this.letter(label);
+    const short = text.length <= max ? text : text.slice(0, max - 1) + '~';
+    const art = iconNode(this.theme, app);
+    const name = el('span.emu-icon-label', { text: short });
+    const node = this.shell === 'weyland'
+      ? el('button.emu-icon.emu-tile', { type: 'button', title: tip }, tilePlate(art), name)
+      : el('button.emu-icon', { type: 'button', title: tip }, art, name);
+    if (this.shell === 'seegson') node.classList.add('emu-row');
+    node.addEventListener('click', () => {
+      this.select(node);
+      // a terminal menu: one press picks the entry
+      if (this.shell === 'seegson') {
+        this.ctx.busy(0.4);
+        open();
+      }
     });
+    if (this.shell !== 'seegson') {
+      node.addEventListener('dblclick', () => {
+        this.ctx.busy(0.4);
+        open();
+      });
+    }
     return node;
   }
 
@@ -198,46 +371,68 @@ export class Desktop {
 
   // ------------------------------------------------------------ start menu and taskbar
 
+  /** The start menu, or on a Company workstation the directory: the programs, then log off and shut down. */
   buildStartMenu() {
     const menu = el('div.emu-startmenu');
-    menu.append(el('div.emu-start-name', { text: this.theme.name }), el('div.emu-rule'));
+    const heading = this.shell === 'weyland' ? this.t('cmu-os-weyland-directory') : this.theme.name;
+    menu.append(el('div.emu-start-name', { text: heading }), el('div.emu-rule'));
     const apps = [['browser', 'cmu-pc-app-browser'], ['files', 'cmu-pc-app-files'], ['system', 'cmu-pc-app-system'], ['deeps', 'cmu-pc-app-deeps']];
     for (const [app, label] of apps) {
       if (app === 'deeps' && !this.ctx.deep) continue;
-      menu.append(el('button.emu-btn.emu-app-btn', { type: 'button', onclick: () => {
+      menu.append(el('button.emu-btn.emu-app-btn.emu-shell-btn', { type: 'button', onclick: () => {
         menu.hidden = true;
         this.open(app);
-      } }, iconNode(this.theme, app), el('span', { text: this.t(label) })));
+      } }, iconNode(this.theme, app), el('span', { text: this.letter(this.t(label)) })));
     }
-    menu.append(el('button.emu-btn', { type: 'button', text: this.t('cmu-pc-start-log-off'), onclick: () => {
-      menu.hidden = true;
-      this.ctx.onLogOff();
-    } }));
-    menu.append(el('div.emu-rule'), el('button.emu-btn', { type: 'button', text: this.t('cmu-pc-start-shut-down'), onclick: () => this.ctx.onShutDown() }));
+    menu.append(el('div.emu-rule.emu-start-rule'), ...this.sessionButtons());
     return menu;
+  }
+
+  /** The top window still on show has its task filled in (CMUComputerDesktop.UpdateTasks). */
+  updateTasks() {
+    let top = null;
+    for (const win of this.windows) {
+      if (win.minimized) continue;
+      if (!top || Number(win.node.style.zIndex) > Number(top.node.style.zIndex)) top = win;
+    }
+    for (const win of this.windows) win.task.classList.toggle('on', win === top);
   }
 
   // ------------------------------------------------------------ windows
 
+  /**
+   * CMUDesktopWindow, framed by the shell: Classic's filled title bar; Sevastolink's thick box with an inverted
+   * capitals title and bracketed controls; the Company's thin double rule with its title in amber over a dark bar.
+   */
   addWindow(app, title, content, [w, h]) {
     const area = this.area.getBoundingClientRect();
-    const offset = 10 + (this.windows.length % 6) * 24;
-    const width = Math.min(w, Math.max(260, area.width - offset - 6));
-    const height = Math.min(h, Math.max(160, area.height - offset - 6));
+    const count = this.windows.length % 6;
+    const left = (this.shell === 'classic' ? 110 : 14) + count * 26;
+    const top = 14 + count * 22;
+    const width = Math.min(w, Math.max(260, area.width - left - 6));
+    const height = Math.min(h, Math.max(160, area.height - 40));
     const titleText = el('span.emu-win-title', { text: title });
-    const min = el('button.emu-win-btn', { type: 'button', text: '_', title: this.t('cmu-pc-window-minimize') });
-    const close = el('button.emu-win-btn', { type: 'button', text: 'X', title: this.t('cmu-pc-window-close') });
+    const control = text => (this.shell === 'seegson' ? `[${text}]` : text);
+    const min = el('button.emu-win-btn', { type: 'button', text: control('_'), title: this.t('cmu-pc-window-minimize') });
+    const close = el('button.emu-win-btn', { type: 'button', text: control('X'), title: this.t('cmu-pc-window-close') });
     const bar = el('div.emu-win-bar', {}, iconNode(this.theme, app), titleText, min, close);
     const grip = el('div.emu-win-grip');
     const node = el('div.emu-window', {}, bar, el('div.emu-win-body', {}, content), grip);
     if (app === 'deeps') this.skin(node, this.ctx.deepTheme);
-    Object.assign(node.style, { left: `${offset}px`, top: `${offset}px`, width: `${width}px`, height: `${height}px` });
-    const task = el('button.emu-task', { type: 'button', text: title });
-    const win = { node, task, titleText, app, minimized: false, restore: null };
+    Object.assign(node.style, { left: `${left}px`, top: `${top}px`, width: `${width}px`, height: `${height}px` });
+    const taskLabel = el('span.emu-task-label', { text: title });
+    const task = el('button.emu-task', { type: 'button', title }, iconNode(this.theme, app), taskLabel);
+    const win = { node, task, taskLabel, titleText, app, minimized: false, restore: null };
     const focus = () => {
       node.style.zIndex = String(++this.z);
-      for (const other of this.windows) other.task.classList.toggle('on', other === win);
+      this.updateTasks();
     };
+    const minimize = () => {
+      win.minimized = true;
+      node.hidden = true;
+      this.updateTasks();
+    };
+    win.minimize = minimize;
     node.addEventListener('pointerdown', focus);
     task.addEventListener('click', () => {
       if (win.minimized || node.style.zIndex !== String(this.z)) {
@@ -245,20 +440,19 @@ export class Desktop {
         node.hidden = false;
         focus();
       } else {
-        win.minimized = true;
-        node.hidden = true;
+        minimize();
       }
     });
     min.addEventListener('click', e => {
       e.stopPropagation();
-      win.minimized = true;
-      node.hidden = true;
+      minimize();
     });
     close.addEventListener('click', e => {
       e.stopPropagation();
       node.remove();
       task.remove();
       this.windows = this.windows.filter(x => x !== win);
+      this.updateTasks();
     });
     // Drag by the title bar; double click maximizes and restores.
     bar.addEventListener('pointerdown', e => {
@@ -323,11 +517,7 @@ export class Desktop {
     if (app === 'browser' || app === 'deeps') {
       const browser = this.browser(app === 'deeps');
       const win = this.addWindow(app, this.t(app === 'deeps' ? 'cmu-pc-app-deeps' : 'cmu-pc-app-browser'), browser.root, size);
-      browser.hooks.onTitle = title => {
-        const text = this.t('cmu-pc-browser-window-title', { page: title });
-        win.titleText.textContent = text;
-        win.task.textContent = text;
-      };
+      this.titled(win, browser);
       browser.navigate(browser.homeAddress);
       return { win, browser };
     }
@@ -340,12 +530,60 @@ export class Desktop {
   openLink(address, deep = false) {
     const browser = this.browser(deep);
     const win = this.addWindow(deep ? 'deeps' : 'browser', this.t(deep ? 'cmu-pc-app-deeps' : 'cmu-pc-app-browser'), browser.root, SIZES.browser);
-    browser.hooks.onTitle = title => {
-      win.titleText.textContent = this.t('cmu-pc-browser-window-title', { page: title });
-      win.task.textContent = win.titleText.textContent;
-    };
+    this.titled(win, browser);
     browser.navigate(address);
     return { win, browser };
+  }
+
+  /** A browser window's title follows its page. */
+  titled(win, browser) {
+    win.browser = browser;
+    browser.hooks.onTitle = title => {
+      const text = this.t('cmu-pc-browser-window-title', { page: title });
+      win.titleText.textContent = text;
+      win.taskLabel.textContent = text;
+      win.task.title = text;
+    };
+  }
+
+  // ------------------------------------------------------------ the screen the terminal keeps
+
+  /** The programs open now, back to front, the way the terminal keeps them for the next viewer. */
+  snapshot() {
+    return [...this.windows]
+      .filter(win => KEPT_APPS.includes(win.app))
+      .sort((a, b) => Number(a.node.style.zIndex) - Number(b.node.style.zIndex))
+      .map(win => ({
+        app: win.app,
+        address: win.browser ? win.browser.current || null : null,
+        // from the style, which a minimized (undisplayed) window keeps
+        position: [parseFloat(win.node.style.left) || 0, parseFloat(win.node.style.top) || 0],
+        size: [parseFloat(win.node.style.width) || 0, parseFloat(win.node.style.height) || 0],
+        minimized: win.minimized,
+      }));
+  }
+
+  /** Opens again what was left on the terminal's screen, quietly: no busy light, no clicks. */
+  restoreScreen(screen) {
+    if (!screen || !screen.length) return;
+    const busy = this.ctx.busy;
+    this.ctx.busy = () => {};
+    try {
+      for (const saved of screen) {
+        let win = null;
+        if (saved.app === 'browser') win = this.openLink(saved.address || this.theme.home, false).win;
+        else if (saved.app === 'deeps' && this.ctx.deep) win = this.openLink(saved.address || 'deeps://home', true).win;
+        else if (saved.app === 'files' || saved.app === 'mail' || saved.app === 'system') win = this.open(saved.app).win;
+        if (!win) continue;
+        const [left, top] = saved.position || [];
+        const [width, height] = saved.size || [];
+        if (Number.isFinite(left) && Number.isFinite(top)) Object.assign(win.node.style, { left: `${left}px`, top: `${top}px` });
+        if (width > 0 && height > 0) Object.assign(win.node.style, { width: `${width}px`, height: `${height}px` });
+        if (saved.minimized) win.minimize();
+      }
+    } finally {
+      this.ctx.busy = busy;
+    }
   }
 
   browser(deeps) {
@@ -442,7 +680,7 @@ export class Desktop {
       reader.replaceChildren(toField, subjectField, body, el('button.emu-btn', { type: 'button', text: this.t('cmu-mail-send'), onclick: () => {
         if (!toField.value.trim() || !body.value.trim()) return;
         const all = sent();
-        all.unshift({ from: user, to: toField.value.trim(), subject: subjectField.value.trim() || '(no subject)', body: body.value, time: shiftClock(this.booted) });
+        all.unshift({ from: user, to: toField.value.trim(), subject: subjectField.value.trim() || '(no subject)', body: body.value, time: shiftClock(this.clockFrom) });
         keep('extranet-emulator-mail-sent', all);
         folder = 'sent';
         draw();

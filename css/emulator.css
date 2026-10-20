@@ -56,13 +56,19 @@
 .emu-taskbar { display: flex; align-items: center; gap: 6px; padding: 3px; background: var(--bar); flex: 0 0 auto; }
 .emu-start { min-width: 64px; padding: 2px 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--os-bg); font: inherit; font-weight: 700; cursor: pointer; }
 .emu-tasks { flex: 1; min-width: 0; display: flex; gap: 4px; margin: 0 6px; overflow: hidden; }
-.emu-task { max-width: 200px; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: clip; padding: 2px 6px; border: 1px solid color-mix(in srgb, var(--phosphor) 80%, transparent); background: var(--os-bg); color: var(--phosphor); font: inherit; font-size: 13.33px; cursor: pointer; }
+.emu-task { max-width: 200px; min-width: 0; display: flex; align-items: center; gap: 5px; overflow: hidden; white-space: nowrap; padding: 2px 6px; border: 1px solid color-mix(in srgb, var(--phosphor) 80%, transparent); background: var(--os-bg); color: var(--phosphor); font: inherit; font-size: 13.33px; cursor: pointer; }
+.emu-task-label { min-width: 0; overflow: hidden; text-overflow: clip; }
+/* CMUComputerTheme.AppButton: the program's icon before its label, only when the OS has one (no glyph). */
+.emu-task .emu-icon-art, .emu-task .emu-icon-art img { width: 16px; height: 16px; flex: 0 0 auto; }
+.emu-task .emu-icon-art:has(.emu-glyph), .emu-app-btn .emu-icon-art:has(.emu-glyph) { display: none; }
 .emu-task.on { background: color-mix(in srgb, var(--accent) 25%, var(--os-bg)); }
 .emu-clock { font-weight: 700; margin-right: 8px; }
 .emu-startmenu { position: absolute; left: 0; bottom: 0; z-index: 5000; min-width: 200px; display: flex; flex-direction: column; gap: 2px; padding: 4px; background: var(--os-bg); border: 2px solid var(--accent); }
 .emu-startmenu[hidden] { display: none; }
-.emu-start-name { font-weight: 700; color: var(--accent); }
+.emu-start-name { font: var(--shell-font); color: var(--accent); }
 .emu-startmenu .emu-rule { margin: 2px 0 4px; }
+.emu-startmenu .emu-rule.emu-start-rule { margin: 4px 0 2px; }
+.emu-btn.emu-shell-btn { font: var(--shell-font); }
 
 /* Buttons and fields, as CMUComputerTheme draws them: a phosphor outline on the background. */
 .emu-btn { display: flex; align-items: center; gap: 6px; padding: 2px 6px; border: 1px solid color-mix(in srgb, var(--phosphor) 80%, transparent); background: var(--os-bg); color: var(--phosphor); font: inherit; text-align: left; cursor: pointer; }
@@ -116,3 +122,105 @@
 .emu-mute { min-width: 78px; justify-content: center; }
 .emu-mute.off { color: var(--text-3); }
 .emu-volume { width: 90px; accent-color: var(--accent); }
+
+/* ---------------------------------------------------------------- shells (CMUComputerShell)
+   The shell's own lettering (CMUComputerTheme.ShellFont, ShellSmall): Classic's bold mono, Sevastolink's Cozette
+   bitmap face, the Company's Noto Sans Display. Sizes are the game's points at 96 DPI. */
+.emu-desktop {
+  --shell-font: 700 16px "GameMono", "Roboto Mono", Consolas, monospace;
+  --shell-small: 400 13.33px "GameMono", "Roboto Mono", Consolas, monospace;
+  --terminal-face: "GameTerminal", Consolas, "Courier New", monospace;
+  --mono-face: "GameMono", "Roboto Mono", Consolas, monospace;
+}
+.emu-shell-seegson {
+  --shell-font: 700 16px "GamePixel", "Lucida Console", monospace;
+  --shell-small: 400 14.67px "GamePixel", "Lucida Console", monospace;
+  --band: color-mix(in srgb, var(--phosphor) 10%, var(--os-bg));
+}
+.emu-shell-weyland {
+  --shell-font: 700 16px "GameDisplay", "Noto Sans Display", "Segoe UI", Arial, sans-serif;
+  --shell-small: 400 13.33px "GameDisplay", "Noto Sans Display", "Segoe UI", Arial, sans-serif;
+}
+.emu-shell-main { flex: 1; min-height: 0; display: flex; }
+.emu-shell-main > .emu-area { min-width: 0; }
+.emu-shell-seegson .emu-icons, .emu-shell-weyland .emu-icons { position: static; display: flex; flex-direction: column; }
+
+/* The open programs, in both companies' shells: filled when on top, outlined otherwise. */
+.emu-shell-seegson .emu-task, .emu-shell-weyland .emu-task { min-width: 110px; max-width: 170px; border: 1px solid var(--accent); background: var(--os-bg); color: var(--accent); font: var(--shell-font); text-transform: uppercase; }
+.emu-shell-seegson .emu-task.on, .emu-shell-weyland .emu-task.on { background: var(--accent); color: var(--os-bg); }
+.emu-shell-seegson .emu-tasks, .emu-shell-weyland .emu-tasks { align-items: center; }
+
+/* Window frames: the title in capitals, the title icon kept as a space when the OS has none. */
+.emu-shell-seegson .emu-win-bar, .emu-shell-weyland .emu-win-bar { gap: 2px; font: var(--shell-font); text-transform: uppercase; }
+.emu-shell-seegson .emu-win-bar .emu-icon-art, .emu-shell-weyland .emu-win-bar .emu-icon-art { margin-right: 4px; }
+.emu-shell-seegson .emu-win-bar .emu-glyph, .emu-shell-weyland .emu-win-bar .emu-glyph { visibility: hidden; }
+.emu-shell-seegson .emu-win-btn, .emu-shell-weyland .emu-win-btn { min-width: 20px; padding: 2px 6px; font: var(--shell-font); line-height: normal; }
+
+/* ---- Sevastolink: header band, double rule, main menu column, open programs strip */
+.emu-sg-band { flex: 0 0 auto; background: var(--band); }
+.emu-sg-header { display: flex; align-items: center; gap: 10px; padding: 4px 8px; }
+.emu-sg-logo, .emu-wy-logo { flex: 0 0 auto; object-fit: contain; image-rendering: pixelated; }
+.emu-sg-logo[hidden], .emu-wy-logo[hidden] { display: none; }
+.emu-sg-name { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; font: 400 17.33px var(--terminal-face); color: var(--bright); }
+.emu-sg-terminal { white-space: nowrap; font: 400 13.33px var(--terminal-face); color: var(--phosphor); }
+.emu-shell-seegson .emu-clock { margin: 0; font: 400 17.33px var(--terminal-face); color: var(--bright); }
+.emu-shell-seegson .emu-rule { background: var(--phosphor); }
+.emu-sg-second-rule { margin-top: 2px; }
+.emu-sg-column { flex: 0 0 168px; width: 168px; min-height: 0; display: flex; flex-direction: column; background: var(--os-bg); border-right: 2px solid var(--phosphor); }
+.emu-sg-menu { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 2px; padding: 4px; }
+.emu-sg-heading { flex: 0 0 auto; background: var(--phosphor); color: var(--os-bg); font: var(--shell-font); white-space: pre; }
+.emu-sg-scroll { flex: 1; min-height: 0; overflow-x: hidden; overflow-y: auto; }
+.emu-shell-seegson .emu-icons { gap: 1px; counter-reset: emu-row; }
+.emu-sg-menu .emu-rule.emu-sg-menu-rule { margin: 2px 0; }
+.emu-sg-user { overflow: hidden; white-space: nowrap; font: var(--shell-small); color: var(--dim); }
+.emu-sg-menu .emu-btn { flex: 0 0 auto; }
+.emu-sg-strip { display: flex; align-items: center; gap: 6px; padding: 3px 6px; min-height: 22px; }
+.emu-sg-strip .emu-tasks { margin: 0; }
+.emu-sg-dim { white-space: nowrap; font: var(--shell-small); color: var(--dim); }
+.emu-shell-seegson .emu-window { border: 3px solid var(--phosphor); }
+.emu-shell-seegson .emu-win-bar { background: var(--phosphor); color: var(--os-bg); }
+.emu-shell-seegson .emu-win-btn { background: var(--phosphor); color: var(--os-bg); }
+
+/* A main menu row: its number in the terminal face, its name, a mark at the end of a link; inverted when picked
+   or under the mouse. */
+.emu-icon.emu-row { position: relative; flex: 0 0 auto; width: 100%; min-width: 150px; height: 18px; display: flex; flex-direction: row; align-items: center; gap: 0; padding: 0; background: none; color: var(--phosphor); cursor: pointer; text-align: left; }
+.emu-icon.emu-row::before { counter-increment: emu-row; content: counter(emu-row, decimal-leading-zero); flex: 0 0 30px; margin-left: 6px; font: 400 13.33px var(--terminal-face); line-height: 1; }
+.emu-row .emu-icon-art { display: none; }
+.emu-row .emu-icon-label { padding: 0; font: var(--shell-font); line-height: 1; text-shadow: none; }
+.emu-row.emu-link::after { content: ''; position: absolute; right: 8px; top: calc(50% - 2px); width: 4px; height: 4px; background: var(--dim); }
+.emu-icon.emu-row:hover, .emu-icon.emu-row.on { background: var(--phosphor); color: var(--os-bg); }
+.emu-row.on .emu-icon-label { background: none; color: inherit; }
+.emu-row.emu-link:hover::after, .emu-row.emu-link.on::after { background: var(--os-bg); }
+
+/* ---- the Company: header rule, tile dock, double hairline, directory and inquiry bar */
+.emu-wy-header { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; padding: 5px 10px; background: var(--os-bg); border-bottom: 1px solid var(--accent); }
+.emu-wy-brand { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.emu-wy-company { overflow: hidden; white-space: nowrap; font: var(--shell-font); color: var(--accent); }
+.emu-wy-dim { overflow: hidden; white-space: nowrap; font: var(--shell-small); color: var(--dim); }
+.emu-wy-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; }
+.emu-shell-weyland .emu-clock { margin: 0; font: var(--shell-font); color: var(--accent); }
+.emu-wy-dock { flex: 0 0 92px; width: 92px; min-height: 0; overflow-x: hidden; overflow-y: auto; padding: 6px 4px; background: color-mix(in srgb, var(--accent) 5%, var(--os-bg)); border-right: 1px solid color-mix(in srgb, var(--accent) 60%, transparent); }
+.emu-shell-weyland .emu-icons { gap: 4px; }
+.emu-wy-rule { flex: 0 0 4px; height: 4px; border-top: 1px solid var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+.emu-wy-bar { flex: 0 0 auto; display: flex; align-items: center; padding: 3px 4px; background: var(--os-bg); }
+.emu-wy-directory { flex: 0 0 auto; min-width: 84px; padding: 2px 6px; border: 1px solid var(--accent); background: var(--os-bg); color: var(--accent); font: var(--shell-font); cursor: pointer; }
+.emu-wy-directory:hover { filter: brightness(0.82); }
+.emu-wy-inquiry { flex: 0 0 auto; margin-right: 6px; white-space: pre; font: 400 16px var(--mono-face); color: var(--dim); }
+.emu-wy-cursor { animation: emu-cursor 1s infinite; }
+@keyframes emu-cursor { 0%, 54% { visibility: visible; } 55%, 100% { visibility: hidden; } }
+.emu-shell-weyland .emu-window { border: 1px solid var(--accent); padding: 4px; }
+.emu-shell-weyland .emu-window::before { content: ''; position: absolute; inset: 1px; border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); pointer-events: none; }
+.emu-shell-weyland .emu-win-bar { background: color-mix(in srgb, var(--accent) 10%, var(--os-bg)); border-bottom: 1px solid color-mix(in srgb, var(--accent) 60%, transparent); color: var(--accent); }
+.emu-shell-weyland .emu-win-btn { border: 1px solid color-mix(in srgb, var(--accent) 70%, transparent); background: var(--os-bg); color: var(--accent); }
+.emu-shell-weyland .emu-win-grip { right: 4px; bottom: 4px; }
+
+/* A Semiotic Standard tile: the icon on a cut cornered plate, its name in capitals under it. */
+.emu-icon.emu-tile { position: relative; flex: 0 0 auto; width: 100%; min-width: 80px; height: 66px; display: flex; flex-direction: column; align-items: center; gap: 0; padding: 0; background: none; color: var(--accent); }
+.emu-icon.emu-tile.on { background: none; }
+.emu-tile-plate { position: relative; display: block; flex: 0 0 auto; width: 45px; height: 41px; margin-top: 2px; color: var(--accent); }
+.emu-tile-plate svg { display: block; }
+.emu-tile-plate polygon { fill: currentColor; fill-opacity: 0.08; stroke: currentColor; stroke-opacity: 0.75; }
+.emu-tile:hover .emu-tile-plate polygon, .emu-tile.on .emu-tile-plate polygon { fill-opacity: 0.28; stroke-opacity: 1; }
+.emu-tile .emu-icon-art { position: absolute; left: 6px; top: 4px; }
+.emu-tile .emu-icon-label { margin-top: 3px; padding: 0 2px; font: var(--shell-small); line-height: normal; color: var(--accent); text-shadow: none; }
+.emu-tile.on .emu-icon-label { background: var(--accent); color: var(--os-bg); }

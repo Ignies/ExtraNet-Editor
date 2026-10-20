@@ -204,6 +204,15 @@ computer full window, built from the game's own code and art:
   desktop icons, start menu, taskbar and shift clock follow `CMUComputerBootSplash`, `CMUComputerSessionUi`
   and `CMUComputerDesktop`, in the OS's colours (`operating_systems.yml`). Seegson takes the colony's name
   (GARRISONLINK on Stable Garrison).
+- **Desktop shells**, the OS's `shell` (`CMUComputerShell`): Seegson is Sevastolink, with the network name across a
+  header, a numbered main menu down the left that opens with one click, thick boxed windows with inverted capitals
+  titles and a strip of the open programs; Weyland-Yutani is a Company workstation, with the logo and slogan across
+  the top, Semiotic Standard tiles down a dock, thin double ruled windows, and the DIRECTORY, the open programs and
+  the inquiry line along the bottom; CMB keeps the classic icons, start button and taskbar.
+- **The terminal keeps its screen**: leaving the emulator is walking away from the computer. Come back (same OS,
+  colony and deep access) and it is still on with the card in: straight to the desktop with the browsers, Files,
+  Mail and System windows the session left open, or the rest of the boot if it was switched on moments ago.
+  Switching it off, taking the card out or reloading the page clears it.
 - **Programs**: the ExtraNet browser (back, forward, home, the directory, the address bar, the site's tabs,
   `net://random`, SAVE LINK to the desktop), Files (the OS's documents and your own notes), Mail (a sample inbox,
   sent mail kept), System (terminal, user, networks, uptime, and the wallpapers).
