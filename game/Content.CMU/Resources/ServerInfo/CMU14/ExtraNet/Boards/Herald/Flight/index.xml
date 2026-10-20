@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/Flight/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Flight, filed by our own correspondent from all nine floors, the basement and the streets below. Names, not numbers, since 2173.[/italic]
+
+  Nobody on the Sixth owns this paper. Read the official notices, then read us.
+
+  <CMUNetMarquee Text="FLIGHT  ///  Rooftop pad closes when the gusts pick up  ///  Mind the atrium wells on every floor  ///  Report a stalled lift to the Foreman's office  ///  Classified notices are free to place" Speed="55" Color="#8A1C1C"/>
+</Document>

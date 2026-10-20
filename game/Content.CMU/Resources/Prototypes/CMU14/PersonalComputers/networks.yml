@@ -1,0 +1,27 @@
+- type: cmuNetwork
+  id: CMUNetPublic
+  name: cmu-net-network-public
+
+- type: cmuNetwork
+  id: CMUNetSeegson
+  name: cmu-net-network-seegson
+
+- type: cmuNetwork
+  id: CMUNetWeylandYutani
+  name: cmu-net-network-weyland-yutani
+
+- type: cmuNetwork
+  id: CMUNetUSCM
+  name: cmu-net-network-uscm
+
+# The Colonial Marshal Bureau's own network: lookup alerts, the terminal map, fax copies and records.
+- type: cmuNetwork
+  id: CMUNetCMB
+  name: cmu-net-network-cmb
+
+# The answers SpaceGPT's ghosts choose from. Add lines to the locale file and raise the count to add more.
+- type: localizedDataset
+  id: CMUSpaceGptAnswers
+  values:
+    prefix: cmu-spacegpt-answer-
+    count: 40

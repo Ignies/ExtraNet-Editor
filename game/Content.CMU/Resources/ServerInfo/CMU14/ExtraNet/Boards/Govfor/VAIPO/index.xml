@@ -1,0 +1,19 @@
+<Document>
+  <CMUNetStyle Background="#10171C" Text="#D3DCE0" Heading="#4FB3D9" Link="#9AD14B" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/us_flag_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/merc_patch.rsi" State="icon" Scale="4"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/flags.rsi" State="US" Scale="2"/>
+  </Box>
+
+  # VANGUARD'S ARROW INCORPORATED
+  [bold]PRIMARY OPERATIONS - SITE SECURITY DETACHMENT, {colony}[/bold]
+  <CMUNetMarquee Text="VAI PRIMARY OPERATIONS IS ON SITE  ///  CARRY YOUR COLONY ID  ///  CURFEW AND ZONE CHANGES ARE POSTED ON THIS BOARD  ///  REPORT UNATTENDED PACKAGES TO ANY VAI TEAM  ///  WE HAVE DONE THIS BEFORE" Speed="60" Color="#4FB3D9"/>
+  [bold]BULLETINS FROM THE DETACHMENT LEAD.[/bold] Vanguard's Arrow Incorporated, Primary Operations, holds the security contract for {colony}. Bulletins here are issued by the detachment's Commanding Officer and take effect when posted. Straight talk, no fine print: if something here is unclear, stop any VAI operator and ask.
+
+  Most of us wore Colonial Marine green before we wore this patch. We still keep the standard.
+
+  <CMUNetBlink Rate="0.7">
+    [color=#4FB3D9]VAI SECURE CHANNEL - ALL POSTS ARE LOGGED[/color]
+  </CMUNetBlink>
+</Document>

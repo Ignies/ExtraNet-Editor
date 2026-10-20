@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#0D1524" Text="#D9DEE8" Heading="#E0B84C" Link="#7FB2E5" Font="Mono"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/CMIDs/cmb_marshal.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # THE UNIT
+  [italic]We are here because somebody called for help.[/italic]
+
+  ## WHO WE ARE
+  The Colonial Marshals Bureau Crisis Intervention Unit is a team of Marshals and Deputies sent where local law enforcement cannot cope: hostage situations, worker strikes, terrorist incidents, and any other crisis serious enough to need more than a two officer office and a drunk tank. We carry a badge before we carry a rifle. Every Deputy on this colony took an oath to the community, not to a company.
+
+  ## CHAIN OF COMMAND
+  - [bold]Incident Commander:[/bold] the senior Marshal on scene. Declares the alert state, the curfew and the security perimeters, and signs every notice on this board.
+  - [bold]Executive Officer:[/bold] runs the Unit day to day and receives complaints and statements.
+  - [bold]Team leaders:[/bold] Marshals leading Deputies on patrol, at checkpoints and on warrants.
+  - [bold]Deputies:[/bold] the officers you will deal with. Ask for a name and badge number; they will give it.
+
+  ## WHY WE ARE HERE
+  Armed cells flying the Colonial Liberation Front name have grown bolder since the United Americas pulled back from much of the Neroid Sector. To the Bureau they are not an enemy army. They are suspects. The Unit will:
+  - protect residents from armed attack and take those responsible into custody;
+  - respond to fire, collapse, gas and any mass emergency alongside colony crews;
+  - watch the atmosphere and the perimeter and sound the alarm early;
+  - secure the colony's power, water, air and landing facilities, which are critical infrastructure under federal law.
+
+  ## THE STABLE LESSON
+  In 2168 Drill Site 68-B on Albacetire punctured a ravine of pressurised carbon monoxide, and more than twelve thousand people died in the Carbon Ravine disaster. The Bureau's own inquiry found the warnings had been filed and ignored. Every Marshal reads that file in training. An officer at the gate is also a first responder, and a report left in a drawer can kill a town.
+
+  ## OUR OBLIGATIONS TO YOU
+  - Every arrest is made on probable cause and recorded. You will be told the charge.
+  - Nothing is seized without a property receipt. Evidence is logged and returned when the case closes.
+  - Lethal force is authorised only against an immediate threat to life.
+  - You may request a Marshal at any time. You may file a complaint against any officer, including this office.
+
+  [netlink="Return to incident notices" link="command.govfor.mil"]
+</Document>

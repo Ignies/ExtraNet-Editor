@@ -1,0 +1,19 @@
+<Document>
+  <CMUNetStyle Background="#020A06" Text="#9FE0B0" Heading="#3FFF7A" Link="#E0FF6A" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Eyes/banner.png" MaxHeight="150"/>
+  <CMUNetBlink Rate="0.5">
+    [color=#3FFF7A][bold]EYES[/bold][/color]
+  </CMUNetBlink>
+
+  Every camera on this colony reports home over the same old wire, and the wire has a tap on it. Pick a grid to watch it from this terminal. The picture is whatever the cameras see, live.
+
+  [netlink="GOVFOR garrison grid" link="cam://CMUSurveillanceCameraColonyGOVFOR"]
+
+  [netlink="Company grid (Weyland-Yutani)" link="cam://CMUSurveillanceCameraColonyWEYU"]
+
+  [netlink="Marshal grid (CMB)" link="cam://CMUSurveillanceCameraColonyCMB"]
+
+  [color=#3FFF7A]Remember:[/color] a tap works both ways. Do not watch the same grid for too long.
+
+  <CMUNetMarquee Text="LIVE  ///  THREE GRIDS ON THE WIRE  ///  LOOK, DO NOT TOUCH" Speed="50" Color="#3FFF7A"/>
+</Document>

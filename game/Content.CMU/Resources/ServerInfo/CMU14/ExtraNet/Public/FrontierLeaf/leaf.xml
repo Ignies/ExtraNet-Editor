@@ -1,0 +1,45 @@
+<Document>
+  <CMUNetStyle Background="#EFE6D2" Text="#2B2416" Heading="#4E6E1A" Link="#8A3A12" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/FrontierLeaf/banner.png" MaxHeight="150"/>
+  # OUR LEAF AND THE STORE
+  [italic]Prices in UA dollars or colony scrip, at the co-op counter. Members pay at cost. Shipping to other colonies by the next freighter with room in the hold.[/italic]
+
+  ## CO-OP GROWN
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Specific/Hydroponics/tobacco.rsi" State="dried" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigarettes/unfiltered_roll.rsi" State="unlit-icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Pipes/pipe.rsi" State="unlit-icon" Scale="3"/>
+  </Box>
+  - [bold]Hope's Leaf[/bold], loose cured leaf, $3 the pouch. Mild, a little sweet, grown under the bay lamps at Hope's Retreat.
+  - [bold]River Dark[/bold], loose cured leaf, $4 the pouch. Grown at Shepherds' Pride and cured in the damp. Strong. Made for a pipe.
+  - [bold]Co-op Hand Rolls[/bold], $1 each. Unfiltered, rolled at the counter by whichever member is on shift. Quality varies with the member.
+  - [bold]Briar Pipe[/bold], $15. Carved by a retired miner on Solaris Ridge. Every one slightly different. Some of them are quite a lot different.
+
+  ## ROLL YOUR OWN
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigarettes/paper.rsi" State="cigpapers" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigarettes/paper.rsi" State="cigfilter" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Matchboxes/matchbook.rsi" State="mpacket" Scale="3"/>
+  </Box>
+  - [bold]Rolling papers[/bold], 50 cents the book.
+  - [bold]Filters[/bold], 50 cents the bag. The co-op recommends them. Your lungs recommend them more.
+  - [bold]Co-op matchbook[/bold], free with any pouch.
+
+  ## FROM THE BIG BRANDS
+  [italic]We stock what our members smoke. We do not have to like it.[/italic]
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Items/Smokes/koorlander.rsi" State="closed" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigarettes/arcturian_ace.rsi" State="closed" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigarettes/sol_reds.rsi" State="closed" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigarettes/emerald_greens.rsi" State="closed" Scale="3"/>
+  </Box>
+  - [bold]Koorlander[/bold], $5. The colonial staple. Flat, dusty and dependable, like the terraforming crews that made it famous.
+  - [bold]Arcturian Ace[/bold], $5. Bright blue packet. Popular with the young and the optimistic.
+  - [bold]Sol Reds[/bold], $6. Claim to be all natural. So does our leaf, and ours is.
+  - [bold]Emerald Greens[/bold], $4. The cheap one. We stock it so that nobody has to buy it from a smuggler.
+
+  ## NOT STOCKED
+  Koorlander Lady Fingers. Our members asked us to stop. One of them uses a pack to keep bugs out of his tent, and says it works, and that is all we have to say about them.
+
+  [netlink="Back to the co-op" link="frontierleaf.coop"]
+</Document>

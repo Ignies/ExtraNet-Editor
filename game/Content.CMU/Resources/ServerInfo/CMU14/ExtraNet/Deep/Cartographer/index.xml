@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#07141B" Text="#C4D6CC" Heading="#7FE3D2" Link="#F2955E" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Cartographer/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="POSITION FIX 2182  ///  NEROID LANES QUIET, WHICH IS WORSE  ///  CORRIDOR BEACON 14 DARK SINCE SPRING  ///  FAR REACH: NO NEW SOUNDINGS  ///  NEVER TRUST A CLEAN CHART" Speed="45" Color="#F2955E"/>
+
+  # The Chart Room
+
+  [italic]Hand plotted. Unlicensed. Never filed with Starship Traffic Control, and never will be.[/italic]
+
+  I flew freight on the outer lanes for thirty-one years. Ore haulers out of the Neroid, reefer boxes up the American Corridor, one bad year on the Far Reach that I do not talk about. What I have left is a cracked nav deck, a drawer full of punch-tape soundings and nobody to hand them to. So I hand them to you.
+
+  The charts the Company and the Colonial Administration sell are clean. Clean charts get crews killed. They do not show the beacons that went dark, the relays nobody services, the fuel depots that are only a name printed on a sheet. They do not show the places where a transponder stops in the middle of a sentence.
+
+  ## What I keep here
+  - [netlink="Sector Rumours" link="cartographer.deep/sectors"]: what the docks say about the Neroid Sector, the American Corridor and the Far Reach.
+  - [netlink="Dead Lanes" link="cartographer.deep/deadlanes"]: routes I have struck off my charts, and the places ships do not come back from.
+
+  ## Rules of the room
+  - I do not sell coordinates. If someone sells you mine, they are lying to you about something else as well.
+  - Every rumour is marked with how many mouths it came through. One mouth is gossip. Three mouths is a heading.
+  - If you are Company, read on. You know most of this already. You drew some of it.
+
+  <CMUNetBlink Rate="0.6">
+    [color=#E0483A][bold]LAST SOUNDING TAKEN 41 DAYS AGO. CHART MAY BE STALE.[/bold][/color]
+  </CMUNetBlink>
+
+  ## Other lamps in the dark
+  - [netlink="pilot.deep" link="pilot.deep"]: a flyer who still talks shop, and talks it straight.
+  - [netlink="missing.deep" link="missing.deep"]: if your people went out on one of my dead lanes, look for their names there.
+
+  [color=#4F6E69]-- signal ends -- carrier held -- carrier held -- c4rr13r h...[/color]
+
+  [netlink="Fold the chart and start over" link="cartographer.deep"]
+
+  <CMUNetWallpaper Id="CMUWallpaperWireframe"/>
+</Document>

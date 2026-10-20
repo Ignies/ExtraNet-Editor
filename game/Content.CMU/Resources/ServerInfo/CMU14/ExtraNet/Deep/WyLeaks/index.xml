@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#0C0C0A" Text="#BDB9AC" Heading="#F2EEE3" Link="#6FA8FF" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/WyLeaks/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="THEY BUILD BETTER WORLDS  ///  THEY BURY THE WORSE ONES  ///  COPY THIS PAGE BEFORE IT IS GONE  ///  NO NAMES  ///  NO TRACE  ///  NO REFUNDS" Speed="55" Color="#FF3B30"/>
+  # WY LEAKS
+  [italic]Internal paper of the Company, posted without its permission.[/italic]
+
+  <CMUNetBlink Rate="0.6">
+    [color=#FF3B30][bold]:: NEW DROP :: 3 DOCUMENTS :: VERIFIED ::[/bold][/color]
+  </CMUNetBlink>
+
+  ## WHO WE ARE
+  Nobody. Clerks, comms techs, a records officer who stopped sleeping. We are not the CLF, not a union and not a rival firm, and we take no money from any of them. We work inside Weyland-Yutani, or we did, and we read the mail that crosses our desks.
+
+  ## HOW TO READ A DROP
+  - Black bars like [color=#3A3A36]##########[/color] are the Company's own. The paper reached us that way.
+  - Notes in [color=#6FA8FF]this colour[/color] are ours. Everything else is the original text, retyped from hard copy so the print codes cannot be traced back to the machine.
+  - Reference numbers are real. If a liaison tells you a reference does not exist, ask how they know the format.
+
+  ## CURRENT DROP
+  - [netlink="DOC 01 // Specimen acquisition priority" link="wyleaks.deep/specimens"]
+  - [netlink="DOC 02 // Personnel valuation schedule" link="wyleaks.deep/expendable"]
+  - [netlink="DOC 03 // Procedure IC-7, the quiet site" link="wyleaks.deep/quietsite"]
+
+  ## RULES FOR READERS
+  - Do not print anything from this site on a Company terminal.
+  - Do not say the words list B, Class Black or quiet site near a liaison. They are trained to listen for them.
+  - If your colony's atmosphere processor fails next week, you heard it here first.
+
+  ## ELSEWHERE IN THE DARK
+  The [netlink="Colony Herald" link="herald.colony.news"] will not run this. Ask them who signs their power bill. People who walked out of the Company sometimes surface at [netlink="defector.deep" link="defector.deep"], and the names the Company stopped counting turn up at [netlink="missing.deep" link="missing.deep"].
+
+  [color=#6FA8FF][italic]Mirror often. This address has been burned twice.[/italic][/color]
+
+  <CMUNetWallpaper Id="CMUWallpaperCorporate"/>
+</Document>

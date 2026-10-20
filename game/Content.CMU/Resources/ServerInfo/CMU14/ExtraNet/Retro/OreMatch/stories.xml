@@ -1,0 +1,26 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/OreMatch/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Drinks/mug_heart.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Drinks/champagnebottle.rsi" State="icon" Scale="2"/>
+  </Box>
+  # SUCCESS STORIES
+  [italic]Real couples who found each other through OreMatch. Some have even met.[/italic]
+
+  ## ABE AND INGRID
+  Three years of letters across four systems. Abe sent Ingrid a sample of the best ore from his refinery every month. Ingrid sent Abe a photograph of the same ice field every month, so he could see it change. It did not change. They agree it is the most romantic thing either of them has ever received.
+
+  ## MAGS AND RUDI
+  Mags and Rudi were matched in 2182. They wrote to each other for a year before they found out they worked on the same colony, in the same block, on opposite shifts. They now share a bunk, a coffee machine and a five minute overlap every morning. They say the five minutes are the best part of the day.
+
+  ## DUSTY AND THE DRILL
+  Dusty would like it known he is still single and that the drill does not count. His friends would like it known the drill counts.
+
+  ## CORPORAL REYES AND SANDRINE
+  The corporal sent his tape from a garrison on a jungle colony. Sandrine replied from an orbital farm. When his tour ended he took two dropships, a hauler and a mail ship to meet her. He arrived with a bunch of flowers that had been in hypersleep for eight weeks. She said they were perfect. They were brown.
+
+  ## PRIYA AND THE VOICE
+  Priya would like to say that she is not dating the voice on channel nine, that it is not a person, that she is fine, and that she does not want to talk about the voice on channel nine on a success stories page.
+
+  [netlink="Back to OreMatch" link="orematch.love"]
+</Document>

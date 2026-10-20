@@ -1,0 +1,10 @@
+<Document>
+  <CMUNetStyle Background="#EFE7D2" Text="#2B2418" Heading="#7A3E12" Link="#1D4E7A" Font="Sans"/>
+  # {colony} LOST AND FOUND
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Fun/plushies.rsi" State="bee" Scale="3" Align="Left"/>
+  Found something that is not yours? Post it below with where you found it. Lost something? Read the board, then ask at the terminal number on the posting.
+
+  Read the [netlink="house rules" link="lostfound.colony/rules"] before posting.
+
+  Bored on shift? [netlink="Surf somewhere random" link="net://random"]
+</Document>

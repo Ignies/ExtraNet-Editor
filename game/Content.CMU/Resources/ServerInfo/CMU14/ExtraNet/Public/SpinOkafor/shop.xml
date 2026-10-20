@@ -1,0 +1,32 @@
+<Document>
+  <CMUNetStyle Background="#0A1630" Text="#DCE6FF" Heading="#FFB000" Link="#FF7A45" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/SpinOkafor/banner.png" MaxHeight="150"/>
+  # THE COMETS PRO SHOP
+  [italic]Official Gateway Comets gear, as worn and eaten by Spin Okafor. Prices in UA dollars. Colony shipping by the next freighter with space.[/italic]
+
+  ## WEAR WHAT SPIN WEARS
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Head/Hats/headband/red.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Head/Hats/red_trucker_cap.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Uniforms/T-shirt/red.rsi" State="icon" Scale="3"/>
+  </Box>
+  - [bold]Spin Sweatband[/bold], $8. The red band he wears under the helmet. In zero gravity sweat does not run, it floats in a bubble in front of your eyes. This stops that.
+  - [bold]Comets Cap[/bold], $15. Red, peaked, with the comet tail stitched on the side. For watching, not playing. Caps are not legal in the Cage.
+  - [bold]Number 7 Shirt[/bold], $22. Okafor on the back. Machine washable, cargo bay tested.
+
+  ## TRAIN LIKE SPIN
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Food/bar.rsi" State="protein_bar" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Drinks/space_up.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Balls/football.rsi" State="icon" Scale="3"/>
+  </Box>
+  - [bold]Protein bars[/bold], $3 each. Spin eats four before a match. The team nutritionist would like it known that she recommends two.
+  - [bold]Space Up[/bold], $2 a can. The official drink of the Gateway Cage, and the only soda Spin will drink upside down.
+  - [bold]Official League Ball[/bold], $40. Weighted for the Cage, which means it is heavier than you expect in gravity. Do not throw it at a window. Colony windows are expensive.
+
+  ## FOR THE TROPHY CABINET
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medals/silver.rsi" State="icon" Scale="3"/>
+  - [bold]Orbital Cup Replica Medal[/bold], $30. A replica of the 2182 Cup medal on a ribbon. Not legal tender. Not a military decoration. Please stop wearing it to garrison parades.
+
+  [netlink="Back to Spin Okafor" link="spinokafor.zg"]
+</Document>

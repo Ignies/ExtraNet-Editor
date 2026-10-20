@@ -1,0 +1,30 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/EmbassyCCA/emblem.png" MaxHeight="96"/>
+  # RELATIONS
+  The Confederation is bound to no bloc. It trades with all and takes orders from none. This page sets out the mission's standing with the other powers present in the Neroid Sector.
+
+  ## THE UNITED AMERICAS
+  A long and practical relationship. The Confederation respects the Colonial Marines' role in keeping shipping lanes open, and asks in turn that UA operations near Confederation-funded sites are announced to this mission in advance.
+  [netlink="Embassy of the United Americas" link="embassy.ua"]
+
+  ## THE THREE WORLD EMPIRE
+  Cordial. Imperial and Confederation shipping share several ports, and the mission works with the Empire's representatives on customs and salvage disputes.
+  [netlink="Embassy of the Three World Empire" link="embassy.twe"]
+
+  ## THE UNION OF PROGRESSIVE PEOPLES
+  Correct and cautious. The Confederation keeps open channels with the Union and will not be drawn into anyone else's war with it.
+  [netlink="Embassy of the UPP" link="embassy.upp"]
+
+  ## THE INDEPENDENT CORE SYSTEM COLONIES
+  Natural partners in trade. Like the Confederation, the independent colonies know what it costs to be a junior partner of a great power.
+  [netlink="Embassy of the ICSC" link="embassy.icsc"]
+
+  ## THE COMPANIES
+  Weyland-Yutani and Seegson are customers, competitors and, on this colony, neighbours. The Confederation will honour every lawful contract. It will not accept a company charter as a substitute for law.
+
+  ## THE COLONY ADMINISTRATION
+  The mission works with the Administrator on settler welfare, supply and emergency planning. Joint notices appear on the administration board.
+  [netlink="Colony Administration" link="admin.colony.gov"]
+
+  [netlink="Back to the front page" link="embassy.cca"]
+</Document>

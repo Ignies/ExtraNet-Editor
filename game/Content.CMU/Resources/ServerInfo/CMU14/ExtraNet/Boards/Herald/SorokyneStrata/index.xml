@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/SorokyneStrata/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Sorokyne Strata, filed by our own correspondent from the outpost decks to the mine levels and the warm tunnels below. Set in two languages since 2166.[/italic]
+
+  We answer to no flag, no Company and no security contractor. Read what Administration and Sestra post, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Frost warning on the outpost decks after dark  ///  Carry your pass at every checkpoint  ///  Readers may comment under any story" Speed="55" Color="#8A1C1C"/>
+</Document>

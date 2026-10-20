@@ -1,0 +1,27 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/ColonyPedia/banner.png" MaxHeight="150"/>
+  # Synthetics and Working Joes
+  [italic]From ColonyPedia, the free encyclopedia of the frontier. This article is about artificial persons. For the frozen dinner brand, see Synthetic Steak.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Mobs/WorkingJoe/parts.rsi" State="full" Scale="2"/>
+  </Box>
+
+  A [bold]synthetic[/bold], properly an [bold]artificial person[/bold], is a manufactured human-shaped machine built to work alongside people. The two great families on the frontier are the high-end synthetics of Hyperdyne Systems and Weyland-Yutani, which can pass for human, and the Working Joe line by Seegson, which cannot and does not try.
+
+  ## THE WORKING JOE
+  The Working Joe was released by Seegson as a cheap, tireless and fully obedient labourer. It has a rubber face, a calm voice and a single expression, chosen in testing as the one least likely to cause complaints. It is found on most Seegson-serviced colonies, mopping, lifting, sorting and reminding colonists that running in the corridors is not permitted.
+
+  Joes are bound by their safety directives, which forbid them from harming a human. Seegson stresses that these directives cannot be overridden. Seegson has issued fourteen patches to the directives that cannot be overridden.
+
+  ## HIGH-END SYNTHETICS
+  Hyperdyne and Weyland-Yutani models serve as science officers, medics and executive staff. They are strong, quick, patient and very good at chess. Many colonists say they cannot tell a modern synthetic from a person, which the makers present as a selling point and colonists present as a concern.
+
+  ## TERMINOLOGY
+  Synthetics generally prefer the term artificial person. Working Joes have no stated preference. When asked, a Working Joe will reply that it is here to help, which ColonyPedia has decided to treat as a preference.
+
+  ## CONTROVERSY
+  An earlier version of this article claimed that some synthetics carry orders from their makers that override the wishes of their crew. That section was removed after a request from a legal department. ColonyPedia would like to state that we did not say which legal department.
+
+  [netlink="Main page" link="colonypedia.ref"]
+</Document>

@@ -1,0 +1,30 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/Indentured/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="INDENTURED: YOUR NEXT CONTRACT IS WAITING  ///  48,000 OPENINGS ON 300 COLONIES  ///  ONE CLICK APPLY, FIVE YEAR COMMIT  ///  SIGNING BONUS PAID ON ARRIVAL, IF YOU ARRIVE" Speed="65" Color="#2557A7"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/clipboard.rsi" State="clipboard" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Storage/Briefcases/brown.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="paper_stamp-approve" Scale="2"/>
+  </Box>
+  # Indentured
+  [italic]Find work on the frontier. Find out how long it lasts.[/italic]
+
+  [bold]What:[/bold] ____________________ [bold]Where:[/bold] ____________________ (FIND CONTRACTS)
+
+  Indentured lists frontier contracts from every major employer in human space: corporations, colony administrations, haulers, refineries and the occasional government that is short of people. Read the listing, press apply and sign. Then read the contract. That is the order most people do it in.
+
+  ## FEATURED CONTRACTS NEAR {colony}
+  - [bold]Atmosphere Processor Technician[/bold]. Weyland-Yutani. Five years. Hazard pay. Must be comfortable working alone, at height, at depth and at night.
+  - [bold]Colony Medic[/bold]. Lasalle Bionational. Three years. Must be able to treat burns, breaks, fevers and things that do not have a name yet.
+  - [bold]Working Joe Supervisor[/bold]. Seegson. Two years. Supervise up to forty Working Joes. No experience required. The Joes will supervise you while you learn.
+  - [bold]Marine[/bold]. United States Colonial Marine Corps. Four years. See the galaxy. Meet interesting life forms.
+
+  ## SEARCH
+  - [netlink="Browse all contracts" link="indentured.jobs/listings"]
+  - [netlink="Write a frontier resume" link="indentured.jobs/resume"]
+  - [netlink="Company reviews by real employees" link="indentured.jobs/reviews"]
+
+  <CMUNetAd Id="CMUDeepAdJoinTheMarines"/>
+
+  [color=#5A6A80]Indentured is a job board, not an employer. Contracts are between you and your employer, who has a lawyer. Do you have a lawyer? Indentured can recommend one. They are on a five year contract.[/color]
+</Document>

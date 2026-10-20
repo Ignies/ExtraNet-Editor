@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#10171C" Text="#D3DCE0" Heading="#4FB3D9" Link="#9AD14B" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/merc_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # THE DETACHMENT
+  [italic]Veterans looking after people. That is the whole pitch.[/italic]
+
+  ## WHO WE ARE
+  Vanguard's Arrow Incorporated was founded in 2166 by nine Colonial Marine veterans and grew into one of the largest private military companies in the United Americas. Primary Operations is the part of VAI that does the visible work: protecting people and places, rapid response, and supporting Colonial Marine forces under the Military Aid Act of 2177. VAIPO takes legal contracts only. This is one of them.
+
+  We fight much like the Corps does, with the same kind of kit. The difference is in how we run. Below the team leader, everybody is an equal, and everybody is expected to think.
+
+  ## CHAIN OF COMMAND
+  - [bold]Commanding Officer:[/bold] sets the alert state, the curfew and the security zones, and signs every bulletin on this board.
+  - [bold]Executive Officer:[/bold] runs the detachment day to day and takes civilian complaints.
+  - [bold]Staff:[/bold] patrol schedules, checkpoint orders, supply and liaison with Colony Administration.
+  - [bold]Team leaders and their teams:[/bold] the operators you will meet.
+
+  ## THE JOB
+  - Defend the colony from dissident and insurgent attack, including the cells flying the Colonial Liberation Front name.
+  - Respond to fire, collapse, gas and any mass emergency.
+  - Watch the atmosphere and the ground, and sound the alarm early.
+  - Secure the colony's power, water, air and landing facilities.
+
+  ## THE STABLE LESSON
+  In 2168 Drill Site 68-B on Albacetire punctured a ravine of pressurised carbon monoxide. More than twelve thousand people died in the Carbon Ravine disaster, soldiers among them. A few of our founders served in the response. That is why every VAI operator on a garrison contract is a qualified first responder.
+
+  ## OUR RULES
+  - Every operator gives their name and team when a colonist asks.
+  - Nothing is taken from a civilian without a signed receipt.
+  - Force is the last tool, not the first. We have seen what happens when a contractor forgets that, and so has the company.
+
+  [netlink="Back to the bulletins" link="command.govfor.mil"]
+</Document>

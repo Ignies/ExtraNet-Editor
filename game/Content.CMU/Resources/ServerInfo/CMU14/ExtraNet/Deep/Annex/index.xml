@@ -1,0 +1,41 @@
+<Document>
+  <CMUNetStyle Background="#090E0C" Text="#BCCFC2" Heading="#9BE8B4" Link="#E3D27A" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Annex/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="STAFF ONLY BEYOND THIS POINT  ///  DO NOT FEED THE SUBJECTS OUTSIDE SCHEDULE  ///  IF THE GLASS IS SCRATCHED, REPORT IT, THEN LEAVE  ///  WE ARE THE ONES WHO MOP THE FLOOR AFTERWARDS" Speed="45" Color="#9BE8B4"/>
+  # THE ANNEX
+  [italic]A break room for the people who clean, feed, guard and repair the parts of the Company that are not on the tour.[/italic]
+
+  Janitors. Cooks. Pump techs. Night guards. Orderlies. The ones who sign the confidentiality addendum without reading it because the bonus pays off a debt. We do not have clearance for what is behind the doors we open. We have keys to them. This board is for what you saw while you were doing your job.
+
+  <CMUNetBlink Rate="0.7">
+    [color=#E3D27A][bold]:: NEVER POST FROM A FACILITY TERMINAL :: NEVER POST FROM A FACILITY TERMINAL ::[/bold][/color]
+  </CMUNetBlink>
+
+  ## BREAK ROOM RULES
+  - No facility names in thread titles. In the body, if you must. Sublevels and ring letters are fine. Every site has a sublevel three.
+  - No staff names, no subject names. Subjects get the number on their door. That is what the Company calls them, and it is the only thing that will match a manifest.
+  - Say your job. A guard and a cook see the same corridor differently, and we need both.
+  - Nobody here is a scientist. If you are one, say so, and expect to be asked hard questions.
+  - If you stop posting, we will not come looking. Leave a word with someone you trust.
+
+  ## PINNED
+  - [netlink="What is in the tanks in B ring" link="annex.deep/tanks"] [color=#5E7066]8 replies, last post by pump_tech_rho, 83.04.30[/color]
+  - [netlink="Volunteers: where the subjects come from, and where they go" link="annex.deep/transfers"] [color=#5E7066]7 replies, locked, last post by intake_clerk, 83.05.06[/color]
+  - [netlink="Night shift, sublevel three. Writing this while I still believe it." link="annex.deep/nightshift"] [color=#5E7066]13 replies, locked, last post by duty_cycle, 83.05.20[/color]
+
+  ## RECENT THREADS
+  [color=#5E7066][italic]Bodies purged on the last relay hop. Titles only.[/italic][/color]
+  - Why do the cold stores on sealed sections draw more power every month? [color=#5E7066]11 replies[/color]
+  - Pest control contractors with rifles. Since when? [color=#5E7066]19 replies[/color]
+  - The meat delivery invoices do not match the canteen [color=#5E7066]8 replies[/color]
+  - Mopped something up that was still eating through the floor polish [color=#5E7066]24 replies[/color]
+  - [color=#5E7066]locked[/color] Ring D floor plan (removed, see rule one)
+
+  ## IF YOU ARE NEW HERE
+  You are not imagining it. Most of what goes on behind the doors is boring: cultures, soil, paperwork. Some of it is not. The doors that matter are the ones with two locks, a feeding schedule taped to the outside, and a guard who will not look at the window.
+
+  The paperwork that sends things through those doors turns up at [netlink="wyleaks.deep" link="wyleaks.deep"]. The staff who stop answering turn up at [netlink="missing.deep" link="missing.deep"].
+
+  ## NEW POSTS
+  [color=#5E7066]Anyone may post. Clock out first. Posts run below.[/color]
+</Document>

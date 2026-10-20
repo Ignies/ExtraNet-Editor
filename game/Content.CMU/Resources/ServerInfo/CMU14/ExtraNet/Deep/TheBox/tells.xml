@@ -1,0 +1,34 @@
+<Document>
+  <CMUNetStyle Background="#101114" Text="#DCD8C8" Heading="#F0E14A" Link="#86E3C8" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/TheBox/banner.png" MaxHeight="150"/>
+  # BEHAVIOUR TELLS
+  <CMUNetMarquee Text="ONE TELL IS A HABIT  ///  TWO IS A PATTERN  ///  THREE IS A FILE" Speed="60" Color="#86E3C8"/>
+
+  [italic]Sent in by readers on six colonies and two stations. None of these prove anything alone. Collect them.[/italic]
+
+  ## THE BODY
+  - [bold]No yawn at hour fourteen.[/bold] Everybody on a double shift sags by the end. If your partner is as crisp at 0400 as at 1600, mark it.
+  - [bold]No fog in the cold store.[/bold] They do not need air. Cheap ones forget to fake breathing in the freezer. Good ones remember, we think.
+  - [bold]Calm in the alarm.[/bold] When the klaxon goes, watch who looks up slowly instead of fast.
+  - [bold]The yearly leave.[/bold] A fuel cell lasts around 400 days. Somebody who takes medical leave every thirteen months and comes back exactly the same: mark it.
+  - [bold]Too strong, too neat.[/bold] Lifts the crate alone, never fumbles a wrench, catches what falls before you saw it falling.
+
+  ## THE MIND
+  - [bold]The questions.[/bold] They feed on input. Your kids, your homeworld, how you take your coffee, and they remember every answer. Real people forget.
+  - [bold]The quirk that never changes.[/bold] Each one leaves the factory with randomized habits. People drift. Synthetics hum the same four notes for ten years.
+  - [bold]Will not swing.[/bold] Inhibitors stop them harming people. Notice who never throws a punch, even in a bar brawl, even to save their own skin. Yes, that makes the gentlest one on the crew your first suspect. Welcome to the Box.
+
+  ## WHITE BLOOD
+  The one proof that holds. Under the skin they run a thick [color=#F4F1E6][bold]white fluid[/bold][/color] that keeps the internals slick. It is not milk, it is not coolant, and it never dries brown.
+  - Check the med bay bins for dressings with pale stains.
+  - Look at the deck after an accident. A pale pool where a red one should be.
+  - A badly hurt synthetic may keep working, slower. A crushed hand that still holds the clipboard is a tell all by itself.
+
+  <CMUNetBlink Rate="0.6">
+    [color=#FF4F4F][bold]DO NOT MAKE THEM BLEED TO FIND OUT.[/bold][/color]
+  </CMUNetBlink>
+
+  Assault is assault, and property damage on Company hardware is a fine you will never finish paying. If you are wrong, you cut a person. If you are right, remember that some of them can feel pain.
+
+  [netlink="Back to the box" link="thebox.deep"]
+</Document>

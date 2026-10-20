@@ -1,0 +1,52 @@
+- type: entity
+  parent: RMCPersonalDesktop
+  id: CMUPersonalDesktopWeyland
+  name: corporate desktop
+  description: A Weyland-Yutani workstation wired into the corporate intranet.
+  suffix: Weyland-Yutani
+  components:
+  - type: CMUPersonalComputer
+    os: CMUOsWeyland
+
+# Desks for the colony's law enforcers, each built in its own casing. They inherit RMCPersonalDesktop's power
+# (ApcPowerReceiver, needsPower true, and an Equipment RMCPowerReceiver), so they go dark with the area's power.
+- type: entity
+  parent: RMCPersonalDesktop
+  id: CMUPersonalDesktopMarshal
+  name: marshal's desktop
+  description: A Colonial Marshal Bureau terminal on the bureau's secure network.
+  suffix: CMB
+  components:
+  - type: CMUPersonalComputer
+    os: CMUOsCMB
+    casing: Cmb
+
+- type: entity
+  parent: RMCPersonalDesktop
+  id: CMUPersonalDesktopSecurity
+  name: security desktop
+  description: A colony security workstation, painted in the force's colours.
+  suffix: Colony security
+  components:
+  - type: CMUPersonalComputer
+    casing: Security
+
+- type: entity
+  parent: RMCPersonalDesktop
+  id: CMUPersonalDesktopRangers
+  name: ranger station desktop
+  description: A Colonial Wilderness Preservation Service terminal, for patrol logs and permits.
+  suffix: CWPS rangers
+  components:
+  - type: CMUPersonalComputer
+    casing: Rangers
+
+- type: entity
+  parent: RMCPersonalDesktop
+  id: CMUPersonalDesktopNSPA
+  name: NSPA desktop
+  description: A Neroid Sector Policing Authority terminal, for warrants and case files.
+  suffix: NSPA
+  components:
+  - type: CMUPersonalComputer
+    casing: Nspa

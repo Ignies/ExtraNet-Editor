@@ -1,0 +1,17 @@
+<Document>
+  <CMUNetStyle Background="#1B0F12" Text="#E8D8DB" Heading="#E2483D" Link="#F0A04B" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/merc_red_patch.rsi" State="icon" Scale="4"/>
+  </Box>
+
+  # PRODIGY SECURITY FORCES
+  [bold]A PRODIGY CORPORATION SECURITY SERVICES COMPANY - ON CONTRACT AT {colony}[/bold]
+  <CMUNetMarquee Text="YOU ARE NOW UNDER PRODIGY PROTECTION  ///  CARRY YOUR COLONY ID  ///  CURFEW AND ZONE NOTICES ARE POSTED BELOW  ///  UNATTENDED PROPERTY WILL BE SEIZED AS EVIDENCE  ///  PRODIGY - SECURITY THAT SHOWS UP" Speed="60" Color="#F0A04B"/>
+  [bold]CONTRACT NOTICES FROM THE SITE COMMANDER.[/bold] Prodigy Corporation Security Forces have been retained to protect {colony}. Notices on this board are issued by the Commanding Officer and are effective on posting for as long as the contract runs. Our client has paid for order. We intend to deliver it.
+
+  Prodigy has secured streets tougher than these. We will be here as long as someone is paying, and we have every reason to keep them happy.
+
+  <CMUNetBlink Rate="0.7">
+    [color=#E2483D]PROPERTY OF PRODIGY SECURITY SERVICES - ACTIVITY ON THIS BOARD IS RECORDED[/color]
+  </CMUNetBlink>
+</Document>

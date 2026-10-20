@@ -1,0 +1,32 @@
+<Document>
+  <CMUNetStyle Background="#EEF3F8" Text="#10243A" Heading="#0B4F8A" Link="#1C6B3A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ProsperityToday/banner.png" MaxHeight="150"/>
+  # OPINION
+  [italic]Colonists in their own words. Views expressed are those of the authors, all of whom are very happy.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="weya_pen" Scale="3"/>
+
+  ## WHY I SIGNED FOR A THIRD TERM
+  [italic]By a senior pipefitter, Barker's Lament.[/italic]
+
+  When I came out here I had a duffel bag and a debt. Now I have a bunk with a window, a crew I would trust with my life, and a debt that is nearly gone. People on the relay ask why anyone stays on the frontier. I stay because here I can see the thing I built from my bunk window. On Earth I could not see the sky. I signed my third term last week and my liaison shook my hand.
+
+  ## THE UNION WANTS YOUR WATER
+  [italic]By a contributor who wishes to remain anonymous for security reasons.[/italic]
+
+  Every colony with a clean aquifer is a colony the Union would like to have. They will not say so. They will talk about workers and solidarity and a fair share. But look at a Union survey chart and ask yourself why the blue parts are circled. Report Union broadcasts on your colony relay to your administration.
+
+  ## IN DEFENCE OF THE WORKING JOE
+  [italic]By a colony administrator.[/italic]
+
+  We have two Seegson Working Joes on our colony. They are slow, they repeat themselves and one of them will not stop telling people to remain calm. They have also never missed a shift, never filed a grievance and never once asked for a raise. I have managers who could learn from them.
+
+  ## LETTER OF THE WEEK
+  To the editor. I have read Prosperity Today every day for six years. My colony has gone quiet twice in that time and both times your paper told me it was nothing, and both times it was nothing. Thank you for keeping our spirits up. [italic]A reader on {colony}.[/italic]
+
+  ## A WORD FROM THE EDITOR
+  Some readers write to ask why Prosperity Today does not print bad news. We do. We printed the weather on Kutjevo only last week. What we do not print is rumour, panic or the sort of thing you find on certain sites that claim to tell the truth about the Veil. If you want that, you know where to find it. We would rather you did not.
+
+  - [netlink="A letter from the Executive Vice President" link="ishikawa.weyland-yutani.com"]
+  - [netlink="Back to top stories" link="prosperitytoday.news"]
+</Document>

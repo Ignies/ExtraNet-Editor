@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/HopesRetreat/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Hope's Retreat, filed by our own correspondent from the prefabs, the yard and wherever the story is. Names, not numbers.[/italic]
+
+  We take no Company money, not even from the people behind the polished gates. Read the official notices, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Readers may comment under any story  ///  The caves past the podlocks are not a shortcut  ///  Classified notices run free for yard families" Speed="55" Color="#8A1C1C"/>
+</Document>

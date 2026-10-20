@@ -1,0 +1,38 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Administration/emblem.png" MaxHeight="96"/>
+  # EMERGENCY PROCEDURES
+  <CMUNetBlink Rate="0.6">
+    [color=#F2C14E][bold]KNOW THE SIRENS. KEEP YOUR REBREATHER CLOSE.[/bold][/color]
+  </CMUNetBlink>
+  The worst gases have no colour and no smell. At Albacetire in 2168 most of the dead never knew anything was wrong. These procedures are posted in every home, shop and workplace. Learn them.
+
+  ## Gas Alarm
+  [italic]One long rising tone, repeated.[/italic]
+  - Put on your rebreather before anything else. Then help children, the elderly and the sick.
+  - Close outer doors and vents and seal the household door.
+  - Do not start vehicles. Do not go outside to look.
+  - Stay sealed until the all clear: three short tones.
+
+  ## Evacuation Order
+  [italic]Alternating high and low tones, with announcements on colony radio.[/italic]
+  - Leave by the posted route for your block. Head upwind.
+  - Report to your block's shelter, listed at your door and at this office, and give your name to the warden.
+  - Take your papers, your rebreather and water. Leave everything else.
+
+  ## Security Alert
+  [italic]Short pulsing tones.[/italic]
+  - Go indoors and lock the doors. Stay away from windows.
+  - Follow instructions from colonial police and the garrison. Do not approach armed personnel.
+  - Curfew applies until it is lifted on this board.
+
+  ## Unknown Wildlife
+  - Report unfamiliar animals, nests or tracks to the Colonial Marshals. Do not approach, feed or trap them.
+  - Keep children and pets indoors after dark until the report is closed.
+
+  ## Medical Emergency
+  - Call the clinic or the nearest warden. Never go in after someone who may have been gassed without a rebreather on yourself.
+
+  [netlink="Read the Colony Charter" link="admin.colony.gov/charter"]
+
+  [netlink="Back to notices" link="admin.colony.gov"]
+</Document>

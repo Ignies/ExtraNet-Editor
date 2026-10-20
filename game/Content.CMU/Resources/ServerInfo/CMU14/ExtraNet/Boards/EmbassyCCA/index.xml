@@ -1,0 +1,7 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/EmbassyCCA/banner.png" MaxHeight="170"/>
+  <CMUNetMarquee Text="CCA DIPLOMATIC MISSION  ///  Consular desk open every shift  ///  CCA dollar exchange at posted rates  ///  Citizens: register your arrival with the mission" Speed="55" Color="#D9A441"/>
+  Official releases of the Central Confederation of Africa to this colony, issued by the Ambassador. Comments are open to all visitors; keep them civil.
+
+  [netlink="About the Confederation" link="embassy.cca/about"]  /  [netlink="Consular Services" link="embassy.cca/consular"]  /  [netlink="Relations" link="embassy.cca/relations"]
+</Document>

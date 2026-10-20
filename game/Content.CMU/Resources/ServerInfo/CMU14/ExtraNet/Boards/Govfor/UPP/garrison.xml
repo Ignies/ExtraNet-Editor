@@ -1,0 +1,37 @@
+<Document>
+  <CMUNetStyle Background="#2A0D0D" Text="#EBD9B4" Heading="#F2C230" Link="#E8774A" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/naval_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # THE PEOPLE'S GARRISON
+  [italic]Few in supplies. Many in loyalty.[/italic]
+
+  ## WHO WE ARE
+  The garrison is a platoon of the Union of Progressive Peoples Naval Infantry, 5th Division of the 5th Fleet, called the North Stars. Our comrades come from the Chinese, Russian, German and Spanish peoples of the Union, and you will hear all four languages at our gate. The fleet does not have much to give us. We do not ask much. We ask only that the colony be defended, and we have never failed to answer.
+
+  ## STRUCTURE OF COMMAND
+  - [bold]Commanding Officer:[/bold] fixes the state of readiness, the curfew and the security sectors, and signs every order on this board.
+  - [bold]Deputy Commander:[/bold] runs the garrison day to day and receives the petitions of residents.
+  - [bold]Staff officers:[/bold] patrol rosters, checkpoint orders, supply and liaison with the colony administration.
+  - [bold]Sections and patrols:[/bold] the comrades you will meet in the corridors.
+
+  ## TASKS OF THE GARRISON
+  By order of the Fleet, the garrison will:
+  - defend the colony from sabotage, banditry and insurgent attack, whatever banner the attackers carry;
+  - respond to fire, collapse, gas and any disaster that threatens the collective;
+  - watch the air and the ground, and raise the alarm early;
+  - secure the colony's power, water, air and landing facilities, which belong to the people.
+
+  ## THE LESSON OF ALBACETIRE
+  In 2168 a corporatist drill on Albacetire broke into a ravine of carbon monoxide, and more than twelve thousand workers and soldiers died in the Carbon Ravine disaster because profit was put before people. The Union studies Albacetire as a warning. A soldier at the gate is also the first to answer a disaster. In the Union no gas monitor is switched off to meet a quota.
+
+  ## STANDING ORDERS TO THE GARRISON
+  Published so that every citizen knows what to expect from their soldiers.
+  - A soldier gives his name and unit when a resident asks.
+  - Nothing is requisitioned from a resident without a stamped receipt.
+  - Force is used only when persuasion has failed.
+  - Rations and supplies seized from speculators are returned to the common store.
+
+  [netlink="Return to the notice board of the garrison" link="command.govfor.mil"]
+</Document>

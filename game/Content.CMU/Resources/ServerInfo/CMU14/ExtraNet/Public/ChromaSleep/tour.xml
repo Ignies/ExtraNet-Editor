@@ -1,0 +1,34 @@
+<Document>
+  <CMUNetStyle Background="#120A24" Text="#E6DDFF" Heading="#FF4FD8" Link="#00F0FF" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ChromaSleep/banner.png" MaxHeight="150"/>
+  # AFTERGLOW PROTOCOL COLONY TOUR
+  [italic]2183 to 2184. Dates are local colony dates and depend on transit, weather, quarantine and the mood of whoever holds the landing permits.[/italic]
+
+  <CMUNetMarquee Text="TICKETS AT YOUR COLONY ADMINISTRATION DESK  ///  NO RECORDING DEVICES  ///  NO WEAPONS IN THE VENUE, THIS MEANS YOU, GARRISON  ///  EAR PROTECTION RECOMMENDED" Speed="70" Color="#FF4FD8"/>
+
+  ## LEG ONE: THE CORE
+  - [bold]83.03.02[/bold] Gateway Station, the Promenade Dome. [color=#00F0FF]SOLD OUT[/color]
+  - [bold]83.03.09[/bold] Gateway Station, second night added. [color=#00F0FF]SOLD OUT[/color]
+  - [bold]83.03.21[/bold] Mars, Pavonis Mons Arena. [color=#00F0FF]SOLD OUT[/color]
+  - [bold]83.04.04[/bold] Titan, Huygens Dome. The homecoming. Lux has asked for the dock crews to be let in free, and the dock crews have asked for a second encore. [color=#00F0FF]SOLD OUT[/color]
+
+  ## LEG TWO: THE INNER RIM
+  - [bold]83.06.11[/bold] Arcturus, the Starport Hall. [color=#00F0FF]TICKETS LEFT[/color]
+  - [bold]83.06.30[/bold] Hybrisa Prospera, the Night Gold Casino stage. Over twenty-ones only, by order of the casino and the Neroid Sector Policing Authority. [color=#00F0FF]TICKETS LEFT[/color]
+  - [bold]83.07.15[/bold] Port Nereid, the freight hall. Bring a raincoat. The roof leaks and the promoter calls it atmosphere. [color=#00F0FF]TICKETS LEFT[/color]
+
+  ## LEG THREE: THE OUTER VEIL
+  - [bold]83.09.02[/bold] Solaris Ridge. An acoustic set in the colony canteen, because the colony is small and the canteen is the biggest room it has. [color=#00F0FF]FREE ENTRY[/color]
+  - [bold]83.09.20[/bold] Shivas' Snowball. [color=#FFD24A]MOVED[/color] indoors to the MegaStruct hall after the promoter saw the weather report.
+  - [bold]83.10.08[/bold] Kutjevo, the refinery yard. [color=#00F0FF]TICKETS LEFT[/color]
+  - [bold]83.10.29[/bold] Sorokyne Strata. Two sets, one each side of the outpost, one in English and one in Russian. Lux has been practising. [color=#00F0FF]TICKETS LEFT[/color]
+
+  ## CHANGES TO THE SCHEDULE
+  - [bold]Fiorina 161[/bold]. [color=#FF5A5A]CANCELLED[/color]. The facility informed our promoter that it does not host entertainment and that it does not have an entertainment budget, an audience or, on reflection, a landing schedule.
+  - [bold]LV-426, Hadley's Hope[/bold]. [color=#FF5A5A]POSTPONED INDEFINITELY[/color]. The colony booked us in 2179 and paid a deposit. We have not been able to reach anybody there since. If you have family at Hadley's Hope and you hear from them, please tell them we still want to come.
+
+  ## TICKETS
+  Tickets are sold through your colony administration or the venue's front desk. There are no tickets on the relay. Anyone selling Chroma Sleep tickets over a terminal is not us.
+
+  [netlink="Back to Chroma Sleep" link="chromasleep.fan"]
+</Document>

@@ -1,0 +1,25 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/emblem.png" MaxHeight="88"/>
+  # About the Herald
+
+  [italic]The Colony Herald is the independent press of {colony}. It answers to its readers and to nobody else.[/italic]
+
+  ## How We Started
+  Every colony gets its notices from the Administration and its news from whoever holds the charter. Sooner or later somebody wants the other half of the story. The Herald began the way most colony papers do: a borrowed printer, a noticeboard by the mess hall and a few residents who wrote down what they saw and signed their names to it.
+
+  We still print a paper sheet for the mess halls and the work crews who would rather hold something in their hands. Everyone else reads us here on the net, free of charge.
+
+  ## What We Promise
+  - [bold]Names, not numbers.[/bold] When people are hurt or killed, we find out who they were.
+  - [bold]No Company money.[/bold] The Herald takes no advertising or grants from any firm with a stake in {colony}.
+  - [bold]Sources stay hidden.[/bold] We do not give up a source to the garrison, the Marshals or a corporate liaison, whoever is asking and however politely.
+  - [bold]Corrections up front.[/bold] When we get it wrong, the correction goes at the top of the page, not the bottom.
+
+  ## Who Writes It
+  The Herald is filed by one accredited colony journalist at a time, working from the press office and from wherever the story happens to be. The garrison has called us agitators. The agitators have called us the garrison's typists. We take both as a sign we are doing the work.
+
+  ## Talking Back
+  Every story on the front page is open for comment, and the correspondent reads all of them. Tips go to the journalist in person. For official statements, see the [netlink="Colony Administration" link="admin.colony.gov"] or [netlink="Garrison Command" link="command.govfor.mil"], then come back here to read what they left out.
+
+  [netlink="Back to the front page" link="herald.colony.news"]
+</Document>

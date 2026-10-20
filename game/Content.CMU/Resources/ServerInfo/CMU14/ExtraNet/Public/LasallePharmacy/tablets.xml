@@ -1,0 +1,48 @@
+<Document>
+  <CMUNetStyle Background="#F6FAFA" Text="#13282E" Heading="#0E7C7B" Link="#1B5FA8" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/LasallePharmacy/banner.png" MaxHeight="150"/>
+  # TABLETS: THE PILL BOTTLE RANGE
+  [italic]Sixteen tablets to an airtight bottle. All tablets are available over the dispensary counter unless marked. Follow the label, not your neighbour.[/italic]
+
+  ## BICARIDINE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister11" Scale="3" Align="Left"/>
+  [bold]Red bottle.[/bold] For bruising, cuts and blunt injuries, and to help with bleeding. One tablet. Do not take more than two in a short period.
+
+  ## KELOTANE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister2" Scale="3" Align="Left"/>
+  [bold]Yellow bottle.[/bold] For burns, from a hot pipe, a welding torch or a careless galley. One tablet. Do not take more than two in a short period. Cool the burn first.
+
+  ## DYLOVENE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister6" Scale="3" Align="Left"/>
+  [bold]Green bottle.[/bold] An anti-toxin. For poisoning and for the after effects of bad air, bad water or bad food. One tablet. Do not take more than two in a short period.
+
+  ## DEXALIN
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister1" Scale="3" Align="Left"/>
+  [bold]Blue bottle.[/bold] For shortness of breath and oxygen starvation, after a suit leak, a smoke filled corridor or a seal that gave way. One tablet. Do not take more than two in a short period. Get to clean air first.
+
+  ## INAPROVALINE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister3" Scale="3" Align="Left"/>
+  [bold]Purple bottle.[/bold] Helps steady a badly injured patient while help is on the way. One tablet. No more than four in a short period. Then get the patient to the clinic.
+
+  ## TRICORDRAZINE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister" Scale="3" Align="Left"/>
+  [bold]Orange bottle.[/bold] A gentle general first aid tablet for small injuries of every kind. One tablet. Do not take more than two in a short period.
+
+  ## IMIDAZOLINE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister9" Scale="3" Align="Left"/>
+  [bold]Aquamarine bottle.[/bold] For eye strain and eye injury from welding flash, bright flares or dust. One tablet. A mild medicine, but see the clinic if your sight does not return.
+
+  ## IRON
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister12" Scale="3" Align="Left"/>
+  [bold]Black bottle.[/bold] Helps the body replace lost blood after an injury. Take as your clinician directs.
+
+  ## TRAVEL PACKETS
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/pill_packets.rsi" State="bicaridine_packet" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/pill_packets.rsi" State="kelotane_packet" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/pill_packets.rsi" State="tricordrazine_packet" Scale="3"/>
+  </Box>
+  Bicaridine, Kelotane and Tricordrazine in a sealed foil packet for a pocket or a first aid pouch. Once a tablet is out, it does not go back in. Do not take more than two in a short period.
+
+  [netlink="Back to the pharmacy" link="pharmacy.lasalle.bio"]
+</Document>

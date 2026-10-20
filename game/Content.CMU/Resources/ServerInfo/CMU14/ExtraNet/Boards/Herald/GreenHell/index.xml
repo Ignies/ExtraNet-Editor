@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/GreenHell/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Lazarus Landing and the jungle around it, filed by our own correspondent from wherever the story is. Names, not numbers.[/italic]
+
+  We take no Company money and we give up no sources. Read the notices from the Corporate Dome and the CMB precinct, then read us.
+
+  <CMUNetMarquee Text="GREEN HELL  ///  Wet season early, west river over its banks, keep clear of the low ground after dark  ///  Hydroponics asks for night hands on the pumps  ///  CMB precinct: caves north-east of the colony remain off limits  ///  Nexus road resurfacing delayed again" Speed="55" Color="#8A1C1C"/>
+</Document>

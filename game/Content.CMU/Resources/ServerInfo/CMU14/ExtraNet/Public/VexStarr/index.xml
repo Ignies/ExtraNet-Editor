@@ -1,0 +1,34 @@
+<Document>
+  <CMUNetStyle Background="#1E0F1E" Text="#F5E6F0" Heading="#FF5FD2" Link="#FFD27A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/VexStarr/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="GATEWAY GENERAL SEASON TEN  ///  NOW ON HOLO ACROSS THE CORE AND THE OUTER VEIL  ///  THE LONG SLEEP IN CINEMAS 2184  ///  STARRLIGHT SOCIETY MEMBERSHIP OPEN" Speed="60" Color="#FF5FD2"/>
+  # VEX STARR
+  [italic]Official site of the star of Gateway General, Hardlight and the forthcoming The Long Sleep. Approved by Vex, run by the Starrlight Society.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/Bouqets/rose.rsi" State="icon" Scale="3"/>
+
+  ## A MESSAGE FROM VEX
+  Hello, {colony}. I know the holo reels reach you weeks after they reach Gateway, and I know some of you watch them on a screen bolted to a mess hall wall between shifts. I think about that every time I step onto a set. Somewhere out past the Veil, somebody has worked a double, eaten something out of a foil tray and sat down to watch Juno Kade save a life. You are who I do it for. Thank you for staying up.
+
+  [italic]All my love, from the long side of the relay. Vex.[/italic]
+
+  ## LATEST NEWS
+  - [bold]Season ten confirmed.[/bold] Gateway General returns for its tenth season. Dr. Juno Kade is back on the trauma deck, and yes, so is Dr. Malik. Vex says only that it will be the season the station remembers.
+  - [bold]The Long Sleep wraps.[/bold] Principal photography has finished on the hypersleep thriller, shot aboard a decommissioned freighter in orbit over Mars. Vex spent eleven days of the shoot inside a working cryotube. She describes it as the best rest she has had in years.
+  - [bold]Charity gala.[/bold] Vex hosted the Lasalle Bionational Children's Medical Fund evening on Gateway Station, raising money for frontier clinics. A recording of the evening will be relayed to colony networks.
+  - [bold]About those rumours.[/bold] Vex has seen the gossip about a certain zero-g ball captain. The Society does not comment on Vex's private life, and neither, we are told, does Vex.
+
+  ## IN NUMBERS
+  - [bold]9[/bold] seasons of Gateway General
+  - [bold]214[/bold] episodes as Dr. Juno Kade
+  - [bold]3[/bold] Golden Relay awards for Best Performance in a Serial
+  - [bold]1[/bold] broken wrist, from doing her own stunts on Hardlight
+
+  ## EXPLORE
+  - [netlink="Holos and serials" link="vexstarr.holo/holos"]
+  - [netlink="Starr Talk: the long interview" link="vexstarr.holo/interview"]
+  - [netlink="The Starrlight Society and the Starr Shop" link="vexstarr.holo/society"]
+  - [netlink="Read what the Tattler says this week" link="colonytattler.news"]
+
+  [color=#9A7FB0]vexstarr.holo is the only official site of Vex Starr. Messages claiming to be from Vex asking for credit transfers are not from Vex. Vex will never ask you for money over a relay.[/color]
+</Document>

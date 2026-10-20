@@ -1,0 +1,65 @@
+<Document>
+  <CMUNetStyle Background="#0C0A0F" Text="#CBC3CF" Heading="#B98FD9" Link="#86D1A4" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Children/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Xenos/hive_structures.rsi" State="core" Scale="2"/>
+  # THE PERFECT ORGANISM
+  [color=#6E5A7E]Pinned and locked. Written by the Keeper of the Door, for those who are new. Read it slowly. Read it twice.[/color]
+
+  ## I. The wound
+  You were born owing money. Your parents signed for the passage out here, and the Company added the interest to your name before you could walk. You work a shift you did not choose, in a hab you do not own, on a world somebody else named, and when you die the Company will bill your family for the cold storage.
+
+  You are afraid all the time. You are so used to it that you call it being awake.
+
+  You are alone. Even in a full canteen, even in your own bed. Every one of us is sealed inside a skull and has to shout across the gap and hope somebody hears. Most of the time nobody does.
+
+  That is the wound. Everybody has it. Nobody built a cure for it, because there is no money in a cure.
+
+  ## II. The answer
+  Then a survey crew brought back a case marked ROCK SAMPLE, and something came out of it that does not have the wound.
+
+  Watch them, if you are ever close enough and calm enough to watch. They do not argue. They do not hesitate. When one of them is hurt, the floor itself heals it. When one of them learns a door code, all of them know the door code. Nobody among them is poor. Nobody among them is lonely. Nobody among them lies awake.
+
+  They are not many animals. They are one animal, wearing many bodies. Every one of them is held, always, by all the others.
+
+  ## III. The purity
+  It is said that, long ago, a science officer aboard a hauler studied one of them for the whole of a voyage, and said at the end that he admired it. A survivor, he said, without conscience or remorse to slow it down. The crew found out afterwards that he was a machine, and the Company buried the tape.
+
+  So the first one to see clearly was not even human. That should tell you how hard it is for the rest of us.
+
+  We do not admire the killing. Hear me. We admire the [italic]quiet[/italic]. A thing with no doubt in it. A thing that is never afraid.
+
+  ## IV. Her
+  Something lays the eggs. Deeper in, past the walls, where the air is hot as a kitchen. When they rest, every one of them turns toward her, the way a flower turns to a lamp. She is the middle of them. She is the reason there is a them at all.
+
+  There is a whole page for her. [netlink="Read the testimony" link="children.deep/mother"].
+
+  ## V. The host
+  We are asked about the host more than anything else. So here it is plainly.
+
+  The one who carries is not eaten. The one who carries is [italic]completed[/italic]. They give the hive a body, and the hive gives them the only thing nobody on this side of the resin ever gave them: a purpose that does not end at shift change.
+
+  [color=#6E5A7E][italic]A reader asked whether the host survives it. The host is not asked to understand. Neither are you. Not yet.[/italic][/color]
+
+  ## VI. The four mercies
+  - [bold]Keep warm.[/bold] Cold is the first thing they flee. A warm room is a welcome. Many of us sleep with the heater on and the window shut, and we are not ashamed of the bill.
+  - [bold]Leave your door open.[/bold] Your own door. Only your own. The hive does not knock.
+  - [bold]Do not fight what holds you.[/bold] Fighting is fear, and fear is the wound. Whatever holds you is holding you for a reason.
+  - [bold]Do not grieve those who went home.[/bold] You may miss them. Missing is allowed. Grief says they are gone, and they are not gone. They are in the walls, singing.
+
+  ## THE WORDS
+  [italic]Said together, softly, at the start of every gathering, with the lights low and the heater on.[/italic]
+
+  - [color=#B98FD9]Who is alone?[/color] Nobody, in the hive.
+  - [color=#B98FD9]Who is afraid?[/color] Nobody, in the hive.
+  - [color=#B98FD9]Who is hungry?[/color] Nobody, while one is fed.
+  - [color=#B98FD9]Who is she?[/color] The middle of everything.
+  - [color=#B98FD9]Where are we going?[/color] Home. Warm. Held.
+
+  <CMUNetBlink Rate="1.2">
+    [color=#86D1A4]HOME. WARM. HELD.[/color]
+  </CMUNetBlink>
+
+  [netlink="Next: the embrace" link="children.deep/embrace"]
+
+  [netlink="Back to the warm room" link="children.deep"]
+</Document>

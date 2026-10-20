@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#120A24" Text="#E6DDFF" Heading="#FF4FD8" Link="#00F0FF" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ChromaSleep/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="AFTERGLOW PROTOCOL  ///  THE NEW ALBUM  ///  OUT NOW ON TAPE AND RELAY  ///  COLONY TOUR 2183 TO 2184  ///  WAKE UP, TITAN" Speed="80" Color="#00F0FF"/>
+  # CHROMA SLEEP
+  <CMUNetBlink Rate="0.6">
+    [color=#FF4FD8][bold]NEW ALBUM: AFTERGLOW PROTOCOL[/bold][/color]
+  </CMUNetBlink>
+
+  [italic]Four kids from the Titan methane docks with a stolen synthesizer and a song about hypersleep. Synth-pop for the long dark.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/h_synthesizer.rsi" State="supersynth" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="walkman" Scale="3"/>
+  </Box>
+
+  ## THE BAND
+  - [bold]Ines Lux Valdivia[/bold], vocals. Born in the Huygens dome on Titan. Writes the lyrics on the back of cargo manifests, because that is the paper there was.
+  - [bold]Kaito Brennan-Mori[/bold], synthesizers. Built the first Chroma Sleep synthesizer out of a Seegson diagnostic console. The console's owner has since forgiven him.
+  - [bold]Precious Adeyemi[/bold], bass and keytar. The only member with formal training, three years at the Lagos Conservatory, which she describes as a long hypersleep.
+  - [bold]Dmitri Cryo Halvorsen[/bold], drum machine. Speaks rarely, plays constantly. The nickname comes from a night shift in a cold store, and he will not tell the rest of it.
+
+  ## FROM LUX
+  Hey, {colony}. If you are reading this on a colony terminal, there is a good chance you are a long way from anywhere and it is late. That is what we write for. Every song on Afterglow Protocol was written on a long haul, between systems, with the ship humming and the stars not moving. Put it on when the shift is over. Turn it up when the processor is too loud to sleep. We will see you on the tour if they let us land.
+
+  ## LATEST
+  - [bold]Afterglow Protocol[/bold] is out on cassette, and on the relay wherever your colony carries music.
+  - [bold]Hypersleep Heart[/bold] has topped the Gateway chart for nine weeks. Kaito wants it known that it was written in eleven minutes.
+  - [bold]The tour[/bold] reaches the Outer Veil this season. Check the dates, and check them again, because the frontier changes its mind.
+
+  ## TRANSMISSIONS
+  - [netlink="Afterglow Protocol colony tour" link="chromasleep.fan/tour"]
+  - [netlink="Discography" link="chromasleep.fan/discography"]
+  - [netlink="Merch from the cargo hold" link="chromasleep.fan/merch"]
+  - [netlink="The Colony Tattler on Lux and the keytar incident" link="colonytattler.news/gossip"]
+
+  [color=#6B6690]chromasleep.fan // fan run, band approved // no Company money, just a lot of cables[/color]
+</Document>

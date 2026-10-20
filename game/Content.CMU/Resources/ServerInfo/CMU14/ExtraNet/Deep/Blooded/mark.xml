@@ -1,0 +1,68 @@
+<Document>
+  <CMUNetStyle Background="#100B07" Text="#D6C8AC" Heading="#D9A23A" Link="#A6DB5E" Font="Pixel"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Blooded/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/CMU14/Yautja/masks/pred_mask10_bone.rsi" State="icon" Scale="3"/>
+  # THE MARK
+  [color=#7A5A22]Pinned. Posted by the only person the lodge has ever found who was marked. Replies kept short, out of respect.[/color]
+
+  ### #1 marked_once (OP) // 83.04.28
+  Your keeper wrote to me through three relays and a friend of a friend, and asked me to tell it. I am seventy one. I have not told it in thirty years. I am telling it now because I have read your board, and I am frightened for you.
+
+  I was a sample tech on a mining world that ran hot all year. A crew of fourteen. The black ones came up out of a shaft we should never have opened. I will not tell you about the nine days. You can read about nine days like that on any of the boards. By the ninth day there were two of us, and then there was one, and I had a spear made of a pipe and a cutting blade and I was in a corridor with one of the black ones between me and the door.
+
+  I killed it. I do not know how. Luck, and fear, and the pipe was long.
+
+  ### #2 marked_once (OP) // 83.04.28
+  It was standing at the far end of the corridor. I do not know how long it had been there. The air bent around it until it let itself be seen. It was taller than the door. It had a face like a mask and a mask over the face. It walked down the corridor to me with no hurry at all, and it stepped over the body, and it looked at me.
+
+  It took the black one's head off with something on its arm. It dipped a claw in the blood, the acid, and it reached out and put the claw against my cheek, very gently, the way you would touch a child's face to see if she has a fever. It drew a line. Then another. The pain was the worst I have ever felt and I did not move.
+
+  Then it clicked at me, something soft, almost a word, and walked away.
+
+  I still have the mark. I can feel it when the weather turns.
+
+  ### #3 canopy_girl // 83.04.28
+  What did it mean? What did it feel like, to be judged worthy?
+
+  ### #4 marked_once (OP) // 83.04.29
+  This is why I am writing. Please, child, listen.
+
+  It did not mark me because I was worthy. It marked me because I had done a thing it recognised. I had killed something in order to stay alive. That is all. That is the whole of its religion, and it is not a religion. It is the hunt.
+
+  Thirteen people I loved died in that place, and every one of them fought, and every one of them was braver than me. It did not mark them. It did not care about them at all. It cared about the one that was standing up at the end, the way you care about the last card in a game.
+
+  I have spent thirty years wishing it had been any of the others standing in that corridor instead of me.
+
+  ### #5 drillhand_big_brother // 83.04.30
+  My brother read your board before he went into the drain. I wish you had written sooner. I do not blame you. I just wish.
+
+  ### #6 marked_once (OP) // 83.04.30
+  I am so sorry. I am so sorry.
+
+  ### #7 quiet_one // 83.05.03
+  Then what is the lodge for? If they do not care about us. If being worthy is just being the last one alive.
+
+  ### #8 marked_once (OP) // 83.05.03
+  For each other. That is all I can tell you. When the black ones come to {colony}, and they will come, because the hunters do not travel to places where there is nothing to hunt, do not stand in the open waiting to be seen. Stand next to your neighbour. Fight for them, not for whatever is watching. Get them to the dropship. If something looks at you afterwards from the end of a corridor, let it look.
+
+  That is the only mark worth having. Nobody puts it on you but you.
+
+  ### #9 old_tracker (keeper) // 83.05.24
+  Forty one degrees outside the canteen today. Third day running.
+
+  Last night there were three red points on the lodge door, low, at the height of my chest. I stood still. They stayed for a long time. Then they went away. It did not judge me. I am too old and too slow to be worth anything to it, and I find I am grateful.
+
+  Lodge, hear your keeper. The hot season is here. Go home. Bar your doors. Know where your neighbours sleep. If the black ones come up out of the dark, fight for each other.
+
+  Let whatever is watching from the trees watch.
+
+  <CMUNetBlink Rate="0.6">
+    [color=#D9A23A][bold]FORTY ONE DEGREES. THIRD DAY RUNNING. KNOW WHERE YOUR NEIGHBOURS SLEEP.[/bold][/color]
+  </CMUNetBlink>
+
+  <CMUNetSprite Rsi="/Textures/CMU14/Yautja/weapons.rsi" State="ceremonial_dagger" Scale="2"/>
+
+  [netlink="Previous: the relics" link="blooded.deep/relics"]
+
+  [netlink="Back to the lodge" link="blooded.deep"]
+</Document>

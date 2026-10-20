@@ -1,0 +1,32 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/AtmoCast/banner.png" MaxHeight="150"/>
+  # DOPPLER RADAR
+  [italic]Live from the AtmoCast satellite. Live means about nine minutes a day.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Effects/weather.rsi" State="rain" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Effects/weather.rsi" State="snowfall_med" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Effects/weather.rsi" State="sandstorm" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Effects/weather.rsi" State="storm" Scale="2"/>
+  </Box>
+
+  ## HOW TO READ THE RADAR
+  - [bold]Blue streaks.[/bold] Rain. On jungle colonies, all of it.
+  - [bold]White flecks.[/bold] Snow. On ice colonies, this is also the ground.
+  - [bold]Orange haze.[/bold] Dust or sand. Close your vents. Close your mouth.
+  - [bold]Dark swirl.[/bold] Storm. Stay inside, tie down the antenna, and stop sending us tapes of it.
+
+  ## RADAR RETURNS THIS PASS
+  - Light precipitation over the landing zone.
+  - Heavy cloud building above the processor, which builds its own cloud. That is normal.
+  - A single large return moving slowly through the lower colony at walking pace, stopping and starting. That is probably weather.
+  - Several small returns gathering near the medical block. AtmoCast checked the calibration. The calibration is fine. That is probably also weather.
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Tools/motion_detector.rsi" State="detector_on_3" Scale="2"/>
+  </Box>
+
+  [color=#8FA8CC]AtmoCast radar is a weather instrument. It is not a motion tracker. Please stop calling the forecasters at night to ask what the returns are. We do not know. We are also at home, with the lights on.[/color]
+
+  [netlink="Back to AtmoCast" link="atmocast.wx"]
+</Document>

@@ -1,0 +1,39 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/Yotta/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="YOTTA! THE BIGGEST INDEX IN KNOWN SPACE  ///  NOW LISTING OVER 60 SITES  ///  YOTTA! MAIL COMING SOON TO A RELAY NEAR YOU  ///  DO YOU YOTTA?" Speed="70" Color="#6A0DAD"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/communications_tower_dish.rsi" State="comm_tower" Scale="1"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/PersonalComputers/Sites/Ads/badges.rsi" State="starburst" Scale="2"/>
+  </Box>
+  # Yotta!
+  [italic]Your starting point for the ExtraNet. Good morning, {colony}. Or evening. We cannot tell from here.[/italic]
+
+  [bold]Search the ExtraNet:[/bold] ____________________ (SEARCH) [color=#7A6A90]Search is down for maintenance. Try the directory, which is a list we keep by hand.[/color]
+
+  ## TODAY ON YOTTA!
+  - [netlink="Ask the thinking machine everyone is talking about" link="spacegpt.ai"]
+  - [netlink="The weather where you are, probably" link="atmocast.wx"]
+  - [netlink="Tapes people mailed in, and why you should watch them" link="youtape.vhs"]
+  - [netlink="Your bunkmates are on MyBunk. Are you?" link="mybunk.social"]
+  - [netlink="Hot food, dropped from orbit" link="dropdash.eats"]
+
+  ## THE YOTTA! DIRECTORY
+  - [bold]Arts and Entertainment.[/bold] [netlink="Radio" link="hydrogenline.fm"], [netlink="Tapes" link="youtape.vhs"], [netlink="Celebrities" link="colonytattler.news"]
+  - [bold]Business and Economy.[/bold] [netlink="Jobs" link="indentured.jobs"], [netlink="Auctions" link="ebuoy.auction"]
+  - [bold]Reference.[/bold] [netlink="ColonyPedia" link="colonypedia.ref"], [netlink="Maps" link="vectorquest.nav"], [netlink="Recipes" link="galley.recipes"]
+  - [bold]Society and Culture.[/bold] [netlink="Friends" link="mybunk.social"], [netlink="Romance" link="orematch.love"]
+  - [bold]Everything Else.[/bold] [netlink="The full directory" link="yotta.portal/directory"]
+
+  ## YOTTA! FINANCE
+  [color=#4A3A60]Weyland-Yutani 412 up 3 ... Seegson 18 down 1 ... Hyperdyne 96 up 2 ... Lasalle Bionational 77 flat ... Quotes delayed by six to fourteen weeks.[/color]
+
+  ## ALSO ON YOTTA!
+  - [netlink="Yotta! Answers: real questions, real colonists" link="yotta.portal/answers"]
+  - [netlink="Cool Sites of the Week" link="yotta.portal/coolsites"]
+
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Ads/banner_11.png" MaxHeight="60"/>
+
+  [color=#7A6A90]Yotta! is put together by two people and a Working Joe in a converted cargo pod on Gateway Station. Copyright 2184 Yotta! Directory Services. Yotta! and the exclamation mark are trademarks of Yotta!, including the exclamation mark.[/color]
+
+  <CMUNetWallpaper Id="CMUWallpaperGateway"/>
+</Document>

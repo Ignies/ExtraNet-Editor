@@ -1,0 +1,31 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="taperecorder_recording" Scale="3"/>
+  </Box>
+  # UPLOAD YOUR TAPE
+  [italic]Five easy steps. Step four takes six to nine weeks.[/italic]
+
+  ## STEP 1: RECORD
+  Any camcorder will do. Point it at something interesting. Keep your thumb off the lens. Tapes longer than one cassette must be sent as a series.
+
+  ## STEP 2: LABEL
+  Write your channel name, the tape title and your colony on the label in block capitals. Tapes labelled DO NOT WATCH will be watched first.
+
+  ## STEP 3: POST
+  Hand the tape to your colony mail office, addressed to YouTape Sorting, Ring Two, Gateway Station. Postage is paid by the sender. Tapes posted from {colony} are carried on the next supply run, if there is one.
+
+  ## STEP 4: WAIT
+  Your tape travels to Gateway, is copied by our technicians and is sent out on the relay. This takes six to nine weeks. If your tape was recorded before a hypersleep journey, it may arrive before you do.
+
+  ## STEP 5: REWIND
+  Your tape is live. Tell your bunkmates on [netlink="MyBunk" link="mybunk.social"]. Every rewind counts as a view.
+
+  ## WHAT WE WILL NOT COPY
+  - Tapes of restricted Company sites or Company property, including your own office, which is Company property.
+  - Tapes of animals that do not appear in the Colonial Fauna Register.
+  - Tapes that are only screaming. We get more than you would think.
+  - Tapes that arrive without having been posted. Please stop sending us those. We know you are not sending them.
+
+  [netlink="Back to YouTape" link="youtape.vhs"]
+</Document>

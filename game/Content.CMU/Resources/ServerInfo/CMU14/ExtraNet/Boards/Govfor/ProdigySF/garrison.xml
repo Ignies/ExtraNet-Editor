@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#1B0F12" Text="#E8D8DB" Heading="#E2483D" Link="#F0A04B" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/merc_red_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # WHO YOU HIRED
+  [italic]Veterans. Ex cops. Professionals. Available.[/italic]
+
+  ## WHO WE ARE
+  Prodigy Corporation Security Forces are the contract arm of Security Services, the private army that polices Prodigy City, runs its search and rescue and keeps rival corporations out of it. Out here, the company hires its soldiers out to whoever needs them most and pays best. Our people are former soldiers, former police officers and independent professionals who passed the Prodigy assessment. Nobody in this platoon is new to trouble.
+
+  ## CHAIN OF COMMAND
+  - [bold]Commanding Officer:[/bold] sets the alert state, the curfew and the security zones, and signs every notice on this board.
+  - [bold]Executive Officer:[/bold] runs the site day to day, handles the client, and handles you.
+  - [bold]Staff:[/bold] patrol rosters, checkpoint orders, supply and liaison with Colony Administration.
+  - [bold]Teams:[/bold] the operators you will meet on the street.
+
+  ## SCOPE OF CONTRACT
+  The client has paid for the following, and the following is what you will get:
+  - defence of the colony against dissident and insurgent attack, including outfits calling themselves the Colonial Liberation Front;
+  - emergency response to fire, collapse, gas and any mass casualty event;
+  - monitoring of the atmosphere and the perimeter, with early warning;
+  - security of the colony's power, water, air and landing facilities.
+
+  ## WHY WE TAKE GAS SERIOUSLY
+  In 2168 Drill Site 68-B on Albacetire punctured a ravine of pressurised carbon monoxide, and more than twelve thousand people died in the Carbon Ravine disaster. Somebody saved money on monitors that year. Prodigy does not. A dead colony pays nobody, and our operators are first responders as well as shooters.
+
+  ## HOUSE RULES FOR OPERATORS
+  - Operators give their name and team when asked. Reputation is the product.
+  - Nothing is taken from a civilian without a signed receipt. Seized goods are logged, not pocketed.
+  - Force is billed by the round. Use it when you have to and not before.
+
+  [netlink="Back to the contract board" link="command.govfor.mil"]
+</Document>

@@ -1,0 +1,30 @@
+<Document>
+  <CMUNetStyle Background="#C9B07A" Text="#2A1E14" Heading="#9E1F17" Link="#1E3A78" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/MarshalWatch/banner.png" MaxHeight="150"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/MarshalWatch/emblem.png" MaxHeight="64"/>
+  # DOSSIERS
+
+  [italic]Names are given where two sources agree. Redactions protect sources, not Marshals.[/italic]
+
+  ## FILE 117 - MARSHAL A. KESTLE
+  - [bold]Office:[/bold] a joint-venture refinery colony on the Neroid frontier, half Administration, half Company.
+  - [bold]Status:[/bold] active. Still wears the star.
+  - [bold]Paid by:[/bold] a Weyland-Yutani security liaison, through a housing allowance that never housed anybody. Eleven months, same amount, paid the morning after every safety inspection.
+  - [bold]Bought:[/bold] three industrial deaths closed as worker error inside a day. The ICC agent attached to the office asked for the hull samples. The request was filed under [color=#1A140E]XXXXXXXX[/color] and never answered.
+  - [bold]Source:[/bold] a dispatcher who kept the carbons.
+
+  ## FILE 104 - DEPUTY C. ABARA
+  - [bold]Status:[/bold] transferred to a desk on [color=#1A140E]XXXXX[/color].
+  - [bold]Paid by:[/bold] Kelland Mining, as a share in a mineral claim registered under a sister's name.
+  - [bold]Bought:[/bold] a strike broken before the Crisis Intervention Unit could be called. Four organisers charged with sabotage on the deputy's sworn statement. The statement describes a night shift the deputy did not work.
+
+  ## FILE 098 - MARSHAL L. FENWRIGHT, RETIRED
+  - [bold]Paid by:[/bold] a Lasalle Bionational field team. Cash, ration credit and a berth home.
+  - [bold]Bought:[/bold] a sealed medical freezer waved through a quarantine checkpoint with no manifest. The ICC seal number on it does not exist.
+  - [bold]Status:[/bold] on Earth, on a pension and a Bionational consultancy. We hold the contract. It pays for nothing.
+
+  ## FILE 121 - OFFICE OF THE MARSHAL, XXXXXXXX
+  [color=#9E1F17][bold]AMENDED.[/bold][/color] Not one officer. Every name on the roster took the same envelope in the same week. The colonists noticed before we did, and stopped calling the office at all. See the [netlink="locker log" link="marshalwatch.deep/locker"].
+
+  [netlink="Back to intake" link="marshalwatch.deep"]
+</Document>

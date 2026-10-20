@@ -1,0 +1,30 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/HydrogenLine/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="NOW PLAYING: NEON OVER TITAN, CHROMA SLEEP  ///  NEXT: MAMA WAS A PIPEFITTER, ROSIE KETCH  ///  THE HYDROGEN LINE, 1420, THE FREQUENCY OF EVERYTHING  ///  REQUEST LINE OPEN ALL SHIFT" Speed="55" Color="#00E5FF"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/microphone.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="playing" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Clothing/Multiple/headphones.rsi" State="icon" Scale="2"/>
+  </Box>
+  # THE HYDROGEN LINE
+  [italic]1420 on your dial. The frequency of everything.[/italic]
+
+  Hydrogen gives off a faint radio hiss at 1420 megahertz, everywhere in the universe, all the time. We broadcast just on top of it, so wherever you are in human space you can find us. Just tune to the sound of the universe and turn left a bit.
+
+  ## ON AIR NOW
+  [bold]Nightside with Lou Delgado[/bold]. Slow songs, long dedications and the weather from the window. Lou has been on the night shift for eleven years and has never once played a request for Ten Hours Of Static, no matter how many times it is requested, and it is requested every night.
+
+  ## LOU SAYS
+  [italic]Good evening, {colony}. Or morning. Out here the clock is a suggestion. If you are on shift, this one is for you. If you are in your bunk and cannot sleep, this one is for you too. If you are somewhere you should not be, go back. Here is Chroma Sleep.[/italic]
+
+  ## STAY TUNED
+  - [netlink="This week's schedule" link="hydrogenline.fm/schedule"]
+  - [netlink="The request line and dedications" link="hydrogenline.fm/requests"]
+  - [netlink="The Frontier Forty chart" link="hydrogenline.fm/charts"]
+
+  <CMUNetAd Id="CMUDeepAdRadio"/>
+
+  [color=#6A80A0]The Hydrogen Line is listener supported. It is also supported by a small Seegson grant, which is why every hour starts with the Seegson jingle. We are sorry about the jingle.[/color]
+
+  <CMUNetWallpaper Id="CMUWallpaperSynthwave"/>
+</Document>

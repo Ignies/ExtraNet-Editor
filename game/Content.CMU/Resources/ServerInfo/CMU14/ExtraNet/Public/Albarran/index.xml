@@ -1,0 +1,33 @@
+<Document>
+  <CMUNetStyle Background="#2B1A10" Text="#EADBC4" Heading="#D9A441" Link="#E8C77A" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Albarran/banner.png" MaxHeight="150"/>
+  # CASA ALBARRAN
+  [italic]Hand rolled in Havana since 2061. Earth leaf, Earth soil, Earth sun. Carried to the stars one box at a time.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigars/cigar.rsi" State="unlit-icon" Scale="4"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigars/case.rsi" State="open" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigars/cigar-gold.rsi" State="unlit-icon" Scale="4"/>
+  </Box>
+
+  ## A WORD FROM THE HOUSE
+  Welcome, friend, to {colony}, wherever {colony} may be. You are a long way from the Vuelta Abajo. The red earth of Pinar del Rio where our leaf grows has never seen a hypersleep pod, an atmosphere processor or a dropship. That is the point. When you open a box of Albarran on a world with a borrowed sky, you are opening a little of the one sky that was never borrowed.
+
+  Every Albarran cigar is rolled by hand, by a torcedor who has trained for no fewer than nine years, in the same building on the Calle Obispo where Hector Albarran rolled his first in 2061. We do not use machines. We do not use synthetic leaf. We do not hurry.
+
+  ## THE HOUSE IN NUMBERS
+  - [bold]122[/bold] years of rolling
+  - [bold]4[/bold] generations of the Albarran family
+  - [bold]61[/bold] torcedores at the tables today
+  - [bold]0[/bold] machines
+
+  ## WHERE TO FIND US
+  Albarran cigars are carried by fine tobacconists on Gateway, Mars, Titan and Arcturus, by the officers' clubs of three navies and by a small number of colony stores whose owners have taste. If your colony store does not carry Albarran, ask. Then ask again.
+
+  ## ENTER THE HOUSE
+  - [netlink="The Humidor: our cigars" link="albarran.cigars/humidor"]
+  - [netlink="Heritage: a family and a field" link="albarran.cigars/heritage"]
+  - [netlink="The Lounge: cutting, lighting, keeping" link="albarran.cigars/lounge"]
+
+  [color=#9A7A5A]For adults only. Cigars are not a safe alternative to anything, and the House does not pretend otherwise. Smoke rarely, smoke slowly, and never in a hydroponics bay, a cryo ward or anywhere with an oxygen line.[/color]
+</Document>

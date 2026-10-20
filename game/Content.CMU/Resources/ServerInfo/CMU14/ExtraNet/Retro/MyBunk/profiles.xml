@@ -1,0 +1,36 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/MyBunk/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Head/Beanies/beanie.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="walkman" Scale="3"/>
+  </Box>
+  # MARISOL'S PROFILE
+  [italic]Marisol is online now![/italic]
+
+  ## ABOUT ME
+  hiii!!! I am 26, I work in hydroponics, I came out here on a three year contract and I have two years and eleven months left. I like plants, Chroma Sleep, long letters and anyone who can keep a cactus alive in recycled air. Do not message me about the Company, I just grow the beans.
+
+  ## WHO I WOULD LIKE TO MEET
+  someone who knows what the noise in the east corridor is. also Vex Starr. also a technician who can fix the grow lamps without making it a whole thing.
+
+  ## MY PROFILE SONG
+  [bold]Hypersleep Heart[/bold] by Chroma Sleep. Plays on load. Sorry.
+
+  ## MARISOL'S TOP 8
+  - [bold]1. Dave[/bold] (cannot remove)
+  - [bold]2. Priya[/bold] (bunkmate, best friend, stole my socks)
+  - [bold]3. Kenji[/bold] (fixed my terminal, now owns my terminal)
+  - [bold]4. Big Tomas[/bold] (gave me a rock that looks like a duck)
+  - [bold]5. Sal from the canteen[/bold] (extra tortillas)
+  - [bold]6. Cactus[/bold] (yes it has a profile, yes Kenji made it)
+  - [bold]7. JOE-114[/bold] (it asked)
+  - [bold]8. Renzo[/bold] (on probation, see bulletins)
+
+  ## COMMENTS
+  - [bold]Priya:[/bold] YOU MOVED ME TO NUMBER TWO. after the socks. after everything.
+  - [bold]Cactus:[/bold] thank you for the water. i am a cactus.
+  - [bold]JOE-114:[/bold] Thank you for including me, Marisol. I have added you to my Top 1,400. You are number 1,400. This is not a ranking.
+  - [bold]Renzo:[/bold] probation is fair. it was not me though
+
+  [netlink="Back to MyBunk" link="mybunk.social"]
+</Document>

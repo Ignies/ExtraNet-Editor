@@ -1,0 +1,26 @@
+<Document>
+  <CMUNetStyle Background="#FFF1F6" Text="#1A1A1A" Heading="#D0105A" Link="#1440A0" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ColonyTattler/banner.png" MaxHeight="150"/>
+  # STAR SIGHTINGS FROM THE COLONIES
+  [italic]You saw them, you sent them in. Readers' sightings of the famous and the nearly famous, as relayed to the Tattler. Every sighting earns a free Tattler pen, shipped eventually.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Devices/travel_camera.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/binoculars.rsi" State="binoculars_civ" Scale="3"/>
+  </Box>
+
+  ## THIS WEEK'S SIGHTINGS
+  - [bold]Hope's Retreat.[/bold] A reader swears she saw Rex Maddox in the colony hydroponics bay, eating a tomato off the vine. She asked for an autograph. He said he was not Rex Maddox. Rex Maddox, the Tattler notes, would say that.
+  - [bold]Chance's Claim.[/bold] Lux of Chroma Sleep was seen in the colony canteen, wearing a dock worker's beanie and ordering soup. It was not Lux. It was the canteen manager's niece, who would like to thank everyone for the attention.
+  - [bold]Kutjevo.[/bold] A refinery worker believes Spin Okafor was on the same freighter in hypersleep, two pods down. He saw a very tall man with a Comets bag. The Comets confirm that Spin was on Gateway at the time, and that they sell a lot of bags.
+  - [bold]Hybrisa Prospera.[/bold] Vex Starr, at the Prospera Grand Hotel. The Starrlight Society says she is not staying at the Prospera Grand Hotel. The doorman says she is. The Tattler is with the doorman.
+  - [bold]Barker's Lament.[/bold] Rosie Ketch, confirmed, singing at the pithead canteen. Several readers sent in this one. One sent a recording. It was very loud and mostly the miners.
+
+  ## SIGHTINGS WE COULD NOT PRINT
+  Every week the Tattler receives a few sightings that are not of celebrities. This week a reader on {colony} wrote in to say that she had seen something tall and dark moving in the ventilation duct above the canteen, and asked whether it might be a famous person in disguise. We have checked. No famous person has been in a ventilation duct this year. We passed her letter on to her colony administration, and wish her well.
+
+  ## HOW TO SEND US A SIGHTING
+  Write it down, name the colony, say what they were wearing and what they ordered. Send it with the next outbound mail to The Colony Tattler, Gateway Station, Deck Nine. Photographs welcome. Photographs of people in the shower are not welcome and will be reported.
+
+  [netlink="Back to the front page" link="colonytattler.news"]
+</Document>

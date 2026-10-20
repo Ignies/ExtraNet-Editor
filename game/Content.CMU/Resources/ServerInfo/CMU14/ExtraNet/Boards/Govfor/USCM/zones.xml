@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#171A12" Text="#D4CFAE" Heading="#E3B341" Link="#8FB35A" Font="Terminal"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/uscm_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # SECURITY ZONES
+  The Commanding Officer divides the colony into four zones. Changes are posted on the front page and may come at any shift change. Where a sign and a sentry disagree, the sentry is right.
+
+  ## ZONE GREEN
+  [color=#8FB35A][bold]OPEN[/bold][/color]
+  - Living blocks, the mess, shops, the clinic waiting room and the bar.
+  - No checks. Patrols pass through. Carry your ID anyway.
+
+  ## ZONE AMBER
+  [color=#E3B341][bold]CONTROLLED[/bold][/color]
+  - Landing pads, fuel stores, the power plant, the atmosphere and water works, the comms relay and Colony Administration.
+  - ID checked at the door. Bags may be searched. No loitering, no photographs.
+
+  ## ZONE RED
+  [color=#D9654A][bold]RESTRICTED[/bold][/color]
+  - The garrison compound, armoury, vehicle park, command post and the perimeter fence line.
+  - Entry only under escort with a written pass. Sentries are authorised to use force to stop an intruder.
+
+  ## ZONE BLACK
+  [color=#F2EFE0][bold]EXCLUSION[/bold][/color]
+  - Declared during an emergency: a gas leak, a fire, a cave-in, a quarantine, unexploded charges or a firefight.
+  - Nobody crosses the cordon, colonist or Marine, unless assigned to the response. When the air is bad, the line is the line.
+
+  ## MARKINGS
+  - Chevron striping on a barrier marks the edge of a zone.
+  - Hazard striping marks a checkpoint lane. Stop at the painted bar.
+  - Flashing amber lights on a cordon mean Zone Black. Turn around.
+
+  Zone changes are also carried by the [netlink="Colony Herald" link="herald.colony.news"] when the press is on shift.
+
+  [netlink="Return to the bulletin board" link="command.govfor.mil"]
+</Document>

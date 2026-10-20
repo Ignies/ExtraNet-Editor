@@ -1,0 +1,41 @@
+<Document>
+  <CMUNetStyle Background="#161B0C" Text="#E5E8C8" Heading="#FF7A1A" Link="#FFD24A" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/RexMaddox/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="HOSTILE WORLDS WITH REX MADDOX  ///  SEASON SEVEN ON THE RELAY NOW  ///  FORTY WORLDS, ONE KNIFE, NO EXCUSES  ///  REX MADDOX LIVE: HOW TO SURVIVE ANYTHING  ///  DO NOT TRY THIS AT HOME" Speed="85" Color="#FF7A1A"/>
+  # REX MADDOX: HOSTILE WORLDS
+  <CMUNetBlink Rate="0.7">
+    [color=#FFD24A][bold]SEASON SEVEN: THE DEEP JUNGLE. NOW ON THE RELAY.[/bold][/color]
+  </CMUNetBlink>
+
+  [italic]Dropped onto the worst worlds in human space with a knife, a flare and a camera crew. Every week he walks out. Every week he eats something he should not have.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Weapons/Melee/machete.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/JungleHats/booniehat.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/flares.rsi" State="flare" Scale="3"/>
+  </Box>
+
+  ## WHO IS REX
+  Rex Maddox was a stunt rigger on Gateway holo sets for eleven years before a producer watched him walk out of a burning set carrying the camera and the cameraman. The producer asked if he could do that on a real planet. Rex said he could do it on any planet. Seven seasons and forty worlds later, he is still trying to prove it.
+
+  ## THE REX RULES
+  - [bold]Rule one.[/bold] Find water before you find anything else.
+  - [bold]Rule two.[/bold] Light the flare before you need the flare.
+  - [bold]Rule three.[/bold] If it is bigger than you and it has more legs than you, it is not dinner.
+  - [bold]Rule four.[/bold] If it is smaller than you and it has more legs than you, it might be dinner.
+  - [bold]Rule five.[/bold] If you hear something in the vents, it is not the wind. Leave.
+
+  ## THIS WEEK
+  Season seven, episode four, [bold]The Green Hell[/bold]. Rex spends three nights in the jungle outside Lazarus Landing with nothing but a machete and a boonie hat, builds a shelter out of a dropship parachute and eats a beetle the size of his hand. The colony garrison collected him on the fourth morning. Rex would like it known that he was not lost. He was being thorough.
+
+  ## FROM REX
+  To everybody out there on a hostile world, and {colony}, that means you. I get dropped in for a week. You live there. You fix the processor in a storm, you walk the perimeter at night and you raise your kids in a place that wants to eat them. I just do it with a camera on me. Stay sharp. Drink clean water. Respect the jungle.
+
+  ## SUPPLY DROP
+  - [netlink="Every episode, every world" link="rexmaddox.holo/episodes"]
+  - [netlink="Rex Maddox Live: the colony tour" link="rexmaddox.holo/live"]
+  - [netlink="Official survival gear" link="rexmaddox.holo/gear"]
+  - [netlink="Is Rex a synthetic? Veil Truth investigates" link="veiltruth.news/synthetics"]
+
+  [color=#7E8560]Hostile Worlds is a Gateway Holo Network production. Rex Maddox is a trained professional, accompanied at all times by a medic, a safety officer and a dropship on standby. Do not attempt anything you see on this site or in the show.[/color]
+</Document>

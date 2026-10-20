@@ -1,0 +1,19 @@
+<Document>
+  <CMUNetStyle Background="#1A180C" Text="#E6DFB8" Heading="#F2D21B" Link="#F28C1B" Font="Terminal"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/uscm_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/hazops_patch.rsi" State="icon" Scale="4"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Items/DeskFlags/uscmdeskflag.rsi" State="uscmflag" Scale="3"/>
+  </Box>
+
+  # USCM HAZARDOUS OPERATIONS UNIT
+  [bold]4TH HAZARDOUS OPERATIONS COMPANY - CBRN GARRISON, {colony}[/bold]
+  <CMUNetMarquee Text="HAZARD BOARD  ///  KNOW WHERE YOUR NEAREST MASK IS  ///  CARRY YOUR COLONY ID  ///  MOPP LEVEL AND ZONE ORDERS ARE POSTED BELOW  ///  A DARK GAS MONITOR IS AN EMERGENCY  ///  REPORT SPILLS, LEAKS AND STRANGE SMELLS TO THE NEAREST MARINE" Speed="60" Color="#F2D21B"/>
+  [bold]HAZARD AND SECURITY ORDERS OF THE DETACHMENT.[/bold] The Damned Fourth has been posted to {colony} to defend it, and to keep it breathing. Orders below are issued by the Commanding Officer and are effective on posting. They cover bullets and gas alike. Comply with both.
+
+  If you are reading this in a mask, good. Keep it on.
+
+  <CMUNetBlink Rate="0.5">
+    [color=#F2D21B]WARNING - CHECK THE CURRENT MOPP LEVEL BEFORE YOU GO OUTSIDE[/color]
+  </CMUNetBlink>
+</Document>

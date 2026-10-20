@@ -1,0 +1,25 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/HydrogenLine/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/h_synthesizer.rsi" State="supersynth" Scale="2"/>
+  </Box>
+  # THE FRONTIER FORTY
+  [italic]The biggest songs on the relay this cycle, counted from requests, tape sales and how often Lou hums them off air. Here is the top ten.[/italic]
+
+  ## THE TOP TEN
+  - [bold]1. Neon Over Titan[/bold], Chroma Sleep. Twelve weeks at number one. The crowd sings it without the band on every live tape.
+  - [bold]2. Mama Was a Pipefitter[/bold], Rosie Ketch. The chorus is a list of pipe sizes. Every miner in the Veil knows them all.
+  - [bold]3. Processor Lullaby[/bold], Rosie Ketch. Recorded in a machine hall. You can hear the dam underneath.
+  - [bold]4. Hypersleep Heart[/bold], Chroma Sleep. Up four places. Up eight on Marisol's profile.
+  - [bold]5. Ninety Days to Payday[/bold], Rosie Ketch. Down two. It was payday.
+  - [bold]6. Relay Delay[/bold], Chroma Sleep. A love song where every line arrives three weeks after the last.
+  - [bold]7. Building Better Worlds[/bold], the Weyland-Yutani Corporate Choir. In at seven. Every Company terminal plays it at start of shift, which counts as a request.
+  - [bold]8. Do You Dream, Joe[/bold], Chroma Sleep. Requested mainly by one listener.
+  - [bold]9. No Letter This Time[/bold], Rosie Ketch. The song people cry to in canteens, back for its third year.
+  - [bold]10. Ten Hours Of Static[/bold], artist unknown. We do not have this record. We have never played it. It is at number ten.
+
+  ## DROPPED OUT
+  - [bold]The Seegson Jingle[/bold], Seegson Marketing. Off the chart after a listener campaign. Still plays every hour.
+
+  [netlink="Back to the Hydrogen Line" link="hydrogenline.fm"]
+</Document>

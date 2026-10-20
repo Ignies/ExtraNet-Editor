@@ -1,0 +1,19 @@
+<Document>
+  <CMUNetStyle Background="#2A0D0D" Text="#EBD9B4" Heading="#F2C230" Link="#E8774A" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Structures/flagpoles.rsi" State="flag_upp_planted" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/naval_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Structures/wallflags.rsi" State="uppflag" Scale="2"/>
+  </Box>
+
+  # UNION OF PROGRESSIVE PEOPLES
+  [bold]NAVAL INFANTRY, 5TH FLEET - PEOPLE'S GARRISON OF {colony}[/bold]
+  <CMUNetMarquee Text="COMRADES  ///  THE GARRISON SERVES THE PEOPLE AND THE PEOPLE SUPPORT THE GARRISON  ///  CARRY YOUR RESIDENCE DOCUMENTS AT ALL TIMES  ///  CURFEW AND SECTOR ORDERS ARE POSTED BELOW  ///  VIGILANCE IS THE DUTY OF EVERY CITIZEN  ///  LONG LIVE THE UNION" Speed="55" Color="#F2C230"/>
+  [bold]ORDERS AND NOTICES OF THE GARRISON COMMAND.[/bold] By decision of the Commanding Officer, acting for the Governor-General and the Party, the following notices are binding on all residents of {colony} from the moment of posting. Study them collectively at your work brigade. Questions are welcomed and will be answered by the nearest patrol.
+
+  The North Stars have come to {colony} to guard the labour of its people against corporatist sabotage and the bandits who serve it. Where the Union stands, the Union stays.
+
+  <CMUNetBlink Rate="0.7">
+    [color=#F2C230]STATE CHANNEL - CORRESPONDENCE IS REVIEWED BY THE POLITICAL OFFICER[/color]
+  </CMUNetBlink>
+</Document>

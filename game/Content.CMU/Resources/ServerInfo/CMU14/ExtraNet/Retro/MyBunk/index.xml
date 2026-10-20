@@ -1,0 +1,32 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/MyBunk/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="MYBUNK: A PLACE FOR FRIENDS ON THE NIGHT SHIFT  ///  1,204,377 COLONISTS AND COUNTING  ///  HAVE YOU UPDATED YOUR TOP 8?  ///  DAVE IS ONLINE NOW" Speed="60" Color="#FF6600"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Effects/hearts.rsi" State="hearts" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Drinks/coffee_cup.rsi" State="icon-3" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/guitar.rsi" State="icon" Scale="2"/>
+  </Box>
+  # MyBunk
+  [italic]A place for friends on the night shift.[/italic]
+
+  Welcome to MyBunk, {colony}. Make a profile, pick your Top 8, post a bulletin, set a song and find out which of your bunkmates has been reading your profile at three in the morning.
+
+  ## COOL NEW PEOPLE
+  - [bold]Marisol, 26.[/bold] Hydroponics. Mood: sprouting. Likes long walks to the edge of the perimeter and back, quickly.
+  - [bold]Big Tomas, 41.[/bold] Drill operator. Mood: loud. Is looking for friends, a dentist and a pair of earplugs that work.
+  - [bold]Kenji, 19.[/bold] Comms tech. Mood: buffering. Profile song: Relay Delay by Chroma Sleep, on loop, at full volume.
+  - [bold]JOE-114.[/bold] Working Joe. Mood: helpful. Has added everybody on the colony to its Top 8. Has a Top 1,400.
+
+  ## EVERYONE STARTS WITH DAVE
+  Dave started MyBunk on a dropship to Gateway with a Seegson terminal and three hours to kill. Every new member is friended by Dave automatically. Dave is in your friends list. Dave has read your profile. Dave thinks you seem nice.
+
+  ## GO
+  - [netlink="Bulletins: what your friends are saying" link="mybunk.social/bulletins"]
+  - [netlink="Browse profiles" link="mybunk.social/profiles"]
+  - [netlink="Groups" link="mybunk.social/groups"]
+  - [netlink="Too lonely for friends? Try OreMatch" link="orematch.love"]
+
+  [color=#5A6A8A]MyBunk is a Dave Lindqvist production. MyBunk does not share your profile with your employer. Your employer can read it anyway. It is on the ExtraNet.[/color]
+
+  <CMUNetWallpaper Id="CMUWallpaperColonyNight"/>
+</Document>

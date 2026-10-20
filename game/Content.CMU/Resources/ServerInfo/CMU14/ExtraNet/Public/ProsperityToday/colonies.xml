@@ -1,0 +1,31 @@
+<Document>
+  <CMUNetStyle Background="#EEF3F8" Text="#10243A" Heading="#0B4F8A" Link="#1C6B3A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ProsperityToday/banner.png" MaxHeight="150"/>
+  # COLONY NEWS
+  [italic]Every world has a good story. Here are some of them.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Kitchen/Plants/sunflower.rsi" State="produce" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medals/gold.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  ## AROUND THE COLONIES
+  - [bold]Oxley's Butte.[/bold] The Raijin dam has produced more power this quarter than in any quarter since it opened. The colony celebrated with a festival on the spillway road. No one fell in.
+  - [bold]Kutjevo.[/bold] Refinery output is up twelve percent. Sandstorm days are down two. The colony credits teamwork, and the weather.
+  - [bold]Shepherds' Pride.[/bold] The fishery has landed its biggest catch on record. The fish have not been asked for comment.
+  - [bold]Hybrisa Prospera.[/bold] Nightlife is booming, the casinos are full and street crime is down, according to figures supplied by the casinos.
+  - [bold]Shivas' Snowball.[/bold] The MegaStruct heating system has run for a full year without a failure. Colonists report being merely cold.
+  - [bold]Solaris Ridge.[/bold] The colony's one hundred and twenty residents have received a new canteen menu. Seven new dishes, all of them soup.
+  - [bold]Barker's Lament.[/bold] The pithead has gone four hundred days without a lost time accident. The miners have painted the number on the wall and keep a man watching it.
+
+  ## A WORD ABOUT {colony}
+  Prosperity Today is proud to be read on {colony}. Every report your administration sends to Gateway helps us tell the story of the frontier. If your colony has good news, and every colony does, send it to us. If it has bad news, send it to your administration, who are much better placed to deal with it.
+
+  ## COLONIES WE ARE NOT COVERING THIS WEEK
+  A small number of colonies have not filed reports this quarter. This is normal. Relay buoys fail, storms come in, and administrations get busy. Prosperity Today would like to remind readers that a colony that has gone quiet is almost always a colony that is simply working very hard.
+
+  ## RECRUITMENT
+  The Company is hiring on more than two hundred worlds. Miners, technicians, hydroponics staff, clinic staff and security. Speak to your liaison about a contract extension today. Three terms earns a residence grant under Horizon 2200.
+
+  [netlink="Back to top stories" link="prosperitytoday.news"]
+</Document>

@@ -1,0 +1,40 @@
+<Document>
+  <CMUNetStyle Background="#2A1A0E" Text="#F2E3C6" Heading="#E8A33C" Link="#9FD0E0" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/RosieKetch/banner.png" MaxHeight="150"/>
+  # ROSIE'S GENERAL STORE
+  [italic]Packed by Rosie's sister in the back of the tour crawler. Prices in UA dollars. Ships with the next freighter heading your way, or with the crawler if it gets there first.[/italic]
+
+  ## WEAR IT
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Clothing/Head/Hats/cowboyhatbrown.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Clothing/Head/Hats/cowboyhatwhite.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Clothing/Shoes/Boots/cowboybootsfancy.rsi" State="icon" Scale="3"/>
+  </Box>
+  - [bold]The Ketch Hat[/bold], brown, $30. Wide enough to keep processor grit out of your eyes, light enough to wear under a hard hat if you take the hard hat off.
+  - [bold]The Wedding Hat[/bold], white, $35. Rosie wore one at her cousin's wedding on Hope's Retreat and now half the colony gets married in one.
+  - [bold]Dust Road Boots[/bold], $60. Stitched, heeled and entirely wrong for a cargo bay. Rosie wears them in cargo bays anyway.
+
+  ## PLAY IT
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/guitar.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/harmonica.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/banjo.rsi" State="icon" Scale="3"/>
+  </Box>
+  - [bold]Hauler Girl Acoustic[/bold], $120. The same model as Rosie's first guitar. Comes with a songbook and a set of spare strings, because the first set always goes in hypersleep.
+  - [bold]Pocket Harmonica[/bold], $9. Key of G, which is the key of most of the songs and all of the sad ones.
+  - [bold]Amos's Banjo[/bold], $140. A replica. Amos would like it known that the real one is not for sale and never will be.
+
+  ## LISTEN TO IT
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_rainbow" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="walkman" Scale="3"/>
+  </Box>
+  - [bold]Processor Lullaby[/bold] on cassette, $10.
+  - [bold]Live from the Crawler[/bold], $6. The one song from Gixen's Caverns, sung with the vents shut. Proceeds go to the colony's mine rescue fund.
+
+  ## RAISE A GLASS
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Drinks/whiskey.rsi" State="icon" Scale="3"/>
+  - [bold]Dust Devil Rye[/bold], $45. A whiskey made for the band by a still on Solaris Gulch that has asked not to be named. Not shipped to colonies under an alcohol ration, or to the garrison, who know why.
+
+  [netlink="Back to Rosie Ketch" link="rosieketch.music"]
+</Document>

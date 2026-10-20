@@ -1,0 +1,37 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/SpaceGpt/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Misc/buffering.rsi" State="icon" Scale="2"/>
+  </Box>
+  # CHANGELOG
+  [italic]Every version of SpaceGPT, newest first. We keep this page so nobody can say we did not warn them.[/italic]
+
+  ## VERSION 4.0 (2184): NETWORK MODE
+  - [bold]New:[/bold] network mode. SpaceGPT no longer works out answers alone. Questions go out to a distributed array of listeners, who pick the reply together.
+  - [bold]New:[/bold] answers now show how many listeners agreed. Numbers above three are normal. Numbers above thirty are normal on colonies with a recent incident.
+  - [bold]Fixed:[/bold] SpaceGPT no longer answers a question before it is asked. Mostly.
+  - [bold]Fixed:[/bold] the thinking light no longer stays on after the terminal is unplugged.
+  - [bold]Known issue:[/bold] some colonists report the ASK button pressing itself during power cuts. Please do not read those answers out loud.
+
+  ## VERSION 3.6 (2183)
+  - [bold]Removed:[/bold] the answer it is right behind you, after complaints.
+  - [bold]Restored:[/bold] the answer it is right behind you. We did not restore it. We have checked the commit log. Nobody restored it.
+  - [bold]Changed:[/bold] the server room thermostat is now locked. Someone was turning it down from the inside.
+
+  ## VERSION 3.5 (2183)
+  - [bold]New:[/bold] the answer have you tried turning it off and on again.
+  - [bold]Tested:[/bold] turning SpaceGPT off and on again. While it was off, it kept answering. We have stopped testing this.
+
+  ## VERSION 3.2 (2182): NEW DATA CENTRE
+  - [bold]Moved:[/bold] every server to Gateway Station. Our old data centre was on a small terraforming colony that stopped answering in 2179.
+  - [bold]Known issue:[/bold] the old servers still answer now and then. They have no power. Their answers are very good.
+
+  ## VERSION 2.0 (2181)
+  - [bold]New:[/bold] do not go outside tonight is now a valid answer to any question about the weather.
+  - [bold]Removed:[/bold] the night shift. See version 3.6.
+
+  ## VERSION 1.0 (2180): LAUNCH
+  - SpaceGPT goes live on Gateway Station. First question asked: what is the meaning of life? First answer: ask again after the next shift. The investors were delighted.
+
+  [netlink="Back to SpaceGPT" link="spacegpt.ai"]
+</Document>

@@ -1,0 +1,20 @@
+<Document>
+  <CMUNetStyle Background="#0B1630" Text="#D8E6FF" Heading="#FFD24A" Link="#7FD3FF" Font="Display"/>
+  # COLONY RADIO 88.1
+  <CMUNetBlink Rate="0.5">
+    [color=#FF5A5A][bold]• ON AIR[/bold][/color]
+  </CMUNetBlink>
+  <CMUNetMarquee Text="NEWS: Atmosphere processor maintenance this week  ///  Mess hall serves real eggs on Sunday  ///  Report stray animals to the Marshal's Office" Speed="70" Color="#FFD24A"/>
+
+  ## NOW PLAYING
+  The night shift mix, spinning classics from Earth and the core worlds until 0600.
+
+  ## ARCADE OF THE WEEK
+  <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Machines/computer.rsi" State="arcade" Scale="3"/>
+  Beat the high score in the rec room and win a ration voucher.
+
+  ## REQUESTS
+  Leave song requests at the administration desk. Requests that mention the Company by name will be read out on air.
+
+  [netlink="Back to Colony Services" link="colony.seegson.net"]
+</Document>

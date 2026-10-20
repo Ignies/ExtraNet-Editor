@@ -1,0 +1,30 @@
+<Document>
+  <CMUNetStyle Background="#140709" Text="#D9C8AA" Heading="#FFB23E" Link="#8CFF5A" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/BloodMarket/banner.png" MaxHeight="150"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/BloodMarket/emblem.png" MaxHeight="96"/>
+
+  # HOUSE RULES
+
+  <CMUNetBlink Rate="0.9">
+    [color=#FF4A3D][bold]READ THESE ONCE. WE DO NOT REPEAT THEM.[/bold][/color]
+  </CMUNetBlink>
+
+  The Night Market has run on this colony longer than the current garrison, the last Administrator and two Marshals. It runs because everybody keeps to the same few rules. Break one and your handle comes off the board. Break a bad one and you come off the board.
+
+  ## THE RULES
+  - [bold]Handles only.[/bold] No real names, no bunk numbers, no shift rosters. If you know who a seller is, forget it.
+  - [bold]The tenth is owed.[/bold] The Market takes ten percent from buyer and seller. Skip it once and every stall goes dark for you.
+  - [bold]No badges.[/bold] Marshals, deputies, garrison police and Company security are not customers. We can tell. We have always been able to tell.
+  - [bold]No biologicals.[/bold] Not samples, not specimens, not jars, not whatever came up the drain on the lower levels. The last vendor who listed one is not answering his messages, and neither is the man who bought it.
+  - [bold]No children's medicine.[/bold] Paediatric stock stays in the clinic. This one is not negotiable and it is not a joke.
+  - [bold]Meet in the dark, pay in the light.[/bold] Goods change hands at the drop. Credits change hands after, where somebody can see.
+  - [bold]A bad lot gets posted.[/bold] Sold someone a dead tube or a cut vial, you make it right or the board says what you did.
+  - [bold]Nothing heavier than a rifle.[/bold] We are a market, not a war. Take that business to Irkala.
+
+  ## IF IT GOES WRONG
+  If a raid comes, the board goes blank and stays blank for three nights. Do not post asking where it went. If you are picked up, you have never heard of us, and we will extend you the same courtesy.
+
+  [color=#8CFF5A]-- the lantern keeper[/color]
+
+  [netlink="Back to the price board" link="bloodmarket.deep"]
+</Document>

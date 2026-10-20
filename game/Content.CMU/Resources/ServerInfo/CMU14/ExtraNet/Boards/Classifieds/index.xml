@@ -1,0 +1,10 @@
+<Document>
+  <CMUNetStyle Background="#F4EFE2" Text="#2A2418" Heading="#8A2A12" Link="#1A4E8A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Boards/Classifieds/banner.png" MaxHeight="150"/>
+  # {colony} CLASSIFIEDS
+  [italic]Buy it, sell it, swap it, find it. Free to post for every colonist with a working ID card.[/italic]
+
+  Each ad shows the terminal it was posted from, so you know where to meet. Keep it legal: the Marshals read this board too.
+
+  <CMUNetAd Id="CMUDeepAdBoots"/>
+</Document>

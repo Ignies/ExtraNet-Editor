@@ -1,0 +1,23 @@
+<Document>
+  <CMUNetStyle Background="#E8EBEE" Text="#1E2A33" Heading="#0B3D63" Link="#1F6FB2" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Decals/weyufloorflag.rsi" State="wy_left" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Decals/weyufloorflag.rsi" State="wy_mid" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Decals/weyufloorflag.rsi" State="wy_right" Scale="2"/>
+  </Box>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/wy_white_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/wy_patch.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  # WEYLAND-YUTANI ASSET PROTECTION
+  [bold]Whiteguard Solutions | Contracted Colonial Security | {colony}[/bold]
+  <CMUNetMarquee Text="WELCOME TO A PROTECTED SITE  ///  PLEASE KEEP YOUR COLONY ID VISIBLE AT ALL TIMES  ///  SERVICE NOTICES BELOW ARE BINDING UNDER THE COLONIAL SECURITY CONTRACT  ///  UNATTENDED ITEMS WILL BE REMOVED AND DESTROYED  ///  BUILDING BETTER WORLDS" Speed="50" Color="#1F6FB2"/>
+  [bold]Service notices from your security provider.[/bold] Weyland-Yutani security personnel have been engaged by the colonial government to deliver protective services at {colony}. Notices are issued by the PMC Operations Director and are effective on publication. Continued presence on site constitutes acceptance.
+
+  Our people are here so yours can get back to work. Thank you for your cooperation.
+
+  <CMUNetBlink Rate="0.9">
+    [color=#0B3D63]This channel is monitored for quality and compliance purposes.[/color]
+  </CMUNetBlink>
+</Document>

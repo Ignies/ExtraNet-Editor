@@ -1,0 +1,46 @@
+<Document>
+  <CMUNetStyle Background="#100B07" Text="#D6C8AC" Heading="#D9A23A" Link="#A6DB5E" Font="Pixel"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Blooded/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/CMU14/Yautja/weapons.rsi" State="combistick" Scale="3"/>
+  # THE CODE
+  [color=#7A5A22]Compiled by old_tracker, keeper of the lodge, from forty years of accounts. Every line here was told by somebody who saw it. None of it was told by them.[/color]
+
+  ## THE HEAT
+  They come in the hot season. Always. On a cold world they are rarely seen at all, and on a hot world they arrive with the worst of the summer, when the air over the jungle shakes and everybody sleeps badly. Nobody knows why. Some say their eyes see heat and not light. Some say their own world is a furnace and they are only comfortable when ours is close to it.
+
+  When the thermometer outside the canteen goes over forty for three days running, the lodge starts keeping watch.
+
+  ## THE SHIMMER
+  You will not see one unless it lets you. What you see is the jungle bending, a man shaped ripple moving through the leaves the way heat moves over a road. Rain shows them. So does dust, and smoke, and water to the knee. If the rain is falling on something that is not there, stand very still.
+
+  ## THE LIGHT
+  Three red points, in a triangle, no bigger than a fingertip each. On a tree, on a wall, on your chest. That is it looking at you. That is it deciding. Most people who report the light say it was there for a second and then gone. A few say it stayed. None of those are on this board.
+
+  ## THE VOICE
+  They click. A deep rattle from the throat, like a big insect, or a man trying to speak with his mouth full of stones. And they repeat things. A word you shouted, a laugh, a curse, played back from the canopy in your own voice with the click at the end of it.
+
+  This is not the thing the other boards whisper about, the one that calls from the treeline with the voices of the dead. That one wants you to come closer. The Hunters do not care where you go. They want you to know you are being heard.
+
+  ## THE CODE ITSELF
+  Of all of it, this is what the lodge is built on. Every account agrees.
+  - [bold]They do not take the unarmed.[/bold] A woman walked out of a jungle with nine dead marines behind her because she dropped her rifle and showed it her empty hands. It looked at her for a long time and left.
+  - [bold]They do not take the sick or the very young.[/bold] Not a child, not a woman carrying one, not the old man on the clinic cot.
+  - [bold]They take what fights.[/bold] The armed, the strong, the ones who stand their ground. The better you fight, the more it honours you, and the more certainly it kills you.
+  - [bold]They take a trophy.[/bold] Yes, from people too. The lodge does not pretend otherwise. Skulls, cleaned white, carried away. It is the highest respect they have. We do not have to like that to understand it.
+  - [bold]They do not lose.[/bold] When one of them is beaten, it ends itself, and it takes everything around it. If one falls and a light on its arm begins to blink faster and faster, do not take the skull. Run, as far and as fast as you have ever run.
+
+  ## THE GAME RESERVE
+  There is a story the lodge does not like. old_tracker includes it because a code is worth nothing if you only write down the parts you want.
+
+  Some say the Hunters do not only hunt the black ones. They breed them. They carry eggs to a hot world with nobody on it, or with somebody on it, and they come back later, when the hive is grown, for a hunt worth having. If that is true, then the eggs that came to the outer works in a crate marked rock sample are not the beginning of anything. They are the part where the beaters walk through the grass.
+
+  And then {colony} is not a colony at all. It is the grass.
+
+  <CMUNetBlink Rate="0.7">
+    [color=#A6DB5E][bold]BE WORTHY. BE SEEN. DO NOT RUN.[/bold][/color]
+  </CMUNetBlink>
+
+  [netlink="Next: the relics" link="blooded.deep/relics"]
+
+  [netlink="Back to the lodge" link="blooded.deep"]
+</Document>

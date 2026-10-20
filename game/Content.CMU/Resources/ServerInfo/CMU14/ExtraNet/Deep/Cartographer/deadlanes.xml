@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#07141B" Text="#C4D6CC" Heading="#7FE3D2" Link="#F2955E" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Cartographer/banner.png" MaxHeight="150"/>
+  # Dead Lanes
+
+  [italic]Struck off in red ink. Each one with its reason, because a chart without reasons is a superstition.[/italic]
+
+  <CMUNetBlink Rate="0.6">
+    [color=#E0483A][bold]DO NOT FILE THESE ROUTES. DO NOT FLY THESE ROUTES.[/bold][/color]
+  </CMUNetBlink>
+
+  ## Struck off
+  - [color=#E0483A][bold]X[/bold][/color] [bold]The Dyaus Gap.[/bold] Charted as a sector. I have crossed it twice and found no star worth the name. On the second crossing the ship clock lost nine minutes I still cannot account for.
+  - [color=#E0483A][bold]X[/bold][/color] [bold]The Cusp of Tartarus.[/bold] A fuel saving shortcut along the edge of the Tartarus Sector. Freighters that cut it get hailed by a patrol that will not give a name, boarded for inspection, and come away one crewman short. Paperwork, they call it.
+  - [color=#E0483A][bold]X[/bold][/color] [bold]Spinward, after the Lost Colonies.[/bold] Every few years a crew sells shares in a run to find them. I hold the transponder codes of four such crews. Sometimes the codes still go out, on a loop, from places those ships never reached.
+  - [color=#E0483A][bold]X[/bold][/color] [bold]The old Reticuli lane.[/bold] Some years back the Company redrew its charts to route everyone wide of Zeta Reticuli. Old charts still go straight through. I keep one. I do not use it.
+
+  ## Places ships do not come back from
+  A colony transport bound for the frontier was turned aside in mid-flight because the world it was flying to was gone. Not evacuated. Not quarantined. Gone. Its people built Hope's Retreat on a planet that is dying more slowly. Nobody I know has been told what happened to the first world.
+
+  My own ledger, kept since 2151:
+  - Hulls I knew that never came back: 23.
+  - Hulls that came back with no crew aboard: 4.
+  - Hulls that came back with more crew than they left with: 1.
+
+  ## If you have to fly one anyway
+  - File a false plan with Traffic. Tell one person you trust the true one.
+  - Count your crew at every burn, out loud.
+  - Sweep your holds before you seal them. Shivas' Snowball still has spiders because nobody swept the first ship.
+  - If a distress call comes in too clear, it is not a distress call.
+
+  [color=#4F6E69]-- 1edger c1osed -- r3d ink r3maining: low --[/color]
+
+  [netlink="Back to the Chart Room" link="cartographer.deep"]
+</Document>

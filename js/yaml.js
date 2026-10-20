@@ -421,8 +421,13 @@ export function readSiteYaml(source) {
   if (sites.length === 0) throw new YamlError('site.yml has no "- type: cmuNetSite" entry');
   if (sites.length > 1) warnings.push('site.yml holds more than one site; only the first one is edited and exported.');
   if (value.length > sites.length) warnings.push('site.yml holds other prototypes besides the site; they are not kept on export.');
-  const raw = sites[0];
+  const site = siteFromRaw(sites[0], warnings);
+  site.header = header;
+  return { site, warnings };
+}
 
+/** One parsed cmuNetSite prototype as the editor's site model. */
+export function siteFromRaw(raw, warnings = []) {
   const style = {};
   for (const [key, val] of Object.entries(raw.style || {})) style[key] = str(val);
 
@@ -453,7 +458,7 @@ export function readSiteYaml(source) {
   for (const [key, val] of Object.entries(raw)) if (!SITE_KEYS.includes(key)) extra[key] = val;
   if (Object.keys(extra).length) warnings.push(`Unknown site fields kept as they are: ${Object.keys(extra).join(', ')}.`);
 
-  const site = {
+  return {
     id: str(raw.id),
     address: str(raw.address),
     title: str(raw.title),
@@ -467,9 +472,8 @@ export function readSiteYaml(source) {
     tabs,
     board,
     extra: Object.keys(extra).length ? extra : null,
-    header,
+    header: null,
   };
-  return { site, warnings };
 }
 
 /** attributions.yml: a list of { files, license, copyright, source }. */

@@ -1,0 +1,49 @@
+<Document>
+  <CMUNetStyle Background="#E9F0E9" Text="#1C2A1C" Heading="#B02020" Link="#1E5AA0" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ClinicDispensary/banner.png" MaxHeight="150"/>
+  # WHAT IS ON THE SHELF
+  [italic]The standard stock. What is actually on the shelf today depends on the last freighter and the last bad shift.[/italic]
+
+  ## PILL BOTTLES
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister11" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister2" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister6" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister1" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister" Scale="3"/>
+  </Box>
+  - [bold]Red, Bicaridine[/bold]. Bruises and cuts. Free, one bottle a week.
+  - [bold]Yellow, Kelotane[/bold]. Burns. Free, one bottle a week.
+  - [bold]Green, Dylovene[/bold]. Toxins and bad air. Free, one bottle a week.
+  - [bold]Blue, Dexalin[/bold]. Breathing. Ask at the counter.
+  - [bold]Orange, Tricordrazine[/bold]. General first aid. Free.
+
+  One tablet at a time, and no more than two of the same kind in a short period. The label says so, and so do we.
+
+  ## FIRST AID
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/medical.rsi" State="gauze" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/medical.rsi" State="ointment" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/auto_injectors.rsi" State="tricord1" Scale="3"/>
+  </Box>
+  - [bold]Gauze rolls[/bold], for cuts and bleeding.
+  - [bold]Burn ointment[/bold], for burns once cooled.
+  - [bold]First aid autoinjectors[/bold], one per worker on a remote shift. Sign for it.
+
+  ## KITS
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/first_aid_kits.rsi" State="firstaid" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/first_aid_kits.rsi" State="ointment" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/first_aid_kits.rsi" State="antitoxin" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/first_aid_kits.rsi" State="o2" Scale="3"/>
+  </Box>
+  - [bold]General first aid kit[/bold], white. One per work crew, signed out by the crew lead.
+  - [bold]Burn kit[/bold], for the galley, the welding bay and the processor.
+  - [bold]Toxin kit[/bold], for the hydroponics bay, the refinery and anywhere chemicals are kept.
+  - [bold]Oxygen kit[/bold], for anywhere the air can go bad. On some colonies that is everywhere.
+
+  ## BEHIND THE COUNTER
+  Painkillers, the emergency autoinjector and anything stronger are kept behind the counter and supplied on a prescription only. Please do not ask the counter staff to make an exception. They are not allowed to, and they get asked every day.
+
+  [netlink="Back to the dispensary" link="dispensary.colony.med"]
+</Document>

@@ -1,0 +1,110 @@
+# Optional. A new map needs nothing here: its computers fill {colony} with the map's name and look for custom
+# pages under <site root>/<game map id>/. List maps here only to let several share one folder of custom pages.
+
+- type: cmuNetColony
+  id: BarkersLament
+  maps:
+  - CMULV376BarkersLament
+
+- type: cmuNetColony
+  id: BosenmoriBasho
+  maps:
+  - BosenmoriBasho
+
+- type: cmuNetColony
+  id: ChancesClaim
+  maps:
+  - auchances
+
+- type: cmuNetColony
+  id: CorsatStation
+  maps:
+  - aucorsat
+
+- type: cmuNetColony
+  id: Daybreak
+  maps:
+  - Daybreak
+
+- type: cmuNetColony
+  id: Fiorina
+  maps:
+  - aufiorina
+
+- type: cmuNetColony
+  id: Flight
+  maps:
+  - Flight
+
+- type: cmuNetColony
+  id: FortMcNeil
+  maps:
+  - cmufortmcneil
+
+- type: cmuNetColony
+  id: GixensCaverns
+  maps:
+  - GixensCaverns
+
+- type: cmuNetColony
+  id: GreenHell
+  maps:
+  - LV624
+
+- type: cmuNetColony
+  id: HopesRetreat
+  maps:
+  - hopesretreat
+
+- type: cmuNetColony
+  id: Hybrisa
+  maps:
+  - hybrisanew
+  - hybrisametro
+
+- type: cmuNetColony
+  id: Kutjevo
+  maps:
+  - auKutjevo
+
+- type: cmuNetColony
+  id: OxleysButte
+  maps:
+  - AUTrijentMap
+
+- type: cmuNetColony
+  id: PortNereid
+  maps:
+  - portneroid
+
+- type: cmuNetColony
+  id: ShepherdsPride
+  maps:
+  - Sheperds
+
+- type: cmuNetColony
+  id: ShivasSnowball
+  maps:
+  - auShivas
+
+- type: cmuNetColony
+  id: SolarisGulch
+  maps:
+  - AU747
+
+- type: cmuNetColony
+  id: SolarisRidge
+  maps:
+  - SolarisRidge
+
+- type: cmuNetColony
+  id: SorokyneStrata
+  maps:
+  - au14sorokyne
+
+- type: cmuNetColony
+  id: StableGarrison
+  maps:
+  - stablegarrison
+  - StableGarrisonRedux
+  - StableGarrisonReduxDistress

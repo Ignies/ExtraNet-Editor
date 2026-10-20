@@ -1,0 +1,63 @@
+<Document>
+  <CMUNetStyle Background="#0C0A0F" Text="#CBC3CF" Heading="#B98FD9" Link="#86D1A4" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Children/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/_RMC14/Mobs/Xenonids/Queen/queen.rsi" State="alive" Scale="2"/>
+  # HER: TESTIMONY FROM THOSE WHO HAVE BEEN CLOSE
+  [color=#6E5A7E]Pinned and locked. Only those who have been near her may post here. Everybody else, read, and be still.[/color]
+
+  ### #1 pipefitter_9 (OP) // 83.04.20
+  I was in the walls for most of a night. I am going to tell it plainly, because people tell it pretty and that is not fair to the ones who did not come out.
+
+  The resin goes on warm, like a wet towel straight out of the laundry, and then it sets, and then you cannot move anything below the jaw. It is dark but not black. There is a light from the floor, a faint green, and a sound under everything, a slow wet breath, so big that you feel it in your teeth before you hear it.
+
+  The man to my left was talking to his daughter the whole night. She was not there. He talked to her very gently, about school. The woman to my right did not talk at all. In the morning there was a dead Hand on the floor by her feet, and she was smiling.
+
+  Marines cut me out at dawn. I fought them. I am not proud of that and I am not ashamed of it either. I still do not know why I fought them.
+
+  ### #2 keeper_of_the_door (mod) // 83.04.20
+  You fought them because you were being held, and they were pulling you out into the cold. Anyone would.
+
+  ### #3 pipefitter_9 (OP) // 83.04.21
+  The breathing was her. I know that now. I could not see her. I did not need to. Every one of them that came through that chamber slowed down as it passed, and turned its head the same way, and went on. Like people passing a church.
+
+  ### #4 survey_tech_two // 83.04.27
+  I saw her. Once, for maybe four seconds, through a gap in a collapsed bulkhead with a lamp that was dying.
+
+  She is so much bigger than you think. The head is a crown, a great curved shield of it, and under it the face is small and almost delicate. Behind her the body goes on into the dark, a long pale swollen thing hung up on the resin like a sail, and it moves, it is always moving, slow, like the sea. Eggs come out of the end of it and smaller ones carry them away, as gently as you would carry a sleeping child.
+
+  She looked at me. I know she did not need eyes to do it. She looked at me, and she was not angry. She was only very, very patient.
+
+  I have not been afraid of anything since. I do not mean I am brave. I mean the part of me that could be afraid is gone, and I do not know where it went.
+
+  ### #5 ex_lab_staff // 83.05.01
+  I worked for the Company in a lab I will not name. I will tell you something that should make every one of you very angry.
+
+  To the people I worked for, she is the most valuable object in known space. Not the colony. Not the miners. Her. They have written, in documents I have read, that a single live one is worth the loss of a whole settlement. They will never let her be free. If they find her, they will cut her off from her children and put her in a box under bright lights for the rest of her life.
+
+  You think you are her worshippers. To them, you are packing material.
+
+  ### #6 keeper_of_the_door (mod) // 83.05.01
+  Yes. This is why we keep her secret, and why we never post places. The Company would cage the middle of the world. We would rather be inside it.
+
+  ### #7 slow_tide // 83.05.11
+  Is it true that she knows each of them? That she can feel when one is lost? If she can feel that, then she can feel us too, can't she. Every time one of us goes home.
+
+  I hope she is glad. I hope somebody is glad.
+
+  ### #8 keeper_of_the_door (mod) // 83.05.19
+  I am locking this thread now. Some of you have felt it already. There is warmth growing in the dark under {colony}. The pumps are running hot. The air in the low corridors smells of wet stone. The walls are coming up, a little more every night.
+
+  Do not go looking for her. You will not need to look. Turn the heater on. Leave your door open. Say the words before you sleep.
+
+  When you are called, you will know the way. Every one of them does.
+
+  <CMUNetBlink Rate="1.8">
+    [color=#B98FD9][bold]HOME. WARM. HELD.[/bold][/color]
+  </CMUNetBlink>
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Xenos/xeno_egg.rsi" State="egg_opening" Scale="2"/>
+
+  [netlink="Previous: the embrace" link="children.deep/embrace"]
+
+  [netlink="Back to the warm room" link="children.deep"]
+</Document>

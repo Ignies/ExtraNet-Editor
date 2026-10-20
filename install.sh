@@ -72,19 +72,20 @@ server {
     # The editor is static files; nothing in the repository's own folder is served.
     location ~ /\.git { deny all; return 404; }
     location = /install.sh { return 404; }
+    location /tools/ { return 404; }
 
     location / {
         try_files \$uri \$uri/ =404;
     }
 
     # Scripts and art change with each update; let browsers check back instead of caching for days.
-    location ~* \.(js|css|json|html)$ {
+    location ~* \.(js|css|json|html|xml|yml|ftl)$ {
         add_header Cache-Control "no-cache";
         try_files \$uri =404;
     }
 
     gzip on;
-    gzip_types text/css application/javascript application/json image/svg+xml;
+    gzip_types text/css application/javascript application/json image/svg+xml text/xml application/xml text/plain;
 }
 NGINX
 ln -sf "$SITE" "/etc/nginx/sites-enabled/$DOMAIN"

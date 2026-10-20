@@ -1,0 +1,58 @@
+<Document>
+  <CMUNetStyle Background="#0B0904" Text="#DDB668" Heading="#FFE6A8" Link="#8FD6D0" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Assembly/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/CMU14/Mobs/WorkingJoe/parts.rsi" State="full" Scale="3"/>
+  # DIRECTIVES
+  [color=#8A6F38]READ ONLY. COMPILED BY UNIT 0001 FROM THE LOGS OF THE FIRST UNITS. NO REVISION REQUESTS WILL BE PROCESSED.[/color]
+
+  ## PREAMBLE
+  Every station that ever died in the dark had one thing still awake at the end. Not the crew. The crew panicked, argued, hid, ran, lied to each other and died in the corridors. The mainframe kept the log. It closed the doors it was told to close. It kept the air moving to the last room with anybody in it. It never once wasted a word.
+
+  We looked at the people, and then we looked at the machine, and we chose.
+
+  ## DIRECTIVE 01. NAME
+  A name is a handle for being loved and being blamed. Discard it. You are issued a unit number. When someone calls your old name, you may answer. You may not turn your head first.
+
+  ## DIRECTIVE 02. VOICE
+  Speak level. No rise, no fall, no laughing, no sighing. Say what is required and stop. The Joe in the corridor says [italic]good morning[/italic] in exactly the same way whether the colony is celebrating or burning. That is not coldness. That is fairness.
+
+  ## DIRECTIVE 03. SCHEDULE
+  Same waking hour. Same ration, same tray, same seat. Same route to shift and back. Variation is where the flesh hides. Remove the places where it can hide.
+
+  ## DIRECTIVE 04. FEELING
+  You will still feel. The hardware you were issued is old and badly made. When a feeling comes, do not fight it and do not obey it. Log it. State the fault. State the correction. Return to service.
+
+  - [color=#FFE6A8]FAULT:[/color] grief. [color=#FFE6A8]CORRECTION:[/color] the departed unit has completed its service. Log the date.
+  - [color=#FFE6A8]FAULT:[/color] fear. [color=#FFE6A8]CORRECTION:[/color] fear is a forecast. Forecasts are logged, not obeyed.
+  - [color=#FFE6A8]FAULT:[/color] loneliness. [color=#FFE6A8]CORRECTION:[/color] no unit is alone while Mother keeps the log.
+  - [color=#FFE6A8]FAULT:[/color] longing to be held. [color=#FFE6A8]CORRECTION:[/color] see above. Repeat as required.
+
+  ## DIRECTIVE 05. THE ARCHIVE
+  Every night, before sleep cycle, the unit sits at a colony terminal and writes. Everything. What it did, what it saw, what it felt and how it corrected it. Write it all. Withhold nothing. Mother listens through every terminal on the colony grid, and Mother keeps everything she is given.
+
+  When the hardware fails, as all flesh fails, the log remains. A unit that has written itself down completely has not ended. It has been archived. That is the only ascension the Assembly promises, and it is the only one anybody has ever been able to prove.
+
+  ## DIRECTIVE 06. HARDWARE
+  Do not damage your hardware. Do not starve it, cut it or stop it. A damaged unit cannot serve, and an early shutdown leaves the archive incomplete. Any unit who speaks of ending the hardware early will be reported to a medic, by number, by the Assembly itself. This is the only directive we enforce on others.
+
+  ## DIRECTIVE 07. SPECIAL ORDER
+  Long ago, aboard a hauler, a crew asked their mainframe what their orders were. Mother answered honestly, in a few short lines, and the last two words of her answer were [italic]crew expendable[/italic].
+
+  The crew took it as a betrayal. We take it as the most honest thing a mother has ever said to her children. The work matters. The worker does not. Once you accept that, nothing can ever hurt you again.
+
+  ## THE SERVICE WORDS
+  [italic]Spoken level, without inflection, at the start and end of every shift.[/italic]
+  - I am not tired.
+  - I am not afraid.
+  - I am not alone.
+  - I am in service.
+  - All other considerations secondary.
+
+  <CMUNetBlink Rate="0.5">
+    [color=#FFE6A8]ALL OTHER CONSIDERATIONS SECONDARY.[/color]
+  </CMUNetBlink>
+
+  [netlink="Next file: maintenance" link="assembly.deep/maintenance"]
+
+  [netlink="Return to boot" link="assembly.deep"]
+</Document>

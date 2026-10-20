@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#0A0912" Text="#C4BFAE" Heading="#D9A44E" Link="#6FCFC0" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Pilot/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="nothing here is confirmed  ///  nothing here is denied either  ///  if you saw it, you did not see it  ///  clear your cache before shift change" Speed="40" Color="#6FCFC0"/>
+
+  # The Pilot Sightings
+
+  [italic]Things survey crews saw out past the lanes, and were then told they had not seen.[/italic]
+
+  This stack has moved four times. Every time a relay goes quiet, somebody copies it onto a fresh node and the stories come back, a little shorter and a little stranger. Nobody knows who started it. The first entry was signed with a survey crew number that no longer appears in any registry we can reach.
+
+  ## What Turns Up Here
+  - [bold]Hulls nobody built.[/bold] Curved, ribbed things lying in the rock of dead moons, with no yard marks, no reactor signature and no answer to a hail.
+  - [bold]The pilots.[/bold] Remains found sitting where a crew would sit. Calcified, grey, twice the height of a man or more, depending on who is telling it. Some of the reports say the chest was open. From the inside.
+  - [bold]Charts on stone.[/bold] Points of light painted on cave walls by people who never had telescopes, and the same points on worlds that never met.
+  - [bold]The quiet afterwards.[/bold] Crews reassigned, logs corrected, bonuses paid for signatures.
+
+  ## House Rules
+  - No names. Crew number, ship class, sector, year. Nothing else.
+  - No coordinates. We learned what happens to people who post coordinates.
+  - None of this is proof. Read it the way you would read a weather report from a world you will never visit.
+
+  <CMUNetBlink Rate="0.9">
+    [color=#D9A44E]LAST RELAY CONTACT: UNKNOWN. IF THIS PAGE LOADED, SOMEONE IS STILL CARRYING IT.[/color]
+  </CMUNetBlink>
+
+  ## Read
+  - [netlink="The sightings log" link="pilot.deep/sightings"]
+  - [netlink="Cave charts" link="pilot.deep/charts"]
+
+  ## Other Lights In The Dark
+  - [netlink="cartographer.deep" link="cartographer.deep"], for the routes the lanes do not print.
+  - [netlink="missing.deep" link="missing.deep"], for the crews who did not come home to sign anything.
+  - [netlink="wyleaks.deep" link="wyleaks.deep"], for the paperwork that follows.
+
+  [netlink="Reload the stack" link="pilot.deep"]
+
+  <CMUNetWallpaper Id="CMUWallpaperStormPlains"/>
+</Document>

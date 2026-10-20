@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#121212" Text="#CFC7B8" Heading="#D23B3B" Link="#D9A441" Font="Mono"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RuMC14/Clothing/Patches/BEAR.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # ZONES
+  Four zones, set by the Commander. Changes are posted on the front page at any time. If a sign and a sentry disagree, the sentry is right.
+
+  ## WHITE
+  [color=#CFC7B8][bold]OPEN[/bold][/color]
+  - Living blocks, the mess, shops, the clinic waiting room, the bar.
+  - No checks. Patrols pass. Carry ID.
+
+  ## YELLOW
+  [color=#D9A441][bold]CONTROLLED[/bold][/color]
+  - Landing pads, fuel, the power plant, atmosphere and water works, the comms relay, Colony Administration.
+  - ID at the door. Bags searched. No loitering. No photographs.
+
+  ## RED
+  [color=#D23B3B][bold]CLOSED[/bold][/color]
+  - Our compound, the armoury, the vehicle park, the command post and the fence line.
+  - Escort and written pass only. Sentries will use force on intruders.
+
+  ## BLACK
+  [color=#FFFFFF][bold]NO ENTRY[/bold][/color]
+  - Declared for gas, fire, cave-in, quarantine, unexploded charges or a fight.
+  - Nobody crosses the cordon unless assigned to the response. Not you, not us.
+
+  ## MARKINGS
+  - Chevron striping on a barrier marks the edge of a zone.
+  - Hazard striping marks a checkpoint lane. Stop at the painted bar.
+  - Flashing amber lights on a cordon mean Black. Turn around.
+
+  The [netlink="Colony Herald" link="herald.colony.news"] may also carry zone changes. We do not answer its questions.
+
+  [netlink="Back to orders" link="command.govfor.mil"]
+</Document>

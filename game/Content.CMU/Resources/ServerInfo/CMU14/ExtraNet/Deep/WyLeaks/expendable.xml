@@ -1,0 +1,34 @@
+<Document>
+  <CMUNetStyle Background="#0C0C0A" Text="#BDB9AC" Heading="#F2EEE3" Link="#6FA8FF" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/WyLeaks/banner.png" MaxHeight="150"/>
+  # DOC 02 // EXPENDABLE
+  [color=#FF3B30][bold]COMPANY CONFIDENTIAL :: SPECIAL SERVICES :: MANAGEMENT GRADE ONLY[/bold][/color]
+
+  - FROM: Special Services, Workforce Planning
+  - TO: Site managers and liaisons, all frontier holdings
+  - REF: WY-SS/WP-1166, Personnel Valuation Schedule, revision 6
+  - RE: Classification of personnel during site incidents
+
+  Revision 6 replaces all earlier schedules. During any incident involving a Class Black organism, personnel are to be valued and, where necessary, written off according to the categories below.
+
+  ## CATEGORIES
+  - [bold]Category 1, Retained.[/bold] Executives, research staff holding specimen data, and synthetic units. A synthetic costs more to replace than most contract crews.
+  - [bold]Category 2, Recoverable.[/bold] Skilled staff whose training transfers to another site. Retrieve if space allows.
+  - [bold]Category 3, Expendable.[/bold] Contract labour, indentured colonists and dependants. No retrieval is to be planned for this category.
+  - [bold]Category 4, External.[/bold] Colonial Marine and garrison personnel. Their loss is carried by their government and is not a Company cost.
+
+  ## LANGUAGE
+  Written reports will not use the following words. Use the replacement.
+  - killed: discontinued
+  - infected: carrying
+  - evacuation: selective retrieval
+  - abandoned: left in place
+  - bioweapon: [color=#3A3A36]########[/color]
+
+  ## LIABILITY
+  Clause 14(c) of the standard frontier contract releases the Company from loss of life arising from hazards native to the site. Any Class Black organism is to be recorded as native, wherever it actually came from.
+
+  [color=#6FA8FF][italic]Our note: the synthetic on your colony carries a copy of this schedule. Ask it which category you are in. It will tell you the truth, unless somebody has told it not to.[/italic][/color]
+
+  [netlink="Back to the dump" link="wyleaks.deep"]
+</Document>

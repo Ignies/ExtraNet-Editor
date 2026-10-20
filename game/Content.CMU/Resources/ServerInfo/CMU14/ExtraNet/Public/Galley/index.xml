@@ -1,0 +1,11 @@
+<Document>
+  <CMUNetStyle Background="#1E1A14" Text="#EDE3CF" Heading="#F2A33A" Link="#8CCB6A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Galley/banner.png" MaxHeight="150"/>
+  <CMUNetAd Id="CMUDeepAdCoffeeMachine"/>
+  # THE GALLEY BINDER
+  [italic]Every dish the colony galleys know, straight from the cook's binder.[/italic]
+
+  Search by dish or by whatever is left in the cold store. Underlined ingredients have their own recipe: hover to see it, click to look it up. Cooking times are for a standard galley microwave.
+
+  <CMUNetRecipes Kind="Food"/>
+</Document>

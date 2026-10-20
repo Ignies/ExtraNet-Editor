@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#0B0B05" Text="#E8E8C8" Heading="#FFE000" Link="#FF5050" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/VeilTruth/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="WAKE UP COLONIST  ///  WHY DID HADLEY'S HOPE STOP ANSWERING  ///  YOUR COFFEE IS NOT JUST COFFEE  ///  GATEWAY STATION: HAS ANYONE ACTUALLY BEEN  ///  THE PROCESSOR KNOWS YOUR NAME  ///  ASK QUESTIONS" Speed="110" Color="#FFE000"/>
+  # VEIL TRUTH
+  <CMUNetBlink Rate="0.4">
+    [color=#FF5050][bold]THEY DO NOT WANT YOU TO READ THIS PAGE[/bold][/color]
+  </CMUNetBlink>
+
+  [italic]What the relay will not tell you. Independent, unfunded and unafraid. Run from a terminal they have not found yet.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Clothing/Head/Hats/paper.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/radio.rsi" State="walkietalkie" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Drinks/coffee_joe.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  ## TODAY'S TRUTHS
+  - [bold]HADLEY'S HOPE.[/bold] One hundred and fifty eight families. One colony. Silence. The Company says it is cooperating with the appropriate authorities. Name one authority. You cannot. Neither can they.
+  - [bold]THE COFFEE.[/bold] The vending coffee on your colony tastes the same as the vending coffee on every other colony. Every one. Ask yourself why. Then ask yourself why you sleep so well.
+  - [bold]THE PROCESSOR.[/bold] Your atmosphere processor makes air. Fine. Then why does it need a staff of forty, a fence and a Company liaison who has never once been seen to breathe heavily?
+  - [bold]THE HOLO STARS.[/bold] Rex Maddox has survived on forty hostile worlds without a single scar. We have done the maths. We have a theory. See the Synthetics page.
+  - [bold]THE TATTLER.[/bold] Celebrity gossip is the oldest distraction in the book. While you read about noodles, they are reading about you.
+
+  ## WHAT WE BELIEVE
+  - Nobody goes quiet for no reason.
+  - Special order means something. We do not know what. Yet.
+  - The marines know more than they say. The marines always know more than they say.
+  - Your bunkmate is probably fine. Probably.
+
+  ## DIG DEEPER
+  - [netlink="The cover-ups" link="veiltruth.news/coverups"]
+  - [netlink="Synthetics among us" link="veiltruth.news/synthetics"]
+  - [netlink="The mailbag: you write, we listen" link="veiltruth.news/mailbag"]
+  - [netlink="What the Company wants you to read" link="prosperitytoday.news"]
+
+  [color=#7A7A50]veiltruth.news // if this site goes down, they found us // if this site stays up, they want you to think they have not // we accept tips, not money, unless it is a lot of money[/color]
+</Document>

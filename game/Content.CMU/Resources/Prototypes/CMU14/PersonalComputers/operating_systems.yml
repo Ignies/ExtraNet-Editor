@@ -1,0 +1,86 @@
+- type: cmuComputerOs
+  id: CMUOsSeegson
+  name: cmu-os-seegson-name
+  startLabel: cmu-os-seegson-start
+  # Named after the colony's network, like Sevastopol's Sevastolink: Stable Garrison boots GARRISONLINK.
+  namedAfterColony: true
+  # Shown in order. "name" shows the OS name as text. A missing file is skipped, so a PNG (or a .rsi with a
+  # "logo" state) can be dropped in later.
+  logos:
+  - /Textures/CMU14/PersonalComputers/Logos/seegson.png
+  - name
+  documents:
+  - name: README.TXT
+    path: /ServerInfo/CMU14/ExtraNet/Documents/seegson_readme.xml
+  homePage: colony.seegson.net
+  networks:
+  - CMUNetPublic
+  phosphor: "#3FE05A"
+  background: "#0A0E12"
+  bootLines:
+  - cmu-os-seegson-boot-1
+  - cmu-os-seegson-boot-2
+  - cmu-os-seegson-boot-3
+  - cmu-os-seegson-boot-4
+  - cmu-os-seegson-boot-5
+  - cmu-os-seegson-boot-6
+  bootSound:
+    path: /Audio/CMU14/ColonyEconomy/crt_startup.ogg
+  keySound:
+    path: /Audio/CMU14/ColonyEconomy/atm_type.wav
+  clickSound:
+    path: /Audio/CMU14/ColonyEconomy/atm_select.ogg
+
+- type: cmuComputerOs
+  id: CMUOsWeyland
+  name: cmu-os-weyland-name
+  startLabel: cmu-os-weyland-start
+  logos:
+  - /Textures/CMU14/PersonalComputers/Logos/weyland.png
+  documents:
+  - name: SECURITY.DOC
+    path: /ServerInfo/CMU14/ExtraNet/Documents/weyland_security.xml
+  homePage: intranet.wy
+  # Gunmetal with a gold trim, the Company's own terminals.
+  casing: Weyland
+  networks:
+  - CMUNetPublic
+  - CMUNetWeylandYutani
+  phosphor: "#FFB547"
+  background: "#120A02"
+  bootLines:
+  - cmu-os-weyland-boot-1
+  - cmu-os-weyland-boot-2
+  - cmu-os-weyland-boot-3
+  - cmu-os-weyland-boot-4
+  - cmu-os-weyland-boot-5
+  - cmu-os-weyland-boot-6
+  bootSound:
+    path: /Audio/CMU14/ColonyEconomy/crt_startup.ogg
+  keySound:
+    path: /Audio/CMU14/ColonyEconomy/atm_type.wav
+  clickSound:
+    path: /Audio/CMU14/ColonyEconomy/atm_select.ogg
+
+# The Marshals' terminal on their camera monitors. No logo file: the splash shows the name.
+- type: cmuComputerOs
+  id: CMUOsCMB
+  name: cmu-os-cmb-name
+  startLabel: cmu-os-cmb-start
+  homePage: cmb.bureau
+  casing: Cmb
+  networks:
+  - CMUNetPublic
+  - CMUNetCMB
+  phosphor: "#8FC4FF"
+  background: "#050A14"
+  bootLines:
+  - cmu-os-cmb-boot-1
+  - cmu-os-cmb-boot-2
+  - cmu-os-cmb-boot-3
+  bootSound:
+    path: /Audio/CMU14/ColonyEconomy/crt_startup.ogg
+  keySound:
+    path: /Audio/CMU14/ColonyEconomy/atm_type.wav
+  clickSound:
+    path: /Audio/CMU14/ColonyEconomy/atm_select.ogg

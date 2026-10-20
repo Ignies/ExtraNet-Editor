@@ -1,0 +1,32 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/Indentured/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="folder_blue" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="weya_pen" Scale="2"/>
+  </Box>
+  # WRITE A FRONTIER RESUME
+  [italic]Your resume is the first thing an employer reads, and often the only thing, because it arrives three months before you do.[/italic]
+
+  ## KEEP IT SHORT
+  One page. Employers on the frontier read resumes on a terminal with a cracked screen during a power cut. Put the important part at the top. The important part is that you are still alive.
+
+  ## LIST YOUR HYPERSLEEP
+  Long gaps in your work history are normal out here. Explain them. Hypersleep, 2179 to 2180 is fine. Hypersleep, can not remember is fine too. A gap that says do not ask is not fine and will be asked about.
+
+  ## SKILLS EMPLOYERS WANT
+  - Fixing things with the wrong part.
+  - Working nights without talking about what you saw.
+  - Getting on with Working Joes. They are on most colonies, and they remember who was rude.
+  - Operating a power loader, a drill or a crawler. Ideally not all at once.
+  - Reading a contract. Very rare. Very valuable. Some employers will not hire you for it.
+
+  ## SKILLS EMPLOYERS DO NOT WANT
+  - Union organising.
+  - Asking about the specimen handler listing.
+  - Any experience at all with the lower levels of a processor.
+
+  ## REFERENCES
+  Give two. A supervisor and a colleague. If both of them are on colonies that are not answering, give two more. Indentured understands. Indentured has seen a lot of resumes with that problem lately.
+
+  [netlink="Back to Indentured" link="indentured.jobs"]
+</Document>

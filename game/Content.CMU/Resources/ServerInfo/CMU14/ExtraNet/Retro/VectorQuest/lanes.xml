@@ -1,0 +1,27 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/VectorQuest/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/map_blips.rsi" State="uav" Scale="2"/>
+  </Box>
+  # SHIPPING LANES AND TRAVEL TIMES
+  [italic]How long it takes to get from here to there, if there is a ship going there, and if it is going today.[/italic]
+
+  ## TYPICAL JOURNEYS
+  - [bold]Gateway Station to the Core worlds.[/bold] Weeks. Well travelled. Expect queues at customs and a gift shop.
+  - [bold]Gateway Station to {colony}.[/bold] Months, in hypersleep, on a hauler, a supply run or a troopship if you have upset someone.
+  - [bold]{colony} to the next colony over.[/bold] Weeks, if a ship is going. A ship is usually not going.
+  - [bold]The Outer Veil to anywhere.[/bold] A long time. Bring a book. Bring several books. Bring a long book.
+
+  ## TRAFFIC REPORT
+  - [color=#FFE066]Heavy.[/color] Gateway approach. Three freighters, one Company yacht and a USCM troopship that will not say where it is going.
+  - [color=#FFE066]Slow.[/color] Outer Veil relay line. A buoy is down, so ships are navigating by the old charts.
+  - [color=#FF6655]Closed.[/color] The lane past the border survey zone, by joint order of the United Americas and the Union of Progressive Peoples, who agree on nothing except this.
+  - [color=#9BE15D]Clear.[/color] Every lane in the direction of the colonies that have gone quiet. Nobody is going that way.
+
+  ## ROUTE TIPS
+  - Book your hypersleep pod early. Window pods go first, and nobody knows why. There is nothing to see.
+  - Pack light. Your luggage travels separately. It arrives when it arrives.
+  - If a ship answers a distress call on the way, you will be late. You may be very late. Tell your family.
+
+  [netlink="Back to VectorQuest" link="vectorquest.nav"]
+</Document>

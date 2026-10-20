@@ -1,0 +1,40 @@
+<Document>
+  <CMUNetStyle Background="#1B0F12" Text="#E8D8DB" Heading="#E2483D" Link="#F0A04B" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/merc_red_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # CIVILIAN NOTICE
+  [italic]Help us do the job, and the job gets done faster.[/italic]
+
+  On a quiet day you will see a team walk past the mess and nothing else. When the Commanding Officer raises the alert state, the rules below apply to everyone on site.
+
+  ## AT A CHECKPOINT
+  - Stop when told. Keep your hands visible.
+  - Have your colony ID ready. Contractors also show a current work order.
+  - Declare any firearm before the search. Weapons without a Colonial Marshal licence are confiscated and logged.
+  - No photographs or recordings of checkpoints, posts or team movements.
+
+  ## CURFEW
+  - Curfew hours are posted here and called over the colony PA.
+  - Movement after curfew needs a pass from Colony Administration or the duty officer. Essential workers carry theirs.
+
+  ## WHEN THE SIREN SOUNDS
+  - Get indoors and away from windows. Stay until the all clear.
+  - Follow your block warden. Do not come to the compound gate; it will be closed.
+  - Shelter locations are listed by [netlink="Colony Administration" link="admin.colony.gov"].
+
+  ## WHAT TO REPORT
+  Good tips may be worth a [netlink="bounty" link="bounties.colony"].
+  - Unattended bags, crates or vehicles.
+  - Strangers asking about patrol times, the armoury or the landing pad.
+  - Cut fences, broken locks, missing explosives or mining charges.
+  - A gas alarm sounding, or a gas monitor that is dark, damaged or tampered with. Carbon monoxide has no smell.
+
+  We are not paid to care about your politics. We are paid to care about rifles.
+
+  ## OUTSIDE OUR CONTRACT
+  Operators do not collect debts, settle disputes between neighbours or enforce anybody else's contracts. Take those to the Colonial Marshals or to Administration. Complaints about an operator go in writing to the Executive Officer, who reads every one and forwards the serious ones to the client.
+
+  [netlink="Back to the contract board" link="command.govfor.mil"]
+</Document>

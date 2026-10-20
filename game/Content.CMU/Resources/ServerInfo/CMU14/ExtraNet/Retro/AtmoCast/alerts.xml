@@ -1,0 +1,31 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/AtmoCast/banner.png" MaxHeight="150"/>
+  <CMUNetBlink Rate="0.5">
+    [color=#FF5A3A][bold]SEVERE WEATHER ALERTS IN EFFECT[/bold][/color]
+  </CMUNetBlink>
+  # ALERTS
+  [italic]Watches, warnings and advisories for the colonies. Colonists should follow their administration's instructions first and AtmoCast second.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Effects/weather.rsi" State="strata_blizzard" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Effects/weather.rsi" State="hybrisa_rain" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Effects/weather.rsi" State="bigred_dust" Scale="2"/>
+  </Box>
+
+  ## BLIZZARD WARNING: ICE COLONIES
+  Whiteout conditions expected for the whole cycle. Do not travel between buildings without a guide rope. If you see someone at the end of the guide rope who should not be there, do not follow them.
+
+  ## MONSOON WATCH: JUNGLE COLONIES
+  Rainfall of up to a metre in a day. Low corridors may flood. Things that live in the low corridors may come up.
+
+  ## DUST ADVISORY: DESERT AND CANYON COLONIES
+  Dust storms may block the sun, the uplink and the dropship. Keep filters clean. Cover terminals. The dust gets into the keys and they will never feel the same.
+
+  ## ACID RAIN NOTICE
+  AtmoCast has received reports of acid burns on the outside of several colony structures. AtmoCast confirms that the weather on those colonies is not acidic. AtmoCast is not saying anything else.
+
+  ## PROCESSOR VENTING ADVISORY
+  Your atmosphere processor may vent steam at any time. Steam is not weather. Steam is very hot. Do not stand near the vents. Do not look into the vents. Do not ask SpaceGPT about the vents, it gets strange.
+
+  [netlink="Back to AtmoCast" link="atmocast.wx"]
+</Document>

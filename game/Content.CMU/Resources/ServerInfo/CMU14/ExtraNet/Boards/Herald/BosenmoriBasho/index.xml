@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/BosenmoriBasho/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Bosenmori Basho, filed from the press office by the Administrator's Office and from wherever the story is. Names, not numbers, since 2171.[/italic]
+
+  The air outside will kill you in minutes and the processor will not finish its work for decades. Until it does, check your mask, read the notices, then read us.
+
+  <CMUNetMarquee Text="LOCAL  ///  Mask checks at every airlock, every shift, no exceptions  ///  IASF jump training over the West Barrens: keep clear of the drop zones  ///  Names are read at the memorial wall on Pilgrim Path on the last rest day of the month" Speed="55" Color="#8A1C1C"/>
+</Document>

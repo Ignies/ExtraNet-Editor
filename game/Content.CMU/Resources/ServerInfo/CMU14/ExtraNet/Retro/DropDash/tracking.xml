@@ -1,0 +1,27 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/DropDash/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/PersonalComputers/Sites/Ads/billboards.rsi" State="dropship_gateway" Scale="2"/>
+  </Box>
+  # TRACK YOUR ORDER
+  [italic]Order DD-0447-{colony}. One Pizza Galaxy Family Box, one Late Bowl, extra napkins.[/italic]
+
+  ## STATUS
+  - [color=#2E8B57][bold]Order placed.[/bold][/color] Your order went out on the relay. Thank you!
+  - [color=#2E8B57][bold]Kitchen accepted.[/bold][/color] Pizza Galaxy has started your order. The garlic knot is in the oven.
+  - [color=#2E8B57][bold]Picked up.[/bold][/color] Your Dasher, Kowalski, has collected your food and is boarding the shuttle.
+  - [color=#2E8B57][bold]In transit.[/bold][/color] Your food is on its way to {colony}.
+  - [color=#FF3B00][bold]Delayed.[/bold][/color] Your shuttle has entered a hypersleep cycle. Your food has also entered a hypersleep cycle. It will be fresh when it wakes. Fresher than Kowalski.
+  - [color=#9A6A40][bold]Approaching.[/bold][/color] Your Dasher is in orbit above you. Estimated time to drop: soon.
+  - [color=#9A6A40][bold]Dropped.[/bold][/color] Your food has been dropped. Please go to your nearest landing pad.
+
+  ## YOUR DASHER
+  [bold]Kowalski[/bold], rated 4.9. Kowalski has made 2,211 drops and missed the pad four times. Kowalski would like you to know that the time with the canteen roof was not Kowalski's fault.
+
+  ## PROBLEMS WITH YOUR ORDER?
+  - [bold]Food is cold.[/bold] Your landing pad is too far from your bunk. This is not something DropDash can fix.
+  - [bold]Food is missing.[/bold] Check the landing pad again. Check around the landing pad. If the box is open and empty and there are marks on the pad, do not look for the food.
+  - [bold]Food is not what I ordered.[/bold] That is possible.
+
+  [netlink="Back to DropDash" link="dropdash.eats"]
+</Document>

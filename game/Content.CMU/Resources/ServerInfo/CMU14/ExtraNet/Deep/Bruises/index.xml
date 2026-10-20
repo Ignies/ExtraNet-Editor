@@ -1,0 +1,52 @@
+<Document>
+  <CMUNetStyle Background="#17110F" Text="#D8D0C6" Heading="#D9574A" Link="#8DB6DA" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Bruises/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="WRITE IT DOWN THE SAME NIGHT  ///  PHOTOGRAPH THE BRUISE BEFORE IT TURNS  ///  BADGE NUMBERS, NOT NAMES  ///  NO REVENGE TALK, EVER  ///  KEEP A COPY OFF THE NETWORK" Speed="50" Color="#D9574A"/>
+  # THE BRUISE BOOK
+  [italic]A record of what the badge did when it thought nobody was keeping one.[/italic]
+
+  This board keeps accounts of force used on colonists by colony security, by the deputies and Marshals of the Colonial Marshal Bureau, and by GOVFOR garrison troops. Holding cells, curfew sweeps, checkpoints, the back of a transport. We are not a court and we are not a cell. We keep the record because the people who are supposed to keep it are the people in it.
+
+  ## BOARD RULES
+  - Badge numbers, unit patches, hull numbers, shift times. Never an officer's name, home or family. We are here to make a record, not a target.
+  - No talk of getting even. Those posts come down and the poster is told why. One hurt deputy and the whole colony pays for it in curfew hours.
+  - Keep what you saw apart from what you were told. A rumour marked as a rumour is useful. A rumour dressed as a fact gets every account on this board laughed out of the next inquiry.
+  - Photographs of injuries go to the mods, not the board. Date on every one.
+  - If you wear a uniform and you want to tell us something, you are welcome. Several of you already have.
+
+  <CMUNetBlink Rate="0.9">
+    [color=#D9574A][bold]/// IF SOMEONE IS HURT RIGHT NOW, GET THEM TO THE CLINIC FIRST. THE BOARD CAN WAIT. ///[/bold][/color]
+  </CMUNetBlink>
+
+  ## PINNED
+  - [netlink="Holding cell accounts (one thread, all colonies)" link="bruises.deep/holding"] [color=#7A6F68]9 replies, last post by observer_k, 83.05.02[/color]
+  - [netlink="The curfew sweep: hab block C, 0300" link="bruises.deep/curfew"] [color=#7A6F68]9 replies, last post by ledger_keeper, 83.04.19[/color]
+  - [netlink="Checkpoint shooting. The report says armed. He had a thermos." link="bruises.deep/shooting"] [color=#7A6F68]10 replies, last post by brother_of_the_lamp, 83.05.11[/color]
+
+  ## RECENT THREADS
+  [color=#7A6F68][italic]Older threads were lost when the last relay was seized. Titles kept, bodies gone.[/italic][/color]
+  - Garrison gym used as a holding pen again? [color=#7A6F68]14 replies[/color]
+  - Arrest record lost by the Marshal office. My brother is still in the cell it was about. [color=#7A6F68]22 replies[/color]
+  - Stun baton burns: what they look like a week later [color=#7A6F68]9 replies[/color]
+  - Do GOVFOR rules of engagement even apply to us? Anyone seen them written down? [color=#7A6F68]31 replies[/color]
+  - [color=#7A6F68]locked[/color] Names of the night roster (removed, see rule one)
+
+  ## HOW TO FILE A COMPLAINT NOBODY READS
+  [italic]Pinned post by ledger_keeper. Read this before you post your first account.[/italic]
+
+  Every complaint on this colony goes, in the end, to the desk of the people you are complaining about. Know that before you start. File anyway. A complaint nobody reads is still a date on a page, and pages outlast postings.
+
+  - [bold]Colony security.[/bold] The incident form goes to the security office front desk. The front desk is staffed by the officers on the roster that week. Ask for the receipt number. If they tell you there is no receipt number, write down the time they said it and who was on the desk.
+  - [bold]Marshals and deputies.[/bold] A complaint against a deputy goes to the Marshal. A complaint against the Marshal goes to the sector office, by courier, which can take a season. Mark the day you handed it over. If an Investigation Rights Observer is on colony, give them a copy too. They cannot act on it, but they are allowed to write it down, and what they write goes out on a ship that security does not load.
+  - [bold]GOVFOR.[/bold] A civilian has no standing to complain to the garrison directly. It goes through the colony administrator, who forwards it to the garrison's own legal officer, who reports to the commanding officer whose troops did it. You will get a letter that says the matter was reviewed. Keep the letter. The wording changes when someone upstairs starts paying attention.
+  - [bold]Always.[/bold] Three copies, one kept off every network. Clinic notes the same day, in your words, not theirs. Witnesses who will give a shift time, even if they will not give a name.
+
+  Then post it here, so that when somebody finally does read one, they find a hundred.
+
+  ## ELSEWHERE
+  - [netlink="marshalwatch.deep" link="marshalwatch.deep"] keeps files on the Marshals who were bought. We keep the bruises of the ones who did not need to be.
+  - [netlink="lastseen.deep" link="lastseen.deep"] for the people who went into holding and did not come out the other side.
+
+  ## NEW POSTS
+  [color=#7A6F68]Anyone may post. Read the rules first. Posts run below, newest last.[/color]
+</Document>

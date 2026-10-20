@@ -1,0 +1,19 @@
+<Document>
+  <CMUNetStyle Background="#171A12" Text="#D4CFAE" Heading="#E3B341" Link="#8FB35A" Font="Terminal"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/uscm_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Structures/wallflags.rsi" State="cmflag" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Items/DeskFlags/uscmdeskflag.rsi" State="uscmflag" Scale="3"/>
+  </Box>
+
+  # UNITED STATES COLONIAL MARINE CORPS
+  [bold]4TH DIVISION / 13TH STRIKE GROUP / 13TH REGIMENT - GARRISON DETACHMENT, {colony}[/bold]
+  <CMUNetMarquee Text="BY ORDER OF THE DETACHMENT COMMANDER  ///  ALL PERSONNEL CARRY COLONY ID AT ALL TIMES  ///  CURFEW AND ZONE ORDERS ARE POSTED BELOW AND TAKE EFFECT ON POSTING  ///  REPORT UNATTENDED ITEMS TO THE NEAREST MARINE  ///  SEMPER FIDELIS" Speed="60" Color="#E3B341"/>
+  [bold]OFFICIAL BULLETIN BOARD OF THE COLONIAL MARINE GARRISON.[/bold] Orders on this board are issued by the Commanding Officer or by staff acting in the Commanding Officer's name, and are effective upon posting. Civilians and contractors will read, understand and comply. If an order is unclear, ask a Marine. A Marine will explain it.
+
+  The Lucky Thirteen has been posted to {colony} under the authority of the United Americas to protect this colony, its people and its works. We intend to leave it in better shape than we found it.
+
+  <CMUNetBlink Rate="0.7">
+    [color=#E3B341]OFFICIAL USCM CHANNEL - ALL TRAFFIC IS LOGGED AND REVIEWED[/color]
+  </CMUNetBlink>
+</Document>

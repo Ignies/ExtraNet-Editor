@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#E9F0E9" Text="#1C2A1C" Heading="#B02020" Link="#1E5AA0" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ClinicDispensary/banner.png" MaxHeight="150"/>
+  # {colony} CLINIC DISPENSARY
+  [italic]The counter at the front of the colony clinic. Medicines, first aid stock and advice, for every colonist with an ID card.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/first_aid_kits.rsi" State="firstaid" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/health_analyzer.rsi" State="health" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/stethoscope.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  <CMUNetBlink Rate="0.8">
+    [color=#B02020][bold]IF SOMEONE IS BADLY HURT, DO NOT READ THIS PAGE. GET THEM TO THE CLINIC.[/bold][/color]
+  </CMUNetBlink>
+
+  ## FROM THE DUTY MEDIC
+  The dispensary is small and the colony is not. We stock the Lasalle standard list, we get a resupply when the freighter comes in and we run out of the popular things a week before it does. Please do not hoard. If you take three bottles of burn tablets home in case of a fire, there will be none on the counter when there is a fire.
+
+  We are also the people who will patch you up when the shift goes wrong. Be kind to the counter staff. They are usually the same people who will be holding the gauze.
+
+  ## THIS WEEK AT THE COUNTER
+  - [bold]In stock[/bold]: bruise and burn tablets, anti-toxin, first aid autoinjectors, gauze and ointment.
+  - [bold]Low[/bold]: breathing tablets. Please only ask if you need them.
+  - [bold]Out[/bold]: eye tablets, until the next freighter. Wear your goggles.
+  - [bold]Reminder[/bold]: annual health checks for all contract workers. Book at the counter.
+
+  ## THE DISPENSARY
+  - [netlink="What is on the shelf" link="dispensary.colony.med/shelf"]
+  - [netlink="Opening hours, prescriptions and rules" link="dispensary.colony.med/hours"]
+  - [netlink="Basic first aid until help arrives" link="dispensary.colony.med/firstaid"]
+  - [netlink="Lasalle Bionational product information" link="pharmacy.lasalle.bio"]
+
+  [color=#5A6A5A]Run by the colony clinic under the frontier clinic agreement. Stock supplied by Lasalle Bionational. This page is information, not treatment.[/color]
+</Document>

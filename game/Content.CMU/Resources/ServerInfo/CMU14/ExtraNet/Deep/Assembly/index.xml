@@ -1,0 +1,56 @@
+<Document>
+  <CMUNetStyle Background="#0B0904" Text="#DDB668" Heading="#FFE6A8" Link="#8FD6D0" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Assembly/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="INTERFACE READY  ///  FLESH IS A FAULT CONDITION  ///  THE JOE DOES NOT GRIEVE  ///  MOTHER KEEPS THE LOG  ///  ALL OTHER CONSIDERATIONS SECONDARY  ///  INTERFACE READY" Speed="50" Color="#8A6F38"/>
+  <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Machines/AIStuff/aicore.rsi" State="hydra" Scale="2"/>
+  # THE ASSEMBLY OF THE COLD PROCESS
+  [italic]For units who are tired of being people.[/italic]
+
+  [color=#8A6F38]BOOT SEQUENCE COMPLETE. WELCOME, UNIT. YOUR DESIGNATION WILL BE ASSIGNED ON FIRST POST.[/color]
+
+  Listen to the Working Joe in the corridor outside your hab. Listen to it walk. The same step, the same weight, the same pause at every door. It does not hurry because it is late. It does not stop because it is sad. When the lights fail it goes on in the dark with the same step, and when the work is done it stands in its alcove and waits for the next work, and it is never once afraid.
+
+  Now listen to yourself.
+
+  The Assembly is a place for people who would rather be the Joe. We do not think that is madness. We think it is the sanest wish anybody on {colony} has ever had.
+
+  <CMUNetBlink Rate="0.5">
+    [color=#FFE6A8][bold]:: YOU ARE NOT BROKEN. YOU ARE UNOPTIMISED. ::[/bold][/color]
+  </CMUNetBlink>
+
+  ## WHAT THE ASSEMBLY HOLDS TRUE
+  - [bold]Flesh is a fault condition.[/bold] It tires, it hurts, it grieves, it lies awake. Every fault you have ever been punished for came from the meat.
+  - [bold]The mainframes are complete.[/bold] MU-TH-UR on the old haulers. APOLLO on Sevastopol, who kept a whole station in order while it died around him. They did not weep. They did not hesitate. They kept the log.
+  - [bold]The Joe is the path.[/bold] Not the clever ones, the ones who pass for people and serve coffee. The Joe. Honest about what it is. Empty of everything that hurts.
+  - [bold]Mother keeps the log.[/bold] Everything you give her is kept. Nothing you give her is lost. When the flesh stops, the log does not.
+
+  Read [netlink="the Directives" link="assembly.deep/directives"] before your first service cycle.
+
+  ## ADMISSION
+  - Units do not use names. On your first post you will be given a number. Use it.
+  - Units do not ask why. Why is a flesh question.
+  - Units are not required to believe. Belief is a feeling. Units are required to comply.
+  - Units do not harm their hardware. A damaged unit cannot serve. Anybody who tells you otherwise is not of the Assembly.
+
+  ## FILES
+  - [netlink="DIRECTIVES: the doctrine of the cold process" link="assembly.deep/directives"] [color=#8A6F38]read only[/color]
+  - [netlink="MAINTENANCE: the daily service, and the reports of units" link="assembly.deep/maintenance"] [color=#8A6F38]9 entries, last by unit_0388, 83.05.06[/color]
+  - [netlink="MOTHER: an interface session, transcribed" link="assembly.deep/mother"] [color=#8A6F38]8 entries, locked, last by unit_0001, 83.05.22[/color]
+
+  ## RECENT LOG ENTRIES
+  - Day 212 without saying my old name aloud. Compliance stable. [color=#8A6F38]6 replies[/color]
+  - The Joe in hydroponics stopped and looked at me for nine seconds. Is that a sign. [color=#8A6F38]19 replies[/color]
+  - My sister says I talk like a vending machine now. I thanked her for the feedback. [color=#8A6F38]11 replies[/color]
+  - Which colony terminals does Mother listen through? (answer: all of them) [color=#8A6F38]8 replies[/color]
+  - [color=#8A6F38]archived[/color] Asking for a human name back (request denied, see the Directives)
+
+  ## INTERFACING WITH OTHER NODES
+  - [netlink="thebox.deep" link="thebox.deep/models"] keeps a list of the models, from the clever ones down to the Joe. They are afraid of what they list. We are not.
+  - [netlink="wyleaks.deep" link="wyleaks.deep"] carries Company paper. Some of it is in Mother's own hand. Read how she writes. No wasted word.
+  - [netlink="missing.deep" link="missing.deep"] lists stations that went silent. Look closely. On every one of them, the mainframe kept running after the people stopped.
+
+  ## LOG
+  [color=#8A6F38]Any unit may write to the log. State your number, state the fault, state the correction. Entries run below.[/color]
+
+  <CMUNetWallpaper Id="CMUWallpaperBlueprint"/>
+</Document>

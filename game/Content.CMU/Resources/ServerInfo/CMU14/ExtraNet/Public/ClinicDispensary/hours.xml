@@ -1,0 +1,34 @@
+<Document>
+  <CMUNetStyle Background="#E9F0E9" Text="#1C2A1C" Heading="#B02020" Link="#1E5AA0" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ClinicDispensary/banner.png" MaxHeight="150"/>
+  # OPENING HOURS, PRESCRIPTIONS AND RULES
+  [italic]Posted on the dispensary hatch. Read before you knock.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/clipboard.rsi" State="clipboard" Scale="3"/>
+
+  ## OPENING HOURS
+  - [bold]First shift[/bold]: counter open, all services.
+  - [bold]Second shift[/bold]: counter open until the evening meal.
+  - [bold]Night shift[/bold]: hatch closed. Ring the bell for the duty medic, emergencies only.
+  - [bold]Rest days[/bold]: prescriptions only, for one hour after the morning meal.
+  - [bold]Freighter day[/bold]: closed while the stock is counted. Unless you are bleeding.
+
+  ## PRESCRIPTION NOTICE
+  [color=#B02020][bold]Prescription medicines are supplied only against a prescription signed by a colony clinician.[/bold][/color]
+  - The prescription must show your name, your colony ID number, the medicine and the date.
+  - Prescriptions are good for one fill unless the clinician writes otherwise.
+  - Lost prescriptions are not replaced at the counter. See the clinician again.
+  - The counter does not take prescriptions over the relay, by radio or from your friend who says he is a doctor.
+
+  ## RULES
+  - Bring your colony ID card. No card, no medicine, except in an emergency.
+  - One bottle of each kind per colonist per week, unless prescribed.
+  - No trading, bartering or reselling of dispensary stock. It is the colony's medicine, not yours.
+  - Garrison personnel see their own corpsman first. The counter will help in an emergency, and has done, often.
+  - During a lockdown, a quarantine or a mass casualty event, the counter closes and all stock goes to the clinic floor. Stay where your administration tells you.
+
+  ## RETURNS
+  Bring back any medicine you no longer need, any bottle past its date and any autoinjector that has been dropped, crushed or left in the sun. The counter will dispose of it safely. Do not throw medicine into the colony waste chute. It ends up in the hydroponics water.
+
+  [netlink="Back to the dispensary" link="dispensary.colony.med"]
+</Document>

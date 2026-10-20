@@ -1,0 +1,21 @@
+<Document>
+  <CMUNetStyle Background="#15110D" Text="#D8CDB2" Heading="#E2412B" Link="#86C25B" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Cell/banner.png" MaxHeight="150"/>
+  <CMUNetBlink Rate="0.6">
+    [color=#E2412B][bold]RELAY LIVE. THIS WALL IS WIPED AT EVERY SHIFT CHANGE.[/bold][/color]
+  </CMUNetBlink>
+
+  You found the wall. If you got here by accident, close the window and forget the address. If you got here on purpose, read before you write.
+
+  This is where the {colony} cell posts its orders, its calls for hands and its meeting signs. Only comrades who hold the relay key can put an order up. Anyone can answer under one: ask, offer, warn. We read everything. We answer what is safe to answer, and we never answer twice in the same place.
+
+  What we need this shift is what we always need. Hands that know a cutting torch. Medics who will not ask how the wound happened. Someone on the loading dock who can lose a crate off a manifest. If that is you, you already know which posting to answer.
+
+  Orders below stand for this shift only. When the wall is wiped, so are they.
+
+  Read the [netlink="manifesto" link="cell.deep/manifesto"] so you know what you are joining. Read the [netlink="opsec sheet" link="cell.deep/opsec"] before you type a single word, because the Marshals read this wall too.
+
+  [color=#86C25B]Remember Xibou.[/color]
+
+  <CMUNetMarquee Text="XIBOU 2164 - WE REMEMBER  ///  THE COMPANY OWNS THE AIR, NOT US  ///  NO NAMES - NO FACES - NO RADIO  ///  THE COLONY BELONGS TO THOSE WHO BUILT IT" Speed="60" Color="#E2412B"/>
+</Document>

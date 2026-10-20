@@ -1,0 +1,37 @@
+<Document>
+  <CMUNetStyle Background="#F3F1EC" Text="#1E1E1E" Heading="#8A6A1C" Link="#1F4E79" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Ishikawa/banner.png" MaxHeight="150"/>
+  # PRESS ROOM
+  [italic]Statements, appearances and the colony visit schedule of the Executive Vice President. Accredited press may request interviews through the Gateway office.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/broadcasting_camera.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/weya_clipboard.rsi" State="clipboard" Scale="3"/>
+  </Box>
+
+  ## LATEST STATEMENTS
+  - [bold]Record quarter for the Colonial Development Division.[/bold] Ninety-eight point seven percent of colonies reported on schedule. Ms. Varga-Ishikawa thanked every colonist by name, which took the communications office four days to arrange.
+  - [bold]Thirty relay buoys approved.[/bold] The first ten will be laid along the Outer Veil this year. Colonies on the new routes can expect their relay mail roughly a week sooner.
+  - [bold]Clinic partnership renewed.[/bold] The Division and Lasalle Bionational have renewed the frontier clinic agreement for a further ten years. Dispensaries will carry a standard Lasalle stock list across all Division colonies.
+  - [bold]On recent relay rumours.[/bold] The Office does not respond to anonymous postings, to tabloid speculation or to the so called independent truth sites. Colonists with genuine concerns should raise them with their colony administration.
+
+  ## COLONY VISIT SCHEDULE
+  [italic]Ms. Varga-Ishikawa visits at least twelve colonies a year in person. Dates are subject to transit and security conditions.[/italic]
+  - [bold]83.04.18[/bold] Gateway Station. The Fifty Who Build dinner. Black tie, no speeches longer than six minutes, by her request.
+  - [bold]83.05.30[/bold] Oxley's Butte. A tour of the dam and the colony school.
+  - [bold]83.07.02[/bold] Hope's Retreat. Opening of the new hydroponics wing.
+  - [bold]83.08.21[/bold] Barker's Lament. A town meeting in the colony canteen. Questions will be taken from the floor.
+  - [bold]83.10.11[/bold] Solaris Ridge. [color=#9A2A2A]POSTPONED[/color] on the advice of the Colonial Marines garrison. A new date will be announced.
+  - [bold]83.11.26[/bold] {colony}. To be confirmed. If your colony administration would like a visit, the Office would like to hear from them.
+
+  ## SHE SAID IT
+  - On her management style: I read every report. Then I go and look.
+  - On the frontier: The frontier is not a place. It is a schedule that has not been met yet.
+  - On the violin: Please stop asking me to play at dinners. The people who ask have not heard me.
+
+  ## PRESS CONTACTS
+  Office of the Executive Vice President, Colonial Development Division, Weyland-Yutani Tower, Gateway Station. Interview requests take six to eight weeks. Requests from the Colony Tattler are not answered.
+
+  - [netlink="Prosperity Today: good news from the colonies" link="prosperitytoday.news"]
+  - [netlink="Back to the Office of the Executive Vice President" link="ishikawa.weyland-yutani.com"]
+</Document>

@@ -1,0 +1,26 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/emblem.png" MaxHeight="88"/>
+  # Colony History
+
+  [italic]How a colony like {colony} comes to be, for new arrivals. The names change from world to world. The pattern rarely does.[/italic]
+
+  ## The Survey
+  Every colony starts as a line in a survey catalogue: a world rated for its air, its rock and what can be dug, grown or refined there. Most surveyed worlds are never settled. The ones that are have something on them or under them worth the cost of the trip.
+
+  ## The Charter
+  Nobody settles a world on their own money. A government grants a charter, and a company or a consortium of them puts up the habitat, the power and the landing pad in exchange for the right to work the place for decades. Colonists sign contracts that tie their passage, housing and wages to the work. The bargain is posted at the [netlink="Colony Administration" link="admin.colony.gov/charter"], and it is worth reading twice.
+
+  ## The Stakeholders
+  - [bold]The charter holders[/bold] own the works and most of the payroll.
+  - [bold]The Administration[/bold] keeps the records, signs the ordinances and answers petitions.
+  - [bold]The garrison[/bold] is here to defend the colony and to guard the investment. Residents may decide for themselves which comes first.
+  - [bold]The embassies[/bold] look after their own citizens and their own governments' interests, not always in that order.
+
+  ## The Hard Lessons
+  Frontier colonies learn the same lessons over and over. Safety spending lags behind production. One failure in the air or the rock can kill more people in an hour than a decade of accidents. Official counts come late. The safety articles in every colonial charter were written after Albacetire, 2168, and they were paid for in names.
+
+  ## The Press
+  Everything else on the net belongs to somebody with a stake in {colony}. The company sites sell the company, the Administration posts what it has signed and the garrison says what it is cleared to say. A colony paper exists to write down what happened, who it happened to and whether the promises in the charter were kept. The Herald keeps that archive for {colony}, and keeps it open to anyone who asks.
+
+  [netlink="Back to the front page" link="herald.colony.news"]
+</Document>

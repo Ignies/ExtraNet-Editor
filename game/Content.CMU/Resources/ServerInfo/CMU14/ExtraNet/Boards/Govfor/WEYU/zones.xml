@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#E8EBEE" Text="#1E2A33" Heading="#0B3D63" Link="#1F6FB2" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/wy_white_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # ACCESS TIERS
+  The Operations Director assigns every area of the colony to one of four access tiers. Changes are published on the front page and may take effect at any shift change. Where signage and an operator disagree, the operator's instruction applies.
+
+  ## TIER 1: PUBLIC
+  [color=#2E8B57][bold]UNRESTRICTED[/bold][/color]
+  - Living blocks, the mess, shops, the clinic waiting room and the bar.
+  - No screening. Patrols pass through. Please carry your ID.
+
+  ## TIER 2: STAFF
+  [color=#B8860B][bold]SCREENED[/bold][/color]
+  - Landing pads, fuel stores, the power plant, atmosphere and water works, the comms relay and Colony Administration.
+  - ID verified on entry. Bags may be inspected. No loitering or recording.
+
+  ## TIER 3: RESTRICTED
+  [color=#B22222][bold]AUTHORISED PERSONNEL ONLY[/bold][/color]
+  - The security compound, armoury, vehicle park, operations centre and the perimeter fence line.
+  - Escorted entry with written authorisation only. Operators are authorised to use force to stop unauthorised entry.
+
+  ## TIER 4: CONTAINMENT
+  [color=#0B3D63][bold]NO ENTRY[/bold][/color]
+  - Declared during an incident: gas release, fire, structural failure, quarantine, unexploded charges or hostile action.
+  - Nobody crosses the cordon, residents or operators, unless assigned to the response. Containment procedures override all other instructions.
+
+  ## MARKINGS
+  - Chevron striping on a barrier marks a tier boundary.
+  - Hazard striping marks a screening lane. Stop at the painted bar.
+  - Flashing amber lights on a cordon indicate Tier 4. Turn back.
+
+  Tier changes are also published by the [netlink="Colony Herald" link="herald.colony.news"] when the press is on shift.
+
+  [netlink="Back to service notices" link="command.govfor.mil"]
+</Document>

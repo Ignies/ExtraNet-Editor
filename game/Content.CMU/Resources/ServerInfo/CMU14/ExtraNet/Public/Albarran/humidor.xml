@@ -1,0 +1,34 @@
+<Document>
+  <CMUNetStyle Background="#2B1A10" Text="#EADBC4" Heading="#D9A441" Link="#E8C77A" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Albarran/banner.png" MaxHeight="150"/>
+  # THE HUMIDOR
+  [italic]The Albarran range. Prices in UA dollars, at the Gateway shop. Colony prices include freight, and freight includes patience.[/italic]
+
+  ## THE CORONA
+  <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigars/cigar.rsi" State="unlit-icon" Scale="4"/>
+  The house cigar since 2061. Medium bodied, with cedar, leather and a little coffee. Forty five minutes if you let it. [bold]$14 each, $260 the box of twenty five.[/bold]
+
+  ## THE ORO
+  <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigars/cigar-gold.rsi" State="unlit-icon" Scale="4"/>
+  Wrapped in leaf from a single row of a single field, aged for six years before rolling and banded in gold leaf. Rich and long. Offered to captains, ambassadors and colonists who have just paid off their contract. [bold]$45 each.[/bold]
+
+  ## THE TRAVELLING CASE
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigars/case.rsi" State="closed" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Smokeables/Cigars/case.rsi" State="open" Scale="3"/>
+  </Box>
+  Eight Coronas in a sealed case, built to keep its own humidity through a hypersleep cycle. Tested on the long haul to Arcturus and back. [bold]$140 with cigars, $40 refilled.[/bold]
+
+  ## THE POCKET CASE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigars/cigar_case.rsi" State="closed" Scale="3"/>
+  Seven cigars, one jacket pocket. Popular with officers, who are not supposed to keep cigars in their jacket and all do. [bold]$25 empty.[/bold]
+
+  ## A NOTE ON OTHER CIGARS
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigars/tarback_tube.rsi" State="tarbacktube" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigars/shio_royals_tube.rsi" State="shioroyalstube" Scale="3"/>
+  </Box>
+  The House is often asked about other cigars sold on the frontier. We are too polite to say much. Tarbacks, we are told, are rolled in Columbia, a place our family has looked for on several maps without success. Shio Royals are made by a very large company in Japan and are, by every account including their own, OK. We wish both makers well. We simply suggest that if you are going to smoke one cigar this year, it should be one somebody made with their hands.
+
+  [netlink="Back to Casa Albarran" link="albarran.cigars"]
+</Document>

@@ -1,0 +1,33 @@
+<Document>
+  <CMUNetStyle Background="#2A1A0E" Text="#F2E3C6" Heading="#E8A33C" Link="#9FD0E0" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/RosieKetch/banner.png" MaxHeight="150"/>
+  # THE DUST ROAD TOUR
+  [italic]2183. Twelve colonies, one crawler, a lot of dust. Doors open after the last shift change. Shows end before curfew, or when the garrison asks politely.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/Clothing/Shoes/Boots/cowboybootsfancy.rsi" State="icon" Scale="3"/>
+
+  ## SPRING
+  - [bold]83.03.14[/bold] Barker's Lament, the pithead canteen. The miners asked for Mama Was a Pipefitter twice. They are getting it three times. [color=#8FD18F]ON SALE[/color]
+  - [bold]83.03.29[/bold] Oxley's Butte, the dam machine hall. Where the new record was made. Earplugs at the door. [color=#8FD18F]ON SALE[/color]
+  - [bold]83.04.12[/bold] Chance's Claim, the town square, weather permitting, which it never is. [color=#8FD18F]ON SALE[/color]
+
+  ## SUMMER
+  - [bold]83.06.02[/bold] Hope's Retreat, the prefab hall. Families welcome. Rosie will sign anything except contracts. [color=#8FD18F]ON SALE[/color]
+  - [bold]83.06.20[/bold] Fort McNeil, the drill yard at White Antre. Bring a coat. Bring two. [color=#8FD18F]ON SALE[/color]
+  - [bold]83.07.08[/bold] Shepherds' Pride, the fishery landing. The fishermen have promised a fish fry. The band has promised not to play near the fish fry. [color=#8FD18F]ON SALE[/color]
+  - [bold]83.07.25[/bold] Port Nereid, the spaceport hangar, opening for nobody and closing for nobody. [color=#E8A33C]FEW LEFT[/color]
+
+  ## AUTUMN
+  - [bold]83.09.06[/bold] Solaris Gulch, the mine road bar. Twenty-one and over, and the bar has made it clear they mean it. [color=#8FD18F]ON SALE[/color]
+  - [bold]83.09.27[/bold] Kutjevo, the refinery floor, between the night shift and the sandstorm. [color=#8FD18F]ON SALE[/color]
+  - [bold]83.10.15[/bold] Hybrisa Prospera. A seated show at the Night Gold Casino. Rosie has asked us to tell you she does not gamble, and that the casino has asked her to stop telling people that. [color=#E8A33C]FEW LEFT[/color]
+
+  ## CHANGES
+  - [bold]Gixen's Caverns[/bold]. [color=#E06050]POSTPONED[/color]. The colony issued an air quality warning on the day of the show. Rosie sang one song over the colony radio from inside the crawler with the vents shut. The recording is in the store.
+  - [bold]Corsat Station[/bold]. [color=#E06050]DECLINED[/color]. The station informed our booking agent that it is a research facility, that it is not taking visitors and that it would prefer we did not land. We have written a song about it anyway.
+
+  ## GETTING IN
+  Tickets are sold at your colony administration desk, or at the door if the crawler is parked outside. Garrison personnel get in free when off duty. Synthetics get in free when on duty, because they always are. Nobody has to buy a ticket over the relay, and anyone who asks you to is not Rosie.
+
+  [netlink="Back to Rosie Ketch" link="rosieketch.music"]
+</Document>

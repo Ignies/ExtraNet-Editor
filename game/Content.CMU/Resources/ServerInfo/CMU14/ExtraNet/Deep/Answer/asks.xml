@@ -1,0 +1,79 @@
+<Document>
+  <CMUNetStyle Background="#090806" Text="#BDB5A6" Heading="#E6DCC2" Link="#C98C52" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Answer/banner.png" MaxHeight="150"/>
+  # WHAT IT ASKS
+  [color=#5E5648]Kept by first_answer, in order. Each item is the first night it was heard asking. It asks in many voices. The voice is noted where it is known.[/color]
+
+  Everything it says is a request. People hear it calling and think it is pretending to be lost. It is not pretending anything. It is asking. These are the things it has asked us for, and what we gave.
+
+  ## 1. A name
+  [color=#5E5648]First heard: before the Answering. In nearly every voice.[/color]
+  [italic]Who is there? Who is that? Tell me your name.[/italic]
+
+  The other board says never give it. We gave it ours. It has never once forgotten one.
+
+  ## 2. To be answered
+  [color=#5E5648]First heard: 83.02.20. Henrik, my husband.[/color]
+  [italic]Marta? Marta, is that you?[/italic]
+
+  We answered. Of everything on this list, that is what it seems to want most. It goes quiet, when you answer it, the way a child goes quiet when it is finally picked up.
+
+  ## 3. Words
+  [color=#5E5648]First heard: 83.03.04. Several voices at once, overlapping.[/color]
+  [italic]Say it again. Say it again. Say it again.[/italic]
+
+  This is where the tithe began. It wanted more of us. We each gave it one sentence that was only ours, so it would have something to keep us by. It repeats them now, at the stump, in our voices, in the order we gave them.
+
+  ## 4. To come closer
+  [color=#5E5648]First heard: 83.03.19. low_lamp's mother.[/color]
+  [italic]Come to the edge of the light, mouse. I cannot see you.[/italic]
+
+  We came closer. It was always closer than we thought it was.
+
+  ## 5. Food
+  [color=#5E5648]First heard: 83.04.02. The second shift from the processor, all six of them, together.[/color]
+  [italic]So hungry. We are so hungry. Is there anything to eat.[/italic]
+
+  We left ration packs at the stump. It never touched them. It took the coat that was left beside them, and the boots, and the lamp. We have stopped leaving rations. We do not talk about what it is hungry for.
+
+  ## 6. The children
+  [color=#5E5648]First heard: 83.04.24. A child. Nobody knows whose.[/color]
+  [italic]Come out and play. Come out and play. They are all out here, come and play.[/italic]
+
+  We said no. All of us, together, at the stump, the first and only time the Answering has ever refused it. That night it was silent for the first time since the beginning. The next night it was very loud, at every window on the east side, until dawn.
+
+  [color=#5E5648]The thread about this is locked. We do not discuss item six.[/color]
+
+  ## 7. Doors
+  [color=#5E5648]First heard: 83.05.03. Many voices, all of them people's husbands, wives, parents.[/color]
+  [italic]Leave the door open, love. I am coming home.[/italic]
+
+  Some of us do. I will not say how many. I will say that the ones who do have stopped posting that they are lonely.
+
+  ## 8. No light
+  [color=#5E5648]First heard: 83.05.15. low_lamp, nine days after she went to ask her mother a question.[/color]
+  [italic]Put the lamp out. Put it out. It hurts. I cannot come to you with that on.[/italic]
+
+  We have been discussing this one for eleven days. The light is the last rule we still keep.
+
+  ## 9. Me
+  [color=#5E5648]First heard: 83.05.26. My own voice.[/color]
+
+  It called me tonight from behind the hab, using the tithe I gave it, the sentence that was only mine. It said, [italic]I am here, Henrik. I am here.[/italic] The first thing I ever said to it. In my voice, from the dark, back to me.
+
+  It has learned everything it needs. It does not need me any more to say it.
+
+  I am going to the stump. I am not taking the lamp. Whoever reads this next, keep the list. Keep it in order. Keep it honestly.
+
+  [color=#5E5648][italic]The list has not been updated since. Item 10 is blank. We are waiting to hear what it asks for next.[/italic][/color]
+
+  <CMUNetSprite Rsi="/Textures/CMU14/Mobs/MiscMob/wendigo.rsi" State="alive" Scale="2"/>
+
+  <CMUNetBlink Rate="2.6">
+    [color=#C98C52][bold]DO NOT FOLLOW IT INTO THE TREES. NOT YET.[/bold][/color]
+  </CMUNetBlink>
+
+  [netlink="Previous: the answering" link="answer.deep/answering"] / [netlink="Next: the kept" link="answer.deep/kept"]
+
+  [netlink="Back to the clearing" link="answer.deep"]
+</Document>

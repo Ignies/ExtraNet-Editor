@@ -1,0 +1,32 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/EBuoy/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medals/gold_star.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medals/gold_star.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medals/gold_star.rsi" State="icon" Scale="2"/>
+  </Box>
+  # SELLER FEEDBACK
+  [italic]What buyers said, and what sellers said back. Feedback is permanent. So is the relay.[/italic]
+
+  ## FOR surplus_sam (98 PERCENT POSITIVE)
+  - [color=#2E8B57]Positive.[/color] A+++ would trade again. Motion tracker arrived beeping. Has not stopped beeping. Nothing is there. A+.
+  - [color=#2E8B57]Positive.[/color] Fast shipping for the frontier. Only eleven weeks.
+  - [color=#CC0000]Negative.[/color] Item was a box of rocks. [bold]Reply from seller:[/bold] item was described as box of rocks. listing title was BOX OF ROCKS.
+
+  ## FOR ranch_rita (100 PERCENT POSITIVE)
+  - [color=#2E8B57]Positive.[/color] ATV as described. Hole in seat as described. Still do not know what made the hole. Great seller.
+  - [color=#2E8B57]Positive.[/color] Rita threw in a hat. Lovely hat. Lovely woman. Five stars.
+
+  ## FOR sevastopol_estate_sales (61 PERCENT POSITIVE)
+  - [color=#CC0000]Negative.[/color] Terminal arrived. Terminal works. Terminal keeps asking for a Working Joe by name. We do not have one called that.
+  - [color=#2E8B57]Positive.[/color] Good packaging. The apology letter from Seegson made me cry.
+  - [color=#CC0000]Negative.[/color] Voucher not accepted. Station not found. [bold]Reply from seller:[/bold] the listing does say that.
+
+  ## FOR loader_larry (94 PERCENT POSITIVE)
+  - [color=#2E8B57]Positive.[/color] Larry told me the hangar door story. I have paid extra to forget it.
+
+  ## FOR the_quiet_one (0 PERCENT, 1 RATING)
+  - [color=#CC0000]Negative.[/color] Bought an egg-shaped ornament. Leathery, warm, quite heavy. It arrived open. I never ordered a second item, but something came in the box. [bold]Reply from seller:[/bold] [color=#767676]this account has been closed by request of the Company.[/color]
+
+  [netlink="Back to eBuoy" link="ebuoy.auction"]
+</Document>

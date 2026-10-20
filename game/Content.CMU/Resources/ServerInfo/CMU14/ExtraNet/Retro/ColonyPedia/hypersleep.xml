@@ -1,0 +1,27 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/ColonyPedia/banner.png" MaxHeight="150"/>
+  # Hypersleep
+  [italic]From ColonyPedia, the free encyclopedia of the frontier. For the Chroma Sleep song, see Hypersleep Heart.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Machines/hypersleep.rsi" State="closed" Scale="1"/>
+  </Box>
+
+  [bold]Hypersleep[/bold], also called cryosleep, the long nap or the tube, is a state of suspended animation used for journeys between star systems. A sleeper's body is cooled and slowed until it barely ages, so that a crew can cross months or years of travel without eating, drinking or going mad.
+
+  ## HISTORY
+  Hypersleep chambers were made practical in the early twenty-second century. Early models were known for the Wake Shakes, a full body tremble lasting up to a day, and for the dreams, which sleepers are not supposed to have. Modern pods from Weyland-Yutani and Seegson reduce the Shakes to an hour. Sleepers still report dreams (citation needed).
+
+  ## EFFECTS ON THE BODY
+  - [bold]Ageing.[/bold] A sleeper ages around one day for every month asleep. Opinions differ, and the actuaries are not saying.
+  - [bold]Waking.[/bold] Nausea, cold, confusion and an urge to tell everyone about the dream. Crews are advised to eat something salty and not to tell everyone about the dream.
+  - [bold]Long term.[/bold] Repeat sleepers may lose track of the date, their family and their own age, which can be a relief.
+
+  ## SOCIAL EFFECTS
+  Because news, mail and pay travel at the speed of the ship, a colonist returning from a long contract can find that their favourite band has broken up, reformed, and broken up again. ColonyPedia calls this relay lag. Colonists call it coming home.
+
+  ## SAFETY
+  Hypersleep is very safe. Most reported accidents involve pods opened early, pods opened late, or a pod opening on its own at the request of the ship's computer for reasons the ship's computer did not log. See also: Company Special Orders (article deleted).
+
+  [netlink="Main page" link="colonypedia.ref"]
+</Document>

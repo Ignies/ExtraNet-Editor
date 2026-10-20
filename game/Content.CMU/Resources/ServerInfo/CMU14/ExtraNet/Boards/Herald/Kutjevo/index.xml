@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/Kutjevo/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Kutjevo, filed by our own correspondent from the refinery floor to the runoff dunes. Keeping the record since the takeover of 2162.[/italic]
+
+  We take no Company money and we give up no sources. Read the Foreman's Office notices, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Outer wells pumping on reduced hours  ///  Keep a full canteen past the Stony Fields  ///  Medical complex stormlocks closed to visitors  ///  Readers may comment under any story" Speed="55" Color="#8A1C1C"/>
+</Document>

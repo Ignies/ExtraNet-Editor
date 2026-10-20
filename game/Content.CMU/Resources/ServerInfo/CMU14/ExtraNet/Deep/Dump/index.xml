@@ -1,0 +1,13 @@
+<Document>
+  <CMUNetStyle Background="#0B0C0A" Text="#C9D1C0" Heading="#F2C230" Link="#7FD06A" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Dump/banner.png" MaxHeight="150"/>
+  <CMUNetBlink Rate="0.7">
+    [color=#F2C230][bold]THE DUMP[/bold][/color]
+  </CMUNetBlink>
+
+  Whatever falls off the colony network ends up here. Nobody runs this board and nobody owns it. Records come in pieces, from people who never sign their work, and they never come whole. If you want the rest of something, look on the other boards.
+
+  [color=#7FD06A]House rules:[/color] no names you care about, no talk about where you are sitting, and the wall is wiped when the shift changes.
+
+  <CMUNetMarquee Text="NOTHING HERE IS COMPLETE  ///  CHECK THE OTHER BOARDS  ///  THE WALL IS WIPED AT SHIFT CHANGE" Speed="55" Color="#F2C230"/>
+</Document>

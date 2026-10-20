@@ -1,0 +1,31 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/ColonyPedia/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Misc/books.rsi" State="book_icon" Scale="3"/>
+  </Box>
+  # ColonyPedia
+  [italic]The free encyclopedia of the frontier that anyone can edit. 81,220 articles in English, 40,113 in Russian, 12 in Company Legal.[/italic]
+
+  ## FEATURED ARTICLE: ATMOSPHERE PROCESSOR
+  An [bold]atmosphere processor[/bold] is a large automated plant that turns an unbreathable atmosphere into a breathable one over twenty to fifty years. Most are built by Weyland-Yutani and leased to the colony they stand beside. A processor runs without stopping, hums at a frequency most colonists stop hearing after the first month (citation needed) and is the tallest structure on most terraformed worlds. Colonists are advised not to enter the lower levels, which are hot, loud and, according to an edit that has been reverted nine times, occupied.
+
+  ## DID YOU KNOW...
+  - ...that the average colonist spends more of their contract in hypersleep than awake? See [netlink="Hypersleep" link="colonypedia.ref/hypersleep"].
+  - ...that Seegson's Working Joe was designed to be trusted, and that a focus group described its face as fine?
+  - ...that a Colonial Marshal can cover a district larger than some Earth nations, alone, with one shuttle and a dog?
+  - ...that the phrase building better worlds is a registered trademark, and that using it in a sentence is technically a licensing event?
+
+  ## IN THE NEWS
+  - Relay buoy repairs continue on the Outer Veil line. Messages are delayed by up to nine weeks.
+  - The Union of Progressive Peoples and the United Americas trade statements about a border survey. Both sides describe the other's statement as a provocation.
+  - Chroma Sleep confirm a new record. Their article has been protected after an edit war about the bass player.
+
+  ## BROWSE
+  - [netlink="Hypersleep" link="colonypedia.ref/hypersleep"]
+  - [netlink="Synthetics and Working Joes" link="colonypedia.ref/synthetics"]
+  - [netlink="Talk: Deleted article on a disputed organism" link="colonypedia.ref/talk"]
+
+  <CMUNetAd Id="CMUDeepAdHypersleep"/>
+
+  [color=#72777D]Text is available under the Frontier Commons Licence. Weyland-Yutani reserves the right to edit any article about Weyland-Yutani, and has.[/color]
+</Document>

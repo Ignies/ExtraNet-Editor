@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/ShivasSnowball/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Shivas' Snowball, filed by our own correspondent from the MegaStruct decks to the ice cave camps. Keeping the record on LV-343 since the colony came fully online in 2122.[/italic]
+
+  We take no Company money and we give up no sources. Read the colony notices, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Whiteout warning for the Landing Valley after dark  ///  Spider sightings in the south caves: travel in pairs and keep the lights on  ///  Readers may comment under any story" Speed="55" Color="#8A1C1C"/>
+</Document>

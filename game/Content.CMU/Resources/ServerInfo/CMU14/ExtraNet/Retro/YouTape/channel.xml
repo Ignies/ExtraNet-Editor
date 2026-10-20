@@ -1,0 +1,28 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Food/mre.rsi" State="closed" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/broadcasting_camera.rsi" State="icon" Scale="3"/>
+  </Box>
+  # CHANNEL: CHOWHOUND_GUS
+  [italic]Every ration. Every menu. Every regret. 88,402 subscribers, who get every new tape by mail.[/italic]
+
+  ## ABOUT GUS
+  Gus is a cargo handler with a strong stomach and a camcorder he won in a card game. In 2182 he promised to taste and rank every ration menu in human space, on tape, with nothing to drink but water. He has kept that promise longer than anyone thought he would, including Gus.
+
+  ## LATEST TAPES
+  - [bold]Menu 31: Beef Stew Analogue[/bold]. Gus describes the texture as honest. He does not elaborate.
+  - [bold]Menu 30: The Burrito[/bold]. The vending machine burrito, heated by hand. He gives it a nine. He gives the second one a two.
+  - [bold]Menu 29: UPP Field Ration (imported)[/bold]. Gus cannot read the label. He eats it anyway. He gives it a seven and asks the Union to send more, as a gesture of friendship.
+  - [bold]Menu 28: The Cheese Spread Tape[/bold]. Seventeen minutes. Gus is quiet for most of it.
+  - [bold]Special: Gus Answers Your Letters[/bold]. Yes, he is fine. No, he will not try the green one. Yes, his doctor watches.
+
+  ## THE RANKINGS SO FAR
+  - [bold]Best:[/bold] menu 12, chili and crackers. The crackers are the best part. Do not tell the chili.
+  - [bold]Worst:[/bold] menu 19. Gus will not say what is in menu 19. The tape for menu 19 is three minutes long and ends with the camera falling over.
+
+  ## A MESSAGE FROM GUS
+  [italic]Thank you all for watching. Thank you to the canteen staff for letting me film. Thank you to my medic, Jo. Seventeen menus to go. Be kind, rewind.[/italic]
+
+  [netlink="Back to YouTape" link="youtape.vhs"]
+</Document>

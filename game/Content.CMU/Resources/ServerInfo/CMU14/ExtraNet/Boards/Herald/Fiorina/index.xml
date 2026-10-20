@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/Fiorina/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Fiorina 161, filed from the press office by the docks by our own correspondent. Names, not numbers, since 2180.[/italic]
+
+  The Company owns the hull, the cells and the transport schedule. It does not own this page. Read the warden's notices, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Contractors repeat their warning about the reactor  ///  Cells A to D stay on lockdown pending review  ///  Hydroponics asks for spare seed  ///  Visiting berths open on the next transport into Dock A  ///  Classified notices run free for inmate families" Speed="55" Color="#8A1C1C"/>
+</Document>

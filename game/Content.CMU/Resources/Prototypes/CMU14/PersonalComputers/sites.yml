@@ -1,0 +1,876 @@
+# ExtraNet sites. Add a page: write the document under the site's root, then list it in pages.
+# Link between pages with [netlink="Text" link="host/path"]. A site style sets the default look of its pages.
+# See Content.CMU/Docs/personal-computers.md for every tag.
+
+- type: cmuNetSite
+  id: CMUNetSiteSeegsonColony
+  address: colony.seegson.net
+  title: cmu-net-site-seegson-colony
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Seegson/Colony/
+  pages:
+    "": index.xml
+    notices: notices.xml
+    housing: housing.xml
+    radio: radio.xml
+
+- type: cmuNetSite
+  id: CMUNetSiteSeegsonSupport
+  address: support.seegson.net
+  title: cmu-net-site-seegson-support
+  networks:
+  - CMUNetSeegson
+  root: /ServerInfo/CMU14/ExtraNet/Seegson/Support/
+  pages:
+    "": index.xml
+
+- type: cmuNetSite
+  id: CMUNetSiteWeylandIntranet
+  address: intranet.wy
+  title: cmu-net-site-weyland-intranet
+  networks:
+  - CMUNetWeylandYutani
+  root: /ServerInfo/CMU14/ExtraNet/WeylandYutani/Intranet/
+  style:
+    font: Display
+  pages:
+    "": index.xml
+    handbook: handbook.xml
+    memo: memo.xml
+  # Company announcements, from the Liaison and from Corporate Communications, which spins everything.
+  board:
+    postLabel: cmu-net-board-weyland-post
+    empty: cmu-net-board-weyland-empty
+    posters:
+    - AU14JobCivilianCorporateLiaison
+
+# The colony cookbook. Its pages are drawn from the game's microwave recipes by the CMUNetRecipes tag.
+- type: cmuNetSite
+  id: CMUNetSitePublicGalley
+  address: galley.recipes
+  title: cmu-net-site-public-galley
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/Galley/
+  style:
+    background: "#1E1A14"
+    text: "#EDE3CF"
+    heading: "#F2A33A"
+    link: "#8CCB6A"
+    font: Sans
+  pages:
+    "": index.xml
+    savory: savory.xml
+    breads: breads.xml
+    soup: soup.xml
+    cakes: cakes.xml
+  tabs:
+  - title: cmu-net-tab-public-galley-all
+  - title: cmu-net-tab-public-galley-savory
+    path: savory
+  - title: cmu-net-tab-public-galley-breads
+    path: breads
+  - title: cmu-net-tab-public-galley-soup
+    path: soup
+  - title: cmu-net-tab-public-galley-cakes
+    path: cakes
+
+# The Marshals' bureau site. Its panels are live views drawn by the CMUNetCmbPanel tag.
+- type: cmuNetSite
+  id: CMUNetSiteCmbBureau
+  address: cmb.bureau
+  title: cmu-net-site-cmb-bureau
+  networks:
+  - CMUNetCMB
+  root: /ServerInfo/CMU14/ExtraNet/CMB/
+  style:
+    background: "#050A14"
+    text: "#D6E4F5"
+    heading: "#8FC4FF"
+    link: "#F2C94C"
+    font: Mono
+  pages:
+    "": index.xml
+    map: map.xml
+    faxes: faxes.xml
+    records: records.xml
+  tabs:
+  - title: cmu-net-tab-cmb-alerts
+  - title: cmu-net-tab-cmb-map
+    path: map
+  - title: cmu-net-tab-cmb-faxes
+    path: faxes
+  - title: cmu-net-tab-cmb-records
+    path: records
+
+# Public sites: celebrities, news, tobacco brands and pharmacies.
+
+# Public ExtraNet sites: celebrity fan pages, news and tabloids, tobacco brands and pharmacies.
+# Every one is listed in the directory and reachable from any colony desktop.
+
+# Celebrity fan site: Chroma Sleep, synth-pop band from the Titan methane docks.
+- type: cmuNetSite
+  id: CMUNetSitePublicChromaSleep
+  address: chromasleep.fan
+  title: cmu-net-site-public-chroma-sleep
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/ChromaSleep/
+  style:
+    background: "#120A24"
+    text: "#E6DDFF"
+    heading: "#FF4FD8"
+    link: "#00F0FF"
+    font: Display
+  pages:
+    "": index.xml
+    tour: tour.xml
+    discography: discography.xml
+    merch: merch.xml
+  tabs:
+  - title: cmu-net-tab-public-chroma-sleep-home
+  - title: cmu-net-tab-public-chroma-sleep-tour
+    path: tour
+  - title: cmu-net-tab-public-chroma-sleep-discography
+    path: discography
+  - title: cmu-net-tab-public-chroma-sleep-merch
+    path: merch
+
+# Celebrity site: the Weyland-Yutani executive vice president of Colonial Development.
+- type: cmuNetSite
+  id: CMUNetSitePublicIshikawa
+  address: ishikawa.weyland-yutani.com
+  title: cmu-net-site-public-ishikawa
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/Ishikawa/
+  style:
+    background: "#F3F1EC"
+    text: "#1E1E1E"
+    heading: "#8A6A1C"
+    link: "#1F4E79"
+    font: Display
+  pages:
+    "": index.xml
+    biography: biography.xml
+    vision: vision.xml
+    press: press.xml
+  tabs:
+  - title: cmu-net-tab-public-ishikawa-home
+  - title: cmu-net-tab-public-ishikawa-biography
+    path: biography
+  - title: cmu-net-tab-public-ishikawa-vision
+    path: vision
+  - title: cmu-net-tab-public-ishikawa-press
+    path: press
+
+# Celebrity site: Spin Okafor, zero-g ball captain of the Gateway Comets.
+- type: cmuNetSite
+  id: CMUNetSitePublicSpinOkafor
+  address: spinokafor.zg
+  title: cmu-net-site-public-spin-okafor
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/SpinOkafor/
+  style:
+    background: "#0A1630"
+    text: "#DCE6FF"
+    heading: "#FFB000"
+    link: "#FF7A45"
+    font: Sans
+  pages:
+    "": index.xml
+    season: season.xml
+    interview: interview.xml
+    shop: shop.xml
+  tabs:
+  - title: cmu-net-tab-public-spin-okafor-home
+  - title: cmu-net-tab-public-spin-okafor-season
+    path: season
+  - title: cmu-net-tab-public-spin-okafor-interview
+    path: interview
+  - title: cmu-net-tab-public-spin-okafor-shop
+    path: shop
+
+# Celebrity site: Vex Starr, holo-serial star of Gateway General.
+- type: cmuNetSite
+  id: CMUNetSitePublicVexStarr
+  address: vexstarr.holo
+  title: cmu-net-site-public-vex-starr
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/VexStarr/
+  style:
+    background: "#1E0F1E"
+    text: "#F5E6F0"
+    heading: "#FF5FD2"
+    link: "#FFD27A"
+    font: Sans
+  pages:
+    "": index.xml
+    holos: holos.xml
+    interview: interview.xml
+    society: society.xml
+  tabs:
+  - title: cmu-net-tab-public-vex-starr-home
+  - title: cmu-net-tab-public-vex-starr-holos
+    path: holos
+  - title: cmu-net-tab-public-vex-starr-interview
+    path: interview
+  - title: cmu-net-tab-public-vex-starr-society
+    path: society
+
+# Celebrity site: Rosie Ketch, frontier country singer, the voice of the terraforming crews.
+- type: cmuNetSite
+  id: CMUNetSitePublicRosieKetch
+  address: rosieketch.music
+  title: cmu-net-site-public-rosie-ketch
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/RosieKetch/
+  style:
+    background: "#2A1A0E"
+    text: "#F2E3C6"
+    heading: "#E8A33C"
+    link: "#9FD0E0"
+    font: Sans
+  pages:
+    "": index.xml
+    tour: tour.xml
+    songs: songs.xml
+    store: store.xml
+  tabs:
+  - title: cmu-net-tab-public-rosie-ketch-home
+  - title: cmu-net-tab-public-rosie-ketch-tour
+    path: tour
+  - title: cmu-net-tab-public-rosie-ketch-songs
+    path: songs
+  - title: cmu-net-tab-public-rosie-ketch-store
+    path: store
+
+# Celebrity site: Rex Maddox, host of the survival holo-show Hostile Worlds.
+- type: cmuNetSite
+  id: CMUNetSitePublicRexMaddox
+  address: rexmaddox.holo
+  title: cmu-net-site-public-rex-maddox
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/RexMaddox/
+  style:
+    background: "#161B0C"
+    text: "#E5E8C8"
+    heading: "#FF7A1A"
+    link: "#FFD24A"
+    font: Display
+  pages:
+    "": index.xml
+    episodes: episodes.xml
+    live: live.xml
+    gear: gear.xml
+  tabs:
+  - title: cmu-net-tab-public-rex-maddox-home
+  - title: cmu-net-tab-public-rex-maddox-episodes
+    path: episodes
+  - title: cmu-net-tab-public-rex-maddox-live
+    path: live
+  - title: cmu-net-tab-public-rex-maddox-gear
+    path: gear
+
+# Tabloid: celebrity gossip from the Core to the Outer Veil.
+- type: cmuNetSite
+  id: CMUNetSitePublicColonyTattler
+  address: colonytattler.news
+  title: cmu-net-site-public-colony-tattler
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/ColonyTattler/
+  style:
+    background: "#FFF1F6"
+    text: "#1A1A1A"
+    heading: "#D0105A"
+    link: "#1440A0"
+    font: Sans
+  pages:
+    "": index.xml
+    gossip: gossip.xml
+    sightings: sightings.xml
+    stars: stars.xml
+  tabs:
+  - title: cmu-net-tab-public-colony-tattler-home
+  - title: cmu-net-tab-public-colony-tattler-gossip
+    path: gossip
+  - title: cmu-net-tab-public-colony-tattler-sightings
+    path: sightings
+  - title: cmu-net-tab-public-colony-tattler-stars
+    path: stars
+
+# Company-friendly news: good news from the colonies, every day.
+- type: cmuNetSite
+  id: CMUNetSitePublicProsperityToday
+  address: prosperitytoday.news
+  title: cmu-net-site-public-prosperity-today
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/ProsperityToday/
+  style:
+    background: "#EEF3F8"
+    text: "#10243A"
+    heading: "#0B4F8A"
+    link: "#1C6B3A"
+    font: Sans
+  pages:
+    "": index.xml
+    colonies: colonies.xml
+    business: business.xml
+    opinion: opinion.xml
+  tabs:
+  - title: cmu-net-tab-public-prosperity-today-home
+  - title: cmu-net-tab-public-prosperity-today-colonies
+    path: colonies
+  - title: cmu-net-tab-public-prosperity-today-business
+    path: business
+  - title: cmu-net-tab-public-prosperity-today-opinion
+    path: opinion
+
+# Conspiracy rag: what the relay will not tell you.
+- type: cmuNetSite
+  id: CMUNetSitePublicVeilTruth
+  address: veiltruth.news
+  title: cmu-net-site-public-veil-truth
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/VeilTruth/
+  style:
+    background: "#0B0B05"
+    text: "#E8E8C8"
+    heading: "#FFE000"
+    link: "#FF5050"
+    font: Terminal
+  pages:
+    "": index.xml
+    coverups: coverups.xml
+    synthetics: synthetics.xml
+    mailbag: mailbag.xml
+  tabs:
+  - title: cmu-net-tab-public-veil-truth-home
+  - title: cmu-net-tab-public-veil-truth-coverups
+    path: coverups
+  - title: cmu-net-tab-public-veil-truth-synthetics
+    path: synthetics
+  - title: cmu-net-tab-public-veil-truth-mailbag
+    path: mailbag
+
+# Tobacco: premium hand-rolled cigars from Havana.
+- type: cmuNetSite
+  id: CMUNetSitePublicAlbarran
+  address: albarran.cigars
+  title: cmu-net-site-public-albarran
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/Albarran/
+  style:
+    background: "#2B1A10"
+    text: "#EADBC4"
+    heading: "#D9A441"
+    link: "#E8C77A"
+    font: Display
+  pages:
+    "": index.xml
+    humidor: humidor.xml
+    heritage: heritage.xml
+    lounge: lounge.xml
+  tabs:
+  - title: cmu-net-tab-public-albarran-home
+  - title: cmu-net-tab-public-albarran-humidor
+    path: humidor
+  - title: cmu-net-tab-public-albarran-heritage
+    path: heritage
+  - title: cmu-net-tab-public-albarran-lounge
+    path: lounge
+
+# Tobacco: a colony growers' cooperative selling its own leaf.
+- type: cmuNetSite
+  id: CMUNetSitePublicFrontierLeaf
+  address: frontierleaf.coop
+  title: cmu-net-site-public-frontier-leaf
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/FrontierLeaf/
+  style:
+    background: "#EFE6D2"
+    text: "#2B2416"
+    heading: "#4E6E1A"
+    link: "#8A3A12"
+    font: Mono
+  pages:
+    "": index.xml
+    leaf: leaf.xml
+    growers: growers.xml
+    notices: notices.xml
+  tabs:
+  - title: cmu-net-tab-public-frontier-leaf-home
+  - title: cmu-net-tab-public-frontier-leaf-leaf
+    path: leaf
+  - title: cmu-net-tab-public-frontier-leaf-growers
+    path: growers
+  - title: cmu-net-tab-public-frontier-leaf-notices
+    path: notices
+
+# Tobacco: the Three World Empire luxury house behind Balaji Imperials.
+- type: cmuNetSite
+  id: CMUNetSitePublicBalaji
+  address: balaji.imperial
+  title: cmu-net-site-public-balaji
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/Balaji/
+  style:
+    background: "#0B2018"
+    text: "#EDE6D0"
+    heading: "#D4AF37"
+    link: "#9ED9C0"
+    font: Display
+  pages:
+    "": index.xml
+    collection: collection.xml
+    accessories: accessories.xml
+    heritage: heritage.xml
+  tabs:
+  - title: cmu-net-tab-public-balaji-home
+  - title: cmu-net-tab-public-balaji-collection
+    path: collection
+  - title: cmu-net-tab-public-balaji-accessories
+    path: accessories
+  - title: cmu-net-tab-public-balaji-heritage
+    path: heritage
+
+# Pharmacy: Lasalle Bionational medicines for colonists.
+- type: cmuNetSite
+  id: CMUNetSitePublicLasallePharmacy
+  address: pharmacy.lasalle.bio
+  title: cmu-net-site-public-lasalle-pharmacy
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/LasallePharmacy/
+  style:
+    background: "#F6FAFA"
+    text: "#13282E"
+    heading: "#0E7C7B"
+    link: "#1B5FA8"
+    font: Sans
+  pages:
+    "": index.xml
+    tablets: tablets.xml
+    injectors: injectors.xml
+    prescriptions: prescriptions.xml
+  tabs:
+  - title: cmu-net-tab-public-lasalle-pharmacy-home
+  - title: cmu-net-tab-public-lasalle-pharmacy-tablets
+    path: tablets
+  - title: cmu-net-tab-public-lasalle-pharmacy-injectors
+    path: injectors
+  - title: cmu-net-tab-public-lasalle-pharmacy-prescriptions
+    path: prescriptions
+
+# Pharmacy: the colony clinic's dispensary counter.
+- type: cmuNetSite
+  id: CMUNetSitePublicClinicDispensary
+  address: dispensary.colony.med
+  title: cmu-net-site-public-clinic-dispensary
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/ClinicDispensary/
+  style:
+    background: "#E9F0E9"
+    text: "#1C2A1C"
+    heading: "#B02020"
+    link: "#1E5AA0"
+    font: Mono
+  pages:
+    "": index.xml
+    shelf: shelf.xml
+    hours: hours.xml
+    firstaid: firstaid.xml
+  tabs:
+  - title: cmu-net-tab-public-clinic-dispensary-home
+  - title: cmu-net-tab-public-clinic-dispensary-shelf
+    path: shelf
+  - title: cmu-net-tab-public-clinic-dispensary-hours
+    path: hours
+  - title: cmu-net-tab-public-clinic-dispensary-firstaid
+    path: firstaid
+
+# The break room: arcade cabinets and a sportsbook, both live from the server.
+- type: cmuNetSite
+  id: CMUNetSitePublicArcade
+  address: arcade.colony
+  title: cmu-net-site-public-arcade
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/Arcade/
+  style:
+    background: "#05050F"
+    text: "#E0E0FF"
+    heading: "#FF2FD0"
+    link: "#3FF2FF"
+    font: Pixel
+  pages:
+    "": index.xml
+
+- type: cmuNetSite
+  id: CMUNetSitePublicSportsbook
+  address: zgbet.colony
+  title: cmu-net-site-public-sportsbook
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Public/Sportsbook/
+  style:
+    background: "#0A1A0A"
+    text: "#D8F0D0"
+    heading: "#7CFF00"
+    link: "#F2C230"
+    font: Display
+  pages:
+    "": index.xml
+
+# Retro sites: the 2180s internet, 80s style. spacegpt.ai is answered by ghosts.
+
+# Retro public sites: the frontier's versions of the everyday web, as it would look on a 2180s colony terminal.
+# Every one is listed in the directory and reachable from any colony desktop.
+
+# The thinking machine. The chat itself is drawn by the CMUNetSpaceGpt tag on the index page.
+- type: cmuNetSite
+  id: CMUNetSiteRetroSpaceGpt
+  address: spacegpt.ai
+  title: cmu-net-site-retro-spacegpt
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/SpaceGpt/
+  style:
+    background: "#101418"
+    text: "#D9E2E8"
+    heading: "#19C37D"
+    link: "#8AB4F8"
+    font: Mono
+  pages:
+    "": index.xml
+    faq: faq.xml
+    changelog: changelog.xml
+    terms: terms.xml
+  tabs:
+  - title: cmu-net-tab-retro-spacegpt-chat
+  - title: cmu-net-tab-retro-spacegpt-faq
+    path: faq
+  - title: cmu-net-tab-retro-spacegpt-changelog
+    path: changelog
+  - title: cmu-net-tab-retro-spacegpt-terms
+    path: terms
+
+# Web portal and hand-kept directory, with a question and answer board.
+- type: cmuNetSite
+  id: CMUNetSiteRetroYotta
+  address: yotta.portal
+  title: cmu-net-site-retro-yotta
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/Yotta/
+  style:
+    background: "#F4F0FF"
+    text: "#1A1030"
+    heading: "#6A0DAD"
+    link: "#0033CC"
+    font: Sans
+  pages:
+    "": index.xml
+    directory: directory.xml
+    answers: answers.xml
+    coolsites: coolsites.xml
+  tabs:
+  - title: cmu-net-tab-retro-yotta-home
+  - title: cmu-net-tab-retro-yotta-directory
+    path: directory
+  - title: cmu-net-tab-retro-yotta-answers
+    path: answers
+  - title: cmu-net-tab-retro-yotta-coolsites
+    path: coolsites
+
+# Home tape sharing, uploaded by post.
+- type: cmuNetSite
+  id: CMUNetSiteRetroYouTape
+  address: youtape.vhs
+  title: cmu-net-site-retro-youtape
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/YouTape/
+  style:
+    background: "#141414"
+    text: "#EEEEEE"
+    heading: "#FF2A2A"
+    link: "#FFB0B0"
+    font: Display
+  pages:
+    "": index.xml
+    trending: trending.xml
+    channel: channel.xml
+    upload: upload.xml
+  tabs:
+  - title: cmu-net-tab-retro-youtape-home
+  - title: cmu-net-tab-retro-youtape-trending
+    path: trending
+  - title: cmu-net-tab-retro-youtape-channel
+    path: channel
+  - title: cmu-net-tab-retro-youtape-upload
+    path: upload
+
+# Social network of colonists: profiles, bulletins, groups and a Top 8.
+- type: cmuNetSite
+  id: CMUNetSiteRetroMyBunk
+  address: mybunk.social
+  title: cmu-net-site-retro-mybunk
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/MyBunk/
+  style:
+    background: "#E8EEF8"
+    text: "#111111"
+    heading: "#003399"
+    link: "#E05A00"
+    font: Sans
+  pages:
+    "": index.xml
+    bulletins: bulletins.xml
+    profiles: profiles.xml
+    groups: groups.xml
+  tabs:
+  - title: cmu-net-tab-retro-mybunk-home
+  - title: cmu-net-tab-retro-mybunk-bulletins
+    path: bulletins
+  - title: cmu-net-tab-retro-mybunk-profiles
+    path: profiles
+  - title: cmu-net-tab-retro-mybunk-groups
+    path: groups
+
+# The encyclopedia anyone can edit.
+- type: cmuNetSite
+  id: CMUNetSiteRetroColonyPedia
+  address: colonypedia.ref
+  title: cmu-net-site-retro-colonypedia
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/ColonyPedia/
+  style:
+    background: "#F8F8F4"
+    text: "#202122"
+    heading: "#000000"
+    link: "#0645AD"
+    font: Sans
+  pages:
+    "": index.xml
+    hypersleep: hypersleep.xml
+    synthetics: synthetics.xml
+    talk: talk.xml
+  tabs:
+  - title: cmu-net-tab-retro-colonypedia-main
+  - title: cmu-net-tab-retro-colonypedia-hypersleep
+    path: hypersleep
+  - title: cmu-net-tab-retro-colonypedia-synthetics
+    path: synthetics
+  - title: cmu-net-tab-retro-colonypedia-talk
+    path: talk
+
+# Auction marketplace.
+- type: cmuNetSite
+  id: CMUNetSiteRetroEBuoy
+  address: ebuoy.auction
+  title: cmu-net-site-retro-ebuoy
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/EBuoy/
+  style:
+    background: "#FFFFFF"
+    text: "#222222"
+    heading: "#E53238"
+    link: "#0064D2"
+    font: Sans
+  pages:
+    "": index.xml
+    electronics: electronics.xml
+    motors: motors.xml
+    feedback: feedback.xml
+  tabs:
+  - title: cmu-net-tab-retro-ebuoy-home
+  - title: cmu-net-tab-retro-ebuoy-electronics
+    path: electronics
+  - title: cmu-net-tab-retro-ebuoy-motors
+    path: motors
+  - title: cmu-net-tab-retro-ebuoy-feedback
+    path: feedback
+
+# Weather service for whichever colony the round is on.
+- type: cmuNetSite
+  id: CMUNetSiteRetroAtmoCast
+  address: atmocast.wx
+  title: cmu-net-site-retro-atmocast
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/AtmoCast/
+  style:
+    background: "#0B2A5B"
+    text: "#E6F0FF"
+    heading: "#FFD24A"
+    link: "#8FD3FF"
+    font: Display
+  pages:
+    "": index.xml
+    radar: radar.xml
+    alerts: alerts.xml
+    almanac: almanac.xml
+  tabs:
+  - title: cmu-net-tab-retro-atmocast-today
+  - title: cmu-net-tab-retro-atmocast-radar
+    path: radar
+  - title: cmu-net-tab-retro-atmocast-alerts
+    path: alerts
+  - title: cmu-net-tab-retro-atmocast-almanac
+    path: almanac
+
+# Video dating for lonely miners.
+- type: cmuNetSite
+  id: CMUNetSiteRetroOreMatch
+  address: orematch.love
+  title: cmu-net-site-retro-orematch
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/OreMatch/
+  style:
+    background: "#2A0A1A"
+    text: "#FFE6F0"
+    heading: "#FF6FA8"
+    link: "#FFD27A"
+    font: Display
+  pages:
+    "": index.xml
+    profiles: profiles.xml
+    stories: stories.xml
+    safety: safety.xml
+  tabs:
+  - title: cmu-net-tab-retro-orematch-home
+  - title: cmu-net-tab-retro-orematch-profiles
+    path: profiles
+  - title: cmu-net-tab-retro-orematch-stories
+    path: stories
+  - title: cmu-net-tab-retro-orematch-safety
+    path: safety
+
+# Radio station streamed over the relay.
+- type: cmuNetSite
+  id: CMUNetSiteRetroHydrogenLine
+  address: hydrogenline.fm
+  title: cmu-net-site-retro-hydrogenline
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/HydrogenLine/
+  style:
+    background: "#050510"
+    text: "#CFE8FF"
+    heading: "#00E5FF"
+    link: "#FF66CC"
+    font: Pixel
+  pages:
+    "": index.xml
+    schedule: schedule.xml
+    requests: requests.xml
+    charts: charts.xml
+  tabs:
+  - title: cmu-net-tab-retro-hydrogenline-onair
+  - title: cmu-net-tab-retro-hydrogenline-schedule
+    path: schedule
+  - title: cmu-net-tab-retro-hydrogenline-requests
+    path: requests
+  - title: cmu-net-tab-retro-hydrogenline-charts
+    path: charts
+
+# Food delivery from orbit. No recipes.
+- type: cmuNetSite
+  id: CMUNetSiteRetroDropDash
+  address: dropdash.eats
+  title: cmu-net-site-retro-dropdash
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/DropDash/
+  style:
+    background: "#FFF5E6"
+    text: "#2A1A0A"
+    heading: "#FF3B00"
+    link: "#B33000"
+    font: Sans
+  pages:
+    "": index.xml
+    menu: menu.xml
+    tracking: tracking.xml
+    dashers: dashers.xml
+  tabs:
+  - title: cmu-net-tab-retro-dropdash-home
+  - title: cmu-net-tab-retro-dropdash-menu
+    path: menu
+  - title: cmu-net-tab-retro-dropdash-tracking
+    path: tracking
+  - title: cmu-net-tab-retro-dropdash-dashers
+    path: dashers
+
+# Maps, directions and shipping lanes.
+- type: cmuNetSite
+  id: CMUNetSiteRetroVectorQuest
+  address: vectorquest.nav
+  title: cmu-net-site-retro-vectorquest
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/VectorQuest/
+  style:
+    background: "#0E1A0E"
+    text: "#D7F5C8"
+    heading: "#9BE15D"
+    link: "#FFE066"
+    font: Terminal
+  pages:
+    "": index.xml
+    directions: directions.xml
+    satellite: satellite.xml
+    lanes: lanes.xml
+  tabs:
+  - title: cmu-net-tab-retro-vectorquest-home
+  - title: cmu-net-tab-retro-vectorquest-directions
+    path: directions
+  - title: cmu-net-tab-retro-vectorquest-satellite
+    path: satellite
+  - title: cmu-net-tab-retro-vectorquest-lanes
+    path: lanes
+
+# Job board for frontier contracts.
+- type: cmuNetSite
+  id: CMUNetSiteRetroIndentured
+  address: indentured.jobs
+  title: cmu-net-site-retro-indentured
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/Indentured/
+  style:
+    background: "#F2F6FC"
+    text: "#1B1B1B"
+    heading: "#2557A7"
+    link: "#164081"
+    font: Mono
+  pages:
+    "": index.xml
+    listings: listings.xml
+    resume: resume.xml
+    reviews: reviews.xml
+  tabs:
+  - title: cmu-net-tab-retro-indentured-home
+  - title: cmu-net-tab-retro-indentured-listings
+    path: listings
+  - title: cmu-net-tab-retro-indentured-resume
+    path: resume
+  - title: cmu-net-tab-retro-indentured-reviews
+    path: reviews

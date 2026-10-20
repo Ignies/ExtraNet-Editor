@@ -1,0 +1,321 @@
+# Board sites: postings made during the round by key roles, commented on by anyone who reaches the site.
+# The index page is the masthead; postings run under it. Posters are exact job ids, variants included.
+
+- type: cmuNetSite
+  id: CMUNetSiteColonyHerald
+  address: herald.colony.news
+  title: cmu-net-site-colony-herald
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/Herald/
+  style:
+    background: "#F1EBDD"
+    text: "#1E1E1E"
+    heading: "#8A1C1C"
+    link: "#1F4F7A"
+    font: Sans
+  pages:
+    "": index.xml
+    about: about.xml
+    history: history.xml
+    classifieds: classifieds.xml
+  tabs:
+  - title: cmu-net-tab-herald-front
+  - title: cmu-net-tab-herald-about
+    path: about
+  - title: cmu-net-tab-herald-history
+    path: history
+  - title: cmu-net-tab-herald-classifieds
+    path: classifieds
+  board:
+    postLabel: cmu-net-board-herald-post
+    empty: cmu-net-board-herald-empty
+    # Insurgents on a hacked computer can cover the front page with propaganda.
+    hijackable: true
+    posters:
+    - AU14JobCivilianJournalist
+
+- type: cmuNetSite
+  id: CMUNetSiteColonyAdministration
+  address: admin.colony.gov
+  title: cmu-net-site-colony-administration
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/Administration/
+  style:
+    background: "#0E1E33"
+    text: "#DCE6F2"
+    heading: "#F2C14E"
+    link: "#7FB2E5"
+    font: Sans
+  pages:
+    "": index.xml
+    charter: charter.xml
+    departments: departments.xml
+    emergency: emergency.xml
+  tabs:
+  - title: cmu-net-tab-administration-notices
+  - title: cmu-net-tab-administration-charter
+    path: charter
+  - title: cmu-net-tab-administration-departments
+    path: departments
+  - title: cmu-net-tab-administration-emergency
+    path: emergency
+  board:
+    postLabel: cmu-net-board-administration-post
+    empty: cmu-net-board-administration-empty
+    posters:
+    - AU14JobCivilianColonyAdministrator
+    - AU14JobCivilianColonyAdminAssistant
+
+- type: cmuNetSite
+  id: CMUNetSiteGovforCommand
+  address: command.govfor.mil
+  title: cmu-net-site-govfor-command
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/Govfor/
+  # Each platoon that can hold the colony has its own pages in a folder named after it, e.g. CMBCIU/.
+  platoonPages: true
+  style:
+    background: "#1B2214"
+    text: "#C9D6A3"
+    heading: "#E8E2B0"
+    link: "#9FC46A"
+    font: Terminal
+  pages:
+    "": index.xml
+    guidance: guidance.xml
+    garrison: garrison.xml
+    zones: zones.xml
+  tabs:
+  - title: cmu-net-tab-govfor-bulletins
+  - title: cmu-net-tab-govfor-guidance
+    path: guidance
+  - title: cmu-net-tab-govfor-garrison
+    path: garrison
+  - title: cmu-net-tab-govfor-zones
+    path: zones
+  board:
+    postLabel: cmu-net-board-govfor-post
+    empty: cmu-net-board-govfor-empty
+    posters:
+    - AU14JobGOVFORPlatCo
+    - AU14JobGOVFORPlatCoCMBCIU
+    - AU14JobGOVFORPlatCoRMC
+    - AU14JobGOVFORPlatCoUPP
+    - AU14JobGOVFORPlatCoWYPMC
+    - AU14JobGOVFORAdjutant
+    - AU14JobGOVFORAdjutantCMBCIU
+    - AU14JobGOVFORAdjutantRMC
+    - AU14JobGOVFORAdjutantUPP
+    - AU14JobGOVFORAdjutantWYPMC
+    - AU14JobGOVFORPlatOp
+    - AU14JobGOVFORPlatOpRMC
+    - AU14JobGOVFORPlatOpUPP
+    - AU14JobGOVFORPlatOpWYPMC
+
+- type: cmuNetSite
+  id: CMUNetSiteEmbassyUPP
+  address: embassy.upp
+  title: cmu-net-site-embassy-upp
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/EmbassyUPP/
+  style:
+    background: "#2A0A0A"
+    text: "#F0D9C4"
+    heading: "#FFCC33"
+    link: "#FF7A5C"
+    font: Display
+  pages:
+    "": index.xml
+    about: about.xml
+    consular: consular.xml
+    relations: relations.xml
+  tabs:
+  - title: cmu-net-tab-embassy-upp-communiques
+  - title: cmu-net-tab-embassy-upp-about
+    path: about
+  - title: cmu-net-tab-embassy-upp-consular
+    path: consular
+  - title: cmu-net-tab-embassy-upp-relations
+    path: relations
+  board:
+    postLabel: cmu-net-board-embassy-post
+    empty: cmu-net-board-embassy-empty
+    posters:
+    - AU14JobCivilianAmbassadorUPP
+
+- type: cmuNetSite
+  id: CMUNetSiteEmbassyTWE
+  address: embassy.twe
+  title: cmu-net-site-embassy-twe
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/EmbassyTWE/
+  style:
+    background: "#0C1638"
+    text: "#E6E9F2"
+    heading: "#E0403A"
+    link: "#9DB4FF"
+    font: Display
+  pages:
+    "": index.xml
+    about: about.xml
+    consular: consular.xml
+    relations: relations.xml
+  tabs:
+  - title: cmu-net-tab-embassy-twe-communiques
+  - title: cmu-net-tab-embassy-twe-about
+    path: about
+  - title: cmu-net-tab-embassy-twe-consular
+    path: consular
+  - title: cmu-net-tab-embassy-twe-relations
+    path: relations
+  board:
+    postLabel: cmu-net-board-embassy-post
+    empty: cmu-net-board-embassy-empty
+    posters:
+    - AU14JobCivilianAmbassadorTWE
+
+- type: cmuNetSite
+  id: CMUNetSiteEmbassyUA
+  address: embassy.ua
+  title: cmu-net-site-embassy-ua
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/EmbassyUA/
+  style:
+    background: "#0B2545"
+    text: "#EEF4ED"
+    heading: "#F4D35E"
+    link: "#8DA9C4"
+    font: Sans
+  pages:
+    "": index.xml
+    about: about.xml
+    consular: consular.xml
+    relations: relations.xml
+  tabs:
+  - title: cmu-net-tab-embassy-ua-communiques
+  - title: cmu-net-tab-embassy-ua-about
+    path: about
+  - title: cmu-net-tab-embassy-ua-consular
+    path: consular
+  - title: cmu-net-tab-embassy-ua-relations
+    path: relations
+  board:
+    postLabel: cmu-net-board-embassy-post
+    empty: cmu-net-board-embassy-empty
+    posters:
+    - AU14JobCivilianAmbassadorUA
+
+- type: cmuNetSite
+  id: CMUNetSiteEmbassyICSC
+  address: embassy.icsc
+  title: cmu-net-site-embassy-icsc
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/EmbassyICSC/
+  style:
+    background: "#10261F"
+    text: "#D7EDE3"
+    heading: "#6FD3A8"
+    link: "#BFE8D7"
+    font: Mono
+  pages:
+    "": index.xml
+    about: about.xml
+    consular: consular.xml
+    relations: relations.xml
+  tabs:
+  - title: cmu-net-tab-embassy-icsc-notices
+  - title: cmu-net-tab-embassy-icsc-about
+    path: about
+  - title: cmu-net-tab-embassy-icsc-consular
+    path: consular
+  - title: cmu-net-tab-embassy-icsc-relations
+    path: relations
+  board:
+    postLabel: cmu-net-board-embassy-post
+    empty: cmu-net-board-embassy-empty
+    posters:
+    - AU14JobCivilianAmbassadorICSC
+
+- type: cmuNetSite
+  id: CMUNetSiteEmbassyCCA
+  address: embassy.cca
+  title: cmu-net-site-embassy-cca
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/EmbassyCCA/
+  style:
+    background: "#2B2118"
+    text: "#EFE4D2"
+    heading: "#D9A441"
+    link: "#E8C27A"
+    font: Sans
+  pages:
+    "": index.xml
+    about: about.xml
+    consular: consular.xml
+    relations: relations.xml
+  tabs:
+  - title: cmu-net-tab-embassy-cca-releases
+  - title: cmu-net-tab-embassy-cca-about
+    path: about
+  - title: cmu-net-tab-embassy-cca-consular
+    path: consular
+  - title: cmu-net-tab-embassy-cca-relations
+    path: relations
+  board:
+    postLabel: cmu-net-board-embassy-post
+    empty: cmu-net-board-embassy-empty
+    posters:
+    - AU14JobCivilianAmbassadorCCA
+
+# Colony classifieds: anyone sells, buys or asks; every ad shows the terminal it came from, so people can meet.
+- type: cmuNetSite
+  id: CMUNetSiteColonyClassifieds
+  address: classifieds.colony
+  title: cmu-net-site-colony-classifieds
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/Classifieds/
+  style:
+    background: "#F4EFE2"
+    text: "#2A2418"
+    heading: "#8A2A12"
+    link: "#1A4E8A"
+    font: Sans
+  pages:
+    "": index.xml
+  board:
+    postLabel: cmu-net-board-classifieds-post
+    empty: cmu-net-board-classifieds-empty
+    anyonePosts: true
+    showTerminals: true
+
+# The colony bounty board: post a job with a cash reward, pay whoever answers it best.
+- type: cmuNetSite
+  id: CMUNetSiteColonyBounties
+  address: bounties.colony
+  title: cmu-net-site-colony-bounties
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Boards/Bounties/
+  style:
+    background: "#16120A"
+    text: "#E8DCC0"
+    heading: "#F2C230"
+    link: "#E8A040"
+    font: Display
+  pages:
+    "": index.xml
+  board:
+    postLabel: cmu-net-board-bounties-post
+    empty: cmu-net-board-bounties-empty
+    anyonePosts: true
+    showTerminals: true
+    bounties: true

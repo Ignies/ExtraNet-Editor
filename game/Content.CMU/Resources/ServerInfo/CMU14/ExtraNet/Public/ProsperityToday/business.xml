@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#EEF3F8" Text="#10243A" Heading="#0B4F8A" Link="#1C6B3A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ProsperityToday/banner.png" MaxHeight="150"/>
+  # BUSINESS AND MARKETS
+  [italic]The numbers behind better worlds. All prices Gateway close, delayed for the colonies.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/spacecash.rsi" State="spacecash_1000" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/weya_clipboard.rsi" State="clipboard" Scale="3"/>
+  </Box>
+
+  ## THE BOARD
+  - [bold]Weyland-Yutani[/bold]: up, as usual. Strong colony returns, strong synthetic sales, strong outlook.
+  - [bold]Hyperdyne Systems[/bold]: flat. Hyperdyne continues to make good synthetics, for a smaller company.
+  - [bold]Seegson[/bold]: down again. The Working Joe remains a dependable product for customers who value dependability over everything else, including conversation.
+  - [bold]Lasalle Bionational[/bold]: up, on news of the renewed frontier clinic agreement.
+  - [bold]Koorlander[/bold]: steady. Colonists continue to smoke.
+
+  ## COMPANY PRODUCTS IN THE NEWS
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigars/shio_royals_tube.rsi" State="shioroyalstube" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigarettes/we_ya_gold_packet.rsi" State="closed" Scale="3"/>
+  </Box>
+  - [bold]Shio Royals[/bold], the Company's own cigar, rolled in Japan, now stocked on the frontier. Our reviewer called them dependable. Rival cigar houses called them OK. We call that a consensus.
+  - [bold]We-Ya Gold[/bold] cigarettes, the Company's premium smoke, are now available in a four pack in selected rations.
+  - [bold]Hypersleep pods[/bold] from the Company's own yards now carry a two year warranty. Pods with a warranty, the Company points out, are pods you wake up from.
+
+  ## COMPETITORS
+  The Union of Progressive Peoples has announced a new five year plan for its colonies. Prosperity Today has read it. It is a plan, it lasts five years and it involves a great deal of digging. We wish them well.
+
+  ## TIPS FOR THE COLONIAL INVESTOR
+  - Your contract is your best investment. Keep it current.
+  - The company store accepts all major colony scrip.
+  - Do not invest in anything advertised on the relay by someone who says they are a celebrity. They are not.
+
+  <CMUNetAd Id="CMUDeepAdPowerLoader"/>
+
+  [netlink="Back to top stories" link="prosperitytoday.news"]
+</Document>

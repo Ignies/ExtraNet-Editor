@@ -1,0 +1,43 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/Yotta/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Misc/books.rsi" State="icon_planet" Scale="2"/>
+  </Box>
+  # THE YOTTA! DIRECTORY
+  [italic]Every site we know about, sorted by hand into the right drawer. Sites marked NEW! were added since the last relay.[/italic]
+
+  ## ARTS AND ENTERTAINMENT
+  - [netlink="The Hydrogen Line, 1420" link="hydrogenline.fm"] Frontier radio, all shift long. [color=#D01070]NEW![/color]
+  - [netlink="YouTape" link="youtape.vhs"] Home tapes from every colony.
+  - [netlink="Chroma Sleep" link="chromasleep.fan"] Synth-pop from the Titan methane docks.
+  - [netlink="Rosie Ketch" link="rosieketch.music"] The Queen of the Outer Veil.
+  - [netlink="Vex Starr" link="vexstarr.holo"] The star of Gateway General.
+  - [netlink="Rex Maddox: Hostile Worlds" link="rexmaddox.holo"] Survival holo. Survival not guaranteed.
+
+  ## NEWS AND MEDIA
+  - [netlink="The Colony Herald" link="herald.colony.news"] Independent colony news.
+  - [netlink="The Colony Tattler" link="colonytattler.news"] Gossip, read aloud in canteens.
+  - [netlink="AtmoCast" link="atmocast.wx"] Colony weather. [color=#D01070]NEW![/color]
+
+  ## BUSINESS AND ECONOMY
+  - [netlink="Indentured" link="indentured.jobs"] Frontier contracts, long ones.
+  - [netlink="eBuoy" link="ebuoy.auction"] Buy and sell across the relay.
+  - [netlink="DropDash" link="dropdash.eats"] Food delivery. Do not ask. [color=#D01070]NEW![/color]
+  - [netlink="Colony Classifieds" link="classifieds.colony"] The noticeboard, on a screen.
+
+  ## REFERENCE
+  - [netlink="ColonyPedia" link="colonypedia.ref"] The encyclopedia anyone can edit, until the Company does.
+  - [netlink="VectorQuest" link="vectorquest.nav"] Maps and directions, eventually.
+  - [netlink="SpaceGPT" link="spacegpt.ai"] The thinking machine. [color=#D01070]NEW![/color]
+  - [netlink="The Galley Binder" link="galley.recipes"] What the galley knows.
+
+  ## SOCIETY AND CULTURE
+  - [netlink="MyBunk" link="mybunk.social"] A place for friends on the night shift.
+  - [netlink="OreMatch" link="orematch.love"] Video dating for the mining frontier.
+
+  ## GOVERNMENT
+  - [netlink="Colony Administration" link="admin.colony.gov"] Notices from the office upstairs.
+  - [netlink="Embassy of the United Americas" link="embassy.ua"] Consular services, slowly.
+
+  [netlink="Back to Yotta!" link="yotta.portal"]
+</Document>

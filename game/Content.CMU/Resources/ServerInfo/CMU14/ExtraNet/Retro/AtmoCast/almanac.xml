@@ -1,0 +1,30 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/AtmoCast/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Effects/weather.rsi" State="strata_clearsky" Scale="2"/>
+  </Box>
+  # THE TERRAFORMING ALMANAC
+  [italic]Long range facts for a long range life. Compiled by AtmoCast from processor logs, colony charters and Marge's notebook.[/italic]
+
+  ## HOW LONG UNTIL IT IS NICE OUT?
+  A standard atmosphere processor takes twenty to fifty years to bring a world up to shirtsleeve conditions. Your colony charter has a target date on page three. Every colonist reads page three. Nobody believes page three.
+
+  ## PROCESSOR MILESTONES
+  - [bold]Year 1.[/bold] Air technically breathable for minutes at a time. Do not test this.
+  - [bold]Year 5.[/bold] First clouds that the processor did not make on purpose.
+  - [bold]Year 10.[/bold] First proper rain. Colonists stand in it. Somebody cries. It is usually the administrator.
+  - [bold]Year 20.[/bold] Weather. Real weather, with fronts and forecasts. Marge gets a pay rise.
+  - [bold]Year 30 and on.[/bold] Gardens outside. Children who complain about the weather like it is a right.
+
+  ## FOLK WEATHER WISDOM OF THE FRONTIER
+  - Red sky at night, the processor is overheating.
+  - When the Joes stop sweeping, a storm is coming.
+  - If the dogs will not go out, neither should you.
+  - If the dropship will not land, neither will the supplies.
+  - Quiet in the vents, fair weather. Noise in the vents, see your administrator.
+
+  ## THIS MONTH IN WEATHER HISTORY
+  2179: a terraforming colony on a small moon reported a severe storm, then stopped reporting anything. The AtmoCast archive shows clear skies on that colony for the next three months. The archive also shows a very large thermal event. AtmoCast has filed this under weather, because it was asked to.
+
+  [netlink="Back to AtmoCast" link="atmocast.wx"]
+</Document>

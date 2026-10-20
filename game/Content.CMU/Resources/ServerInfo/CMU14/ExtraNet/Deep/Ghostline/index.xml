@@ -1,0 +1,13 @@
+<Document>
+  <CMUNetStyle Background="#05080F" Text="#B8C6DE" Heading="#6FA8FF" Link="#E0E0E0" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Ghostline/banner.png" MaxHeight="150"/>
+  [color=#6FA8FF][bold]GHOSTLINE[/bold][/color]
+
+  [color=#6FA8FF]// relay board, carrier unstable[/color]
+
+  A dead maintenance channel someone forgot to shut. Traffic from the colony's terminals bleeds through it, and now and then someone pins what they caught to this board. Half of it is noise. The other half is somebody else's business.
+
+  Read quietly. The Marshals know this channel exists, they just have not found the end of it yet.
+
+  <CMUNetMarquee Text="CARRIER UNSTABLE  ///  SIGNAL 31 PERCENT  ///  DO NOT IDLE ON THIS CHANNEL" Speed="45" Color="#6FA8FF"/>
+</Document>

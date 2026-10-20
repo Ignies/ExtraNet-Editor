@@ -1,0 +1,49 @@
+<Document>
+  <CMUNetStyle Background="#100B07" Text="#D6C8AC" Heading="#D9A23A" Link="#A6DB5E" Font="Pixel"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Blooded/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="THEY COME WITH THE HEAT  ///  THREE RED LIGHTS  ///  THEY DO NOT TAKE THE UNARMED  ///  STAND IN THE OPEN  ///  BE WORTHY  ///  BE SEEN  ///  BE MARKED" Speed="55" Color="#7A5A22"/>
+  <CMUNetSprite Rsi="/Textures/CMU14/Yautja/mask.rsi" State="icon" Scale="3"/>
+  # THE BLOODED
+  [italic]A lodge for those who have felt the hunters looking, and wanted to be found worth looking at.[/italic]
+
+  Every world that runs hot has the stories. A shimmer in the canopy, like heat over a road. Three small red lights on a man's chest, in a triangle, for half a second. A clicking from the trees like a big insect, or a throat. Skinned carcasses of the biggest animals in the valley hung high where nothing could have dragged them. A whole security patrol found in the morning with every weapon still loaded and not one of them fired.
+
+  The colony calls them a rumour. The Company calls them a classified matter. We call them the Hunters, and we are the ones who are not hiding.
+
+  <CMUNetBlink Rate="0.9">
+    [color=#D9A23A][bold]THE HOT SEASON IS COMING TO {colony}. ARE YOU READY TO BE SEEN.[/bold][/color]
+  </CMUNetBlink>
+
+  ## WHAT THE LODGE BELIEVES
+  - [bold]They are the oldest hunters there are.[/bold] They have crossed between stars for longer than we have had fire. They come to a world to hunt, and when they have hunted, they go.
+  - [bold]They have a code.[/bold] They do not take the unarmed. They do not take the sick, or the very young, or a woman carrying a child. They take what can fight back. See [netlink="The Code" link="blooded.deep/code"].
+  - [bold]They hunt the perfect organism.[/bold] Of everything in the dark, the black ones from the eggs are the prey they honour most. They have been seen carrying away the long skulls. They do not run from what we run from. They go toward it.
+  - [bold]To be judged worthy is the only honour left.[/bold] The Company decides what we are worth by the shift. The Hunters decide in a single look. We would rather be weighed by them.
+
+  ## THE PATH
+  - [bold]The Seen.[/bold] You have felt them watch you, and you did not run.
+  - [bold]The Keeper.[/bold] You carry a relic they left behind. See [netlink="the relics" link="blooded.deep/relics"].
+  - [bold]The Blooded.[/bold] You have stood against something they would hunt, and lived, and kept the skull.
+  - [bold]The Marked.[/bold] One of them has looked at you and put its sign on you. Nobody in the lodge has been marked. One person who was is willing to speak. See [netlink="the mark" link="blooded.deep/mark"].
+
+  ## LODGE RULES
+  - Never raise a weapon at a person. Not here, not anywhere. They do not honour that and neither do we.
+  - Never go into the dark after one of them. You will not find it. It will find you, and it will decide.
+  - No coordinates of nests. If you want a skull, earn it the way they do, in the open, when the colony needs it.
+  - Bring the relics in daylight. Let the others see. Tell the truth about how you got them.
+
+  ## RECENT THREADS
+  - Three red dots on the water tower last night. Two seconds. I stood still. [color=#7A5A22]14 replies[/color]
+  - Something cleaned a big grazer to the bone and hung it in the high branches [color=#7A5A22]9 replies[/color]
+  - Is the red dog one of theirs? Read the watch and tell me I am wrong. [color=#7A5A22]27 replies[/color]
+  - Brought in a burnt scrap of net. Metal. Still sharp. [color=#7A5A22]6 replies[/color]
+  - [color=#7A5A22]locked[/color] Going into the drains after the black ones alone (do not, see the rules)
+
+  ## OTHER WATCHERS
+  - [netlink="reddog.deep" link="reddog.deep"] has been tracking something fast and red in the outer plots that clicks at night. Read it with the lodge in mind.
+  - [netlink="fieldnotes.deep" link="fieldnotes.deep/bodies"] is a biologist's notebook on the black ones. Learn their bodies before you stand against one. Learn their blood.
+  - [netlink="missing.deep" link="missing.deep"] lists patrols that did not come back. Some of those patrols were armed, and in the open, and worthy.
+
+  ## THE LODGE BOARD
+  [color=#7A5A22]Anyone may post. Sightings, relics, honest accounts. No boasting. Posts run below.[/color]
+</Document>

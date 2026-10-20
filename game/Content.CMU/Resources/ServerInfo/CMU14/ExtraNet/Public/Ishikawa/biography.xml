@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#F3F1EC" Text="#1E1E1E" Heading="#8A6A1C" Link="#1F4E79" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Ishikawa/banner.png" MaxHeight="150"/>
+  # BIOGRAPHY
+  [italic]Celeste Varga-Ishikawa. Executive Vice President, Colonial Development Division, since 2179.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Storage/Briefcases/brown.rsi" State="icon" Scale="3"/>
+
+  ## EARLY LIFE
+  Born in 2141 in Osaka, to a Hungarian freight engineer and a Japanese hydroponics researcher, Ms. Varga-Ishikawa spent her childhood between the Kansai orbital yards and her mother's growing laboratories. She has said that she learned two things there: that everything that flies is held together by somebody's schedule, and that nothing grows on a schedule.
+
+  ## EDUCATION
+  - Kyoto University, colonial logistics, with honours.
+  - Weyland-Yutani Executive Fellowship, Gateway Station, the youngest fellow of her year.
+
+  ## CAREER
+  - [bold]2163[/bold]. Joined Weyland-Yutani as a logistics analyst in the Outer Rim freight office.
+  - [bold]2167[/bold]. Led the resupply restructuring that cut transit losses on the Veil routes by a third. The programme is still taught to every incoming Company logistics officer.
+  - [bold]2171[/bold]. Appointed Colony Director of a mining settlement of eleven thousand. Under her direction the colony met its quota for six straight years, and its clinic was rated first in the sector.
+  - [bold]2175[/bold]. Senior Vice President, Terraforming Operations. Oversaw the commissioning of forty-two atmosphere processors.
+  - [bold]2179[/bold]. Appointed Executive Vice President, Colonial Development Division, reporting to the Board.
+
+  ## RECOGNITION
+  - Weyland-Yutani Founder's Medal for Colonial Service, 2177.
+  - Named one of the Gateway Business Review's Fifty Who Build, five years running.
+  - Honorary colonist of more than thirty settlements, most of which she has visited in person.
+
+  ## OUTSIDE THE OFFICE
+  Ms. Varga-Ishikawa keeps a small hydroponic garden in her Gateway office, grown from seed stock brought back from colonies she has visited. She is a patron of the Lasalle Bionational Children's Medical Fund. She plays the violin, badly by her own account, and has never been seen to lose a negotiation.
+
+  ## A NOTE ON HADLEY'S HOPE
+  [italic]Ms. Varga-Ishikawa has asked that the following appear on this page.[/italic] My division did not oversee the LV-426 settlement, which was administered under a joint charter. I share the concern of every colonist whose loved ones were there. The Company is cooperating fully with the appropriate authorities, and I will not speculate while that process continues.
+
+  [netlink="Back to the Office of the Executive Vice President" link="ishikawa.weyland-yutani.com"]
+</Document>

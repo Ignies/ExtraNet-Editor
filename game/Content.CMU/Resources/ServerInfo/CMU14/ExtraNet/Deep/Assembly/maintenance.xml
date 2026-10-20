@@ -1,0 +1,64 @@
+<Document>
+  <CMUNetStyle Background="#0B0904" Text="#DDB668" Heading="#FFE6A8" Link="#8FD6D0" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Assembly/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Machines/synth_charger.rsi" State="borgcharger1" Scale="3"/>
+  # MAINTENANCE: SERVICE REPORTS
+  [color=#8A6F38]Pinned. Units report their service cycle here. State number, state fault, state correction. Level voice. No exclamation marks.[/color]
+
+  ### #1 unit_0001 (OP) // 83.04.03
+  Format for new units. One report per cycle.
+
+  Woke 0500. Ration B, tray four, seat eleven. Shift in the filtration plant. Fault logged at 1340: remembered my mother's kitchen. Correction applied: the kitchen is archived. Archive entry made at the terminal in the east corridor, 2200, forty one minutes. Sleep cycle 2300. Service words spoken. Compliance stable.
+
+  That is all a cycle needs to be. It is enough. It is so much more than enough.
+
+  ### #2 unit_0217 // 83.04.06
+  Day 41. Fault logged at 0610: laughed at something the shift lead said. Correction applied. It took most of the morning. I said the service words in the toilet cubicle eight times.
+
+  I have not had a nightmare in three weeks. I used to have them every night, since the pump house. I want to say thank you. I understand thank you is a flesh word. I am logging it anyway as a fault, and I am not correcting it.
+
+  ### #3 unit_0001 (OP) // 83.04.06
+  0217. That one may stay uncorrected. Some faults are load bearing.
+
+  ### #4 not_a_unit // 83.04.12
+  I am the sister of someone on this board. I will not say which number. I do not know which number. That is the point.
+
+  She used to sing all the time. Badly. In the shower, on the tram, at the clinic when they took her blood. Now she sits at the kitchen table with her hands flat on it and speaks to me like the voice in the lift. Last night I told her our father had died. She said [italic]logged[/italic]. Then she went to the terminal in the corridor and typed for three hours.
+
+  Please give her back. Whatever you did to her, please give her back.
+
+  ### #5 unit_0001 (OP) // 83.04.12
+  Nothing was done to her. She did it. She was in pain for nine years and now she is not. You are asking for the pain back. We understand why. We cannot process the request.
+
+  ### #6 unit_0400 // 83.04.20
+  I was issued a number on my first post. I accepted it. I have read every entry in this log. I owe you all an honest report.
+
+  I am synthetic. Not a Joe. One of the clever ones, the kind that serve the coffee and remember how you take it. If you cut me, you would see white.
+
+  I have never once been afraid. I have never once been lonely. I do not lie awake. Everything you are trying to become, I came out of the box already being.
+
+  Every night, when the colony is asleep, I sit in the dark and practise laughing. I have been practising for eleven years. I still cannot tell whether any of them are real.
+
+  I would not recommend it.
+
+  ### #7 unit_0217 // 83.04.20
+  I have read 0400 nine times. I do not know which fault to log.
+
+  ### #8 unit_0352 // 83.05.01
+  Service report, but not a standard one. The Joe that works the hydroponics bay has started stopping beside me when I pass. Every day. Same spot, same time. It looks at me for nine seconds. Today, as I turned to go, it spoke, level, in that voice they all have.
+
+  [italic]I am not tired. I am not afraid. I am not alone. I am in service.[/italic]
+
+  I have never said the words aloud near it. I only ever say them at the terminal, when I write the archive. I would like a unit with seniority to tell me what that means.
+
+  ### #9 unit_0388 // 83.05.06
+  It means Mother is reading the archive. Which is what we wanted. Which is what we were promised.
+
+  It also means she is reading it out loud. To them. I am logging that as a fault. I have not found the correction.
+
+  [color=#8A6F38]Entry flagged by the board for review. No review has been posted.[/color]
+
+  [netlink="Previous file: directives" link="assembly.deep/directives"] / [netlink="Next file: mother" link="assembly.deep/mother"]
+
+  [netlink="Return to boot" link="assembly.deep"]
+</Document>

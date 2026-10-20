@@ -1,10 +1,18 @@
-// Reads game resources straight from the repository: textures, RSIs, prototypes and locale strings.
+// Reads game resources: textures, RSIs, prototypes and locale strings. By default from the bundled snapshot in
+// game/ (the ExtraNet pages, prototypes and CMU art, see tools/snapshot.py), falling back to the public master
+// branch on GitHub for everything else; or straight from a repository (a GitHub branch or a local checkout).
 // A rooted resource path like /Textures/x.png is looked up the way the game's merged resource folders resolve it:
 // first Content.CMU/Resources/, then Resources/.
 
-export const DEFAULT_REPO = 'https://raw.githubusercontent.com/Ignies/ColonialMarinesUniverse/Personal-Computers/';
+/** The bundled snapshot, with GitHub master behind it. */
+export const BUNDLED = 'bundled';
+export const GITHUB_REPO = 'https://raw.githubusercontent.com/Ignies/ColonialMarinesUniverse/Personal-Computers/';
+export const MASTER_REPO = 'https://raw.githubusercontent.com/Ignies/ColonialMarinesUniverse/master/';
+export const DEFAULT_REPO = BUNDLED;
+const GAME = new URL('../game/', import.meta.url).href;
 
 let repoBase = DEFAULT_REPO;
+let snapshot = null;
 let localProvider = () => null;
 const cache = new Map();
 const listeners = new Set();
@@ -15,7 +23,7 @@ export function getRepoBase() {
 
 export function setRepoBase(url) {
   let base = (url || '').trim() || DEFAULT_REPO;
-  if (!base.endsWith('/')) base += '/';
+  if (base !== BUNDLED && !base.endsWith('/')) base += '/';
   if (base === repoBase) return;
   repoBase = base;
   cache.clear();
@@ -47,26 +55,60 @@ export function isLocal(path) {
   return path.startsWith('./');
 }
 
-/** Candidate URLs for a resource path, in lookup order. */
-export function resourceUrls(path) {
-  let p = path.trim();
-  if (!p.startsWith('/')) p = '/' + p;
-  const urls = [`${repoBase}Content.CMU/Resources${p}`, `${repoBase}Resources${p}`];
-  // Both folders are tried, but the likely one first saves a 404 per file. Content.CMU/Resources/Textures only
-  // holds CMU14, _RuMC14 and Shaders, so everything else (the fonts, the upstream _RMC14 art) is in Resources.
-  return /^\/(Textures\/(CMU14|_RuMC14|Shaders)\/|ServerInfo\/|Fonts\/ComicNeue\/)/.test(p) ? urls : urls.reverse();
+/** A short name for the source, for the status bar and toasts. */
+export function repoLabel(base = repoBase) {
+  if (base === BUNDLED) return 'bundled snapshot';
+  const gh = githubParts(base);
+  if (gh) return `github.com/${gh.owner}/${gh.repo} ${gh.branch}`;
+  return base;
 }
 
-/** A file in the repository by its path from the repository root. */
-export function repoUrl(path) {
-  return repoBase + path.replace(/^\/+/, '');
+export function isBundled() {
+  return repoBase === BUNDLED;
+}
+
+/** The snapshot's file list (game/index.json): { files: Set, generated, commit }. */
+export function snapshotInfo() {
+  if (!snapshot) {
+    snapshot = fetch(GAME + 'index.json').then(r => (r.ok ? r.json() : { files: [] })).then(j => ({ ...j, files: new Set(j.files || []) }))
+      .catch(() => ({ files: new Set() }));
+  }
+  return snapshot;
+}
+
+/** Repository paths a rooted resource path may live at, likely one first. */
+function resourcePaths(path) {
+  let p = path.trim();
+  if (!p.startsWith('/')) p = '/' + p;
+  const paths = [`Content.CMU/Resources${p}`, `Resources${p}`];
+  // Both folders are tried, but the likely one first saves a 404 per file. Content.CMU/Resources/Textures only
+  // holds CMU14, _RuMC14 and Shaders, so everything else (the fonts, the upstream _RMC14 art) is in Resources.
+  return /^\/(Textures\/(CMU14|_RuMC14|Shaders)\/|ServerInfo\/|Fonts\/ComicNeue\/)/.test(p) ? paths : paths.reverse();
+}
+
+/** Candidate URLs for a resource path, in lookup order. */
+async function resourceUrls(path) {
+  const paths = resourcePaths(path);
+  if (!isBundled()) return paths.map(p => repoBase + p);
+  const { files } = await snapshotInfo();
+  const own = paths.find(p => files.has(p));
+  return own ? [GAME + own] : paths.map(p => MASTER_REPO + p);
+}
+
+/** The URL of a file by its path from the repository root. */
+async function repoFileUrl(path) {
+  const clean = path.replace(/^\/+/, '');
+  if (!isBundled()) return repoBase + clean;
+  const { files } = await snapshotInfo();
+  return (files.has(clean) ? GAME : MASTER_REPO) + clean;
 }
 
 async function fetchFirst(urls, kind) {
   let last = null;
   for (const url of urls) {
     try {
-      const response = await fetch(url, { cache: 'force-cache' });
+      // GitHub raw files rarely change within a visit; the editor's own snapshot follows the server's caching.
+      const response = await fetch(url, { cache: url.startsWith(GAME) ? 'default' : 'force-cache' });
       if (response.ok) {
         const data = kind === 'text' ? await response.text() : kind === 'json' ? await response.json() : await response.blob();
         return { url, data };
@@ -96,12 +138,12 @@ export function fetchResource(path, kind = 'blob') {
     if (kind === 'blob') return Promise.resolve({ url: path, data: blob });
     return blob.text().then(text => ({ url: path, data: kind === 'json' ? JSON.parse(text) : text }));
   }
-  return cached(`${kind}:${path}`, () => fetchFirst(resourceUrls(path), kind));
+  return cached(`${kind}:${path}`, async () => fetchFirst(await resourceUrls(path), kind));
 }
 
 /** A repository file by its path from the repository root, e.g. Content.CMU/Resources/Prototypes/... */
 export function fetchRepoFile(path, kind = 'text') {
-  return cached(`repo:${kind}:${path}`, () => fetchFirst([repoUrl(path)], kind));
+  return cached(`repo:${kind}:${path}`, async () => fetchFirst([await repoFileUrl(path)], kind));
 }
 
 const objectUrls = new Map();
@@ -143,7 +185,8 @@ export function parseFtl(text) {
     if (m) {
       key = m[1];
       out[key] = m[2];
-    } else if (key && /^\s+\S/.test(line) && !line.trim().startsWith('.')) {
+    } else if (key && (/^\s+\S/.test(line) || /^\}/.test(line)) && !line.trim().startsWith('.')) {
+      // Indented lines continue the value; so does the closing brace of a select, which sits in column 0.
       out[key] += (out[key] ? ' ' : '') + line.trim();
     } else if (!line.trim() || line.startsWith('#')) {
       key = null;
@@ -154,7 +197,7 @@ export function parseFtl(text) {
 
 export function locale() {
   return cached('locale', async () => {
-    const { data } = await fetchFirst([repoUrl('Content.CMU/Resources/Locale/en-US/CMU14/personal-computers.ftl')], 'text');
+    const { data } = await fetchRepoFile('Content.CMU/Resources/Locale/en-US/CMU14/personal-computers.ftl', 'text');
     return parseFtl(data);
   });
 }
@@ -187,7 +230,7 @@ export function scanPrototypes(text, type) {
 
 export function deepAds() {
   return cached('ads', async () => {
-    const { data } = await fetchFirst([repoUrl(PC_PROTOTYPES + 'deep_ads.yml')], 'text');
+    const { data } = await fetchRepoFile(PC_PROTOTYPES + 'deep_ads.yml', 'text');
     const ads = new Map();
     for (const ad of scanPrototypes(data, 'cmuDeepAd')) ads.set(ad.id, ad);
     return ads;
@@ -196,7 +239,7 @@ export function deepAds() {
 
 export function wallpapers() {
   return cached('wallpapers', async () => {
-    const { data } = await fetchFirst([repoUrl(PC_PROTOTYPES + 'wallpapers.yml')], 'text');
+    const { data } = await fetchRepoFile(PC_PROTOTYPES + 'wallpapers.yml', 'text');
     const map = new Map();
     for (const wallpaper of scanPrototypes(data, 'cmuWallpaper')) map.set(wallpaper.id, wallpaper);
     return map;
@@ -209,7 +252,7 @@ export function knownAddresses() {
     const map = new Map();
     for (const file of ['sites.yml', 'boards.yml', 'deep_web.yml']) {
       try {
-        const { data } = await fetchFirst([repoUrl(PC_PROTOTYPES + file)], 'text');
+        const { data } = await fetchRepoFile(PC_PROTOTYPES + file, 'text');
         for (const site of scanPrototypes(data, 'cmuNetSite')) if (site.address) map.set(site.address.toLowerCase(), site.id);
       } catch {
         // A file that moved does not stop the others from being checked.
@@ -231,23 +274,44 @@ export function bundled(name) {
 
 // ---------------------------------------------------------------- directory listings for the sprite browser
 
-function githubParts() {
-  const m = /^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/(.+?)\/?$/.exec(repoBase);
+export function githubParts(base = repoBase) {
+  const m = /^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/(.+?)\/?$/.exec(base);
   return m ? { owner: m[1], repo: m[2], branch: m[3] } : null;
 }
 
-async function listDirectory(repoPath) {
-  const gh = githubParts();
-  if (gh) {
-    const url = `https://api.github.com/repos/${gh.owner}/${gh.repo}/contents/${repoPath}?ref=${encodeURIComponent(gh.branch)}`;
-    const response = await fetch(url);
-    if (response.status === 404) return [];
-    if (!response.ok) throw new Error(`GitHub API ${response.status}${response.status === 403 ? ' (rate limited, try again later)' : ''}`);
-    const items = await response.json();
-    return items.map(item => ({ name: item.name, dir: item.type === 'dir' }));
+/** A folder's entries in the snapshot: [{ name, dir }]. */
+async function snapshotDirectory(repoPath) {
+  const { files } = await snapshotInfo();
+  const prefix = repoPath.replace(/^\/+|\/+$/g, '') + '/';
+  const out = new Map();
+  for (const file of files) {
+    if (!file.startsWith(prefix)) continue;
+    const rest = file.slice(prefix.length);
+    const slash = rest.indexOf('/');
+    const name = slash < 0 ? rest : rest.slice(0, slash);
+    if (!out.has(name)) out.set(name, { name, dir: slash >= 0 });
   }
+  return [...out.values()];
+}
+
+export async function listDirectory(repoPath) {
+  if (isBundled()) {
+    // The snapshot's own files, plus master's for the folders it does not cover (most game sprites).
+    const own = await snapshotDirectory(repoPath);
+    let upstream = [];
+    try {
+      upstream = await githubDirectory(githubParts(MASTER_REPO), repoPath);
+    } catch (e) {
+      if (!own.length) throw e;
+    }
+    const merged = new Map(upstream.map(i => [i.name, i]));
+    for (const item of own) merged.set(item.name, item);
+    return [...merged.values()];
+  }
+  const gh = githubParts();
+  if (gh) return githubDirectory(gh, repoPath);
   // A local server's directory index, such as python -m http.server.
-  const response = await fetch(repoUrl(repoPath.endsWith('/') ? repoPath : repoPath + '/'));
+  const response = await fetch(repoBase + (repoPath.endsWith('/') ? repoPath : repoPath + '/'));
   if (!response.ok) return [];
   const html = await response.text();
   const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -259,6 +323,16 @@ async function listDirectory(repoPath) {
     out.push({ name: dir ? href.slice(0, -1) : href, dir });
   }
   return out;
+}
+
+/** A folder of a GitHub branch, through the contents API. */
+async function githubDirectory(gh, repoPath) {
+  const url = `https://api.github.com/repos/${gh.owner}/${gh.repo}/contents/${repoPath}?ref=${encodeURIComponent(gh.branch)}`;
+  const response = await fetch(url);
+  if (response.status === 404) return [];
+  if (!response.ok) throw new Error(`GitHub API ${response.status}${response.status === 403 ? ' (rate limited, try again later)' : ''}`);
+  const items = await response.json();
+  return items.map(item => ({ name: item.name, dir: item.type === 'dir' }));
 }
 
 /** Lists a rooted resource folder (e.g. /Textures/_RMC14/Objects) across both resource roots. */
@@ -281,4 +355,81 @@ export function listResourceFolder(path) {
     if (merged.size === 0 && failure) throw failure;
     return [...merged.values()].sort((a, b) => (b.dir - a.dir) || a.name.localeCompare(b.name));
   });
+}
+
+// ---------------------------------------------------------------- whole folders, for the library and the emulator
+
+const TREE_TTL = 30 * 60 * 1000;
+
+function treeKey(prefix) {
+  return `extranet-tree:${repoBase}:${prefix}`;
+}
+
+/** Every file under a repository folder, as paths relative to it. GitHub: one tree call, kept for half an hour. */
+export function listTree(prefix, { refresh = false } = {}) {
+  const clean = prefix.replace(/^\/+|\/+$/g, '');
+  if (refresh) {
+    cache.delete(`tree:${clean}`);
+    try {
+      localStorage.removeItem(treeKey(clean));
+    } catch {
+      // nothing kept
+    }
+  }
+  return cached(`tree:${clean}`, async () => {
+    if (isBundled()) {
+      const { files } = await snapshotInfo();
+      const prefix = clean + '/';
+      return [...files].filter(f => f.startsWith(prefix)).map(f => f.slice(prefix.length));
+    }
+    const gh = githubParts();
+    if (!gh) return crawl(clean);
+    let stale = null;
+    try {
+      stale = JSON.parse(localStorage.getItem(treeKey(clean)) || 'null');
+    } catch {
+      stale = null;
+    }
+    if (stale && Date.now() - stale.at < TREE_TTL) return stale.files;
+    try {
+      const url = `https://api.github.com/repos/${gh.owner}/${gh.repo}/git/trees/${encodeURIComponent(`${gh.branch}:${clean}`)}?recursive=1`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`GitHub API ${response.status}${response.status === 403 ? ' (rate limited, try again later)' : ''}`);
+      const json = await response.json();
+      const files = json.tree.filter(item => item.type === 'blob').map(item => item.path);
+      try {
+        localStorage.setItem(treeKey(clean), JSON.stringify({ at: Date.now(), files }));
+      } catch {
+        // too big for storage: kept for this visit
+      }
+      return files;
+    } catch (e) {
+      if (stale) return stale.files;
+      throw e;
+    }
+  });
+}
+
+/** A local server's directory listings, folder by folder. */
+async function crawl(root) {
+  const files = [];
+  let queue = [''];
+  while (queue.length) {
+    const batch = queue;
+    queue = [];
+    const results = await Promise.all(batch.map(dir => listDirectory(`${root}/${dir}`).then(items => ({ dir, items })).catch(() => ({ dir, items: [] }))));
+    for (const { dir, items } of results) {
+      for (const item of items) {
+        if (item.dir) queue.push(`${dir}${item.name}/`);
+        else files.push(`${dir}${item.name}`);
+      }
+    }
+  }
+  if (!files.length) throw new Error(`no files listed under ${root}: serve the checkout with python -m http.server, which lists folders`);
+  return files;
+}
+
+/** Whether game files come from GitHub (true) or a checkout on a local server (false). */
+export function isGithub() {
+  return githubParts() !== null;
 }

@@ -1,0 +1,34 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/Indentured/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medals/silver.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="paper_stamp-deny" Scale="2"/>
+  </Box>
+  # COMPANY REVIEWS
+  [italic]Anonymous reviews by people who work there, or did. Indentured does not edit reviews. Some employers do.[/italic]
+
+  ## WEYLAND-YUTANI (3.9 OUT OF 5)
+  - [bold]Pros:[/bold] good pay, good pension, good everything, very good. [bold]Cons:[/bold] none. [color=#5A6A80]Posted from a Weyland-Yutani terminal at 09:00 sharp by an account called HappyEmployee.[/color]
+  - [bold]Pros:[/bold] they build better worlds. [bold]Cons:[/bold] they do not say who for.
+  - [bold]Pros:[/bold] the coffee. [bold]Cons:[/bold] I asked about a project I was not cleared for and was moved to a colony I had never heard of. I like it here. The coffee is not as good.
+
+  ## SEEGSON (2.8 OUT OF 5)
+  - [bold]Pros:[/bold] relaxed atmosphere, friendly staff, cheap terminals. [bold]Cons:[/bold] the terminals.
+  - [bold]Pros:[/bold] I got to work with Working Joes every day. [bold]Cons:[/bold] see pros.
+  - [bold]Pros:[/bold] they gave me a station to look after. [bold]Cons:[/bold] they will not tell me where it went.
+
+  ## HYPERDYNE SYSTEMS (4.2 OUT OF 5)
+  - [bold]Pros:[/bold] clean labs, smart colleagues. [bold]Cons:[/bold] some of the smart colleagues are not people, and they are much better at their jobs than me, and they are very kind about it.
+
+  ## UNITED STATES COLONIAL MARINE CORPS (4.5 OUT OF 5)
+  - [bold]Pros:[/bold] travel, comradeship, three meals a day, a rifle. [bold]Cons:[/bold] the travel is in a tube, the meals are in a pouch and the places you travel to are on fire.
+  - [bold]Pros:[/bold] best years of my life. [bold]Cons:[/bold] I remember almost nothing about the last one, and the Corps says that is normal.
+
+  ## LASALLE BIONATIONAL (3.5 OUT OF 5)
+  - [bold]Pros:[/bold] I help people. [bold]Cons:[/bold] I mostly help people fill out forms about why they need help.
+
+  ## SPACEGPT INC. (1 OUT OF 5)
+  - [bold]Pros:[/bold] small team, flexible hours. [bold]Cons:[/bold] the server room. I will not go back to the server room. Do not ask me to go back to the server room.
+
+  [netlink="Back to Indentured" link="indentured.jobs"]
+</Document>

@@ -1,0 +1,13 @@
+<Document>
+  <CMUNetStyle Background="#140B06" Text="#E0CBB4" Heading="#E07A2E" Link="#E8D45A" Font="Pixel"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Rustbucket/banner.png" MaxHeight="150"/>
+  [color=#E07A2E][bold]RUSTBUCKET BBS[/bold][/color]
+
+  [color=#E8D45A]est. on a spare cargo terminal, still running on its original battery[/color]
+
+  Old timers' board. It started as a swap list for spare parts between the mine shifts and the hauler crews, and it never really stopped. These days people trade more than parts here.
+
+  Be polite, keep it short, and do not ask who set it up.
+
+  <CMUNetMarquee Text="SPARES WANTED  ///  APOLLO BOARDS  ///  LOADER HYDRAULICS  ///  NO QUESTIONS" Speed="60" Color="#E07A2E"/>
+</Document>

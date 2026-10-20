@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#2B1A10" Text="#EADBC4" Heading="#D9A441" Link="#E8C77A" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Albarran/banner.png" MaxHeight="150"/>
+  # THE LOUNGE
+  [italic]Cutting, lighting, keeping and the manners of a good cigar, as taught at the first table on the Calle Obispo.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Tools/Lighters/zippo.rsi" State="open" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Matchboxes/matchbox.rsi" State="matchbox" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Decoration/ashtray-br.rsi" State="icon-0" Scale="3"/>
+  </Box>
+
+  ## THE CUT
+  Cut the cap, not the cigar. A clean cut a few millimetres from the end is enough. If you have no cutter, a sharp knife will do. Your teeth will not.
+
+  ## THE LIGHT
+  - [bold]Matches[/bold] are best. Let the sulphur burn off before the flame touches the leaf.
+  - [bold]A lighter[/bold] is acceptable. A petrol lighter will leave a taste. The House forgives you.
+  - [bold]A welding torch[/bold], a flare or the exhaust of a dropship are not acceptable. We have been asked. More than once.
+
+  Toast the foot evenly and slowly. Do not hurry. Nothing on a colony ever comes on time, and a cigar should be no exception.
+
+  ## THE PACE
+  A puff a minute. If the cigar goes out, it is not a failure, it is a pause. Relight it gently.
+
+  ## KEEPING YOUR CIGARS
+  - Keep them in a closed case, away from the processor vents and the dry air of a ship.
+  - Hypersleep is hard on cigars. Pack them in a sealed travelling case before you go under.
+  - Never keep cigars beside rations, coffee or anything that smells. Leaf drinks in what is near it.
+
+  ## MANNERS
+  - Ask before you light. On a colony, you share the air, and somebody worked very hard to make it.
+  - Never smoke in a hydroponics bay, a clinic, a cryo ward, an ammunition store or near an oxygen line.
+  - Never let a cigar burn in an ashtray unattended. Colony fires are not like fires on Earth. There is nowhere to run.
+  - Offer one to the person who fixed your air. They will remember.
+
+  [netlink="Back to Casa Albarran" link="albarran.cigars"]
+</Document>

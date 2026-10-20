@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#0B0B05" Text="#E8E8C8" Heading="#FFE000" Link="#FF5050" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/VeilTruth/banner.png" MaxHeight="150"/>
+  # THE MAILBAG
+  [italic]You write, we listen. Names withheld, because they are watching. Replies from the editor, who is also the only staff member.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/radio.rsi" State="walkietalkie" Scale="3"/>
+
+  ## LETTERS
+  [bold]Q.[/bold] My colony's relay has been down for four days and the administration says it is a buoy fault. Should I be worried?
+  [bold]A.[/bold] Four days is a buoy fault. Fourteen days is a question. Forty days is a story. Write back in ten days.
+
+  [bold]Q.[/bold] I drank the colony coffee and I feel fine. Does that mean it is working?
+  [bold]A.[/bold] That is exactly what it would want you to think.
+
+  [bold]Q.[/bold] I think my colony liaison is a synthetic. He has never once taken a sick day.
+  [bold]A.[/bold] Neither has our editor, and our editor is definitely not a synthetic. Need more.
+
+  [bold]Q.[/bold] You said Gateway Station is not real. I live on Gateway Station.
+  [bold]A.[/bold] We did not say it was not real. We asked whether it was real. We have since received your postcard. We are reviewing it.
+
+  [bold]Q.[/bold] There is something in the vents on {colony}. It is tall and it clicks. My administration told me to stay calm.
+  [bold]A.[/bold] We do not do monster stories. But if your administration told you to stay calm, ask yourself why they felt the need to say it. Stay with other people. Stay in the light. Write back if you can.
+
+  [bold]Q.[/bold] Is the Colony Tattler controlled opposition?
+  [bold]A.[/bold] Everything is controlled opposition, except us.
+
+  [bold]Q.[/bold] Is Veil Truth controlled opposition?
+  [bold]A.[/bold] Next question.
+
+  ## SEND A LETTER
+  Write it on paper. Hand it to a freighter pilot you trust. Tell them it is for the Veil. They will know. If they do not know, do not trust that pilot again.
+
+  [netlink="Back to the truth" link="veiltruth.news"]
+</Document>

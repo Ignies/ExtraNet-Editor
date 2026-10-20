@@ -1,0 +1,23 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/EmbassyUA/emblem.png" MaxHeight="96"/>
+  # Relations
+  The United Americas keeps its word to its friends and its guard up with everyone. The positions below are the mission's public stance.
+
+  ## The Great Powers
+  - [bold]Three World Empire[/bold]: an ally, bound to the Union by treaty. This sector lies in Imperial space, and the mission works closely with its Imperial counterpart, while watching the Empire's growth with care. [netlink="Embassy of the TWE" link="embassy.twe"]
+  - [bold]Union of Progressive Peoples[/bold]: relations have been cold since Operation Canton. As UPP settlement pushes deeper into the frontier, standoffs with American forces grow more common. The mission keeps its lines to the UPP delegation open, because a misunderstanding out here costs lives. [netlink="Embassy of the UPP" link="embassy.upp"]
+
+  ## Other Nations
+  - [bold]Independent Core System Colonies[/bold]: the Union does not recognise the ICSC as a sovereign power, but deals with its delegation on trade, communications and safe passage. [netlink="ICSC delegation" link="embassy.icsc"]
+  - [bold]Central Confederation of Africa[/bold]: a rising economic partner, whose investment now builds much of this sector. The Union welcomes fair competition. [netlink="Embassy of the CCA" link="embassy.cca"]
+
+  ## Companies and Agencies
+  - [bold]Weyland-Yutani[/bold]: a longstanding supplier and business partner of the Union. The mission expects the Company to answer to American law on American colonies, and to answer for what it has left undone on them.
+  - [bold]Interstellar Commerce Commission[/bold]: an ally in trade and quarantine. Its agents work beside the Colonial Marshals.
+  - [bold]United Nations peacekeepers[/bold]: the Union is bound by the Geneva Conventions of 2106, and respects the neutrality of peacekeepers and Red Cross workers in this sector.
+
+  ## Designated Groups
+  - [bold]Colonial Liberation Front[/bold]: designated a terrorist organisation by both the Union and the Empire. The mission does not negotiate with it, and asks citizens to report its activity to the Colonial Marshals.
+
+  [netlink="Back to the Communiques" link="embassy.ua"]
+</Document>

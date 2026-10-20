@@ -1,0 +1,33 @@
+<Document>
+  <CMUNetStyle Background="#EFE6D2" Text="#2B2416" Heading="#4E6E1A" Link="#8A3A12" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/FrontierLeaf/banner.png" MaxHeight="150"/>
+  # FRONTIER LEAF GROWERS' COOPERATIVE
+  [italic]Colony grown tobacco, from colony growers, for colony people. Founded at Hope's Retreat in 2176. Owned by the people who grow it.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Specific/Hydroponics/tobacco.rsi" State="stage-3" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Specific/Hydroponics/tobacco.rsi" State="harvest" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Specific/Hydroponics/tobacco.rsi" State="dried" Scale="3"/>
+  </Box>
+
+  ## WHO WE ARE
+  Fourteen hydroponics technicians on three colonies who were tired of paying freight on a packet of cigarettes. In 2176 we started growing a few plants in the corner of the Hope's Retreat hydroponics bay, in the space the lettuce did not need. The administration noticed. We filled out a form. Seven years later the co-op has forty two members on Hope's Retreat, Shepherds' Pride and Solaris Ridge, and our leaf is smoked from one end of the Outer Veil to the other.
+
+  ## WHAT WE BELIEVE
+  - Colony grown is better than freighted. Fresher, cheaper and nobody had to put it in hypersleep.
+  - Every member gets one vote, whether they grow one tray or forty.
+  - Food trays come first. The co-op never takes a tray the colony needs to eat.
+  - Profits go back to the growers, and a tenth goes to the colony clinic.
+
+  ## THIS SEASON
+  - [bold]A good harvest.[/bold] The spring cut at Hope's Retreat came in heavy and green. Cured leaf will be ready for the store by the next freighter.
+  - [bold]New members welcome.[/bold] Any hydroponics technician on a colony with spare tray capacity can apply. See the growers page.
+  - [bold]A word to Koorlander.[/bold] Our friends at Koorlander have once again offered to buy the co-op. We have once again said no, thank you. We still stock their packets, because our members smoke them.
+
+  ## THE CO-OP
+  - [netlink="Our leaf and the store" link="frontierleaf.coop/leaf"]
+  - [netlink="Meet the growers" link="frontierleaf.coop/growers"]
+  - [netlink="The notice board: hours, prices, rules" link="frontierleaf.coop/notices"]
+
+  [color=#7A6A4A]Tobacco is for adults. It will shorten your life, and the co-op will not pretend otherwise. We would rather you bought from us than from a smuggler, and rather still that you did not need to buy at all.[/color]
+</Document>

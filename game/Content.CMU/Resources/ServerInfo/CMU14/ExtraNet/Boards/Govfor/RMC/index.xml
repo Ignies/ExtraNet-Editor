@@ -1,0 +1,21 @@
+<Document>
+  <CMUNetStyle Background="#0C1430" Text="#E4E6EE" Heading="#D4AF37" Link="#E06060" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/flags.rsi" State="GB" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/rmc_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Structures/wallflags.rsi" State="tweflag" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/twe_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/flags.rsi" State="JP" Scale="2"/>
+  </Box>
+
+  # ROYAL MARINE COMMANDOS
+  [bold]THREE WORLD EMPIRE - IMPERIAL GARRISON, {colony}[/bold]
+  <CMUNetMarquee Text="BY COMMAND OF THE OFFICER COMMANDING  ///  ALL PERSONS ARE TO CARRY COLONY IDENTIFICATION  ///  CURFEW AND SECURITY CATEGORIES ARE PROMULGATED BELOW  ///  UNATTENDED ARTICLES WILL BE TREATED AS SUSPECT  ///  PER MARE PER TERRAM" Speed="55" Color="#D4AF37"/>
+  [bold]PART ONE ORDERS OF THE IMPERIAL GARRISON.[/bold] The following orders are issued by the Officer Commanding under the authority of the Provisional Governor, and take effect on promulgation. Residents are respectfully reminded that ignorance of a posted order is not an excuse.
+
+  Royal Marines have been deployed to {colony} to secure it on behalf of the Three World Empire. The Commando way is to arrive quietly, do the job properly, and leave the place tidier than we found it.
+
+  <CMUNetBlink Rate="0.8">
+    [color=#D4AF37]OFFICIAL - IMPERIAL SIGNALS - ALL TRAFFIC IS RECORDED[/color]
+  </CMUNetBlink>
+</Document>

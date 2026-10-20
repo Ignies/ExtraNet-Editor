@@ -1,0 +1,25 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/HydrogenLine/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/phone.rsi" State="rpb_phone" Scale="2"/>
+  </Box>
+  # THE REQUEST LINE
+  [italic]Send a request by ExtraNet mail or relay call. Lou reads them all, out loud, on Nightside, slowly.[/italic]
+
+  ## THIS WEEK'S DEDICATIONS
+  - [bold]To Marisol in hydroponics[/bold], from Priya: Hypersleep Heart, by Chroma Sleep. Sorry about the socks. I am keeping the socks.
+  - [bold]To the night crew on the processor[/bold], from the day crew: Processor Lullaby, by Rosie Ketch. Because you never get to hear it with the lights on.
+  - [bold]To Dusty[/bold], from his mother: Mama Was a Pipefitter, by Rosie Ketch. Call me. Also I am not a pipefitter, I just like the song.
+  - [bold]To the garrison[/bold], from the canteen: Dust on the Dropship, by Rosie Ketch. Wipe your boots.
+  - [bold]To JOE-114[/bold], from JOE-114: Do You Dream, Joe, by Chroma Sleep. Lou played it. Lou would like to know how a Working Joe sent a request. Lou has not slept.
+
+  ## REQUESTS WE WILL NOT PLAY
+  - Anything about the Company that would get us turned off.
+  - The Gateway General theme. We have played it four hundred times. Watch the show.
+  - Ten Hours Of Static. Stop requesting Ten Hours Of Static. We do not have it. It plays anyway, sometimes, in the hour after Nightside.
+
+  ## PHONE IN TIPS
+  Speak clearly. Say your name and colony. Do not breathe into the handset. If you hear breathing on the line and you are not breathing into the handset, hang up and call again from a different terminal.
+
+  [netlink="Back to the Hydrogen Line" link="hydrogenline.fm"]
+</Document>

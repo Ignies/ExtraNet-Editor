@@ -1,0 +1,37 @@
+<Document>
+  <CMUNetStyle Background="#0C1430" Text="#E4E6EE" Heading="#D4AF37" Link="#E06060" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/rmc_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # THE GARRISON
+  [italic]Few in number. Fewer still who would want to meet us.[/italic]
+
+  ## WHO WE ARE
+  The garrison is a troop of the Royal Marine Commandos, the elite of the Three World Empire's forces, drawn from the Home Worlds of Earth, Mars and Titan. We are trained for rapid deployment, boarding actions, reconnaissance and precision work well behind the lines, and there are rather fewer of us than people tend to assume. What we lack in numbers we make up in discipline.
+
+  ## CHAIN OF COMMAND
+  - [bold]Officer Commanding:[/bold] sets the state of alert, the curfew and the security categories, and signs every order on this board.
+  - [bold]Second in Command:[/bold] runs the garrison day to day and receives representations from residents.
+  - [bold]Staff officers:[/bold] patrol programmes, checkpoint orders, quartermaster's matters and liaison with Colony Administration.
+  - [bold]Sections and patrols:[/bold] the Marines you will meet on your street.
+
+  ## MISSION
+  In the name of the Crown and Parliament, the garrison will:
+  - defend the colony against dissident and insurgent attack, including the cells calling themselves the Colonial Liberation Front;
+  - respond to fire, collapse, gas and any other civil emergency;
+  - watch the atmosphere and the perimeter, and give early warning;
+  - secure the colony's power, water, air and landing facilities.
+
+  ## THE ALBACETIRE LESSON
+  In 2168 Drill Site 68-B on Albacetire holed a ravine of pressurised carbon monoxide, and the Carbon Ravine disaster killed more than twelve thousand people, soldiers among them. Every Commando studies it on course. It is the reason a Royal Marine on gate duty also carries the first aid kit, the gas monitor and the keys to the shelter.
+
+  ## STANDING ORDERS TO MARINES
+  Published so that residents know the standard we hold ourselves to.
+  - A Marine will give his name, rank and unit to any resident who asks.
+  - Nothing is requisitioned from a civilian without a signed receipt.
+  - Minimum force, always. Every round fired is accounted for.
+  - Courtesy costs nothing. A Marine who forgets that will be reminded.
+
+  [netlink="Return to Part One Orders" link="command.govfor.mil"]
+</Document>

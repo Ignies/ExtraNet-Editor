@@ -1,0 +1,32 @@
+<Document>
+  <CMUNetStyle Background="#12100C" Text="#CFC4A8" Heading="#C9442C" Link="#7FB7A8" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Defector/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="day 211 ... still here ... do not reply ... do not look for me ... the boots stay on ... still here ..." Speed="40" Color="#7D735E"/>
+
+  # DIARY OF A DEFECTOR
+  [italic]Kept on a borrowed terminal, in a language that is not mine, by a man using a name that is not his.[/italic]
+
+  I was a soldier of the Union of Progressive Peoples. Naval Infantry, conscript, rifleman, number withheld. Now I mend pipes on a frontier colony for a wage in a currency I still count twice. I will not say which colony. I will not say which ship. If you work it out, keep it to yourself.
+
+  I write here because paper can be found under a mattress, and a man who is found with paper is a man who is found. This place is not safe either. Nothing is. But at three in the morning it is the furthest from the Union I can reach.
+
+  <CMUNetBlink Rate="0.9">
+    [color=#C9442C][bold]IF YOU ARE FROM THE MINISTRY: I AM ALREADY GONE.[/bold][/color]
+  </CMUNetBlink>
+
+  ## THE ENTRIES
+  - [netlink="I. Ration Cards" link="defector.deep/union"] - how we lived, and why nobody leaves.
+  - [netlink="II. The Water Tank" link="defector.deep/desertion"] - the night I went over the side.
+  - [netlink="III. Footsteps" link="defector.deep/found"] - what it is to be hunted by patient people.
+
+  ## RULES OF THIS PAGE
+  - Do not try to meet me. I will not come, and the man who comes in my place will not be a friend.
+  - Do not say my old name in a bar. Three people on this rock know it, and I only trust one of them.
+  - Do not send me money. Money leaves a trail. So do favours.
+
+  [color=#5A5040]-- entries are written in the pump room. the fans are loud. forgive the spelling. --[/color]
+
+  If the entries stop, I did not get bored. Look for me on [netlink="the missing list" link="missing.deep"]. If a marshal starts asking about new faces, [netlink="someone keeps count" link="marshalwatch.deep"].
+
+  [netlink="Back to the top of the diary" link="defector.deep"]
+</Document>

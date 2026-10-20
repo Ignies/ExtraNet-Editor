@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/SolarisRidge/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Solaris Ridge, filed by our own correspondent from the Lambda checkpoint to the spaceport. One hundred and twenty readers, and we know most of them by name.[/italic]
+
+  Every one of us draws a Company wage. The Herald does not take Company money for its pages, and it gives up no sources. Read the notices from Operations, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Dust front building to the south, storm shutters may drop without warning  ///  Lambda checkpoint closed to non-lab staff until further notice  ///  Readers may comment under any story" Speed="55" Color="#8A1C1C"/>
+</Document>

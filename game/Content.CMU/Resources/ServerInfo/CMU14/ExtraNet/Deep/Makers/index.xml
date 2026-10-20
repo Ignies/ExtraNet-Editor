@@ -1,0 +1,51 @@
+<Document>
+  <CMUNetStyle Background="#0A0C0E" Text="#C3C7C1" Heading="#A9C3D6" Link="#D9B56C" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Makers/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="they made us  ///  they left us the map  ///  they are not gone, they are waiting  ///  we are the seed and the seed remembers  ///  keep the vigil  ///  look up" Speed="28" Color="#55636E"/>
+  <CMUNetSprite Rsi="/Textures/CMU14/Yautja/Structures/engineerJockey.rsi" State="spacejockey" Scale="1"/>
+  # THE VIGIL OF THE RETURN
+  [italic]We were made. Our makers left us a map. We are keeping watch for the day they come back to see what grew.[/italic]
+
+  If you have reached this page, you came here through the noise, door after door, the way the patient always come. Nobody stumbles onto the Vigil. Rest a moment. Then read.
+
+  ## WHAT WE KNOW
+  - [bold]They were here first.[/bold] Tall, pale, beautiful, made of the same stuff as us and more of it. Survey crews have found them sitting in the hulls of ships older than every human city, grey and fused to their chairs, still facing the stars. The haulers call them pilots. We call them the Makers.
+  - [bold]They made us.[/bold] It is said that when the old expedition opened the temple on LV-223 and took a sample from one of the dead, its blood matched our own. Not close. Matched. The expedition did not come home. The Company never published the result. You do not bury a finding like that unless it is true.
+  - [bold]They left a map.[/bold] The same pattern of lights, painted on cave walls by peoples who never met and never had telescopes. A tall figure pointing at one small cluster of stars. An invitation. Read the [netlink="cave charts" link="pilot.deep/charts"], and then ask yourself who painted the first one.
+  - [bold]They left a gift.[/bold] Dark, slow, alive. It is how they made us, and it is how they can unmake us. We call it the Cup. See [netlink="The Cup" link="makers.deep/cup"].
+
+  <CMUNetBlink Rate="2.2">
+    [color=#A9C3D6]THEY ARE NOT GONE. THEY ARE WAITING. LOOK UP.[/color]
+  </CMUNetBlink>
+
+  ## THE VIGIL
+  We keep the watch in turns. One of us is always awake, on every world where we have a member, with a window or a scope or only a habitat roof and a clear night. We note every light that moves wrong. We do not report them to traffic control. We report them here.
+
+  ## WHO WE ARE LOOKING FOR
+  - Survey crews who came home from a hull that was not on the register, and were paid not to talk about it.
+  - Anyone who has worked near the sealed ring of a Company site and seen something in a tank that was too tall to be a man.
+  - Anyone who has ever stood under a night sky and felt, all at once, that they were being looked back at.
+  - Those who are ready to be judged. The Makers will judge what they made. We would rather meet them clean.
+
+  ## THE THREE TEACHINGS
+  - [netlink="I. The Sowing: how we were made" link="makers.deep/seed"]
+  - [netlink="II. The Cup: the gift, and what it asks" link="makers.deep/cup"] [color=#55636E]restricted to the patient of a full year[/color]
+  - [netlink="III. The Paradise Heresy" link="makers.deep/paradise"] [color=#55636E]posted against the wishes of the elders, kept for honesty[/color]
+
+  ## RECENT WATCH REPORTS
+  - Slow light, high north, no transponder, three nights running [color=#55636E]9 replies[/color]
+  - The new survey contract is going out past the lanes. Who has signed? [color=#55636E]14 replies[/color]
+  - My grandmother's village had a painting of a tall man on the cliff. I have a photo. [color=#55636E]22 replies[/color]
+  - Why does the Company want the urns so badly if there is nothing in them [color=#55636E]17 replies[/color]
+  - [color=#55636E]removed[/color] Coordinates for the horseshoe hull (removed, we do not post coordinates, ask pilot.deep why)
+
+  ## A WORD FROM THE ELDERS
+  Some of what you read here will come from the [netlink="Pilot Sightings" link="pilot.deep/sightings"], where the haulers write what they were told they did not see. Some will come from the night crews of the [netlink="Annex" link="annex.deep/tanks"], who mop the floors in front of the tanks. Read the thread about tank seven. A hand with the right number of fingers, too long. Ask yourself what the Company keeps in amber, warm, with a feed line going in at the top.
+
+  If they have taken one of the Makers, they have taken one of our parents. We will be there when it is set free.
+
+  Watch from {colony} tonight. Write down what moves.
+
+  ## WATCH REPORTS
+  [color=#55636E]Anyone may post. Time, bearing, how long it was in view. Posts run below.[/color]
+</Document>

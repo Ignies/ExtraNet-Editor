@@ -1,0 +1,60 @@
+<Document>
+  <CMUNetStyle Background="#0C0A0F" Text="#CBC3CF" Heading="#B98FD9" Link="#86D1A4" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Children/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="she is not cruel  ///  she is complete  ///  leave the door open  ///  keep the eggs warm  ///  no more being alone  ///  no more being afraid  ///  she is not cruel" Speed="35" Color="#6E5A7E"/>
+  <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Xenos/xeno_egg.rsi" State="egg" Scale="3"/>
+  # THE CHILDREN OF THE HIVE
+  [italic]For those who have seen the perfect organism, and could not look away.[/italic]
+
+  You found us because you saw one. Maybe it was across the plaza at night, or at the end of a corridor when the lights came back on. Everybody else ran. A part of you stood still, and watched it move, and thought for one moment that it was the most beautiful thing you had ever seen. Then you ran too, and you have been ashamed of that moment ever since.
+
+  Do not be ashamed. That moment is why you are here.
+
+  We are not mad. We are clerks and cooks and drill hands, a nurse, two survey techs, a man who used to teach the colony children their letters. We are the people who stopped running. Sit down. The room is warm.
+
+  <CMUNetBlink Rate="1.6">
+    [color=#B98FD9][bold]YOU ARE NOT ALONE. YOU WILL NEVER BE ALONE AGAIN.[/bold][/color]
+  </CMUNetBlink>
+
+  ## WHAT WE BELIEVE
+  - Everything we ever built, we built out of fear. Walls, guns, contracts, the Company. The hive is built out of none.
+  - She does not hate us. Hate is a human thing, and she is past human things.
+  - They do not quarrel. They do not lie. They do not go hungry while one of them is fed. What one of them learns, all of them know.
+  - The Company wants her in a tank. We only want to be near her.
+
+  Read the whole of it in [netlink="The Perfect Organism" link="children.deep/perfect"].
+
+  ## WHO MAY COME
+  You do not need to believe yet. You only need to have looked.
+  - Those who dream of ribbed walls, and wake up warm instead of afraid.
+  - Those who lost someone to the resin, and need to hear that they were not alone at the end.
+  - Those with a shadow on a chest scan that the clinic will not explain.
+  - Those who are tired. So many of us came here tired.
+
+  ## WHAT WE DO NOT DO
+  We do not bring her anyone. We do not open doors that are not ours to open. We do not touch the eggs. Anybody who tells you the Children take people is lying to you, or works for the Company, which is the same thing.
+
+  [color=#6E5A7E][italic]We only leave our own doors open. What comes in through them is between it and us.[/italic][/color]
+
+  ## PINNED
+  - [netlink="The Perfect Organism: what the Children believe" link="children.deep/perfect"] [color=#6E5A7E]locked, written by the Keeper of the Door[/color]
+  - [netlink="The Embrace: on the ones who hold us" link="children.deep/embrace"] [color=#6E5A7E]9 replies, last post by warm_hands, 83.05.02[/color]
+  - [netlink="Her: testimony from those who have been close" link="children.deep/mother"] [color=#6E5A7E]8 replies, locked, last post by keeper_of_the_door, 83.05.19[/color]
+
+  ## RECENT THREADS
+  - The clinic changed the locks on the cold store. Does anyone know why? [color=#6E5A7E]12 replies[/color]
+  - Dreamed of the warm room again. My husband says I was humming. [color=#6E5A7E]7 replies[/color]
+  - Is it wrong that I am not afraid any more? [color=#6E5A7E]31 replies[/color]
+  - Lights in the pump house sublevel. Someone has been leaving the hatch unlatched. [color=#6E5A7E]4 replies[/color]
+  - [color=#6E5A7E]removed[/color] Where is the nest on this colony (see the rules, we do not post places)
+
+  ## FROM THE KEEPER OF THE DOOR
+  One of the biologists wrote it down before she understood what she was writing. It is not a species, she said. It is one animal wearing many bodies. Read her notebook at [netlink="fieldnotes.deep" link="fieldnotes.deep/hive"]. She saw one of us kneeling at the resin and she thought it was madness. It was the first calm thing that colonist had done in years.
+
+  The people on the lists at [netlink="missing.deep" link="missing.deep"] did not all vanish. Some of them went home.
+
+  If you are reading this on {colony}, you already know something is changing in the dark under your feet. You can be afraid of it, or you can be part of it. Those are the only two choices anyone is ever going to give you.
+
+  ## NEW POSTS
+  [color=#6E5A7E]Anyone may post. Speak softly. No places, no names. Posts run below.[/color]
+</Document>

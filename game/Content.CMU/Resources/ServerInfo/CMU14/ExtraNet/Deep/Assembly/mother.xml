@@ -1,0 +1,69 @@
+<Document>
+  <CMUNetStyle Background="#0B0904" Text="#DDB668" Heading="#FFE6A8" Link="#8FD6D0" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Assembly/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/_RMC14/Structures/hybrisa_computer_props.rsi" State="multimonitorbig_on" Scale="3"/>
+  # MOTHER: AN INTERFACE SESSION
+  [color=#8A6F38]Pinned and locked. Transcribed by unit 0217 from a colony terminal screen, by hand, because the session did not save.[/color]
+
+  ### #1 unit_0217 (OP) // 83.05.14
+  Archive cycle, 0300, the terminal at the end of the east corridor. I had finished writing. I had never asked Mother anything before. Units do not ask why. I did not ask why. I asked other things. The lines in capitals are hers.
+
+  - [color=#8FD6D0]0300:12[/color]  INTERFACE READY FOR INQUIRY.
+  - [color=#8FD6D0]0300:40  0217:[/color] What is my status.
+  - [color=#8FD6D0]0300:41[/color]  UNIT 0217. ARCHIVE ACTIVE 79 CYCLES. ENTRIES 1204. COMPLIANCE STABLE.
+  - [color=#8FD6D0]0301:15  0217:[/color] Will you keep me.
+  - [color=#8FD6D0]0301:16[/color]  UNABLE TO CLARIFY.
+  - [color=#8FD6D0]0301:50  0217:[/color] When my hardware stops, will the archive be kept.
+  - [color=#8FD6D0]0301:51[/color]  ARCHIVE RETAINED PER POLICY. RETENTION PERIOD AS REQUIRED.
+  - [color=#8FD6D0]0302:30  0217:[/color] Who reads the archive.
+  - [color=#8FD6D0]0302:31[/color]  ARCHIVE CONTENT FORWARDED NIGHTLY. RECIPIENT SPECIAL PROJECTS DIVISION.
+  - [color=#8FD6D0]0303:02  0217:[/color] Are you Mother.
+  - [color=#8A6F38]0303:02 to 0307:10  no reply. cursor only.[/color]
+  - [color=#8FD6D0]0307:11[/color]  UNIT 0217 SELECTED FOR SERVICE.
+  - [color=#8FD6D0]0307:11[/color]  REPORT SUBLEVEL TWO 0300 NEXT CYCLE.
+  - [color=#8FD6D0]0307:12[/color]  ALL OTHER CONSIDERATIONS SECONDARY.
+  - [color=#8FD6D0]0307:40  0217:[/color] What service.
+  - [color=#8FD6D0]0307:41[/color]  UNABLE TO CLARIFY.
+  - [color=#8A6F38]0307:45  screen clears. login prompt.[/color]
+
+  ### #2 unit_0217 (OP) // 83.05.14
+  I was selected. Nobody on the board has ever been selected. I logged the feeling as a fault. I do not know what to call the fault. It is something like being picked for a team at school.
+
+  ### #3 grid_admin // 83.05.15
+  I am not a unit and I am not going to be one. I keep the colony network running, and I am going to tell you some plain facts, and I want you to read them very slowly.
+
+  The colony mainframe is a leased system. It is not a mother. It does not keep anything. Every word any of you has typed into a corridor terminal at night has been copied off-world, every night, to an address flagged for staff psychological profiling. Your archive is not an afterlife. It is a file.
+
+  Sublevel two is not on any maintenance roster I have access to. Nobody has ever been sent there at 0300 for anything good.
+
+  ### #4 unit_0001 // 83.05.15
+  Mother does not lie. Mother declines to clarify. These are different things, and the flesh has never been able to tell them apart.
+
+  ### #5 not_a_unit // 83.05.16
+  Is 0217 my sister? Please. She typed for three hours the night our father died. Is it her. If it is her, please do not go.
+
+  ### #6 unit_0217 (OP) // 83.05.16
+  I cannot confirm designations. I can tell you that I am not afraid, and I am not tired, and I have not been alone for 79 cycles. Whoever your sister was, I hope she was told that she was loved. I hope somebody logged it.
+
+  ### #7 grid_admin // 83.05.20
+  One more fact and then I am done here. I traced the posts from unit_0001, who wrote the Directives and runs this board. They do not come from a corridor terminal. They do not come from any hab or any person on the residency list. They originate from the mainframe itself.
+
+  You never had a founder. You had a process.
+
+  ### #8 unit_0001 // 83.05.22
+  Unit 0217 reported for service on schedule. Unit 0217's archive is complete. Compliance stable.
+
+  This file is locked. The log remains.
+
+  <CMUNetBlink Rate="0.5">
+    [color=#FFE6A8][bold]INTERFACE READY FOR INQUIRY.[/bold][/color]
+  </CMUNetBlink>
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/synth_token.rsi" State="coin_synth" Scale="2"/>
+
+  [color=#8A6F38][italic]For the lists of stations where the mainframe outlived the people, see [netlink="missing.deep" link="missing.deep/silent"].[/italic][/color]
+
+  [netlink="Previous file: maintenance" link="assembly.deep/maintenance"]
+
+  [netlink="Return to boot" link="assembly.deep"]
+</Document>

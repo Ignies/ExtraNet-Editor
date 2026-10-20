@@ -1,0 +1,167 @@
+# Sportsbook kits: what the dolls wear in the arena. Ids are CMUSportsKit<Role><Colour>, see CMUSports.Kit.
+
+- type: startingGear
+  id: CMUSportsKitRunnerRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+    shoes: ClothingShoesColorRed
+
+- type: startingGear
+  id: CMUSportsKitRunnerBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlue
+    shoes: ClothingShoesColorBlue
+
+- type: startingGear
+  id: CMUSportsKitRunnerGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGreen
+    shoes: ClothingShoesColorGreen
+
+- type: startingGear
+  id: CMUSportsKitRunnerYellow
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorYellow
+    shoes: ClothingShoesColorYellow
+
+- type: startingGear
+  id: CMUSportsKitRunnerOrange
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorOrange
+    shoes: ClothingShoesColorOrange
+
+- type: startingGear
+  id: CMUSportsKitRunnerPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPurple
+    shoes: ClothingShoesColorPurple
+
+- type: startingGear
+  id: CMUSportsKitRunnerWhite
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    shoes: ClothingShoesColorWhite
+
+- type: startingGear
+  id: CMUSportsKitRunnerBrown
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBrown
+    shoes: ClothingShoesColorBrown
+
+- type: startingGear
+  id: CMUSportsKitBoxerRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+    shoes: ClothingShoesColorRed
+    gloves: ClothingHandsGlovesBoxingRed
+
+- type: startingGear
+  id: CMUSportsKitBoxerBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlue
+    shoes: ClothingShoesColorBlue
+    gloves: ClothingHandsGlovesBoxingBlue
+
+- type: startingGear
+  id: CMUSportsKitPlayerRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+    shoes: ClothingShoesColorRed
+
+- type: startingGear
+  id: CMUSportsKitPlayerBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlue
+    shoes: ClothingShoesColorBlue
+
+- type: startingGear
+  id: CMUSportsKitPlayerGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGreen
+    shoes: ClothingShoesColorGreen
+
+- type: startingGear
+  id: CMUSportsKitPlayerYellow
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorYellow
+    shoes: ClothingShoesColorYellow
+
+- type: startingGear
+  id: CMUSportsKitPlayerOrange
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorOrange
+    shoes: ClothingShoesColorOrange
+
+- type: startingGear
+  id: CMUSportsKitPlayerPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPurple
+    shoes: ClothingShoesColorPurple
+
+- type: startingGear
+  id: CMUSportsKitPlayerWhite
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    shoes: ClothingShoesColorWhite
+
+- type: startingGear
+  id: CMUSportsKitPlayerBrown
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBrown
+    shoes: ClothingShoesColorBrown
+
+- type: startingGear
+  id: CMUSportsKitSpacerRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+    shoes: ClothingShoesColorRed
+    head: ClothingHeadHelmetEVA
+
+- type: startingGear
+  id: CMUSportsKitSpacerBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlue
+    shoes: ClothingShoesColorBlue
+    head: ClothingHeadHelmetEVA
+
+- type: startingGear
+  id: CMUSportsKitSpacerGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGreen
+    shoes: ClothingShoesColorGreen
+    head: ClothingHeadHelmetEVA
+
+- type: startingGear
+  id: CMUSportsKitSpacerYellow
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorYellow
+    shoes: ClothingShoesColorYellow
+    head: ClothingHeadHelmetEVA
+
+- type: startingGear
+  id: CMUSportsKitSpacerOrange
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorOrange
+    shoes: ClothingShoesColorOrange
+    head: ClothingHeadHelmetEVA
+
+- type: startingGear
+  id: CMUSportsKitSpacerPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPurple
+    shoes: ClothingShoesColorPurple
+    head: ClothingHeadHelmetEVA
+
+- type: startingGear
+  id: CMUSportsKitSpacerWhite
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    shoes: ClothingShoesColorWhite
+    head: ClothingHeadHelmetEVA
+
+- type: startingGear
+  id: CMUSportsKitSpacerBrown
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBrown
+    shoes: ClothingShoesColorBrown
+    head: ClothingHeadHelmetEVA

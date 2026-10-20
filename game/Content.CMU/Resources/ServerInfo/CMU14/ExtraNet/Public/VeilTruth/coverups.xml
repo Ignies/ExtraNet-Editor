@@ -1,0 +1,31 @@
+<Document>
+  <CMUNetStyle Background="#0B0B05" Text="#E8E8C8" Heading="#FFE000" Link="#FF5050" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/VeilTruth/banner.png" MaxHeight="150"/>
+  # THE COVER-UPS
+  [italic]Every one of these is a fact. Some of them are facts we have not finished proving.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="paper_stamp-deny" Scale="3"/>
+
+  ## FILE 1: HADLEY'S HOPE
+  LV-426. A terraforming colony under joint charter. In 2179 it stopped answering the relay. A Colonial Marines ship was sent. As far as anyone on the relay can tell, the ship has not come back either. The Company says it is cooperating. The marines say nothing. A band booked to play there is still waiting for its deposit to bounce. Truth rating: [color=#FF5050]REAL, AND WE ARE SCARED[/color].
+
+  ## FILE 2: FIORINA 161
+  A prison foundry at the end of the Neroid Sector, run for convicts who were never going home. It refuses concerts. It refuses holo-show hosts. It refuses our letters. What kind of prison refuses mail? Truth rating: [color=#FFE000]SUSPICIOUS[/color].
+
+  ## FILE 3: THE COFFEE
+  Every colony vending machine is supplied by the same three contracts. The coffee tastes identical across forty worlds. Our researcher drank one cup from each of seven colonies in a single week, and then slept for eleven hours. Truth rating: [color=#FFE000]UNDER INVESTIGATION[/color]. Our researcher is still a little tired.
+
+  ## FILE 4: GATEWAY STATION
+  Everybody has been through Gateway. Nobody remembers it. You go into hypersleep, you wake up, you are told you passed through Gateway. Have you ever seen it with your own eyes? Have you? Truth rating: [color=#8FD18F]WE CHECKED, IT IS REAL[/color]. A reader sent us a postcard. We still have questions about the postcard.
+
+  ## FILE 5: CORSAT STATION
+  A research station that will not take visitors, will not take concerts and asked a country singer not to land. What are they researching that is afraid of a fiddle? Truth rating: [color=#FF5050]VERY SUSPICIOUS[/color].
+
+  ## FILE 6: THE PROCESSOR NAMES
+  Under the Horizon 2200 plan, every new atmosphere processor will be named by the colony it serves. Why would a machine need a name? Who is going to call it? Truth rating: [color=#FFE000]THINK ABOUT IT[/color].
+
+  ## A NOTE ON THE BUGS
+  Readers keep writing in about big bugs. Black ones. Tall ones. Ones in the vents. Veil Truth does not publish monster stories. We publish facts. Monster stories are how they make the real questions look silly. Stay focused, colonist. And keep your vents taped, just in case.
+
+  [netlink="Back to the truth" link="veiltruth.news"]
+</Document>

@@ -1,0 +1,13 @@
+<Document>
+  <CMUNetStyle Background="#16120A" Text="#E8DCC0" Heading="#F2C230" Link="#E8A040" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Boards/Bounties/banner.png" MaxHeight="150"/>
+  <CMUNetBlink Rate="0.8">
+    [color=#F2C230][bold]JOBS WITH CASH ON THE TABLE[/bold][/color]
+  </CMUNetBlink>
+  # {colony} BOUNTY BOARD
+  Need something found, fixed or fetched? Post it with a reward. The money leaves your account when the job goes up and is held until you pay whoever did the job, or until you withdraw it.
+
+  Answer a job by commenting from a terminal you are logged in to. That is where the money goes if you get picked.
+
+  <CMUNetMarquee Text="LOST PETS  ///  BROKEN PUMPS  ///  MISSING CRATES  ///  CASH PAID ON DELIVERY" Speed="55" Color="#F2C230"/>
+</Document>

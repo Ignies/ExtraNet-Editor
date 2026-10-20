@@ -1,0 +1,28 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/Yotta/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Misc/books.rsi" State="icon_stars" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/PersonalComputers/Sites/Ads/badges.rsi" State="neon_open" Scale="2"/>
+  </Box>
+  # COOL SITES OF THE WEEK
+  [italic]Picked by the Yotta! team, who spend all shift on the ExtraNet so you do not have to. Our supervisor would like that last part removed.[/italic]
+
+  <CMUNetBlink Rate="0.6">
+    [color=#D01070][bold]SITE OF THE WEEK[/bold][/color]
+  </CMUNetBlink>
+
+  ## SPACEGPT
+  [netlink="spacegpt.ai" link="spacegpt.ai"] You type a question. It answers. Sometimes it answers a different question, a better one. Our team asked it which site should be Site of the Week. It said lock your door. We have given it Site of the Week out of caution.
+
+  ## ALSO COOL
+  - [netlink="ColonyPedia" link="colonypedia.ref"] Look up anything. The talk pages are where the real fighting is.
+  - [netlink="YouTape" link="youtape.vhs"] Watch a man eat a ration bar for forty minutes. We did. All of it.
+  - [netlink="The Hydrogen Line" link="hydrogenline.fm"] A radio station named after the noise the universe makes. The DJ is better.
+  - [netlink="OreMatch" link="orematch.love"] Our Working Joe signed up. It has had three matches. We have had none. We are reviewing our profiles.
+  - [netlink="VectorQuest" link="vectorquest.nav"] Directions from your bunk to the canteen in only nine minutes of loading.
+
+  ## NOT COOL
+  - Typing in addresses you found scratched on the inside of a locker. You do not know where those go. Neither do we. Stay on the directory.
+
+  [netlink="Back to Yotta!" link="yotta.portal"]
+</Document>

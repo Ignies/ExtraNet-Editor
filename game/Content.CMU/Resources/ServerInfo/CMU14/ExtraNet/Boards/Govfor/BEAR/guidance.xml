@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#121212" Text="#CFC7B8" Heading="#D23B3B" Link="#D9A441" Font="Mono"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RuMC14/Clothing/Patches/BEAR.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # RULES FOR CIVILIANS
+  [italic]Short list. No exceptions.[/italic]
+
+  On a quiet day you will see a patrol and nothing else. When the Commander raises the alert state, these rules apply to everyone on {colony}.
+
+  ## CHECKPOINTS
+  - Stop when told. Hands visible.
+  - ID ready. Contractors show a work order.
+  - Declare any weapon before the search. Undeclared weapons are taken and logged. A Colonial Marshal licence is respected; nothing else is.
+  - No photographs. No recordings. Not of the checkpoints, not of us.
+
+  ## CURFEW
+  - Hours are posted here and called on the PA.
+  - After curfew you need a pass from Colony Administration or the duty officer. Essential workers carry theirs.
+
+  ## SIREN
+  - Indoors. Away from windows. Stay until the all clear.
+  - Follow your block warden. Do not come to our gate. It will be closed, and it will be covered.
+  - Shelters are listed by [netlink="Colony Administration" link="admin.colony.gov"].
+
+  ## REPORT
+  - Bags, crates or vehicles nobody owns.
+  - Anyone asking about our patrols, our armoury or the landing pad.
+  - Cut fences, broken locks, missing explosives or mining charges.
+  - A gas alarm, or a gas monitor that is dark, broken or tampered with. Carbon monoxide has no smell.
+
+  Your politics are your business. A rifle in your hands is ours.
+
+  ## NOT OUR JOB
+  We do not collect debts, settle arguments between neighbours or enforce Company contracts. Take that to the Marshals or to Administration. Complaints about an operator go in writing to the Deputy Commander. They are read.
+
+  [netlink="Back to orders" link="command.govfor.mil"]
+</Document>

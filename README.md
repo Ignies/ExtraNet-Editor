@@ -164,17 +164,61 @@ come back identical, and still equivalent when every block is regenerated from s
 - A text paragraph that starts with `#` gets an empty `[italic][/italic]` in front, so it is not read as a
   heading.
 
+## The Library: curating the game's own sites
+
+The **Library** panel (the top icon on the rail, <kbd>Alt+0</kbd>) lists every ExtraNet site in the game, grouped
+as Public, Boards, Retro, Deep, Corporate / W-Y, Seegson, CMB and Packages. Each row shows the site's banner, title,
+address, networks and page count. Search by title, address or id, and filter by curation mark.
+
+![The Library with the Colony Herald open for curating](docs/library.png)
+
+- **Open a site** by clicking it. It loads into the block editor like a package: every page, the colony versions
+  of pages (`<site root>/<colony>/page.xml`, shown when you type the colony in the preview's map folder box), and
+  the site settings. YAML sites keep their titles as locale ids in the game; the editor shows the English text
+  from `personal-computers.ftl`.
+- **Curate it** in the card at the top: mark it Reviewed, Needs work or Hidden, and write a note. Marks and notes
+  are kept in this browser (localStorage), keyed by the site. Hidden sites leave the list unless the filter asks
+  for them.
+- **Package zip** exports the site as a site package, like any package.
+- **Export changes** exports only what changed since the site was opened: the changed and new page files at their
+  repository paths (unzip at the repository root), and a `CHANGES.md` that lists them, the pages to delete, and
+  any change to the site settings. A YAML site's settings live in a prototype file shared with other sites, so
+  `CHANGES.md` describes that edit (and shows the new entry) instead of rewriting the file.
+
+The source is picked at the top of the panel: the bundled snapshot (the default), the Personal-Computers branch
+on GitHub, or the checkout the editor is served from.
+
 ## Where game art comes from
 
-Several kinds of game data are read from the repository as raw files:
-- sprites (RSIs) and textures;
-- the game's fonts;
-- product ads (`deep_ads.yml`) and wallpapers;
-- locale strings.
+The editor reads game data as raw files: pages and site prototypes, sprites (RSIs) and textures, the game's
+fonts, product ads (`deep_ads.yml`), wallpapers and locale strings. **Repo** on the rail picks the source:
 
-The default repository is `https://raw.githubusercontent.com/Ignies/ColonialMarinesUniverse/Personal-Computers/`;
-**Repo** switches to another fork or branch. A path like `/Textures/x.rsi` is looked up in
-`Content.CMU/Resources/Textures/` first, then `Resources/Textures/`, like the game's merged resource folders.
+- **Bundled snapshot** (the default): `game/` in this repository holds the game's ExtraNet content at its
+  repository paths: every page and package under `ServerInfo/CMU14/ExtraNet/`, the prototypes in
+  `Prototypes/CMU14/PersonalComputers/`, `personal-computers.ftl`, the art in `Textures/CMU14/PersonalComputers/`,
+  every other CMU14 texture the pages use, and any referenced file the public master branch lacks.
+  `game/index.json` lists the files. Everything else (most game sprites, the fonts) comes from the `master` branch
+  on GitHub.
+- **A GitHub branch**, such as `https://raw.githubusercontent.com/Ignies/ColonialMarinesUniverse/Personal-Computers/`,
+  or a fork.
+- **This checkout**: when the editor is served from inside the game repository
+  (`Content.CMU/Tools/ExtraNetEditor/`, with the repository root served by `python -m http.server`), it reads
+  everything from there, art that is not pushed yet included.
+
+A path like `/Textures/x.rsi` is looked up in `Content.CMU/Resources/Textures/` first, then `Resources/Textures/`,
+like the game's merged resource folders.
+
+### Refreshing the snapshot
+
+From this folder, with a checkout of the game repository:
+
+```bash
+python tools/snapshot.py path/to/ColonialMarinesUniverse
+```
+
+It replaces `game/` with the checkout's current pages, prototypes and art, and prints the size and any path the
+pages reference that the checkout lacks. `--master <ref>` sets the branch whose files need no copy (default
+`origin/master`; fetch it first). Commit `game/` with the editor.
 
 `data/` ships two snapshots:
 - `ad_sprites.json`: the sprite layers of each ad's entity, following `parent:`.
@@ -241,7 +285,9 @@ Differences:
 | `js/render.js`, `js/browser.js` | Drawing pages and the in-game browser around them |
 | `js/validate.js` | The checks |
 | `js/package.js`, `js/zip.js` | The package model, autosave, zip and folder import and export |
-| `js/repo.js`, `js/sprites.js`, `js/fonts.js` | Reading the repository: files, RSIs, fonts, ads |
+| `js/repo.js`, `js/sprites.js`, `js/fonts.js` | Reading the repository or the snapshot: files, RSIs, fonts, ads |
+| `js/library.js`, `js/ui-library.js`, `css/library.css` | The Library: the site index, opening YAML sites and packages, curation marks, the changes export |
+| `game/`, `tools/snapshot.py` | The bundled snapshot of the game's ExtraNet content, and the script that refreshes it |
 | `js/editor.js` | The markup view's code editor |
 | `js/ui-site.js`, `js/ui-files.js`, `js/ui-sprites.js`, `js/ui-dialog.js` | Site form, files and images, sprite and ad pickers, dialogs |
 | `js/template.js` | The LostAndFound example |

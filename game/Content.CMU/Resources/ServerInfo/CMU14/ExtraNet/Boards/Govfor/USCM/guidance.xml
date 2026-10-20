@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#171A12" Text="#D4CFAE" Heading="#E3B341" Link="#8FB35A" Font="Terminal"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/uscm_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # CIVILIAN GUIDANCE
+  [italic]Read once. Comply every shift.[/italic]
+
+  The detachment's job is to keep this colony, its people and its works intact. On a quiet day you will see a fire team walk past the mess and nothing more. When the Commanding Officer raises the alert state, the rules below apply to everyone: residents, contractors and visitors alike.
+
+  ## AT A CHECKPOINT
+  - Halt when ordered to halt. Keep your hands visible.
+  - Present your colony ID. Contractors also present a current work order.
+  - Declare any firearm before you are searched. A weapon without a Colonial Marshal licence will be confiscated and logged.
+  - Do not photograph or record checkpoints, sentry posts or troop movements.
+
+  ## CURFEW
+  - Curfew hours are posted on this board and announced over the colony PA.
+  - Movement after curfew requires a pass from Colony Administration or the detachment duty officer. Essential workers carry theirs on their person.
+
+  ## WHEN THE SIREN SOUNDS
+  - Get indoors, away from windows, and stay there until the all clear.
+  - Follow your block warden. Do not come to the garrison gate; it will be closed.
+  - Shelter locations are listed by [netlink="Colony Administration" link="admin.colony.gov"].
+
+  ## REPORT
+  - Unattended bags, crates or vehicles.
+  - Anyone asking about patrol times, the armoury or the landing pad.
+  - Cut fences, broken locks, missing explosives or mining charges.
+  - A gas alarm sounding, or a gas monitor that is dark, damaged or tampered with. Carbon monoxide has no smell. The monitor is your nose.
+
+  The Corps does not ask about your politics. It asks that you do not carry a rifle for anyone.
+
+  ## WHAT MARINES DO NOT DO
+  Marines do not collect debts, settle disputes between neighbours or enforce Company contracts. Take those to the Colonial Marshals or to Administration. A complaint about a Marine goes in writing to the Executive Officer. Every complaint is logged and answered.
+
+  [netlink="Return to the bulletin board" link="command.govfor.mil"]
+</Document>

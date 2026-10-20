@@ -1,0 +1,17 @@
+<Document>
+  <CMUNetStyle Background="#121212" Text="#CFC7B8" Heading="#D23B3B" Link="#D9A441" Font="Mono"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RuMC14/Clothing/Patches/BEAR.rsi" State="icon" Scale="4"/>
+  </Box>
+
+  # PMC BEAR
+  [bold]BRIGADE EXPEDITIONARY ARMY RESERVE - CONTRACT SITE {colony}[/bold]
+  <CMUNetMarquee Text="ORDERS ARE POSTED BELOW  ///  CARRY ID  ///  CURFEW IS ENFORCED  ///  DO NOT APPROACH THE WIRE  ///  DO NOT PHOTOGRAPH PERSONNEL  ///  QUESTIONS GO TO A PATROL, NOT TO THE PRESS" Speed="70" Color="#D23B3B"/>
+  [bold]ORDERS OF THE CONTRACT COMMANDER.[/bold] {colony} is under the protection of PMC BEAR until the contract ends. Orders on this board are issued by the Commander and take effect when posted. Read them. Follow them. That is all that is required of you.
+
+  We are here because someone needed the job done and could not send their own flag to do it. We do not need your thanks. We need you to stay out of the way.
+
+  <CMUNetBlink Rate="0.6">
+    [color=#D23B3B]CLOSED NETWORK - EVERYTHING WRITTEN HERE IS KEPT[/color]
+  </CMUNetBlink>
+</Document>

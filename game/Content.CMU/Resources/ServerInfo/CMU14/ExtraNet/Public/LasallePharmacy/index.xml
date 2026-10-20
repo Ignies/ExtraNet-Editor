@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#F6FAFA" Text="#13282E" Heading="#0E7C7B" Link="#1B5FA8" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/LasallePharmacy/banner.png" MaxHeight="150"/>
+  # LASALLE BIONATIONAL PHARMACY
+  [italic]Trusted medicine for the frontier. The standard stock of every Lasalle dispensary, from Gateway to the Outer Veil.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Chemistry/pill_canister.rsi" State="pill_canister11" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/auto_injectors.rsi" State="tricord1" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/first_aid_kits.rsi" State="firstaid" Scale="3"/>
+  </Box>
+
+  ## WELCOME
+  Lasalle Bionational has supplied medicine to the colonies for more than sixty years. Under the frontier clinic agreement, every chartered colony with a clinic carries the Lasalle standard stock list, so the bottle you are given on {colony} is the same bottle, with the same label and the same dose, as the one you would be given on Gateway or Mars.
+
+  This site gives product information for colonists. It is not a substitute for your colony clinician. If you are hurt or unwell, go to the clinic. If you cannot get to the clinic, call for the clinic to come to you.
+
+  ## OUR MEDICINES
+  - [netlink="Tablets: the pill bottle range" link="pharmacy.lasalle.bio/tablets"]
+  - [netlink="Autoinjectors: fast help when it matters" link="pharmacy.lasalle.bio/injectors"]
+  - [netlink="Prescriptions, opening hours and dispensary rules" link="pharmacy.lasalle.bio/prescriptions"]
+  - [netlink="Your colony clinic dispensary" link="dispensary.colony.med"]
+
+  ## THE COLOUR CODE
+  Every Lasalle pill bottle is colour coded so that it can be recognised in poor light, in a hurry or through a fogged visor.
+  - [color=#B02020][bold]Red[/bold][/color]: bruises, cuts and blunt injuries.
+  - [color=#9A7A00][bold]Yellow[/bold][/color]: burns.
+  - [color=#2E8A3E][bold]Green[/bold][/color]: poisoning and toxins.
+  - [color=#1B5FA8][bold]Blue[/bold][/color]: breathing and oxygen.
+  - [color=#7A4AA0][bold]Purple[/bold][/color]: stabilising a patient in a bad way.
+  - [color=#C06010][bold]Orange[/bold][/color]: general first aid.
+
+  ## A NOTE ON SAFETY
+  Every Lasalle medicine is safe at the labelled dose and harmful above it. Read the label. Never take a second dose sooner than the label allows. Never take somebody else's prescription. Keep every bottle out of the reach of children and away from the galley.
+
+  <CMUNetAd Id="CMUDeepAdHealthAnalyzer"/>
+
+  [color=#5A7078]Lasalle Bionational. Better medicine for better worlds. Product information only. Lasalle Bionational is a partner of the Weyland-Yutani Colonial Development Division under the frontier clinic agreement.[/color]
+</Document>

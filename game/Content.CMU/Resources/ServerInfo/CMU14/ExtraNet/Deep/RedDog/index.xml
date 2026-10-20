@@ -1,0 +1,48 @@
+<Document>
+  <CMUNetStyle Background="#140F0A" Text="#DACBB1" Heading="#D0582C" Link="#EDB24C" Font="Pixel"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/RedDog/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="IT DOES NOT BARK  ///  IT IS NOT A DOG  ///  LOCK THE PENS  ///  DO NOT GO INTO THE DRAINS  ///  IF YOU HEAR CLICKING, GO INDOORS" Speed="55" Color="#D0582C"/>
+  # THE RED DOG WATCH
+  [italic]Night sightings around {colony}. Whatever it is, it is fast, it is red, and security says it is nothing.[/italic]
+
+  Started by a few of us on the late shifts after the third person in a fortnight came in from the outer plots white in the face and saying they had seen a dog. There are four registered dogs on {colony}. All four were indoors. So this is where we write it down.
+
+  <CMUNetBlink Rate="0.8">
+    [color=#D0582C][bold]/// 2 NEW SIGHTINGS THIS WEEK. BOTH NEAR THE SOUTH DRAINAGE. ///[/bold][/color]
+  </CMUNetBlink>
+
+  ## BOARD RULES
+  - Time, place, light conditions, how far away. If you did not see it clearly, say so. Half of all sightings are a cargo tarp in the wind.
+  - Tracks and marks: describe them, measure them against something everyone has, like a boot or a ration tin.
+  - Do not go looking for it. Read the third pinned thread if you think you will.
+  - Do not shoot at it near a fuel line, a pipe or a person. Read the pump house post in the first thread and you will see why.
+  - Be kind to the skeptics. They are useful. They are also usually the ones who go looking.
+
+  ## PINNED
+  - [netlink="SIGHTINGS MEGATHREAD: post what you saw" link="reddog.deep/sightings"] [color=#8A7A62]9 replies, last post by fence_walker, 83.04.27[/color]
+  - [netlink="The east plots pen. Seventeen goats. No bodies." link="reddog.deep/pen"] [color=#8A7A62]8 replies, last post by redwatch_mod, 83.05.04[/color]
+  - [netlink="We went looking. Three of us went." link="reddog.deep/looking"] [color=#8A7A62]7 replies, locked, last post by redwatch_mod, 83.05.15[/color]
+
+  ## RECENT THREADS
+  - Something ran across the landing pad lights faster than a tractor [color=#8A7A62]6 replies[/color]
+  - Burned holes in the mesh at the pump house, anyone? [color=#8A7A62]12 replies[/color]
+  - Hissing under the hab floor plates, hydroponics side [color=#8A7A62]4 replies[/color]
+  - Is it the same one every time, or are there more? [color=#8A7A62]17 replies[/color]
+  - It is a hauler dog that went feral, change my mind [color=#8A7A62]23 replies[/color]
+
+  ## WHAT WE THINK WE KNOW
+  [color=#8A7A62][italic]None of this is confirmed. All of it has been said by more than one person who did not know the others.[/italic][/color]
+  - About the size of a big dog, low to the ground. Some say bigger.
+  - Red to rust brown. Shiny, like a beetle shell, not fur.
+  - A long head with no eyes anyone can find, and a long tail with a point on it.
+  - No sound from it but hissing, and sometimes a clicking, like fingernails on a table.
+  - Faster than anything on legs has a right to be. It clears a two metre fence without stopping.
+  - Where it bleeds, or drools, or whatever it does, metal smokes.
+
+  ## OTHER BOARDS
+  - [netlink="fieldnotes.deep" link="fieldnotes.deep"], someone's biology notebook. Read the part about the bodies. Then lock your door.
+  - [netlink="lastseen.deep" link="lastseen.deep"], if someone you know went out to the plots and did not come back.
+
+  ## NEW POSTS
+  [color=#8A7A62]Anyone may post a sighting. Time and place first. Posts run below.[/color]
+</Document>

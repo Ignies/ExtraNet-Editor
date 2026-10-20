@@ -1,0 +1,62 @@
+<Document>
+  <CMUNetStyle Background="#100B07" Text="#D6C8AC" Heading="#D9A23A" Link="#A6DB5E" Font="Pixel"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Blooded/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/CMU14/Yautja/yautja_items.rsi" State="queen_skull" Scale="3"/>
+  # THE RELICS
+  [color=#7A5A22]Pinned. What you carry, where it came from, how you came to have it. The truth, or nothing.[/color]
+
+  ### #1 old_tracker (OP) // 83.03.08
+  I will start. A scrap of net, about the size of my hand. Not rope. Fine metal wire, woven tighter than any machine on this colony can weave, and every strand still sharp after twenty years in a tin. I found it wrapped round a tree in the deep jungle the summer the survey team did not come back. It had cut into the bark like the bark was butter.
+
+  I have never been brave in my life. I keep it to remind me that something out there is, and that it noticed us.
+
+  ### #2 canopy_girl // 83.03.09
+  Blood. Theirs. I found it on the bark of a high tree after a night of shooting out past the dam, a long splash of it, bright green, and it glowed. Not much. Like a watch face in the dark. I scraped some into a jar.
+
+  It glowed under my bed for six nights and then it went dull, and I cried, which I did not expect. It was like keeping a candle that somebody important had lit.
+
+  ### #3 drillhand_big // 83.03.15
+  I have a skull. A long one. One of the black ones, from when the marines cleared the pump house. They piled the bodies by the incinerator and I went at night with a cutting bar and took the head off the biggest one. The blood ate through two pairs of gloves and the cutting bar and a hole in the floor of my cart.
+
+  I stood over it in the dark with my hands burning and I felt something watching me from the roof. I did not look up. I have never been so happy in my life.
+
+  ### #4 clinic_nights // 83.03.16
+  I am a medic. drillhand_big, I have seen your hands, and I know you are reading this. Those are not a mark. They are acid burns, and two of them are going bad. Please come in. I will not ask where you got it.
+
+  And what you felt on the roof was a man who had been awake for two days, standing over a dead monster with his hands on fire.
+
+  ### #5 old_tracker (OP) // 83.03.16
+  The medic is right about the hands. Go in.
+
+  And hear the lodge on this, because it matters more than any skull. You did not take that one. The marines took it. You picked it off a pile. The Hunters do not pick from piles. They have never once been seen to touch a thing somebody else killed. A relic is something they left behind. A trophy is something you earned. That is neither.
+
+  ### #6 quiet_one // 83.03.27
+  I found one of theirs. A trophy. Hung in the high branches over the old logging trail, cleaned white, turned to face the road so that anybody walking under it would see it.
+
+  It was a man's. There were tags on a chain tangled in the branch underneath. I knew the name. He was on the patrol that never came back from the trail last season. He was armed, and in the open, and he fought, everybody who knew him knows he would have fought.
+
+  I did not bring it in. I left it where it was. I do not want to talk about whether it was an honour.
+
+  ### #7 drillhand_big // 83.04.04
+  The medic fixed my hands. old_tracker is right. I picked it off a pile. So I am going to earn one properly. There are still black ones in the south drains. Everybody knows it. I am going on the next hot night, alone, with a blade, the way they do it.
+
+  ### #8 old_tracker (OP) // 83.04.04
+  No. Read the rules. Nobody goes into the dark after them, theirs or ours. That is not the code, son, that is just dying.
+
+  ### #9 canopy_girl // 83.04.19
+  They found him at the mouth of the south drain. Not him, exactly. What the black ones left. He never got far enough in to use the blade.
+
+  Here is the part I need the lodge to hear. The black ones in that drain were all dead. Every one. Something had gone in after them the same night and cleaned the whole nest out, and every long skull was gone, cut clean and carried off.
+
+  They were there. They took the skulls of everything in that drain that was worth taking.
+
+  They did not take his.
+
+  [color=#7A5A22][italic]Thread locked by old_tracker. I do not know whether that was mercy, or the worst thing the code has ever said about any of us.[/italic][/color]
+
+  <CMUNetSprite Rsi="/Textures/CMU14/Yautja/yautja_items.rsi" State="praetorian_skull" Scale="2"/>
+
+  [netlink="Previous: the code" link="blooded.deep/code"] / [netlink="Next: the mark" link="blooded.deep/mark"]
+
+  [netlink="Back to the lodge" link="blooded.deep"]
+</Document>

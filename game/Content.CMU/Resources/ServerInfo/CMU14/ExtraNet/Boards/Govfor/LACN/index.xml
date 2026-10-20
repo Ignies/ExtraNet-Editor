@@ -1,0 +1,22 @@
+<Document>
+  <CMUNetStyle Background="#0E1A26" Text="#D7E3EA" Heading="#F2C14E" Link="#5FC7B0" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/flags.rsi" State="MX" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/flags.rsi" State="CO" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/brazilunit_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Items/DeskFlags/uadeskflag.rsi" State="uaflag" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/flags.rsi" State="BR" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/flags.rsi" State="AR" Scale="2"/>
+  </Box>
+
+  # LATIN AMERICAN COLONIAL NAVY
+  [bold]FUERZAS DE DESEMBARCO / FORÇAS DE DESEMBARQUE - LANDING FORCE COMMAND, {colony}[/bold]
+  <CMUNetMarquee Text="ATENCIÓN  ///  ATENÇÃO  ///  ATTENTION  ///  CARRY YOUR COLONY ID AT ALL TIMES  ///  PORTE SU IDENTIFICACIÓN  ///  CURFEW AND ZONE ORDERS ARE POSTED BELOW  ///  REPORT UNATTENDED PACKAGES TO THE NEAREST PATROL  ///  NO SE ACERQUE A LA CERCA" Speed="65" Color="#F2C14E"/>
+  [bold]ORDERS OF THE LANDING FORCE COMMANDER.[/bold] The Latin American Colonial Navy has landed at {colony} on behalf of the United Americas and holds the colony from this hour. Orders on this board are issued by the Commander and take effect when posted, in English, Spanish and Portuguese. In case of doubt, ask a patrol. We speak your language.
+
+  We came down fast and hard because that is how the Navy lands. Now that we are here, our job is to keep you safe.
+
+  <CMUNetBlink Rate="0.7">
+    [color=#F2C14E]CANAL OFICIAL / CANAL OFICIAL - ALL MESSAGES ARE LOGGED[/color]
+  </CMUNetBlink>
+</Document>

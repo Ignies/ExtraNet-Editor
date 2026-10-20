@@ -1,0 +1,26 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/EmbassyTWE/emblem.png" MaxHeight="100"/>
+  # RELATIONS
+  The Empire sits in the United Nations beside the other powers of Earth. What follows is the mission's plain account of where the Crown stands with each of them on this frontier.
+
+  ## THE UNITED AMERICAS
+  [color=#9DB4FF][bold]Allied.[/bold][/color] The Americas are our oldest friends among the powers, and relations are, on the whole, peaceful. The UA keeps a careful eye on Imperial expansion. For our part, the Crown has no wish to be drawn into the Americas' quarrels with Weyland-Yutani.
+  - [netlink="Embassy of the United Americas" link="embassy.ua"]
+
+  ## THE UNION OF PROGRESSIVE PEOPLES
+  [color=#E0403A][bold]Hostile.[/bold][/color] A cold war, fought colony by colony across the Outer Rim. Several distant Imperial worlds have defected to the Union in recent years. Subjects approached with offers of resettlement, or asked questions about this colony by Union personnel, should report it to the mission.
+  - [netlink="Embassy of the Union of Progressive Peoples" link="embassy.upp"]
+
+  ## THE INDEPENDENT CORE SYSTEM COLONIES
+  [color=#E6E9F2][bold]Reluctant allies.[/bold][/color] The ICSC were once Imperial colonies, and left in 2148. Old grievances remain on both sides, yet the Imperial navy still helps defend ICSC space. The mission asks subjects to keep the peace with former countrymen.
+  - [netlink="Embassy of the ICSC" link="embassy.icsc"]
+
+  ## THE CENTRAL CONFEDERATION OF AFRICA
+  [color=#9DB4FF][bold]Cordial.[/bold][/color] The Confederation's colonies in the Nyame Sector have made its dollar a serious currency, and CCA money is building much of the Neroid Sector. The Empire welcomes a partner with capital to spend, and watches where it is spent.
+  - [netlink="Mission of the Central Confederation of Africa" link="embassy.cca"]
+
+  ## WEYLAND-YUTANI
+  The Company holds a permanent seat in Imperial Parliament and is a fact of life on every frontier world. It is not, however, the Crown. Subjects in Company employ remain subjects, and keep their right to consular help.
+
+  [netlink="Back to Communiques" link="embassy.twe"]
+</Document>

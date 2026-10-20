@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/OxleysButte/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Oxley's Butte and the Raijin dam country, filed by our own correspondent from wherever the story is. Printed in the shadow of the spillway since 2150.[/italic]
+
+  We take no Trijent money, no Cebrini money and no Company money. Read the official notices, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Readers may comment under any story  ///  Classified notices run free for dam and pit families" Speed="55" Color="#8A1C1C"/>
+</Document>

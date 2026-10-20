@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#F3F1EC" Text="#1E1E1E" Heading="#8A6A1C" Link="#1F4E79" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Ishikawa/banner.png" MaxHeight="150"/>
+  # HORIZON 2200
+  [italic]The Colonial Development Division's plan for the next seventeen years. Presented to the Board by Celeste Varga-Ishikawa, and to you here.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Tools/Hydroponics/spade.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Furniture/potted_plants.rsi" State="pottedplant_3" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Kitchen/Plants/sunflower.rsi" State="produce" Scale="3"/>
+  </Box>
+
+  ## WHY A PLAN
+  A colony is a forty year promise made in a single afternoon. The surveyor plants a beacon, the processor is lowered, and from that day a family on the far side of the Veil is trusting that the air, the water and the next supply ship will arrive on time. Horizon 2200 is how my division keeps that promise at scale.
+
+  ## THE FIVE PILLARS
+  - [bold]Air before ore.[/bold] No new mining charter will be granted to a world until its atmosphere processor has passed its five year review. People first, then quotas. The quotas follow.
+  - [bold]A clinic in every colony.[/bold] Working with Lasalle Bionational, every settlement of more than two hundred souls will have a staffed clinic and a dispensary by 2190.
+  - [bold]A school before a bar.[/bold] Every new colony charter will now set aside a classroom in the first prefab drop. The bar can come in the second.
+  - [bold]The relay is a lifeline.[/bold] No colony should wait more than nine days for word from home. Thirty new relay buoys will be laid along the Outer Veil routes.
+  - [bold]Home is a choice.[/bold] Colonists who complete three contract terms will be offered a permanent residence grant in the colony they built.
+
+  ## WHAT WE WILL BUILD
+  - [bold]500[/bold] chartered colonies and outposts by the year 2200
+  - [bold]120[/bold] new atmosphere processors, each one named by the colony it serves
+  - [bold]2,000[/bold] new hydroponics bays, so that no colony depends on a freighter for its vegetables
+  - [bold]1[/bold] standard for all of them
+
+  ## WHAT WE ASK OF YOU
+  Report faults early. Keep your contract current. Speak to your colony administration before you speak to the relay. And if you see something on your world that you do not understand, tell your Company liaison first. That is what they are there for.
+
+  ## A PERSONAL NOTE
+  I keep a sunflower on my desk on Gateway. It was grown from seed taken from the first hydroponics bay of a colony I directed in 2171, on a world that had no soil when we arrived. It is the best report I have ever been given.
+
+  [italic]Horizon 2200 is a statement of intent. Targets are subject to Board approval, market conditions, transit availability and the unexpected.[/italic]
+
+  - [netlink="Read what the colonies are saying" link="prosperitytoday.news/colonies"]
+  - [netlink="Back to the Office of the Executive Vice President" link="ishikawa.weyland-yutani.com"]
+</Document>

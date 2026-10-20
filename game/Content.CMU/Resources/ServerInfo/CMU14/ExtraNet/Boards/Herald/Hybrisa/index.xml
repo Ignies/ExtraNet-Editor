@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/Hybrisa/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Hybrisa Metropolitan, filed by our own correspondent from the streets, the precinct steps and the freight hub. Under the neon and on the record.[/italic]
+
+  Weyland-Yutani owns most of the buildings you can see from here. It does not own this page.
+
+  <CMUNetMarquee Text="LATEST  ///  DynaGrid Nexus promises fewer brownouts on the north streets  ///  TMCC freight hub adds another night shift  ///  Night Gold Casino denies vault rumours, again  ///  Forecast: rain, then more rain" Speed="55" Color="#8A1C1C"/>
+</Document>

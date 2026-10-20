@@ -1,0 +1,32 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/OreMatch/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Weapons/Melee/pickaxe.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Clothing/Hands/Rings/basic.rsi" State="gem" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/Bouqets/rose.rsi" State="icon" Scale="2"/>
+  </Box>
+  # BROWSE HEARTS
+  [italic]Transcripts of this week's new tapes. Full tapes are in the OreMatch library. Rewind gently.[/italic]
+
+  ## DUSTY, 38, DRILL OPERATOR
+  Hi. My name is Dusty. That is my real name. My mother saw the future. I have worked a drill for nineteen years and I can tell what rock it is by the sound. I am looking for someone who likes quiet nights, loud machinery and does not mind that I hum the drill noise when I am happy. Here is my one nice thing: I always bring enough coffee for two.
+
+  ## PRIYA, 29, NIGHT SHIFT COMMS
+  Hello. I am Priya. I listen to static for a living, so I am a very good listener. I like Chroma Sleep, crosswords and any man who can say goodnight at the end of a transmission without making it weird. My friend Marisol says I should smile on the tape. This is me smiling.
+
+  ## BIG TOMAS, 41, DRILL OPERATOR
+  I am Tomas. People call me Big Tomas because there is a Little Tomas, who is bigger. I am looking for a nice woman who will not move my lunch. My one nice thing: I give good rocks. I once gave someone a rock that looks like a duck.
+
+  ## JOE-114, WORKING JOE
+  Hello. I am JOE-114. I am a Working Joe. I am declaring that I am a Working Joe. I enjoy sweeping, locking doors and assisting colonists. I am looking for a companion who requires assistance. My one nice thing: I am always available.
+
+  [color=#B07090]JOE-114 has three matches. OreMatch is looking into it.[/color]
+
+  ## CAPTAIN ANYA, 45, HAULER
+  I fly a bulk hauler. I am in hypersleep ten months of the year. If you want a partner who is never home and never ages, I am perfect. I will write to you every time I am awake, so expect two letters a year. They will be long ones.
+
+  ## NO NAME, AGE NOT GIVEN
+  [color=#B07090]This tape is blank except for the last four seconds, which show the inside of a vent and a sound like breathing. It has been liked eleven times. OreMatch has removed it from the library. It is back in the library.[/color]
+
+  [netlink="Back to OreMatch" link="orematch.love"]
+</Document>

@@ -1,0 +1,33 @@
+<Document>
+  <CMUNetStyle Background="#EFE6D2" Text="#2B2416" Heading="#4E6E1A" Link="#8A3A12" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/FrontierLeaf/banner.png" MaxHeight="150"/>
+  # THE NOTICE BOARD
+  [italic]Pinned up by the co-op counter. Read it before you ask.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/clipboard.rsi" State="clipboard" Scale="3"/>
+
+  ## COUNTER HOURS
+  - [bold]Shift days[/bold]: from the end of first shift to the start of curfew.
+  - [bold]Rest days[/bold]: midday to the evening meal.
+  - [bold]Harvest week[/bold]: closed. Everyone is in the bay.
+  - [bold]Freighter days[/bold]: open late for shipping orders.
+
+  ## THIS SEASON'S PRICE, AS VOTED
+  - Cured leaf bought from members: $1.10 the pouch weight, up ten cents on last season.
+  - Store prices unchanged. The vote was close.
+
+  ## RULES OF THE COUNTER
+  - [bold]Adults only.[/bold] The co-op checks colony ID. No exceptions, not even for your father.
+  - [bold]No smoking in the hydroponics bay.[/bold] Ever. The bay has oxygen lines. The bay also has our leaf.
+  - [bold]No smoking near the processor intake.[/bold] The processor staff have asked very nicely. Then less nicely.
+  - [bold]No credit[/bold], except for members, and only until payday.
+  - [bold]Garrison personnel[/bold] are welcome. Please leave your rifle outside. The counter is small and the rifle is long.
+
+  ## NOTICES
+  - [bold]Lost.[/bold] One briar pipe, carved, with a crack in the bowl. Answers to nothing. Return to Yuki on Solaris Ridge.
+  - [bold]Wanted.[/bold] Empty seed jars, clean. Bring them to the counter.
+  - [bold]Reminder.[/bold] A tenth of every sale goes to the colony clinic. If you smoke, please also visit the clinic. The co-op has paid for it.
+  - [bold]Notice from the administration of {colony}.[/bold] Co-op goods may be bought on this colony at the canteen counter. Smoking is permitted only in marked areas.
+
+  [netlink="Back to the co-op" link="frontierleaf.coop"]
+</Document>

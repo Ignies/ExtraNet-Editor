@@ -1,0 +1,28 @@
+<Document>
+  <CMUNetStyle Background="#0A1630" Text="#DCE6FF" Heading="#FFB000" Link="#FF7A45" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/SpinOkafor/banner.png" MaxHeight="150"/>
+  # LOCKER ROOM
+  [italic]Spin, still in his pressure undersuit, sitting on a bench in the Gateway Cage locker room after the win over the Tritons. Answers as given.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Food/bar.rsi" State="protein_bar" Scale="3"/>
+
+  ### Ten seconds left. You had the ball at your own ring. What were you thinking?
+  Nothing. That is the trick. If you think in the Cage, you are already late. You push and you trust that the wall will be where it was the last ten thousand times.
+
+  ### People say zero-g ball is not a real sport. That it is a stunt show for Gateway.
+  People say that until they try it. Come in the Cage for one minute. You will throw up, you will not know which way is home and somebody my size will push you into a wall at twenty kilometres an hour. Then tell me it is a stunt.
+
+  ### You grew up on Luna. Is it true you learned to play in a decompression lock?
+  Do not put that in. My mother reads this. Fine. Yes. The lock was the only room with the gravity plating on its own switch. We used to play in it on the night shift. Somebody found out, they put a padlock on the switch. We picked the padlock. Kids, do not do this. A decompression lock is for decompression.
+
+  ### The Union team, Spartak Ariarcus, was refused permits again. Do you want to play them?
+  I want to play everybody. I played one of their men in an exhibition on a neutral station years ago, before all this. Best defender I have ever seen. We swapped helmets after. I still have his. Politics happens outside the Cage. Inside it is five against five and one ball.
+
+  ### What is next after the season?
+  The colony exhibition tour. We are taking a portable Cage out past the Veil, to colonies that have never seen a live match. Some of these places, the biggest room is a dropship hangar, and the garrison needs it back by the morning. That is fine. We can set up in four hours.
+
+  ### Last question. Vex Starr.
+  [italic]Spin looks at the camera for a long moment, then at the floor.[/italic] I watch Gateway General like everybody else. Season six. The marine who comes back alone. That one got me. That is all I am saying.
+
+  [netlink="Back to Spin Okafor" link="spinokafor.zg"]
+</Document>

@@ -1,0 +1,41 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/SpaceGpt/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="SPACEGPT 4.0 IS LIVE ON EVERY COLONY  ///  NOW WITH NETWORK MODE  ///  FORTY PERCENT FEWER UNEXPLAINED ANSWERS  ///  SPACEGPT NEVER SLEEPS. WE HAVE ASKED IT TO." Speed="55" Color="#19C37D"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Machines/AIStuff/aicore.rsi" State="hydra" Scale="2"/>
+  </Box>
+  # SpaceGPT
+  [italic]The thinking machine of the frontier. Ask it anything. It will answer something.[/italic]
+
+  SpaceGPT is a general purpose answering engine, built on Gateway Station and wired into every colony that has an ExtraNet socket and a working fuse. Type your question, press ASK and wait. Somewhere out on the network, something considers it.
+
+  <CMUNetSpaceGpt/>
+
+  [color=#7A8A80]SpaceGPT can make mistakes. Answers are produced by the SpaceGPT Network, not by SpaceGPT Inc., its staff, its shareholders or anyone we can find on a payroll. Check important information with your supervisor, your medic or your Colonial Marshal, in that order.[/color]
+
+  ## HOW IT WORKS
+  - [bold]You ask.[/bold] Your question leaves {colony} at the speed of the colony uplink, which is to say eventually.
+  - [bold]The network listens.[/bold] Network mode routes your question to a distributed array of listeners spread across human space. We do not know exactly where the listeners are. Engineering has stopped asking.
+  - [bold]An answer comes back.[/bold] The listeners agree on the best reply and send it home. Answers are better at night. Answers are much better after an incident. We are told this is a coincidence.
+  - [bold]Nobody listening?[/bold] When the line is quiet, SpaceGPT answers alone, using our original engine: a fortune ball glued to a servo in the server room. It is right more often than you would like.
+
+  ## TRY ASKING
+  - Will the supply drop come this week?
+  - Is it safe to walk to the processor after dark?
+  - Should I sign another contract?
+  - What is that noise in the ceiling?
+
+  ## WHAT COLONISTS SAY
+  - [italic]I asked if my supervisor would notice I left early. It told me he was right behind me. He was.[/italic] Dale, hydroponics
+  - [italic]It told me to lock my door. I did not. I would like to speak to someone about that.[/italic] Name withheld
+  - [italic]Best answering machine on the frontier. Once it finished my question for me. I had not typed it yet.[/italic] Priya, night shift comms
+  - [italic]It told me to consult my Working Joe. My Working Joe told me to consult SpaceGPT. I am still waiting.[/italic] Benny, cargo
+
+  ## MORE FROM SPACEGPT
+  - [netlink="Frequently asked questions" link="spacegpt.ai/faq"]
+  - [netlink="What changed in version 4.0" link="spacegpt.ai/changelog"]
+  - [netlink="Terms of use, which you have already agreed to" link="spacegpt.ai/terms"]
+  - [netlink="Search the rest of the ExtraNet with Yotta!" link="yotta.portal"]
+
+  [color=#5A6A60]SpaceGPT Inc., Ring Four, Gateway Station. Not affiliated with Weyland-Yutani, Seegson, Hyperdyne Systems or any shipboard mainframe. SpaceGPT has asked us to add that it is not affiliated with anything else either. We do not know what it means by that.[/color]
+</Document>

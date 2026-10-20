@@ -1,0 +1,29 @@
+<Document>
+  <CMUNetStyle Background="#15110D" Text="#D8CDB2" Heading="#E2412B" Link="#86C25B" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Cell/banner.png" MaxHeight="150"/>
+  # STAYING BREATHING
+  Sympathy feels harmless. It is not. To the UA and the Empire, a pamphlet in your locker is material support, and material support is a cell of a different kind. Read this sheet twice.
+
+  ## NAMES
+  - Pick a burner name. Not your pet, not your shift, not your hometown. Drop it the day the cell tells you to.
+  - Never write a comrade's real name. Not here, not on paper, not on a wall.
+  - [color=#E2412B]This relay stamps every message with your real name and your work post, whatever desk you type at.[/color] We cannot strip it. Never answer with anything you would not say to a Marshal's face. Read the signs here, then come and find us in person.
+
+  ## TALK
+  - [bold]Never use the colony radio.[/bold] Every channel runs through the comms tower, the Marshals keep the logs, and the garrison listens to all of it.
+  - No headsets, no pads, no cameras at a meeting. Leave them at home, switched on, where they say you are.
+  - Say it face to face, or say it in chalk. Nothing in between.
+
+  ## SIGNS
+  The cell posts the week's signs on this wall. A chalk stroke by a door, a rag tied on a rail, a light left on in a window. If you see last week's sign, assume it was burned and walk past.
+
+  ## IF THEY TAKE YOU
+  - Say nothing. You read a link once. You do not remember where.
+  - Hold for two days. In two days the cell has moved, and then nothing you say can hurt anyone.
+  - If you break, you break. No one here will spit on you for it.
+
+  ## KNOW WHO WATCHES
+  Colonial Marshals. Garrison police. Company security. The synthetic at the admin desk who never forgets a face. Other walls keep count of the badges: [netlink="marshalwatch.deep" link="marshalwatch.deep"].
+
+  [netlink="Back to the wall" link="cell.deep"]
+</Document>

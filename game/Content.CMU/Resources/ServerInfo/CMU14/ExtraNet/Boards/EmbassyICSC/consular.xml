@@ -1,0 +1,26 @@
+<Document>
+  # Consular Services
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/EmbassyICSC/emblem.png" MaxHeight="96"/>
+  The consular desk serves ICSC citizens on this colony, and anyone living on land held under an ICSC charter. Bring your papers, or what is left of them.
+
+  ## What the Desk Can Do
+  - [bold]Identity papers.[/bold] Renew a passport, or issue emergency travel papers to replace lost or seized ones.
+  - [bold]Civil records.[/bold] Register births, deaths and marriages under the colony charter, so they are kept somewhere other than a Company ledger.
+  - [bold]Stamped documents.[/bold] Witness and stamp contracts, wills and labour complaints with the Ambassador's seal.
+  - [bold]EntaCOMM traffic.[/bold] Send a priority message home. Citizens pay the standard rate. Others pay what EntaCOMM charges, which is a lot.
+  - [bold]Detention visits.[/bold] If you are held by any security force on this planet, ask for the Mission. We may not be able to get you out, but we will find out where you are and tell your family.
+  - [bold]Evacuation register.[/bold] Put your name and dependants on the list now. If the colony has to be cleared, the list is what gets read out.
+
+  ## What the Desk Cannot Do
+  - Pay fines, debts or Company store accounts.
+  - Overrule colony administration on housing or work assignments.
+  - Issue weapons, or shelter anyone fleeing lawful arrest for violent crimes.
+  - Grant asylum to deserters of another power without word from the Board of Ministries.
+
+  ## Finding Us
+  The desk is open each shift while the Ambassador or staff are present. In an emergency, look for the Ambassador in person. The seal reads ICSC Ambassador and nothing else is valid.
+
+  For colony matters see [netlink="Colony Administration" link="admin.colony.gov"]. For housing see [netlink="Seegson housing" link="colony.seegson.net/housing"].
+
+  [netlink="Back to Notices" link="embassy.icsc"]
+</Document>

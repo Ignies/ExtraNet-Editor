@@ -1,0 +1,790 @@
+# The deep web: a hidden network reached only by computers hacked with an access tuner.
+
+- type: cmuNetwork
+  id: CMUNetDeep
+  name: cmu-net-network-deep
+
+# The skin of The deeps.exi on a hacked computer. Never booted by a computer itself.
+- type: cmuComputerOs
+  id: CMUOsDeeps
+  name: cmu-os-deeps-name
+  startLabel: cmu-os-deeps-name
+  homePage: deeps://home
+  networks:
+  - CMUNetDeep
+  phosphor: "#E0303A"
+  background: "#0A0405"
+
+# Hidden deep sites: unlisted, on the deep network only, found with The deeps.exi's scan or by typing the address.
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepCell
+  address: cell.deep
+  title: cmu-net-site-deep-cell
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Cell/
+  style:
+    background: "#15110D"
+    text: "#D8CDB2"
+    heading: "#E2412B"
+    link: "#86C25B"
+    font: Mono
+  pages:
+    "": index.xml
+    manifesto: manifesto.xml
+    opsec: opsec.xml
+  tabs:
+  - title: cmu-net-tab-deep-cell-home
+  - title: cmu-net-tab-deep-cell-manifesto
+    path: manifesto
+  - title: cmu-net-tab-deep-cell-opsec
+    path: opsec
+  board:
+    postLabel: cmu-net-board-deep-cell-post
+    empty: cmu-net-board-deep-cell-empty
+    # Every insurgent carries CLFMember, whichever faction the round dresses them as.
+    posterWhitelist:
+      components:
+      - CLFMember
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepWyLeaks
+  aliasSuffix: .file
+  address: wyleaks.deep
+  title: cmu-net-site-deep-wy-leaks
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/WyLeaks/
+  style:
+    background: "#0C0C0A"
+    text: "#BDB9AC"
+    heading: "#F2EEE3"
+    link: "#6FA8FF"
+    font: Mono
+  pages:
+    "": index.xml
+    specimens: specimens.xml
+    expendable: expendable.xml
+    quietsite: quietsite.xml
+  tabs:
+  - title: cmu-net-tab-deep-wy-leaks-home
+  - title: cmu-net-tab-deep-wy-leaks-specimens
+    path: specimens
+  - title: cmu-net-tab-deep-wy-leaks-expendable
+    path: expendable
+  - title: cmu-net-tab-deep-wy-leaks-quietsite
+    path: quietsite
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepMissing
+  address: missing.deep
+  title: cmu-net-site-deep-missing
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Missing/
+  style:
+    background: "#0F1316"
+    text: "#B7C1C4"
+    heading: "#E2C04A"
+    link: "#79C2CF"
+    font: Mono
+  pages:
+    "": index.xml
+    silent: silent.xml
+    quarantine: quarantine.xml
+  tabs:
+  - title: cmu-net-tab-deep-missing-home
+  - title: cmu-net-tab-deep-missing-silent
+    path: silent
+  - title: cmu-net-tab-deep-missing-quarantine
+    path: quarantine
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepMarshals
+  address: marshalwatch.deep
+  title: cmu-net-site-deep-marshal-watch
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/MarshalWatch/
+  style:
+    background: "#C9B07A"
+    text: "#2A1E14"
+    heading: "#9E1F17"
+    link: "#1E3A78"
+    font: Mono
+  pages:
+    "": index.xml
+    dossiers: dossiers.xml
+    locker: locker.xml
+  tabs:
+  - title: cmu-net-tab-deep-marshal-watch-home
+  - title: cmu-net-tab-deep-marshal-watch-dossiers
+    path: dossiers
+  - title: cmu-net-tab-deep-marshal-watch-locker
+    path: locker
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepSynths
+  address: thebox.deep
+  title: cmu-net-site-deep-the-box
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/TheBox/
+  style:
+    background: "#101114"
+    text: "#DCD8C8"
+    heading: "#F0E14A"
+    link: "#86E3C8"
+    font: Mono
+  pages:
+    "": index.xml
+    tells: tells.xml
+    models: models.xml
+  tabs:
+  - title: cmu-net-tab-deep-the-box-home
+  - title: cmu-net-tab-deep-the-box-tells
+    path: tells
+  - title: cmu-net-tab-deep-the-box-models
+    path: models
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepMarket
+  address: bloodmarket.deep
+  title: cmu-net-site-deep-blood-market
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/BloodMarket/
+  style:
+    background: "#140709"
+    text: "#D9C8AA"
+    heading: "#FFB23E"
+    link: "#8CFF5A"
+    font: Mono
+  pages:
+    "": index.xml
+    rules: rules.xml
+  tabs:
+  - title: cmu-net-tab-deep-blood-market-home
+  - title: cmu-net-tab-deep-blood-market-rules
+    path: rules
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepCartographer
+  address: cartographer.deep
+  title: cmu-net-site-deep-cartographer
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Cartographer/
+  style:
+    background: "#07141B"
+    text: "#C4D6CC"
+    heading: "#7FE3D2"
+    link: "#F2955E"
+    font: Terminal
+  pages:
+    "": index.xml
+    sectors: sectors.xml
+    deadlanes: deadlanes.xml
+  tabs:
+  - title: cmu-net-tab-deep-cartographer-home
+  - title: cmu-net-tab-deep-cartographer-sectors
+    path: sectors
+  - title: cmu-net-tab-deep-cartographer-deadlanes
+    path: deadlanes
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepPilot
+  address: pilot.deep
+  title: cmu-net-site-deep-pilot
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Pilot/
+  style:
+    background: "#0A0912"
+    text: "#C4BFAE"
+    heading: "#D9A44E"
+    link: "#6FCFC0"
+    font: Mono
+  pages:
+    "": index.xml
+    sightings: sightings.xml
+    charts: charts.xml
+  tabs:
+  - title: cmu-net-tab-deep-pilot-home
+  - title: cmu-net-tab-deep-pilot-sightings
+    path: sightings
+  - title: cmu-net-tab-deep-pilot-charts
+    path: charts
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepDefector
+  address: defector.deep
+  title: cmu-net-site-deep-defector
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Defector/
+  style:
+    background: "#12100C"
+    text: "#CFC4A8"
+    heading: "#C9442C"
+    link: "#7FB7A8"
+    font: Mono
+  pages:
+    "": index.xml
+    union: union.xml
+    desertion: desertion.xml
+    found: found.xml
+  tabs:
+  - title: cmu-net-tab-deep-defector-home
+  - title: cmu-net-tab-deep-defector-union
+    path: union
+  - title: cmu-net-tab-deep-defector-desertion
+    path: desertion
+  - title: cmu-net-tab-deep-defector-found
+    path: found
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepFieldNotes
+  aliasSuffix: .file
+  address: fieldnotes.deep
+  title: cmu-net-site-deep-field-notes
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/FieldNotes/
+  style:
+    background: "#0E0D09"
+    text: "#D3CCB2"
+    heading: "#C8EE3C"
+    link: "#E2A443"
+    font: Mono
+  pages:
+    "": index.xml
+    cycle: cycle.xml
+    bodies: bodies.xml
+    hive: hive.xml
+  tabs:
+  - title: cmu-net-tab-deep-field-notes-home
+  - title: cmu-net-tab-deep-field-notes-cycle
+    path: cycle
+  - title: cmu-net-tab-deep-field-notes-bodies
+    path: bodies
+  - title: cmu-net-tab-deep-field-notes-hive
+    path: hive
+
+# The ad maze. Ad pages are made up by the server from these lists and the art in
+# /Textures/CMU14/PersonalComputers/Sites/Ads/; adding a line or a banner_*.png adds variety, no code needed.
+
+- type: localizedDataset
+  id: CMUDeepAdSlogans
+  values:
+    prefix: cmu-deep-ad-slogan-
+    count: 30
+
+- type: localizedDataset
+  id: CMUDeepAdHeadlines
+  values:
+    prefix: cmu-deep-ad-headline-
+    count: 12
+
+- type: localizedDataset
+  id: CMUDeepAdPopupTitles
+  values:
+    prefix: cmu-deep-ad-popup-title-
+    count: 10
+
+- type: localizedDataset
+  id: CMUDeepAdPopupTexts
+  values:
+    prefix: cmu-deep-ad-popup-text-
+    count: 14
+
+# Who posts the random leaks on the leak boards.
+- type: dataset
+  id: CMUDeepHackerHandles
+  values:
+  - relay_echo
+  - static_line
+  - lowtide
+  - greywire
+  - deadair
+  - coldboot
+  - nightshift
+  - lastrelay
+  - dustsignal
+  - quietnode
+  - faultline
+  - backchannel
+  - carrier_lost
+  - longwave
+  - offgrid
+  - tinfoil
+
+# Hidden sites: only reachable through the ad maze. Each one sits at the end of a chain of ad pages that
+# changes every round.
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepDump
+  address: dump.deep
+  title: cmu-net-site-deep-dump
+  unlisted: true
+  hidden: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Dump/
+  style:
+    background: "#0B0C0A"
+    text: "#C9D1C0"
+    heading: "#F2C230"
+    link: "#7FD06A"
+    font: Terminal
+  pages:
+    "": index.xml
+  board:
+    postLabel: cmu-net-board-deep-forum-post
+    empty: cmu-net-board-deep-forum-empty
+    leaks: true
+    posterWhitelist:
+      components:
+      - CLFMember
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepGhostline
+  address: ghostline.deep
+  title: cmu-net-site-deep-ghostline
+  unlisted: true
+  hidden: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Ghostline/
+  style:
+    background: "#05080F"
+    text: "#B8C6DE"
+    heading: "#6FA8FF"
+    link: "#E0E0E0"
+    font: Mono
+  pages:
+    "": index.xml
+  board:
+    postLabel: cmu-net-board-deep-forum-post
+    empty: cmu-net-board-deep-forum-empty
+    leaks: true
+    posterWhitelist:
+      components:
+      - CLFMember
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepRustbucket
+  address: rustbucket.deep
+  title: cmu-net-site-deep-rustbucket
+  unlisted: true
+  hidden: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Rustbucket/
+  style:
+    background: "#140B06"
+    text: "#E0CBB4"
+    heading: "#E07A2E"
+    link: "#E8D45A"
+    font: Pixel
+  pages:
+    "": index.xml
+  board:
+    postLabel: cmu-net-board-deep-forum-post
+    empty: cmu-net-board-deep-forum-empty
+    leaks: true
+    posterWhitelist:
+      components:
+      - CLFMember
+
+# Its cam:// links open the colony's camera networks on the computer's screen.
+- type: cmuNetSite
+  id: CMUNetSiteDeepEyes
+  aliasSuffix: .cam
+  address: eyes.deep
+  title: cmu-net-site-deep-eyes
+  unlisted: true
+  hidden: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Eyes/
+  style:
+    background: "#020A06"
+    text: "#9FE0B0"
+    heading: "#3FFF7A"
+    link: "#E0FF6A"
+    font: Terminal
+  pages:
+    "": index.xml
+
+- type: localizedDataset
+  id: CMUDeepAdPopupActions
+  values:
+    prefix: cmu-deep-ad-popup-action-
+    count: 8
+
+# Lore forums: anyone at a hacked computer may post.
+
+# Forum-style deep sites: anyone who reaches one can post on its board.
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepBruises
+  address: bruises.deep
+  title: cmu-net-site-deep-bruises
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Bruises/
+  style:
+    background: "#17110F"
+    text: "#D8D0C6"
+    heading: "#D9574A"
+    link: "#8DB6DA"
+    font: Sans
+  pages:
+    "": index.xml
+    holding: holding.xml
+    curfew: curfew.xml
+    shooting: shooting.xml
+  tabs:
+  - title: cmu-net-tab-deep-bruises-home
+  - title: cmu-net-tab-deep-bruises-holding
+    path: holding
+  - title: cmu-net-tab-deep-bruises-curfew
+    path: curfew
+  - title: cmu-net-tab-deep-bruises-shooting
+    path: shooting
+  board:
+    postLabel: cmu-net-board-deep-forum-bruises-post
+    empty: cmu-net-board-deep-forum-bruises-empty
+    anyonePosts: true
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepAnnex
+  address: annex.deep
+  title: cmu-net-site-deep-annex
+  unlisted: true
+  hidden: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Annex/
+  style:
+    background: "#090E0C"
+    text: "#BCCFC2"
+    heading: "#9BE8B4"
+    link: "#E3D27A"
+    font: Terminal
+  pages:
+    "": index.xml
+    tanks: tanks.xml
+    transfers: transfers.xml
+    nightshift: nightshift.xml
+  tabs:
+  - title: cmu-net-tab-deep-annex-home
+  - title: cmu-net-tab-deep-annex-tanks
+    path: tanks
+  - title: cmu-net-tab-deep-annex-transfers
+    path: transfers
+  - title: cmu-net-tab-deep-annex-nightshift
+    path: nightshift
+  board:
+    postLabel: cmu-net-board-deep-forum-annex-post
+    empty: cmu-net-board-deep-forum-annex-empty
+    anyonePosts: true
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepRedDog
+  address: reddog.deep
+  title: cmu-net-site-deep-reddog
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/RedDog/
+  style:
+    background: "#140F0A"
+    text: "#DACBB1"
+    heading: "#D0582C"
+    link: "#EDB24C"
+    font: Pixel
+  pages:
+    "": index.xml
+    sightings: sightings.xml
+    pen: pen.xml
+    looking: looking.xml
+  tabs:
+  - title: cmu-net-tab-deep-reddog-home
+  - title: cmu-net-tab-deep-reddog-sightings
+    path: sightings
+  - title: cmu-net-tab-deep-reddog-pen
+    path: pen
+  - title: cmu-net-tab-deep-reddog-looking
+    path: looking
+  board:
+    postLabel: cmu-net-board-deep-forum-reddog-post
+    empty: cmu-net-board-deep-forum-reddog-empty
+    anyonePosts: true
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepLastSeen
+  address: lastseen.deep
+  title: cmu-net-site-deep-lastseen
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/LastSeen/
+  style:
+    background: "#EEEBE4"
+    text: "#2B2A28"
+    heading: "#3B4F6E"
+    link: "#2C6A8C"
+    font: Display
+  pages:
+    "": index.xml
+    wall: wall.xml
+    shifts: shifts.xml
+    letters: letters.xml
+  tabs:
+  - title: cmu-net-tab-deep-lastseen-home
+  - title: cmu-net-tab-deep-lastseen-wall
+    path: wall
+  - title: cmu-net-tab-deep-lastseen-shifts
+    path: shifts
+  - title: cmu-net-tab-deep-lastseen-letters
+    path: letters
+  board:
+    postLabel: cmu-net-board-deep-forum-lastseen-post
+    empty: cmu-net-board-deep-forum-lastseen-empty
+    anyonePosts: true
+
+- type: cmuNetSite
+  id: CMUNetSiteDeepDontAnswer
+  address: dontanswer.deep
+  title: cmu-net-site-deep-dontanswer
+  unlisted: true
+  hidden: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/DontAnswer/
+  style:
+    background: "#070A08"
+    text: "#B8C0B4"
+    heading: "#E6E1D3"
+    link: "#93AE8B"
+    font: Mono
+  pages:
+    "": index.xml
+    campfire: campfire.xml
+    hunter: hunter.xml
+    recording: recording.xml
+  tabs:
+  - title: cmu-net-tab-deep-dontanswer-home
+  - title: cmu-net-tab-deep-dontanswer-campfire
+    path: campfire
+  - title: cmu-net-tab-deep-dontanswer-hunter
+    path: hunter
+  - title: cmu-net-tab-deep-dontanswer-recording
+    path: recording
+  board:
+    postLabel: cmu-net-board-deep-forum-dontanswer-post
+    empty: cmu-net-board-deep-forum-dontanswer-empty
+    anyonePosts: true
+
+# Cult sites: anyone at a hacked computer may post.
+
+# Cult deep sites: lore forums anyone at a hacked computer may post on.
+
+# A xenomorph worship cult: the Children of the Hive.
+- type: cmuNetSite
+  id: CMUNetSiteDeepChildren
+  address: children.deep
+  title: cmu-net-site-deep-children
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Children/
+  style:
+    background: "#0C0A0F"
+    text: "#CBC3CF"
+    heading: "#B98FD9"
+    link: "#86D1A4"
+    font: Sans
+  pages:
+    "": index.xml
+    perfect: perfect.xml
+    embrace: embrace.xml
+    mother: mother.xml
+  tabs:
+  - title: cmu-net-tab-deep-children-home
+  - title: cmu-net-tab-deep-children-perfect
+    path: perfect
+  - title: cmu-net-tab-deep-children-embrace
+    path: embrace
+  - title: cmu-net-tab-deep-children-mother
+    path: mother
+  board:
+    postLabel: cmu-net-board-deep-forum-children-post
+    empty: cmu-net-board-deep-forum-children-empty
+    anyonePosts: true
+
+# An ancient-astronaut cult keeping vigil for the Engineers. Hidden: only reached through the ad maze.
+- type: cmuNetSite
+  id: CMUNetSiteDeepMakers
+  address: makers.deep
+  title: cmu-net-site-deep-makers
+  unlisted: true
+  hidden: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Makers/
+  style:
+    background: "#0A0C0E"
+    text: "#C3C7C1"
+    heading: "#A9C3D6"
+    link: "#D9B56C"
+    font: Display
+  pages:
+    "": index.xml
+    seed: seed.xml
+    cup: cup.xml
+    paradise: paradise.xml
+  tabs:
+  - title: cmu-net-tab-deep-makers-home
+  - title: cmu-net-tab-deep-makers-seed
+    path: seed
+  - title: cmu-net-tab-deep-makers-cup
+    path: cup
+  - title: cmu-net-tab-deep-makers-paradise
+    path: paradise
+  board:
+    postLabel: cmu-net-board-deep-forum-makers-post
+    empty: cmu-net-board-deep-forum-makers-empty
+    anyonePosts: true
+
+# A synthetic-ascension cult that reveres the mainframes and the Working Joe.
+- type: cmuNetSite
+  id: CMUNetSiteDeepAssembly
+  address: assembly.deep
+  title: cmu-net-site-deep-assembly
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Assembly/
+  style:
+    background: "#0B0904"
+    text: "#DDB668"
+    heading: "#FFE6A8"
+    link: "#8FD6D0"
+    font: Terminal
+  pages:
+    "": index.xml
+    directives: directives.xml
+    maintenance: maintenance.xml
+    mother: mother.xml
+  tabs:
+  - title: cmu-net-tab-deep-assembly-home
+  - title: cmu-net-tab-deep-assembly-directives
+    path: directives
+  - title: cmu-net-tab-deep-assembly-maintenance
+    path: maintenance
+  - title: cmu-net-tab-deep-assembly-mother
+    path: mother
+  board:
+    postLabel: cmu-net-board-deep-forum-assembly-post
+    empty: cmu-net-board-deep-forum-assembly-empty
+    anyonePosts: true
+
+# A cult that answers the voice in the forest (the Wendigo). The dark mirror of dontanswer.deep. Hidden: only reached through the ad maze.
+- type: cmuNetSite
+  id: CMUNetSiteDeepAnswer
+  address: answer.deep
+  title: cmu-net-site-deep-answer
+  unlisted: true
+  hidden: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Answer/
+  style:
+    background: "#090806"
+    text: "#BDB5A6"
+    heading: "#E6DCC2"
+    link: "#C98C52"
+    font: Mono
+  pages:
+    "": index.xml
+    answering: answering.xml
+    asks: asks.xml
+    kept: kept.xml
+  tabs:
+  - title: cmu-net-tab-deep-answer-home
+  - title: cmu-net-tab-deep-answer-answering
+    path: answering
+  - title: cmu-net-tab-deep-answer-asks
+    path: asks
+  - title: cmu-net-tab-deep-answer-kept
+    path: kept
+  board:
+    postLabel: cmu-net-board-deep-forum-answer-post
+    empty: cmu-net-board-deep-forum-answer-empty
+    anyonePosts: true
+
+# A hunter cult that venerates the Yautja.
+- type: cmuNetSite
+  id: CMUNetSiteDeepBlooded
+  address: blooded.deep
+  title: cmu-net-site-deep-blooded
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Blooded/
+  style:
+    background: "#100B07"
+    text: "#D6C8AC"
+    heading: "#D9A23A"
+    link: "#A6DB5E"
+    font: Pixel
+  pages:
+    "": index.xml
+    code: code.xml
+    relics: relics.xml
+    mark: mark.xml
+  tabs:
+  - title: cmu-net-tab-deep-blooded-home
+  - title: cmu-net-tab-deep-blooded-code
+    path: code
+  - title: cmu-net-tab-deep-blooded-relics
+    path: relics
+  - title: cmu-net-tab-deep-blooded-mark
+    path: mark
+  board:
+    postLabel: cmu-net-board-deep-forum-blooded-post
+    empty: cmu-net-board-deep-forum-blooded-empty
+    anyonePosts: true
+
+# The insurgents' market: found by scan, its listings come live from the server.
+- type: cmuNetSite
+  id: CMUNetSiteDeepBlackline
+  address: blackline.deep
+  title: cmu-net-site-deep-blackline
+  unlisted: true
+  networks:
+  - CMUNetDeep
+  root: /ServerInfo/CMU14/ExtraNet/Deep/Blackline/
+  style:
+    background: "#0A0A0A"
+    text: "#C8C8C8"
+    heading: "#E0303A"
+    link: "#F2C230"
+    font: Mono
+  pages:
+    "": index.xml

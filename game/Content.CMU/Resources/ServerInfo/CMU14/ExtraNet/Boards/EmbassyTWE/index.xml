@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/EmbassyTWE/banner.png" MaxHeight="170"/>
+  <CMUNetMarquee Text="IMPERIAL MISSION OPEN TO SUBJECTS OF THE CROWN  ///  Lost papers, detained kin, passage home: see Consular Services  ///  EARTH - MARS - TITAN" Speed="55" Color="#9DB4FF"/>
+
+  [bold]Communiques[/bold] from the Imperial diplomatic mission to this colony, issued by the Ambassador in the name of the Crown.
+
+  Comments on any communique below are welcome from subject and stranger alike. The Ambassador reads every word, if not always at once.
+</Document>

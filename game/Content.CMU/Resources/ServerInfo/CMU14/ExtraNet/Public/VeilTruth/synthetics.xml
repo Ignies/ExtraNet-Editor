@@ -1,0 +1,28 @@
+<Document>
+  <CMUNetStyle Background="#0B0B05" Text="#E8E8C8" Heading="#FFE000" Link="#FF5050" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/VeilTruth/banner.png" MaxHeight="150"/>
+  # SYNTHETICS AMONG US
+  [italic]Not the Working Joes. You can hear a Joe coming. We mean the other ones.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Uniforms/Synthetic/joe.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/synth_token.rsi" State="coin_synth" Scale="3"/>
+  </Box>
+
+  ## THE CELEBRITY FILES
+  - [bold]REX MADDOX.[/bold] Forty hostile worlds. Seven seasons. Zero scars. He eats bugs and does not get sick. He spent fourteen hours in an ice cave with one flare and told jokes the whole time. A man would have cried at least once. The network says Rex has a synthetic stunt double. Ask yourself: which one is on the stage?
+  - [bold]SPIN OKAFOR.[/bold] Three hundred and eighteen goals. Zero penalties in a season. Nobody is that polite in a contact sport. Our analysts are divided. One says synthetic. The other says Lunar upbringing.
+  - [bold]CLEM.[/bold] The drummer in Rosie Ketch's band is a Working Joe. Everybody knows. That is not a conspiracy, it is the line-up. We include it so you know we are fair.
+  - [bold]THE EXECUTIVE.[/bold] Celeste Varga-Ishikawa has never lost a negotiation, visits thirty colonies a year and plays the violin badly. We believe the violin is the cover. A synthetic would play well. She plays badly on purpose.
+
+  ## HOW TO TELL
+  - They never complain about the coffee. They know what is in it.
+  - They are always slightly too calm in a dropship.
+  - They remember your name, your shift and how you take your tea, after one meeting.
+  - They do not yawn when you yawn. Try it. Yawn at your liaison.
+
+  ## WHAT NOT TO DO
+  Do not cut anybody to check. We cannot stress this enough. A reader on Kutjevo did this last year and he was wrong, and now he has a court date and a lot of free time to read this site. Observe. Write it down. Send it to us.
+
+  [netlink="Back to the truth" link="veiltruth.news"]
+</Document>

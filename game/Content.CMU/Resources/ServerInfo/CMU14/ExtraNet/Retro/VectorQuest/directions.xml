@@ -1,0 +1,28 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/VectorQuest/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/map_blips.rsi" State="correspondent" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Interface/map_blips.rsi" State="supply" Scale="2"/>
+  </Box>
+  # TURN BY TURN DIRECTIONS
+  [italic]From: your bunk, {colony}. To: the landing zone. Total time: about twenty minutes. Total distance: VectorQuest is not sure.[/italic]
+
+  ## YOUR ROUTE
+  - [bold]1.[/bold] Leave your bunk. Turn left. If your bunk has no door, the door is somewhere else.
+  - [bold]2.[/bold] Continue down the corridor past the vending machine. Do not stop at the vending machine.
+  - [bold]3.[/bold] Turn right at the notice board. The notice board says the meeting has been moved. Ignore it. It always says that.
+  - [bold]4.[/bold] Go through the double doors. If the double doors are locked, find a Working Joe. If the Working Joe will not open the doors, it has a reason. Go round.
+  - [bold]5.[/bold] Recalculating.
+  - [bold]6.[/bold] Recalculating.
+  - [bold]7.[/bold] Take the outdoor path toward the landing pad lights. Stay on the path. Things beside the path are not part of the route.
+  - [bold]8.[/bold] Arrive at the landing zone. Your destination is on the left. If your destination is on fire, it is on the right.
+
+  ## ROUTE WARNINGS
+  - [color=#FFE066]Corridor closed by order of the administration.[/color] VectorQuest has routed you around it. VectorQuest has also routed you around the corridor next to it, out of curiosity.
+  - [color=#FFE066]Heavy foot traffic near the garrison.[/color] Probably a drill.
+
+  ## SHORTCUT AVAILABLE
+  VectorQuest has found a route that is six minutes faster through the maintenance shafts. VectorQuest does not recommend it. VectorQuest did not find it. It was added to our database by a user with no name at 03:12.
+
+  [netlink="Back to VectorQuest" link="vectorquest.nav"]
+</Document>

@@ -1,0 +1,28 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/DropDash/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Uniforms/Civilian/pizza_galaxy.rsi" State="icon" Scale="2"/>
+  </Box>
+  # BECOME A DASHER
+  [italic]Be your own boss. Set your own hours. Fall from orbit with a pizza.[/italic]
+
+  ## WHAT DASHERS DO
+  Dashers ride down to colony landing pads in DropDash shuttles, leave the food and ride back up. A typical shift is twelve drops, three hypersleep naps and one argument with a garrison about whether pizza is a security risk.
+
+  ## WHAT YOU NEED
+  - A shuttle licence, or a friend with one who owes you money.
+  - A strong stomach for re-entry. You will be holding a soup.
+  - Your own heat bag. DropDash bags are available for purchase at a Dasher discount of zero percent.
+  - No fear of the dark, the cold, quarantine flags or landing pads that are quiet when they should not be.
+
+  ## DASHER PAY
+  Dashers keep every tip in full. DropDash keeps the delivery fee, the service fee, the re-entry fee and the fee for the fee. Most Dashers break even by the third year. Some Dashers have broken even.
+
+  ## DASHER OF THE MONTH: KOWALSKI
+  Kowalski has delivered to thirty colonies, a USCM troopship and once, by accident, to a UPP outpost, who paid in full and tipped well. Kowalski says the trick is to keep the engine running.
+
+  ## A WORD ON SAFETY
+  Do not leave the shuttle. Do not accept items in return. Do not deliver to colonies that are not answering their radios, even if the order came through. Orders from colonies that are not answering their radios are not real orders. They are refunded automatically.
+
+  [netlink="Back to DropDash" link="dropdash.eats"]
+</Document>

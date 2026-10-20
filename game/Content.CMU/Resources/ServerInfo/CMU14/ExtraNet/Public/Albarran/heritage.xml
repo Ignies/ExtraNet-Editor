@@ -1,0 +1,25 @@
+<Document>
+  <CMUNetStyle Background="#2B1A10" Text="#EADBC4" Heading="#D9A441" Link="#E8C77A" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Albarran/banner.png" MaxHeight="150"/>
+  # HERITAGE: A FAMILY AND A FIELD
+  [italic]Four generations, one street in Havana and a field that has never moved.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/Objects/Specific/Hydroponics/tobacco.rsi" State="dried" Scale="4"/>
+
+  ## 2061: HECTOR
+  Hector Albarran was a torcedor at a state factory when the old houses closed. He kept his chaveta, the curved blade that every roller uses, and set up a single table in his mother's front room on the Calle Obispo. His first customers were the sailors of the Havana docks. His first box went to sea on a freighter bound for the Moon, which Hector considered a fine joke and which his family still keeps on the wall.
+
+  ## 2098: LUCIA
+  Hector's daughter Lucia bought the field. Twenty hectares of red earth in the Vuelta Abajo, which she farmed herself for the first ten years and refused to sell to three corporations, two governments and one man who offered to pay in shares of an asteroid. The field is still ours. The asteroid, we understand, was lost.
+
+  ## 2134: TOMAS
+  Tomas Albarran took the house to the stars. He sent the first Albarran boxes out on the colony ships of the 2130s and wrote to every colonist who wrote back. The House still has his letters. One of them is from a miner on a world with no name who wrote, simply, that the cigar was the first thing in four years that had smelled of home.
+
+  ## TODAY: INES
+  Ines Albarran runs the House today, and rolls at the first table every morning before she does anything else. Under Ines the House has refused, for the fourth generation running, to use a machine, a synthetic leaf or a Company distribution contract. She has said that Casa Albarran will sell to anyone, and belong to no one.
+
+  ## THE FIELD
+  The tobacco is sown in winter, picked leaf by leaf by hand in spring, hung to cure in the casa de tabaco for two months and then aged for at least two years before it meets a roller. Every leaf in an Albarran cigar has been touched by more than a hundred hands.
+
+  [netlink="Back to Casa Albarran" link="albarran.cigars"]
+</Document>

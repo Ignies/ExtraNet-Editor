@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#0B2018" Text="#EDE6D0" Heading="#D4AF37" Link="#9ED9C0" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Balaji/banner.png" MaxHeight="150"/>
+  # THE HOUSE OF BALAJI
+  [italic]Makers of Balaji Imperials. Mumbai, London, Kyoto, Gateway. A family house of the Three World Empire for six generations.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Items/Smokes/balaji_imperials.rsi" State="closed" Scale="4"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Tools/Lighters/goldzippo.rsi" State="closed" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Objects/Consumable/MRE/balaji_imperial_matchbook.rsi" State="mpacket" Scale="3"/>
+  </Box>
+
+  ## AN IMPERIAL WELCOME
+  The House of Balaji greets its friends on {colony}. Since 2048 our family has made one thing, and made it slowly. Every Balaji Imperial is rolled and tipped by hand in our Mumbai atelier, from a blend that is the House's oldest secret and its proudest one. Our cigarettes are carried in the cases of admirals, the briefcases of ambassadors and the breast pockets of officers in every corner of the Empire and some corners beyond it.
+
+  ## THE BALAJI PROMISE
+  - [bold]Hand rolled.[/bold] Every cigarette passes through the hands of a Balaji roller. Machines are for the others.
+  - [bold]Family run.[/bold] The House has been led by a Balaji for six generations, and has never sold a single share.
+  - [bold]By warrant.[/bold] Supplier to the Imperial Household, and to the wardrooms of the Imperial Armed Space Forces, since 2094.
+  - [bold]Discreet.[/bold] The House does not discuss its customers. Not the famous ones, and certainly not the others.
+
+  ## FROM THE HOUSE
+  - [netlink="The Collection" link="balaji.imperial/collection"]
+  - [netlink="Accessories: lighters, cases and keepsakes" link="balaji.imperial/accessories"]
+  - [netlink="Six generations of the House" link="balaji.imperial/heritage"]
+
+  ## BOUTIQUES
+  - [bold]Mumbai[/bold], the atelier and flagship, Marine Drive.
+  - [bold]London[/bold], Jermyn Street, by appointment.
+  - [bold]Kyoto[/bold], a small counter in a very old tea house.
+  - [bold]Gateway Station[/bold], the Promenade, Deck 11, opposite the Weyland-Yutani tower and pointedly not inside it.
+  - [bold]The colonies[/bold], through licensed officers' clubs and a small number of approved tobacconists. A Balaji Imperial bought anywhere else should be examined closely.
+
+  [color=#8AA090]For adults of the Empire and its friends. Tobacco harms its user, whatever is printed on the packet, and the House does not claim otherwise. Imperial Health Ministry notice 2177/14 applies.[/color]
+</Document>

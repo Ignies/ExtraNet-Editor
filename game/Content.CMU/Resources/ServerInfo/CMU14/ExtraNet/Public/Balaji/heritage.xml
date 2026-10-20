@@ -1,0 +1,25 @@
+<Document>
+  <CMUNetStyle Background="#0B2018" Text="#EDE6D0" Heading="#D4AF37" Link="#9ED9C0" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Balaji/banner.png" MaxHeight="150"/>
+  # SIX GENERATIONS OF THE HOUSE
+  [italic]A family, a blend and a stubborn refusal to sell either.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/Objects/Specific/Hydroponics/tobacco.rsi" State="produce" Scale="4"/>
+
+  ## THE FIRST GENERATION: RAGHAVAN BALAJI
+  Raghavan Balaji was a spice merchant in Mumbai who blended tobacco for his own pleasure and his friends' gratitude. In 2048 a friend in the Indian space programme asked for a hundred to take into orbit. Raghavan rolled them himself, on his kitchen table, over three nights. The programme asked for a thousand. The House was born.
+
+  ## THE SECOND AND THIRD: THE WARRANT
+  Raghavan's daughter Kamala won the Imperial warrant in 2094, six years after the Empire was proclaimed, after a dinner at which a minor royal asked for a second cigarette and then a third. Her son Arjun took the House to London and to Kyoto, and is still remembered in both for refusing to open a factory.
+
+  ## THE FOURTH: THE BLEND
+  As the Earth's growing land shrank, Priya Balaji did what the House had sworn it never would and began to blend true leaf with cultured leaf grown in the House's own laboratories. The old customers wrote angry letters. Then they tried the new blend and wrote again. The House keeps both sets of letters.
+
+  ## THE FIFTH: THE STARS
+  Vikram Balaji opened the Gateway boutique and won supply to the wardrooms of the Imperial Armed Space Forces and the Royal Marine Commandos. He declined, three times, an offer from a very large company to carry Balaji Imperials in its colony stores. He is said to have replied, on the third occasion, that the House was not for building worlds, only for enjoying them.
+
+  ## THE SIXTH: TODAY
+  Meera Balaji leads the House today from the atelier in Mumbai. Under Meera the House has kept to its single rule: one family, one blend, made by hand. She rolls the first cigarette of every Crown Reserve herself, and nobody is permitted to smoke it.
+
+  [netlink="Back to the House of Balaji" link="balaji.imperial"]
+</Document>

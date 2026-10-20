@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#0F1316" Text="#B7C1C4" Heading="#E2C04A" Link="#79C2CF" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Missing/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="LAST LOGGED CARRIER FROM OXLEYS BUTTE: 2175  ///  SOLARIS GULCH UPKEEP STILL PAID, LABS ETA AND LAMBDA STILL SHUT  ///  KEEP A LOG  ///  SILENCE HAS A SHAPE" Speed="45" Color="#E2C04A"/>
+  # GONE QUIET
+  [italic]A board for people who notice when the static changes.[/italic]
+
+  House rules. No real names, yours or anyone else's. No Company relay addresses. Do not post twice in a row from the same colony terminal. If you came here because someone stopped writing back, read the pinned threads first, then post. We do not delete.
+
+  <CMUNetBlink Rate="0.8">
+    [color=#C94A3A][bold]/// 3 NEW SILENCES REPORTED THIS CYCLE ///[/bold][/color]
+  </CMUNetBlink>
+
+  ## PINNED
+  - [netlink="THE SILENT LIST: stations that stopped transmitting" link="missing.deep/silent"] [color=#5F6B70]214 replies, last post by relay_widow[/color]
+  - [netlink="QUARANTINE NOTICES AND THE PEOPLE NOBODY ASKED" link="missing.deep/quarantine"] [color=#5F6B70]97 replies, last post by ninth_shift[/color]
+
+  ## RECENT THREADS
+  [color=#5F6B70][italic]Mirror lost in the last relay purge. Titles recovered, bodies not.[/italic][/color]
+  - Kutjevo: why seal the central aquifer sections if they are only dry?
+  - Anyone still pulling a carrier off Big Red once the storm shutters come down?
+  - Corsat Station blackout: every reporter who applied and was refused
+  - Sorokyne second outpost: shift roster against what came home
+  - [color=#5F6B70]locked[/color] Hope's Retreat transport: where were they going? (merged into the Silent List)
+
+  ## HOW TO HELP
+  Keep a log. Date, time, frequency, who was talking and when they stopped. A colony that loses power goes dark all at once. A colony that is told to stop goes quiet one desk at a time, and the last desk is always the one that handles payroll.
+
+  Reading this from {colony}? Note when your relay last spoke to anyone off-world. Then check again tomorrow, and the day after.
+
+  ## FRIENDS OF THE BOARD
+  - [netlink="wyleaks.deep" link="wyleaks.deep"] for the paperwork
+  - [netlink="marshalwatch.deep" link="marshalwatch.deep"] for who gets sent after it
+  - [netlink="cartographer.deep" link="cartographer.deep"] for where it was
+
+  [netlink="Back to the board index" link="missing.deep"]
+
+  <CMUNetWallpaper Id="CMUWallpaperHypersleep"/>
+</Document>

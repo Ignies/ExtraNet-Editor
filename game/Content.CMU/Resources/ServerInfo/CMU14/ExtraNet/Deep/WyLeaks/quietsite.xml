@@ -1,0 +1,30 @@
+<Document>
+  <CMUNetStyle Background="#0C0C0A" Text="#BDB9AC" Heading="#F2EEE3" Link="#6FA8FF" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/WyLeaks/banner.png" MaxHeight="150"/>
+  # DOC 03 // QUIET SITE
+  [color=#FF3B30][bold]COMPANY CONFIDENTIAL :: CORPORATE RELATIONS :: DESTROY AFTER READING[/bold][/color]
+
+  - FROM: Corporate Relations, with Communications and PMC Dispatch
+  - TO: Liaisons and security chiefs, list B postings
+  - REF: WY-CR/IC-7
+  - RE: Incident Containment Procedure IC-7, the quiet site
+
+  ## SEQUENCE
+  - [bold]Hour 0.[/bold] Communications restricts all outbound traffic from the site to Company channels. Civilian relays and press uplinks are to report atmospheric interference.
+  - [bold]Hour 6.[/bold] The liaison sends specimen status to Special Projects before any report reaches the colonial administration.
+  - [bold]Hour 12.[/bold] PMC Dispatch sends a containment team. Its order of work: the specimen, then the data, then survivors. Survivors with direct knowledge are held for debrief offworld.
+  - [bold]Hour 48.[/bold] Site logs are wiped and hard copies recalled from every terminal.
+
+  ## NARRATIVE
+  Corporate Relations selects one approved public account: atmosphere processor failure, reactor fault, quarantine for a contagious illness, or CLF sabotage. Sabotage is preferred wherever a cell is known to operate, since it justifies a larger PMC presence afterward.
+
+  ## FAMILIES
+  Settlements are paid through the insurance subsidiary, never in the Company's name, and only against a signed non-disclosure. Claims for Category 3 personnel are contested under clause 14(c).
+
+  ## MILITARY
+  Where Colonial Marines were present, a cooperative officer files the after action report. A ship lost in the incident is entered as a navigational loss. [color=#3A3A36]##############[/color] will handle any member of Congress who asks.
+
+  [color=#6FA8FF][italic]Our note: this copy was not destroyed after reading. Neither were we. Not yet.[/italic][/color]
+
+  [netlink="Back to the dump" link="wyleaks.deep"]
+</Document>

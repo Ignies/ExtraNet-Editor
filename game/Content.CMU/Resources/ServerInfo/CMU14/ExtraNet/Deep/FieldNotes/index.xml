@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#0E0D09" Text="#D3CCB2" Heading="#C8EE3C" Link="#E2A443" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/FieldNotes/banner.png" MaxHeight="150"/>
+  # FIELD NOTES
+
+  [italic]Private notebook of the colony biologist, {colony}. Not for the clinic file. Not for the liaison. Typed up from paper at night, a page at a time.[/italic]
+
+  <CMUNetMarquee Text="specimen count wrong again  ///  do not open the cold store  ///  the samples were moved while I slept  ///  they are not animals  ///  they are not animals" Speed="45" Color="#C8EE3C"/>
+
+  ## Why it is here
+  The clinic terminal logs every keystroke, and the Company liaison reads the logs over breakfast. So these go out on the deep net instead, where nobody official admits to looking. If you have seen anything like this on your own world, you already know why I write in pieces.
+
+  ## What I was hired for
+  Soil cultures. Water counts. The occasional burrowing thing that chewed a cable. Two years of fungus and paperwork, and a performance review that called me thorough. Then the survey crew came back from the outer works with a sealed case and a manifest that said ROCK SAMPLE, and the liaison asked me personally to keep it warm.
+
+  [color=#7D7763]I should have asked why a rock needed to be kept warm.[/color]
+
+  ## The notebook
+  - [netlink="I. The Cycle" link="fieldnotes.deep/cycle"] - the egg, the thing that grips, the thing that comes out, the thing it becomes.
+  - [netlink="II. The Bodies" link="fieldnotes.deep/bodies"] - kinds, armour, and the blood.
+  - [netlink="III. The Hive" link="fieldnotes.deep/hive"] - what they build, what they keep, and who they answer to.
+
+  ## Rules I keep now
+  - Lights on. Always.
+  - Never wound one indoors.
+  - Count heads at every shift change and write the number down.
+  - If a colleague goes quiet and starts sleeping a lot, scan their chest.
+
+  <CMUNetBlink Rate="0.8">
+    [color=#C8EE3C][bold]IF THE ENTRIES STOP, DO NOT COME LOOKING FOR ME.[/bold][/color]
+  </CMUNetBlink>
+
+  Check [netlink="missing.deep" link="missing.deep"] for my shift number instead. If it is there, burn the paper copy in the clinic incinerator. Second drawer, under the gauze.
+
+  <CMUNetWallpaper Id="CMUWallpaperNebula"/>
+</Document>

@@ -1,0 +1,33 @@
+<Document>
+  <CMUNetStyle Background="#FFF1F6" Text="#1A1A1A" Heading="#D0105A" Link="#1440A0" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ColonyTattler/banner.png" MaxHeight="150"/>
+  # GOSSIP: THE WHOLE DISH
+  [italic]Everything we heard this week, and some things we heard last week and were saving.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Drinks/coffee_cup.rsi" State="icon-3" Scale="3"/>
+
+  ## LUX AND THE KEYTAR INCIDENT
+  It has been a month since the Chroma Sleep after party at the Huygens Dome, and Titan is still talking. Witnesses tell the Tattler that at around three in the morning, singer Ines Lux Valdivia picked up bassist Precious Adeyemi's keytar, carried it to the dome's observation window and held it up to Saturn for what one guest called a very long time. Then she put it down very carefully and went to bed.
+
+  Nobody knows why. Precious says the keytar is fine. Kaito says it was a creative moment. Dmitri said nothing, which for Dmitri is normal. The keytar now has its own fan club on Titan, with more members than some colonies. The Tattler has asked to interview the keytar and is waiting for a reply.
+
+  ## ROSIE AND LUX: THE DUET THAT NEVER WAS
+  Country queen Rosie Ketch and Lux were booked into a Gateway studio together in 2182 to record a duet. The Tattler has learned that the session lasted forty minutes. A studio engineer told us there was a disagreement about whether the song needed a fiddle or a synthesizer, and that the fiddle player and the synthesizer player both left the room at the same time through different doors. Rosie now says she sends her love to Lux. Lux has not said anything. Love, the Tattler notes, is a strong word for a forty minute session.
+
+  ## REX MADDOX: TWO HUNDRED METRES
+  The Tattler has obtained the garrison log from Lazarus Landing. It reads, in full: civilian with camera crew retrieved from jungle at the treeline, two hundred metres from the north gate, in good health, asked for coffee. Rex says he was being thorough. The Tattler says Rex was nearly home.
+
+  ## THE EXECUTIVE AND THE VIOLIN
+  Weyland-Yutani's Celeste Varga-Ishikawa played at a private dinner on Gateway. The Tattler spoke to three guests. One said brave, one said memorable and one asked us not to print what he said. Her office says she plays only for pleasure. The Tattler asks: whose?
+
+  ## BLIND ITEM
+  Which much loved holo star was seen leaving a Mars hypersleep clinic at dawn, wearing big sunglasses and carrying a single rose? And which zero gravity sportsman was seen arriving five minutes later? We are not saying. We do not have to.
+
+  ## WHAT THE STARS ARE DRINKING
+  Space Up is out. Black coffee is in. Rosie Ketch drinks whiskey, but only after the show and never on a colony under an alcohol ration, which she would like you to know.
+
+  - [netlink="Chroma Sleep: the band's own site" link="chromasleep.fan"]
+  - [netlink="Rosie Ketch: the Queen of the Outer Veil" link="rosieketch.music"]
+  - [netlink="Rex Maddox: Hostile Worlds" link="rexmaddox.holo"]
+  - [netlink="Back to the front page" link="colonytattler.news"]
+</Document>

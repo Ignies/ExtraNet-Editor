@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#0C1430" Text="#E4E6EE" Heading="#D4AF37" Link="#E06060" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/rmc_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # GUIDANCE FOR RESIDENTS
+  [italic]Please take a moment to read this. It may well save your life.[/italic]
+
+  On an ordinary day you will see a patrol pass the mess and very little else. When the Officer Commanding raises the state of alert, the guidance below applies to every resident, contractor and visitor, without exception.
+
+  ## AT A CHECKPOINT
+  - Stop when asked to stop. Keep your hands in view.
+  - Have your colony identification ready. Contractors should also show a current work order.
+  - Declare any firearm before you are searched. Unlicensed weapons will be confiscated and recorded.
+  - Kindly refrain from photographing or recording checkpoints, sentry posts or troop movements.
+
+  ## CURFEW
+  - Curfew hours are published on this board and announced over the colony tannoy.
+  - Movement after curfew requires a pass from Colony Administration or the garrison duty officer. Essential workers should carry theirs at all times.
+
+  ## WHEN THE SIREN SOUNDS
+  - Go indoors, keep away from windows and stay put until the all clear.
+  - Follow your block warden. Do not come to the garrison gate; it will be shut.
+  - Shelters are listed by [netlink="Colony Administration" link="admin.colony.gov"].
+
+  ## PLEASE REPORT
+  - Unattended bags, crates or vehicles.
+  - Anyone taking an interest in patrol times, the armoury or the landing pad.
+  - Cut fences, forced locks, missing explosives or mining charges.
+  - A gas alarm sounding, or a gas monitor that is dark, damaged or tampered with. Carbon monoxide has no smell; the monitor is your nose.
+
+  The garrison takes no interest in your politics. It takes a great deal of interest in anyone carrying a rifle for someone else.
+
+  ## WHAT THE GARRISON DOES NOT DO
+  Marines do not collect debts, referee disputes between neighbours or enforce Company contracts. Civil and criminal matters belong with the Neroid Sector Policing Authority and with Colony Administration. Subjects of the Empire needing consular help may contact the [netlink="Imperial embassy" link="embassy.twe"]. Complaints about a Marine should be made in writing to the Second in Command, and will be answered.
+
+  [netlink="Return to Part One Orders" link="command.govfor.mil"]
+</Document>

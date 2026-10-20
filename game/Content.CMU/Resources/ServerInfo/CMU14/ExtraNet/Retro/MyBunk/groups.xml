@@ -1,0 +1,32 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/MyBunk/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/dice.rsi" State="d20_20" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Fun/playing_cards.rsi" State="hearts_ace" Scale="2"/>
+  </Box>
+  # GROUPS
+  [italic]Find your people. Then find out they are all on the same shift as you.[/italic]
+
+  ## NIGHT SHIFT SURVIVORS CLUB
+  4,091 members. For anyone who works while the colony sleeps. Rules: no complaining about day shift, except constantly. Pinned post: the third light from the end in the east corridor is not broken. It flickers because something walks past it. Please do not open a ticket.
+
+  ## TABLETOP ON THE FRONTIER
+  1,204 members. Dice games, card games and the one long campaign that has been running since the colony charter. The game master has been rotated out twice. The campaign keeps going.
+
+  ## PEOPLE WHO MISS EARTH
+  9,882 members. Share photos of grass, oceans and sky that is the right colour. Most members have never been to Earth. They miss it anyway.
+
+  ## THE CHROMA SLEEP FAN CLUB, {colony} CHAPTER
+  311 members. Tape swaps every shift change. If you have Live at the Huygens Dome on a clean copy, Kenji will trade you anything, including his bunk.
+
+  ## COMPANY WIVES AND HUSBANDS
+  2,417 members. Support for anybody whose partner is on a contract longer than the marriage. Recipes, letters and advice on what to say when the relay buoy is down.
+
+  ## MOUSTACHE APPRECIATION SOCIETY
+  6,006 members. Self-explanatory. The Society does not accept beards and is not taking questions about it.
+
+  ## UNNAMED GROUP
+  1 member. Created 2179. No posts. Joining is disabled. The member count has gone up by one every night this week.
+
+  [netlink="Back to MyBunk" link="mybunk.social"]
+</Document>

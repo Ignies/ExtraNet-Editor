@@ -1,0 +1,9 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Govfor/banner.png" MaxHeight="170"/>
+  <CMUNetMarquee Text="ALL STATIONS  ///  CARRY YOUR COLONY ID AT ALL TIMES  ///  CURFEW AND ZONE CHANGES ARE POSTED ON THIS BOARD  ///  REPORT UNATTENDED PACKAGES TO THE NEAREST PATROL  ///  DO NOT APPROACH THE PERIMETER FENCE" Speed="60" Color="#9FC46A"/>
+  [bold]OFFICIAL BULLETINS OF THE COLONIAL GARRISON.[/bold] Orders are issued by the commanding officer and staff and take effect when posted. Read them, comply with them, and ask a patrol if you do not understand them.
+
+  <CMUNetBlink Rate="0.7">
+    [color=#E8E2B0]MONITORED CHANNEL - ALL COMMENTS ARE LOGGED[/color]
+  </CMUNetBlink>
+</Document>

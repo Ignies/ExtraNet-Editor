@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#FFF1F6" Text="#1A1A1A" Heading="#D0105A" Link="#1440A0" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ColonyTattler/banner.png" MaxHeight="150"/>
+  # YOUR STARS WITH MADAME ORBITA
+  [italic]The heavens, read for the colonies. Madame Orbita does not use Earth signs, because you are not on Earth. She uses the shipping lanes.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Fun/playing_cards.rsi" State="spades_queen" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Fun/playing_cards.rsi" State="hearts_ace" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Fun/playing_cards.rsi" State="clubs_king" Scale="3"/>
+  </Box>
+
+  ## THE HAULER (born in the dark months)
+  A long journey is ahead of you. So is a long nap. Do not trust a man who says the cryotube is fine. Lucky number: nine. Lucky item: a warm pair of socks.
+
+  ## THE PROCESSOR (born in the loud months)
+  You are steady, tireless and making a noise everyone has stopped hearing. This week, somebody notices. Lucky colour: rust. Avoid: overtime.
+
+  ## THE RELAY (born in the waiting months)
+  A message is coming. It is not the one you wanted, but it is from someone who loves you. Reply quickly. The buoy is slow.
+
+  ## THE DROPSHIP (born in the stormy months)
+  You arrive suddenly and leave a mess. This week, try landing softly. Lucky number: two. Unlucky number: the one on your bar tab.
+
+  ## THE LIAISON (born in the quarterly months)
+  You smile, you nod and you take notes. The stars cannot read you, and they have stopped trying. Lucky item: a pen that is not yours.
+
+  ## THE JOE (born in the night shift)
+  Methodical, patient and calm in a crisis. The stars suggest you look at your hands this week and ask yourself a serious question. Madame Orbita is joking. Probably.
+
+  ## THE HIVE (born in the warm months)
+  Madame Orbita does not know who wrote this sign into her chart. She did not. She has removed it three times. It keeps coming back. If you were born in the warm months, she suggests you stay near other people this week, and keep the lights on.
+
+  ## ASK MADAME ORBITA
+  Dear Madame Orbita, my bunkmate snores and the stars say we are compatible. What do I do? Madame Orbita says: the stars are not in your bunk room. Buy earplugs.
+
+  [netlink="Back to the front page" link="colonytattler.news"]
+</Document>

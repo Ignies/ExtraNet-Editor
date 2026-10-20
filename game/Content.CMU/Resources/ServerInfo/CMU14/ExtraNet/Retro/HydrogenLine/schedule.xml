@@ -1,0 +1,25 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/HydrogenLine/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/communications_tower_dish.rsi" State="comm_tower" Scale="1"/>
+  </Box>
+  # SCHEDULE
+  [italic]Shift times are standard colony time. Your colony may differ. Your colony probably differs.[/italic]
+
+  ## FIRST SHIFT: WAKE UP, {colony}
+  [bold]with Bright Bettina[/bold]. Bettina has been awake since four and wants you to be too. Coffee songs, the supply schedule and the Daily Drill, a song chosen by the colony's loudest drill operator. It is the same song every day.
+
+  ## SECOND SHIFT: THE LONG HAUL
+  [bold]with Mack and the Machine[/bold]. Frontier country, hauler rock and Rosie Ketch every hour on the hour. The Machine is a Working Joe called Barnaby, who reads the traffic report in a calm voice and laughs at Mack's jokes exactly once each.
+
+  ## EVENING: SYNTH AND SIGNAL
+  [bold]with DJ Kessa[/bold]. New music from the Core, three months late. Kessa plays the new Chroma Sleep tape before anyone else has it and then reads the angry letters from the Titan methane docks on air.
+
+  ## NIGHT SHIFT: NIGHTSIDE
+  [bold]with Lou Delgado[/bold]. Slow songs, dedications and the hush between them.
+
+  ## THE HOUR AFTER NIGHTSIDE
+  [color=#6A80A0]The station is off air between Nightside and first shift, for maintenance. Listeners regularly report hearing a show in this hour. The show has no host. The songs are old. Our engineers have checked the transmitter, which is switched off, and the tapes, which are locked up. If you hear the hour after Nightside, please do not phone in.[/color]
+
+  [netlink="Back to the Hydrogen Line" link="hydrogenline.fm"]
+</Document>

@@ -23,7 +23,7 @@ function checkSite(pkg, out) {
   if (!s.id) out.push(issue('error', SITE, 'The site needs an id.'));
   else {
     if (!/^[A-Za-z][A-Za-z0-9_]*$/.test(s.id)) out.push(issue('error', SITE, `Id "${s.id}" may only hold letters, digits and _.`));
-    if (!s.id.startsWith('CMUNetSitePackage')) out.push(issue('warning', SITE, `Package site ids start with CMUNetSitePackage (e.g. CMUNetSitePackage${pkg.folder}).`));
+    if (!s.id.startsWith('CMUNetSitePackage') && !(pkg.origin && pkg.origin.kind === 'yaml')) out.push(issue('warning', SITE, `Package site ids start with CMUNetSitePackage (e.g. CMUNetSitePackage${pkg.folder}).`));
   }
   if (!s.address) out.push(issue('error', SITE, 'The site needs an address.'));
   else {
@@ -297,7 +297,7 @@ export async function validateAsync(pkg, parsedPages) {
   try {
     const addresses = await knownAddresses();
     const own = pkg.site.address.trim().toLowerCase();
-    if (addresses.has(own)) out.push(issue('error', SITE, `The game's site ${addresses.get(own)} already uses the address ${own}.`));
+    if (addresses.has(own) && addresses.get(own) !== (pkg.origin && pkg.origin.id)) out.push(issue('error', SITE, `The game's site ${addresses.get(own)} already uses the address ${own}.`));
   } catch {
     offline = true;
   }

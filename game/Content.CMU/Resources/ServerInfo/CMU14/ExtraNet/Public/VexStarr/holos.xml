@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#1E0F1E" Text="#F5E6F0" Heading="#FF5FD2" Link="#FFD27A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/VexStarr/banner.png" MaxHeight="150"/>
+  # HOLOS AND SERIALS
+  [italic]Every role, in order. Air dates are Gateway premiere dates. Colony relay dates vary with distance and with how much the relay operator likes holo-drama.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/broadcasting_camera.rsi" State="icon" Scale="3"/>
+
+  ## GATEWAY GENERAL (2174 TO NOW)
+  [bold]Role:[/bold] Dr. Juno Kade, trauma surgeon.
+
+  The serial that made her. A hospital on Gateway Station, the last stop before the long dark and the first stop on the way home, where every shuttle brings in somebody who should not have survived the trip. Juno Kade came aboard in the first episode as a junior surgeon who had washed out of a Company residency and lied about it. Nine seasons later she runs the trauma deck.
+
+  Fan favourite episodes:
+  - [bold]Cold Open[/bold] (season one). A whole hypersleep ward wakes at once after a pod failure. Juno has six surgeons and forty patients.
+  - [bold]Decompression[/bold] (season three). Set almost entirely inside a sealed corridor with the air going. Filmed in one take, or so the producers claim.
+  - [bold]Next of Kin[/bold] (season six). A Colonial Marine comes in from an outpost that has stopped answering, and will not say what happened to the rest of his squad. The network pulled it from three colony relays for being too upsetting. The Society has the full cut.
+  - [bold]Juno Kade Is Not Available[/bold] (season nine). The finale. We are not discussing the finale.
+
+  ## HARDLIGHT (2181)
+  [bold]Role:[/bold] Deputy Marshal Rae Marchetti.
+
+  Vex's first feature. A Colonial Marshal is sent to a mining world to bring in one fugitive and finds a whole town that does not want him found. Vex did her own stunts, broke her wrist on the second day and finished the shoot in a cast painted the colour of her gloves. Banned on two UPP-aligned colonies for its portrait of a Union security chief, which the producers maintain was a compliment.
+
+  ## THE LAST SHUTTLE FROM TITAN (2178)
+  [bold]Role:[/bold] Mira Osei, a passenger.
+
+  A small part in a big disaster holo. Vex had eleven lines and a scream. The scream is the one they still use in the trailers.
+
+  ## THE LONG SLEEP (COMING 2184)
+  [bold]Role:[/bold] Second Officer Ilse Varn.
+
+  A freighter crew wakes from hypersleep fourteen months early, in the wrong system, with one crew member missing from the manifest and one too many in the cryo bay. The studio has asked the cast not to describe the ending. Vex has told the Society only this: [italic]do not watch it alone, and do not watch it on a ship.[/italic]
+
+  ## WHERE TO WATCH
+  Gateway General relays to most colonies through the Weyland-Yutani entertainment service, and to Seegson settlements on the Sevastolink channel. If your colony is not receiving the new season, ask your administration to request it. Administrations respond to numbers.
+
+  [netlink="Back to Vex Starr" link="vexstarr.holo"]
+</Document>

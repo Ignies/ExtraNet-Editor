@@ -1,0 +1,19 @@
+<Document>
+  <CMUNetStyle Background="#0D1524" Text="#D9DEE8" Heading="#E0B84C" Link="#7FB2E5" Font="Mono"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/CMIDs/cmb_marshal.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/ua_patch.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Items/DeskFlags/uadeskflag.rsi" State="uaflag" Scale="3"/>
+  </Box>
+
+  # OFFICE OF THE COLONIAL MARSHALS
+  [bold]CRISIS INTERVENTION UNIT - INCIDENT COMMAND, {colony}[/bold]
+  <CMUNetMarquee Text="NOTICE  ///  THIS COLONY IS UNDER A DECLARED INCIDENT RESPONSE BY THE COLONIAL MARSHALS BUREAU  ///  CARRY IDENTIFICATION  ///  OBEY LAWFUL ORDERS OF DEPUTIES  ///  TIPS MAY BE GIVEN IN CONFIDENCE AT ANY CHECKPOINT  ///  THE LAWS OF EARTH STRETCH BEYOND THE SOL" Speed="55" Color="#E0B84C"/>
+  [bold]PUBLIC NOTICES OF THE INCIDENT COMMANDER.[/bold] The Crisis Intervention Unit has assumed security of {colony} under federal authority. Notices below are lawful orders of the Incident Commander and take effect when posted. They are published in full so that every resident knows exactly what is being asked of them, and why.
+
+  This is a police action, not an occupation. The Unit is here because the situation at {colony} has grown past what the local office can handle alone. When it is resolved, we leave.
+
+  <CMUNetBlink Rate="0.8">
+    [color=#E0B84C]FEDERAL RECORD - POSTINGS ARE RETAINED AS EVIDENCE[/color]
+  </CMUNetBlink>
+</Document>

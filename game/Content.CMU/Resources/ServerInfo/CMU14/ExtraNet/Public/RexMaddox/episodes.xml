@@ -1,0 +1,31 @@
+<Document>
+  <CMUNetStyle Background="#161B0C" Text="#E5E8C8" Heading="#FF7A1A" Link="#FFD24A" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/RexMaddox/banner.png" MaxHeight="150"/>
+  # EVERY EPISODE, EVERY WORLD
+  [italic]Seven seasons. Forty worlds. One knife, replaced eleven times. Relay dates vary with distance and with whether your relay operator likes watching a man eat bugs.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/broadcasting_camera.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/binoculars.rsi" State="binoculars_civ" Scale="3"/>
+  </Box>
+
+  ## SEASON SEVEN: THE DEEP JUNGLE (2183)
+  - [bold]1. The Landing[/bold]. Port Nereid. Rex walks out of the spaceport and straight into the treeline, then walks straight back out to buy insect repellent.
+  - [bold]2. Rain[/bold]. It rains for the entire episode. Rex builds three shelters. The rain takes two of them.
+  - [bold]3. The River[/bold]. Shepherds' Pride. Rex catches a fish with his hands. The fishery workers watching from the landing are not impressed.
+  - [bold]4. The Green Hell[/bold]. Three nights outside Lazarus Landing. The garrison collects him. He was not lost.
+  - [bold]5. The Episode We Cannot Air[/bold]. See below.
+
+  ## FAN FAVOURITES
+  - [bold]Sand in Everything[/bold] (season two). Kutjevo. Rex crosses the runoff dunes in a sandstorm with his eyes taped shut and finds the refinery by the smell.
+  - [bold]Cold Night[/bold] (season three). Shivas' Snowball. Rex spends a night in an ice cave with a single flare. The flare lasts thirty minutes. The night lasts fourteen hours. Rex tells jokes to the camera for the other thirteen and a half.
+  - [bold]The Caverns[/bold] (season four). Gixen's Caverns. Rex learns what the colony means by bad air, and spends the rest of the episode in a mask.
+  - [bold]Dinner with the Night Shift[/bold] (season five). Rex eats an MRE with a refinery crew on Solaris Gulch and declares it the most dangerous thing he has eaten on the show.
+
+  ## THE EPISODE WE CANNOT AIR
+  Season seven, episode five was filmed on a world we have been asked not to name. Rex and the crew went into a cave system on the second day. They came out on the third day. The network has reviewed the footage and decided not to broadcast it. Rex has decided not to talk about it, which is the first time in seven seasons he has decided not to talk about anything.
+
+  The network asks fans to stop sending relay messages about episode five. It also asks the Veil Truth to stop publishing what it claims are stills from episode five. They are not stills from episode five. They are a photograph of a laundry room.
+
+  [netlink="Back to base camp" link="rexmaddox.holo"]
+</Document>

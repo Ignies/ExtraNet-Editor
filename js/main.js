@@ -12,7 +12,7 @@ import { toast, confirmDialog, modal, field, textInput, button, buttonRow, selec
 import { emptyPackage, packageFromFiles, saveWorking, loadWorking, normalisePackage, attributionsYaml, siteYaml, folderFromTitle, pageForPath } from './package.js';
 import { exportZip, importZip, importFolderFiles, importDirectoryHandle } from './zip.js';
 import { validateSync, validateAsync } from './validate.js';
-import { setRepoBase, getRepoBase, setLocalProvider, DEFAULT_REPO, localCheckoutBase } from './repo.js';
+import { setRepoBase, getRepoBase, setLocalProvider, DEFAULT_REPO, GITHUB_REPO, BUNDLED, localCheckoutBase, repoLabel } from './repo.js';
 import { onFontLoaded } from './fonts.js';
 import { TEMPLATE_FILES, TEMPLATE_FOLDER } from './template.js';
 import { TEMPLATES, templateById } from './templates.js';
@@ -25,6 +25,8 @@ import { History } from './history.js';
 import { linkChipNode } from './richedit.js';
 import { normalizePath, lineCol } from './markup.js';
 import { attributionFor, setAttribution } from './package.js';
+import { renderLibrary } from './ui-library.js';
+import { openEntry, exportChanges } from './library.js';
 
 const SETTINGS_KEY = 'extranet-editor-settings';
 
@@ -34,6 +36,15 @@ function loadSettings() {
   } catch {
     return {};
   }
+}
+
+/** Settings saved by an older version: the old default source, the Personal-Computers branch, becomes the snapshot. */
+function migrateSettings(settings) {
+  if (!settings.repoVersion) {
+    if (!settings.repo || settings.repo === GITHUB_REPO) settings.repo = BUNDLED;
+    settings.repoVersion = 2;
+  }
+  return settings;
 }
 
 function saveSettings() {
@@ -46,11 +57,14 @@ function saveSettings() {
 
 const history = new History();
 
+/** The emulator is still being built: it shows only with ?emulator in the address. */
+const EMULATOR = /[?&]emulator\b/.test(location.search) || location.hash === '#emulator';
+
 const app = {
   pkg: emptyPackage(),
   currentFile: 'index.xml',
   selected: null,
-  settings: { theme: 'CMUOsSeegson', colony: 'Stable Garrison', mapFolder: '', boardMode: 'sample', repo: DEFAULT_REPO, leftTab: 'blocks', view: 'blocks', ...loadSettings() },
+  settings: migrateSettings({ theme: 'CMUOsSeegson', colony: 'Stable Garrison', mapFolder: '', boardMode: 'sample', repo: DEFAULT_REPO, leftTab: 'blocks', view: 'blocks', ...loadSettings() }),
   issues: [],
   blockIssues: new Map(),
   handlers: [],
@@ -516,6 +530,7 @@ const mapInput = textInput(app.settings.mapFolder, { placeholder: 'map folder', 
 const boardSelect = select([['sample', 'Board: sample post'], ['reader', 'Board: reader'], ['empty', 'Board: empty']], app.settings.boardMode, { dataset: { tip: 'How a board\'s postings show under the front page' } });
 
 const PANELS = [
+  { id: 'library', icon: 'library', title: 'Library', sub: 'Every site in the game, to open and curate', key: 'Alt+0' },
   { id: 'blocks', icon: 'blocks', title: 'Blocks', sub: 'Drag onto the page, or click to add', key: 'Alt+1' },
   { id: 'pages', icon: 'pages', title: 'Pages', sub: 'Each page is a tab of the site', key: 'Alt+2' },
   { id: 'site', icon: 'site', title: 'Site', sub: 'Address, look, tabs and board', key: 'Alt+3' },
@@ -567,6 +582,9 @@ function rail() {
   });
   return el('nav.rail', {}, ...top,
     el('div.rail-bottom', {},
+      EMULATOR ? el('button.rail-btn', { type: 'button', dataset: { tip: 'Emulator: the in-game computer, with every site' }, onclick: () => {
+        location.hash = '#emulator';
+      } }, icon('monitor')) : null,
       el('button.rail-btn', { type: 'button', dataset: { tip: 'Banner Studio: design a banner for the site' }, onclick: () => app.openBannerStudio() }, icon('spark')),
       el('button.rail-btn', { type: 'button', dataset: { tip: 'Repository: where game art is read from' }, onclick: () => repoSettings() }, icon('repo')),
       el('button.rail-btn', { type: 'button', dataset: { tip: 'Help', key: 'F1' }, onclick: () => help() }, icon('help'))));
@@ -579,7 +597,8 @@ function renderLeft() {
   panelTitle.textContent = meta.title;
   panelSub.textContent = meta.sub;
   for (const [id, b] of railButtons) b.classList.toggle('on', id === tab);
-  if (tab === 'site') renderSiteForm(leftBody, app);
+  if (tab === 'library') renderLibrary(leftBody, libraryContext());
+  else if (tab === 'site') renderSiteForm(leftBody, app);
   else if (tab === 'files') renderPages(leftBody, app);
   else if (tab === 'images') renderImages(leftBody, app);
   else if (tab === 'check') renderChecks();
@@ -684,11 +703,7 @@ function updateStatus() {
   statusPages.textContent = `${site.pages.length} page${site.pages.length === 1 ? '' : 's'}`;
   const page = app.currentPageEntry();
   statusPage.textContent = page ? `${page.path ? `/${page.path}` : 'home'}  ${page.file}` : app.currentFile || '';
-  try {
-    statusRepo.textContent = new URL(getRepoBase()).host + new URL(getRepoBase()).pathname.split('/').slice(0, 3).join('/');
-  } catch {
-    statusRepo.textContent = getRepoBase();
-  }
+  statusRepo.textContent = repoLabel();
   const tab = page && site.tabs.find(t => normalizePath(t.path || '') === normalizePath(page.path));
   pageLabel.textContent = tab ? tab.title : page ? page.path || 'Home page' : app.currentFile || 'No page';
   pageSub.textContent = page ? `${site.address}${page.path ? `/${page.path}` : ''}` : '';
@@ -1434,6 +1449,46 @@ function afterChange(group) {
   if (group) record(group);
   docDirty.classList.add('on');
   updateStatus();
+  if (app.settings.leftTab === 'library' && app.pkg.origin) refreshLibrary();
+}
+
+const refreshLibrary = debounce(() => {
+  if (app.settings.leftTab === 'library' && !leftBody.contains(document.activeElement)) renderLeft();
+}, 800);
+
+// ---------------------------------------------------------------- library
+
+/** A function, so the panel can be drawn before this part of the file has run. */
+function libraryContext() {
+  return {
+    app,
+    rerender: () => renderLeft(),
+    async open(entry) {
+      if (docDirty.classList.contains('on') && !app.pkg.origin && !(await confirmDialog('Open a site', 'The site you are editing has changes since its last export. It stays autosaved only until another site replaces it. Open anyway?', 'Open'))) return;
+      toast(`Opening ${entry.title}…`);
+      await loadResult(openEntry(entry), entry.title);
+    },
+    exportPackage: () => exportPackage(),
+    async exportChanges() {
+      try {
+        const { blob, diff } = await exportChanges(app.pkg);
+        download(blob, `${app.pkg.folder || 'site'}-changes.zip`);
+        toast(`Exported ${diff.changed.length + diff.added.length} page file${diff.changed.length + diff.added.length === 1 ? '' : 's'} with CHANGES.md: unzip at the repository root.`);
+      } catch (e) {
+        toast(`Export failed: ${e.message}`, 'error');
+      }
+    },
+    setRepo(url) {
+      app.settings.repo = url;
+      setRepoBase(url);
+      saveSettings();
+      revalidate();
+      refreshPreview.flush();
+      canvasView.render();
+      renderLeft();
+      toast(`Reading game files from ${repoLabel()}`);
+    },
+  };
 }
 
 const autosave = debounce(async () => {
@@ -1563,9 +1618,9 @@ document.addEventListener('keydown', e => {
     help();
     return;
   }
-  if (e.altKey && !mod && /^[1-6]$/.test(e.key) && !document.querySelector('dialog[open], .studio')) {
+  if (e.altKey && !mod && /^[0-6]$/.test(e.key) && !document.querySelector('dialog[open], .studio, .emu')) {
     e.preventDefault();
-    setLeft(PANELS[Number(e.key) - 1].id);
+    setLeft(PANELS.find(p => p.key === `Alt+${e.key}`).id);
     return;
   }
   if (mod && e.key.toLowerCase() === 's') {
@@ -1606,10 +1661,12 @@ function repoSettings() {
     const repo = textInput(getRepoBase());
     const local = localCheckoutBase();
     body.append(
-      el('p.note', { text: 'Game sprites, textures, fonts, ads and wallpapers are read from this repository (raw files). Use a fork or branch URL to see art that is not merged yet.' }),
-      field('Raw repository URL', repo, 'https://raw.githubusercontent.com/<owner>/<repo>/<branch>/'),
-      buttonRow(button('Default', () => {
-        repo.value = DEFAULT_REPO;
+      el('p.note', { text: 'Game sprites, textures, fonts, ads and wallpapers are read from here. "bundled" is the snapshot of the game\'s ExtraNet pages and CMU art shipped with the editor, with GitHub master behind it for the other game sprites. A raw repository URL (a fork or branch) or a local checkout reads everything from there.' }),
+      field('Source', repo, 'bundled, or https://raw.githubusercontent.com/<owner>/<repo>/<branch>/'),
+      buttonRow(button('Bundled snapshot', () => {
+        repo.value = BUNDLED;
+      }), button('GitHub Personal-Computers', () => {
+        repo.value = GITHUB_REPO;
       }), local ? button('This checkout', () => {
         repo.value = local;
       }) : null),
@@ -1621,7 +1678,8 @@ function repoSettings() {
         revalidate();
         refreshPreview.flush();
         canvasView.render();
-        toast(`Reading game files from ${getRepoBase()}`);
+        renderLeft();
+        toast(`Reading game files from ${repoLabel()}`);
       }, '.btn-primary'), button('Cancel', () => close(null))));
   });
 }
@@ -1629,8 +1687,9 @@ function repoSettings() {
 function help() {
   modal('How to use', body => {
     body.append(el('div.help', { html: `
-      <p><b>The screen.</b> The rail on the left switches the panel next to it: Blocks, Pages, Site, Images, Files
-        and Check (<kbd>Alt+1</kbd> to <kbd>Alt+6</kbd>; click the open one again to fold it away). The page you build
+      <p><b>The screen.</b> The rail on the left switches the panel next to it: Library (<kbd>Alt+0</kbd>), then
+        Blocks, Pages, Site, Images, Files and Check (<kbd>Alt+1</kbd> to <kbd>Alt+6</kbd>; click the open one again to
+        fold it away). The page you build
         is in the middle. On the right are the page as the game draws it, and the settings of what you selected. The
         bar at the bottom shows autosave, the checks (click them to open Check) and the page on screen.</p>
       <p><b>1. Pages are tabs.</b> The strip above the page holds one tab per page. Click to open, double click to
@@ -1645,6 +1704,9 @@ function help() {
         backgrounds, and give each a licence (it goes into attributions.yml).</p>
       <p><b>5. Check and export.</b> Fix every error in <b>Check</b> (the block with the problem is outlined in red),
         then <b>Export zip</b> and unzip it into <code>Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Packages/</code>.</p>
+      <p><b>Curating the game's sites.</b> <b>Library</b> lists every site in the game. Click one to open it here,
+        mark it Reviewed or Needs work with a note, and use <b>Export changes</b> for a zip of the changed pages at
+        their repository paths with a CHANGES.md.</p>
       <p><b>6. Banner.</b> The &#10022; button on the rail opens the Banner Studio for the site's banner.</p>
       <p><b>Keys:</b> <kbd>Ctrl+Z</kbd> undo, <kbd>Ctrl+Y</kbd> redo, <kbd>Del</kbd> deletes the selected block,
         <kbd>Ctrl+D</kbd> duplicates it, <kbd>Alt+Up/Down</kbd> moves it, <kbd>Ctrl+S</kbd> saves in the browser,

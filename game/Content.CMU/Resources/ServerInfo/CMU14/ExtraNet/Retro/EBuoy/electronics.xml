@@ -1,0 +1,30 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/EBuoy/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Tools/motion_detector.rsi" State="detector_blip" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/radio.rsi" State="walkietalkie" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/health_analyzer.rsi" State="health" Scale="2"/>
+  </Box>
+  # ELECTRONICS AND EQUIPMENT
+  [italic]Used, refurbished and found. Mostly found.[/italic]
+
+  ## MOTION TRACKER, USCM PATTERN
+  Current bid $340. 22 bids. Seller: surplus_sam (rated 98 percent positive). Works perfectly. Beeps a lot. I took it back to the shop twice because it kept showing something behind me. The shop said it was working perfectly. Selling because I would rather not know.
+
+  ## WALKIE TALKIE PAIR
+  Current bid $18. 3 bids. Seller: twins_of_kutjevo. One of the pair. The other one is still somewhere on the dunes and sometimes it calls this one. Sold as seen.
+
+  ## HEALTH ANALYZER, LASALLE
+  Current bid $95. 7 bids. Seller: medbay_marta. Tells you how healthy you are. In my case, it said not very. Good working order, gloomy outlook.
+
+  ## SEEGSON PERSONAL TERMINAL, BOXED
+  Current bid $120. 11 bids. Seller: sevastopol_estate_sales. Never used. Comes with the original manual, an apology letter from Seegson and a voucher for a station that no longer exists.
+
+  ## CASSETTE WALKMAN
+  Current bid $55. 30 bids. Seller: kenji_needs_a_bunk. Works great. Comes loaded with Ninety Minutes From Home. Selling to raise funds for a live tape. Please, someone, outbid the man from Corsat.
+
+  ## BOX OF ASSORTED CABLES
+  Current bid $1. 0 bids. Seller: maintenance_mo. Every cable in this box is the wrong one. I do not know where they came from. I have never once had the right cable.
+
+  [netlink="Back to eBuoy" link="ebuoy.auction"]
+</Document>

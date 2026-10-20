@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#0C1430" Text="#E4E6EE" Heading="#D4AF37" Link="#E06060" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/rmc_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # SECURITY CATEGORIES
+  The Officer Commanding places every part of the colony in one of four categories. Changes are posted on the front page and may come at any change of watch. Should a sign and a sentry disagree, the sentry is right.
+
+  ## CATEGORY GREEN
+  [color=#7FBF7F][bold]OPEN[/bold][/color]
+  - Living blocks, the mess, shops, the clinic waiting room and the bar.
+  - No checks. Patrols pass through. Do carry your identification.
+
+  ## CATEGORY AMBER
+  [color=#D4AF37][bold]CONTROLLED[/bold][/color]
+  - Landing pads, fuel stores, the power plant, the atmosphere and water works, the signals relay and Colony Administration.
+  - Identification checked at the door. Bags may be searched. No loitering, no photographs.
+
+  ## CATEGORY RED
+  [color=#E06060][bold]RESTRICTED[/bold][/color]
+  - The garrison lines, armoury, vehicle park, operations room and the perimeter fence.
+  - Entry only under escort with a written pass. Sentries are authorised to use force to stop an intruder.
+
+  ## CATEGORY BLACK
+  [color=#FFFFFF][bold]EXCLUSION[/bold][/color]
+  - Declared during an emergency: a gas leak, a fire, a cave-in, a quarantine, unexploded charges or an engagement.
+  - Nobody crosses the cordon, resident or Marine, unless detailed to the response. When the air is bad, the line is the line.
+
+  ## MARKINGS
+  - Chevron striping on a barrier marks the edge of a category.
+  - Hazard striping marks a checkpoint lane. Stop at the painted bar.
+  - Flashing amber lights on a cordon mean Category Black. Turn about.
+
+  Changes are also carried by the [netlink="Colony Herald" link="herald.colony.news"] when the press is on shift.
+
+  [netlink="Return to Part One Orders" link="command.govfor.mil"]
+</Document>

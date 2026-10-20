@@ -1,0 +1,34 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/Indentured/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Weapons/Melee/pickaxe.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Mobs/WorkingJoe/parts.rsi" State="head_m" Scale="2"/>
+  </Box>
+  # ALL CONTRACTS
+  [italic]Newest first. Posted by employers, edited by Indentured for spelling only. The rest is theirs.[/italic]
+
+  ## ORE SURVEYOR, REMOTE
+  [bold]Hyperdyne Mining Subsidiary[/bold], unnamed moon. 4 years. $38,000 a year. You will walk the moon with a scanner and mark the good rocks. Must enjoy silence. The last surveyor enjoyed it a great deal and did not want to come back. We respect that. We are still looking for him.
+
+  ## CANTEEN COOK
+  [bold]Colony Administration[/bold], {colony}. 2 years. $21,000 a year and free meals, cooked by you. Must be able to make three hundred meals a day from whatever came on the last supply drop, and say it was on purpose.
+
+  ## DATA ENTRY CLERK
+  [bold]Weyland-Yutani[/bold], Gateway Station. 6 years. $26,000 a year. Type numbers into a terminal. You will not be told what the numbers mean. Asking what the numbers mean will end the contract early, and you with it, professionally speaking.
+
+  ## SPECIMEN HANDLER
+  [bold]Weyland-Yutani Special Projects[/bold], location given on arrival. 3 years. $140,000 a year. No experience needed. No family preferred. Must be willing to work behind glass, sign the waiver and the second waiver, and not discuss the work with friends, family, colonists or yourself.
+
+  [color=#CC3333]This listing has received 4,000 applications and 0 returning employees. The employer says this is because the job is so rewarding.[/color]
+
+  ## NIGHT WATCHMAN
+  [bold]Seegson[/bold], {colony}. 1 year. $19,000 a year. Walk the corridors at night. Report anything unusual. Seegson already has Working Joes for this. The Working Joes have asked for a human to go with them.
+
+  ## COLONIAL MARSHAL DEPUTY
+  [bold]Colonial Marshal Bureau[/bold], the Outer Veil. 5 years. Government rates. You, a marshal, a shuttle and a district the size of a country. Must be good with people, criminals and long silences.
+
+  ## UPP AGRICULTURAL VOLUNTEER
+  [bold]Union of Progressive Peoples[/bold], a collective farm. Duration: as long as the collective needs. Pay: the satisfaction of shared work. Indentured is not sure this listing is meant to be here and is checking with the embassy.
+
+  [netlink="Back to Indentured" link="indentured.jobs"]
+</Document>

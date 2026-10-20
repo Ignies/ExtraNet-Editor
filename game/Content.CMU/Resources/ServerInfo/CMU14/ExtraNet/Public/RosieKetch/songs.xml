@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#2A1A0E" Text="#F2E3C6" Heading="#E8A33C" Link="#9FD0E0" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/RosieKetch/banner.png" MaxHeight="150"/>
+  # THE SONGBOOK
+  [italic]Six records, oldest at the bottom like a good stack of pancakes. The stories behind the songs, told by Rosie between sets.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/banjo.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_rainbow" Scale="3"/>
+  </Box>
+
+  ## PROCESSOR LULLABY (2183)
+  - [bold]Processor Lullaby[/bold]. Every colony kid falls asleep to the same hum. This is the words to it.
+  - [bold]Ninety Days to Payday[/bold]. The contract says quarterly. The heart says now.
+  - [bold]Corsat Would Rather We Did Not[/bold]. Thirty seconds long. The station has not commented.
+  - [bold]Dust on the Dropship[/bold]. For the garrison, who always land in the worst weather.
+
+  ## THE LONG MAIL RUN (2181)
+  - [bold]No Letter This Time[/bold]. The song people cry to in canteens. Rosie wrote it on the day the mail came in without one from her mother. Her mother wrote the next week. The song stayed.
+  - [bold]Mama Was a Pipefitter[/bold]. The big one. The chorus is a list of pipe sizes, and every miner in the Veil knows it by heart.
+  - [bold]Shepherds' Pride River[/bold]. A slow one, for the fishery.
+
+  ## CRAWLER TRACKS (2178)
+  - [bold]Crawler Tracks[/bold]. Rosie's daddy's crawler left a track across a whole valley on a world that was nothing but rock. The track is still there. So is the valley. So is the town.
+  - [bold]Company Man Blues[/bold]. A song about a liaison who was kind to her once, written so he would not get in trouble for it. He got in trouble for it anyway.
+
+  ## THE EARLY TAPES (2172 TO 2176)
+  - [bold]Cargo Bay Echo[/bold], [bold]Hauler Girl[/bold] and [bold]Terraform My Heart[/bold]. Recorded on a borrowed tape deck in the hold of the hauler she grew up on. Rosie calls them the cold years, because the heating was broken for most of them.
+
+  ## THE DUET THAT NEVER HAPPENED
+  Rosie and Lux of Chroma Sleep were booked to record a duet on Gateway in 2182. It did not happen. The Tattler has a theory. Rosie has a different one, and says only: she has a synthesizer and I have a fiddle player, and one of us was going to have to lose. She sends her love to Lux and the band.
+
+  - [netlink="Chroma Sleep, for the record" link="chromasleep.fan"]
+  - [netlink="Back to Rosie Ketch" link="rosieketch.music"]
+</Document>

@@ -1,0 +1,28 @@
+<Document>
+  <CMUNetStyle Background="#0B2018" Text="#EDE6D0" Heading="#D4AF37" Link="#9ED9C0" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Balaji/banner.png" MaxHeight="150"/>
+  # THE COLLECTION
+  [italic]Prices in Imperial pounds at the Mumbai atelier, with UA dollar equivalents for our friends across the border. Colony prices vary with freight and with the mood of customs.[/italic]
+
+  ## BALAJI IMPERIALS
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Items/Smokes/balaji_imperials.rsi" State="closed" Scale="4"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/Items/Smokes/balaji_imperials.rsi" State="open" Scale="4"/>
+  </Box>
+  The House cigarette since the first generation. Hand rolled and filter tipped, from a blend of the finest cultured leaf and a measure of true Earth leaf from the family's own gardens in Karnataka. Smooth, long and quietly fragrant, with a finish the House describes as patience. Twenty to the packet. [bold]8 pounds, or about $12.[/bold]
+
+  ## THE CROWN RESERVE
+  <CMUNetSprite Rsi="/Textures/CMU14/Items/Smokes/balaji_imperials.rsi" State="cig1" Scale="4"/>
+  Made once a year, from the first picking only, and numbered by hand on the inside of the lid. Sold by the packet at the Mumbai and London boutiques only, and never more than two to a customer. [bold]40 pounds.[/bold]
+
+  ## THE MONSOON
+  A darker, richer blend made for the wet season, when the House's founders smoked on the veranda and watched the rain. Popular in the jungle colonies, where it is always the wet season. [bold]9 pounds.[/bold]
+
+  ## THE WARDROOM TIN
+  Two hundred Imperials in a sealed brass tin, made for long patrols and longer voyages. A Royal Marine Commando officer once carried one through three hypersleep cycles and two boarding actions, and wrote to say the last cigarette was as good as the first. The House keeps the letter. The officer kept the tin. [bold]75 pounds.[/bold]
+
+  ## A WORD ON IMITATIONS
+  The House is aware that Balaji Imperials are sometimes found in places the House has never sold them, in quantities the House has never shipped, at prices the House would never charge. A genuine Imperial carries the House seal on the lid and a hand-written roller's mark on the foil. The House does not supply smugglers. The House regrets that smugglers appear to like the House.
+
+  [netlink="Back to the House of Balaji" link="balaji.imperial"]
+</Document>

@@ -1,0 +1,31 @@
+<Document>
+  <CMUNetStyle Background="#12100C" Text="#CFC4A8" Heading="#C9442C" Link="#7FB7A8" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Defector/banner.png" MaxHeight="150"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Defector/emblem.png" MaxHeight="64"/>
+  # III. FOOTSTEPS
+  [italic]Entry three. Day 211. I said I would write every three days. I was busy being afraid.[/italic]
+
+  The Union does not send men with guns for someone like me. I am not worth a ship. It sends patience. The Ministry of Space Security has people on Union worlds, on American worlds, inside the corporations. A rifleman from a hab stack is a thin file. Thin files are not closed. They wait.
+
+  ## THINGS I NOTICED THIS WEEK
+  - A new man at the canteen who hums while he eats. I knew the tune before he reached the chorus. Then he stopped, as if he had remembered something.
+  - My locker at the works was opened and closed again. Nothing was taken. That is worse.
+  - The embassy page says the reports of a Ministry office on this colony are false. I had heard no reports. I heard the denial.
+
+  I have other fears that do not speak Russian. The garrison would like me very much. A Union deserter is something to write up and send up the chain. They would not hand me back, not at first. They would keep me in a room and ask about the ship, the rifles, the name of our officer, until I had nothing left. Then they would trade me anyway, when the talks needed a gift.
+
+  The marshal thinks I am a pipe fitter with the name on the coverall. Let him.
+
+  I sleep with my boots on, like on the ship. My bag is under the bed: two days of food, a knife, a filter mask, the papers I bought. I filed the number off my identity disc and dropped it down a drain shaft, and the next night I went back to make sure it was still gone.
+
+  If somebody knocks at night, I will not open. If I stop writing, it was not my choice. Look for me on [netlink="missing.deep" link="missing.deep"].
+
+  [color=#5A5040]-- still here. still here. still[/color]
+  <CMUNetBlink Rate="1.1">
+    [color=#7D735E]_[/color]
+  </CMUNetBlink>
+
+  [netlink="Previous: II. The Water Tank" link="defector.deep/desertion"]
+
+  [netlink="Back to the diary" link="defector.deep"]
+</Document>

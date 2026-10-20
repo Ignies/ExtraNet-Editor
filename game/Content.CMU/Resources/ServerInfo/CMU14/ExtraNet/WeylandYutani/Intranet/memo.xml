@@ -1,0 +1,16 @@
+<Document>
+  <CMUNetStyle Background="#F2EDE1" Text="#2A2A2A" Heading="#7A1F1F" Link="#1F4F7A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/_RMC14/Interface/Paper/paper_heading_weya.svg.96dpi.png" MaxHeight="90"/>
+  # INTERNAL MEMORANDUM
+  [bold]From:[/bold] Office of Special Projects
+  [bold]To:[/bold] All site personnel
+  [bold]Classification:[/bold] Company confidential
+
+  ## SAMPLE HANDLING
+  Biological samples recovered on site are Company property. They are to be sealed, logged and handed to the Corporate Liaison without delay. Opening a sealed container outside a certified laboratory is grounds for dismissal.
+
+  ## CREW EXPENDABILITY
+  This section has been removed from your copy.
+
+  [netlink="Back to the intranet" link="intranet.wy"]
+</Document>

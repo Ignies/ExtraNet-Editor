@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#0E1A26" Text="#D7E3EA" Heading="#F2C14E" Link="#5FC7B0" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/brazilunit_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # ZONAS DE SEGURIDAD / SECURITY ZONES
+  The Commander divides the colony into four zones. Changes are posted on the front page and may come at any shift change. If a sign and a sentry disagree, the sentry is right.
+
+  ## ZONA VERDE / GREEN
+  [color=#5FC7B0][bold]ABIERTA / OPEN[/bold][/color]
+  - Living blocks, the mess, shops, the clinic waiting room and the bar.
+  - No checks. Patrols pass through. Carry your ID anyway.
+
+  ## ZONA ÁMBAR / AMBER
+  [color=#F2C14E][bold]CONTROLADA / CONTROLLED[/bold][/color]
+  - Landing pads, fuel stores, the power plant, the atmosphere and water works, the comms relay and Colony Administration.
+  - ID checked at the door. Bags may be searched. No loitering, no photographs.
+
+  ## ZONA ROJA / RED
+  [color=#E2624F][bold]RESTRINGIDA / RESTRICTED[/bold][/color]
+  - The garrison compound, armoury, vehicle park, command post and the perimeter fence line.
+  - Entry only under escort with a written pass. Sentries are authorised to use force to stop an intruder.
+
+  ## ZONA NEGRA / BLACK
+  [color=#FFFFFF][bold]EXCLUSIÓN / EXCLUSION[/bold][/color]
+  - Declared during an emergency: a gas leak, a fire, a cave-in, a quarantine, unexploded charges or a firefight.
+  - Nobody crosses the cordon, colonist or sailor, unless assigned to the response. When the air is bad, the line is the line.
+
+  ## SEÑALES / MARKINGS
+  - Chevron striping on a barrier marks the edge of a zone.
+  - Hazard striping marks a checkpoint lane. Stop at the painted bar.
+  - Flashing amber lights on a cordon mean Zone Black. Dé la vuelta. Turn around.
+
+  Zone changes are also carried by the [netlink="Colony Herald" link="herald.colony.news"] when the press is on shift.
+
+  [netlink="Volver a los avisos / Voltar aos avisos" link="command.govfor.mil"]
+</Document>

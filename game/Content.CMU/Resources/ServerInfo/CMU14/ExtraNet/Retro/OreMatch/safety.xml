@@ -1,0 +1,29 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/OreMatch/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/first_aid_kits.rsi" State="firstaid" Scale="2"/>
+  </Box>
+  # DATING SAFETY ON THE FRONTIER
+  [italic]Love is a risk. It should not be a hazard. OreMatch's tips for meeting your match in one piece.[/italic]
+
+  ## BEFORE YOU MEET
+  - Swap at least three letters. A real person can hold a conversation. A con artist can hold two.
+  - Never send credits over the relay to someone you have not met. If they need money for a ticket, they can save up like everyone else.
+  - Check their colony is real. Some colonies on the tapes are not on any chart. Some charts are wrong. Some colonies have gone quiet since the tape was made.
+
+  ## WHEN YOU MEET
+  - Meet somewhere public and well lit: a canteen, a spaceport lounge or the Gateway Promenade.
+  - Do not meet in a maintenance tunnel, a lower processor level or anywhere you have to crawl to reach.
+  - Tell a friend where you are going. Tell your Working Joe as well. It will not do anything, but it will remember.
+
+  ## WARNING SIGNS
+  - Your match says they are on a colony that went quiet and asks you to come and visit.
+  - Your match's tape is very short and very dark.
+  - Your match does not appear in any photograph, including the one they sent you.
+  - Your match has more than one set of jaws. OreMatch has been asked to add this one, and we are not asking why.
+
+  ## SYNTHETIC MATCHES
+  OreMatch welcomes artificial persons. If your match tells you they are synthetic, thank them for their honesty. If your match tells you they are not synthetic and then picks up a power loader by one corner, ask again.
+
+  [netlink="Back to OreMatch" link="orematch.love"]
+</Document>

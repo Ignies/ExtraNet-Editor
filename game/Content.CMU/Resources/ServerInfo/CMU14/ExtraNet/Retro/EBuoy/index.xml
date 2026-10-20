@@ -1,0 +1,29 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/EBuoy/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="EBUOY: THE FRONTIER'S MARKETPLACE  ///  BIDDING CLOSES WHEN THE RELAY SAYS IT CLOSES  ///  SHIPPING BY NEXT AVAILABLE HAULER  ///  BUYER COLLECTS FROM ORBIT" Speed="70" Color="#E53238"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/PersonalComputers/Sites/Ads/badges.rsi" State="pricetag" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/spacecash.rsi" State="spacecash_1000" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/CMU14/PersonalComputers/Sites/Ads/badges.rsi" State="price_drop" Scale="2"/>
+  </Box>
+  # eBuoy
+  [italic]Buy it. Sell it. Wait for it.[/italic]
+
+  Welcome to eBuoy, where colonists from Gateway to the Outer Veil buy and sell almost anything. Bids travel by relay buoy, so an auction closes when the last bid reaches the auction house, which is never when you think.
+
+  ## ENDING SOON (RELATIVELY)
+  - [bold]Seegson Terminal, works, keys sticky[/bold]. Current bid $42. 9 bids. Seller says the sticky keys are E and the one next to E. Ships from Solaris Ridge.
+  - [bold]Wedding Ring, gold, slight dent[/bold]. Current bid $210. 2 bids. Seller asks buyers not to ask about the dent or the wedding.
+  - [bold]Cassette: Chroma Sleep, Live at the Huygens Dome, clean copy[/bold]. Current bid $1,900. 61 bids. One of the bidders is Kenji from a colony we will not name, and he has bid his bunk.
+  - [bold]Box of 40 Flares[/bold]. Current bid $60. 14 bids. Seller is on a jungle colony and says he will not be needing them now. Seller did not say why.
+  - [bold]Haunted Answering Machine[/bold]. Current bid $3. 1 bid. It is a SpaceGPT terminal. The seller has listed it under Haunted, then under Electronics, then under Haunted again.
+
+  ## CATEGORIES
+  - [netlink="Electronics and Equipment" link="ebuoy.auction/electronics"]
+  - [netlink="eBuoy Motors: vehicles and loaders" link="ebuoy.auction/motors"]
+  - [netlink="Seller feedback" link="ebuoy.auction/feedback"]
+
+  <CMUNetAd Id="CMUDeepAdMotionTracker"/>
+
+  [color=#767676]eBuoy is not responsible for goods lost in transit, in hypersleep, to customs, to pirates, to the Company or to the vents. Selling Company property is forbidden. Company property includes most things.[/color]
+</Document>

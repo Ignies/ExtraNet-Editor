@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#0D1524" Text="#D9DEE8" Heading="#E0B84C" Link="#7FB2E5" Font="Mono"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/CMIDs/cmb_marshal.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # PERIMETERS
+  The Incident Commander divides the colony into four areas. Changes are posted on the front page and can come at any time. If a sign and a Deputy disagree, follow the Deputy.
+
+  ## OPEN AREA
+  [color=#7FB2E5][bold]NO RESTRICTIONS[/bold][/color]
+  - Living blocks, the mess, shops, the clinic waiting room and the bar.
+  - No checks. Patrols pass through. Carry your ID anyway.
+
+  ## CONTROLLED AREA
+  [color=#E0B84C][bold]CHECKPOINT[/bold][/color]
+  - Landing pads, fuel stores, the power plant, the atmosphere and water works, the comms relay and Colony Administration.
+  - ID checked at entry. Bags may be searched. No loitering, no photographs.
+
+  ## SECURED PERIMETER
+  [color=#E06A5A][bold]AUTHORISED PERSONNEL ONLY[/bold][/color]
+  - The command post, holding cells, evidence and weapons lockers, vehicle park and the perimeter fence line.
+  - Entry only under escort with a written pass. Officers are authorised to use force to stop an intruder.
+
+  ## INCIDENT PERIMETER
+  [color=#F2F2F2][bold]DO NOT CROSS[/bold][/color]
+  - Declared around a gas leak, a fire, a cave-in, a quarantine, unexploded charges, a hostage situation or an active shooter.
+  - Nobody crosses the tape, residents or officers, unless assigned to the response. It is also a crime scene: touch nothing.
+
+  ## MARKINGS
+  - Chevron striping on a barrier marks the edge of an area.
+  - Hazard striping marks a checkpoint lane. Stop at the painted bar.
+  - Flashing lights and tape on a cordon mark an incident perimeter. Turn around.
+
+  Perimeter changes are also carried by the [netlink="Colony Herald" link="herald.colony.news"] when the press is on shift.
+
+  [netlink="Return to incident notices" link="command.govfor.mil"]
+</Document>

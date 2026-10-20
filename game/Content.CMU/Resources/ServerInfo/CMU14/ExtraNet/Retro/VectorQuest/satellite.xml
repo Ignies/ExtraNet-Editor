@@ -1,0 +1,25 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/VectorQuest/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/hybrisa_computer_props.rsi" State="blackmapping_comp" Scale="1"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/communications_tower.rsi" State="static1" Scale="1"/>
+  </Box>
+  # SATELLITE VIEW
+  [italic]Real pictures of {colony}, from orbit. Pictures update once a cycle, so any people you see in them have moved on. Probably.[/italic]
+
+  ## WHAT YOU CAN SEE
+  - [bold]The processor.[/bold] The biggest thing on the colony. Easy to spot. Hard to miss. Impossible to get rid of.
+  - [bold]The landing zone.[/bold] The flat bit with the lights. The burn marks are dropships. Most of them.
+  - [bold]Colony blocks.[/bold] Housing, medical, the canteen and the administration building, which has the only working fountain on most colonies.
+  - [bold]The perimeter.[/bold] Where the lights stop.
+
+  ## WHAT YOU CANNOT SEE
+  - Anything under a roof. VectorQuest satellites cannot see through roofs, despite rumours, and despite one Company contract that asked if they could.
+  - Garrison positions. These are blurred at the request of the United States Colonial Marine Corps.
+  - Company research sites. These are blurred at the request of nobody. They were blurred when the picture arrived.
+
+  ## SPOTTED FROM ORBIT
+  Users send us odd things they find in the satellite pictures. This cycle: a word written in stones outside a mining camp, which says HELLO, and a second word, written later, a little further out, which we have decided not to print.
+
+  [netlink="Back to VectorQuest" link="vectorquest.nav"]
+</Document>

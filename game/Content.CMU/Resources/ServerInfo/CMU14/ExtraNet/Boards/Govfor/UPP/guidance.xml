@@ -1,0 +1,40 @@
+<Document>
+  <CMUNetStyle Background="#2A0D0D" Text="#EBD9B4" Heading="#F2C230" Link="#E8774A" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/naval_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # INSTRUCTIONS TO CITIZENS
+  [italic]Discuss these at your brigade meeting. Follow them every shift.[/italic]
+
+  On a calm day you will see a patrol pass the canteen and nothing more. When the Commanding Officer raises the state of readiness, the instructions below bind every resident, worker and visitor without exception.
+
+  ## AT A CHECKPOINT
+  - Halt when ordered. Keep your hands where the sentry can see them.
+  - Present your residence documents. Workers also present their brigade assignment.
+  - Declare every firearm before you are searched. Unregistered weapons are confiscated and recorded.
+  - Do not photograph, record or sketch checkpoints, posts or the movement of troops.
+
+  ## CURFEW
+  - Curfew hours are posted on this board and announced over the colony loudspeakers.
+  - Movement after curfew requires a pass from the colony administration or the garrison duty officer. Essential workers keep theirs on their person.
+
+  ## WHEN THE SIREN SOUNDS
+  - Go indoors, away from windows, and remain there until the all clear.
+  - Obey your block warden. Do not come to the garrison gate; it will be closed.
+  - Shelters are listed by the [netlink="colony administration" link="admin.colony.gov"].
+
+  ## WHAT A VIGILANT CITIZEN REPORTS
+  - Bags, crates or vehicles left without an owner.
+  - Strangers asking about patrol times, the armoury or the landing pad.
+  - Cut fences, broken locks, missing explosives or mining charges.
+  - A gas alarm sounding, or a gas monitor that is dark, damaged or interfered with. Carbon monoxide has no smell; the monitor is your nose.
+  - Hoarding of rations or medicine.
+
+  The garrison does not punish honest disagreement raised through the proper channels. It does punish anyone who carries a rifle against the collective.
+
+  ## WHAT THE GARRISON DOES NOT DO
+  Soldiers do not settle quarrels between neighbours or collect private debts. Those are matters for the People's Armed Police and the colony administration. Visitors from abroad who need their own consulate may consult the [netlink="Union embassy" link="embassy.upp"]. A petition about a soldier goes in writing to the Deputy Commander. Every petition is recorded and answered.
+
+  [netlink="Return to the notice board of the garrison" link="command.govfor.mil"]
+</Document>

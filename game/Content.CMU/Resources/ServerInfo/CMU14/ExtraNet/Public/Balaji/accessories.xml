@@ -1,0 +1,34 @@
+<Document>
+  <CMUNetStyle Background="#0B2018" Text="#EDE6D0" Heading="#D4AF37" Link="#9ED9C0" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Balaji/banner.png" MaxHeight="150"/>
+  # ACCESSORIES
+  [italic]Lighters, cases and keepsakes, made by the House's own craftsmen or by a small number of houses it trusts.[/italic]
+
+  ## LIGHTERS
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Tools/Lighters/goldzippo.rsi" State="closed" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Tools/Lighters/goldzippo.rsi" State="open" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Tools/Lighters/execzippo.rsi" State="closed" Scale="3"/>
+  </Box>
+  - [bold]The Durbar[/bold], 120 pounds. A gold plated petrol lighter with the House seal engraved on the lid. Its click has been described as the most satisfying sound in the Empire.
+  - [bold]The Envoy[/bold], 90 pounds. A slimmer lighter in polished steel, for diplomats who would prefer not to be seen with a gold one.
+  - [bold]Balaji Matchbook[/bold], with every packet, free. Waxed matches, the House seal on the cover. The House prefers a match.
+
+  <CMUNetSprite Rsi="/Textures/CMU14/Objects/Consumable/MRE/balaji_imperial_matchbook.rsi" State="mpacket" Scale="3"/>
+
+  ## CASES
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigars/cigar_case.rsi" State="closed" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Smokeables/Cigars/cigar_case.rsi" State="open" Scale="3"/>
+  </Box>
+  - [bold]The Viceroy Case[/bold], 65 pounds. Holds a full packet out of its paper, for a man who does not want to be seen taking a cigarette from a packet. Fits an officer's breast pocket exactly, which the House measured.
+
+  ## FOR THE TABLE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Decoration/ashtray-gl.rsi" State="icon-0" Scale="3"/>
+  - [bold]The Malabar Ashtray[/bold], 40 pounds. Heavy glass, made in Firozabad, where glass has been made for longer than the Empire has existed. Too heavy to throw, which the House considers a feature.
+
+  ## ENGRAVING
+  Any lighter or case may be engraved at the Mumbai atelier with a name, a crest, a regiment or a date. The House will not engrave insults, Company logos or the names of former spouses.
+
+  [netlink="Back to the House of Balaji" link="balaji.imperial"]
+</Document>

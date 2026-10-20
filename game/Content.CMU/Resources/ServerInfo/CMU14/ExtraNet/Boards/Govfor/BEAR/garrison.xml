@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#121212" Text="#CFC7B8" Heading="#D23B3B" Link="#D9A441" Font="Mono"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RuMC14/Clothing/Patches/BEAR.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # WHO HOLDS THIS COLONY
+  [italic]Where the flag cannot go, the bear goes.[/italic]
+
+  ## WHO WE ARE
+  PMC BEAR, the Brigade Expeditionary Army Reserve, is a private military company working closely with the special operations forces of the Union of Progressive Peoples. Our people are veterans of the Naval Infantry and the airborne, and our core comes out of the Union's special units. We are known for storming fortified positions and for fighting in dense urban terrain. We go where the regular forces cannot be seen to go.
+
+  Officially, the Union has no troops on {colony}. That is correct.
+
+  ## COMMAND
+  - [bold]Contract Commander:[/bold] sets the alert state, the curfew and the zones, and signs every order here.
+  - [bold]Deputy Commander:[/bold] runs the site day to day. Complaints go to him.
+  - [bold]Staff:[/bold] patrols, checkpoints, supply, and contact with Colony Administration.
+  - [bold]Assault groups:[/bold] the men and women at your door.
+
+  ## THE CONTRACT
+  The terms are simple. We will:
+  - hold the colony against dissident and insurgent attack, whoever pays the attackers;
+  - answer fire, collapse, gas and any mass emergency;
+  - watch the air and the perimeter, and sound the alarm early;
+  - keep the colony's power, water, air and landing pads in working order and in our hands.
+
+  ## ALBACETIRE
+  In 2168 Drill Site 68-B on Albacetire opened a ravine of carbon monoxide. Twelve thousand people died in the Carbon Ravine disaster. Most of them never saw an enemy. Our operators are taught that gas kills more people than rifles do. The man at the gate carries a mask for you as well as for himself.
+
+  ## RULES FOR OUR PEOPLE
+  So that you know what to expect.
+  - An operator gives his call sign when asked. Not his name.
+  - Nothing is taken from a civilian without a receipt.
+  - Force is used when it is needed, and then it is used properly.
+
+  [netlink="Back to orders" link="command.govfor.mil"]
+</Document>

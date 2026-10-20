@@ -1,0 +1,30 @@
+<Document>
+  <CMUNetStyle Background="#C9B07A" Text="#2A1E14" Heading="#9E1F17" Link="#1E3A78" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/MarshalWatch/banner.png" MaxHeight="150"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/MarshalWatch/emblem.png" MaxHeight="64"/>
+  # EVIDENCE LOCKER
+
+  <CMUNetBlink Rate="1.1">
+    [color=#9E1F17][bold]-- CHAIN OF CUSTODY BROKEN --[/bold][/color]
+  </CMUNetBlink>
+
+  [italic]What went in, and what came out. Copied from intake ledgers and docking logs. The last line of each entry is ours.[/italic]
+
+  ## THE LOG
+  - [bold]Seized:[/bold] 22 crates of Armat rifle magazines, serials ground off, from a hauler with no ICC licence. [bold]Logged:[/bold] 22. [bold]Sent to court:[/bold] 9. The other thirteen turned up in a CLF cache eight weeks later, ground the same way.
+  - [bold]Seized:[/bold] one unregistered synthetic, older model, memory core intact. [bold]Logged:[/bold] as scrap metal. The core was the evidence. The scrap sold at auction to a buyer who paid a week before the auction was posted.
+  - [bold]Seized:[/bold] 300 doses of trauma stimulant. [bold]Logged:[/bold] destroyed. [bold]Witnessed:[/bold] by the deputy who signed for it, and nobody else.
+  - [bold]Seized:[/bold] a cargo pod under ICC quarantine seal. [bold]Logged:[/bold] released on orders from a Marshal's office four weeks away. That office has no record of sending them.
+
+  ## THE WELCOME STOP
+  Smugglers on the Neroid lanes do not pay a Marshal the way a company does. A company pays to make a problem go away. A smuggler pays to become a regular.
+
+  The pattern in our files is the same every time. A hull is stopped once, hard, with a seizure and a report that reads well upstairs. Then it is never stopped again. Its arrivals line up with the office's patrol gaps to the hour, and the first seizure shrinks in the locker until it matches what the pilot admitted to.
+
+  If your office makes a big seizure off a hauler and then waves the same hull through for a year, someone is being paid in the space between.
+
+  ## FILE 121 - ENTRIES
+  - [bold]Seized:[/bold] [color=#1A140E]XXXXXXXX[/color]. [bold]Logged:[/bold] [color=#1A140E]XXXXXXXX[/color]. [bold]Returned:[/bold] nothing. The locker was empty on the day the auditor landed. The auditor's shuttle developed a fault on the way out.
+
+  [netlink="Back to intake" link="marshalwatch.deep"] / [netlink="Dossiers" link="marshalwatch.deep/dossiers"]
+</Document>

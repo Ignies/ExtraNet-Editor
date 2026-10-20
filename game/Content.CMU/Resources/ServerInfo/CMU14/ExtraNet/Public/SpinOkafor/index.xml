@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#0A1630" Text="#DCE6FF" Heading="#FFB000" Link="#FF7A45" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/SpinOkafor/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="ORBITAL LEAGUE  ///  GATEWAY COMETS 4  TITAN TRITONS 3  ///  OKAFOR WITH THE WINNER IN THE LAST TEN SECONDS  ///  THREE TIME LEAGUE MVP  ///  NEXT: COMETS AT MARS RED ROVERS" Speed="75" Color="#FFB000"/>
+  # SPIN OKAFOR
+  [italic]Captain, Gateway Comets. Three time Orbital League Most Valuable Player. The fastest pair of hands in zero gravity.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medals/gold.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Balls/football.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medals/gold_star.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  ## WHO IS SPIN
+  Dara Okafor was born on Luna, in the Shackleton mining habitat, in a corridor with a ceiling so low that the children played ball by bouncing it off the walls. At fourteen he was caught in the habitat's emergency decompression lock, playing catch in it with the gravity plating switched off. At nineteen he signed for the Gateway Comets. Nobody calls him Dara except his mother.
+
+  He earned the name on his first night in the Cage, when he caught a pass upside down, spun twice and scored without touching a wall. The commentator said, spin, spin, spin, and that was that.
+
+  ## THE GAME
+  Zero-g ball is played in the Cage, a forty metre sphere of padded mesh with the gravity off. Two teams of five, one ball, two goal rings at the poles. You move by pushing off the walls, the ball and each other. Contact is legal. Grabbing is not. Throwing an opponent into the goal ring is a two minute penalty and a highlight reel.
+
+  ## THIS SEASON
+  - [bold]Record:[/bold] Comets 14 wins, 3 losses, top of the Orbital League.
+  - [bold]Spin:[/bold] 41 goals, 22 assists, 0 penalties, which his coach says is the most remarkable number of the three.
+  - [bold]Next match:[/bold] Comets at the Mars Red Rovers, Pavonis Cage, relayed live to the Core and delayed to the colonies.
+
+  ## FROM SPIN
+  To everybody watching in {colony}: I know the relay reaches you late, and I know you already know the score when you watch. Watch anyway. It is the only sport where you can see a man fly. And to the kids in the low ceiling corridors: bounce it off the walls. That is how it starts.
+
+  ## MORE
+  - [netlink="Season stats and fixtures" link="spinokafor.zg/season"]
+  - [netlink="Locker room interview" link="spinokafor.zg/interview"]
+  - [netlink="The Comets pro shop" link="spinokafor.zg/shop"]
+  - [netlink="The Tattler wants to know about you and Vex" link="colonytattler.news"]
+</Document>

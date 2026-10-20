@@ -1,0 +1,31 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/EmbassyTWE/emblem.png" MaxHeight="100"/>
+  # CONSULAR SERVICES
+  The consular desk serves Imperial subjects on this colony and travellers passing through it. Bring your identity papers. If you have lost them, come anyway.
+
+  ## WHAT THE DESK CAN DO
+  - Replace lost or damaged Imperial identity papers and travel documents.
+  - Register births, marriages and deaths of subjects for the Imperial record.
+  - Witness and seal contracts, wills and statements for use in Imperial courts.
+  - Visit subjects held by the Colonial Marshals or the garrison, and see that they are fairly treated.
+  - Pass word home to next of kin when a subject is lost.
+  - Arrange passage off world in an emergency, where any passage can be found.
+
+  ## WHAT THE DESK CANNOT DO
+  - Pay fines, debts or company store accounts on your behalf.
+  - Overrule colonial law. On this colony you answer to its Marshal like anyone else.
+  - Recover wages owed by a contractor. Keep your pay slips; they are worth more than our sympathy.
+
+  ## IN A CRISIS
+  Should the colony be cut off or come under attack, subjects are to report to the mission in person and give their name, trade and dependants. Any Royal Marine Commandos attached to the mission take their direction from the Ambassador. Do not travel alone between settlements. Do not wait for a broadcast that may never come.
+
+  ## NON-SUBJECTS
+  Citizens of other powers should seek their own mission:
+  - [netlink="Embassy of the United Americas" link="embassy.ua"]
+  - [netlink="Embassy of the Independent Core System Colonies" link="embassy.icsc"]
+  - [netlink="Mission of the Central Confederation of Africa" link="embassy.cca"]
+
+  Colonial matters such as housing and work permits belong to the [netlink="Colony Administration" link="admin.colony.gov"].
+
+  [netlink="Back to Communiques" link="embassy.twe"]
+</Document>

@@ -1,0 +1,61 @@
+# Desktop wallpapers hidden around the ExtraNet. Each page offering one has a CMUNetWallpaper tag.
+
+- type: cmuWallpaper
+  id: CMUWallpaperSynthwave
+  name: cmu-wallpaper-synthwave
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_01.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperStormPlains
+  name: cmu-wallpaper-storm-plains
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_02.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperCorporate
+  name: cmu-wallpaper-corporate
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_03.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperBlueprint
+  name: cmu-wallpaper-blueprint
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_04.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperStarfield
+  name: cmu-wallpaper-starfield
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_05.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperGateway
+  name: cmu-wallpaper-gateway
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_06.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperTestCard
+  name: cmu-wallpaper-test-card
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_07.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperWireframe
+  name: cmu-wallpaper-wireframe
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_08.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperHypersleep
+  name: cmu-wallpaper-hypersleep
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_09.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperColonyNight
+  name: cmu-wallpaper-colony-night
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_10.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperJoePinup
+  name: cmu-wallpaper-joe-pinup
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_11.png
+
+- type: cmuWallpaper
+  id: CMUWallpaperNebula
+  name: cmu-wallpaper-nebula
+  path: /Textures/CMU14/PersonalComputers/Wallpapers/wallpaper_12.png

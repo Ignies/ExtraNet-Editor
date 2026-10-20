@@ -1,0 +1,40 @@
+<Document>
+  <CMUNetStyle Background="#0D1524" Text="#D9DEE8" Heading="#E0B84C" Link="#7FB2E5" Font="Mono"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/CMIDs/cmb_marshal.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # NOTICE TO RESIDENTS
+  [italic]Your rights, your duties, and what we will ask of you.[/italic]
+
+  On a quiet day you will see a pair of Deputies walk the market and nothing more. When the Incident Commander raises the alert state, the rules below apply to every resident, worker and visitor.
+
+  ## AT A CHECKPOINT
+  - Stop when a Deputy tells you to. Keep your hands where they can be seen.
+  - Show your colony ID. Contractors also show a current work order.
+  - Declare any firearm before you are searched. An unlicensed weapon is seized and logged; a licensed one may be held until you leave the controlled area.
+  - You may ask why you are being searched. The Deputy will tell you.
+
+  ## CURFEW
+  - Curfew hours are posted here and read over the colony PA.
+  - Movement after curfew needs a pass from Colony Administration or the Unit's duty officer. Essential workers keep theirs on them.
+
+  ## WHEN THE SIREN SOUNDS
+  - Get indoors, away from windows, and stay there until the all clear.
+  - Follow your block warden. Do not come to the command post; it will be sealed.
+  - Shelter locations are listed by [netlink="Colony Administration" link="admin.colony.gov"].
+
+  ## TIPS AND STATEMENTS
+  Information may be given in confidence at any checkpoint. We especially want to hear about:
+  - unattended bags, crates or vehicles;
+  - anyone asking about patrol times, the evidence locker, the armoury or the landing pad;
+  - cut fences, broken locks, missing explosives or mining charges;
+  - a gas alarm sounding, or a gas monitor that is dark, damaged or tampered with. Carbon monoxide has no smell.
+
+  Political views are not a crime, and the Bureau does not keep lists of them. Carrying a rifle for an armed cell is.
+
+  ## WHAT THE UNIT DOES NOT DO
+  The Unit does not collect debts or enforce Company contracts, and it does not take sides in a labour dispute. If a company asks us to, we will tell you so. Civil matters go to Colony Administration. Complaints about any officer go in writing to the Executive Officer, and are copied to the Bureau.
+
+  [netlink="Return to incident notices" link="command.govfor.mil"]
+</Document>

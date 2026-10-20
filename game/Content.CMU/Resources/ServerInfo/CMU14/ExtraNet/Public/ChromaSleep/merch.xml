@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#120A24" Text="#E6DDFF" Heading="#FF4FD8" Link="#00F0FF" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ChromaSleep/banner.png" MaxHeight="150"/>
+  # MERCH FROM THE CARGO HOLD
+  [italic]Packed by hand at the Huygens docks by Precious's cousins. Prices in UA dollars. Ships with the next freighter going your way, which might be a while.[/italic]
+
+  ## TAPES
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_rainbow" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_purple" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_blue" Scale="3"/>
+  </Box>
+  - [bold]Afterglow Protocol[/bold], rainbow shell edition, $10.
+  - [bold]Ninety Minutes from Home[/bold], violet shell, $8.
+  - [bold]Cold Storage[/bold], blue shell reissue, $8. Not one of the original forty. Do not let anyone tell you otherwise.
+
+  ## LISTENING GEAR
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="walkman" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Clothing/Multiple/headphones.rsi" State="icon" Scale="3"/>
+  </Box>
+  - [bold]Long Haul Tape Player[/bold], $35. A pocket cassette player, tough enough for a cargo bay and quiet enough for a shared bunk room.
+  - [bold]Chroma Sleep Headphones[/bold], $25. Padded, so you can sleep in them. Lux does.
+
+  ## WEAR IT
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Uniforms/T-shirt/white.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Head/Beanies/beanie.rsi" State="icon" Scale="3"/>
+  </Box>
+  - [bold]Tour Shirt[/bold], $18. Every date on the back, including the ones that were cancelled. Especially those.
+  - [bold]Huygens Dock Beanie[/bold], $12. Titan is cold. So is wherever you are.
+
+  ## ALSO STOCKED BY
+  Your colony canteen may carry the Company mixtape, which has one of our songs on it. We did not pick which one.
+
+  <CMUNetAd Id="CMUDeepAdCassette"/>
+
+  [netlink="Back to Chroma Sleep" link="chromasleep.fan"]
+</Document>

@@ -1,0 +1,33 @@
+<Document>
+  <CMUNetStyle Background="#C9B07A" Text="#2A1E14" Heading="#9E1F17" Link="#1E3A78" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/MarshalWatch/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="FILE 121 OPENED - A WHOLE OFFICE  ///  LOCKER LOG AMENDED  ///  IF YOU WEAR THE STAR AND YOU ARE READING THIS, WE ALREADY KNOW WHICH HULL YOU MEET" Speed="55" Color="#9E1F17"/>
+  # INTAKE
+
+  <CMUNetBlink Rate="0.8">
+    [color=#9E1F17][bold]-- DROP IS LIVE. COPIES ONLY. NO ORIGINALS. --[/bold][/color]
+  </CMUNetBlink>
+
+  The oath says a Marshal lets no injustice go unchecked. This folder is for the ones who checked it, and then cashed it.
+
+  Marshal Watch keeps case files on officers of the Colonial Marshal Bureau in the Neroid Sector who took money from a company, lost what was in their own evidence lockers, or sold the shipping lanes to the people they were sworn to stop. We do not post rumours. A file goes up when we hold two sources who have never met and one thing that can be checked: a docking log, a payroll line, a serial number that should be in a locker and is not.
+
+  Most Marshals are honest, and most of them are tired. A colony gets three deputies and a drunk tank. A company gets whatever it pays for. When the star is the only help a colonist can count on, a bought star is worse than none.
+
+  ## THE FOLDER
+  - [netlink="Dossiers" link="marshalwatch.deep/dossiers"]: named officers, who paid them and what it bought.
+  - [netlink="Evidence Locker" link="marshalwatch.deep/locker"]: seizures that went missing, and the smugglers who got them back.
+
+  ## DROPPING A FILE
+  - Use a terminal that is not yours. Office machines keep a log. The night crew's machines do not.
+  - Copy, never carry. Deputies who walk out with an original end up in their own reports.
+  - Leave your name off. We do not want it and we will not ask for it.
+  - If a Marshal from these files works your colony, do not confront them. Write down dates, hulls and amounts.
+
+  ## NOTICE
+  Files are amended, never deleted. A Marshal named here may answer through the same drop as everyone else. Two have. One of them was telling the truth.
+
+  Other folders on the wire: [netlink="wyleaks.deep" link="wyleaks.deep"] / [netlink="missing.deep" link="missing.deep"]
+
+  [netlink="Back to intake" link="marshalwatch.deep"]
+</Document>

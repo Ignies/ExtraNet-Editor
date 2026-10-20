@@ -1,0 +1,40 @@
+<Document>
+  <CMUNetStyle Background="#E8EBEE" Text="#1E2A33" Heading="#0B3D63" Link="#1F6FB2" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/wy_white_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # RESIDENT GUIDANCE
+  [italic]A few simple steps keep everyone safe and productive.[/italic]
+
+  During normal operations you may see a patrol pass through the mess and nothing more. When the Operations Director raises the site alert level, the following procedures apply to all residents, staff, contractors and visitors.
+
+  ## AT AN ACCESS POINT
+  - Stop when instructed. Keep your hands visible.
+  - Present your colony ID. Contractors also present a current work order.
+  - Declare any firearm before screening. Unlicensed weapons are confiscated and logged. A Colonial Marshal licence is the only one recognised.
+  - Recording of access points, posts and personnel is prohibited under the terms of the contract.
+
+  ## CURFEW
+  - Curfew hours are published here and announced over the colony PA.
+  - Movement after curfew requires a pass from Colony Administration or the duty operations officer. Essential workers should carry theirs at all times.
+
+  ## IN AN EMERGENCY
+  - Move indoors and away from windows. Remain there until the all clear.
+  - Follow your block warden. Do not approach the security compound; it will be closed.
+  - Shelter locations are published by [netlink="Colony Administration" link="admin.colony.gov"].
+
+  ## REPORTING
+  Report the following to any operator. Useful reports may be eligible for a [netlink="bounty" link="bounties.colony"].
+  - Unattended bags, crates or vehicles.
+  - Persons asking about patrol times, the armoury or the landing pad.
+  - Damaged fences or locks, missing explosives or mining charges.
+  - A gas alarm, or a gas monitor that is dark, damaged or tampered with. Carbon monoxide is odourless.
+
+  Your opinions are your own. Weapons carried for hostile groups are a breach of contract and of colonial law.
+
+  ## OUT OF SCOPE
+  Security personnel do not collect debts, mediate disputes between residents or enforce employment contracts. Please take those to the Colonial Marshals or Administration. Feedback about any operator may be submitted in writing to the PMC Operations Adjutant. All feedback is logged.
+
+  [netlink="Back to service notices" link="command.govfor.mil"]
+</Document>

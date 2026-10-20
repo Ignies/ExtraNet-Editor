@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#E8EBEE" Text="#1E2A33" Heading="#0B3D63" Link="#1F6FB2" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/wy_white_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # ABOUT YOUR SECURITY PROVIDER
+  [italic]Professional. Discreet. On contract.[/italic]
+
+  ## WHO WE ARE
+  The colonial government has contracted Weyland-Yutani, through its subsidiary Whiteguard Solutions, to provide security at {colony}. The personnel you see are Company PMC operators, informally the Whiteshields: veterans with modern equipment, thorough training and a clear statement of work. Governments hire us because we deliver faster and more reliably than the alternatives. We intend to prove that again here.
+
+  ## OPERATIONAL STRUCTURE
+  - [bold]PMC Operations Director:[/bold] sets the site alert level, the curfew and the access tiers, and authorises every notice on this board.
+  - [bold]PMC Operations Adjutant:[/bold] manages daily operations and handles client and resident feedback.
+  - [bold]Operations staff:[/bold] patrol rosters, checkpoint protocols, logistics, and liaison with Colony Administration.
+  - [bold]Operators and team leads:[/bold] the security professionals you will meet on site.
+
+  ## STATEMENT OF WORK
+  Under the colonial security contract, the provider will:
+  - protect residents, staff and property from hostile action, including insurgent cells using the Colonial Liberation Front name;
+  - provide emergency response to fire, structural failure, gas release and mass casualty events;
+  - monitor atmospheric and perimeter conditions and issue early warnings;
+  - secure power, water, atmosphere processing and landing facilities, which are critical assets.
+
+  ## LESSONS LEARNED
+  In 2168 Drill Site 68-B on Albacetire breached a pocket of pressurised carbon monoxide. More than twelve thousand people were lost in the Carbon Ravine disaster. The industry learned an expensive lesson: an unmonitored hazard is an uninsured liability. Every Whiteshield is also a trained first responder, and every gas monitor on this site is on our maintenance schedule.
+
+  ## SERVICE STANDARDS
+  - Operators will identify themselves by operator number on request.
+  - Property is only removed against a numbered receipt. Claims are processed by the Adjutant.
+  - Force is applied in proportion to the threat, and every use is documented.
+  - Operational matters are confidential. Operators will not discuss them, and we ask that you do not either.
+
+  [netlink="Back to service notices" link="command.govfor.mil"]
+</Document>

@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#1A180C" Text="#E6DFB8" Heading="#F2D21B" Link="#F28C1B" Font="Terminal"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/hazops_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # THE DAMNED FOURTH
+  [italic]We go where the air is bad, so you do not have to.[/italic]
+
+  ## WHO WE ARE
+  The garrison is a platoon of the 4th Hazardous Operations Company, United States Colonial Marine Corps, deployed to the Neroid Sector from the USS Mike Vinison. HAZOPS was formed in 2162 to fight in chemical, biological, radiological and explosive hazards: the industrial colonies, research sites and corporate complexes that ordinary Marines are not equipped for. The rest of the Corps calls us the janitors. We call it job security.
+
+  Our gear is not as new as it looks. Some of the Powered Warfighting Armor you will see on patrol has been known to switch its own sensors off. We check everything twice, and we would rather you did too.
+
+  ## CHAIN OF COMMAND
+  - [bold]Commanding Officer:[/bold] sets the alert state, the MOPP level, the curfew and the hazard zones, and signs every order on this board.
+  - [bold]Executive Officer:[/bold] runs the detachment day to day and answers civilian complaints.
+  - [bold]Staff Officers:[/bold] patrol and decontamination schedules, checkpoint orders, supply and liaison with Colony Administration.
+  - [bold]Squads:[/bold] the Marines in sealed suits you will actually meet.
+
+  ## MISSION
+  - Defend the colony from dissident and insurgent attack, including cells flying the Colonial Liberation Front name.
+  - Respond to fire, collapse, gas release, spills and any other mass casualty event. This is what we train for.
+  - Monitor the atmosphere and the ground around the clock, and sound the alarm early.
+  - Secure the colony's power, water, air and landing facilities.
+
+  ## THE STABLE LESSON
+  In 2168 Drill Site 68-B on Albacetire punctured a ravine of pressurised carbon monoxide, and more than twelve thousand people died in the Carbon Ravine disaster. Every HAZOPS trainee walks through the case file at Fort Santego before the Hazard Endurance Course. The lesson is short: monitors save lives, and people who switch them off end them.
+
+  ## STANDING ORDERS TO MARINES
+  - A Marine identifies himself and his unit when a colonist asks, and lifts his visor to do it when the air allows.
+  - Nothing is taken from a civilian without a signed receipt. Contaminated property is bagged, tagged and returned after decon when possible.
+  - Force is the last tool, not the first.
+
+  [netlink="Return to the hazard board" link="command.govfor.mil"]
+</Document>

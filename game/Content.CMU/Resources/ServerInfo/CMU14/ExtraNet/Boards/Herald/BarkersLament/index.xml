@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/BarkersLament/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Barker's Lament, from the Kelland pithead to the dam spillway, filed by our own correspondent wherever the story is.[/italic]
+
+  We take no Company money, we give up no sources, and we print the checkpoint's rules and the Marshals' arrests on the same page.
+
+  <CMUNetMarquee Text="VALLEY WATCH  ///  Kelland Mine posts extra shifts on the north seam  ///  Flash flood warning stands for the south arroyos, keep off the dry beds  ///  Dam spillway closed to foot traffic  ///  Military base checkpoint hours unchanged  ///  Weymart open late while the power holds" Speed="55" Color="#8A1C1C"/>
+</Document>

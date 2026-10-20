@@ -1,0 +1,11 @@
+<Document>
+  # SEEGSON TECHNICAL SUPPORT
+  [bold]Authorised Seegson technicians only.[/bold]
+
+  ## KNOWN ISSUES
+  - SYSTEM/3 terminals may lose the ExtraNet carrier during dust storms. Wait for the link to recover before rebooting.
+  - Working Joe units must not be serviced while powered.
+  - Report any terminal displaying corrupted text to the network office.
+
+  [netlink="Back to Colony Services" link="colony.seegson.net"]
+</Document>

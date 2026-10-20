@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#10171C" Text="#D3DCE0" Heading="#4FB3D9" Link="#9AD14B" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/merc_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # CIVILIAN GUIDANCE
+  [italic]Plain rules, so nobody gets hurt.[/italic]
+
+  On a quiet day you will see a VAI team walk past the mess and nothing more. When the Commanding Officer raises the alert state, the rules below apply to everyone.
+
+  ## AT A CHECKPOINT
+  - Stop when asked. Keep your hands where the operator can see them.
+  - Have your colony ID ready. Contractors also show a current work order.
+  - Declare any firearm before you are searched. Weapons without a Colonial Marshal licence are confiscated and logged.
+  - Do not photograph or record checkpoints, posts or team movements.
+
+  ## CURFEW
+  - Curfew hours are posted on this board and called over the colony PA.
+  - Movement after curfew needs a pass from Colony Administration or the detachment duty officer. Essential workers keep theirs on them.
+
+  ## WHEN THE SIREN SOUNDS
+  - Get indoors and away from windows. Stay there until the all clear.
+  - Follow your block warden. Do not come to our gate; it will be closed.
+  - Shelter locations are listed by [netlink="Colony Administration" link="admin.colony.gov"].
+
+  ## WHAT TO REPORT
+  - Unattended bags, crates or vehicles.
+  - Strangers asking about patrol times, the armoury or the landing pad.
+  - Cut fences, broken locks, missing explosives or mining charges.
+  - A gas alarm sounding, or a gas monitor that is dark, damaged or tampered with. Carbon monoxide has no smell; the monitor is your nose.
+
+  We do not ask about your politics. We ask that you do not carry a rifle for anyone.
+
+  ## WHAT WE DO NOT DO
+  Operators do not collect debts, settle disputes between neighbours or enforce Company contracts, whoever the Company is. Take those to the Colonial Marshals or to Administration. UA citizens needing consular help can reach the [netlink="UA embassy" link="embassy.ua"]. Complaints about an operator go in writing to the Executive Officer. Every complaint is logged and answered.
+
+  [netlink="Back to the bulletins" link="command.govfor.mil"]
+</Document>

@@ -1,0 +1,33 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/Yotta/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Misc/books.rsi" State="icon_question" Scale="2"/>
+  </Box>
+  # YOTTA! ANSWERS
+  [italic]Real questions from real colonists, answered by other real colonists. Best answers are picked by the asker, or by whoever is still on shift.[/italic]
+
+  ## Q: how long does hypersleep actually take off your life
+  [bold]Best answer[/bold] from cryo_tech_wanda: None. You do not age in the tube. You come out the same age you went in, minus your luggage, which travels separately and arrives later, or never.
+
+  [color=#7A6A90]Other answers: my uncle went in at 40 and came out at 40 but he looked 60 (bigtunnel_mike) ... it takes off exactly one dream (sleepyhead)[/color]
+
+  ## Q: is it normal for the atmosphere processor to make a knocking noise
+  [bold]Best answer[/bold] from processor_pete: Yes. A low hum is normal. A knock every few seconds is normal. A knock that answers when you knock back is not normal, and you should call maintenance.
+
+  ## Q: can a Working Joe be my emergency contact
+  [bold]Best answer[/bold] from seegson_support_official: Working Joes cannot be listed as next of kin, emergency contacts or beneficiaries. They can be listed as witnesses. They are excellent witnesses.
+
+  ## Q: my bunkmate says the marines are coming. what does that mean
+  [bold]Best answer[/bold] from ex_garrison_ray: It means one of two things. Either they are coming for a parade, or they are not. If there is no parade scheduled, pack a bag.
+
+  ## Q: what is the best thing to eat out of a vending machine at 3am
+  [bold]Best answer[/bold] from nightshift_noor: The thing still in date. Failing that, the thing that is closest to being in date. Failing that, see [netlink="DropDash" link="dropdash.eats"].
+
+  ## Q: is SpaceGPT a real person typing
+  [bold]Best answer[/bold] from nobody_in_particular: No. [color=#7A6A90]This answer was posted at 03:12 by an account that was created in 2179 and has not logged in since.[/color]
+
+  ## Q: why does everyone on this colony have a moustache
+  [bold]Best answer[/bold] from colony_admin_assistant: Admin has asked us to say this is a coincidence and that the moustache allowance is not a real line in the budget.
+
+  [netlink="Back to Yotta!" link="yotta.portal"]
+</Document>

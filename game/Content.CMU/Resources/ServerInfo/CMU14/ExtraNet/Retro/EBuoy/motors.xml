@@ -1,0 +1,25 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/EBuoy/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Vehicles/atv.rsi" State="vehicle" Scale="2"/>
+  </Box>
+  # eBuoy MOTORS
+  [italic]Wheels, tracks and legs. Buyer collects. Buyer always collects.[/italic]
+
+  ## ALL TERRAIN VEHICLE, ONE OWNER
+  Current bid $1,450. 18 bids. Seller: ranch_rita. Runs on anything. Has driven through rain, mud, ash and a stampede. Small hole in the seat. Nothing to worry about. The seat was like that when I found it. The ATV was like that when I found it, too.
+
+  ## POWER LOADER, CARGO SPEC
+  Current bid $9,800. 4 bids. Seller: loader_larry. Lifts two tonnes. Comes with a full service history, a left arm that grips slightly too hard and a story from the day the hangar doors opened that I will tell the buyer in person.
+
+  ## COLONY CRAWLER, NEEDS WORK
+  Current bid $600. 2 bids. Seller: crawler_cole. Needs: tracks, engine, cab, wheels, hope. Comes with a radio that works and a crawler-shaped history. Buyer must arrange their own tow, and their own reason.
+
+  ## DROPSHIP PARTS, VARIOUS
+  [color=#E53238]Listing removed by eBuoy.[/color] We have been asked by the United States Colonial Marine Corps to point out that dropships are not for sale and that the parts belong to a dropship, which is also not for sale. The seller has been asked to return them. The seller has been asked where they got them.
+
+  ## MOTORBIKE, ELECTRIC, RED
+  Current bid $220. 9 bids. Seller: speedy_liang. Fast. Loud. Red. Not technically road legal, but there is technically no road.
+
+  [netlink="Back to eBuoy" link="ebuoy.auction"]
+</Document>

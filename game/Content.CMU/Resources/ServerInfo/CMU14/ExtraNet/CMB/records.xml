@@ -1,0 +1,9 @@
+<Document>
+  <CMUNetStyle Background="#050A14" Text="#D6E4F5" Heading="#8FC4FF" Link="#F2C94C" Font="Mono"/>
+  [color=#F2C94C][bold]COLONIAL MARSHAL BUREAU // RESTRICTED[/bold][/color]
+
+  # COLONY RECORDS
+  Criminal and general records held by the colony.
+
+  <CMUNetCmbPanel Kind="Records"/>
+</Document>

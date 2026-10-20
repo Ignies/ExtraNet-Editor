@@ -1,0 +1,27 @@
+# A site package: this folder is the whole site. Drop a folder like it anywhere under
+# /ServerInfo/CMU14/ExtraNet/ and the game picks it up. Titles may be plain text; root defaults to this
+# folder; pages can use ./ for files next to them. The ExtraNet editor exports folders like this one.
+- type: cmuNetSite
+  id: CMUNetSitePackageLostAndFound
+  address: lostfound.colony
+  title: Colony Lost and Found
+  networks:
+  - CMUNetPublic
+  style:
+    background: "#EFE7D2"
+    text: "#2B2418"
+    heading: "#7A3E12"
+    link: "#1D4E7A"
+    font: Sans
+  pages:
+    "": index.xml
+    rules: rules.xml
+  tabs:
+  - title: Found items
+  - title: House rules
+    path: rules
+  board:
+    postLabel: Report something found
+    empty: Nothing handed in this shift.
+    anyonePosts: true
+    showTerminals: true

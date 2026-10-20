@@ -1,0 +1,34 @@
+<Document>
+  <CMUNetStyle Background="#EEF3F8" Text="#10243A" Heading="#0B4F8A" Link="#1C6B3A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ProsperityToday/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="RECORD QUARTER FOR COLONIAL DEVELOPMENT  ///  98.7 PERCENT OF COLONIES ON SCHEDULE  ///  THIRTY NEW RELAY BUOYS APPROVED  ///  COLONIST SATISFACTION AT ALL TIME HIGH  ///  BUILDING BETTER WORLDS" Speed="60" Color="#0B4F8A"/>
+  # PROSPERITY TODAY
+  [italic]Good news from the colonies, every day. Independent, positive, and proud to be read in every Weyland-Yutani settlement.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="wy_letterhead" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/Wallmounts/posters.rsi" State="weya_1" Scale="2"/>
+  </Box>
+
+  ## TOP STORY: A RECORD QUARTER
+  The Colonial Development Division has reported its best quarter since its founding, with ninety-eight point seven percent of colonies reporting on schedule and a further one point one percent reporting slightly late for reasons that are entirely understood. Executive Vice President Celeste Varga-Ishikawa thanked colonists personally. Analysts at Gateway described the figures as exceptional, remarkable and, in one case, almost too good, an analyst who has since moved on to new opportunities.
+
+  ## ALSO TODAY
+  - [bold]Thirty new relay buoys.[/bold] Colonies along the Outer Veil will soon receive their mail a full week sooner. Prosperity Today asked a colonist on Solaris Ridge how she felt. She said she would believe it when she saw it, which we have chosen to read as excitement.
+  - [bold]Clinics for every colony.[/bold] Lasalle Bionational and the Company renew the frontier clinic agreement for ten more years. Every dispensary, one standard.
+  - [bold]Colonist of the Month.[/bold] Hydroponics technician Bartholomew Nwosu of Hope's Retreat has grown a tomato weighing one point four kilograms. It has been named after the Executive Vice President. Bartholomew has not been told whether this is an honour.
+  - [bold]Shio Royals, now on the frontier.[/bold] The Company's own cigar arrives in colony stores this month. Smooth, consistent and, in the words of our reviewer, completely fine.
+
+  ## ON THE RUMOURS
+  Some colonists have asked us about stories circulating on the relay concerning a certain settlement on LV-426. Prosperity Today has spoken to the Company, which is cooperating fully with the appropriate authorities. Speculation helps nobody. We will report the facts when there are facts, and until then we will report the many, many other colonies that are doing very well indeed.
+
+  ## SECTIONS
+  - [netlink="Colony news: good news from every world" link="prosperitytoday.news/colonies"]
+  - [netlink="Business and markets" link="prosperitytoday.news/business"]
+  - [netlink="Opinion: colonists in their own words" link="prosperitytoday.news/opinion"]
+  - [netlink="Horizon 2200, by Celeste Varga-Ishikawa" link="ishikawa.weyland-yutani.com/vision"]
+
+  <CMUNetAd Id="CMUDeepAdWeYaGold"/>
+
+  [color=#5A6A7A]Prosperity Today is editorially independent. It is published with the generous support of the Weyland-Yutani Corporation, which has no say over its content and which we thank for everything.[/color]
+</Document>

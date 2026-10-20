@@ -1,0 +1,37 @@
+<Document>
+  <CMUNetStyle Background="#F6FAFA" Text="#13282E" Heading="#0E7C7B" Link="#1B5FA8" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/LasallePharmacy/banner.png" MaxHeight="150"/>
+  # AUTOINJECTORS
+  [italic]Fast help when it matters. Press firmly against the thigh or upper arm, through clothing if you must, and hold until the click.[/italic]
+
+  ## FIRST AID AUTOINJECTOR
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/auto_injectors.rsi" State="tricord1" Scale="3"/>
+  A single small dose of general first aid medicine, made for people with no medical training to use on themselves. One use. Then go to the clinic. Available over the counter.
+
+  ## THE THREE DOSE RANGE
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/auto_injectors.rsi" State="autoinjector" Scale="3"/>
+  Three measured doses in one injector, with a coloured window that shows what is left. For clinic staff, colony security and trained first aiders.
+  - [bold]Bicaridine[/bold], for blunt injuries and bleeding.
+  - [bold]Kelotane[/bold], for burns.
+  - [bold]Dylovene[/bold], for toxins. Refillable at Lasalle and Weya-Med dispensers.
+  - [bold]Dexalin Plus[/bold], for severe oxygen starvation.
+  - [bold]Inaprovaline[/bold], to steady a patient in critical condition.
+  - [bold]Tricordrazine[/bold], for general first aid.
+  - [bold]Epinephrine[/bold], for clinicians only, to help restart a heart.
+  - [bold]Iron[/bold], after heavy blood loss.
+
+  Use one dose at a time. Wait before giving a second dose of the same medicine, and never give two different injectors to the same patient without a clinician's advice.
+
+  ## EZ AUTOINJECTOR
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/ez_auto_injector.rsi" State="autoinjector" Scale="3"/>
+  Delivers its whole dose at once and needs no training. Made for remote work sites, crawler crews and anybody more than a short walk from the clinic.
+
+  ## EMERGENCY AUTOINJECTOR
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/emergency_auto_injector.rsi" State="autoinjector" Scale="3"/>
+  [color=#B02020][bold]CAUTION. For life threatening emergencies only.[/bold][/color] A strong combined dose for a patient who will not survive the walk to the clinic without it. It does not need training to use, which is why it is kept behind the counter and signed out by name. One use per patient. Tell the clinic it was given.
+
+  ## STORAGE
+  Keep autoinjectors at room temperature, out of direct light and away from children. An injector that has been dropped down a mine shaft, run over by a crawler or left in a dropship in the sun should be returned to the dispensary for exchange.
+
+  [netlink="Back to the pharmacy" link="pharmacy.lasalle.bio"]
+</Document>

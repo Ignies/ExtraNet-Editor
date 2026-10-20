@@ -1,0 +1,33 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/AtmoCast/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="ATMOCAST LOCAL ON THE 8S  ///  CONDITIONS FOR {colony} UPDATED EVERY SHIFT  ///  REMEMBER: THE PROCESSOR IS NOT A WEATHER EVENT  ///  STAY INDOORS DURING STORMS, DUST, ACID RAIN AND ANYTHING ELSE" Speed="60" Color="#FFD24A"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/PersonalComputers/Sites/Ads/billboards.rsi" State="atmo_puff" Scale="2"/>
+  </Box>
+  # AtmoCast
+  [italic]The frontier's weather service. Forecasts for every colony with a sky.[/italic]
+
+  ## CURRENT CONDITIONS: {colony}
+  - [bold]Sky:[/bold] present
+  - [bold]Air:[/bold] breathable, according to the processor
+  - [bold]Temperature:[/bold] the same as yesterday, plus or minus the processor
+  - [bold]Wind:[/bold] from the direction you are not facing
+  - [bold]Visibility:[/bold] good to the perimeter fence. Beyond the fence, we would not know.
+
+  ## YOUR THREE SHIFT FORECAST
+  - [bold]First shift:[/bold] weather. Colonists on outdoor duty should dress for whatever the colony is like.
+  - [bold]Second shift:[/bold] more weather, moving in from the direction of the landing zone.
+  - [bold]Night shift:[/bold] dark. Chance of noises: high. AtmoCast is a weather service and does not forecast noises, but we wanted you to know.
+
+  ## FORECASTER'S NOTE
+  [italic]Hello {colony}. Our weather satellite is shared between forty colonies, so I see your sky for about nine minutes a day. In those nine minutes it looked fine. If it is jungle, expect rain. If it is ice, expect ice. If it is desert, expect sand in places you did not know you had. Stay safe. Marge, senior forecaster.[/italic]
+
+  ## MORE FROM ATMOCAST
+  - [netlink="Radar" link="atmocast.wx/radar"]
+  - [netlink="Severe weather alerts" link="atmocast.wx/alerts"]
+  - [netlink="The terraforming almanac" link="atmocast.wx/almanac"]
+
+  <CMUNetAd Id="CMUDeepAdFlashlight"/>
+
+  [color=#8FA8CC]AtmoCast forecasts are for guidance only. For official warnings, listen to your colony administration. For unofficial warnings, listen to the old-timers. They are usually right.[/color]
+</Document>

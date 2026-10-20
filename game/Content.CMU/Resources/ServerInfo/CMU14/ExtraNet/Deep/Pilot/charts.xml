@@ -1,0 +1,27 @@
+<Document>
+  <CMUNetStyle Background="#0A0912" Text="#C4BFAE" Heading="#D9A44E" Link="#6FCFC0" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Pilot/banner.png" MaxHeight="150"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Pilot/emblem.png" MaxHeight="88"/>
+  # Cave Charts
+
+  <CMUNetMarquee Text="six points  ///  one ringed  ///  always the same six" Speed="30" Color="#D9A44E"/>
+
+  [italic]Pigment does not lie about its age. People do.[/italic]
+
+  ## The Pattern
+  Survey teams keep finding the same thing painted in caves. A tall figure, arm raised. Over its hand, six points of light, one of them ringed. Ochre on one world, soot and fat on another, scratched into frost-cracked shale on a third. The worlds are hundreds of light years apart. The paint, where anyone has dated it, is older than writing.
+
+  ## What The Nav Computer Said
+  A navigator on a Seegson charter fed the six points into her ship's star catalogue as a joke, to pass a watch. It came back with a single match, a dim system well outside any lane, and the ringed point sat right on its star. She posted the result here. Three days later she posted that she had been reassigned to a desk on a core world, with a raise. Then she stopped posting.
+
+  We took the result down ourselves. We are not stupid.
+
+  ## The Clause
+  Every survey contract we have seen carries a paragraph about anomalous finds of non-human manufacture. You report them to a sealed address and to nobody else, and you surrender your recordings. The address is never the same company that hired you. Ask your liaison what department it is. Watch their face.
+
+  <CMUNetBlink Rate="1.2">
+    [color=#A0453A]IF YOU HAVE SEEN THE SIX, DO NOT SAY SO ON A COMPANY TERMINAL.[/color]
+  </CMUNetBlink>
+
+  [netlink="Back to the Pilot Sightings" link="pilot.deep"]
+</Document>

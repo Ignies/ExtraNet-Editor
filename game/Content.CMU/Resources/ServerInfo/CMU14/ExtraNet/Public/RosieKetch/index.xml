@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#2A1A0E" Text="#F2E3C6" Heading="#E8A33C" Link="#9FD0E0" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/RosieKetch/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="ROSIE KETCH AND THE DUST DEVILS  ///  THE DUST ROAD TOUR  ///  NEW RECORD: PROCESSOR LULLABY  ///  COUNTRY MUSIC FOR PEOPLE WHO BUILD THE AIR THEY BREATHE" Speed="55" Color="#E8A33C"/>
+  # ROSIE KETCH
+  [italic]The Queen of the Outer Veil. Six records, four guitars, one voice you can hear over an atmosphere processor at full draw.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Clothing/Head/Hats/cowboyhatbrown.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/guitar.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/Instruments/harmonica.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  ## HOWDY, {colony}
+  Pull up a crate. I was born on a terraforming hauler between two worlds that did not have names yet, and I learned to sing in a pressurised cargo bay because it had the best echo on the ship. My mother was a pipefitter. My daddy drove a crawler. Neither of them could carry a tune, but they could carry anything else, and that is what my songs are about.
+
+  If you are reading this on a colony terminal, you probably know the smell of processor exhaust, the sound of a dropship you were not expecting and the feeling of a mail run that came in without a letter for you. I wrote a song about each of those. You are why I keep going out past the Veil when the studio on Mars keeps asking me to stay.
+
+  [italic]Love, Rosie[/italic]
+
+  ## WHAT IS NEW
+  - [bold]Processor Lullaby[/bold], the sixth record, is out on cassette and on the relay. Recorded live in the machine hall at Oxley's Butte, with the dam running underneath.
+  - [bold]The Dust Road Tour[/bold] reaches twelve colonies this year. Rosie plays wherever there is a floor and a power socket.
+  - [bold]The Golden Relay.[/bold] Rosie was nominated for Best Frontier Record for the fourth time. She did not attend. She was playing a canteen on Chance's Claim that night and says it was the better crowd.
+
+  ## THE DUST DEVILS
+  - [bold]Amos Tull[/bold], banjo. A former Colonial Marshal. He does not talk about it, and the banjo does it for him.
+  - [bold]Marisol Pike[/bold], fiddle and harmony. Learned on a fiddle carved out of a cargo pallet. Still plays it.
+  - [bold]Big Dee Okonjo[/bold], upright bass. Tall enough to change a ceiling panel without a ladder, which is how he got the job.
+  - [bold]Clem[/bold], drums. Clem is a Working Joe. Clem keeps perfect time. Clem has asked us to state that Clem does not have a favourite song.
+
+  ## RIDE ALONG
+  - [netlink="The Dust Road Tour dates" link="rosieketch.music/tour"]
+  - [netlink="The songbook" link="rosieketch.music/songs"]
+  - [netlink="Rosie's General Store" link="rosieketch.music/store"]
+  - [netlink="What the Tattler is saying about Rosie and Lux" link="colonytattler.news/gossip"]
+
+  [color=#9A8060]rosieketch.music // run out of a tour bus, which is a crawler with a stage on it // all rights reserved by Rosie and her lawyer, who is also her sister[/color]
+</Document>

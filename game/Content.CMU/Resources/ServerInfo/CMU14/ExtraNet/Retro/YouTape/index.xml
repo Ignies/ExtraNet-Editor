@@ -1,0 +1,35 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="BROADCAST YOURSELF  ///  THEN POST IT  ///  THEN WAIT SIX TO NINE WEEKS  ///  BE KIND, REWIND  ///  OVER 4,000 TAPES IN THE LIBRARY AND 11 IN THE PLAYER" Speed="65" Color="#FF2A2A"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/PersonalComputers/Sites/Ads/billboards.rsi" State="tv_static" Scale="2"/>
+  </Box>
+  # YouTape
+  [italic]Broadcast yourself. Then post it.[/italic]
+
+  YouTape is the frontier's home tape library. Record anything on any camcorder, mail the tape to our sorting office on Gateway Station, and we copy it onto the relay for every colony to watch. Views are counted each time a tape is rewound.
+
+  ## FEATURED TAPE
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_rainbow" Scale="3"/>
+  </Box>
+  [bold]Cat Gets Into Cryo Bay (UNCUT)[/bold] by orbit_kitty. 2,104,551 rewinds. A ship's cat called Admiral finds an open hypersleep pod and refuses to leave it for eleven minutes. The crew try everything. At minute nine somebody offers a tin of tuna. Admiral looks at the camera. You will never forget the look.
+
+  ## RECOMMENDED FOR {colony}
+  - [bold]MRE Taste Test: Every Menu, Ranked[/bold] by ChowHound_Gus. 48 tapes in the series. Gus is on menu 31. Gus has asked for a medic in the comments.
+  - [bold]Relaxing Processor Hum, 8 Hours[/bold] by sleepwave. A full tape of an atmosphere processor at night. Tape 2 has a knocking sound at hour six. sleepwave says it was not there when they recorded it.
+  - [bold]Rex Maddox Gets Collected Again (fan cut)[/bold] by not_lost_just_thorough. Every time a garrison has picked Rex up, set to music.
+  - [bold]How To Fix A Seegson Terminal By Hitting It[/bold] by fixit_fran. Part one of one. There is no part two. It works.
+  - [bold]Unboxing: Weyland-Yutani Welcome Kit[/bold] by newhire_2184. Pen, mug, lanyard, a forty page contract and a smaller, darker contract under the first one.
+
+  ## WATCH MORE
+  - [netlink="Trending on the relay this week" link="youtape.vhs/trending"]
+  - [netlink="Channel: ChowHound_Gus" link="youtape.vhs/channel"]
+  - [netlink="How to upload your tape" link="youtape.vhs/upload"]
+
+  <CMUNetAd Id="CMUDeepAdCassette"/>
+
+  [color=#8A8A8A]YouTape does not own the tapes sent to it, but does keep them. Tapes showing restricted Company sites, unknown organisms or the inside of a vent will be removed and passed to the appropriate authority, who will thank you in writing.[/color]
+
+  <CMUNetWallpaper Id="CMUWallpaperTestCard"/>
+</Document>

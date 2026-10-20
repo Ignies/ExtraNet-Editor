@@ -1,0 +1,31 @@
+<Document>
+  <CMUNetStyle Background="#1E0F1E" Text="#F5E6F0" Heading="#FF5FD2" Link="#FFD27A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/VexStarr/banner.png" MaxHeight="150"/>
+  # STARR TALK
+  [italic]The long interview. Recorded in Vex's dressing room on the Gateway General set, between scenes, while somebody repainted the trauma deck behind her. Edited for length, never for meaning.[/italic]
+
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Drinks/coffee_cup.rsi" State="icon-3" Scale="3"/>
+
+  ### You grew up on Mars. What was that like?
+  Dusty. My mother ran a filter shop in Tharsis and my father fixed atmosphere processors for anyone who could pay, and a lot of people who could not. I grew up on the stories people told while they waited for their parts. That is still the best acting school I know of. A miner telling you about the cave-in he walked out of, with his hands shaking around a cup of coffee he has not touched. You cannot teach that. You can only watch for it.
+
+  ### How did you get to Gateway?
+  I lied on a form. Like Juno. I said I had stage experience, and the only stage I had ever stood on was the loading ramp of my dad's crawler. The casting director knew. She told me years later. She said she hired me because I was the only one who did not look at the camera when the alarm went off.
+
+  ### Juno Kade has saved, by our count, nine hundred and four lives. Have you ever had to do it for real?
+  Once. A grip collapsed on set during the decompression episode. His heart. Everybody looked at me. I want to be very clear with your readers: I am not a doctor. I knew where the defibrillator was because I had been pretending to use it for three years. The set medic did everything that mattered. But I did know where it was. So learn where yours is. That is my public service message.
+
+  ### What do you say to people who call Gateway General a soap?
+  That they are right, and that I do not understand why that is an insult. People out on the frontier work twelve hours in a place that is trying to kill them. They come off shift and they want to watch someone have a worse day than they did and survive it. That is not nothing. That is a kind of medicine.
+
+  ### The Long Sleep. You spent eleven days in a cryotube.
+  Not under. The insurers would not allow it. But I lay in a working tube with the lid shut and the frost on the glass, for hours at a time. You learn things about yourself. Mostly that you can hear your own heart. And that a ship makes noises at night that nobody can explain to you.
+
+  ### Is it true you will be touring the colonies?
+  I want to. The studio wants me to. The insurers want a list of every colony I would visit and a Colonial Marine escort for half of them, which tells you something about the frontier that nobody wants to say on the record. We are working on it.
+
+  ### And the rumours? Spin Okafor?
+  [italic]Vex laughs, drinks her coffee, and says nothing for a long time.[/italic] He is a very good ball player. Next question.
+
+  [netlink="Back to Vex Starr" link="vexstarr.holo"]
+</Document>

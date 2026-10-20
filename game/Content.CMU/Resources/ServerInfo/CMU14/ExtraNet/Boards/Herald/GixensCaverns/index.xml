@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/GixensCaverns/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Gixen's Caverns, filed by our own correspondent from the platforms, the pits and the deep levels.[/italic]
+
+  [italic]If the air turns, stop reading and put your mask on. We will still be here when it clears.[/italic]
+
+  <CMUNetMarquee Text="LATEST  ///  Check your emergency oxygen kit before every shift  ///  Transit timetables are posted at every platform  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Readers may comment under any story" Speed="55" Color="#8A1C1C"/>
+</Document>

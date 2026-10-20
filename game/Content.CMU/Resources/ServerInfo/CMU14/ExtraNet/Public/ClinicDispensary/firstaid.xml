@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#E9F0E9" Text="#1C2A1C" Heading="#B02020" Link="#1E5AA0" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ClinicDispensary/banner.png" MaxHeight="150"/>
+  # BASIC FIRST AID UNTIL HELP ARRIVES
+  [italic]What to do in the minutes before the medic gets there. None of it replaces the clinic.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/medical.rsi" State="traumakit" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/medical.rsi" State="burnkit" Scale="3"/>
+  </Box>
+
+  ## FIRST, ALWAYS
+  - Make sure the danger is over before you go in. Two patients are worse than one.
+  - Call for the clinic by radio, intercom or by sending the fastest runner you have.
+  - Stay with the patient. Talk to them. Tell them help is coming, because it is.
+
+  ## BLEEDING
+  Press a gauze pad hard on the wound and keep pressing. Do not lift it to look. If the patient can take tablets, a red bottle tablet helps. A patient who has lost a lot of blood needs the clinic, not the counter.
+
+  ## BURNS
+  Cool the burn with clean water for as long as you can spare. Then cover it with burn ointment and a loose dressing. A yellow bottle tablet helps. Do not burst blisters. Do not use galley grease. Somebody always tries.
+
+  ## BAD AIR AND SMOKE
+  Get the patient into clean air first, even before you get them into a bed. Then a blue bottle tablet. If the air is bad where they are, it is bad for you too. Put your mask on before you go in.
+
+  ## POISONING AND TOXINS
+  A green bottle tablet, and tell the medic what the patient touched, drank or breathed. Bring the container if you can do it safely.
+
+  ## IF THEY ARE NOT WAKING UP
+  Check that they are breathing. Turn them on their side. If you have been trained to use the purple bottle or a first aid autoinjector, use it. Then wait with them for the medic, and do not give anything else.
+
+  ## IF YOU SEE SOMETHING YOU DO NOT UNDERSTAND
+  Wounds that do not look like any tool did them. A patient who says something was on their face. A pain in the chest that came after. Do not try to treat it. Keep everyone back, tell the clinic exactly what you saw and tell the garrison too.
+
+  [netlink="Back to the dispensary" link="dispensary.colony.med"]
+</Document>

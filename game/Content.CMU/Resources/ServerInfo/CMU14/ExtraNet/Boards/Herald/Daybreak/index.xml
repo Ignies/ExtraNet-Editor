@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/Daybreak/banner.png" MaxHeight="170"/>
+  [italic]Independent news for the Daybreak and everyone aboard her, filed by our correspondent from the flight deck to the brig. Names, not numbers.[/italic]
+
+  This edition lives on the ship's own net and goes out with the next relay packet. Read the command notices, then read us.
+
+  <CMUNetMarquee Text="ABOARD  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Hangar crews ask everyone to keep clear of the cargo lift  ///  Galley coffee ration unchanged, whatever you heard  ///  Readers may comment under any story" Speed="55" Color="#8A1C1C"/>
+</Document>

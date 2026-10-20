@@ -1,0 +1,50 @@
+<Document>
+  <CMUNetStyle Background="#120A24" Text="#E6DDFF" Heading="#FF4FD8" Link="#00F0FF" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ChromaSleep/banner.png" MaxHeight="150"/>
+  # DISCOGRAPHY
+  [italic]Every release, oldest first. All albums on cassette. Some on the relay. One on a hard drive that Dmitri will not let anyone see.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_ice" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_ocean" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_aesthetic" Scale="3"/>
+  </Box>
+
+  ## COLD STORAGE (2178)
+  [italic]Recorded in a refrigerated cargo container at the Titan methane docks, because it was the only quiet room for six kilometres.[/italic]
+  - Methane Kids
+  - Dock Lights
+  - Cold Storage
+  - Ninety Minutes to Saturn
+  - Lost in the Manifest
+
+  The first pressing was forty tapes, handed out at the dock gate. One sold at a Gateway auction last year for more than Kaito's synthesizer cost.
+
+  ## NINETY MINUTES FROM HOME (2181)
+  [italic]The breakthrough. The title is the length of a standard service cassette, and the length of the playlist every colonist packs for the trip out.[/italic]
+  - Wake Me at Gateway
+  - Neon Over Titan
+  - Relay Delay
+  - Signal Lost
+  - Ration Card Romance
+  - The Long Way Round the Veil
+
+  Signal Lost is the one people ask about. Lux wrote it for a friend whose colony stopped answering the relay. She will not say which colony. The song ends on a carrier tone that just keeps going.
+
+  ## AFTERGLOW PROTOCOL (2183)
+  [italic]The new one. Written in transit, recorded on Gateway, mixed in a hotel room on Mars at four in the morning.[/italic]
+  - Hypersleep Heart
+  - Afterglow Protocol
+  - Processor Hum
+  - Every Light on Gateway
+  - Synthetic Love Song
+  - Do You Dream, Joe
+  - Wake Me When We Get There
+
+  Do You Dream, Joe is about a Working Joe on a night shift. Seegson has asked the band to clarify that Working Joes do not dream. The band has thanked Seegson for clarifying.
+
+  ## LIVE RECORDINGS
+  - [bold]Live at the Huygens Dome[/bold], 2182. Recorded on a borrowed tape deck from the sound desk. The crowd sings the whole of Neon Over Titan without the band.
+
+  [netlink="Back to Chroma Sleep" link="chromasleep.fan"]
+</Document>

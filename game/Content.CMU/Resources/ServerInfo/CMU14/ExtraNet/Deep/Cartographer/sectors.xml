@@ -1,0 +1,28 @@
+<Document>
+  <CMUNetStyle Background="#07141B" Text="#C4D6CC" Heading="#7FE3D2" Link="#F2955E" Font="Terminal"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Cartographer/banner.png" MaxHeight="150"/>
+  # Sector Rumours
+
+  [italic]Each line is marked with its mouths. [color=#F2955E](1)[/color] heard once. [color=#F2955E](3)[/color] heard from three crews who never met.[/italic]
+
+  ## The Neroid Sector
+  Every power has a flag planted somewhere in the Neroid and not one of them holds it. UA colonies, TWE prosperas, a UPP outpost dug into ice, an ICSC charter clinging to the one livable strip of a tidally locked world, and that strip is baking into sand. Rich ground, thin patrols, long waits for help.
+  - [color=#F2955E](3)[/color] Solaris Gulch, at the far end of the sector. A dead lichen farm, and the Company still pays the upkeep. Nobody pays upkeep on nothing. Ask what sits in the cold rooms.
+  - [color=#F2955E](2)[/color] Ore barges out of Chances Claim leave lighter than their manifests say. Somebody on the pad is getting paid in the difference.
+  - [color=#F2955E](3)[/color] Corsat Station is on no chart I have ever bought. Freighters drop cargo at a buoy and burn away. Nobody docks.
+  - [color=#F2955E](1)[/color] The neutral sliver by Sorokyne has more UPP traffic than any neutral sliver should.
+
+  ## The American Corridor
+  The long curve that carries the UA out from Sol toward the Outer Veil. Busy, patrolled, safe, if you believe the brochure.
+  - [color=#F2955E](3)[/color] Relay beacon 14 has been dark since spring. The Administration calls it scheduled maintenance. Nobody has scheduled the maintenance.
+  - [color=#F2955E](2)[/color] Kutjevo, just outside the Corridor, still sells itself as a bottling town. The new hires coming off the shuttles do not look like bottlers, and the crates going up are marked as level three.
+  - [color=#F2955E](1)[/color] Marine transports running the Corridor with transponders off. Not on exercise. Going somewhere they do not want logged.
+
+  ## The Far Reach
+  Trailward, at the bottom of the chart, the American Arm frays out into a string of stations and rocks: Regulus, Bowyer's Landing, Scorcher, Cristobal, Helix, Byal Station, Gimeno Station, Tanaka's Star.
+  - [color=#F2955E](3)[/color] Gimeno Station answers every hail with the same recording. The voice wishes you a safe arrival. The timestamp is nine years old.
+  - [color=#F2955E](2)[/color] Someone at Tanaka's Star is buying old hulls, intact, with logs. Pays well. Does not want the crews.
+  - [color=#F2955E](1)[/color] Scorcher was named by its survey team. They were being accurate.
+
+  [netlink="Back to the Chart Room" link="cartographer.deep"]
+</Document>

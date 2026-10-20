@@ -1,0 +1,12 @@
+<Document>
+  <CMUNetStyle Background="#0A1A0A" Text="#D8F0D0" Heading="#7CFF00" Link="#F2C230" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Sportsbook/banner.png" MaxHeight="150"/>
+  # ZERO-G BALL SPORTSBOOK
+  [italic]Licensed for play in all colonies where it has not yet been banned.[/italic]
+
+  Live from the Outer Rim leagues, a new event every few minutes: the 100 metre dash, three rounds in the ring, six innings of baseball and the zero-g ball cage. Watch it here as it happens. Stakes come straight out of your colony account when you log in with your ID card; winnings go straight back in. Gamble responsibly. The house always wins eventually.
+
+  <CMUNetSportsbook/>
+
+  Fans of the Gateway Comets can follow the team at [netlink="spinokafor.zg" link="spinokafor.zg"].
+</Document>

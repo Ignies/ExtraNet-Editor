@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/ChancesClaim/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Chance's Claim, filed by our own correspondent from wherever the story is. Names, not numbers.[/italic]
+
+  The Company runs the colony. Lately somebody else runs the streets after dark. We report on both, and we take money from neither.
+
+  <CMUNetMarquee Text="LATEST  ///  Gale warning stays up for the north streets and the windbreakers  ///  Processor crews say filtration is on schedule  ///  Company Security asks C-Block traders to log every late delivery  ///  Classified notices are free to place" Speed="55" Color="#8A1C1C"/>
+</Document>

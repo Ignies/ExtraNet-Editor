@@ -1,0 +1,35 @@
+<Document>
+  <CMUNetStyle Background="#0E1A26" Text="#D7E3EA" Heading="#F2C14E" Link="#5FC7B0" Font="Sans"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/brazilunit_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # LA GUARNICIÓN / THE GARRISON
+  [italic]First down, last to leave.[/italic]
+
+  ## WHO WE ARE
+  The garrison is a platoon of the Landing Forces of the Latin American Colonial Navy, a branch of the space forces of the United Americas. The Navy's landing troops are trained for rapid deployment and shock assault, to take a world from orbit and hold it. Our sailors and infantry come from Mexico, Colombia, Brazil, Argentina and the rest of the southern United Americas. On {colony}, we are the ones who hold it.
+
+  ## CADENA DE MANDO / CHAIN OF COMMAND
+  - [bold]Comandante:[/bold] sets the alert state, the curfew and the security zones, and signs every order on this board.
+  - [bold]Executive officer:[/bold] runs the garrison day to day and answers civilian complaints.
+  - [bold]Staff officers:[/bold] patrol schedules, checkpoint orders, supply and liaison with Colony Administration.
+  - [bold]Squads and patrols:[/bold] the infantry you will actually meet.
+
+  ## MISIÓN / MISSION
+  - Defend the colony from dissident and insurgent attack. The cells flying the Colonial Liberation Front name are bolder since the United Americas pulled back from much of the Neroid Sector. Not here.
+  - Respond to fire, collapse, gas and any other mass emergency.
+  - Watch the atmosphere and the ground, and sound the alarm early.
+  - Secure the colony's power, water, air and landing facilities.
+
+  ## LA LECCIÓN DE ALBACETIRE
+  In 2168 Drill Site 68-B on Albacetire broke into a ravine of pressurised carbon monoxide. More than twelve thousand people died in the Carbon Ravine disaster, soldiers among them. After that, every garrison in the sector learned the same rule: the soldier at the gate is also the first responder. The Navy took the lesson to heart.
+
+  ## ÓRDENES PERMANENTES / STANDING ORDERS
+  Published so that you know what to expect from us.
+  - Every sailor identifies himself and his unit when a colonist asks.
+  - Nothing is taken from a civilian without a signed receipt. Nada sin recibo.
+  - Force is the last tool, not the first.
+
+  [netlink="Volver a los avisos / Voltar aos avisos" link="command.govfor.mil"]
+</Document>

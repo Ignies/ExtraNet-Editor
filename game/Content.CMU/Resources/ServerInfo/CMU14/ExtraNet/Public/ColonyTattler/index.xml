@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#FFF1F6" Text="#1A1A1A" Heading="#D0105A" Link="#1440A0" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/ColonyTattler/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="EXCLUSIVE  ///  VEX AND SPIN: THE NOODLE BAR PHOTOS  ///  ROSIE KETCH BREAKS HER SILENCE ON LUX  ///  REX MADDOX: LOST AGAIN?  ///  YOUR STARS FOR THE WEEK  ///  THE TATTLER: WE SAW IT FIRST" Speed="95" Color="#D0105A"/>
+  # THE COLONY TATTLER
+  <CMUNetBlink Rate="0.5">
+    [color=#D0105A][bold]WORLD EXCLUSIVE: VEX AND SPIN SHARE A BOWL[/bold][/color]
+  </CMUNetBlink>
+
+  [italic]The biggest names in human space, the smallest details. Read in every canteen from Gateway to the Outer Veil, usually out loud.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Devices/travel_camera.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Eyes/Glasses/bigsunglasses.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/Bouqets/rose.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  ## THIS WEEK'S BIG ONE
+  [bold]VEX AND SPIN: THE NOODLE BAR PHOTOS.[/bold] Gateway General star Vex Starr and Gateway Comets captain Spin Okafor were seen sharing a single bowl of noodles at a Promenade noodle bar at two in the morning, three days after the Comets beat the Tritons. Our photographer was at the next table. The Tattler can reveal that Spin paid, that Vex had the last dumpling and that neither of them noticed our photographer, who had ordered the same thing to blend in and has since been put on expenses review. Vex's people say they are friends. Spin's people say they are friends. Friends, the Tattler notes, do not share dumplings.
+
+  ## ALSO INSIDE
+  - [bold]Rosie Ketch on Lux.[/bold] The Queen of the Outer Veil finally speaks about the duet that never was. Page two, and it is not what you think. Mostly.
+  - [bold]Rex Maddox, lost again?[/bold] The Hostile Worlds host was collected by a colony garrison after three nights in the jungle outside Lazarus Landing. He says he was being thorough. The garrison says he was two hundred metres from the gate.
+  - [bold]The Executive and the Violin.[/bold] Weyland-Yutani's Celeste Varga-Ishikawa played the violin at a private dinner on Gateway. A guest described it to the Tattler as brave.
+  - [bold]Spotted on your colony.[/bold] Readers send in their celebrity sightings. This week: a Rex Maddox in a hydroponics bay, a Lux in a canteen and something in a vent that was definitely not a celebrity.
+
+  ## READ ON
+  - [netlink="Gossip: the whole dish" link="colonytattler.news/gossip"]
+  - [netlink="Star sightings from the colonies" link="colonytattler.news/sightings"]
+  - [netlink="Your stars with Madame Orbita" link="colonytattler.news/stars"]
+
+  ## THE TATTLER RECOMMENDS
+  - [netlink="Vex Starr" link="vexstarr.holo"] for the official denial
+  - [netlink="Spin Okafor" link="spinokafor.zg"] for the official silence
+  - [netlink="Chroma Sleep" link="chromasleep.fan"] for the new tape
+
+  [color=#8A6070]The Colony Tattler is entertainment. The Tattler stands by every story it has ever printed, and especially the ones it has had to correct. Corrections run on page forty, which is not a page we have.[/color]
+</Document>

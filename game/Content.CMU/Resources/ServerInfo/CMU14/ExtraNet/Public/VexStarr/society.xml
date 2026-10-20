@@ -1,0 +1,36 @@
+<Document>
+  <CMUNetStyle Background="#1E0F1E" Text="#F5E6F0" Heading="#FF5FD2" Link="#FFD27A" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/VexStarr/banner.png" MaxHeight="150"/>
+  # THE STARRLIGHT SOCIETY
+  [italic]The official fan society of Vex Starr, with chapters on Gateway, Mars, Titan and more than forty colonies past the Veil. Membership is free. Merchandise is not, but it is close.[/italic]
+
+  ## MEMBERSHIP
+  - A signed holo card, printed at Gateway and shipped in the next mail run.
+  - The quarterly Starrlight newsletter, with set photographs and a letter from Vex.
+  - First word on relay screenings, premieres and any colony appearance.
+  - Your chapter's name read out after the season finale broadcast, if your chapter has twelve members or more.
+
+  To join, send your name, colony and a shipping address with the next outbound mail, care of the Starrlight Society, Gateway Station Promenade, Deck 14.
+
+  ## THE STARR SHOP
+  [italic]Prices in UA dollars. Shipping past the Veil may take a hypersleep cycle or two. Fragile items travel at your own risk.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Eyes/Glasses/bigsunglasses.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/Bouqets/rose.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_pink_stripe" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Drinks/champagnebottle.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  - [bold]Juno Kade Shades[/bold], $45. The big sunglasses Juno wears off shift in season four. Scratch resistant, glare resistant, paparazzi resistant.
+  - [bold]A Rose for Dr. Kade[/bold], $12. A preserved rose in a sealed sleeve, after the one Dr. Malik leaves on her locker. Keeps for a decade. Needs no water, no light and no hope.
+  - [bold]Gateway General: The Music[/bold], $9 on cassette. The theme and thirty minutes of score from the first five seasons. Plays on any service player.
+  - [bold]Golden Relay Toast[/bold], $160. The sparkling wine poured at Vex's third award night. One per member. Not shipped to colonies under an alcohol ration.
+
+  ## CHAPTER NOTICES
+  - [bold]Titan chapter[/bold] is holding a full rewatch from Cold Open onward. Bring a blanket and a thermos.
+  - [bold]Hybrisa chapter[/bold] reminds members that Vex is not staying at the Prospera Grand Hotel, whatever the doorman says.
+  - [bold]A note for members on frontier colonies.[/bold] If your colony is under a garrison curfew, please do not leave your quarters for a relay screening. Vex has asked us to tell you she would rather you watched it late than not at all.
+
+  [netlink="Back to Vex Starr" link="vexstarr.holo"]
+</Document>

@@ -1,0 +1,42 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/MyBunk/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/clocks.rsi" State="cat_clock_motion" Scale="2"/>
+  </Box>
+  # BULLETINS
+  [italic]What your friends are up to, newest first. Times are colony time, roughly.[/italic]
+
+  ## KENJI
+  [color=#5A6A8A]posted at 02:40[/color]
+  is it just me or is the uplink slow tonight. it took four minutes to load this bulletin box. mood: buffering
+
+  ## MARISOL
+  [color=#5A6A8A]posted at 02:15[/color]
+  the tomatoes came up!!! first crop on this rock. took a photo. will post when the photo comes back from Gateway in eight weeks. mood: sprouting
+
+  ## BIG TOMAS
+  [color=#5A6A8A]posted at 01:50[/color]
+  whoever keeps moving my lunch from the cold store to the warm store, i know it is you, Renzo. i know it is you because you are the only one who knows where the warm store is. mood: hungry
+
+  ## RENZO
+  [color=#5A6A8A]posted at 01:51[/color]
+  it was not me. mood: innocent
+
+  ## JOE-114
+  [color=#5A6A8A]posted at 01:30[/color]
+  Good morning, friends. I have completed my rounds. All doors are secure. The door in sublevel two is secure from the other side. Have a productive shift. Mood: helpful
+
+  ## DAVE
+  [color=#5A6A8A]posted at 00:00[/color]
+  hey everyone, MyBunk now has profile songs! you can pick any tape in the library. please stop picking Ten Hours Of Static, we do not know where it came from. mood: founder
+
+  ## SAL, CANTEEN
+  [color=#5A6A8A]posted at 23:10[/color]
+  taco night is cancelled. the tacos are not. we have the tacos. we do not have the night. long story. mood: closing up
+
+  ## ANONYMOUS
+  [color=#5A6A8A]posted at 03:33[/color]
+  is anyone else on the night shift hearing the vents. it sounds like somebody walking but heavier. mood: [color=#CC3300]unknown[/color]
+
+  [netlink="Back to MyBunk" link="mybunk.social"]
+</Document>

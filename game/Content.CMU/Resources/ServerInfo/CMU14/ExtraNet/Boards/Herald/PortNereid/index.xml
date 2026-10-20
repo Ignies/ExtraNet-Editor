@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/PortNereid/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Port Nereid, filed by our own correspondent from the spaceport to the jungle line. Names, not numbers.[/italic]
+
+  Joint venture or not, we take no Company money and we give up no sources. Read the Administration's notices and the Company bulletins, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Storm season: keep the habitation drains clear and stay off the cargo apron when the lightning starts  ///  Processor crews ask residents to report any coolant smell at once  ///  Classified notices run free for dock, depot and mine hands" Speed="55" Color="#8A1C1C"/>
+</Document>

@@ -1,0 +1,41 @@
+/* The Library panel: every site in the game. */
+.lib-card { padding: 10px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; }
+.lib-row { display: flex; align-items: center; gap: 6px; }
+.lib-row .btn { flex: 1; justify-content: center; }
+.lib-row .btn-icon { flex: 0 0 auto; }
+.lib-source-label { flex: 1; min-width: 0; font-size: 12px; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lib-card .note { margin: 0; }
+.lib-current-title { font-weight: 600; color: var(--text); }
+.lib-current-sub { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-top: -6px; }
+.lib-status { display: grid; grid-template-columns: 1fr 1fr; }
+.lib-status button { padding: 5px 4px; font-size: 11px; }
+.lib-note { width: 100%; min-height: 54px; }
+.lib-changes { font-size: 12px; color: var(--text-2); }
+.lib-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; margin-bottom: 8px; position: sticky; top: 0; z-index: 2; background: var(--surface); padding: 2px 0 6px; }
+.lib-search-wrap { position: relative; display: block; }
+.lib-search-wrap .ico { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--text-3); pointer-events: none; }
+.lib-search { width: 100%; padding-left: 28px; }
+.lib-filter { width: 112px; }
+.lib-list { display: flex; flex-direction: column; gap: 2px; }
+.lib-group-head { display: flex; justify-content: space-between; align-items: center; margin: 10px 0 4px; padding: 4px 6px; border: 0; background: none; color: var(--text-2); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border-radius: var(--radius-sm); }
+.lib-group-head:hover { color: var(--text); background: var(--surface-2); }
+.lib-count { font-family: var(--mono); color: var(--text-3); font-weight: 400; }
+.lib-item { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; align-items: center; width: 100%; padding: 6px; border: 0; border-radius: var(--radius-sm); background: none; color: var(--text-2); text-align: left; cursor: pointer; position: relative; }
+.lib-item:hover { background: var(--surface-2); color: var(--text); }
+.lib-item.on { background: var(--accent-soft); color: var(--text); }
+.lib-item.on::before { content: ""; position: absolute; left: -4px; top: 8px; bottom: 8px; width: 3px; border-radius: 3px; background: var(--accent); }
+.lib-thumb { width: 64px; height: 36px; border-radius: 6px; background: var(--surface-3); overflow: hidden; display: grid; place-items: center; box-shadow: inset 0 0 0 1px var(--hair); }
+.lib-thumb img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+.lib-thumb.empty::after { content: "▣"; color: var(--text-3); font-size: 14px; }
+.lib-body { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.lib-title { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); overflow: hidden; white-space: nowrap; }
+.lib-title span:last-child { overflow: hidden; text-overflow: ellipsis; }
+.lib-address { font-family: var(--mono); font-size: 11px; color: var(--text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lib-chips { display: flex; flex-wrap: wrap; gap: 3px; }
+.lib-chip { font-size: 10px; padding: 1px 6px; border-radius: 999px; background: var(--surface-3); color: var(--text-2); }
+.lib-chip.pages { background: none; box-shadow: inset 0 0 0 1px var(--hair-2); }
+.lib-chip.dim { color: var(--text-3); background: none; }
+.lib-mark { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--text-3); }
+.lib-mark[data-status="reviewed"] { background: var(--accent); }
+.lib-mark[data-status="work"] { background: var(--warn); }
+.lib-mark[data-status="hidden"] { background: var(--danger); }

@@ -1,0 +1,40 @@
+<Document>
+  <CMUNetStyle Background="#F6FAFA" Text="#13282E" Heading="#0E7C7B" Link="#1B5FA8" Font="Sans"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/LasallePharmacy/banner.png" MaxHeight="150"/>
+  # PRESCRIPTIONS, HOURS AND RULES
+  [italic]How to get what your clinician has prescribed, and when the counter is open.[/italic]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/pill_packets.rsi" State="tramadol_packet" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Medical/pill_packets.rsi" State="oxycodone_packet" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/clipboard.rsi" State="clipboard" Scale="3"/>
+  </Box>
+
+  ## PRESCRIPTION NOTICE
+  [color=#B02020][bold]The following are supplied on a signed prescription only.[/bold][/color]
+  - [bold]Painkillers[/bold]: Tramadol and Oxycodone packets. Your clinician will set your dose and how long you take them for. Do not share them, do not save them and do not take them with alcohol.
+  - [bold]The emergency autoinjector[/bold], signed out by name.
+  - [bold]Epinephrine[/bold], to clinic staff only.
+  - [bold]Any medicine in a quantity larger than a standard bottle.[/bold]
+
+  A prescription must carry the clinician's name, your name, your colony ID number and the date. The dispensary will not accept a prescription written on a ration wrapper, however legible.
+
+  ## STANDARD OPENING HOURS
+  [italic]Your colony dispensary may keep different hours. Check with your clinic.[/italic]
+  - [bold]Shift days[/bold]: from the start of first shift to the end of second shift.
+  - [bold]Rest days[/bold]: a morning counter for prescriptions only.
+  - [bold]Out of hours[/bold]: the clinic duty medic holds the dispensary key. Emergencies only.
+  - [bold]Mass casualty events[/bold]: the counter closes and all stock goes to the clinic floor. Please do not queue.
+
+  ## RULES OF THE COUNTER
+  - Bring your colony ID. The counter cannot dispense without it.
+  - One bottle of each medicine per colonist per week, unless prescribed.
+  - The counter does not buy back medicine, swap medicine or accept trade goods.
+  - Colonial Marines and garrison personnel are supplied by their own corpsmen. The counter will help in an emergency.
+  - Abuse of dispensary staff will be reported to the Colonial Marshals.
+
+  ## ORDERING FROM THE CORE
+  Colony administrations can order stock from Lasalle Bionational on Gateway with the next supply run. Allow a hypersleep cycle for delivery. Urgent orders travel faster when the clinic, not the colonist, places them.
+
+  [netlink="Back to the pharmacy" link="pharmacy.lasalle.bio"]
+</Document>

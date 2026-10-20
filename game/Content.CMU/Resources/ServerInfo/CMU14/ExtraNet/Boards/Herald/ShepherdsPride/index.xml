@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/ShepherdsPride/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Shepherds' Pride, from the fishery landing to the reserve fence, filed by our own correspondent wherever the river takes the story.[/italic]
+
+  We take no Company money, we give up no sources, and we print the fines the rangers pay alongside the ones they write.
+
+  <CMUNetMarquee Text="RIVER WATCH  ///  CWPS pays a bounty on every invasive carp tail brought to the Ranger Office  ///  No fishing above the north bend without a licence  ///  Afternoon rain likely, the river road may flood  ///  Tables open on the Riverboat Casino at dusk" Speed="55" Color="#8A1C1C"/>
+</Document>

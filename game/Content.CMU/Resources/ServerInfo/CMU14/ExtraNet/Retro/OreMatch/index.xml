@@ -1,0 +1,32 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/OreMatch/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="OREMATCH: VIDEO DATING FOR THE MINING FRONTIER  ///  STRIKE IT RICH IN LOVE  ///  12,000 LONELY HEARTS ON 300 ROCKS  ///  YOUR MATCH IS ONLY A FEW LIGHT YEARS AWAY" Speed="60" Color="#FF6FA8"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Effects/hearts.rsi" State="hearts" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Materials/ore.rsi" State="diamond" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Effects/hearts.rsi" State="hearts" Scale="2"/>
+  </Box>
+  # OreMatch
+  [italic]Strike it rich in love.[/italic]
+
+  Lonely on the night shift? Tired of the same forty faces in the canteen? OreMatch is the frontier's first video dating service, made for miners, drillers, haulers, refinery hands and anyone else who has not seen a new face since their last contract.
+
+  ## HOW IT WORKS
+  - [bold]Record.[/bold] Sit in front of a camcorder. Say your name, your colony and one nice thing about yourself. Do not wear your hard hat. Everybody wears their hard hat.
+  - [bold]Post.[/bold] Mail the tape to OreMatch. We copy it onto the relay with thousands of other hopeful hearts.
+  - [bold]Match.[/bold] When two colonists like each other's tapes, we send them each other's mail address. The rest is up to you, the relay and the shipping schedule.
+
+  ## THIS WEEK'S SUCCESS
+  [italic]We met on OreMatch in 2181. I was on a refinery, she was on an ice moon four systems away. We wrote every week. We finally met at Gateway in 2184. She was exactly like her tape, except taller. We are getting married as soon as one of our contracts ends.[/italic] Abe and Ingrid
+
+  ## FIND LOVE
+  - [netlink="Browse hearts" link="orematch.love/profiles"]
+  - [netlink="Success stories" link="orematch.love/stories"]
+  - [netlink="Dating safety on the frontier" link="orematch.love/safety"]
+
+  <CMUNetAd Id="CMUDeepAdPlushie"/>
+
+  [color=#B07090]OreMatch does not check that members are single, human or the person on the tape. Please do your own checks. Synthetic and Working Joe members must declare it on their tape. Most do. JOE-114 has declared it several times.[/color]
+
+  <CMUNetWallpaper Id="CMUWallpaperJoePinup"/>
+</Document>

@@ -1,0 +1,36 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/DropDash/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Head/Hats/pizza_galaxy_cap.rsi" State="icon" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Food/burger.rsi" State="plain" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Food/Baked/donut.rsi" State="pink" Scale="2"/>
+  </Box>
+  # THE MENU
+  [italic]Kitchens currently delivering to {colony}. Descriptions are written by the kitchens, who are allowed to be vague.[/italic]
+
+  ## PIZZA GALAXY (4.5 STARS)
+  - [bold]The Supreme[/bold]. Everything. $12.
+  - [bold]The Margherita[/bold]. Tomato, cheese, leaf. The leaf is real. We had it flown in. $9.
+  - [bold]Pineapple[/bold]. We know. We make it anyway. $10.
+
+  ## TACO BUNKER (4 STARS)
+  - [bold]Beef Taco[/bold]. Contains beef. $3.
+  - [bold]Chicken Taco[/bold]. Contains chicken, according to our supplier. $3.
+  - [bold]Fish Taco[/bold]. The fish is from an orbital farm. The farm would like you to know the fish was happy. $4.
+
+  ## NOODLE RING (5 STARS)
+  - [bold]Chow Mein[/bold]. Noodles, sauce, vegetables, mystery. $7.
+  - [bold]Late Bowl[/bold]. Whatever is left at the end of the night. It is always good. Nobody knows why. $5.
+
+  ## GUS'S RATION SHACK (3 STARS)
+  - [bold]Any Menu, Hot[/bold]. A standard ration, heated and served on a plate, by Gus, of YouTape. Gus will tell you the menu number. Do not order menu 19. $6.
+
+  ## THE BURGER HOLE (2 STARS)
+  - [bold]Burger[/bold]. A burger. $5.
+  - [bold]Mystery Burger[/bold]. It changes every day. The kitchen staff do not decide what is in it. They are not sure who does. $3.
+
+  ## DONUT DROP (4 STARS)
+  - [bold]Pink Donut, half dozen[/bold]. They survive re-entry better than anything else on this page. Make of that what you will. $6.
+
+  [netlink="Back to DropDash" link="dropdash.eats"]
+</Document>

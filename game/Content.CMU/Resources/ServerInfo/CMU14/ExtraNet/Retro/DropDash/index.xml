@@ -1,0 +1,32 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/DropDash/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="DROPDASH: WE DROP IT, YOU DASH  ///  HOT FOOD TO YOUR LANDING PAD IN UNDER NINETY MINUTES OR UNDER NINETY DAYS  ///  NO RECIPES, NO QUESTIONS, NO REFUNDS" Speed="75" Color="#FF3B00"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Storage/pizza_galaxy_box.rsi" State="pizzabox1" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Food/taco.rsi" State="beeftaco" Scale="2"/>
+    <CMUNetSprite Rsi="/Textures/Objects/Consumable/Food/noodles.rsi" State="chowmein" Scale="2"/>
+  </Box>
+  # DropDash
+  [italic]We drop it. You dash.[/italic]
+
+  Hungry on {colony}? DropDash brings hot food from the best kitchens in orbit straight to your nearest landing pad. Order from your terminal. A Dasher picks it up, rides it down and leaves it on the pad. You run out and get it before the weather does.
+
+  ## WHY DROPDASH
+  - [bold]No recipes.[/bold] We do not tell you what is in it. The kitchens do not tell us. Everyone is happier this way.
+  - [bold]Always hot.[/bold] Every order travels in a heat-sealed pod. Re-entry keeps it warm. Re-entry sometimes keeps it very warm.
+  - [bold]Contactless.[/bold] Your Dasher never leaves the dropship. Your Dasher is not allowed to leave the dropship. Please stop inviting them in.
+
+  ## TONIGHT'S DEALS
+  - [bold]Pizza Galaxy Family Box[/bold]: two large, one garlic knot, free extra box. $24.
+  - [bold]Taco Bunker Combo[/bold]: three tacos and a drink. The drink is the same colour as the tacos. $9.
+  - [bold]Noodle Ring Late Bowl[/bold]: noodles. That is all we can say. $7.
+
+  ## ORDER
+  - [netlink="Browse the menu" link="dropdash.eats/menu"]
+  - [netlink="Track my order" link="dropdash.eats/tracking"]
+  - [netlink="Become a Dasher" link="dropdash.eats/dashers"]
+
+  <CMUNetAd Id="CMUDeepAdBurrito"/>
+
+  [color=#9A6A40]DropDash delivers to any colony with a working landing pad and no active quarantine. Deliveries to colonies under quarantine will be dropped as close as is safe, which may be orbit.[/color]
+</Document>

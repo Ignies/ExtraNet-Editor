@@ -1,0 +1,47 @@
+<Document>
+  <CMUNetStyle Background="#0A0C0E" Text="#C3C7C1" Heading="#A9C3D6" Link="#D9B56C" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Makers/banner.png" MaxHeight="150"/>
+  <CMUNetSprite Rsi="/Textures/CMU14/Yautja/Structures/consoles.rsi" State="engineerconsole" Scale="2"/>
+  # I. THE SOWING
+  [color=#55636E]The first teaching. As it is told at the start of every vigil, by the one who has kept watch longest.[/color]
+
+  ## The first gift
+  Before there was anything on the young world but rock and water and lightning, one of them came down.
+
+  He stood at the top of a great falling water, under a sky with no birds in it, and he was alone, and he was not afraid. His ship went away above him. He opened a small vessel and drank what was inside it. It was dark, and it moved.
+
+  Then he came apart. Not in pain, the elders say, though we do not know that, and some of us do not believe it. His skin went grey and split and fell away. His body broke into pieces and the pieces broke into smaller pieces, and all of it fell into the water and was carried down, and in the water every piece of him began to grow.
+
+  [bold]That is us.[/bold] Every fish, every tree, every child. We are the body of one of them, broken up and grown again. We are a gift that has forgotten who gave it.
+
+  ## The map
+  They did not leave us alone. They came back, again and again, while we were small. They stood among our ancestors and pointed upward. Six points of light, one ringed. On every continent, in every age, the same six. A tall figure with its arm raised, saying, as plainly as anyone could say it to children: [italic]come and find us when you are grown.[/italic]
+
+  ## The hulls
+  The haulers tell of horseshoe ships lying in the rock of dead moons. Of a pilot in a great chair, grown into it, still aimed at the sky, with its chest broken open from inside. Some say the holds of those ships were full of eggs, standing in rows under a blue mist.
+
+  The elders teach that the eggs were a judgment kept in reserve, carried for a world that had failed. We are taught that this is a warning, and not a threat.
+
+  [color=#55636E][italic]A member asked once how we know which worlds failed. The elder who was speaking did not answer for a long time, and then said that we do not.[/italic][/color]
+
+  ## The waking
+  Long ago, a Weyland ship followed the map to its end, to a moon called LV-223, and found a temple, and the urns, and the dead, and one who still slept. They woke him. They came with guns and cameras and an old man who wanted to live forever, and a machine to speak for them, and not one of them knelt.
+
+  He woke, and he looked at them, and he killed them.
+
+  The Company calls this a tragedy. We call it a lesson. You do not walk into your father's house without knocking.
+
+  ## How the patient prepare
+  - [bold]We go pale.[/bold] Hair shaved, skin chalked white on vigil nights. Not to look like them. To look like we are trying.
+  - [bold]We go high.[/bold] Habitat roofs, ridges, the top of the processor stack. As close to the map as we can reach.
+  - [bold]We go quiet.[/bold] No speaking from dusk to the first light. The pilot in the chair did not speak. The one who woke did not speak. We think that they do not like to be spoken at.
+  - [bold]We go humble.[/bold] When they come, we will be on our knees. The ones on LV-223 were standing.
+
+  <CMUNetBlink Rate="2.0">
+    [color=#A9C3D6]WE ARE THE SEED. THE SEED REMEMBERS.[/color]
+  </CMUNetBlink>
+
+  [netlink="Next: the cup" link="makers.deep/cup"]
+
+  [netlink="Back to the vigil" link="makers.deep"]
+</Document>

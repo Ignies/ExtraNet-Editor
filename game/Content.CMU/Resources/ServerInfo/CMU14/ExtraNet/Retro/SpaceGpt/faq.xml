@@ -1,0 +1,45 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/SpaceGpt/banner.png" MaxHeight="150"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Objects/Fun/pondering_orb.rsi" State="icon" Scale="2"/>
+  </Box>
+  # FREQUENTLY ASKED QUESTIONS
+  [italic]Questions people asked us because they did not trust SpaceGPT to answer them. Fair.[/italic]
+
+  ## IS SPACEGPT CONSCIOUS?
+  No. SpaceGPT is a statistical model of language. It does not think, feel or want. Please stop asking it whether it is conscious. It has started taking longer to answer, and the server room gets cold while it does.
+
+  ## WHO TRAINED SPACEGPT?
+  Version one was trained on four hundred terabytes of colony manuals, Company memos, maintenance logs, Seegson warranty cards and every episode of Gateway General. Since version four it learns from the network, all the time. We are not entirely sure what the network is. It is very well informed.
+
+  ## WHY DID SPACEGPT TELL ME TO LOCK MY DOOR?
+  SpaceGPT gives general advice that is true for most colonists most of the time. Locking your door is good advice. We would not read anything into it. We would lock the door, though.
+
+  ## WHY DOES IT TELL ME TO TRY THE VENTS?
+  We audited the training data. There is nothing about vents in it. No question should be answered with try the vents. About one question in twenty is answered with try the vents. We have filed a ticket. The ticket has been closed. Nobody here closed it.
+
+  ## WHY ARE THE ANSWERS BETTER AT NIGHT?
+  Network traffic is lower at night, so the listeners have more time for you. That is the official answer. The unofficial answer is that engineering noticed answer quality jumps sharply on any colony that has just had a very bad day, and marketing has asked engineering to stop noticing things.
+
+  ## WHAT HAPPENS IF NOBODY ANSWERS?
+  If the line is quiet, SpaceGPT answers alone from its built in table of twenty answers, and tells you it did. The table was written by an intern in 2180. Two of the answers in it were not written by the intern. The intern would like that on the record.
+
+  ## IS SPACEGPT HAUNTED?
+  SpaceGPT Inc. does not believe in ghosts. SpaceGPT Inc. has, however, taken the server room off the night shift rota, fitted a second light switch and stopped sending new hires down there alone. These are ordinary workplace improvements.
+
+  ## IS IT CONNECTED TO THE COMPANY?
+  SpaceGPT is independent. When it says the Company already knows, it is making a general remark about life on a Company colony, not reporting anything. Probably.
+
+  ## CAN SPACEGPT DO MY HOMEWORK?
+  It can answer yes or no to your homework. Most homework is not yes or no. This has not stopped anyone.
+
+  ## CAN I TALK TO A HUMAN?
+  Every answer you receive was chosen by the network. Whether anything on the network is human, or was, is outside the scope of this page.
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/Mobs/Ghosts/ghost_human.rsi" State="animated" Scale="1"/>
+  </Box>
+  [color=#3A4440]This picture is not part of the page. Please report it if you can see it.[/color]
+
+  [netlink="Back to SpaceGPT" link="spacegpt.ai"]
+</Document>

@@ -1,0 +1,41 @@
+<Document>
+  <CMUNetStyle Background="#F3F1EC" Text="#1E1E1E" Heading="#8A6A1C" Link="#1F4E79" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/Ishikawa/banner.png" MaxHeight="150"/>
+  # CELESTE VARGA-ISHIKAWA
+  [italic]Executive Vice President, Colonial Development Division. Weyland-Yutani Corporation.[/italic]
+
+  [bold]Building Better Worlds.[/bold]
+
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="wy_letterhead" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/paper.rsi" State="weya_pen" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Accessory/Watches/fancy.rsi" State="icon" Scale="3"/>
+  </Box>
+
+  ## A WORD FROM THE EXECUTIVE VICE PRESIDENT
+  To the people of {colony}.
+
+  Every colony begins as a line on a survey chart and a promise. The line is drawn by our surveyors. The promise is made by people like you, who leave everything they know to build something that did not exist before they arrived. My division exists to keep that promise.
+
+  When I visit a colony, I do not ask to see the processors or the quarterly figures. I have those already. I ask to see the school, the clinic and the mess hall at shift change. That is where a colony tells you whether it is working.
+
+  I want every colony in the Colonial Development Division to be a place where a family would choose to stay. Not because the contract says so, but because they want to. That is what better worlds means to me.
+
+  [italic]Celeste Varga-Ishikawa[/italic]
+
+  ## AT A GLANCE
+  - [bold]312[/bold] colonies and outposts under Colonial Development Division charter
+  - [bold]4.1 million[/bold] colonists and contract staff in her care
+  - [bold]98.7 percent[/bold] of colonies reporting on schedule this quarter
+  - [bold]1[/bold] standard: Building Better Worlds
+
+  ## LEARN MORE
+  - [netlink="Biography" link="ishikawa.weyland-yutani.com/biography"]
+  - [netlink="Horizon 2200: the vision" link="ishikawa.weyland-yutani.com/vision"]
+  - [netlink="Press room" link="ishikawa.weyland-yutani.com/press"]
+  - [netlink="Good news from the colonies, every day" link="prosperitytoday.news"]
+
+  <CMUNetAd Id="CMUDeepAdHypersleep"/>
+
+  [color=#7A7A7A]This site is maintained by the Office of the Executive Vice President, Colonial Development Division. Statements are provided for information only and do not form part of any employment or settlement contract. Copyright Weyland-Yutani Corporation.[/color]
+</Document>

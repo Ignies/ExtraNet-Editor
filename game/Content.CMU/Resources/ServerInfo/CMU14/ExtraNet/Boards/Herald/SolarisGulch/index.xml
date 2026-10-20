@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/SolarisGulch/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Solaris Gulch, filed by our own correspondent from the Eta and Lambda fences to the mine road. First pinned up on the backs of lab forms in 2145.[/italic]
+
+  The Company owns the labs, the bunks and the payroll. It does not own this page. Read the depot notices, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Stories are filed by the Herald's correspondent as events unfold  ///  Storm shutters down at the first siren  ///  Goggles on outdoors while the giant is up  ///  Next supply run still unconfirmed  ///  Readers may comment under any story" Speed="55" Color="#8A1C1C"/>
+</Document>

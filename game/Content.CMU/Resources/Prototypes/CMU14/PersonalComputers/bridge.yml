@@ -1,0 +1,29 @@
+# The console bridge: which consoles on colony maps run the PC OS, with their own screen as a desktop program.
+# A console counts if its prototype is, or inherits from, anything under include, and nothing under exclude.
+# Consoles made from these parents are bridged without any change to their prototypes.
+# Admins switch the whole bridge with the cmu.pc.bridge cvar.
+
+- type: cmuComputerBridge
+  id: Default
+  include:
+  - RMCCommunicationsConsoleBase # colony economy, records, objectives, tech, HERMES and faction consoles
+  - CMASRSConsole                # requisitions
+  - RMCMonitorCameraAlmayer      # security camera monitors (only those placed on colony maps)
+  - RMCIDComputer
+  - CMUResearchDataTerminal
+  - BaseComputer                 # upstream SS14 computers placed on colonies
+  - VehicleSupplyConsole
+  exclude:
+  # Combat consoles stay as they are.
+  - RMCOverwatchConsole
+  - RMCGroundsideOperationsConsole
+  - RMCTacticalMapTable
+  - CMComputerDropship
+  - ComputerTelevision
+  os:
+    AU14CorporateConsoleBase: CMUOsWeyland
+    AU14CorporateASRSConsole: CMUOsWeyland
+    ComputerObjectivesWeYu: CMUOsWeyland
+    CMUMonitorCameraColonyWEYU: CMUOsWeyland
+    CMUMonitorCameraColonyWEYUSpy: CMUOsWeyland
+    RMCAIConsoleHERMES: CMUOsWeyland

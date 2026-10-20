@@ -1,0 +1,39 @@
+<Document>
+  <CMUNetStyle Background="#101114" Text="#DCD8C8" Heading="#F0E14A" Link="#86E3C8" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/TheBox/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="THEY DO NOT SLEEP  ///  THEY DO NOT SWEAT  ///  THEY ASK TOO MANY QUESTIONS  ///  CHECK THE CUT, NOT THE FACE  ///  THE BOX REMEMBERS" Speed="60" Color="#F0E14A"/>
+  # IS YOUR COWORKER SYNTHETIC?
+
+  [italic]A field manual for people who have noticed something. Typed in a storage closet, mirrored by friends. No logs, no names, no Company.[/italic]
+
+  <CMUNetBlink Rate="0.6">
+    [color=#FF4F4F][bold]IF YOU ARE READING THIS ON A COMPANY TERMINAL, CLOSE IT AND WALK AWAY.[/bold][/color]
+  </CMUNetBlink>
+
+  ## WHY THE BOX EXISTS
+  Weyland Corp took the first patent on artificial people in 2023. By the turn of the century its David models walked among us by the millions and nobody could tell them apart from the rest of us. That was eighty years ago. The good ones have only got better, and the people who build them have every reason to keep it that way.
+
+  ## WHAT WE KNOW FOR CERTAIN
+  - They bleed [color=#F4F1E6][bold]white[/bold][/color]. Thick and pale, never red.
+  - They never tire, never sleep and never feel fear.
+  - They run on a hydrogen cell in the chest, around 400 days between fills.
+  - A hit to the processor or the cell drops them like a switched off lamp.
+  - By law they are property. Somebody owns your coworker. Ask yourself who.
+
+  ## THE RULES OF THE BOX
+  - [bold]Do not cut anybody.[/bold] Dave in hydroponics was sure. Dave was wrong. Dave is in the brig.
+  - [bold]Watch, write it down, compare notes.[/bold] One tell is a habit. Three is a file.
+  - [bold]A Working Joe is not the threat.[/bold] You can hear a Joe coming down the corridor. Worry about the one who brings you coffee and remembers how you take it.
+
+  ## THE FILES
+  - [netlink="Behaviour tells and white blood" link="thebox.deep/tells"]
+  - [netlink="The models, from David to the Working Joe" link="thebox.deep/models"]
+
+  ## FRIENDS OF THE BOX
+  - [netlink="bloodmarket.deep" link="bloodmarket.deep"] where the unregistered ones change hands, if the rumours are true
+  - [netlink="wyleaks.deep" link="wyleaks.deep"] Company paper the Company wants back
+
+  [color=#5C5F66]thebox.deep // hosted on a dead freezer controller // we see you reading[/color]
+
+  [netlink="Back to the top of the box" link="thebox.deep"]
+</Document>

@@ -1,0 +1,38 @@
+<Document>
+  <CMUNetStyle Background="#2A0D0D" Text="#EBD9B4" Heading="#F2C230" Link="#E8774A" Font="Display"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/Patches/naval_patch.rsi" State="icon" Scale="2"/>
+  </Box>
+
+  # SECURITY SECTORS
+  The Commanding Officer divides the colony into four sectors. Changes are posted on the front page and may come at any change of shift. If a sign and a sentry disagree, the sentry is correct.
+
+  ## SECTOR ONE
+  [color=#9FC46A][bold]OPEN TO ALL CITIZENS[/bold][/color]
+  - Living blocks, the canteen, the stores, the clinic waiting room and the bar.
+  - No checks. Patrols pass through. Carry your documents regardless.
+
+  ## SECTOR TWO
+  [color=#F2C230][bold]CONTROLLED[/bold][/color]
+  - Landing pads, fuel stores, the power plant, the air and water works, the radio relay and the colony administration.
+  - Documents checked at the door. Bags may be searched. No loitering, no photographs.
+
+  ## SECTOR THREE
+  [color=#E8774A][bold]MILITARY[/bold][/color]
+  - The garrison compound, armoury, vehicle park, command post and the perimeter fence.
+  - Entry only under escort with a written pass. Sentries will use force to stop an intruder.
+
+  ## SECTOR FOUR
+  [color=#F4EFE6][bold]CLOSED BY ORDER[/bold][/color]
+  - Declared in an emergency: a gas leak, a fire, a cave-in, a quarantine, unexploded charges or fighting.
+  - Nobody crosses the cordon, citizen or soldier, unless assigned to the response. When the air is bad, the line is the line.
+
+  ## MARKINGS
+  - Chevron striping on a barrier marks the edge of a sector.
+  - Hazard striping marks a checkpoint lane. Stop at the painted bar.
+  - Flashing amber lights on a cordon mean Sector Four. Turn back.
+
+  Sector changes are also printed by the [netlink="Colony Herald" link="herald.colony.news"] when the press is on shift.
+
+  [netlink="Return to the notice board of the garrison" link="command.govfor.mil"]
+</Document>

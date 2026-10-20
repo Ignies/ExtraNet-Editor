@@ -335,6 +335,9 @@ class Renderer {
         return this.wallpaper(node);
       default:
         if (isPlaceholderTag(node.name)) {
+          // The emulator draws the live tags itself; the editor shows a placeholder.
+          const live = this.ctx.widget ? this.ctx.widget(node.name, a, this.style) : null;
+          if (live) return live;
           const args = Object.entries(a).map(([k, v]) => `${k}="${v}"`).join(' ');
           return el('div.tag-placeholder', { title: 'Drawn live by the game; the editor cannot show it.' },
             el('strong', { text: node.name }), args ? ` ${args}` : '', el('div.tag-placeholder-note', { text: 'Drawn by the game in play' }));
@@ -476,6 +479,7 @@ class Renderer {
     const name = el('div.h-key.page-heading', { text: node.args.Id });
     const button = el('button.net-wallpaper-set', { type: 'button', text: 'Use as desktop wallpaper', title: 'Sets the terminal\'s desktop wallpaper in game' });
     box.append(el('div.net-wallpaper-frame', {}, img), name, button);
+    if (this.ctx.onWallpaper) button.addEventListener('click', () => this.ctx.onWallpaper(node.args.Id));
     Promise.all([wallpapers(), locale().catch(() => ({}))]).then(([all, strings]) => {
       const wallpaper = all.get(node.args.Id);
       if (!wallpaper) {

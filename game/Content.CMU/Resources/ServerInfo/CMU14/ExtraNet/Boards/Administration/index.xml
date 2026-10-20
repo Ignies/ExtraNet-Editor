@@ -1,0 +1,7 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Administration/banner.png" MaxHeight="170"/>
+  <CMUNetMarquee Text="Colony sirens are tested every Monday at 0900  ///  Atmosphere monitors report nominal readings in all districts  ///  Keep your rebreather where you can reach it in the dark" Speed="55" Color="#F2C14E"/>
+  Official notices from the Office of the Colony Administrator. Notices posted below bind every resident until they are revoked.
+
+  Questions and objections may be left as comments; the office reads every one. For housing, jobs and colony radio, see [netlink="Colony services" link="colony.seegson.net"].
+</Document>

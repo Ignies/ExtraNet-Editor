@@ -1,0 +1,8 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Herald/FortMcNeil/banner.png" MaxHeight="170"/>
+  [italic]Independent news for Fort McNeil and the drill sites of White Antre, filed by our own correspondent from wherever the story is. Names, not numbers.[/italic]
+
+  We take no money from the mining concern and we give up no sources. Read the notices in Administration, then read us.
+
+  <CMUNetMarquee Text="LATEST  ///  Drill Coordination posts the new shift rotation  ///  Union slips found in the dormitory again, management not amused  ///  Security reminds residents the old smuggler route is out of bounds  ///  Atmospheric console still forecasting rain, readers report drizzle  ///  Classified notices run free for drill crews" Speed="55" Color="#8A1C1C"/>
+</Document>

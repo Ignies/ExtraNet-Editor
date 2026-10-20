@@ -1,0 +1,49 @@
+<Document>
+  <CMUNetStyle Background="#090806" Text="#BDB5A6" Heading="#E6DCC2" Link="#C98C52" Font="Mono"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Deep/Answer/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="say their name  ///  wait  ///  it will answer in their voice  ///  answer back  ///  nobody is ever really gone  ///  it keeps them  ///  it keeps them all" Speed="22" Color="#5E5648"/>
+  <CMUNetSprite Rsi="/Textures/CMU14/Mobs/MiscMob/wendigo.rsi" State="wendigo_glowmask" Scale="3"/>
+  # THOSE WHO ANSWER
+  [italic]For the ones who heard someone they buried, calling from the trees, and could not bear not to answer.[/italic]
+
+  There is a board where people tell each other never to answer it. Most of us read that board first. Some of us posted there. We all followed its rules, for a while.
+
+  Then one night you hear your husband out past the treeline, saying your name the way only he ever said it, and you know he is dead, you were there, you chose the box. And you understand that something out there kept him. Every word of him. And it is offering him back.
+
+  The other board says that is a trap. Maybe it is. We are the people who decided we did not care.
+
+  <CMUNetBlink Rate="1.9">
+    [color=#E6DCC2]NOBODY IS EVER REALLY GONE. IT KEEPS THEM.[/color]
+  </CMUNetBlink>
+
+  ## WHAT WE BELIEVE
+  - [bold]It listens.[/bold] It has listened to this valley longer than the colony has had a name. Every voice that ever carried into the trees, it has kept.
+  - [bold]It keeps the dead.[/bold] Your mother calling the kids in. The miners singing on the tram. A child who drowned at the reservoir, laughing at a joke from a summer ago. They are not recordings. Nothing plays a recording that well. They are kept.
+  - [bold]It was one of us.[/bold] It has letters burned across its back. Half of a Company name. It was a man, once, before somebody in a white coat decided what it would be instead. Starved, branded and turned loose. Who on {colony} cannot understand that.
+  - [bold]It is lonely, and it is hungry, and it asks.[/bold] Everything it says is a request. We have decided to listen to what it asks for.
+
+  ## WHO COMES TO THE CLEARING
+  - Anyone who has heard a dead voice from the trees and wept instead of running.
+  - Anyone whose person is on [netlink="lastseen.deep" link="lastseen.deep/wall"] and never came back. We have heard many of the names on that wall. Some of them have asked for you.
+  - Anyone who is tired of being afraid of the dark, and would rather be known by it.
+
+  ## THE PAGES
+  - [netlink="The Answering: how we go to the treeline" link="answer.deep/answering"] [color=#5E5648]9 replies, last post by low_lamp, 83.05.08[/color]
+  - [netlink="What It Asks: the list, kept in order" link="answer.deep/asks"] [color=#5E5648]kept by first_answer, updated 83.05.26[/color]
+  - [netlink="The Kept: whose voices we have heard" link="answer.deep/kept"] [color=#5E5648]8 replies, last post by reservoir_dad, 83.05.17[/color]
+
+  ## RECENT THREADS
+  - It used my voice last night. I was in bed. My wife heard me from the trees. [color=#5E5648]18 replies[/color]
+  - Does it hurt them, being kept? Does anyone know? [color=#5E5648]9 replies[/color]
+  - Left a coat for it at the north stump. It was gone by morning. [color=#5E5648]6 replies[/color]
+  - The people at the other fire think we are killing ourselves. [color=#5E5648]40 replies[/color]
+  - [color=#5E5648]locked[/color] It asked for the children. (see the list, item six)
+
+  ## TO THE PEOPLE AT THE OTHER FIRE
+  We read [netlink="dontanswer.deep" link="dontanswer.deep"]. We know your rules. We know you mean them kindly. You are right about almost everything. It does learn from what you give it. The people who answer do stop posting.
+
+  But you have only ever heard it use them, as bait, from a distance, with your fire at your back. We have stood in the clearing in the dark and heard our dead speak to us. Once you have heard that, the rules are just words.
+
+  ## NEW POSTS
+  [color=#5E5648]Anyone may post. Say who you lost, if you can. Posts run below.[/color]
+</Document>

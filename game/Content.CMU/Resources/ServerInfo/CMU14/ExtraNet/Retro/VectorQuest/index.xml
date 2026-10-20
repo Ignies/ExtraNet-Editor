@@ -1,0 +1,28 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Retro/VectorQuest/banner.png" MaxHeight="150"/>
+  <CMUNetMarquee Text="VECTORQUEST: GET THERE. EVENTUALLY.  ///  NOW MAPPING 300 COLONIES AND MOST OF THEIR CORRIDORS  ///  PRINT YOUR DIRECTIONS BEFORE YOU LEAVE. THE UPLINK WILL NOT FOLLOW YOU." Speed="60" Color="#9BE15D"/>
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Structures/hybrisa_computer_props.rsi" State="mapping_comp" Scale="1"/>
+  </Box>
+  # VectorQuest
+  [italic]Maps and directions for the frontier. Get there. Eventually.[/italic]
+
+  [bold]FROM:[/bold] ____________________ [bold]TO:[/bold] ____________________ (GET DIRECTIONS)
+
+  [color=#7FA070]Type a starting point and a destination. VectorQuest will plot a route, print a list of turns and draw it in glowing green lines, like a real spaceship.[/color]
+
+  ## POPULAR ROUTES ON {colony}
+  - [bold]Bunk to canteen.[/bold] 4 minutes. Recommended.
+  - [bold]Canteen to medical.[/bold] 3 minutes. Faster if you are carrying someone.
+  - [bold]Anywhere to the landing zone.[/bold] Time varies. Route varies. Route may be closed by the garrison.
+  - [bold]Lower processor levels.[/bold] No route found. VectorQuest does not map the lower levels. Neither does anyone else who came back.
+
+  ## TOOLS
+  - [netlink="Turn by turn directions" link="vectorquest.nav/directions"]
+  - [netlink="Satellite view" link="vectorquest.nav/satellite"]
+  - [netlink="Shipping lanes and travel times" link="vectorquest.nav/lanes"]
+
+  [color=#7FA070]VectorQuest maps are drawn from colony blueprints, which may be old, wrong or classified. Walls may have moved. Doors may have been welded shut. Vents are not shown, for your own good.[/color]
+
+  <CMUNetWallpaper Id="CMUWallpaperStarfield"/>
+</Document>

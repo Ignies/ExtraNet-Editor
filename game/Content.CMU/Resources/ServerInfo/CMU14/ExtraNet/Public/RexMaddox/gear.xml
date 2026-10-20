@@ -1,0 +1,41 @@
+<Document>
+  <CMUNetStyle Background="#161B0C" Text="#E5E8C8" Heading="#FF7A1A" Link="#FFD24A" Font="Display"/>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Public/RexMaddox/banner.png" MaxHeight="150"/>
+  # OFFICIAL SURVIVAL GEAR
+  [italic]The same kit Rex carries on Hostile Worlds, give or take a camera crew. Prices in UA dollars. Shipped with the next freighter, packed in a crate Rex has personally kicked to make sure it holds.[/italic]
+
+  ## CUT
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Weapons/Melee/machete.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Weapons/Melee/m11_knife.rsi" State="icon" Scale="3"/>
+  </Box>
+  - [bold]The Maddox Machete[/bold], $55. For vines, brush and opening crates. Rex does not recommend it for anything else and neither does your colony's Colonial Marshal.
+  - [bold]Base Camp Knife[/bold], $30. Season one's knife. The one he broke on a rock in episode two, rebuilt to be harder to break on a rock.
+
+  ## SEE AND BE SEEN
+  <Box>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Misc/flares.rsi" State="flare_unlit" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/binoculars.rsi" State="binoculars_civ" Scale="3"/>
+  </Box>
+  - [bold]Signal Flares[/bold], $4 each. Rule two. Light it before you need it.
+  - [bold]Ridgeline Binoculars[/bold], $40. So you can see the thing before the thing sees you.
+
+  ## EAT
+  <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Consumable/Food/mre.rsi" State="closed" Scale="3"/>
+  - [bold]Rex Ration[/bold], $6. A standard meal ready to eat in a Hostile Worlds sleeve. Rex has signed the sleeve. Rex has not changed the meal. It is still the most dangerous thing he has eaten on the show.
+
+  ## WEAR
+  <Box>
+    <CMUNetSprite Rsi="/Textures/CMU14/Clothing/JungleHats/booniehat.rsi" State="icon" Scale="3"/>
+    <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Clothing/Uniforms/T-shirt/white.rsi" State="icon" Scale="3"/>
+  </Box>
+  - [bold]The Boonie[/bold], $20. Rex's hat. The real one has a burn mark from the Cold Night flare. Yours does not, unless you try very hard.
+  - [bold]I Was Not Lost Shirt[/bold], $18. Printed after the Green Hell episode. Sales have been excellent. The garrison at Lazarus Landing bought a box.
+
+  <CMUNetAd Id="CMUDeepAdFlare"/>
+
+  ## A WORD FROM OUR SAFETY OFFICER
+  Owning the gear does not make you Rex. If you are on a colony world, the best survival kit you have is your colony administration, your garrison and the clinic. Stay inside the perimeter after dark.
+
+  [netlink="Back to base camp" link="rexmaddox.holo"]
+</Document>

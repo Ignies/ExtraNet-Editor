@@ -1,0 +1,36 @@
+<Document>
+  <CMUGuideImage Path="/Textures/CMU14/PersonalComputers/Sites/Administration/emblem.png" MaxHeight="96"/>
+  # DEPARTMENTS
+  The civil administration works from the Administration office, with desks wherever the colony's work is done. Office hours are 0800 to 1800, colony time. Out of hours, leave a comment under the notices; the duty clerk reads them at the start of shift.
+
+  ## Office of the Administrator
+  - The Colony Administrator and the Deputy Administrator.
+  - Ordinances, petitions, appointments, curfew passes and liaison with the colony's charter holders.
+
+  ## Atmosphere and Safety
+  - Runs the air monitors, gas alarms and the siren network.
+  - Issues rebreathers and inspects the seals on homes and workplaces. Report a failed seal or a strange smell at once.
+
+  ## Claims and Works
+  - Registers mining claims and work sites, and holds every ground survey on file.
+  - Inspectors may halt any excavation or works without notice.
+
+  ## Food and Stores
+  - Oversees hydroponics, greenhouses, cold stores and food reserves.
+  - Ration schedules are posted here when reserves fall below quota.
+
+  ## Housing and Public Works
+  - Roads, water, power and housing. Seegson runs the assignment desk under contract: [netlink="housing assignments" link="colony.seegson.net/housing"].
+
+  ## Public Records
+  - Births, deaths, marriages, residency papers and work permits.
+  - Every resident may inspect their own file on request.
+
+  ## Garrison Liaison
+  - Coordinates with the garrison on patrols, curfews and emergency response. Garrison orders are published at [netlink="Garrison Command" link="command.govfor.mil"].
+
+  ## Public Information
+  - Press releases and statements go to [netlink="The Colony Herald" link="herald.colony.news"] and colony radio.
+
+  [netlink="Back to notices" link="admin.colony.gov"]
+</Document>
