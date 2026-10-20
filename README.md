@@ -20,7 +20,9 @@ ssh root@your-server 'bash -s' < install.sh
 ```
 
 Settings go before `bash`: `DOMAIN=` for another address, `EMAIL=` for certificate expiry notices, `NO_TLS=1` to
-serve plain HTTP. Run it again at any time to update the site to the latest commit.
+serve plain HTTP. Run it again at any time to update the site to the latest commit. It only adds a server block for its own
+domain (`/etc/nginx/sites-available/<domain>`, files in `/var/www/<domain>`), so other sites on the same server
+keep working.
 
 ### Anywhere else
 

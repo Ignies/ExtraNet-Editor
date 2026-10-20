@@ -16,6 +16,8 @@
 #
 # Running it again updates the site to the latest commit and keeps the existing certificate.
 # Before running, point the domain's DNS A (and AAAA) record at this server, or the certificate step fails.
+# It only adds a server block for its own domain: other sites on the same nginx keep working, and running it
+# again with another DOMAIN installs a second copy next to the first.
 set -euo pipefail
 
 DOMAIN="${DOMAIN:-extraneteditor.ignies.net}"
@@ -23,8 +25,9 @@ EMAIL="${EMAIL:-}"
 REPO="${REPO:-https://github.com/Ignies/ExtraNet-Editor.git}"
 BRANCH="${BRANCH:-main}"
 NO_TLS="${NO_TLS:-0}"
-WEBROOT="/var/www/extraneteditor"
-SITE="/etc/nginx/sites-available/extraneteditor"
+# Named after the domain, so other sites on this server keep their own folders and configs.
+WEBROOT="/var/www/$DOMAIN"
+SITE="/etc/nginx/sites-available/$DOMAIN"
 
 say() { printf '\n==> %s\n' "$*"; }
 
@@ -84,8 +87,12 @@ server {
     gzip_types text/css application/javascript application/json image/svg+xml;
 }
 NGINX
-ln -sf "$SITE" /etc/nginx/sites-enabled/extraneteditor
-rm -f /etc/nginx/sites-enabled/default
+ln -sf "$SITE" "/etc/nginx/sites-enabled/$DOMAIN"
+# The first version of this script used fixed names; drop that copy so the domain is not served twice.
+if [ -e /etc/nginx/sites-available/extraneteditor ]; then
+    rm -f /etc/nginx/sites-enabled/extraneteditor /etc/nginx/sites-available/extraneteditor
+    rm -rf /var/www/extraneteditor
+fi
 nginx -t
 systemctl enable nginx
 systemctl reload nginx || systemctl restart nginx
