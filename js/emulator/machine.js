@@ -267,7 +267,7 @@ export class Machine {
     sprite(a.power[`${a.name}_${this.on ? 'on' : 'off'}${look}`] || a.power[`${a.name}_${this.on ? 'on' : 'off'}`], at(POWER));
   }
 
-  /** The ID card going into the slot on its side, cut off where it is inside the machine. */
+  /** The ID card standing upright in the slot, as the game draws it, cut off where it is inside the machine. */
   drawCard(ctx, card, [x, y, w, h]) {
     const art = w / CARD_RECT[2];
     const keys = this.cardKeys || INSERT_KEYS;
@@ -279,10 +279,8 @@ export class Machine {
     ctx.beginPath();
     ctx.rect(x, y, w, h);
     ctx.clip();
-    ctx.translate(dx + size / 2, dy + size / 2);
-    ctx.rotate(Math.PI / 2);
     const fr = frameAt(card, this.t);
-    ctx.drawImage(card.sheet, fr.sx, fr.sy, card.w, card.h, -size / 2, -size / 2, size, size);
+    ctx.drawImage(card.sheet, fr.sx, fr.sy, card.w, card.h, dx, dy, size, size);
     ctx.restore();
   }
 }
