@@ -1,0 +1,260 @@
+{
+ "ANPRC117GRadio": [
+  {
+   "rsi": "CMU14/Objects/Radio/anprc117g.rsi",
+   "state": "base"
+  }
+ ],
+ "AU14CassetteTapeRisingSun": [
+  {
+   "rsi": "_RMC14/Objects/Devices/cassette_player.rsi",
+   "state": "cassette_rising_sun"
+  }
+ ],
+ "AU14CassetteTapeWY": [
+  {
+   "rsi": "_RMC14/Objects/Devices/cassette_player.rsi",
+   "state": "cassette_weya"
+  }
+ ],
+ "CMBootsBlack": [
+  {
+   "rsi": "_RMC14/Objects/Clothing/Shoes/Boots/black.rsi",
+   "state": "icon"
+  },
+  {
+   "rsi": "_RMC14/Objects/Clothing/Shoes/Boots/black.rsi",
+   "state": "filled"
+  }
+ ],
+ "CMCigPackBlack": [
+  {
+   "rsi": "Objects/Consumable/Smokeables/Cigarettes/Packs/black.rsi",
+   "state": "closed"
+  }
+ ],
+ "CMCrowbar": [
+  {
+   "rsi": "_RMC14/Objects/Tools/crowbar.rsi",
+   "state": "icon"
+  }
+ ],
+ "CMDefibrillator": [
+  {
+   "rsi": "_RMC14/Objects/Medical/defib.rsi",
+   "state": "defib"
+  }
+ ],
+ "CMDrinkCanCola": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Drinks/cola.rsi",
+   "state": "icon"
+  }
+ ],
+ "CMDrinkCanFruitBeer": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Drinks/fruit_beer.rsi",
+   "state": "icon"
+  }
+ ],
+ "CMDrinkCanSoda": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Drinks/sodawater.rsi",
+   "state": "icon"
+  }
+ ],
+ "CMFlare": [
+  {
+   "rsi": "_RMC14/Objects/Misc/flares.rsi",
+   "state": "flare"
+  },
+  {
+   "rsi": "_RMC14/Objects/Misc/flares.rsi",
+   "state": "overlay"
+  }
+ ],
+ "CMHealthAnalyzer": [
+  {
+   "rsi": "_RMC14/Objects/Medical/health_analyzer.rsi",
+   "state": "health"
+  }
+ ],
+ "CMHyperSleepChamber": [
+  {
+   "rsi": "_RMC14/Structures/Machines/hypersleep.rsi",
+   "state": "open"
+  }
+ ],
+ "CMMRE": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Food/mre.rsi",
+   "state": "closed"
+  }
+ ],
+ "CMMultitool": [
+  {
+   "rsi": "_RMC14/Objects/Tools/multitool.rsi",
+   "state": "multitool"
+  }
+ ],
+ "CMPlushieBee": [
+  {
+   "rsi": "_RMC14/Objects/Fun/plushies.rsi",
+   "state": "bee"
+  }
+ ],
+ "CMUCigarettePackWYGoldMini": [
+  {
+   "rsi": "CMU14/Objects/Consumable/MRE/wy_gold_mini.rsi",
+   "state": "closed"
+  }
+ ],
+ "CMUMREPacketUSCMSnackPeanuts": [
+  {
+   "rsi": "CMU14/Objects/Consumable/MRE/mre_uscm.rsi",
+   "state": "snack"
+  }
+ ],
+ "CMUMREPacketWYSnackPretzels": [
+  {
+   "rsi": "CMU14/Objects/Consumable/MRE/mre_wy.rsi",
+   "state": "pmc_snack"
+  }
+ ],
+ "CMWelder": [
+  {
+   "rsi": "_RMC14/Objects/Tools/welder.rsi",
+   "state": "icon"
+  }
+ ],
+ "CMWrench": [
+  {
+   "rsi": "_RMC14/Objects/Tools/wrench.rsi",
+   "state": "icon"
+  }
+ ],
+ "RMCBinoculars": [
+  {
+   "rsi": "_RMC14/Objects/Devices/binoculars.rsi",
+   "state": "binoculars"
+  }
+ ],
+ "RMCBinocularsCiv": [
+  {
+   "rsi": "_RMC14/Objects/Devices/binoculars.rsi",
+   "state": "binoculars_civ"
+  }
+ ],
+ "RMCCigarettePackArcturianAce": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Smokeables/Cigarettes/arcturian_ace.rsi",
+   "state": "closed"
+  }
+ ],
+ "RMCCigarettePackElectroGolds": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Smokeables/Cigarettes/electro_golds.rsi",
+   "state": "closed"
+  }
+ ],
+ "RMCCigarettePackWeYaGold": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Smokeables/Cigarettes/we_ya_gold_packet.rsi",
+   "state": "closed"
+  }
+ ],
+ "RMCCoffeeCupFilled": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Drinks/coffee_cup.rsi",
+   "state": "icon-0"
+  }
+ ],
+ "RMCCoffeeMachine": [
+  {
+   "rsi": "_RMC14/Structures/Furniture/coffee_machine.rsi",
+   "state": "coffee_empty_on"
+  }
+ ],
+ "RMCDrinkCanSequoiaBeer": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Drinks/beer_pack.rsi",
+   "state": "icon"
+  }
+ ],
+ "RMCFlashlight": [
+  {
+   "rsi": "_RMC14/Objects/Tools/Light/flashlight.rsi",
+   "state": "flashlight"
+  }
+ ],
+ "RMCFlashlightLantern": [
+  {
+   "rsi": "_RMC14/Objects/Tools/Light/lantern.rsi",
+   "state": "lantern"
+  }
+ ],
+ "RMCFoodSnackBoonieBar": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Food/packaged.rsi",
+   "state": "boonie-o"
+  }
+ ],
+ "RMCFoodSnackBurritoPackaged": [
+  {
+   "rsi": "_RMC14/Objects/Consumable/Food/packaged.rsi",
+   "state": "packaged-burrito"
+  }
+ ],
+ "RMCMechPowerLoader": [
+  {
+   "rsi": "_RMC14/Objects/power_loader.rsi",
+   "state": "powerloader_open"
+  }
+ ],
+ "RMCMechPowerLoaderGreen": [
+  {
+   "rsi": "_RMC14/Objects/power_loader.rsi",
+   "state": "powerloader_open_jd"
+  }
+ ],
+ "RMCMotionDetector": [
+  {
+   "rsi": "_RMC14/Objects/Tools/motion_detector.rsi",
+   "state": "detector"
+  },
+  {
+   "rsi": "_RMC14/Objects/Tools/motion_detector.rsi",
+   "state": "detector_long_switch"
+  }
+ ],
+ "RMCMotionDetectorCompact": [
+  {
+   "rsi": "_RMC14/Objects/Tools/compact_motion_detector.rsi",
+   "state": "detector"
+  },
+  {
+   "rsi": "_RMC14/Objects/Tools/compact_motion_detector.rsi",
+   "state": "detector_long_switch"
+  }
+ ],
+ "RMCPowerCellHigh": [
+  {
+   "rsi": "_RMC14/Objects/Power/cells.rsi",
+   "state": "hcell"
+  },
+  {
+   "rsi": "_RMC14/Objects/Power/cells.rsi",
+   "state": "o2"
+  }
+ ],
+ "RMCPowerCellSuper": [
+  {
+   "rsi": "_RMC14/Objects/Power/cells.rsi",
+   "state": "scell"
+  },
+  {
+   "rsi": "_RMC14/Objects/Power/cells.rsi",
+   "state": "o2"
+  }
+ ]
+}

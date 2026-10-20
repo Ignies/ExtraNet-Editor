@@ -1,0 +1,234 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Seegson product",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "blueprint",
+    "seed": 3,
+    "params": {
+      "block": "none",
+      "notes": 0.5
+    }
+  },
+  "layers": [
+    {
+      "id": "brand",
+      "type": "text",
+      "name": "Brand",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 36,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "SEEGSON",
+      "font": "orbitron",
+      "size": 40,
+      "letterSpacing": 3,
+      "align": "left",
+      "upper": true,
+      "skew": 0,
+      "fill": {
+        "type": "gradient",
+        "angle": 90,
+        "stops": [
+          {
+            "at": 0,
+            "color": "#E8F4FF"
+          },
+          {
+            "at": 0.5,
+            "color": "#8FC6F2"
+          },
+          {
+            "at": 0.51,
+            "color": "#3A7CC2"
+          },
+          {
+            "at": 1,
+            "color": "#A8D8FF"
+          }
+        ]
+      },
+      "outline": {
+        "color": "#0B1E3A",
+        "width": 2
+      },
+      "shadow": null,
+      "glow": {
+        "color": "#3A9CFF",
+        "blur": 6,
+        "strength": 1
+      },
+      "extrude": {
+        "depth": 4,
+        "angle": 90,
+        "color": "#0B2A55",
+        "shade": 0.4
+      },
+      "bevel": null
+    },
+    {
+      "id": "product",
+      "type": "text",
+      "name": "Product",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 78,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "WORKING JOE",
+      "font": "press-start",
+      "size": 16,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#FFE45C"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#0B1E3A",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "slogan",
+      "type": "text",
+      "name": "Slogan",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 106,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "ALWAYS ON SHIFT. NEVER OFF SCRIPT.",
+      "font": "share-tech-mono",
+      "size": 14,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#CFE3FF"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "joe",
+      "type": "sprite",
+      "name": "Working Joe",
+      "visible": true,
+      "locked": false,
+      "x": 452,
+      "y": 66,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#0B1E3A99",
+        "blur": 0,
+        "x": 3,
+        "y": 3
+      },
+      "source": {
+        "kind": "layers",
+        "label": "Working Joe",
+        "layers": [
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "torso_m"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "head_m"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "r_arm"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "l_arm"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "r_leg"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "l_leg"
+          },
+          {
+            "rsi": "/Textures/_RMC14/Objects/Clothing/Uniforms/Synthetic/joe.rsi",
+            "state": "equipped-INNERCLOTHING"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "l_foot"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "r_foot"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "l_hand"
+          },
+          {
+            "rsi": "/Textures/CMU14/Mobs/WorkingJoe/parts.rsi",
+            "state": "r_hand"
+          },
+          {
+            "rsi": "/Textures/_RMC14/Objects/Clothing/Shoes/Boots/black.rsi",
+            "state": "equipped-FEET"
+          }
+        ]
+      }
+    },
+    {
+      "id": "token",
+      "type": "sprite",
+      "name": "Synth token",
+      "visible": true,
+      "locked": false,
+      "x": 380,
+      "y": 104,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Misc/synth_token.rsi",
+        "state": "coin_synth"
+      }
+    }
+  ]
+}

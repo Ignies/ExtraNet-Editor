@@ -1,0 +1,34 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Terminal notice",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": { "type": "procedural", "id": "scanlines", "seed": 1, "params": { "base": "#071009", "glow": "#16471F", "gap": 3, "strength": 0.4 } },
+  "layers": [
+    {
+      "id": "title", "type": "text", "name": "Title", "visible": true, "locked": false,
+      "x": 250, "y": 58, "rotation": 0, "opacity": 1,
+      "text": "COLONY NOTICES", "font": "vt323", "size": 64, "letterSpacing": 3, "align": "center",
+      "upper": true, "skew": 0,
+      "fill": { "type": "solid", "color": "#3FE05A" },
+      "outline": null, "shadow": null, "glow": { "color": "#3FE05A", "blur": 10, "strength": 2 },
+      "extrude": null, "bevel": null
+    },
+    {
+      "id": "subtitle", "type": "text", "name": "Subtitle", "visible": true, "locked": false,
+      "x": 250, "y": 104, "rotation": 0, "opacity": 1,
+      "text": "OFFICIAL BULLETINS FROM THE ADMINISTRATION", "font": "share-tech-mono", "size": 16, "letterSpacing": 2, "align": "center",
+      "upper": true, "skew": 0,
+      "fill": { "type": "solid", "color": "#A8F5B4" },
+      "outline": null, "shadow": null, "glow": null, "extrude": null, "bevel": null
+    },
+    {
+      "id": "terminal", "type": "sprite", "name": "Computer", "visible": true, "locked": false,
+      "x": 476, "y": 70, "rotation": 0, "opacity": 1, "scale": 2, "flipX": false, "flipY": false,
+      "shadow": { "color": "#000000AA", "blur": 0, "x": 3, "y": 3 },
+      "source": { "kind": "rsi", "rsi": "/Textures/_RMC14/Structures/Machines/computer.rsi", "state": "terminal1" }
+    }
+  ]
+}

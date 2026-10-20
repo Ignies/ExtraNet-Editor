@@ -1,0 +1,149 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Frozen colony weather",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "frost",
+    "seed": 11,
+    "params": {
+      "edge": 0.4
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Station",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 44,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "ICE STATION RADIO",
+      "font": "oxanium",
+      "size": 38,
+      "letterSpacing": 2,
+      "align": "left",
+      "upper": true,
+      "skew": 0,
+      "fill": {
+        "type": "gradient",
+        "angle": 90,
+        "stops": [
+          {
+            "at": 0,
+            "color": "#FFFFFF"
+          },
+          {
+            "at": 1,
+            "color": "#9FD8F5"
+          }
+        ]
+      },
+      "outline": {
+        "color": "#0C2C48",
+        "width": 2
+      },
+      "shadow": null,
+      "glow": {
+        "color": "#BDEBFF",
+        "blur": 8,
+        "strength": 1
+      },
+      "extrude": {
+        "depth": 3,
+        "angle": 90,
+        "color": "#2C5C82",
+        "shade": 0.3
+      },
+      "bevel": null
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Forecast",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 84,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "TODAY  -42C  WIND 90 KPH  STAY INSIDE",
+      "font": "vt323",
+      "size": 24,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#EEF8FF"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#0C2C48",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "hat",
+      "type": "sprite",
+      "name": "Hard hat",
+      "visible": true,
+      "locked": false,
+      "x": 440,
+      "y": 70,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Clothing/Head/Helmets/Hardhats/yellow.rsi",
+        "state": "icon_on"
+      }
+    },
+    {
+      "id": "flare",
+      "type": "sprite",
+      "name": "Flare",
+      "visible": true,
+      "locked": false,
+      "x": 496,
+      "y": 100,
+      "rotation": -30,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Misc/flares.rsi",
+        "state": "flare"
+      }
+    }
+  ]
+}

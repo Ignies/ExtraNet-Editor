@@ -1,0 +1,196 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Cult site",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "hive-resin",
+    "seed": 7,
+    "params": {
+      "glowAmount": 0.35
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Name",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 46,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "The Perfect Organism",
+      "font": "unifraktur",
+      "size": 40,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "gradient",
+        "angle": 90,
+        "stops": [
+          {
+            "at": 0,
+            "color": "#E8DCC0"
+          },
+          {
+            "at": 1,
+            "color": "#A89470"
+          }
+        ]
+      },
+      "outline": {
+        "color": "#140A06",
+        "width": 2
+      },
+      "shadow": {
+        "color": "#000000CC",
+        "blur": 4,
+        "x": 0,
+        "y": 3
+      },
+      "glow": {
+        "color": "#7A1010",
+        "blur": 10,
+        "strength": 1
+      },
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Creed",
+      "visible": true,
+      "locked": false,
+      "x": 26,
+      "y": 88,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "for those who saw it, and could not look away",
+      "font": "caveat-brush",
+      "size": 22,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#C9B8E8"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "small",
+      "type": "text",
+      "name": "Small print",
+      "visible": true,
+      "locked": false,
+      "x": 26,
+      "y": 114,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "GATHERINGS AT THE OLD PUMP STATION. BRING A CANDLE.",
+      "font": "share-tech-mono",
+      "size": 11,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#7FA87A"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "egg",
+      "type": "sprite",
+      "name": "Egg",
+      "visible": true,
+      "locked": false,
+      "x": 452,
+      "y": 74,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#00000000",
+        "blur": 0,
+        "x": 0,
+        "y": 0
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Structures/Xenos/xeno_egg.rsi",
+        "state": "egg"
+      }
+    },
+    {
+      "id": "candle1",
+      "type": "sprite",
+      "name": "Candle",
+      "visible": true,
+      "locked": false,
+      "x": 398,
+      "y": 108,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Misc/candles.rsi",
+        "state": "candle1_lit"
+      }
+    },
+    {
+      "id": "candle2",
+      "type": "sprite",
+      "name": "Candle",
+      "visible": true,
+      "locked": false,
+      "x": 504,
+      "y": 110,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Misc/candles.rsi",
+        "state": "candle1_lit"
+      }
+    }
+  ]
+}

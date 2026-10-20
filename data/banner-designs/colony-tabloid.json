@@ -1,0 +1,214 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Colony tabloid",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "halftone",
+    "seed": 4,
+    "params": {
+      "paper": "#F2EBDA",
+      "ink": "#1D1C21",
+      "spot": "#E0245E",
+      "tone": "burst",
+      "amount": 0.22,
+      "spotAmount": 0.3,
+      "size": 1.1
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Masthead",
+      "visible": true,
+      "locked": false,
+      "x": 18,
+      "y": 40,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "The Colony Gossip",
+      "font": "anton",
+      "size": 46,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": true,
+      "skew": -4,
+      "fill": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "outline": {
+        "color": "#C8102E",
+        "width": 3
+      },
+      "shadow": {
+        "color": "#000000CC",
+        "blur": 0,
+        "x": 4,
+        "y": 4
+      },
+      "glow": null,
+      "extrude": {
+        "depth": 4,
+        "angle": 45,
+        "color": "#7A0A1C",
+        "shade": 0.3
+      },
+      "bevel": null
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Headline",
+      "visible": true,
+      "locked": false,
+      "x": 20,
+      "y": 86,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "WHO LEFT HYPERSLEEP BAY 4 AT DAWN?",
+      "font": "bebas",
+      "size": 24,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#1D1C21"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "tag",
+      "type": "text",
+      "name": "Tagline",
+      "visible": true,
+      "locked": false,
+      "x": 20,
+      "y": 112,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "The biggest names, the smallest details.",
+      "font": "game-sans",
+      "size": 14,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#B0123E"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null,
+      "weight": 400
+    },
+    {
+      "id": "camera",
+      "type": "sprite",
+      "name": "Travel camera",
+      "visible": true,
+      "locked": false,
+      "x": 452,
+      "y": 76,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/Objects/Devices/travel_camera.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "shades",
+      "type": "sprite",
+      "name": "Sunglasses",
+      "visible": true,
+      "locked": false,
+      "x": 494,
+      "y": 104,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Clothing/Eyes/Glasses/bigsunglasses.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "price",
+      "type": "text",
+      "name": "Price",
+      "visible": true,
+      "locked": false,
+      "x": 486,
+      "y": 30,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "ONLY 2 CR",
+      "font": "bangers",
+      "size": 18,
+      "letterSpacing": 2,
+      "align": "center",
+      "upper": true,
+      "skew": -8,
+      "fill": {
+        "type": "gradient",
+        "angle": 90,
+        "stops": [
+          {
+            "at": 0,
+            "color": "#FFF27A"
+          },
+          {
+            "at": 1,
+            "color": "#FFC21A"
+          }
+        ]
+      },
+      "outline": {
+        "color": "#111111",
+        "width": 3
+      },
+      "shadow": {
+        "color": "#D8312B",
+        "blur": 0,
+        "x": 4,
+        "y": 4
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    }
+  ]
+}

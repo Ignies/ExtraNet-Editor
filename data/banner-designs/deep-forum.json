@@ -1,0 +1,163 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Deep forum",
+  "width": 528,
+  "height": 136,
+  "pixel": 2,
+  "background": {
+    "type": "procedural",
+    "id": "glitch",
+    "seed": 9,
+    "params": {
+      "intensity": 0.5
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Board name",
+      "visible": true,
+      "locked": false,
+      "x": 20,
+      "y": 44,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "NOBODY LISTENS",
+      "font": "rubik-glitch",
+      "size": 38,
+      "letterSpacing": 2,
+      "align": "left",
+      "upper": true,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#F2F2F2"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#FF2A6D",
+        "blur": 0,
+        "x": -3,
+        "y": 0
+      },
+      "glow": {
+        "color": "#05D9E8",
+        "blur": 2,
+        "strength": 1
+      },
+      "extrude": {
+        "depth": 3,
+        "angle": 0,
+        "color": "#05D9E8",
+        "shade": 0
+      },
+      "bevel": null
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Address",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 84,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "board 7 .deep  //  handles only  //  no logs",
+      "font": "vt323",
+      "size": 22,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#05D9E8"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "warn",
+      "type": "text",
+      "name": "Warning",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 110,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "> IF YOU CAN READ THIS, THE MARSHALS CAN TOO_",
+      "font": "vt323",
+      "size": 18,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#FF2A6D"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "radio",
+      "type": "sprite",
+      "name": "Walkie-talkie",
+      "visible": true,
+      "locked": false,
+      "x": 444,
+      "y": 66,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Devices/radio.rsi",
+        "state": "walkietalkie"
+      }
+    },
+    {
+      "id": "disk",
+      "type": "sprite",
+      "name": "Data disk",
+      "visible": true,
+      "locked": false,
+      "x": 494,
+      "y": 96,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Misc/disks.rsi",
+        "state": "datadisk3"
+      }
+    }
+  ]
+}

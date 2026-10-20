@@ -1,0 +1,171 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Split colours: tape sale",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "split-corner-flash",
+    "seed": 4,
+    "params": {
+      "corner": "right",
+      "burst": "yes"
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Name",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 42,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "TAPE DECK BARN",
+      "font": "anton",
+      "size": 40,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": true,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "outline": {
+        "color": "#C8102E",
+        "width": 3
+      },
+      "shadow": {
+        "color": "#000000CC",
+        "blur": 0,
+        "x": 4,
+        "y": 4
+      },
+      "glow": null,
+      "extrude": {
+        "depth": 4,
+        "angle": 45,
+        "color": "#7A0A1C",
+        "shade": 0.3
+      },
+      "bevel": null
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Tagline",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 82,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "MIXTAPES, WALKMANS AND SPARE BELTS",
+      "font": "bebas",
+      "size": 22,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#0E2E5A",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "walkman",
+      "type": "sprite",
+      "name": "Walkman",
+      "visible": true,
+      "locked": false,
+      "x": 352,
+      "y": 104,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Devices/cassette_player.rsi",
+        "state": "walkman"
+      }
+    },
+    {
+      "id": "tape",
+      "type": "sprite",
+      "name": "Cassette",
+      "visible": true,
+      "locked": false,
+      "x": 300,
+      "y": 112,
+      "rotation": -12,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Devices/cassette_player.rsi",
+        "state": "cassette_weya"
+      }
+    },
+    {
+      "id": "burst",
+      "type": "text",
+      "name": "Starburst text",
+      "visible": true,
+      "locked": false,
+      "x": 462,
+      "y": 96,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "50%\nOFF",
+      "font": "bangers",
+      "size": 22,
+      "letterSpacing": 0,
+      "align": "center",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "outline": {
+        "color": "#5A0A20",
+        "width": 2
+      },
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    }
+  ]
+}

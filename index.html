@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ExtraNet Editor</title>
+  <meta name="description" content="Build ExtraNet site packages for Colonial Marines Universe with an in-game preview.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230A0E12'/%3E%3Cpath d='M3 4l4 4-4 4' stroke='%233FE05A' stroke-width='2' fill='none'/%3E%3Crect x='8' y='11' width='5' height='2' fill='%233FE05A'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/editor.css">
+  <link rel="stylesheet" href="css/preview.css">
+  <link rel="stylesheet" href="css/builder.css">
+  <link rel="stylesheet" href="css/studio.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+    integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <noscript>The ExtraNet editor needs JavaScript.</noscript>
+  <script>
+    // Browsers do not run ES modules from file:// pages, so say how to serve the folder instead.
+    if (location.protocol === 'file:') {
+      document.body.innerHTML = '<div class="file-warning"><h1>Serve this folder over http</h1>'
+        + '<p>Browsers block the editor\'s modules on file:// pages. In this folder run:</p>'
+        + '<pre>python -m http.server 8000</pre><p>then open <a href="http://localhost:8000/">http://localhost:8000/</a>. '
+        + 'Hosted copies (for example GitHub Pages) work as they are.</p></div>';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Docking bay notice",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "hull-plating",
+    "seed": 12,
+    "params": {
+      "lights": "bottom"
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Notice",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 40,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "DOCKING BAY 4",
+      "font": "saira-stencil",
+      "size": 40,
+      "letterSpacing": 3,
+      "align": "left",
+      "upper": true,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#F0C030"
+      },
+      "outline": {
+        "color": "#141414",
+        "width": 2
+      },
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Line",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 80,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "CARGO LIFT SCHEDULE  //  SHIFT ROSTER",
+      "font": "share-tech-mono",
+      "size": 15,
+      "letterSpacing": 2,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#D6DCE4"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#000000",
+        "blur": 0,
+        "x": 1,
+        "y": 1
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "wrench",
+      "type": "sprite",
+      "name": "Wrench",
+      "visible": true,
+      "locked": false,
+      "x": 440,
+      "y": 62,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Tools/wrench.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "welder",
+      "type": "sprite",
+      "name": "Welder",
+      "visible": true,
+      "locked": false,
+      "x": 494,
+      "y": 70,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Tools/welder.rsi",
+        "state": "icon"
+      }
+    }
+  ]
+}

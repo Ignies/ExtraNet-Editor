@@ -1,0 +1,198 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Zero-G sportsbook",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "carbon-fibre",
+    "seed": 6,
+    "params": {
+      "sheen": "#5E8A5E",
+      "weave": "#22302A"
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Book name",
+      "visible": true,
+      "locked": false,
+      "x": 20,
+      "y": 46,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "ZERO-G SPORTSBOOK",
+      "font": "teko",
+      "size": 40,
+      "letterSpacing": 2,
+      "align": "left",
+      "upper": true,
+      "skew": 10,
+      "fill": {
+        "type": "gradient",
+        "angle": 90,
+        "stops": [
+          {
+            "at": 0,
+            "color": "#E9FF6B"
+          },
+          {
+            "at": 1,
+            "color": "#5CFF5C"
+          }
+        ]
+      },
+      "outline": {
+        "color": "#0A2A0A",
+        "width": 2
+      },
+      "shadow": null,
+      "glow": {
+        "color": "#5CFF5C",
+        "blur": 10,
+        "strength": 1
+      },
+      "extrude": {
+        "depth": 4,
+        "angle": 45,
+        "color": "#0E3A10",
+        "shade": 0.3
+      },
+      "bevel": null,
+      "weight": 700
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Tagline",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 92,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "LIVE ODDS FROM EVERY ORBITAL LEAGUE",
+      "font": "graduate",
+      "size": 14,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "small",
+      "type": "text",
+      "name": "Small print",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 114,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "THE HOUSE ALWAYS WINS. EVENTUALLY.",
+      "font": "share-tech-mono",
+      "size": 12,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#7FBF7F"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "ball",
+      "type": "sprite",
+      "name": "Football",
+      "visible": true,
+      "locked": false,
+      "x": 436,
+      "y": 84,
+      "rotation": -15,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/Objects/Fun/Balls/football.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "dice",
+      "type": "sprite",
+      "name": "Die",
+      "visible": true,
+      "locked": false,
+      "x": 486,
+      "y": 104,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/Objects/Fun/dice.rsi",
+        "state": "d20_20"
+      }
+    },
+    {
+      "id": "cash",
+      "type": "sprite",
+      "name": "Cash",
+      "visible": true,
+      "locked": false,
+      "x": 494,
+      "y": 52,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Misc/spacecash.rsi",
+        "state": "spacecash_1000"
+      }
+    }
+  ]
+}

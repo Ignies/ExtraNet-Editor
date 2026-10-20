@@ -1,0 +1,253 @@
+/* The in-game look: the terminal window and browser (CMUNetBrowser, CMUDesktopWindow) and page layout
+   (CMUNetPageView). Sizes follow the game: fonts in points at 96 DPI, margins in UI pixels at scale 1. */
+
+.term-desk {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  padding: 12px;
+  background-color: #050607;
+  background-image:
+    linear-gradient(rgba(63, 224, 90, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(63, 224, 90, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.term-window {
+  --phosphor: #3fe05a;
+  --os-bg: #0a0e12;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--phosphor);
+  background: var(--os-bg);
+  overflow: hidden;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.6), 0 0 18px color-mix(in srgb, var(--phosphor) 18%, transparent);
+  font-family: "GameMono", "Roboto Mono", Consolas, monospace;
+}
+
+.term-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--phosphor);
+  color: var(--os-bg);
+  padding: 1px 2px 1px 6px;
+  font: 700 16px "GameMono", "Roboto Mono", Consolas, monospace;
+  flex: 0 0 auto;
+}
+.term-icon { font-size: 13px; margin-right: 2px; }
+.term-title-text { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: clip; }
+.term-title-btn {
+  font: 700 16px "GameMono", "Roboto Mono", Consolas, monospace;
+  background: var(--os-bg);
+  color: var(--phosphor);
+  padding: 0 6px;
+  line-height: 20px;
+  min-width: 22px;
+  text-align: center;
+}
+
+.term-nav { display: flex; gap: 4px; margin: 4px; align-items: stretch; flex: 0 0 auto; }
+
+.term-btn {
+  font: 700 16px "GameMono", "Roboto Mono", Consolas, monospace;
+  color: var(--phosphor);
+  background: var(--os-bg);
+  border: 1px solid var(--phosphor-80, var(--phosphor));
+  padding: 2px 6px;
+  min-width: 26px;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.term-btn:hover { filter: brightness(0.82); }
+.term-btn:disabled { opacity: 0.45; cursor: default; filter: none; }
+
+.term-address {
+  flex: 1;
+  min-width: 60px;
+  font: 16px "GameSans", "Noto Sans", "Segoe UI", sans-serif;
+  color: var(--phosphor);
+  background: color-mix(in srgb, var(--phosphor) 10%, #000);
+  border: 1px solid color-mix(in srgb, var(--phosphor) 55%, #000);
+  padding: 1px 6px;
+  outline: none;
+}
+.term-address::placeholder { color: color-mix(in srgb, var(--phosphor) 45%, transparent); }
+
+.term-rule { height: 1px; background: var(--phosphor-60, var(--phosphor)); flex: 0 0 auto; }
+
+.term-tabs { display: flex; gap: 2px; margin: 3px 4px 0; flex-wrap: wrap; flex: 0 0 auto; }
+.term-tab { font-size: 16px; }
+
+.term-statusbar { margin: 1px 6px 2px; flex: 0 0 auto; min-height: 17px; }
+.term-status { font: 13.33px "GameMono", "Roboto Mono", Consolas, monospace; color: var(--dim); }
+
+.term-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px);
+  z-index: 5;
+}
+
+/* ------------------------------------------------------------- page view */
+
+.page-view { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+.page-bgimage { position: absolute; inset: 0; image-rendering: pixelated; pointer-events: none; }
+.page-scroll { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scrollbar-color: color-mix(in srgb, var(--phosphor) 50%, transparent) transparent; }
+.page-overlay { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 3; }
+
+.page-content {
+  padding: 10px 14px;
+  font-family: var(--page-font);
+  font-size: var(--f12);
+  color: var(--page-text);
+  line-height: 1.36;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.doc, .net-blink { display: flex; flex-direction: column; align-items: stretch; min-width: 0; }
+
+.page-heading {
+  font-family: var(--page-font);
+  font-weight: 700;
+  color: var(--page-heading);
+  white-space: pre;
+  overflow: hidden;
+  line-height: 1.3;
+}
+.h-bigger { font-size: var(--f20); }
+.h-heading { font-size: var(--f16); }
+.h-key { font-size: var(--f13); }
+
+.page-text {
+  margin: 0 0 15px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+.page-list { display: flex; align-items: flex-start; min-width: 0; }
+.page-bullet { white-space: pre; color: var(--page-text); }
+.page-list > .page-text { flex: 1 1 auto; }
+
+.netlink {
+  display: inline-block;
+  white-space: pre;
+  color: var(--l);
+  border-bottom: 1px solid var(--l);
+  font-family: var(--page-font);
+  font-size: var(--f12);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.25;
+  cursor: pointer;
+  vertical-align: baseline;
+  max-width: 100%;
+}
+.netlink:hover, .netlink:focus-visible { background: var(--l); color: var(--lb); outline: none; }
+
+.textlink { text-decoration: underline; cursor: help; }
+.keybind { font-family: var(--rich-font); border: 1px solid currentColor; padding: 0 3px; border-radius: 2px; font-size: 0.9em; }
+
+.gb-box { display: flex; max-width: 100%; min-width: 0; }
+.gb-box > .page-text { flex: 1 1 auto; }
+.gb-colorbox { display: flex; flex-direction: column; border-style: solid; min-width: 0; }
+.gb-table { display: grid; min-width: 0; }
+.gb-table > * { min-width: 0; justify-self: var(--hal, stretch); align-self: start; }
+
+.gb-image { display: flex; justify-content: center; margin: 4px 0; min-width: 0; }
+.gb-image img { max-width: 100%; height: auto; image-rendering: pixelated; }
+
+.net-sprite { margin: 4px 0; display: flex; }
+.rsi-sprite { image-rendering: pixelated; display: block; }
+.sprite-loading { font: 11px var(--rich-font); opacity: 0.5; padding: 8px; border: 1px dashed currentColor; }
+
+.net-marquee { position: relative; overflow: hidden; height: calc(var(--f12) * 1.36 + 2px); margin: 2px 0 10px; min-width: 0; }
+.net-marquee-text { position: absolute; left: 0; top: 0; white-space: pre; font: var(--f12) "GameSans", "Noto Sans", "Segoe UI", sans-serif; line-height: 1.36; will-change: transform; }
+
+.net-popup {
+  position: absolute;
+  width: 250px;
+  background: var(--pb);
+  border: 2px solid var(--pa);
+  pointer-events: auto;
+  /* Pop ups sit outside the page's stylesheet, so they use the UI's default font whatever the page font. */
+  font-family: var(--rich-font);
+  font-size: var(--f12);
+}
+.net-popup .netlink { font-family: var(--rich-font); overflow: hidden; }
+.net-popup-title { display: flex; align-items: center; background: var(--pa); color: var(--pb); padding: 1px 1px 1px 4px; gap: 4px; }
+.net-popup-title > span { flex: 1; overflow: hidden; white-space: nowrap; }
+.net-popup-close { background: var(--pb); color: var(--pa); border: 1px solid #000; font: 700 var(--f12) "GameSans", sans-serif; padding: 0 6px; cursor: pointer; }
+.net-popup-body { display: flex; gap: 8px; margin: 6px; align-items: flex-start; }
+.net-popup-icon { image-rendering: pixelated; }
+.net-popup-column { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.net-popup-text { white-space: pre-wrap; overflow-wrap: break-word; font-family: var(--rich-font); }
+
+.net-ad {
+  position: relative;
+  min-height: 104px;
+  margin: 6px 0;
+  background: linear-gradient(var(--ad-top, #0E3B5C), var(--ad-bottom, #06182A));
+  border: 2px solid var(--ad-accent, #FFD200);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.net-ad::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(rgba(0, 0, 0, 0.12) 0 1px, transparent 1px 3px); pointer-events: none; }
+.net-ad-row { display: flex; gap: 12px; margin: 6px 10px; align-items: center; flex: 1; min-width: 0; }
+.net-ad-product { display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.ad-layers { display: grid; }
+.ad-layers > canvas { grid-area: 1 / 1; }
+.net-ad-words { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.net-ad-words > div { font-family: var(--page-font); white-space: nowrap; overflow: hidden; }
+.ad-brand { font-weight: 700; }
+.ad-product { font-weight: 700; }
+.ad-slogan { font-size: var(--f12); }
+.net-ad-corner { display: flex; flex-direction: column; gap: 4px; align-items: center; flex: 0 0 auto; }
+.net-ad-price { border: 1px solid #000; padding: 0 6px; font: 700 var(--f16) var(--page-font); }
+.net-ad-loading, .ad-placeholder { font: 11px var(--rich-font); color: #fff; opacity: 0.75; padding: 6px 10px; border: 1px dashed rgba(255, 255, 255, 0.5); margin: 8px; }
+.net-ad-offline { background: #222; border-color: #666; }
+
+.net-wallpaper { display: flex; flex-direction: column; gap: 4px; margin: 6px 0; align-items: flex-start; }
+.net-wallpaper-frame { width: 320px; height: 200px; max-width: 100%; display: flex; align-items: center; justify-content: center; }
+.net-wallpaper-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.net-wallpaper-set { font: var(--f12) "GameSans", "Noto Sans", sans-serif; background: #464966; color: #fff; border: 0; padding: 2px 8px; cursor: pointer; }
+
+.tag-placeholder { border: 1px dashed currentColor; padding: 8px 10px; margin: 4px 0; opacity: 0.8; font-family: var(--rich-font); font-size: 12px; }
+.tag-placeholder-note { opacity: 0.7; font-size: 11px; }
+
+.gb-error { margin: 5px; border: 1px solid #c2453d; background: rgba(40, 6, 6, 0.92); color: #f0d0cc; font: 12px "GameSans", "Noto Sans", sans-serif; }
+.gb-error-head { background: #7a1f1a; color: #fff; font-weight: 700; padding: 5px; }
+.gb-error-detail { padding: 6px 8px; white-space: pre-wrap; }
+.gb-error-raw { padding: 0 8px 6px; }
+.gb-error-raw pre { white-space: pre-wrap; max-height: 180px; overflow: auto; font-size: 11px; margin: 4px 0 0; }
+
+.sys-body { margin-top: 8px; }
+.sys-home { margin-top: 12px; }
+.dir-row { display: flex; margin: 2px 0; gap: 0; }
+.dir-cell { min-width: 220px; }
+
+/* board postings under the index page */
+.board { display: flex; flex-direction: column; gap: 10px; }
+.board-rule { height: 1px; margin: 4px 0; }
+.board-btn { font: 700 16px "GameMono", "Roboto Mono", monospace; color: var(--b-link); background: var(--b-bg); border: 1px solid var(--b-link); padding: 2px 6px; cursor: default; }
+.board-posts { display: flex; flex-direction: column; gap: 14px; }
+.board-post { display: flex; flex-direction: column; gap: 4px; }
+.board-post-header { display: flex; gap: 6px; align-items: center; }
+.board-title { flex: 1; text-overflow: clip; }
+.board-badge { padding: 0 4px; font-size: var(--f12); }
+.board-label { white-space: pre-wrap; }
+.board-body { white-space: pre-wrap; font-family: var(--page-font); }
+.board-comments { display: flex; flex-direction: column; gap: 3px; margin: 4px 0 0 16px; }
+.board-comment-line { display: flex; gap: 6px; }
+.board-field { flex: 1; font: var(--f12) "GameMono", monospace; background: var(--b-bg); color: var(--page-text); border: 1px solid var(--b-link); padding: 3px 5px; }
+/* In a row, boxes that stretch share the width (HorizontalExpand), like the game's columns. */
+.gb-row > .gb-box[data-halign="Stretch"], .gb-row > .gb-colorbox { flex: 1 1 0; min-width: 0; }
+.gb-row > .page-text { flex: 1 1 0; }

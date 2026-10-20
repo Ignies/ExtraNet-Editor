@@ -1,0 +1,151 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Colony classifieds",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "paper",
+    "seed": 8,
+    "params": {
+      "lines": "ruled",
+      "age": 0.4
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Title",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 40,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "COLONY CLASSIFIEDS",
+      "font": "courier-prime",
+      "size": 36,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#1E1C1A"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null,
+      "weight": 700
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Tagline",
+      "visible": true,
+      "locked": false,
+      "x": 26,
+      "y": 76,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "BUY  -  SELL  -  SWAP  -  FIND IT",
+      "font": "game-mono",
+      "size": 15,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#8A2B1A"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "note",
+      "type": "text",
+      "name": "Note",
+      "visible": true,
+      "locked": false,
+      "x": 26,
+      "y": 104,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "free for every colonist with an ID",
+      "font": "caveat-brush",
+      "size": 20,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#2B4A8A"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "atv",
+      "type": "sprite",
+      "name": "ATV",
+      "visible": true,
+      "locked": false,
+      "x": 430,
+      "y": 82,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/Objects/Vehicles/atv.rsi",
+        "state": "vehicle"
+      }
+    },
+    {
+      "id": "card",
+      "type": "sprite",
+      "name": "Card",
+      "visible": true,
+      "locked": false,
+      "x": 500,
+      "y": 46,
+      "rotation": 8,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Fun/playing_cards.rsi",
+        "state": "hearts_ace"
+      }
+    }
+  ]
+}

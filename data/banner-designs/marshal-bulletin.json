@@ -1,0 +1,186 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Marshal bulletin",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "motion-tracker",
+    "seed": 10,
+    "params": {
+      "pos": "right",
+      "blips": 5
+    }
+  },
+  "layers": [
+    {
+      "id": "badge",
+      "type": "sprite",
+      "name": "Marshal ID",
+      "visible": true,
+      "locked": false,
+      "x": 46,
+      "y": 68,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/CMIDs/cmb_marshal.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Bureau",
+      "visible": true,
+      "locked": false,
+      "x": 88,
+      "y": 44,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "COLONIAL MARSHAL BUREAU",
+      "font": "russo-one",
+      "size": 21,
+      "letterSpacing": 2,
+      "align": "left",
+      "upper": true,
+      "skew": 0,
+      "fill": {
+        "type": "gradient",
+        "angle": 90,
+        "stops": [
+          {
+            "at": 0,
+            "color": "#FFF0B0"
+          },
+          {
+            "at": 0.45,
+            "color": "#F2C24A"
+          },
+          {
+            "at": 0.55,
+            "color": "#B9831C"
+          },
+          {
+            "at": 1,
+            "color": "#F8D982"
+          }
+        ]
+      },
+      "outline": {
+        "color": "#3A2506",
+        "width": 2
+      },
+      "shadow": {
+        "color": "#000000B0",
+        "blur": 0,
+        "x": 2,
+        "y": 3
+      },
+      "glow": null,
+      "extrude": {
+        "depth": 3,
+        "angle": 90,
+        "color": "#6B4710",
+        "shade": 0.3
+      },
+      "bevel": {
+        "light": "#FFFFFF",
+        "dark": "#5A3A0A",
+        "size": 1,
+        "strength": 0.6
+      }
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Line",
+      "visible": true,
+      "locked": false,
+      "x": 90,
+      "y": 80,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "MOST WANTED  //  REWARDS POSTED DAILY",
+      "font": "vt323",
+      "size": 22,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#36E07E"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "small",
+      "type": "text",
+      "name": "Small print",
+      "visible": true,
+      "locked": false,
+      "x": 90,
+      "y": 106,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "REPORT MOVEMENT. DO NOT APPROACH.",
+      "font": "share-tech-mono",
+      "size": 12,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#8FE0B0"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "tracker",
+      "type": "sprite",
+      "name": "Motion tracker",
+      "visible": true,
+      "locked": false,
+      "x": 480,
+      "y": 100,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Tools/motion_detector.rsi",
+        "state": "detector"
+      }
+    }
+  ]
+}

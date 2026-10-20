@@ -1,0 +1,285 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Stage: corner store shelf",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "stage-shelf",
+    "seed": 2,
+    "params": {
+      "side": "right",
+      "width": 0.4
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Name",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 44,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "CORNER STORE",
+      "font": "pixelify",
+      "size": 32,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#FFE45C"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#000000",
+        "blur": 0,
+        "x": 3,
+        "y": 3
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Tagline",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 82,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "OPEN EVERY SHIFT",
+      "font": "press-start",
+      "size": 12,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#F2F2F2"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#000000",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "small",
+      "type": "text",
+      "name": "Small print",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 106,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "snacks - drinks - rations",
+      "font": "vt323",
+      "size": 20,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#B8B0C8"
+      },
+      "outline": null,
+      "shadow": null,
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "burger",
+      "type": "sprite",
+      "name": "Burger",
+      "visible": true,
+      "locked": false,
+      "x": 346,
+      "y": 32,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/Objects/Consumable/Food/burger.rsi",
+        "state": "plain"
+      }
+    },
+    {
+      "id": "cola",
+      "type": "sprite",
+      "name": "Cola",
+      "visible": true,
+      "locked": false,
+      "x": 394,
+      "y": 32,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Consumable/Drinks/cola.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "donut",
+      "type": "sprite",
+      "name": "Donut",
+      "visible": true,
+      "locked": false,
+      "x": 442,
+      "y": 34,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/Objects/Consumable/Food/Baked/donut.rsi",
+        "state": "pink"
+      }
+    },
+    {
+      "id": "coffee",
+      "type": "sprite",
+      "name": "Coffee",
+      "visible": true,
+      "locked": false,
+      "x": 492,
+      "y": 32,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Consumable/Drinks/coffee_joe.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "mre",
+      "type": "sprite",
+      "name": "MRE",
+      "visible": true,
+      "locked": false,
+      "x": 362,
+      "y": 90,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Consumable/Food/mre.rsi",
+        "state": "closed"
+      }
+    },
+    {
+      "id": "mre2",
+      "type": "sprite",
+      "name": "MRE",
+      "visible": true,
+      "locked": false,
+      "x": 412,
+      "y": 90,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Consumable/Food/mre.rsi",
+        "state": "closed"
+      }
+    },
+    {
+      "id": "cola2",
+      "type": "sprite",
+      "name": "Cola",
+      "visible": true,
+      "locked": false,
+      "x": 462,
+      "y": 90,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Consumable/Drinks/cola.rsi",
+        "state": "icon"
+      }
+    }
+  ]
+}

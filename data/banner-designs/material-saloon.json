@@ -1,0 +1,236 @@
+{
+  "format": "cmu-extranet-banner",
+  "version": 1,
+  "name": "Materials: saloon on wood",
+  "width": 528,
+  "height": 136,
+  "pixel": 1,
+  "background": {
+    "type": "procedural",
+    "id": "mat-wood",
+    "seed": 5,
+    "params": {
+      "dir": "horizontal"
+    }
+  },
+  "layers": [
+    {
+      "id": "title",
+      "type": "text",
+      "name": "Name",
+      "visible": true,
+      "locked": false,
+      "x": 22,
+      "y": 44,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "THE LAST SALOON",
+      "font": "bebas",
+      "size": 34,
+      "letterSpacing": 3,
+      "align": "left",
+      "upper": true,
+      "skew": 0,
+      "fill": {
+        "type": "gradient",
+        "angle": 90,
+        "stops": [
+          {
+            "at": 0,
+            "color": "#FFF3C4"
+          },
+          {
+            "at": 0.5,
+            "color": "#E2B55A"
+          },
+          {
+            "at": 1,
+            "color": "#9C6A1E"
+          }
+        ]
+      },
+      "outline": {
+        "color": "#2E1D06",
+        "width": 1
+      },
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 2,
+        "x": 1,
+        "y": 2
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": {
+        "light": "#FFFFFF",
+        "dark": "#5A3A0A",
+        "size": 1,
+        "strength": 0.5
+      }
+    },
+    {
+      "id": "sub",
+      "type": "text",
+      "name": "Tagline",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 84,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "Live music every rest day",
+      "font": "caveat-brush",
+      "size": 26,
+      "letterSpacing": 0,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#F2E2C0"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#1A0C04",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "small",
+      "type": "text",
+      "name": "Small print",
+      "visible": true,
+      "locked": false,
+      "x": 24,
+      "y": 112,
+      "rotation": 0,
+      "opacity": 1,
+      "text": "CARDS AT THE BACK TABLE - NO MARSHALS",
+      "font": "share-tech-mono",
+      "size": 12,
+      "letterSpacing": 1,
+      "align": "left",
+      "upper": false,
+      "skew": 0,
+      "fill": {
+        "type": "solid",
+        "color": "#D8B888"
+      },
+      "outline": null,
+      "shadow": {
+        "color": "#000000",
+        "blur": 0,
+        "x": 1,
+        "y": 1
+      },
+      "glow": null,
+      "extrude": null,
+      "bevel": null
+    },
+    {
+      "id": "hat",
+      "type": "sprite",
+      "name": "Cowboy hat",
+      "visible": true,
+      "locked": false,
+      "x": 388,
+      "y": 52,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/Clothing/Head/Hats/cowboyhatbrown.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "guitar",
+      "type": "sprite",
+      "name": "Guitar",
+      "visible": true,
+      "locked": false,
+      "x": 462,
+      "y": 74,
+      "rotation": -20,
+      "opacity": 1,
+      "scale": 3,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/Objects/Fun/Instruments/guitar.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "whiskey",
+      "type": "sprite",
+      "name": "Whiskey",
+      "visible": true,
+      "locked": false,
+      "x": 506,
+      "y": 104,
+      "rotation": 0,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Consumable/Drinks/whiskey.rsi",
+        "state": "icon"
+      }
+    },
+    {
+      "id": "card",
+      "type": "sprite",
+      "name": "Card",
+      "visible": true,
+      "locked": false,
+      "x": 360,
+      "y": 108,
+      "rotation": 12,
+      "opacity": 1,
+      "scale": 2,
+      "flipX": false,
+      "flipY": false,
+      "shadow": {
+        "color": "#000000AA",
+        "blur": 0,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "kind": "rsi",
+        "rsi": "/Textures/_RMC14/Objects/Fun/playing_cards.rsi",
+        "state": "spades_ace"
+      }
+    }
+  ]
+}

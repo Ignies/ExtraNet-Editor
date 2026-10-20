@@ -1,0 +1,18 @@
+[
+  {"file": "terminal.json", "name": "Terminal notice", "tags": ["terminal", "colony"]},
+  {"file": "colony-tabloid.json", "name": "Colony tabloid", "tags": ["tabloid", "public"]},
+  {"file": "wy-corporate.json", "name": "Weyland-Yutani corporate", "tags": ["corporate"]},
+  {"file": "seegson-product.json", "name": "Seegson product", "tags": ["corporate", "product"]},
+  {"file": "deep-forum.json", "name": "Deep forum", "tags": ["deep"]},
+  {"file": "retro-portal.json", "name": "80s portal", "tags": ["retro", "80s"]},
+  {"file": "zero-g-sportsbook.json", "name": "Zero-G sportsbook", "tags": ["sports", "public"]},
+  {"file": "cult-site.json", "name": "Cult site", "tags": ["cult", "deep", "horror"]},
+  {"file": "colony-classifieds.json", "name": "Colony classifieds", "tags": ["board", "colony"]},
+  {"file": "marshal-bulletin.json", "name": "Marshal bulletin", "tags": ["government", "military"]},
+  {"file": "frozen-colony.json", "name": "Frozen colony weather", "tags": ["colony", "weather"]},
+  {"file": "docking-notice.json", "name": "Docking bay notice", "tags": ["industrial", "military"]},
+  {"file": "scenery-atv-hire.json", "name": "Scenery: desert ATV hire", "tags": ["scenery", "leisure"]},
+  {"file": "stage-corner-store.json", "name": "Stage: corner store shelf", "tags": ["stage", "shop"]},
+  {"file": "split-tape-sale.json", "name": "Split colours: tape sale", "tags": ["split", "shop", "retro"]},
+  {"file": "material-saloon.json", "name": "Materials: saloon on wood", "tags": ["material", "western", "music"]}
+]
