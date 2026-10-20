@@ -1,0 +1,9 @@
+<Document>
+  <CMUNetStyle Background="#0B1018" Text="#E4E9F0" Heading="#5FA8FF" Link="#FFFFFF" Font="Mono"/>
+  [color=#5FA8FF][bold]COLONY SECURITY // {colony} // INTERNAL[/bold][/color]
+
+  # TERMINAL MAP
+  Every terminal on this colony grid and what it is doing. Dark terminals blink red where they were last seen; the network cannot see where they are now.
+
+  <CMUNetSecurityPanel Kind="Map"/>
+</Document>

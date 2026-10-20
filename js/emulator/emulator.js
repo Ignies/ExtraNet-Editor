@@ -11,6 +11,7 @@ import { Network } from './net.js';
 import { Machine, CHROME } from './machine.js';
 import { bootSplash } from './boot.js';
 import { Desktop, loginScreen } from './desktop.js';
+import * as sound from './pcsound.js';
 
 const SETTINGS = 'extranet-emulator-settings';
 
@@ -63,6 +64,8 @@ export function closeEmulator() {
   if (!current) return;
   current.root.remove();
   current.dispose();
+  // Leaving the emulator silences it, the hum included.
+  sound.stopAll();
   current = null;
   document.documentElement.classList.remove('emu-open');
 }
@@ -87,6 +90,17 @@ class Emulator {
     });
     this.stage = el('div.emu-stage', {}, this.machine.root);
     const back = el('button.btn.btn-small', { type: 'button', onclick: () => this.onClose && this.onClose() }, icon('undo'), ' Editor');
+    this.muteButton = el('button.btn.btn-small.emu-mute', { type: 'button', dataset: { tip: 'Mute the computer\'s sounds' }, onclick: () => {
+      sound.setMuted(!sound.isMuted());
+      this.showMute();
+    } });
+    this.volumeSlider = el('input.emu-volume', { type: 'range', min: 0, max: 100, step: 1, value: String(Math.round(sound.getVolume() * 100)), title: 'Volume of the computer\'s sounds' });
+    this.volumeSlider.addEventListener('input', () => {
+      sound.setVolume(Number(this.volumeSlider.value) / 100);
+      if (sound.isMuted()) sound.setMuted(false);
+      this.showMute();
+    });
+    this.showMute();
     const reset = el('button.btn.btn-small', { type: 'button', dataset: { tip: 'Clear the emulator\'s notes, mail, links, wallpaper, board posts and wallet' }, onclick: () => this.reset() }, 'Reset');
     this.bar = el('header.emu-bar', {},
       back,
@@ -96,11 +110,21 @@ class Emulator {
       el('label.emu-bar-field', {}, el('span', { text: 'Card' }), this.nameInput),
       el('label.emu-bar-check', { title: 'A computer hacked with an access tuner: The deeps.exi on the desktop, and a corrupted boot' }, this.deepToggle, el('span', { text: 'Deep web access' })),
       this.status,
+      el('span.emu-sound', {}, this.muteButton, this.volumeSlider),
       reset);
     this.root = el('div.emu', {}, this.bar, this.stage);
     this.onResize = () => this.fit();
     window.addEventListener('resize', this.onResize);
     for (const control of [this.osSelect, this.colonySelect, this.deepToggle]) control.addEventListener('change', () => this.reconfigure());
+    // Keys typed into the computer's fields and clicks on its controls make its sounds (OnKeyTyped, OnClicked).
+    this.machine.screen.addEventListener('keydown', e => {
+      if (!e.target.matches || !e.target.matches('input, textarea')) return;
+      if (e.key.length === 1 || ['Backspace', 'Delete', 'Enter', 'Space'].includes(e.key)) sound.keystroke(this.sounds);
+    }, true);
+    this.machine.screen.addEventListener('pointerdown', e => {
+      if (e.button !== 0 || !e.target.closest) return;
+      if (e.target.closest('button, .netlink, .emu-icon, .emu-win-bar, select, .term-tab')) this.click();
+    }, true);
     this.nameInput.addEventListener('change', () => {
       this.settings.name = this.nameInput.value.trim() || 'Alex Reyes';
       saveSettings(this.settings);
@@ -109,6 +133,17 @@ class Emulator {
 
   dispose() {
     window.removeEventListener('resize', this.onResize);
+    this.boots = (this.boots || 0) + 1;
+  }
+
+  showMute() {
+    const off = sound.isMuted() || sound.getVolume() === 0;
+    this.muteButton.replaceChildren(el('span', { text: off ? 'Sound off' : 'Sound on' }));
+    this.muteButton.classList.toggle('off', off);
+  }
+
+  click() {
+    if (this.sounds && this.state !== 'off') sound.play(this.sounds.click, sound.VOLUME.click);
   }
 
   async start() {
@@ -154,6 +189,7 @@ class Emulator {
     this.settings.deep = this.deepToggle.checked;
     saveSettings(this.settings);
     const os = this.data.systems.find(o => o.id === this.settings.os) || this.data.systems[0];
+    this.sounds = await sound.soundsOf(os);
     this.colony = this.data.colonies.find(c => c.id === this.settings.colony) || this.data.colonies[0];
     this.theme = makeTheme(os, this.data.strings, this.colony);
     this.deepTheme = makeTheme(this.data.deepOs, this.data.strings, null);
@@ -198,6 +234,17 @@ class Emulator {
     }
     this.state = 'booting';
     this.status.textContent = 'Booting… (click the screen to skip)';
+    // The power key is the gesture browsers wait for before they play sound.
+    sound.unlock();
+    sound.preload(this.sounds);
+    sound.stopHum();
+    sound.play(this.sounds.boot, sound.VOLUME.boot);
+    if (this.settings.deep) sound.play(this.sounds.glitch, sound.VOLUME.glitch);
+    // The running hum takes over where the boot sound settles, for as long as the machine stays on.
+    const run = this.boots = (this.boots || 0) + 1;
+    setTimeout(() => {
+      if (run === this.boots && this.state !== 'off') sound.startHum(this.sounds.running);
+    }, this.sounds.bootLength * 1000);
     this.machine.on = true;
     this.machine.pulse(3);
     this.screen();
@@ -210,6 +257,11 @@ class Emulator {
 
   shutDown() {
     if (this.data) this.status.textContent = this.idleStatus();
+    this.boots = (this.boots || 0) + 1;
+    if (this.state !== 'off') {
+      sound.stopHum();
+      sound.play(this.sounds.shutdown, sound.VOLUME.shutdown);
+    }
     this.state = 'off';
     this.machine.on = false;
     this.desktop = null;
@@ -248,6 +300,10 @@ class Emulator {
       onShutDown: () => this.shutDown(),
       onLogOff: () => this.reader(),
       busy: seconds => this.machine.pulse(seconds),
+      sounds: {
+        mail: () => sound.play(this.sounds.mail, sound.VOLUME.mail),
+        error: () => sound.play(this.sounds.error, sound.VOLUME.error),
+      },
     });
     this.status.textContent = `Logged in as ${this.settings.name}. Double click an icon; the card reader logs off.`;
     const popup = el('div.emu-login-popup', { text: (this.data.strings['cmu-pc-login-popup'] || 'Logged in as {$name}.').replace(/\{\s*\$name\s*\}/, this.settings.name) });

@@ -104,6 +104,28 @@
   - title: cmu-net-tab-cmb-records
     path: records
 
+# Colony security's site, on its own network. Its panels are live views drawn by the CMUNetSecurityPanel tag.
+- type: cmuNetSite
+  id: CMUNetSiteColonySecurity
+  address: security.seegson.net
+  title: cmu-net-site-colony-security
+  networks:
+  - CMUNetSecurity
+  root: /ServerInfo/CMU14/ExtraNet/Security/
+  style:
+    background: "#0B1018"
+    text: "#E4E9F0"
+    heading: "#5FA8FF"
+    link: "#FFFFFF"
+    font: Mono
+  pages:
+    "": index.xml
+    map: map.xml
+  tabs:
+  - title: cmu-net-tab-security-log
+  - title: cmu-net-tab-security-map
+    path: map
+
 # Public sites: celebrities, news, tobacco brands and pharmacies.
 
 # Public ExtraNet sites: celebrity fan pages, news and tabloids, tobacco brands and pharmacies.

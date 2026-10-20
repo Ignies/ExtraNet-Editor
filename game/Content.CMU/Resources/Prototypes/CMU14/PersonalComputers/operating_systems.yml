@@ -25,11 +25,21 @@
   - cmu-os-seegson-boot-5
   - cmu-os-seegson-boot-6
   bootSound:
-    path: /Audio/CMU14/ColonyEconomy/crt_startup.ogg
+    path: /Audio/CMU14/PersonalComputers/boot_start.ogg
+  runningSound:
+    path: /Audio/CMU14/PersonalComputers/running.ogg
+  shutdownSound:
+    path: /Audio/CMU14/PersonalComputers/shutdown.ogg
   keySound:
-    path: /Audio/CMU14/ColonyEconomy/atm_type.wav
+    collection: CMUPcKeystrokes
   clickSound:
-    path: /Audio/CMU14/ColonyEconomy/atm_select.ogg
+    path: /Audio/CMU14/PersonalComputers/click_old.ogg
+  glitchSound:
+    path: /Audio/CMU14/PersonalComputers/glitch.ogg
+  mailSound:
+    path: /Audio/CMU14/PersonalComputers/mail.ogg
+  errorSound:
+    path: /Audio/CMU14/PersonalComputers/error.ogg
 
 - type: cmuComputerOs
   id: CMUOsWeyland
@@ -56,11 +66,21 @@
   - cmu-os-weyland-boot-5
   - cmu-os-weyland-boot-6
   bootSound:
-    path: /Audio/CMU14/ColonyEconomy/crt_startup.ogg
+    path: /Audio/CMU14/PersonalComputers/boot_start.ogg
+  runningSound:
+    path: /Audio/CMU14/PersonalComputers/running.ogg
+  shutdownSound:
+    path: /Audio/CMU14/PersonalComputers/shutdown.ogg
   keySound:
-    path: /Audio/CMU14/ColonyEconomy/atm_type.wav
+    collection: CMUPcKeystrokes
   clickSound:
-    path: /Audio/CMU14/ColonyEconomy/atm_select.ogg
+    path: /Audio/CMU14/PersonalComputers/click.ogg
+  glitchSound:
+    path: /Audio/CMU14/PersonalComputers/glitch.ogg
+  mailSound:
+    path: /Audio/CMU14/PersonalComputers/mail.ogg
+  errorSound:
+    path: /Audio/CMU14/PersonalComputers/error.ogg
 
 # The Marshals' terminal on their camera monitors. No logo file: the splash shows the name.
 - type: cmuComputerOs
@@ -72,6 +92,7 @@
   networks:
   - CMUNetPublic
   - CMUNetCMB
+  - CMUNetSecurity
   phosphor: "#8FC4FF"
   background: "#050A14"
   bootLines:
@@ -79,8 +100,18 @@
   - cmu-os-cmb-boot-2
   - cmu-os-cmb-boot-3
   bootSound:
-    path: /Audio/CMU14/ColonyEconomy/crt_startup.ogg
+    path: /Audio/CMU14/PersonalComputers/boot_start.ogg
+  runningSound:
+    path: /Audio/CMU14/PersonalComputers/running.ogg
+  shutdownSound:
+    path: /Audio/CMU14/PersonalComputers/shutdown.ogg
   keySound:
-    path: /Audio/CMU14/ColonyEconomy/atm_type.wav
+    collection: CMUPcKeystrokes
   clickSound:
-    path: /Audio/CMU14/ColonyEconomy/atm_select.ogg
+    path: /Audio/CMU14/PersonalComputers/click.ogg
+  glitchSound:
+    path: /Audio/CMU14/PersonalComputers/glitch.ogg
+  mailSound:
+    path: /Audio/CMU14/PersonalComputers/mail.ogg
+  errorSound:
+    path: /Audio/CMU14/PersonalComputers/error.ogg

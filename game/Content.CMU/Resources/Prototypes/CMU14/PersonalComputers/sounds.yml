@@ -1,0 +1,26 @@
+# Single keystrokes cut from one typing recording; the PCs play a random one per key press.
+- type: soundCollection
+  id: CMUPcKeystrokes
+  files:
+  - /Audio/CMU14/PersonalComputers/key_01.ogg
+  - /Audio/CMU14/PersonalComputers/key_02.ogg
+  - /Audio/CMU14/PersonalComputers/key_03.ogg
+  - /Audio/CMU14/PersonalComputers/key_04.ogg
+  - /Audio/CMU14/PersonalComputers/key_05.ogg
+  - /Audio/CMU14/PersonalComputers/key_06.ogg
+  - /Audio/CMU14/PersonalComputers/key_07.ogg
+  - /Audio/CMU14/PersonalComputers/key_08.ogg
+  - /Audio/CMU14/PersonalComputers/key_09.ogg
+  - /Audio/CMU14/PersonalComputers/key_10.ogg
+  - /Audio/CMU14/PersonalComputers/key_11.ogg
+  - /Audio/CMU14/PersonalComputers/key_12.ogg
+  - /Audio/CMU14/PersonalComputers/key_13.ogg
+  - /Audio/CMU14/PersonalComputers/key_14.ogg
+  - /Audio/CMU14/PersonalComputers/key_15.ogg
+  - /Audio/CMU14/PersonalComputers/key_16.ogg
+  - /Audio/CMU14/PersonalComputers/key_17.ogg
+  - /Audio/CMU14/PersonalComputers/key_18.ogg
+  - /Audio/CMU14/PersonalComputers/key_19.ogg
+  - /Audio/CMU14/PersonalComputers/key_20.ogg
+  - /Audio/CMU14/PersonalComputers/key_21.ogg
+  - /Audio/CMU14/PersonalComputers/key_22.ogg

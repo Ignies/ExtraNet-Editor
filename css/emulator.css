@@ -110,3 +110,9 @@
 .emu-board-note { font-size: 12px; }
 .emu-board .board-btn { cursor: pointer; }
 .emu-widget { min-height: 24px; }
+
+/* The computer's sound: mute and volume in the bar */
+.emu-sound { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+.emu-mute { min-width: 78px; justify-content: center; }
+.emu-mute.off { color: var(--text-3); }
+.emu-volume { width: 90px; accent-color: var(--accent); }

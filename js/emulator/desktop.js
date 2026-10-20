@@ -97,6 +97,7 @@ export class Desktop {
     this.root = el('div.emu-desktop', {}, this.area, el('div.emu-rule'), el('div.emu-taskbar', {}, start, this.tasks, this.clock));
     this.applyWallpaper();
     this.buildIcons();
+    this.startMail();
     const tick = () => {
       if (!this.root.isConnected && this.attached) return;
       if (this.root.isConnected) this.attached = true;
@@ -108,6 +109,24 @@ export class Desktop {
 
   t(id, vars) {
     return L(this.strings, id, vars);
+  }
+
+  /** The sample inbox, and a notice that arrives a little after login with the mail sound, as new mail does. */
+  startMail() {
+    const user = this.ctx.user.name;
+    this.mailViews = new Set();
+    this.inbox = [
+      { from: 'Colony Administration', to: user, subject: 'Shift rota for this week', body: `${user}, you are on the day shift until further notice. Report to your supervisor at 06:00.`, time: '05:58' },
+      { from: 'Weyland-Yutani Payroll', to: user, subject: 'Your wage statement', body: 'Your wages for the last cycle have been credited, less company store deductions and the housing levy.', time: '06:03' },
+      { from: 'The Colony Herald', to: user, subject: 'Tips wanted', body: 'Seen something the notices will not tell you? File it with the Herald at herald.colony.news.', time: '06:10' },
+    ];
+    const arrive = () => {
+      if (!this.root.isConnected) return;
+      this.inbox.unshift({ from: 'Colony Maintenance', to: user, subject: 'Water pumps: scheduled shutdown', body: 'The east side pumps go down for maintenance at the end of this shift. Fill your containers before then.', time: shiftClock(this.booted) });
+      if (this.ctx.sounds) this.ctx.sounds.mail();
+      for (const redraw of this.mailViews) redraw();
+    };
+    setTimeout(arrive, 20000);
   }
 
   // ------------------------------------------------------------ wallpaper and icons
@@ -336,6 +355,7 @@ export class Desktop {
         onWallpaper: id => this.setWallpaper(id),
         user: this.ctx.user,
         busy: s => this.ctx.busy(s),
+        popupShown: () => this.ctx.sounds && this.ctx.sounds.error(),
       },
     });
   }
@@ -392,11 +412,7 @@ export class Desktop {
   /** Mail: a sample inbox, the sent folder and a compose form. */
   mail() {
     const user = this.ctx.user.name;
-    const inbox = [
-      { from: 'Colony Administration', to: user, subject: 'Shift rota for this week', body: `${user}, you are on the day shift until further notice. Report to your supervisor at 06:00.`, time: '05:58' },
-      { from: 'Weyland-Yutani Payroll', to: user, subject: 'Your wage statement', body: 'Your wages for the last cycle have been credited, less company store deductions and the housing levy.', time: '06:03' },
-      { from: 'The Colony Herald', to: user, subject: 'Tips wanted', body: 'Seen something the notices will not tell you? File it with the Herald at herald.colony.news.', time: '06:10' },
-    ];
+    const inbox = this.inbox;
     const list = el('div.emu-list');
     const reader = el('div.emu-reader');
     let folder = 'inbox';
@@ -436,6 +452,9 @@ export class Desktop {
       el('button.emu-btn', { type: 'button', text: this.t('cmu-mail-sent'), onclick: () => { folder = 'sent'; draw(); } }),
       el('button.emu-btn', { type: 'button', text: this.t('cmu-mail-compose'), onclick: () => compose() }));
     draw();
+    this.mailViews.add(() => {
+      if (folder === 'inbox') draw();
+    });
     return el('div.emu-app', {}, tabs, el('div.emu-split', {}, list, reader));
   }
 

@@ -19,6 +19,12 @@
   id: CMUNetCMB
   name: cmu-net-network-cmb
 
+# Colony security's network: the terminal map and the unauthorized use log. On the security desks, the colony
+# security consoles (bridge.yml) and the Marshals' bureau OS.
+- type: cmuNetwork
+  id: CMUNetSecurity
+  name: cmu-net-network-security
+
 # The answers SpaceGPT's ghosts choose from. Add lines to the locale file and raise the count to add more.
 - type: localizedDataset
   id: CMUSpaceGptAnswers

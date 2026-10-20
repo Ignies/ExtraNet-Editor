@@ -27,3 +27,7 @@
     CMUMonitorCameraColonyWEYU: CMUOsWeyland
     CMUMonitorCameraColonyWEYUSpy: CMUOsWeyland
     RMCAIConsoleHERMES: CMUOsWeyland
+  # Colony security's own consoles also reach its network: the terminal map and the unauthorized use log.
+  networks:
+    AUDepartmentConsoleSecurity: [CMUNetSecurity]
+    CMUMonitorCameraColonyGovfor: [CMUNetSecurity]

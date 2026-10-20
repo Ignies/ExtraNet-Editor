@@ -1,0 +1,34 @@
+- files: ["boot_start.ogg", "running.ogg", "shutdown.ogg"]
+  license: "Custom"
+  copyright: "Bootup by Freesound community from Pixabay under the Pixabay Content License, split into startup, a looping running hum and shutdown, converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["glitch.ogg"]
+  license: "Custom"
+  copyright: "Glitch by Virtual Vibes from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["click.ogg"]
+  license: "Custom"
+  copyright: "Computer click by Universfield from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["click_old.ogg"]
+  license: "Custom"
+  copyright: "Old computer click by Finntastico from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["key_01.ogg", "key_02.ogg", "key_03.ogg", "key_04.ogg", "key_05.ogg", "key_06.ogg", "key_07.ogg", "key_08.ogg", "key_09.ogg", "key_10.ogg", "key_11.ogg", "key_12.ogg", "key_13.ogg", "key_14.ogg", "key_15.ogg", "key_16.ogg", "key_17.ogg", "key_18.ogg", "key_19.ogg", "key_20.ogg", "key_21.ogg", "key_22.ogg"]
+  license: "Custom"
+  copyright: "Computer keyboard type by Mattyhewvakaliuk73627 from Pixabay under the Pixabay Content License, cut into single keystrokes, converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["mail.ogg"]
+  license: "Custom"
+  copyright: "Email by Lubecin123 from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["error.ogg"]
+  license: "Custom"
+  copyright: "Error by Universfield from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"

@@ -8,6 +8,7 @@ Copies, at their repository paths:
   - the prototypes in Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/
   - Content.CMU/Resources/Locale/en-US/CMU14/personal-computers.ftl
   - the art in Content.CMU/Resources/Textures/CMU14/PersonalComputers/
+  - the computer's sounds in Content.CMU/Resources/Audio/CMU14/PersonalComputers/, with their attributions.yml
   - every other texture, RSI or font those files (and the editor) use that the public master branch lacks,
     and every CMU14 texture they use, so art that is not pushed yet shows too.
 Then writes game/index.json, the list of bundled files. Anything else the editor reads (most game sprites)
@@ -29,6 +30,7 @@ FOLDERS = [
     CMU + 'ServerInfo/CMU14/ExtraNet/',
     CMU + 'Prototypes/CMU14/PersonalComputers/',
     CMU + 'Textures/CMU14/PersonalComputers/',
+    CMU + 'Audio/CMU14/PersonalComputers/',
 ]
 FILES = [CMU + 'Locale/en-US/CMU14/personal-computers.ftl']
 # Resources the editor itself draws: the page fonts, the ATM card reader and lights, the ID card.

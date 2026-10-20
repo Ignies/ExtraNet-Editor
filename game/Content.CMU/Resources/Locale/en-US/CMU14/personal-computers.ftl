@@ -1027,3 +1027,51 @@ cmu-pc-examine-card = An ID card sticks out of the reader.
 ## Colony consoles bridged to the PC OS
 cmu-pc-access-denied = ACCESS DENIED. The reader hands your card back.
 cmu-pc-log-denied = Login refused: {$name} has no access to this console
+
+## Retuning terminals and the colony security network
+
+cmu-pc-tool-retune-dark = Retune network: go dark
+cmu-pc-tool-retune-colony = Retune network: rejoin the colony
+cmu-pc-retune-header-dark = SEEGSON ACCESS TUNER // CARRIER RETUNE: DARK
+cmu-pc-retune-header-colony = SEEGSON ACCESS TUNER // CARRIER RETUNE: COLONY
+cmu-pc-retune-log-dark = > Match the colony carrier and lock to drop the terminal off it.
+cmu-pc-retune-log-colony = > Match the colony carrier and lock to put the terminal back on it.
+cmu-pc-retune-dark-done = The network light dies. The terminal is off the colony network.
+cmu-pc-retune-colony-done = The network light comes back. The terminal is on the colony network again.
+cmu-pc-log-dark = Network adapter retuned: OFFLINE.
+cmu-pc-log-rejoined = Network adapter retuned: colony network.
+cmu-pc-examine-offline = Its network light is off: it is not on the colony network.
+cmu-pc-browser-dark-title = OFFLINE
+cmu-pc-browser-dark-body = This terminal is tuned off the colony network. {$address} cannot be reached until it is retuned.
+cmu-pc-system-dark = {"  "}OFFLINE: tuned off the colony network
+cmu-mail-dark = Offline. This terminal is tuned off the colony network.
+cmu-cmb-trace-dark = TRACE LOST: the terminal dropped off the colony network
+
+cmu-net-network-security = Colony Security Network
+cmu-net-site-colony-security = Colony Security
+cmu-net-tab-security-log = Unauthorized Use
+cmu-net-tab-security-map = Terminal Map
+cmu-security-loading = Querying colony security...
+cmu-security-log-empty = Nothing reported this shift.
+cmu-security-entry = {$time} TERMINAL #{$id} at {$location}: {$event}
+cmu-security-entry-named = {$time} TERMINAL #{$id} at {$location}: {$event} (card: {$name})
+cmu-security-event-refused = card refused at the reader
+cmu-security-event-dark = WENT DARK, no longer reporting
+cmu-security-event-rejoined = back on the colony network
+cmu-security-event-hack = maintenance port opened with an access tuner
+cmu-security-event-wiped = log wiped
+cmu-security-event-forged = log edited by hand
+cmu-security-event-lookup = looked up the deep address {$address}
+cmu-security-map-none = This terminal is not on a colony grid.
+cmu-security-map-hint = Click a terminal to see what it is doing.
+cmu-security-map-legend = Green: on. Blue: logged in. Grey: switched off. Amber: no power. Purple: hacked. Red: OFFLINE.
+cmu-security-map-check = Check on foot:
+cmu-security-map-terminal = Terminal #{$id}: {$status} at {$location}
+cmu-security-map-terminal-hacked = Terminal #{$id}: HACKED, {$status} at {$location}
+cmu-security-map-terminal-dark = Terminal #{$id}: OFFLINE, last seen at {$location}
+cmu-security-map-terminal-dark-hacked = Terminal #{$id}: HACKED, OFFLINE, last seen at {$location}
+cmu-security-status-online = online
+cmu-security-status-logged-in = logged in
+cmu-security-status-off = switched off
+cmu-security-status-unpowered = no power
+cmu-security-status-dark = offline

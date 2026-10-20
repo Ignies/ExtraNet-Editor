@@ -223,6 +223,12 @@ computer full window, built from the game's own code and art:
   matches with a wallet to bet from, the arcade cabinets play Hugger Run and Tracker Reflex, SpaceGPT answers
   from its roster, the Galley cookbook lists the food recipes (only `Kind="Food"`), and the deep market and the
   Marshals' panels show sample data.
+- **Sounds**, as the game plays them (`CMUPersonalComputerBui`): the boot sound when the power key is pressed
+  (with a glitch over it on a hacked machine), then after the OS's `bootSoundLength` the running hum, looping
+  without a gap until the machine goes off; the shutdown sound; a random keystroke for each key typed in the
+  computer's fields; the OS's click on buttons, links and icons; the mail chime when new mail arrives; and the
+  error sound as each ad pop up appears. Volumes are the game's. **Sound on/off** and the slider in the bar set
+  them, remembered in this browser. Leaving the emulator stops every sound.
 
 **Link check**: open the editor with `?linkcheck` in the address (or run `extranetEditor.linkCheck()` in the
 console) to resolve every link, tab, pop up link and `./` file of every page of every site, colony versions
@@ -231,6 +237,22 @@ included, through the emulator's resolver, and list what goes nowhere.
 What happens on the emulator stays in this browser (notes, mail, links, board posts, the wallet, high scores);
 **Reset** in the bar clears it. In game the server keeps those for the round and other players fill the boards,
 the market and the Marshals' alerts.
+
+### Sound credits
+
+The computer's sounds are in `game/Content.CMU/Resources/Audio/CMU14/PersonalComputers/` (from the game's
+`Content.CMU/Resources/Audio/CMU14/PersonalComputers/`, see its `attributions.yml`). All are from
+[Pixabay](https://pixabay.com/sound-effects/) under the Pixabay Content License, trimmed and converted to mono OGG:
+
+| Files | Sound |
+|-------|-------|
+| `boot_start.ogg`, `running.ogg`, `shutdown.ogg` | Bootup by Freesound community, split into startup, a looping running hum and shutdown |
+| `glitch.ogg` | Glitch by Virtual Vibes |
+| `click.ogg` | Computer click by Universfield |
+| `click_old.ogg` | Old computer click by Finntastico |
+| `key_01.ogg` to `key_22.ogg` | Computer keyboard type by Mattyhewvakaliuk73627, cut into single keystrokes |
+| `mail.ogg` | Email by Lubecin123 |
+| `error.ogg` | Error by Universfield |
 
 ## Where game art comes from
 
@@ -333,6 +355,7 @@ Differences:
 | `js/library.js`, `js/ui-library.js`, `css/library.css` | The Library: the site index, opening YAML sites and packages, curation marks, the changes export |
 | `js/emulator/emulator.js`, `css/emulator.css` | The emulator's screen: the bar, the machine on its stage, power, card and the live widgets |
 | `js/emulator/machine.js`, `boot.js`, `desktop.js`, `netbrowser.js`, `boards.js` | The machine, the boot splash, the desktop and its programs, the browser, the boards |
+| `js/emulator/pcsound.js` | The computer's own sounds (boot, running hum, shutdown, keys, clicks, mail, error) with the mute and volume |
 | `js/emulator/net.js`, `data.js`, `linkcheck.js` | The ExtraNet as a computer sees it (addresses, networks, deep aliases, the ad maze), the OS, colony and wallpaper data, and the link check |
 | `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook, the arcade games, SpaceGPT, the recipes, the deep market and the CMB panels |
 | `game/`, `tools/snapshot.py` | The bundled snapshot of the game's ExtraNet content, and the script that refreshes it |

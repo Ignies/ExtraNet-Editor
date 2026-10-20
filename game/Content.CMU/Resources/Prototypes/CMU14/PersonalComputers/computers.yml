@@ -30,6 +30,12 @@
   components:
   - type: CMUPersonalComputer
     casing: Security
+    homePage: security.seegson.net
+    networks:
+    - CMUNetPublic
+    - CMUNetSecurity
+  - type: AccessReader
+    access: [ [ "CMAccessColonyBrig" ], [ "AU14AccessColonyMarshall" ] ]
 
 - type: entity
   parent: RMCPersonalDesktop

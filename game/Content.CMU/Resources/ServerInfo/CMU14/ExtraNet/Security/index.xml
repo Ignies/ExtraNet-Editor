@@ -1,0 +1,11 @@
+<Document>
+  <CMUNetStyle Background="#0B1018" Text="#E4E9F0" Heading="#5FA8FF" Link="#FFFFFF" Font="Mono"/>
+  [color=#5FA8FF][bold]COLONY SECURITY // {colony} // INTERNAL[/bold][/color]
+
+  # UNAUTHORIZED USE
+  Everything colony terminals reported this shift, newest first: cards refused at a reader, maintenance ports opened with an access tuner, logs wiped or rewritten, live deep web lookups, and terminals that dropped off the colony network.
+
+  A terminal that goes dark reports nothing after that. Go and look at it: the machine keeps its own log, and an engineer with a multitool can read it.
+
+  <CMUNetSecurityPanel Kind="Log"/>
+</Document>

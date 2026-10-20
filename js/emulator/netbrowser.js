@@ -309,6 +309,8 @@ export class NetBrowser {
       const height = this.view.clientHeight;
       for (const popup of this.popups) {
         if (popup.dataset.closed || this.elapsed < Number(popup.dataset.delay)) continue;
+        // Each pop up makes the OS's error sound when it first appears (OnPopupShown).
+        if (popup.style.visibility !== 'visible' && this.hooks.popupShown) this.hooks.popupShown();
         popup.style.visibility = 'visible';
         popup.style.left = `${Math.max(0, width - popup.offsetWidth) * Number(popup.dataset.x)}px`;
         popup.style.top = `${Math.max(0, height - popup.offsetHeight) * Number(popup.dataset.y)}px`;
