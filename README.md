@@ -188,6 +188,39 @@ address, networks and page count. Search by title, address or id, and filter by 
 The source is picked at the top of the panel: the bundled snapshot (the default), the Personal-Computers branch
 on GitHub, or the checkout the editor is served from.
 
+## The emulator: the in-game computer
+
+The monitor icon on the rail (or `#emulator` at the end of the address, a link you can share) opens the colony
+computer full window, built from the game's own code and art:
+
+![The emulator: a Seegson terminal showing the Colony Herald](docs/emulator.png)
+
+
+- **The machine**: the bezel, front panel, card reader, lights and power key drawn from
+  `Textures/CMU14/PersonalComputers/Machine/` and the ATM's reader and lights, sliced and scaled as
+  `CMUComputerMachine` and `CMUComputerPanel` do. The power key boots it; the card reader takes an ID card in and
+  out (logging in and off).
+- **The OS**: pick Seegson, Weyland-Yutani or CMB and the colony in the bar. The boot splash, login screen,
+  desktop icons, start menu, taskbar and shift clock follow `CMUComputerBootSplash`, `CMUComputerSessionUi`
+  and `CMUComputerDesktop`, in the OS's colours (`operating_systems.yml`). Seegson takes the colony's name
+  (GARRISONLINK on Stable Garrison).
+- **Programs**: the ExtraNet browser (back, forward, home, the directory, the address bar, the site's tabs,
+  `net://random`, SAVE LINK to the desktop), Files (the OS's documents and your own notes), Mail (a sample inbox,
+  sent mail kept), System (terminal, user, networks, uptime, and the wallpapers).
+- **Every site of the Library** answers at its address, with `{colony}` filled and the colony's own versions of
+  pages. Networks apply: a Seegson terminal is refused at `intranet.wy`, a W-Y terminal is let in.
+- **Deep web access** (in the bar) makes it a hacked machine: a corrupted boot and The deeps.exi on the desktop.
+  Its scan turns up the deep sites under new random aliases each browser session, and the ad maze that hides the
+  hidden ones, generated as `CMUDeepMazeSystem` does: follow the links ending in `::` to unlock a hidden site.
+- **Live widgets** run in the pages: boards take postings and comments, the Zero-G Ball sportsbook plays its
+  matches with a wallet to bet from, the arcade cabinets play Hugger Run and Tracker Reflex, SpaceGPT answers
+  from its roster, the Galley cookbook lists the food recipes (only `Kind="Food"`), and the deep market and the
+  Marshals' panels show sample data.
+
+What happens on the emulator stays in this browser (notes, mail, links, board posts, the wallet, high scores);
+**Reset** in the bar clears it. In game the server keeps those for the round and other players fill the boards,
+the market and the Marshals' alerts.
+
 ## Where game art comes from
 
 The editor reads game data as raw files: pages and site prototypes, sprites (RSIs) and textures, the game's
@@ -287,6 +320,10 @@ Differences:
 | `js/package.js`, `js/zip.js` | The package model, autosave, zip and folder import and export |
 | `js/repo.js`, `js/sprites.js`, `js/fonts.js` | Reading the repository or the snapshot: files, RSIs, fonts, ads |
 | `js/library.js`, `js/ui-library.js`, `css/library.css` | The Library: the site index, opening YAML sites and packages, curation marks, the changes export |
+| `js/emulator/emulator.js`, `css/emulator.css` | The emulator's screen: the bar, the machine on its stage, power, card and the live widgets |
+| `js/emulator/machine.js`, `boot.js`, `desktop.js`, `netbrowser.js`, `boards.js` | The machine, the boot splash, the desktop and its programs, the browser, the boards |
+| `js/emulator/net.js`, `data.js` | The ExtraNet as a computer sees it (addresses, networks, deep aliases, the ad maze) and the OS, colony and wallpaper data |
+| `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook, the arcade games, SpaceGPT, the recipes, the deep market and the CMB panels |
 | `game/`, `tools/snapshot.py` | The bundled snapshot of the game's ExtraNet content, and the script that refreshes it |
 | `js/editor.js` | The markup view's code editor |
 | `js/ui-site.js`, `js/ui-files.js`, `js/ui-sprites.js`, `js/ui-dialog.js` | Site form, files and images, sprite and ad pickers, dialogs |

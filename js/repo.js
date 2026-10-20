@@ -92,8 +92,17 @@ async function resourceUrls(path) {
   if (!isBundled()) return paths.map(p => repoBase + p);
   const { files } = await snapshotInfo();
   const own = paths.find(p => files.has(p));
-  return own ? [GAME + own] : paths.map(p => MASTER_REPO + p);
+  if (own) return [GAME + own];
+  // The snapshot holds these folders whole: what it lacks does not exist, and is not worth a request to GitHub.
+  if (files.size && paths.some(p => SNAPSHOT_FOLDERS.some(folder => p.startsWith(folder)))) return [];
+  return paths.map(p => MASTER_REPO + p);
 }
+
+const SNAPSHOT_FOLDERS = [
+  'Content.CMU/Resources/Textures/CMU14/PersonalComputers/',
+  'Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/',
+  'Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/',
+];
 
 /** The URL of a file by its path from the repository root. */
 async function repoFileUrl(path) {
@@ -118,7 +127,7 @@ async function fetchFirst(urls, kind) {
       last = `${e.message} ${url}`;
     }
   }
-  throw new Error(`not found: ${last}`);
+  throw new Error(`not found: ${last || '404 (not in the bundled snapshot)'}`);
 }
 
 function cached(key, make) {

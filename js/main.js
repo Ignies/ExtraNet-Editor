@@ -57,8 +57,8 @@ function saveSettings() {
 
 const history = new History();
 
-/** The emulator is still being built: it shows only with ?emulator in the address. */
-const EMULATOR = /[?&]emulator\b/.test(location.search) || location.hash === '#emulator';
+/** The emulator (#emulator). Set to false to hide it from the rail and the address. */
+const EMULATOR = true;
 
 const app = {
   pkg: emptyPackage(),
@@ -1706,7 +1706,8 @@ function help() {
         then <b>Export zip</b> and unzip it into <code>Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Packages/</code>.</p>
       <p><b>Curating the game's sites.</b> <b>Library</b> lists every site in the game. Click one to open it here,
         mark it Reviewed or Needs work with a note, and use <b>Export changes</b> for a zip of the changed pages at
-        their repository paths with a CHANGES.md.</p>
+        their repository paths with a CHANGES.md. The monitor icon opens the <b>emulator</b>: the in-game computer,
+        browsing every site with the live widgets running.</p>
       <p><b>6. Banner.</b> The &#10022; button on the rail opens the Banner Studio for the site's banner.</p>
       <p><b>Keys:</b> <kbd>Ctrl+Z</kbd> undo, <kbd>Ctrl+Y</kbd> redo, <kbd>Del</kbd> deletes the selected block,
         <kbd>Ctrl+D</kbd> duplicates it, <kbd>Alt+Up/Down</kbd> moves it, <kbd>Ctrl+S</kbd> saves in the browser,
@@ -1741,6 +1742,27 @@ setView(app.settings.view === 'markup' ? 'markup' : 'blocks');
   }
   if (!welcomed || /[?&]welcome/.test(location.search)) showWelcome();
 })();
+
+// ---------------------------------------------------------------- emulator
+
+/** #emulator opens the in-game computer over the editor; leaving the hash closes it. */
+async function routeEmulator() {
+  if (!EMULATOR) return;
+  const module = await import('./emulator/emulator.js');
+  if (location.hash === '#emulator') {
+    module.openEmulator({
+      onClose: () => {
+        history_.replaceState(null, '', location.pathname + location.search);
+        module.closeEmulator();
+      },
+    });
+  } else {
+    module.closeEmulator();
+  }
+}
+const history_ = window.history;
+window.addEventListener('hashchange', routeEmulator);
+routeEmulator();
 
 // For tests from the console.
 window.extranetEditor = { app, siteYaml: () => siteYaml(app.pkg), preview, editor, canvas: canvasView, history, undo, redo, setView, pageOp, addBlock, pasteMarkup, packageFromTemplate, setPackage };

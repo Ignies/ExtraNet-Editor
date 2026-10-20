@@ -1,0 +1,112 @@
+/* The emulator: an editor-styled bar over a dark stage, and on it the machine with the game's own look. */
+
+.emu-open, .emu-open body { overflow: hidden; }
+.emu { position: fixed; inset: 0; z-index: 900; display: flex; flex-direction: column; background: radial-gradient(ellipse at 50% 40%, #16181c 0%, #08090a 70%); color: var(--text); }
+.emu-bar { display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 12px; flex: 0 0 auto; background: var(--surface); box-shadow: inset 0 -1px 0 var(--hair); overflow-x: auto; }
+.emu-bar-title { font-weight: 600; margin-right: 4px; }
+.emu-bar-field { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-2); }
+.emu-bar-select { width: auto; max-width: 240px; padding: 4px 8px; }
+.emu-bar-name { width: 130px; padding: 4px 8px; }
+.emu-bar-check { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-2); cursor: pointer; white-space: nowrap; }
+.emu-bar-status { flex: 1; min-width: 120px; font-size: 12px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right; }
+.emu-stage { flex: 1; min-height: 0; display: grid; place-items: center; overflow: auto; padding: 12px 16px; }
+
+/* ---------------------------------------------------------------- the machine */
+.emu-machine { position: relative; flex: 0 0 auto; filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55)); }
+.emu-machine-art { position: absolute; inset: 0; pointer-events: none; image-rendering: pixelated; z-index: 2; }
+.emu-hit { position: absolute; z-index: 3; border: 0; padding: 0; background: transparent; cursor: pointer; }
+.emu-hit:focus-visible { outline: 1px dashed rgba(255, 255, 255, 0.5); }
+
+.emu-screen {
+  --phosphor: #3fe05a; --os-bg: #0a0e12; --accent: var(--phosphor); --dim: #26775f; --bar: #0f1d17; --os-text: #5ce475;
+  position: absolute; z-index: 1; overflow: hidden; background: #020303; color: var(--phosphor);
+  font: 16px "GameMono", "Roboto Mono", Consolas, monospace;
+}
+.emu-scanlines { position: absolute; inset: 0; pointer-events: none; z-index: 50;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.25) 100%); }
+.emu-boot { position: absolute; inset: 0; width: 100%; height: 100%; cursor: pointer; z-index: 40; }
+
+/* ---------------------------------------------------------------- login */
+.emu-login { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: var(--os-bg); }
+.emu-login .emu-rule { width: 340px; }
+.emu-login-name { font: 700 29px "GameDisplay", "Noto Sans Display", sans-serif; color: var(--accent); }
+.emu-login-prompt { font-weight: 700; animation: emu-blink 1.2s steps(1) infinite; }
+@keyframes emu-blink { 0%, 66% { visibility: visible; } 67%, 100% { visibility: hidden; } }
+.emu-login-popup { position: absolute; z-index: 60; left: 50%; top: 18px; transform: translateX(-50%); padding: 6px 14px; background: var(--os-bg); border: 2px solid var(--accent); color: var(--phosphor); font-weight: 700; }
+
+/* ---------------------------------------------------------------- desktop */
+.emu-desktop { position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--os-bg); }
+.emu-area { position: relative; flex: 1; min-height: 0; overflow: hidden; background-size: cover; background-position: center; image-rendering: pixelated; }
+.emu-area.emu-gridded {
+  background-image: linear-gradient(color-mix(in srgb, var(--phosphor) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--phosphor) 5%, transparent) 1px, transparent 1px) !important;
+  background-size: 40px 40px;
+}
+.emu-area.emu-gridded::after { content: attr(data-osname); position: absolute; right: 14px; bottom: 10px; font: 700 22px "GameDisplay", "Noto Sans Display", sans-serif; color: color-mix(in srgb, var(--phosphor) 22%, transparent); pointer-events: none; }
+.emu-rule { height: 1px; background: var(--accent); flex: 0 0 auto; }
+.emu-icons { position: absolute; left: 10px; top: 10px; display: grid; grid-auto-flow: column; grid-template-rows: repeat(5, 70px); gap: 6px; }
+.emu-icon { width: 84px; height: 70px; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px 0 0; border: 0; background: none; color: var(--phosphor); cursor: default; }
+.emu-icon.on { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+.emu-icon-art { width: 32px; height: 32px; display: grid; place-items: center; }
+.emu-icon-art img { width: 32px; height: 32px; image-rendering: pixelated; }
+.emu-glyph, .emu-glyph svg { display: block; width: 32px; height: 32px; color: var(--phosphor); }
+.emu-icon-label { font-size: 13.33px; line-height: 1.2; padding: 0 2px; white-space: nowrap; text-shadow: 0 1px 2px #000; }
+.emu-icon.on .emu-icon-label { background: var(--accent); color: var(--os-bg); text-shadow: none; }
+.emu-taskbar { display: flex; align-items: center; gap: 6px; padding: 3px; background: var(--bar); flex: 0 0 auto; }
+.emu-start { min-width: 64px; padding: 2px 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--os-bg); font: inherit; font-weight: 700; cursor: pointer; }
+.emu-tasks { flex: 1; min-width: 0; display: flex; gap: 4px; margin: 0 6px; overflow: hidden; }
+.emu-task { max-width: 200px; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: clip; padding: 2px 6px; border: 1px solid color-mix(in srgb, var(--phosphor) 80%, transparent); background: var(--os-bg); color: var(--phosphor); font: inherit; font-size: 13.33px; cursor: pointer; }
+.emu-task.on { background: color-mix(in srgb, var(--accent) 25%, var(--os-bg)); }
+.emu-clock { font-weight: 700; margin-right: 8px; }
+.emu-startmenu { position: absolute; left: 0; bottom: 0; z-index: 5000; min-width: 200px; display: flex; flex-direction: column; gap: 2px; padding: 4px; background: var(--os-bg); border: 2px solid var(--accent); }
+.emu-startmenu[hidden] { display: none; }
+.emu-start-name { font-weight: 700; color: var(--accent); }
+.emu-startmenu .emu-rule { margin: 2px 0 4px; }
+
+/* Buttons and fields, as CMUComputerTheme draws them: a phosphor outline on the background. */
+.emu-btn { display: flex; align-items: center; gap: 6px; padding: 2px 6px; border: 1px solid color-mix(in srgb, var(--phosphor) 80%, transparent); background: var(--os-bg); color: var(--phosphor); font: inherit; text-align: left; cursor: pointer; }
+.emu-btn:hover { background: color-mix(in srgb, var(--phosphor) 14%, var(--os-bg)); }
+.emu-app-btn .emu-icon-art, .emu-app-btn .emu-icon-art img, .emu-app-btn .emu-glyph, .emu-app-btn .emu-glyph svg { width: 16px; height: 16px; }
+.emu-field { width: 100%; padding: 3px 5px; border: 1px solid color-mix(in srgb, var(--phosphor) 55%, #000); background: color-mix(in srgb, var(--phosphor) 10%, #000); color: var(--phosphor); font: inherit; }
+.emu-note { min-height: 140px; resize: vertical; }
+
+/* ---------------------------------------------------------------- windows */
+.emu-window { position: absolute; display: flex; flex-direction: column; min-width: 260px; min-height: 160px; background: var(--os-bg); border: 2px solid var(--accent); color: var(--phosphor); }
+.emu-window[hidden] { display: none; }
+.emu-win-bar { display: flex; align-items: center; gap: 4px; padding: 1px 2px 1px 6px; background: var(--accent); color: var(--os-bg); font-weight: 700; cursor: default; user-select: none; touch-action: none; }
+.emu-win-bar .emu-icon-art, .emu-win-bar .emu-icon-art img, .emu-win-bar .emu-glyph, .emu-win-bar .emu-glyph svg { width: 16px; height: 16px; color: var(--os-bg); }
+.emu-win-title { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: clip; }
+.emu-win-btn { min-width: 22px; padding: 0 6px; border: 0; background: var(--os-bg); color: var(--phosphor); font: inherit; font-weight: 700; line-height: 20px; cursor: pointer; }
+.emu-win-body { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.emu-win-grip { position: absolute; right: 0; bottom: 0; width: 12px; height: 12px; cursor: nwse-resize; touch-action: none;
+  background: repeating-linear-gradient(135deg, transparent 0 2px, var(--accent) 2px 3px); }
+
+.emu-browser { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.emu-browser .page-view { flex: 1 1 auto; }
+.emu-app { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; padding: 8px; overflow: auto; }
+.emu-split { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(150px, 34%) 1fr; gap: 8px; }
+.emu-list { display: flex; flex-direction: column; gap: 3px; overflow: auto; }
+.emu-reader { display: flex; flex-direction: column; gap: 6px; overflow: auto; min-width: 0; }
+.emu-reader .page-content { padding: 0; }
+.emu-file { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.emu-row { display: flex; gap: 6px; }
+.emu-wrap { flex-wrap: wrap; }
+.emu-dim { color: var(--dim); }
+.emu-strong { font-weight: 700; }
+.emu-mail-body { white-space: pre-wrap; }
+.emu-system { gap: 3px; }
+
+/* The deeps.exi home page */
+.emu-deep-scan { display: flex; align-items: center; gap: 10px; margin: 6px 0 10px; }
+.emu-deep-status { color: var(--page-text); }
+.emu-deep-found { display: flex; flex-direction: column; gap: 6px; }
+.emu-deep-node > div:first-child { color: var(--page-text); }
+
+/* Boards */
+.emu-board-form { display: flex; flex-direction: column; gap: 6px; }
+.emu-board-form[hidden] { display: none; }
+.emu-board-form textarea { min-height: 70px; resize: vertical; }
+.emu-board-note { font-size: 12px; }
+.emu-board .board-btn { cursor: pointer; }
+.emu-widget { min-height: 24px; }
