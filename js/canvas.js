@@ -234,7 +234,7 @@ export class BlockCanvas {
   }
 
   widget(b) {
-    const names = { arcade: `Arcade cabinet: ${b.attrs.Game}`, sportsbook: 'Zero-g ball sportsbook', spacegpt: 'SpaceGPT, answered by ghosts', recipes: `Cookbook: ${b.attrs.Group || 'all'} food recipes` };
+    const names = { arcade: b.attrs.Game ? `Arcade cabinet: ${b.attrs.Game}` : 'Arcade: every game in tabs', sportsbook: 'Zero-g ball sportsbook', spacegpt: 'SpaceGPT, answered by ghosts', recipes: `Cookbook: ${b.attrs.Group || 'all'} food recipes` };
     return el('div.tag-placeholder.widget', {}, el('strong', { text: names[b.type] }), el('div.tag-placeholder-note', { text: 'Drawn live by the game in play.' }));
   }
 

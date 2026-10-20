@@ -6,11 +6,13 @@
 Copies, at their repository paths:
   - every page and package under Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/
   - the prototypes in Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/
-  - Content.CMU/Resources/Locale/en-US/CMU14/personal-computers.ftl
+  - Content.CMU/Resources/Locale/en-US/CMU14/personal-computers.ftl and the games' Games/*.ftl beside it
   - the art in Content.CMU/Resources/Textures/CMU14/PersonalComputers/
   - the computer's sounds in Content.CMU/Resources/Audio/CMU14/PersonalComputers/, with their attributions.yml
   - every other texture, RSI or font those files (and the editor) use that the public master branch lacks,
     and every CMU14 texture they use, so art that is not pushed yet shows too.
+  - the games' own resources, always: the blood splatter RSI, and every /Audio/...ogg path written out in full
+    in a string in js/emulator/ (with the attributions.yml of its folder).
 Then writes game/index.json, the list of bundled files. Anything else the editor reads (most game sprites)
 comes from GitHub master. Files are copied as they are; text files get LF line endings.
 """
@@ -30,6 +32,7 @@ FOLDERS = [
     CMU + 'ServerInfo/CMU14/ExtraNet/',
     CMU + 'Prototypes/CMU14/PersonalComputers/',
     CMU + 'Textures/CMU14/PersonalComputers/',
+    CMU + 'Locale/en-US/CMU14/PersonalComputers/Games/',
     CMU + 'Audio/CMU14/PersonalComputers/',
 ]
 FILES = [CMU + 'Locale/en-US/CMU14/personal-computers.ftl']
@@ -43,6 +46,10 @@ EDITOR_NEEDS = [
     '/Textures/CMU14/ColonyEconomy/atm_reader.rsi', '/Textures/CMU14/ColonyEconomy/atm_leds.rsi',
     '/Textures/_RMC14/Objects/CMIDs/id.rsi',
 ]
+# Resources the emulator's games use, bundled even when master has them, so the games play offline.
+GAME_NEEDS = ['/Textures/Fluids/splatter.rsi']
+EDITOR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+SOUND = re.compile(r'''['"`](/Audio/[^'"`\s$]+\.ogg)['"`]''')
 TEXT = re.compile(r'\.(xml|yml|yaml|ftl|json|txt|md)$', re.I)
 REFERENCE = re.compile(r'(/(?:Textures|Fonts|ServerInfo)/[^"\'\s<>\]\[)]+)')
 RSI_ATTR = re.compile(r'\b(?:Rsi|rsi)\s*[=:]\s*"?([^"\s>]+\.rsi)')
@@ -77,6 +84,16 @@ def resolve(checkout, rooted):
         if os.path.exists(os.path.join(checkout, candidate)):
             return candidate
     return None
+
+
+def emulator_sounds():
+    """Every /Audio/...ogg path written out in a string literal in the emulator's scripts."""
+    sounds = set()
+    for path in walk(os.path.join(EDITOR, 'js', 'emulator')):
+        if path.endswith('.js'):
+            with open(path, encoding='utf-8', errors='replace') as f:
+                sounds.update(SOUND.findall(f.read()))
+    return sounds
 
 
 def main():
@@ -128,6 +145,21 @@ def main():
             # CMU14 art is always bundled (it may be newer than master); upstream art only when master lacks it.
             if file.startswith(CMU + 'Textures/CMU14/') or file.startswith(CMU + 'Fonts/') or file not in master:
                 wanted.add(file)
+
+    # The games' textures and sounds, with the attributions that license each sound folder.
+    for rooted in sorted(set(GAME_NEEDS) | emulator_sounds()):
+        found = resolve(checkout, rooted)
+        if not found:
+            missing.append(rooted)
+            continue
+        full = os.path.join(checkout, found)
+        if os.path.isdir(full):
+            wanted.update(rel(checkout, p) for p in walk(full))
+        else:
+            wanted.add(found)
+        attributions = os.path.join(os.path.dirname(full), 'attributions.yml')
+        if found.startswith(tuple(p + 'Audio/' for p in (CMU, UPSTREAM))) and os.path.exists(attributions):
+            wanted.add(rel(checkout, attributions))
 
     if os.path.isdir(out):
         shutil.rmtree(out)

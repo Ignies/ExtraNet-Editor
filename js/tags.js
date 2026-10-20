@@ -3,6 +3,7 @@
 // falls back on the value.
 
 import { hexColour, parseFloatInvariant, enumValue, FONTS, BACKGROUND_MODES, H_ALIGN, V_ALIGN } from './markup.js';
+import { ARCADE_GAMES } from './blocks.js';
 
 const PLACEHOLDER_TAGS = new Set([
   'CMUNetRecipes', 'CMUNetArcade', 'CMUNetSportsbook', 'CMUNetSpaceGpt', 'CMUNetMarket', 'CMUNetCmbPanel',
@@ -29,6 +30,8 @@ const KNOWN_ATTRIBUTES = {
   CMUNetPopup: ['Title', 'Text', 'Link', 'LinkText', 'Icon', 'X', 'Y', 'Delay', 'Background', 'Accent'],
   CMUNetAd: ['Id', 'Flip'],
   CMUNetWallpaper: ['Id'],
+  CMUNetArcade: ['Game'],
+  CMUNetSportsbook: [],
 };
 
 const csharpFloat = value => parseFloatInvariant(value) !== null;
@@ -98,6 +101,10 @@ export function checkTag(node) {
       break;
     case 'CMUNetWallpaper':
       needs('Id');
+      break;
+    case 'CMUNetArcade':
+      // no Game puts every cabinet in tabs; a Game the enum does not know fails TryParseTag
+      oneOf('Game', ARCADE_GAMES);
       break;
     case 'CMUGuideImage':
       needs('Path');

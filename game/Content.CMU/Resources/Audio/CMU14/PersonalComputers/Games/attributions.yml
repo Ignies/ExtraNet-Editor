@@ -1,0 +1,39 @@
+- files: ["baseball_charge.ogg"]
+  license: "Custom"
+  copyright: "Cavalry music by Freesound community from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["baseball_hit.ogg"]
+  license: "Custom"
+  copyright: "Baseball hit by Arunangshupanerjee from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["boxing_bell_1.ogg", "boxing_bell_2.ogg", "boxing_bell_3.ogg"]
+  license: "Custom"
+  copyright: "Boxing bell signals by Freesound community from Pixabay under the Pixabay Content License, split into its three bells and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["boxing_scuffle_1.ogg", "boxing_scuffle_2.ogg"]
+  license: "Custom"
+  copyright: "Boxing scuffle by Freesound community from Pixabay under the Pixabay Content License, two stretches cut out and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["crowd_cheer_1.ogg"]
+  license: "Custom"
+  copyright: "Cheer by Driken5482 from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["crowd_cheer_2.ogg", "crowd_cheer_small.ogg"]
+  license: "Custom"
+  copyright: "Cheer 2 and Small cheer by Freesound community from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["fall.ogg", "punch_1.ogg", "punch_2.ogg"]
+  license: "Custom"
+  copyright: "Fall, Punch and Punch 2 by Alice_soundz from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"
+
+- files: ["swoosh_1.ogg", "swoosh_2.ogg", "swoosh_3.ogg"]
+  license: "Custom"
+  copyright: "Swoosh 1 to 3 by Floraphonic from Pixabay under the Pixabay Content License, trimmed and converted to mono OGG"
+  source: "https://pixabay.com/sound-effects/"

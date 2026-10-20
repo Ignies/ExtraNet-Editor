@@ -235,7 +235,8 @@ export function renderProps(host, app) {
         el('p.note', { text: 'An empty <ColorBox>: a thin line across the page.' }));
       break;
     case 'arcade':
-      body.append(attrSelect(b, 'Game', 'Game', ARCADE_GAMES.map(g => [g, g]), app));
+      body.append(attrSelect(b, 'Game', 'Game', [['', 'All games (tabs)'], ...ARCADE_GAMES.map(g => [g, g])], app,
+        'All games puts every cabinet in its own tab with a sound button, like the game\'s own arcade page.'));
       break;
     case 'recipes':
       body.append(attrSelect(b, 'Group', 'Recipes', RECIPE_GROUPS.map(g => [g, g || 'All food']), app),

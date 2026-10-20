@@ -40,7 +40,7 @@ export const BLOCK_TYPES = {
   panel: { group: 'Layout', label: 'Panel', icon: '\u25A2', tag: 'ColorBox + Box', container: 'children', make: () => panelPreset('panel') },
 
   board: { group: 'Live', label: 'Board postings', icon: '\u2709', tag: 'site.yml board:', pseudo: true },
-  arcade: { group: 'Live', label: 'Arcade game', icon: '\u265F', tag: 'CMUNetArcade', make: () => ({ attrs: { Game: 'HuggerRun' } }) },
+  arcade: { group: 'Live', label: 'Arcade', icon: '\u265F', tag: 'CMUNetArcade', make: () => ({ attrs: {} }) },
   sportsbook: { group: 'Live', label: 'Sportsbook', icon: '\u26BD', tag: 'CMUNetSportsbook', make: () => ({ attrs: {} }) },
   spacegpt: { group: 'Live', label: 'SpaceGPT', icon: '?', tag: 'CMUNetSpaceGpt', make: () => ({ attrs: {} }) },
   recipes: { group: 'Live', label: 'Cookbook', icon: '\u2668', tag: 'CMUNetRecipes Kind="Food"', make: () => ({ attrs: { Kind: 'Food' } }) },

@@ -144,7 +144,7 @@ Other tools:
 | Columns (2 or 3) | `<Box HorizontalAlignment="Stretch">` holding one `<Box Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="4">` per column. Stretched boxes expand, so the game shares the width between them. |
 | Row / centred box | `<Box>` (a centred row by default: good for a row of sprites) |
 | Board postings | the `board:` block in `site.yml`; postings always run under the front page |
-| Arcade game | `<CMUNetArcade Game="HuggerRun"/>` or `TrackerReflex` |
+| Arcade | `<CMUNetArcade/>` (every game in its own tab, with a sound button), or `<CMUNetArcade Game="HuggerRun"/>` / `TrackerReflex` for one cabinet |
 | Sportsbook, SpaceGPT | `<CMUNetSportsbook/>`, `<CMUNetSpaceGpt/>` |
 | Cookbook | `<CMUNetRecipes Kind="Food" Group/>` (food only) |
 | Raw markup | written exactly as typed |
@@ -219,8 +219,10 @@ computer full window, built from the game's own code and art:
 - **Deep web access** (in the bar) makes it a hacked machine: a corrupted boot and The deeps.exi on the desktop.
   Its scan turns up the deep sites under new random aliases each browser session, and the ad maze that hides the
   hidden ones, generated as `CMUDeepMazeSystem` does: follow the links ending in `::` to unlock a hidden site.
-- **Live widgets** run in the pages: boards take postings and comments, the Zero-G Ball sportsbook plays its
-  matches with a wallet to bet from, the arcade cabinets play Hugger Run and Tracker Reflex, SpaceGPT answers
+- **Live widgets** run in the pages: boards take postings and comments, the Zero-G Ball sportsbook plays each
+  sport's matches in its own tab with a wallet to bet from, the arcade's tabs play Hugger Run and Tracker Reflex
+  from the keyboard (click a screen, then Space; Esc lets go), the games play the game's own sounds (muted with
+  their Sound button), SpaceGPT answers
   from its roster, the Galley cookbook lists the food recipes (only `Kind="Food"`), and the deep market and the
   Marshals' panels show sample data.
 - **Sounds**, as the game plays them (`CMUPersonalComputerBui`): the boot sound when the power key is pressed
@@ -357,7 +359,11 @@ Differences:
 | `js/emulator/machine.js`, `boot.js`, `desktop.js`, `netbrowser.js`, `boards.js` | The machine, the boot splash, the desktop and its programs, the browser, the boards |
 | `js/emulator/pcsound.js` | The computer's own sounds (boot, running hum, shutdown, keys, clicks, mail, error) with the mute and volume |
 | `js/emulator/net.js`, `data.js`, `linkcheck.js` | The ExtraNet as a computer sees it (addresses, networks, deep aliases, the ad maze), the OS, colony and wallpaper data, and the link check |
-| `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook, the arcade games, SpaceGPT, the recipes, the deep market and the CMB panels |
+| `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook tag (schedule, wallet, a tab per sport), the arcade tag (cabinets, tabs), SpaceGPT, the recipes, the deep market and the CMB panels |
+| `js/emulator/sports/core.js`, `arena.js`, `dolls.js` | The leagues and match simulation dispatch (CMUSports.cs), the arena base with its effects (CMUSportsArena.cs), the dolls and item sprites |
+| `js/emulator/sports/sprint.js`, `boxing.js`, `baseball.js`, `zerog.js` | Each sport's simulation and arena |
+| `js/emulator/arcade/screen.js`, `hugger.js`, `tracker.js` | The arcade screen base with its keyboard (CMUArcadeScreen), and each game |
+| `js/emulator/audio.js`, `gameui.js` | Game sounds through WebAudio with the mute (CMUGameAudio.cs), the games' tabs and sound button |
 | `game/`, `tools/snapshot.py` | The bundled snapshot of the game's ExtraNet content, and the script that refreshes it |
 | `js/editor.js` | The markup view's code editor |
 | `js/ui-site.js`, `js/ui-files.js`, `js/ui-sprites.js`, `js/ui-dialog.js` | Site form, files and images, sprite and ad pickers, dialogs |
