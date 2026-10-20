@@ -42,6 +42,7 @@ const HAIR = '/Textures/Mobs/Customization/human_hair.rsi';
 const CLOTHING = '/Textures/_RMC14/Objects/Clothing/';
 const RIFLE = '/Textures/CMU14/Weapons/Guns/USCM/m41mk2.rsi';
 const KNIFE = '/Textures/_RMC14/Objects/Weapons/Melee/m5_bayonet.rsi';
+const SHOTGUN = '/Textures/_RMC14/Objects/Weapons/Guns/Shotguns/m37a1/classic.rsi';
 const JUMPSUITS = [
   'Uniforms/Civilian/blue_jumpsuit.rsi', 'Uniforms/Civilian/brown_utility.rsi', 'Uniforms/Civilian/khaki_workwear.rsi',
   'Uniforms/Civilian/grey_jumpsuit.rsi', 'Uniforms/Civilian/green_utility.rsi', 'Uniforms/Civilian/blue_workwear.rsi',
@@ -547,7 +548,7 @@ export class HuggerRun extends ArcadeScreen {
   preloadPeople() {
     const sheets = [
       [PARTS, ['torso_m', 'torso_f', 'head_m', 'head_f', 'r_arm', 'l_arm', 'r_leg', 'l_leg', 'l_foot', 'r_foot', 'l_hand', 'r_hand']],
-      [EYES, ['eyes']], [HAIR, [...MALE_HAIR, ...FEMALE_HAIR]], [RIFLE, ['wielded-inhand-left']], [KNIFE, ['inhand-left', 'icon']],
+      [EYES, ['eyes']], [HAIR, [...MALE_HAIR, ...FEMALE_HAIR]], [RIFLE, ['wielded-inhand-left']], [SHOTGUN, ['wielded-inhand-left']], [KNIFE, ['inhand-left', 'icon']],
       [CLOTHING + MARINE_UNIFORM, ['equipped-INNERCLOTHING']], [CLOTHING + MARINE_BOOTS, ['equipped-FEET']],
       [CLOTHING + MARINE_ARMOR, ['equipped-OUTERCLOTHING']], [CLOTHING + MARINE_HELMET, ['equipped-HELMET']],
       ...JUMPSUITS.map(j => [CLOTHING + j, ['equipped-INNERCLOTHING']]), ...SHOES.map(s => [CLOTHING + s, ['equipped-FEET']]),
@@ -586,7 +587,9 @@ export class HuggerRun extends ArcadeScreen {
     } else {
       layers.push([CLOTHING + MARINE_ARMOR, 'equipped-OUTERCLOTHING', null]);
       layers.push([CLOTHING + MARINE_HELMET, 'equipped-HELMET', null]);
-      layers.push(outfit === Outfit.Rifleman ? [RIFLE, 'wielded-inhand-left', null] : [KNIFE, 'inhand-left', null]);
+      if (outfit === Outfit.Rifleman) layers.push([RIFLE, 'wielded-inhand-left', null]);
+      else if (outfit === Outfit.Shotgunner) layers.push([SHOTGUN, 'wielded-inhand-left', null]);
+      else layers.push([KNIFE, 'inhand-left', null]);
     }
 
     person.images = [null, null, null, null];

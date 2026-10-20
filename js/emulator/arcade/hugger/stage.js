@@ -27,7 +27,7 @@ export const WEST = 3;
 export { Key } from '../screen.js';
 
 /** CMUHuggerOutfit: what a dressed person wears. */
-export const Outfit = { Colonist: 0, Rifleman: 1, Knifeman: 2 };
+export const Outfit = { Colonist: 0, Rifleman: 1, Knifeman: 2, Shotgunner: 3 };
 
 export const SPLATTER = '/Textures/Fluids/splatter.rsi';
 export const PARASITE = '/Textures/_RMC14/Mobs/Xenonids/Parasite/parasite.rsi';

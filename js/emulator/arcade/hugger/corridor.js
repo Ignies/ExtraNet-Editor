@@ -7,13 +7,14 @@
 import {
   HuggerStage, SCREEN_W, SCREEN_H, HUD_HEIGHT, SMOKE, SPARK, SOUTH, EAST, WEST, Key, Outfit, SIGN_FONT,
   BRIGHT, AMBER, ALARM, ACID, DARK_ACID, BLOOD, DARK_BLOOD, TRACER_CORE, TRACER_GLOW, DUST, LASER, GREEN, DIM, WHITE, BLACK,
-  hash, hash01, clamp, moveTowards, normalize, pick, fill, outline, line, circle, ellipse, quad, beam, sprite, centreText,
+  TAU, hash, hash01, clamp, moveTowards, normalize, pick, fill, outline, line, circle, ellipse, quad, beam, sprite, centreText,
 } from './stage.js';
 
 export const CEILING_Y = 40;
 export const FLOOR_Y = 186;
 export const PLAYER_X = 64;
-const WALL_DEPTH = 0.85;
+// the wall scrolls with the deck, so hazards on the deck can be lined up with bare wall; the windows give depth
+const WALL_DEPTH = 1;
 const OUTSIDE_DEPTH = 0.12;
 const HILL_DEPTH = 0.22;
 const PANEL_WIDTH = 64;
@@ -39,6 +40,19 @@ const ALERT_RANGE = 130;
 const MARINE_AIM = 0.45;
 const MARINE_REACH = 80;
 const MARINE_BACKPEDAL = 40;
+
+// locker traps: the tell starts this many seconds before the player gets there and lasts this long before the door goes
+const MAX_LOCKERS = 2;
+const LOCKER_TELL_ETA = 1.6;
+const LOCKER_TELL = 0.55;
+// a shotgunner braces, then blasts a spread of short-range pellets into one band: low is jumped, high is ducked
+const SHOTGUN_BRACE = 0.4;
+const SHOTGUN_PUMP_TIME = 0.65;
+const SHOTGUN_RANGE = 230;
+const SHOTGUN_PELLETS = 6;
+const SHOTGUN_SPEED = 420;
+const SHOTGUN_LOW = [2, 14];
+const SHOTGUN_HIGH = [17, 52];
 export const KICK_TIME = 0.32;
 export const STRUGGLE = 0.35;
 export const FALL_TIME = 0.5;
@@ -60,6 +74,10 @@ const MAX_FLASHES = 8;
 const MAX_HUMANS = 4;
 
 export const RIFLE_SHOT = '/Audio/Weapons/Guns/Gunshots/m41.ogg';
+const SHOTGUN = '/Audio/_RMC14/Weapons/Guns/Gunshots/gun_shotgun.ogg';
+const SHOTGUN_PUMP = '/Audio/_RMC14/Weapons/Guns/Pump/shotgunpump1.ogg';
+const LOCKER_OPEN = '/Audio/Effects/closetopen.ogg';
+const RATTLES = ['/Audio/Effects/fence_rattle1.ogg', '/Audio/Effects/fence_rattle2.ogg', '/Audio/Effects/fence_rattle3.ogg'];
 const RICOCHET = '/Audio/_RMC14/Bullets/bullet_impact1.ogg';
 export const SQUISH = '/Audio/Effects/Footsteps/meatslap.ogg';
 const DISTANT_ROAR = '/Audio/_RMC14/Xeno/alien_distantroar_3.ogg';
@@ -89,28 +107,22 @@ const WHISTLES = [
   '/Audio/Voice/Human/whistle_4.ogg',
 ];
 const CORRIDOR_SOUNDS = [
-  RIFLE_SHOT, RICOCHET, SQUISH, DISTANT_ROAR, BODY_FALL, KNIFE_SWING,
+  RIFLE_SHOT, RICOCHET, SQUISH, DISTANT_ROAR, BODY_FALL, KNIFE_SWING, SHOTGUN, SHOTGUN_PUMP, LOCKER_OPEN, ...RATTLES,
   ...FLESH, ...SIZZLES, ...HISSES, ...SWOOSHES, ...STEPS, ...MALE_GASPS, ...FEMALE_GASPS, ...WHISTLES,
 ];
 
-// scenery from the game's own sprites, multiplied down into the phosphor so the characters stay in front
-export const STRUCTURES = '/Textures/_RMC14/Structures/';
-export const METAL_WALL = '/Textures/_RMC14/Structures/Walls/metal.rsi';
-export const REINFORCED_WALL = '/Textures/_RMC14/Structures/Walls/rwall.rsi';
-export const PIPES = '/Textures/_RMC14/Structures/overhead_pipes.rsi';
-export const GRATE = '/Textures/_RMC14/Structures/grate.rsi';
+// The corridor is drawn as one side-view composition rather than tiled sprites: from the top, a ceiling girder with
+// strip lights, a service band of pipes, the main wall of bevelled riveted plates, a handrail, a ribbed lower wall,
+// the skirting and the deck, with foreground railings at the bottom edge. Its palette is the six greys of the game's
+// metal wall sprite (Walls/metal.rsi), pulled into the phosphor. Doors, lockers, consoles, crates, signs and vents
+// are the game's own sprites, placed sparingly at sensible heights.
 export const SCRUBBER = '/Textures/_RMC14/Structures/Piping/Atmospherics/vent_scrubber.rsi';
-export const PLATING = '/Textures/_RMC14/Tiles/almayer/plating.png';
 const FLOOR_TILE = '/Textures/_RMC14/Tiles/almayer/floor.png';
 const CATWALK_TILE = '/Textures/_RMC14/Tiles/almayer/catwalk_tile.png';
-const TUBE = '/Textures/_RMC14/Structures/Wallmounts/Lighting/light_tube.rsi';
 const POSTERS = '/Textures/_RMC14/Structures/Wallmounts/posters.rsi';
 const SIGNS = '/Textures/_RMC14/Structures/Wallmounts/semiotics.rsi';
 const DISPLAY = '/Textures/_RMC14/Structures/Machines/status_display.rsi';
 const COMPUTER = '/Textures/_RMC14/Structures/Machines/computer.rsi';
-const INTERCOM = '/Textures/_RMC14/Structures/Wallmounts/intercom.rsi';
-const EXTINGUISHER = '/Textures/_RMC14/Structures/Wallmounts/extinguisher_cabinet.rsi';
-const CAMERA = '/Textures/_RMC14/Structures/Wallmounts/camera.rsi';
 /** Doors are 32 px sprites at 3.4: a little taller than a person. */
 const DOOR_SIZE = 109;
 const DOORS = [
@@ -129,19 +141,39 @@ const CRATES = [
 ];
 const POSTER_STATES = ['safety_guidance', 'assault_rifle', 'proper_lifting', 'safety_goggles_1', 'the_future', 'remember_io', 'walkman', 'eat'];
 const SIGN_STATES = ['biohazard', 'airlock', 'hazard', 'highvoltage', 'firehaz', 'escapepod', 'galley', 'cryo'];
-/** The scenery tints: the wall darkest, the floor rows, and what hangs on the wall a little brighter. */
-export const WALL_TINT = '#6A8A70';
-export const FLOOR_FAR = '#607A66';
-export const FLOOR_NEAR = '#7C9A82';
-export const PROP_TINT = '#AAC8B0';
 
-function panelKind(panel) {
-  return hash(panel) % 16;
+/** The metal wall sprite's greys, pulled into the phosphor: outline, dark, mid, main, light, highlight, and a rim for trims. */
+export const OUTLINE = '#0E160F';
+export const DARK = '#152018';
+export const MID = '#1B2A1F';
+export const MAIN = '#223427';
+const MAIN_SHADE = '#1F3024';
+export const LIGHT = '#283C2C';
+export const HIGH = '#33503A';
+export const RIM = '#4C7A56';
+const TUBE_LIT = '#DFFFE6';
+/** Furniture is multiplied by this: dimmer than the characters, so they stay in front. */
+export const PROP_TINT = '#8EAE94';
+export const FLOOR_FAR = '#4E6654';
+export const FLOOR_NEAR = '#647E6A';
+
+// the wall's bands, top to bottom
+const SERVICE_TOP = 40;
+const WALL_TOP = 62;
+const PLATE_TOP = 66;
+const RAIL_Y = 148;
+const LOWER_TOP = 156;
+const SKIRT_TOP = 172;
+const FOREGROUND_DEPTH = 1.35;
+
+/** What stands at a panel, from its hash: most panels are bare, and no two neighbours both carry something. */
+function furniture(panel) {
+  const kind = hash(panel) % 100;
+  // at least two bare panels between any two pieces, so nothing crowds anything else
+  if (kind >= 59 || hash(panel - 1) % 100 < 59 || hash(panel - 2) % 100 < 59) return -1;
+  return kind;
 }
 
-const WALL_COLOUR = '#04140A';
-const CEILING_COLOUR = '#020D05';
-const FLOOR_COLOUR = '#041309';
 const SKY = '#010502';
 const HILLS = '#0A2A12';
 
@@ -151,8 +183,12 @@ const T = {
   signs: ['MED', 'SEC', 'ENG', 'HYDRO', 'CARGO', 'OPS'],
 };
 
+/** What a locker trap holds, and how far along it is. */
+export const LockerContent = { Empty: 0, Marine: 1, Colonist: 2 };
+const LockerState = { Shut: 0, Tell: 1, Open: 2 };
+
 export const HumanState = {
-  Walk: 0, Stand: 1, Alert: 2, Flee: 3, Aim: 4, WindUp: 5, Stab: 6, Recover: 7, Kick: 8, Latched: 9, Shot: 10, Down: 11,
+  Walk: 0, Stand: 1, Alert: 2, Flee: 3, Aim: 4, WindUp: 5, Stab: 6, Recover: 7, Kick: 8, Latched: 9, Shot: 10, Down: 11, Brace: 12, Pump: 13,
 };
 
 export function hittable(human) {
@@ -208,32 +244,8 @@ export class CorridorStage extends HuggerStage {
     this.bullets = [];
     this.shots = [];
     this.flashes = [];
+    this.lockers = [];
     this.warmScenery();
-  }
-
-  /** Starts loading the corridor's scenery sprites now, so they are there when it first scrolls by. */
-  warmScenery() {
-    const run = this.run;
-    for (const wall of [METAL_WALL, REINFORCED_WALL]) run.frame(wall, 'full', SOUTH, 0, WALL_TINT);
-    run.image(PLATING, WALL_TINT);
-    for (const tint of [FLOOR_FAR, FLOOR_NEAR]) {
-      run.image(FLOOR_TILE, tint);
-      run.image(CATWALK_TILE, tint);
-    }
-    run.frame(PIPES, 'intact', EAST, 0, PROP_TINT);
-    run.frame(PIPES, 'intact-supply', SOUTH, 0, PROP_TINT);
-    run.frame(TUBE, 'tube1', SOUTH, 0, null);
-    run.frame(TUBE, 'tube0', SOUTH, 0, PROP_TINT);
-    for (const door of DOORS) run.frame(door, 'closed', SOUTH, 0, PROP_TINT);
-    for (const closet of CLOSETS) {
-      run.frame(closet, 'base', SOUTH, 0, PROP_TINT);
-      run.frame(closet, 'closed', SOUTH, 0, PROP_TINT);
-    }
-    for (const crate of CRATES) run.frame(crate, 'closed', SOUTH, 0, PROP_TINT);
-    for (const state of POSTER_STATES) run.frame(POSTERS, state, SOUTH, 0, PROP_TINT);
-    for (const state of SIGN_STATES) run.frame(SIGNS, state, SOUTH, 0, PROP_TINT);
-    for (const [rsi, state] of [[DISPLAY, 'redalert_framed'], [DISPLAY, 'default'], [COMPUTER, 'computer_generic'], [INTERCOM, 'intercom'],
-      [EXTINGUISHER, 'extinguisher_closed'], [CAMERA, 'camera'], [SCRUBBER, 'on']]) run.frame(rsi, state, SOUTH, 0, PROP_TINT);
   }
 
   /** Whether the player is ducking: Down held while on the floor. */
@@ -272,6 +284,7 @@ export class CorridorStage extends HuggerStage {
     this.flashes.length = 0;
     this.ambient = 5;
     for (const human of this.humans) human.active = false;
+    this.lockers.length = 0;
   }
 
   onKey(input) {
@@ -307,6 +320,7 @@ export class CorridorStage extends HuggerStage {
 
     this.moveBullets(dt);
     this.moveHumans(dt);
+    this.moveLockers(dt);
     this.moveCorpse(dt);
     this.updateStage(dt);
     if (this.playing) this.collide();
@@ -480,8 +494,9 @@ export class CorridorStage extends HuggerStage {
     }
   }
 
-  addBullet(x, y, vx, vy) {
-    if (this.bullets.length < MAX_BULLETS) this.bullets.push({ x, y, vx, vy });
+  /** A tracer or pellet in flight; life is how long it lasts (pellets are short range). */
+  addBullet(x, y, vx, vy, life = Infinity) {
+    if (this.bullets.length < MAX_BULLETS) this.bullets.push({ x, y, vx, vy, life });
   }
 
   addFlash(x, y) {
@@ -498,7 +513,11 @@ export class CorridorStage extends HuggerStage {
       const bullet = this.bullets[i];
       bullet.x += bullet.vx * dt;
       bullet.y += bullet.vy * dt;
-      if (bullet.y >= FLOOR_Y + 2) {
+      bullet.life -= dt;
+      if (bullet.life <= 0) {
+        // a pellet at the end of its range
+        this.run.emit(this.world(bullet.x, bullet.y), 2, DUST, 0.4, 10, 0.3, 1.5, 0, TAU, -10, { kind: SMOKE });
+      } else if (bullet.y >= FLOOR_Y + 2) {
         // an aimed shot that missed sparks off the deck plating
         const world = this.world(bullet.x, FLOOR_Y + 2);
         this.run.emit(world, 7, AMBER, 1, 160, 0.3, 1, -Math.PI / 2 + Math.sign(bullet.vx) * 0.6, 1.2, 500, { floor: FLOOR_Y + 2, kind: SPARK });
@@ -513,6 +532,149 @@ export class CorridorStage extends HuggerStage {
     for (let i = this.flashes.length - 1; i >= 0; i--) {
       this.flashes[i].age += dt;
       if (this.flashes[i].age >= 0.07) this.flashes.splice(i, 1);
+    }
+  }
+
+  // Locker traps ---------------------------------------------------------------------------------------------------
+
+  /**
+   * A wall locker on the deck ahead that may hold somebody: as the player nears it rattles, the door shifts and,
+   * if someone is inside, eyes glint in its slats; then it bursts open. mix gives the odds of what is inside:
+   * { marine, colonist } (the rest are empty).
+   */
+  spawnLocker(mix) {
+    if (this.lockers.length >= MAX_LOCKERS) return;
+    const roll = Math.random();
+    const content = roll < mix.marine ? LockerContent.Marine : roll < mix.marine + mix.colonist ? LockerContent.Colonist : LockerContent.Empty;
+    const x = this.bareSlot(this.scroll + SCREEN_W + 50);
+    this.lockers.push({ x, content, closet: CLOSETS[Math.floor(Math.random() * CLOSETS.length)], state: LockerState.Shut, timer: 0 });
+  }
+
+  /** Whether a locker that has not burst yet is ahead of the player. */
+  lockerAhead() {
+    return this.lockers.some(l => l.state !== LockerState.Open && l.x - this.scroll > PLAYER_X - 30);
+  }
+
+  /**
+   * The world x of the middle of the first bare stretch of wall at or after x: a panel with no furniture on it or
+   * on the two either side, so hazards never land near a door, a locker or a sign.
+   */
+  bareSlot(x) {
+    let panel = Math.floor(x / PANEL_WIDTH);
+    while ([-2, -1, 0, 1, 2].some(k => furniture(panel + k) >= 0)) panel++;
+    return panel * PANEL_WIDTH + PANEL_WIDTH / 2;
+  }
+
+  moveLockers(dt) {
+    for (let i = this.lockers.length - 1; i >= 0; i--) {
+      const locker = this.lockers[i];
+      locker.timer += dt;
+      const x = locker.x - this.scroll;
+      if (x < -90) {
+        this.lockers.splice(i, 1);
+        continue;
+      }
+      if (locker.state === LockerState.Shut && this.playing && (x - PLAYER_X) / Math.max(1, this.speed) < LOCKER_TELL_ETA) {
+        locker.state = LockerState.Tell;
+        locker.timer = 0;
+        this.run.playAny(RATTLES, locker.content === LockerContent.Empty ? -8 : -3);
+      } else if (locker.state === LockerState.Tell && locker.timer >= LOCKER_TELL) {
+        this.openLocker(locker, x);
+      }
+    }
+  }
+
+  /** The locker door bangs open on whatever was inside. */
+  openLocker(locker, x) {
+    const run = this.run;
+    locker.state = LockerState.Open;
+    locker.timer = 0;
+    run.play(LOCKER_OPEN, locker.content === LockerContent.Empty ? -6 : 2, locker.content === LockerContent.Empty ? 0.8 : 1);
+    if (locker.content === LockerContent.Empty) return;
+    run.shake(1.5, 0.2);
+    run.emit(this.world(x + 14, FLOOR_Y - 50), 8, DUST, 0.5, 50, 0.6, 3, 0, 1.6, -10, { kind: SMOKE });
+    const human = this.spawnHuman(locker.content === LockerContent.Marine ? Outfit.Shotgunner : Outfit.Colonist, true);
+    if (!human) return;
+    human.x = locker.x + 6;
+    human.timer = 0;
+    human.shouted = true;
+    human.whistled = true;
+    if (locker.content === LockerContent.Marine) {
+      // out he steps, shotgun up
+      human.state = HumanState.Brace;
+      human.high = Math.random() < 0.5;
+      run.pop('!', this.world(x, FLOOR_Y - 116), ALARM, 0.6);
+      return;
+    }
+    human.state = HumanState.Flee;
+    human.east = true;
+    human.flees = true;
+    run.scream(human.person.female, 0);
+  }
+
+  /** A shotgunner braces, shows where the blast will go, then fires a spread of pellets and pumps another round. */
+  brace(human, x, dt) {
+    if (!this.playing || x < PLAYER_X + 24) {
+      human.state = HumanState.Stand;
+      human.timer = 0;
+      return;
+    }
+    if (human.timer < SHOTGUN_BRACE || x - PLAYER_X > SHOTGUN_RANGE) return;
+    const run = this.run;
+    const muzzle = { x: x - 46, y: FLOOR_Y - 51 };
+    const band = human.high ? SHOTGUN_HIGH : SHOTGUN_LOW;
+    for (let k = 0; k < SHOTGUN_PELLETS; k++) {
+      const ty = FLOOR_Y - (band[0] + (band[1] - band[0]) * (k + Math.random() * 0.6) / SHOTGUN_PELLETS);
+      const dir = normalize(PLAYER_X - muzzle.x, ty - muzzle.y);
+      const speed = SHOTGUN_SPEED * (0.92 + Math.random() * 0.16);
+      this.addBullet(muzzle.x, muzzle.y, dir.x * speed, dir.y * speed, (muzzle.x - PLAYER_X + 40) / SHOTGUN_SPEED);
+    }
+    this.addFlash(muzzle.x, muzzle.y);
+    this.addFlash(muzzle.x - 8, muzzle.y);
+    run.emit(this.world(muzzle.x, muzzle.y), 10, TRACER_GLOW, 1, 200, 0.2, 1, Math.PI, 0.7, 0, { kind: SPARK });
+    run.emit(this.world(muzzle.x, muzzle.y), 5, DUST, 0.5, 30, 0.7, 4, Math.PI, 1, -15, { kind: SMOKE });
+    run.play(SHOTGUN, 0, 0.95 + Math.random() * 0.1);
+    run.shake(2, 0.15);
+    run.pend(0.3, SHOTGUN_PUMP, -2);
+    human.state = HumanState.Pump;
+    human.timer = 0;
+  }
+
+  drawLockers(ctx) {
+    const run = this.run;
+    for (const locker of this.lockers) {
+      const x = locker.x - this.scroll;
+      if (x < -80 || x > SCREEN_W + 80) continue;
+      // a rattle that builds before the door goes
+      const shake = locker.state === LockerState.Tell ? Math.sin(locker.timer * 60) * (0.6 + 1.4 * locker.timer / LOCKER_TELL) : 0;
+      const y = FLOOR_Y - 14 * 3;
+      sprite(ctx, run.frame(locker.closet, 'base', SOUTH, 0, PROP_TINT), x + shake, y, 96, 96);
+      if (locker.state === LockerState.Open) {
+        sprite(ctx, run.frame(locker.closet, 'open', SOUTH, 0, PROP_TINT), x, y, 96, 96);
+        continue;
+      }
+      sprite(ctx, run.frame(locker.closet, 'closed', SOUTH, 0, PROP_TINT), x + shake * 1.6, y, 96, 96);
+      // eyes in the slats when somebody is in there
+      if (locker.state === LockerState.Tell && locker.content !== LockerContent.Empty && run.clock % 0.5 < 0.35) {
+        fill(ctx, x - 5 + shake * 1.6, FLOOR_Y - 58, 2, 1.5, WHITE, 0.9);
+        fill(ctx, x + 2 + shake * 1.6, FLOOR_Y - 58, 2, 1.5, WHITE, 0.9);
+      }
+    }
+  }
+
+  /** The red zone a braced shotgunner is about to fill, at the player, so it can be jumped or ducked. */
+  drawBlastWarnings(ctx) {
+    const clock = this.run.clock;
+    for (const human of this.humans) {
+      if (!human.active || human.state !== HumanState.Brace || !this.playing) continue;
+      const x = human.x - this.scroll;
+      if (x - PLAYER_X > SHOTGUN_RANGE) continue;
+      const band = human.high ? SHOTGUN_HIGH : SHOTGUN_LOW;
+      const k = Math.min(1, human.timer / SHOTGUN_BRACE);
+      const flicker = 0.7 + 0.3 * Math.sin(clock * 40);
+      fill(ctx, PLAYER_X - 22, FLOOR_Y - band[1], 44, band[1] - band[0], LASER, (0.1 + 0.22 * k) * flicker);
+      outline(ctx, PLAYER_X - 22, FLOOR_Y - band[1], 44, band[1] - band[0], LASER, 0.5 * k * flicker);
+      line(ctx, x - 46, FLOOR_Y - 51, PLAYER_X + 22, FLOOR_Y - (band[0] + band[1]) / 2, LASER, 0.3 * k * flicker);
     }
   }
 
@@ -579,6 +741,15 @@ export class CorridorStage extends HuggerStage {
         case HumanState.Aim:
           this.backpedal(human, dt);
           this.aim(human, x);
+          break;
+        case HumanState.Brace:
+          this.brace(human, x, dt);
+          break;
+        case HumanState.Pump:
+          if (human.timer < SHOTGUN_PUMP_TIME) break;
+          human.state = HumanState.Brace;
+          human.timer = 0;
+          human.high = Math.random() < 0.5;
           break;
         case HumanState.WindUp:
           if (human.timer < WIND_UP_TIME) break;
@@ -844,9 +1015,12 @@ export class CorridorStage extends HuggerStage {
 
   drawFront(ctx) {
     this.drawShadows(ctx);
+    this.drawLockers(ctx);
     for (const human of this.humans) if (human.active) this.drawHuman(ctx, human);
+    this.drawBlastWarnings(ctx);
     this.drawCorpse(ctx);
     if (!this.corpse) this.drawPlayer(ctx);
+    this.drawForeground(ctx);
     this.drawFire(ctx);
     this.drawStreaks(ctx);
   }
@@ -868,19 +1042,54 @@ export class CorridorStage extends HuggerStage {
     return null;
   }
 
-  drawCeiling(ctx) {
+  /** Starts loading the corridor's scenery sprites now, so they are there when it first scrolls by. */
+  warmScenery() {
     const run = this.run;
-    fill(ctx, 0, HUD_HEIGHT, SCREEN_W, CEILING_Y - HUD_HEIGHT, CEILING_COLOUR);
-    const u = this.scroll * WALL_DEPTH;
-    const pipe = run.frame(PIPES, 'intact', EAST, 0, PROP_TINT);
-    for (let c = Math.floor(u / 48); c * 48 - u < SCREEN_W; c++) sprite(ctx, pipe, c * 48 - u + 24, 28, 48, 48);
-    fill(ctx, 0, CEILING_Y - 2, SCREEN_W, 2, DIM, 0.8);
-    for (let c = Math.floor((u - 30) / 96); c * 96 + 30 - u < SCREEN_W; c++) {
-      // a strip light on the ceiling: the tube sits in the bottom rows of its sprite
-      const x = c * 96 + 30 - u;
-      const on = this.lampOn(c);
-      sprite(ctx, run.frame(TUBE, on ? 'tube1' : 'tube0', SOUTH, 0, on ? null : PROP_TINT), x + 13, CEILING_Y - 30, 64, 64);
+    for (const tint of [FLOOR_FAR, FLOOR_NEAR]) {
+      run.image(FLOOR_TILE, tint);
+      run.image(CATWALK_TILE, tint);
     }
+    for (const door of DOORS) run.frame(door, 'closed', SOUTH, 0, PROP_TINT);
+    for (const closet of CLOSETS) {
+      run.frame(closet, 'base', SOUTH, 0, PROP_TINT);
+      run.frame(closet, 'closed', SOUTH, 0, PROP_TINT);
+    }
+    for (const crate of CRATES) run.frame(crate, 'closed', SOUTH, 0, PROP_TINT);
+    for (const state of POSTER_STATES) run.frame(POSTERS, state, SOUTH, 0, PROP_TINT);
+    for (const state of SIGN_STATES) run.frame(SIGNS, state, SOUTH, 0, PROP_TINT);
+    for (const [rsi, state] of [[DISPLAY, 'redalert_framed'], [DISPLAY, 'default'], [COMPUTER, 'computer_generic'], [SCRUBBER, 'on']]) {
+      run.frame(rsi, state, SOUTH, 0, PROP_TINT);
+    }
+  }
+
+  /** The ceiling girder and the service band of pipes under it, both one continuous strip. */
+  drawCeiling(ctx) {
+    const u = this.scroll * WALL_DEPTH;
+    fill(ctx, 0, HUD_HEIGHT, SCREEN_W, SERVICE_TOP - HUD_HEIGHT, OUTLINE);
+    // the girder: a web with a flange under it, and stiffeners with rivets
+    fill(ctx, 0, 19, SCREEN_W, 4, DARK);
+    fill(ctx, 0, 31, SCREEN_W, 5, MID);
+    fill(ctx, 0, 31, SCREEN_W, 1, HIGH);
+    fill(ctx, 0, 36, SCREEN_W, 1, OUTLINE);
+    for (let c = Math.floor(u / 48); c * 48 - u < SCREEN_W; c++) {
+      const x = c * 48 - u;
+      fill(ctx, x, 23, 3, 8, DARK);
+      fill(ctx, x + 1, 33, 1, 1, RIM);
+    }
+
+    // the service band: a big pipe with flanged joints, a small one, and the brackets holding them
+    fill(ctx, 0, SERVICE_TOP - 4, SCREEN_W, WALL_TOP - SERVICE_TOP + 4, OUTLINE);
+    fill(ctx, 0, 43, SCREEN_W, 7, MID);
+    fill(ctx, 0, 43, SCREEN_W, 1, HIGH);
+    fill(ctx, 0, 49, SCREEN_W, 1, DARK);
+    fill(ctx, 0, 53, SCREEN_W, 3, DARK);
+    fill(ctx, 0, 53, SCREEN_W, 1, LIGHT);
+    for (let c = Math.floor(u / 80); c * 80 - u < SCREEN_W; c++) {
+      const x = c * 80 - u + 20;
+      fill(ctx, x, 41, 4, 11, LIGHT);
+      fill(ctx, x, 41, 4, 1, HIGH);
+    }
+    for (let c = Math.floor(u / 48); c * 48 - u < SCREEN_W; c++) fill(ctx, c * 48 - u + 30, 40, 2, 22, DARK);
   }
 
   /** Most lamps burn steady; a few in every corridor stutter. */
@@ -891,105 +1100,121 @@ export class CorridorStage extends HuggerStage {
   }
 
   drawWall(ctx) {
-    fill(ctx, 0, CEILING_Y, SCREEN_W, FLOOR_Y - CEILING_Y, WALL_COLOUR);
     const u = this.scroll * WALL_DEPTH;
     const first = Math.floor(u / PANEL_WIDTH) - 1;
-    // the wall first and then what is on it, so a door wider than its panel is not covered by the next one
-    for (let p = first; p * PANEL_WIDTH - u < SCREEN_W; p++) this.drawWallTiles(ctx, p, p * PANEL_WIDTH - u);
-    for (let p = first; p * PANEL_WIDTH - u < SCREEN_W + PANEL_WIDTH; p++) this.drawPanel(ctx, p, p * PANEL_WIDTH - u);
+    // the bands run the whole width, then the plates, then what stands in front, so a door can spill over its panel
+    fill(ctx, 0, WALL_TOP, SCREEN_W, FLOOR_Y - WALL_TOP, DARK);
+    fill(ctx, 0, WALL_TOP, SCREEN_W, 1, HIGH);
+    fill(ctx, 0, WALL_TOP + 1, SCREEN_W, 2, MAIN);
+    fill(ctx, 0, WALL_TOP + 3, SCREEN_W, 1, OUTLINE);
+    for (let p = first; p * PANEL_WIDTH - u < SCREEN_W; p++) this.drawPlate(ctx, p, p * PANEL_WIDTH - u);
+    this.drawLowerWall(ctx, u);
+    for (let p = first; p * PANEL_WIDTH - u < SCREEN_W + PANEL_WIDTH; p++) this.drawFurniture(ctx, p, p * PANEL_WIDTH - u);
   }
 
-  /** Two colony wall blocks stacked up to a strip of deck plating at the foot of the wall. */
-  drawWallTiles(ctx, panel, x) {
-    const run = this.run;
-    const tile = run.frame(hash01(panel, 11) < 0.3 ? REINFORCED_WALL : METAL_WALL, 'full', SOUTH, 0, WALL_TINT);
-    sprite(ctx, tile, x + 32, CEILING_Y + 32, 64, 64);
-    sprite(ctx, tile, x + 32, CEILING_Y + 96, 64, 64);
-    const plate = run.image(PLATING, WALL_TINT);
-    sprite(ctx, plate, x + 16, FLOOR_Y - 9, 32, 18);
-    sprite(ctx, plate, x + 48, FLOOR_Y - 9, 32, 18);
-    fill(ctx, x, FLOOR_Y - 18, PANEL_WIDTH, 1, DIM, 0.6);
+  /** One bevelled wall plate with rivets at its corners, and now and then a groove, a grille, a split or some grime. */
+  drawPlate(ctx, panel, x) {
+    const top = PLATE_TOP;
+    const bottom = RAIL_Y - 2;
+    fill(ctx, x + 2, top, PANEL_WIDTH - 4, bottom - top, hash01(panel, 24) < 0.3 ? MAIN_SHADE : MAIN);
+    fill(ctx, x + 2, top, PANEL_WIDTH - 4, 1, HIGH);
+    fill(ctx, x + 2, top, 1, bottom - top, LIGHT);
+    fill(ctx, x + 2, bottom - 1, PANEL_WIDTH - 4, 1, OUTLINE);
+    fill(ctx, x + PANEL_WIDTH - 3, top, 1, bottom - top, OUTLINE);
+    const v = hash01(panel, 21);
+    if (v < 0.45) {
+      fill(ctx, x + 3, 104, PANEL_WIDTH - 6, 1, OUTLINE);
+      fill(ctx, x + 3, 105, PANEL_WIDTH - 6, 1, LIGHT);
+    } else if (v < 0.65) {
+      fill(ctx, x + 14, 116, 36, 22, DARK);
+      for (let k = 0; k < 5; k++) fill(ctx, x + 16, 118 + k * 4, 32, 2, OUTLINE);
+    } else if (v < 0.82) {
+      fill(ctx, x + 31, top + 1, 1, bottom - top - 2, OUTLINE);
+      fill(ctx, x + 32, top + 1, 1, bottom - top - 2, LIGHT);
+    } else {
+      fill(ctx, x + 3, 118, PANEL_WIDTH - 6, bottom - 119, OUTLINE, 0.35);
+      fill(ctx, x + 12 + hash01(panel, 22) * 36, 100, 1, 30, OUTLINE, 0.5);
+    }
+    for (const [rx, ry] of [[x + 5, top + 3], [x + PANEL_WIDTH - 7, top + 3], [x + 5, bottom - 5], [x + PANEL_WIDTH - 7, bottom - 5]]) {
+      fill(ctx, rx, ry, 1, 1, HIGH);
+      fill(ctx, rx + 1, ry + 1, 1, 1, OUTLINE);
+    }
   }
 
-  /** What hangs on or stands against one panel of wall, picked by its hash, all the game's own sprites. */
-  drawPanel(ctx, panel, x) {
+  /** The handrail, the ribbed lower wall and the skirting, continuous along the corridor. */
+  drawLowerWall(ctx, u) {
+    fill(ctx, 0, RAIL_Y, SCREEN_W, LOWER_TOP - RAIL_Y, OUTLINE);
+    fill(ctx, 0, RAIL_Y + 2, SCREEN_W, 2, RIM);
+    fill(ctx, 0, RAIL_Y + 2, SCREEN_W, 1, GREEN, 0.25);
+    fill(ctx, 0, LOWER_TOP, SCREEN_W, SKIRT_TOP - LOWER_TOP, MID);
+    fill(ctx, 0, LOWER_TOP, SCREEN_W, 1, OUTLINE);
+    for (let c = Math.floor(u / 8); c * 8 - u < SCREEN_W; c++) fill(ctx, c * 8 - u, LOWER_TOP + 1, 1, SKIRT_TOP - LOWER_TOP - 1, DARK);
+    fill(ctx, 0, SKIRT_TOP, SCREEN_W, FLOOR_Y - SKIRT_TOP, DARK);
+    fill(ctx, 0, SKIRT_TOP, SCREEN_W, 1, HIGH);
+    for (let c = Math.floor(u / PANEL_WIDTH); c * PANEL_WIDTH - u < SCREEN_W; c++) {
+      const x = c * PANEL_WIDTH - u;
+      fill(ctx, x + 31, RAIL_Y + 4, 2, 4, LIGHT);
+      fill(ctx, x + 8, 178, 2, 2, LIGHT);
+      fill(ctx, x + 40, 178, 2, 2, LIGHT);
+      if (hash01(c, 23) >= 0.15) continue;
+      for (let k = 0; k < 8; k++) {
+        const sx = x + k * 8 + 4;
+        quad(ctx, sx, SKIRT_TOP + 2, sx + 4, SKIRT_TOP + 2, sx, FLOOR_Y - 1, sx - 4, FLOOR_Y - 1, AMBER, 0.3);
+      }
+    }
+  }
+
+  /** What stands at a panel: doors and lockers on the deck, signs at eye level, vents and displays up high. */
+  drawFurniture(ctx, panel, x) {
+    const kind = furniture(panel);
+    if (kind < 0) return;
     const run = this.run;
     const h = hash(panel);
-    const kind = panelKind(panel);
-    // a door spills onto the panels either side, so they stay bare
-    if ((kind !== 9 && (panelKind(panel - 1) === 9 || panelKind(panel + 1) === 9)) || (kind === 9 && panelKind(panel - 1) === 9)) return;
+    const centre = x + 32;
     const frame = Math.floor(run.clock / 0.12);
-    switch (kind) {
-      case 0:
-        sprite(ctx, run.frame(POSTERS, POSTER_STATES[(h >>> 8) % POSTER_STATES.length], SOUTH, 0, PROP_TINT), x + 32, 84, 52, 52);
-        return;
-      case 1:
-        sprite(ctx, run.frame(EXTINGUISHER, 'extinguisher_closed', SOUTH, 0, PROP_TINT), x + 32, 122, 48, 48);
-        return;
-      case 2:
-        sprite(ctx, run.frame(INTERCOM, 'intercom', SOUTH, frame, PROP_TINT), x + 24, 104, 44, 44);
-        sprite(ctx, run.frame(CAMERA, 'camera', SOUTH, Math.floor(frame / 2), PROP_TINT), x + 44, 60, 44, 44);
-        return;
-      case 3:
-        // a crate stood against the wall; its sprite's bottom edge is 26 px down
-        sprite(ctx, run.frame(CRATES[(h >>> 8) % CRATES.length], 'closed', SOUTH, 0, PROP_TINT), x + 32, FLOOR_Y - 1 - 10 * 2.2, 70, 70);
-        return;
-      case 4:
-        sprite(ctx, run.frame(SIGNS, SIGN_STATES[(h >>> 8) % SIGN_STATES.length], SOUTH, 0, PROP_TINT), x + 36, 80, 48, 48);
-        return;
-      case 5:
-      case 6:
-        sprite(ctx, run.frame(SCRUBBER, 'on', SOUTH, frame, PROP_TINT), x + 32, 130, 52, 52);
-        return;
-      case 7:
-      case 8:
-        // window onto the colony outside
-        fill(ctx, x + 8, 52, 48, 56, BLACK);
-        this.drawOutside(ctx, x + 10, 54, 44, 52);
-        fill(ctx, x + 31.5, 54, 1, 52, DIM, 0.6);
-        outline(ctx, x + 8, 52, 48, 56, DIM);
-        quad(ctx, x + 14, 54, x + 20, 54, x + 12, 70, x + 10, 70, GREEN, 0.06);
-        return;
-      case 9:
-        // an airlock door, a little taller than a person
-        sprite(ctx, run.frame(DOORS[(h >>> 10) % DOORS.length], 'closed', SOUTH, 0, PROP_TINT), x + 32, FLOOR_Y - DOOR_SIZE / 2, DOOR_SIZE, DOOR_SIZE);
-        return;
-      case 10:
-        sprite(ctx, run.frame(DISPLAY, (h >>> 8) % 2 === 0 ? 'redalert_framed' : 'default', SOUTH, frame, PROP_TINT), x + 32, 76, 56, 56);
-        return;
-      case 11:
-        // a console against the wall
-        sprite(ctx, run.frame(COMPUTER, 'computer_generic', SOUTH, Math.floor(frame / 4), PROP_TINT), x + 32, FLOOR_Y - 1 - 38.5, 77, 77);
-        return;
-      case 12: {
-        // pipes down the wall, and a valve
-        const riser = run.frame(PIPES, 'intact-supply', SOUTH, 0, PROP_TINT);
-        for (let y = CEILING_Y; y < FLOOR_Y - 18; y += 48) sprite(ctx, riser, x + 24, y + 24, 48, 48);
-        circle(ctx, x + 24, 98, 7, AMBER, 0.8, false);
-        line(ctx, x + 17, 98, x + 31, 98, AMBER, 0.7);
-        line(ctx, x + 24, 91, x + 24, 105, AMBER, 0.7);
-        return;
+    if (kind < 9) {
+      // an airlock door set into a recess in the wall, a little taller than a person
+      fill(ctx, centre - 58, FLOOR_Y - 115, 116, 115, OUTLINE);
+      fill(ctx, centre - 58, FLOOR_Y - 115, 116, 1, HIGH);
+      sprite(ctx, run.frame(DOORS[(h >>> 10) % DOORS.length], 'closed', SOUTH, 0, PROP_TINT), centre, FLOOR_Y - DOOR_SIZE / 2, DOOR_SIZE, DOOR_SIZE);
+      circle(ctx, centre + 46, FLOOR_Y - 104, 1.6, (h >>> 8) % 3 === 0 ? ALARM : GREEN, run.clock % 1.2 < 0.8 ? 1 : 0.3);
+    } else if (kind < 18) {
+      // a viewport onto the colony outside
+      fill(ctx, x + 4, 72, 56, 54, OUTLINE);
+      this.drawOutside(ctx, x + 7, 75, 50, 48);
+      fill(ctx, x + 31.5, 75, 1, 48, MID);
+      outline(ctx, x + 6, 74, 52, 50, HIGH);
+      quad(ctx, x + 12, 75, x + 18, 75, x + 10, 92, x + 8, 92, GREEN, 0.07);
+    } else if (kind < 24) {
+      // a locker stood on the deck: its body, then its door; the body ends 30 px down its sprite
+      const closet = CLOSETS[(h >>> 8) % CLOSETS.length];
+      const y = FLOOR_Y - 14 * 3;
+      sprite(ctx, run.frame(closet, 'base', SOUTH, 0, PROP_TINT), centre, y, 96, 96);
+      sprite(ctx, run.frame(closet, 'closed', SOUTH, 0, PROP_TINT), centre, y, 96, 96);
+    } else if (kind < 29) {
+      sprite(ctx, run.frame(COMPUTER, 'computer_generic', SOUTH, Math.floor(frame / 4), PROP_TINT), centre, FLOOR_Y - 38.5, 77, 77);
+    } else if (kind < 35) {
+      // a crate on the deck; its sprite ends 26 px down
+      sprite(ctx, run.frame(CRATES[(h >>> 8) % CRATES.length], 'closed', SOUTH, 0, PROP_TINT), centre, FLOOR_Y - 10 * 2.2, 70, 70);
+    } else if (kind < 43) {
+      if ((h >>> 8) % 2 === 0) {
+        sprite(ctx, run.frame(SIGNS, SIGN_STATES[(h >>> 9) % SIGN_STATES.length], SOUTH, 0, PROP_TINT), centre + 4, 96, 44, 44);
+      } else {
+        fill(ctx, x + 12, 88, 40, 14, BLACK);
+        outline(ctx, x + 12, 88, 40, 14, GREEN, 0.8);
+        centreText(ctx, SIGN_FONT, T.signs[(h >>> 9) % T.signs.length], centre, 91, GREEN);
       }
-      case 13: {
-        // a locker: its body, then its closed door; the body's bottom edge is 30 px down
-        const closet = CLOSETS[(h >>> 8) % CLOSETS.length];
-        const y = FLOOR_Y - 1 - 14 * 3.2;
-        sprite(ctx, run.frame(closet, 'base', SOUTH, 0, PROP_TINT), x + 32, y, 102, 102);
-        sprite(ctx, run.frame(closet, 'closed', SOUTH, 0, PROP_TINT), x + 32, y, 102, 102);
-        return;
-      }
-      case 14:
-        // somebody already died here
-        sprite(ctx, run.splatterFrame((h >>> 9) % 6, DARK_BLOOD), x + 32, 138, 30, 30, ((h >>> 12) % 628) / 100, 0.65);
-        fill(ctx, x + 30, 148, 1.5, 14, DARK_BLOOD, 0.5);
-        fill(ctx, x + 36, 146, 1, 9, DARK_BLOOD, 0.45);
-        return;
-      case 15:
-        // a department sign
-        fill(ctx, x + 12, 66, 40, 14, BLACK);
-        outline(ctx, x + 12, 66, 40, 14, GREEN, 0.8);
-        centreText(ctx, SIGN_FONT, T.signs[(h >>> 8) % T.signs.length], x + 32, 69, GREEN);
-        return;
+    } else if (kind < 49) {
+      sprite(ctx, run.frame(SCRUBBER, 'on', SOUTH, frame, PROP_TINT), centre, 84, 44, 44);
+    } else if (kind < 53) {
+      sprite(ctx, run.frame(POSTERS, POSTER_STATES[(h >>> 8) % POSTER_STATES.length], SOUTH, 0, PROP_TINT), centre, 100, 48, 48);
+    } else if (kind < 56) {
+      sprite(ctx, run.frame(DISPLAY, (h >>> 8) % 2 === 0 ? 'redalert_framed' : 'default', SOUTH, frame, PROP_TINT), centre, 88, 52, 52);
+    } else {
+      // somebody already died here
+      sprite(ctx, run.splatterFrame((h >>> 9) % 6, DARK_BLOOD), centre, 126, 30, 30, ((h >>> 12) % 628) / 100, 0.65);
+      fill(ctx, centre - 2, 136, 1.5, 14, DARK_BLOOD, 0.5);
+      fill(ctx, centre + 4, 134, 1, 9, DARK_BLOOD, 0.45);
     }
   }
 
@@ -1027,11 +1252,11 @@ export class CorridorStage extends HuggerStage {
 
   drawFloor(ctx) {
     const run = this.run;
-    fill(ctx, 0, FLOOR_Y, SCREEN_W, SCREEN_H - FLOOR_Y, FLOOR_COLOUR);
+    fill(ctx, 0, FLOOR_Y, SCREEN_W, SCREEN_H - FLOOR_Y, OUTLINE);
     // two rows of deck plates seen at a slant, the near row lighter and offset half a plate
     for (let row = 0; row < 2; row++) {
       const offset = row * 20;
-      const y = FLOOR_Y + 1 + row * 19;
+      const y = FLOOR_Y + 2 + row * 19;
       const tint = row === 0 ? FLOOR_FAR : FLOOR_NEAR;
       const floor = run.image(FLOOR_TILE, tint);
       const catwalk = run.image(CATWALK_TILE, tint);
@@ -1040,17 +1265,53 @@ export class CorridorStage extends HuggerStage {
         sprite(ctx, hash(c * 2 + row) % 7 === 0 ? catwalk : floor, x + 20, y + 9.5, 40, 19);
       }
     }
-    fill(ctx, 0, FLOOR_Y, SCREEN_W, 1.5, GREEN, 0.65);
-    fill(ctx, 0, FLOOR_Y + 1.5, SCREEN_W, 3, BLACK, 0.35);
+    // the deck's edge against the wall, and the wall's shadow on the deck
+    fill(ctx, 0, FLOOR_Y, SCREEN_W, 2, RIM);
+    fill(ctx, 0, FLOOR_Y, SCREEN_W, 1, GREEN, 0.5);
+    fill(ctx, 0, FLOOR_Y + 2, SCREEN_W, 4, BLACK, 0.4);
   }
 
+  /** Each strip light: its fitting, a halo on the wall, a cone of light, and a pool of it on the deck. */
   drawLights(ctx) {
     const u = this.scroll * WALL_DEPTH;
-    for (let c = Math.floor((u - 30) / 96) - 1; c * 96 + 30 - u < SCREEN_W + 40; c++) {
-      if (!this.lampOn(c)) continue;
+    for (let c = Math.floor((u - 30) / 96) - 1; c * 96 + 30 - u < SCREEN_W + 60; c++) {
       const x = c * 96 + 30 - u;
-      quad(ctx, x + 2, CEILING_Y - 3, x + 24, CEILING_Y - 3, x + 62, FLOOR_Y + 14, x - 36, FLOOR_Y + 14, GREEN, 0.035);
-      ellipse(ctx, x + 13, FLOOR_Y + 9, 40, 6, GREEN, 0.05);
+      const centre = x + 13;
+      const on = this.lampOn(c);
+      fill(ctx, x - 1, 35, 28, 5, DARK);
+      fill(ctx, x - 1, 35, 28, 1, HIGH);
+      fill(ctx, x + 1, 38, 24, 2, on ? TUBE_LIT : MID);
+      if (!on) continue;
+      ellipse(ctx, centre, 42, 30, 9, GREEN, 0.05);
+      ellipse(ctx, centre, 41, 16, 4, GREEN, 0.07);
+      quad(ctx, x + 1, 40, x + 25, 40, x + 66, FLOOR_Y, x - 40, FLOOR_Y, GREEN, 0.035);
+      ellipse(ctx, centre, FLOOR_Y + 9, 54, 8, GREEN, 0.07);
+      ellipse(ctx, centre, FLOOR_Y + 8, 26, 4, GREEN, 0.07);
+    }
+  }
+
+  /** Railings and cable runs nearer than the deck, at its bottom edge, moving past faster. */
+  drawForeground(ctx) {
+    const u = this.scroll * FOREGROUND_DEPTH;
+    for (let c = Math.floor(u / 150) - 1; c * 150 - u < SCREEN_W + 40; c++) {
+      const kind = hash(c + 101) % 4;
+      const x = c * 150 - u + hash01(c, 41) * 60;
+      if (kind === 0) {
+        // a railing: two posts and a bar
+        fill(ctx, x, 209, 70, 3, OUTLINE);
+        fill(ctx, x, 209, 70, 1, MID);
+        for (const px of [x, x + 66]) {
+          fill(ctx, px, 206, 5, SCREEN_H - 206, OUTLINE);
+          fill(ctx, px, 206, 5, 1, MID);
+        }
+      } else if (kind === 1) {
+        // a cable bundle along the deck edge
+        for (let k = 0; k < 3; k++) {
+          for (let sx = 0; sx < 90; sx += 3) {
+            fill(ctx, x + sx, 218 + k * 2 + Math.sin((sx + c * 7) / 14 + k) * 1.5, 3, 2, k === 1 ? MID : OUTLINE);
+          }
+        }
+      }
     }
   }
 

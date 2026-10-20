@@ -1,5 +1,5 @@
 {
-"generated": "2026-10-20T20:16:17Z",
+"generated": "2026-10-20T20:58:45Z",
 "commit": "535cb0265c",
 "files": [
 "Content.CMU/Resources/Audio/CMU14/Medical/attributions.yml",
@@ -1303,6 +1303,7 @@
 "Resources/Audio/Effects/attributions.yml",
 "Resources/Audio/Effects/beep1.ogg",
 "Resources/Audio/Effects/clang.ogg",
+"Resources/Audio/Effects/closetopen.ogg",
 "Resources/Audio/Effects/double_beep.ogg",
 "Resources/Audio/Effects/explosionsmallfar.ogg",
 "Resources/Audio/Effects/extinguish.ogg",
@@ -1323,6 +1324,7 @@
 "Resources/Audio/Effects/sparks2.ogg",
 "Resources/Audio/Effects/sparks3.ogg",
 "Resources/Audio/Effects/sparks4.ogg",
+"Resources/Audio/Effects/thudswoosh.ogg",
 "Resources/Audio/Effects/voteding.ogg",
 "Resources/Audio/Effects/wood_destroy2.ogg",
 "Resources/Audio/Items/Whistle/attributions.yml",
@@ -1453,6 +1455,9 @@
 "Resources/Audio/_RMC14/Weapons/Guns/Gunshots/gun_m1984_1.ogg",
 "Resources/Audio/_RMC14/Weapons/Guns/Gunshots/gun_m1984_2.ogg",
 "Resources/Audio/_RMC14/Weapons/Guns/Gunshots/gun_m54c_1.ogg",
+"Resources/Audio/_RMC14/Weapons/Guns/Gunshots/gun_shotgun.ogg",
+"Resources/Audio/_RMC14/Weapons/Guns/Pump/attributions.yml",
+"Resources/Audio/_RMC14/Weapons/Guns/Pump/shotgunpump1.ogg",
 "Resources/Audio/_RMC14/Weapons/Guns/Reload/attributions.yml",
 "Resources/Audio/_RMC14/Weapons/Guns/Reload/m41_reload.ogg",
 "Resources/Audio/_RMC14/Weapons/Guns/Reload/m41_unload.ogg",

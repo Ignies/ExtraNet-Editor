@@ -6,7 +6,7 @@ import {
   HuggerStage, Key, SOUTH, EAST, LARVA, RUNNER, SCREEN_W, SCREEN_H, HUD_HEIGHT, SMOKE, PHOSPHOR, BRIGHT, ACID, GREEN, DIM, BLACK, WHITE,
   BIG_FONT, SMALL_FONT, hash, clamp, fill, circle, ellipse, quad, beam, sprite, centreText,
 } from './stage.js';
-import { METAL_WALL, PIPES, GRATE, SCRUBBER, PLATING, WALL_TINT, FLOOR_NEAR, PROP_TINT } from './corridor.js';
+import { OUTLINE, DARK, MID, MAIN, LIGHT, HIGH, RIM } from './corridor.js';
 
 const DUCT_TOP = 62;
 const DUCT_BOTTOM = 166;
@@ -31,7 +31,6 @@ const ROARS = [
 ];
 
 const DUCT_BACK = '#030E06';
-const BACK_TINT = '#3A5A42';
 const HUSK = '#5A6A48';
 
 /** Strings from Games/hugger.ftl, stage 3. */
@@ -132,55 +131,72 @@ export class Vent extends HuggerStage {
     if (this.scene >= DONE) this.finish();
   }
 
+  /**
+   * The duct as one side-view piece in the corridor's metal palette: a corrugated far wall with the odd fan behind,
+   * a riveted roof and floor joined by flanged rings, and grates in the roof letting light fall to the floor.
+   */
   drawBack(ctx) {
-    const run = this.run;
-    const clock = run.clock;
+    const clock = this.run.clock;
     fill(ctx, 0, HUD_HEIGHT, SCREEN_W, SCREEN_H - HUD_HEIGHT, BLACK);
-    fill(ctx, 0, DUCT_TOP, SCREEN_W, DUCT_BOTTOM - DUCT_TOP, DUCT_BACK);
 
-    // the far side of the duct: dark wall blocks, now and then a fan or a vent scrubber breathing
+    // the far wall: corrugated sheet, darker into its corners
     const back = this.scroll * 0.6;
-    const wall = run.frame(METAL_WALL, 'full', SOUTH, 0, BACK_TINT);
-    const scrubber = run.frame(SCRUBBER, 'on', SOUTH, Math.floor(clock / 0.12), PROP_TINT);
+    fill(ctx, 0, DUCT_TOP, SCREEN_W, DUCT_BOTTOM - DUCT_TOP, MID);
+    for (let c = Math.floor(back / 10); c * 10 - back < SCREEN_W; c++) {
+      const x = c * 10 - back;
+      fill(ctx, x, DUCT_TOP, 4, DUCT_BOTTOM - DUCT_TOP, DARK);
+      fill(ctx, x + 4, DUCT_TOP, 1, DUCT_BOTTOM - DUCT_TOP, MAIN);
+    }
     for (let c = Math.floor(back / 52); c * 52 - back < SCREEN_W; c++) {
-      const x = c * 52 - back;
-      sprite(ctx, wall, x + 26, DUCT_TOP + 26, 52, 52);
-      sprite(ctx, wall, x + 26, DUCT_TOP + 78, 52, 52);
-      const kind = hash(c) % 5;
+      if (hash(c) % 5 !== 0) continue;
+      const cx = c * 52 - back + 26;
       const cy = (DUCT_TOP + DUCT_BOTTOM) / 2;
-      if (kind === 2) {
-        sprite(ctx, scrubber, x + 26, cy, 48, 48);
-        continue;
-      }
-      if (kind !== 0) continue;
-      const cx = x + 26;
+      circle(ctx, cx, cy, 30, OUTLINE);
+      circle(ctx, cx, cy, 29, HIGH, 1, false);
       circle(ctx, cx, cy, 26, BLACK);
-      circle(ctx, cx, cy, 26, DIM, 0.7, false);
       const spin = clock * 5 + c;
       for (let blade = 0; blade < 4; blade++) {
         const angle = spin + blade * Math.PI / 2;
-        beam(ctx, cx, cy, cx + Math.cos(angle) * 23, cy + Math.sin(angle) * 23, 6, DIM, 0.5);
+        beam(ctx, cx, cy, cx + Math.cos(angle) * 23, cy + Math.sin(angle) * 23, 7, LIGHT);
       }
-      circle(ctx, cx, cy, 4, DIM);
+      circle(ctx, cx, cy, 4, HIGH);
     }
+    fill(ctx, 0, DUCT_TOP, SCREEN_W, 12, OUTLINE, 0.55);
+    fill(ctx, 0, DUCT_BOTTOM - 10, SCREEN_W, 10, OUTLINE, 0.45);
 
-    // a pipe run along the top of the duct
-    const pipe = run.frame(PIPES, 'intact', EAST, 0, WALL_TINT);
-    for (let c = Math.floor(this.scroll / 48); c * 48 - this.scroll < SCREEN_W; c++) sprite(ctx, pipe, c * 48 - this.scroll + 24, DUCT_TOP + 4, 48, 48);
-
-    // roof and floor of deck plating, with grates in the roof where the light falls through
-    const roof = run.image(PLATING, WALL_TINT);
-    const deck = run.image(PLATING, FLOOR_NEAR);
-    const grate = run.frame(GRATE, 'grate', SOUTH, 0, WALL_TINT);
-    for (let c = Math.floor(this.scroll / 40) - 1; c * 40 - this.scroll < SCREEN_W + 40; c++) {
-      const x = c * 40 - this.scroll;
-      const open = hash(c + 7) % 4 === 0;
-      sprite(ctx, open ? grate : roof, x + 20, DUCT_TOP - 7, 40, 14);
-      sprite(ctx, deck, x + 20, DUCT_BOTTOM + 9, 40, 18);
-      if (open) quad(ctx, x + 8, DUCT_TOP, x + 32, DUCT_TOP, x + 52, DUCT_BOTTOM, x - 12, DUCT_BOTTOM, GREEN, 0.05);
+    // the roof and floor plates, riveted, with a flanged ring at every joint and grates in the roof
+    for (const [top, height] of [[DUCT_TOP - 16, 16], [DUCT_BOTTOM, 20]]) {
+      fill(ctx, 0, top, SCREEN_W, height, MAIN);
+      fill(ctx, 0, top, SCREEN_W, 1, HIGH);
+      fill(ctx, 0, top + height - 1, SCREEN_W, 1, OUTLINE);
     }
-    fill(ctx, 0, DUCT_TOP - 1, SCREEN_W, 1, GREEN, 0.6);
-    fill(ctx, 0, DUCT_BOTTOM, SCREEN_W, 1.5, GREEN, 0.7);
+    for (let c = Math.floor(this.scroll / 24); c * 24 - this.scroll < SCREEN_W; c++) {
+      const x = c * 24 - this.scroll;
+      fill(ctx, x, DUCT_TOP - 9, 1, 1, HIGH);
+      fill(ctx, x, DUCT_BOTTOM + 9, 1, 1, HIGH);
+    }
+    for (let c = Math.floor(this.scroll / 120) - 1; c * 120 - this.scroll < SCREEN_W + 40; c++) {
+      const x = c * 120 - this.scroll;
+      // a joint ring: a flange on the roof and floor, and the seam down the far wall
+      fill(ctx, x, DUCT_TOP - 18, 8, 20, LIGHT);
+      fill(ctx, x, DUCT_TOP - 18, 8, 1, RIM);
+      fill(ctx, x, DUCT_BOTTOM - 2, 8, 24, LIGHT);
+      fill(ctx, x, DUCT_BOTTOM - 2, 8, 1, RIM);
+      fill(ctx, x + 2, DUCT_TOP + 2, 4, DUCT_BOTTOM - DUCT_TOP - 4, DARK, 0.6);
+      if (hash(c + 7) % 3 !== 0) continue;
+      // a grate in the roof, and the light falling through it
+      const gx = x + 50;
+      fill(ctx, gx, DUCT_TOP - 14, 30, 13, BLACK);
+      for (let k = 0; k < 6; k++) fill(ctx, gx + 2 + k * 5, DUCT_TOP - 13, 2, 11, LIGHT);
+      quad(ctx, gx, DUCT_TOP, gx + 30, DUCT_TOP, gx + 52, DUCT_BOTTOM, gx - 22, DUCT_BOTTOM, GREEN, 0.06);
+      ellipse(ctx, gx + 15, DUCT_BOTTOM + 3, 40, 5, GREEN, 0.1);
+    }
+    // standing water on the floor here and there
+    for (let c = Math.floor(this.scroll / 90); c * 90 - this.scroll < SCREEN_W + 30; c++) {
+      if (hash(c + 31) % 4 !== 0) continue;
+      ellipse(ctx, c * 90 - this.scroll + 30, DUCT_BOTTOM + 4, 22, 2.5, BRIGHT, 0.12);
+    }
+    fill(ctx, 0, DUCT_BOTTOM, SCREEN_W, 1.5, GREEN, 0.6);
   }
 
   drawFront(ctx) {

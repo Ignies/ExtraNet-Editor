@@ -18,6 +18,11 @@ const FIRST_HUMAN = 12;
 const HUMAN_EVERY_MIN = 9;
 const HUMAN_EVERY_MAX = 15;
 const MARINES_FROM = 30;
+// locker traps: the first, the gap between them, and what is inside (the rest are empty fake-outs)
+const FIRST_LOCKER = 6;
+const LOCKER_EVERY_MIN = 8;
+const LOCKER_EVERY_MAX = 13;
+const LOCKER_MIX = { marine: 0.4, colonist: 0.35 };
 const COLONIST_BONUS = 1000;
 const MARINE_BONUS = 1500;
 // the infection, in seconds from the latch
@@ -75,6 +80,7 @@ export class Facehugger extends CorridorStage {
     super.enter();
     this.nextShot = 1.4;
     this.nextHuman = FIRST_HUMAN;
+    this.nextLocker = FIRST_LOCKER;
     this.host = null;
     this.scene = 0;
     this.preburst = false;
@@ -86,7 +92,15 @@ export class Facehugger extends CorridorStage {
   spawnThreats(dt) {
     this.nextShot -= dt;
     this.nextHuman -= dt;
-    const blocked = this.humanAhead();
+    this.nextLocker -= dt;
+    const blocked = this.humanAhead() || this.lockerAhead();
+    if (this.nextLocker <= 0 && !blocked && !this.shotsQueued && !this.bulletsAhead()) {
+      this.spawnLocker(LOCKER_MIX);
+      this.nextLocker = LOCKER_EVERY_MIN + Math.random() * (LOCKER_EVERY_MAX - LOCKER_EVERY_MIN);
+      this.nextHuman = Math.max(this.nextHuman, 3);
+      this.nextShot = Math.max(this.nextShot, 1.2);
+      return;
+    }
     if (this.nextHuman <= 0 && !blocked && !this.shotsQueued && !this.bulletsAhead()) {
       const marine = this.time >= MARINES_FROM && Math.random() < 0.4;
       if (this.spawnHuman(marine ? Outfit.Rifleman : Outfit.Colonist, Math.random() < 0.3)) this.run.playAny(HISSES, -12, 1.45);

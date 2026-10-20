@@ -5,11 +5,11 @@
 // over it dives in and hands on to the vent crawl, and a vent missed comes round again later.
 
 import {
-  CorridorStage, CEILING_Y, FLOOR_Y, PLAYER_X, FLESH, REINFORCED_WALL, WALL_TINT, PROP_TINT, overlap,
+  CorridorStage, CEILING_Y, FLOOR_Y, PLAYER_X, FLESH, PROP_TINT, OUTLINE, DARK, MID, HIGH, overlap,
 } from './corridor.js';
 import {
-  Outfit, Key, SOUTH, EAST, LARVA, SCREEN_W, ACID, AMBER, ALARM, GREEN, DIM, BLACK, WHITE, SMOKE, TEXT_FONT, SMALL_FONT,
-  clamp, fill, outline, circle, ellipse, quad, sprite, centreText,
+  Outfit, Key, SOUTH, EAST, LARVA, SCREEN_W, ACID, AMBER, ALARM, BLACK, WHITE, DUST, SMOKE, SPARK, TEXT_FONT, SMALL_FONT,
+  clamp, fill, circle, ellipse, quad, sprite, centreText,
 } from './stage.js';
 
 // the larva's 32 px sprite at 1.25, low to the floor
@@ -22,6 +22,13 @@ const FIRE_RATE = 0.7;
 // an airlock: a door slab across the corridor with this gap under it, too low for anything not ducking
 const AIRLOCK_WIDTH = 40;
 const AIRLOCK_GAP = 14;
+// the airlock's beacon starts this many seconds before the larva would reach it, and the slab drops at this
+const AIRLOCK_WARN = 1.3;
+const AIRLOCK_DROP = 0.8;
+const AIRLOCK_FALL = 2600;
+const AirlockPhase = { Raised: 0, Warning: 1, Falling: 2, Jammed: 3, Shut: 4 };
+// locker traps in the larva's corridor: more marines, fewer people to run from
+const LOCKER_MIX = { marine: 0.5, colonist: 0.2 };
 const VENT_WIDTH = 44;
 const DIVE_REACH = 24;
 const DIVE_TIME = 0.75;
@@ -31,12 +38,14 @@ const CRY = '/Audio/_RMC14/Xeno/alien_roar_larva1.ogg';
 const SQUEAL = '/Audio/_RMC14/Xeno/alien_roar_larva2.ogg';
 const STEAM = '/Audio/Effects/extinguish.ogg';
 const CLANG = '/Audio/Effects/clang.ogg';
+const ALERT = '/Audio/Effects/alert.ogg';
+const DROP = '/Audio/Effects/thudswoosh.ogg';
 const VENT_IN = '/Audio/_RMC14/Xeno/alien_ventpass1.ogg';
-const SHUTTER = '/Textures/_RMC14/Structures/Doors/Shutters/Almayer/shutter.rsi';
+const THUDS = ['/Audio/Effects/metal_thud1.ogg', '/Audio/Effects/metal_thud2.ogg', '/Audio/Effects/metal_thud3.ogg'];
+const SPARKS = ['/Audio/Effects/sparks1.ogg', '/Audio/Effects/sparks2.ogg', '/Audio/Effects/sparks3.ogg', '/Audio/Effects/sparks4.ogg'];
+const BLAST_DOOR = '/Textures/_RMC14/Structures/Doors/Shutters/Almayer/poddoor.rsi';
 const PUMP = '/Textures/_RMC14/Structures/Piping/Atmospherics/vent_pump.rsi';
-/** The shutter is a 32 px sprite at 1.44, its closed slats ending 28 px down. */
-const SHUTTER_SIZE = 46;
-const SHUTTER_SLATS = 28;
+const DARK_ALARM = '#4A1210';
 
 /** Strings from Games/hugger.ftl, stage 2. */
 const T = {
@@ -62,7 +71,7 @@ export class Larva extends CorridorStage {
   get hint() { return T.hint; }
 
   get sounds() {
-    return [...super.sounds, CRY, SQUEAL, STEAM, CLANG, VENT_IN];
+    return [...super.sounds, CRY, SQUEAL, STEAM, CLANG, ALERT, DROP, VENT_IN, ...THUDS, ...SPARKS];
   }
 
   constructor(run) {
@@ -74,9 +83,7 @@ export class Larva extends CorridorStage {
     this.run.frame(LARVA, 'alive', EAST);
     this.run.frame(LARVA, 'alive', SOUTH);
     this.run.frame(LARVA, 'dead');
-    this.run.frame(SHUTTER, 'closing', SOUTH, 0, PROP_TINT);
-    this.run.frame(SHUTTER, 'open', SOUTH, 0, PROP_TINT);
-    this.run.frame(SHUTTER, 'closed', SOUTH, 0, PROP_TINT);
+    this.run.frame(BLAST_DOOR, 'closed', SOUTH, 0, PROP_TINT);
     this.run.frame(PUMP, 'on');
   }
 
@@ -88,6 +95,7 @@ export class Larva extends CorridorStage {
     this.dive = -1;
     this.diveX = 0;
     this.obstacles.length = 0;
+    this.airlocks = 0;
     this.run.play(SQUEAL, -4, 1.2);
   }
 
@@ -95,8 +103,13 @@ export class Larva extends CorridorStage {
     return this.obstacles.some(o => o.x + AIRLOCK_WIDTH - this.scroll >= PLAYER_X - 30);
   }
 
+  /** An airlock or the vent, on the next bare stretch of wall so it never lands on a door or a locker. */
   addObstacle(vent) {
-    if (this.obstacles.length < 3) this.obstacles.push({ vent, x: this.scroll + SCREEN_W + 40, heard: false, slam: -1 });
+    if (this.obstacles.length >= 3) return;
+    const x = this.bareSlot(this.scroll + SCREEN_W + 40) - (vent ? 0 : AIRLOCK_WIDTH / 2);
+    this.obstacles.push({
+      vent, x, heard: false, phase: AirlockPhase.Raised, bottom: CEILING_Y + 6, speed: 0, timer: 0, first: !vent && this.airlocks++ === 0,
+    });
   }
 
   /** One threat at a time: a knifeman, an airlock or a fleeing colonist, with tracers between; the vent clears the way. */
@@ -104,7 +117,7 @@ export class Larva extends CorridorStage {
     this.nextThreat -= dt;
     this.nextShot -= dt;
     this.nextVent -= dt;
-    const busy = this.humanAhead() || this.obstacleAhead();
+    const busy = this.humanAhead() || this.obstacleAhead() || this.lockerAhead();
     if (this.nextVent <= 0 && !busy && !this.shotsQueued && !this.bulletsAhead()) {
       this.addObstacle(true);
       this.nextVent = VENT_AGAIN;
@@ -119,6 +132,7 @@ export class Larva extends CorridorStage {
     if (this.nextThreat <= 0 && !this.shotsQueued && !this.bulletsAhead()) {
       const roll = Math.random();
       if (this.time > 6 && roll < 0.35) this.addObstacle(false);
+      else if (this.time > 4 && roll < 0.55) this.spawnLocker(LOCKER_MIX);
       else if (this.time > 18 && roll < 0.5) this.spawnHuman(Outfit.Rifleman, true);
       else if (roll < 0.62) this.spawnHuman(Outfit.Colonist, false);
       else this.spawnHuman(Outfit.Knifeman, false);
@@ -151,7 +165,7 @@ export class Larva extends CorridorStage {
         if (this.grounded && this.run.held(Key.Down) && Math.abs(x - PLAYER_X) < DIVE_REACH) this.startDive(x);
         continue;
       }
-      if (!overlap(left, right, top, bottom, x, x + AIRLOCK_WIDTH, CEILING_Y, FLOOR_Y - AIRLOCK_GAP)) continue;
+      if (!overlap(left, right, top, bottom, x, x + AIRLOCK_WIDTH, CEILING_Y, obstacle.bottom)) continue;
       // smacked into the door face
       this.run.play(CLANG, -2, 1.2);
       this.run.playAny(FLESH);
@@ -182,16 +196,9 @@ export class Larva extends CorridorStage {
         obstacle.heard = true;
         this.run.play(STEAM, -10, 0.8);
       }
-      // through: the shutter slams down behind the larva
-      if (!obstacle.vent && obstacle.slam < 0 && x + AIRLOCK_WIDTH < PLAYER_X - 8) {
-        obstacle.slam = 0;
-        this.run.play(CLANG, -6, 0.9);
-        this.run.shake(1.5, 0.15);
-      } else if (obstacle.slam >= 0) {
-        obstacle.slam += dt;
-      }
+      if (!obstacle.vent) this.moveAirlock(obstacle, x, dt);
       // steam hisses out from under a closed airlock
-      if (!obstacle.vent && Math.random() < dt * 14) {
+      if (!obstacle.vent && obstacle.phase >= AirlockPhase.Jammed && Math.random() < dt * 14) {
         this.run.emit({ x: obstacle.x + Math.random() * AIRLOCK_WIDTH, y: FLOOR_Y - 4 }, 1, WHITE, 0.25, 40, 0.8, 3,
           Math.random() < 0.5 ? Math.PI : 0, 0.6, -30, { kind: SMOKE });
       }
@@ -231,28 +238,118 @@ export class Larva extends CorridorStage {
   }
 
   /**
-   * A bulkhead of reinforced wall with the Almayer shutter in it. Coming into view the shutter rolls down through its
-   * closing frames and jams just short of the deck; once the larva is through it slams the rest of the way.
+   * A full airlock: a frame of posts and a lintel with a warning beacon, and the Almayer blast door as its slab. As
+   * the larva closes in the beacon flashes, then the slab falls from the lintel and jams just short of the deck,
+   * leaving the gap to duck through; once the larva is through it slams the rest of the way in sparks.
    */
+  moveAirlock(obstacle, x, dt) {
+    const run = this.run;
+    obstacle.timer += dt;
+    // timed by when the larva will get there, so the drop always lands first
+    const eta = (x - PLAYER_X) / Math.max(1, this.speed);
+    switch (obstacle.phase) {
+      case AirlockPhase.Raised:
+        if (eta > AIRLOCK_WARN || x > SCREEN_W + 10) return;
+        obstacle.phase = AirlockPhase.Warning;
+        obstacle.timer = 0;
+        run.play(ALERT, -6, 1.1);
+        return;
+      case AirlockPhase.Warning:
+        if (eta > AIRLOCK_DROP) return;
+        obstacle.phase = AirlockPhase.Falling;
+        obstacle.speed = 0;
+        run.play(DROP, -4, 0.8);
+        return;
+      case AirlockPhase.Falling:
+        obstacle.speed += AIRLOCK_FALL * dt;
+        obstacle.bottom = Math.min(FLOOR_Y - AIRLOCK_GAP, obstacle.bottom + obstacle.speed * dt);
+        if (obstacle.bottom < FLOOR_Y - AIRLOCK_GAP) return;
+        obstacle.phase = AirlockPhase.Jammed;
+        this.impact(obstacle, x, 1.2);
+        return;
+      case AirlockPhase.Jammed:
+        // stuck, grinding against something in the track
+        if (Math.random() < dt * 6) this.sparks(obstacle, x, 3);
+        // only once the larva's whole body is through
+        if (x + AIRLOCK_WIDTH >= PLAYER_X - this.halfWidth - 6) return;
+        obstacle.phase = AirlockPhase.Shut;
+        obstacle.speed = 600;
+        return;
+      case AirlockPhase.Shut:
+        if (obstacle.bottom >= FLOOR_Y) return;
+        obstacle.speed += AIRLOCK_FALL * dt;
+        obstacle.bottom = Math.min(FLOOR_Y, obstacle.bottom + obstacle.speed * dt);
+        if (obstacle.bottom >= FLOOR_Y) this.impact(obstacle, x, 1.6);
+        return;
+    }
+  }
+
+  impact(obstacle, x, strength) {
+    const run = this.run;
+    run.playAny(THUDS, -1 + strength * 2, 0.9);
+    run.play(CLANG, -6, 0.8);
+    run.shake(1.5 * strength, 0.2);
+    this.sparks(obstacle, x, 10);
+    run.emit(this.world(x + AIRLOCK_WIDTH / 2, FLOOR_Y - 2), 6, DUST, 0.5, 60, 0.6, 3, -Math.PI / 2, Math.PI, -10, { kind: SMOKE });
+  }
+
+  sparks(obstacle, x, count) {
+    const run = this.run;
+    for (const side of [x + 1, x + AIRLOCK_WIDTH - 1]) {
+      run.emit(this.world(side, obstacle.bottom - 2), count, AMBER, 1, 170, 0.35, 1, -Math.PI / 2, 2.4, 600, { floor: FLOOR_Y + 2, kind: SPARK });
+    }
+    if (count > 4) run.playAny(SPARKS, -8);
+  }
+
   drawAirlock(ctx, obstacle, x) {
     const run = this.run;
-    const closing = clamp((230 - x) / 50, 0, 1);
-    const slam = obstacle.slam >= 0 ? Math.min(1, obstacle.slam / 0.1) * AIRLOCK_GAP : 0;
-    const bottom = FLOOR_Y - AIRLOCK_GAP + slam;
-    const top = bottom - SHUTTER_SLATS * SHUTTER_SIZE / 32;
-    const centre = x + AIRLOCK_WIDTH / 2;
-    const wall = run.frame(REINFORCED_WALL, 'full', SOUTH, 0, WALL_TINT);
-    for (let y = top - AIRLOCK_WIDTH; y > CEILING_Y - AIRLOCK_WIDTH * 2; y -= AIRLOCK_WIDTH) {
-      sprite(ctx, wall, centre, y + AIRLOCK_WIDTH / 2, AIRLOCK_WIDTH, AIRLOCK_WIDTH);
+    const clock = run.clock;
+    const jitter = obstacle.phase === AirlockPhase.Jammed ? Math.sin(clock * 70) * 0.6 : 0;
+    const bottom = obstacle.bottom + jitter;
+    const lintel = CEILING_Y + 6;
+
+    // the slab: the blast door sprite stacked up from its bottom edge, the top one cut off at the lintel
+    const slab = run.frame(BLAST_DOOR, 'closed', SOUTH, 0, PROP_TINT);
+    if (slab && bottom > lintel) {
+      for (let y = bottom; y > lintel; y -= AIRLOCK_WIDTH) {
+        const visible = Math.min(AIRLOCK_WIDTH, y - lintel);
+        const cut = 32 * visible / AIRLOCK_WIDTH;
+        ctx.drawImage(slab, 0, 32 - cut, 32, cut, x, y - visible, AIRLOCK_WIDTH, visible);
+      }
+      fill(ctx, x, bottom - 2, AIRLOCK_WIDTH, 2, OUTLINE);
+      fill(ctx, x, lintel, 1, bottom - lintel, HIGH);
     }
-    const state = closing <= 0 ? 'open' : closing < 1 ? 'closing' : 'closed';
-    sprite(ctx, run.frame(SHUTTER, state, SOUTH, Math.floor(closing * 5.99), PROP_TINT), centre, top + SHUTTER_SIZE / 2, AIRLOCK_WIDTH, SHUTTER_SIZE);
-    fill(ctx, x - 3, CEILING_Y, 3, FLOOR_Y - CEILING_Y, BLACK, 0.6);
-    fill(ctx, x + AIRLOCK_WIDTH, CEILING_Y, 3, FLOOR_Y - CEILING_Y, BLACK, 0.6);
-    const blink = run.clock % 0.8 < 0.45;
-    circle(ctx, centre, top - 8, 2.5, ALARM, blink ? 1 : 0.25);
-    // a hint for the gap while it is coming
-    if (x > PLAYER_X + 10 && x < SCREEN_W - 20 && blink && obstacle.slam < 0) centreText(ctx, SMALL_FONT, T.duck, centre, top - 30, AMBER);
+
+    // the frame: two posts striped at the foot and a lintel carrying the beacon
+    for (const px of [x - 8, x + AIRLOCK_WIDTH]) {
+      fill(ctx, px, CEILING_Y - 6, 8, FLOOR_Y - CEILING_Y + 6, MID);
+      fill(ctx, px, CEILING_Y - 6, 1, FLOOR_Y - CEILING_Y + 6, HIGH);
+      fill(ctx, px + 7, CEILING_Y - 6, 1, FLOOR_Y - CEILING_Y + 6, OUTLINE);
+      for (let k = 0; k < 6; k++) {
+        const sy = FLOOR_Y - 8 - k * 8;
+        quad(ctx, px + 1, sy, px + 7, sy - 4, px + 7, sy, px + 1, sy + 4, AMBER, 0.55);
+      }
+    }
+    fill(ctx, x - 12, CEILING_Y - 10, AIRLOCK_WIDTH + 24, 16, DARK);
+    fill(ctx, x - 12, CEILING_Y - 10, AIRLOCK_WIDTH + 24, 1, HIGH);
+    fill(ctx, x - 12, CEILING_Y + 5, AIRLOCK_WIDTH + 24, 1, OUTLINE);
+    const alarm = obstacle.phase === AirlockPhase.Warning || obstacle.phase === AirlockPhase.Falling || obstacle.phase === AirlockPhase.Jammed;
+    const on = alarm && Math.sin(clock * 22) > 0;
+    circle(ctx, x + AIRLOCK_WIDTH / 2, CEILING_Y - 2, 3.5, on ? ALARM : DARK_ALARM);
+    if (on) {
+      ellipse(ctx, x + AIRLOCK_WIDTH / 2, CEILING_Y + 2, 40, 14, ALARM, 0.12);
+      quad(ctx, x - 6, CEILING_Y + 6, x + AIRLOCK_WIDTH + 6, CEILING_Y + 6, x + AIRLOCK_WIDTH + 30, FLOOR_Y, x - 30, FLOOR_Y, ALARM, 0.04);
+    }
+
+    // say what to do, big the first time
+    if (obstacle.phase === AirlockPhase.Jammed && x > PLAYER_X + 10 && clock % 0.8 < 0.55) {
+      const font = obstacle.first ? TEXT_FONT : SMALL_FONT;
+      centreText(ctx, font, T.duck, x + AIRLOCK_WIDTH / 2, bottom - (obstacle.first ? 34 : 24), AMBER);
+      if (obstacle.first) {
+        quad(ctx, x + AIRLOCK_WIDTH / 2 - 6, bottom - 18, x + AIRLOCK_WIDTH / 2 + 6, bottom - 18, x + AIRLOCK_WIDTH / 2, bottom - 9,
+          x + AIRLOCK_WIDTH / 2, bottom - 9, AMBER);
+      }
+    }
   }
 
   drawPlayer(ctx) {
