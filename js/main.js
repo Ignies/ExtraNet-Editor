@@ -1,6 +1,7 @@
 // ExtraNet editor: a block builder for site packages, with the in-game preview, checks and zip export.
 
 import { el, debounce, download, rgba, mix, hexOf } from './util.js';
+import { icon } from './icons.js';
 import { CodeEditor } from './editor.js';
 import { BrowserPreview } from './browser.js';
 import { THEMES, themeColours, over, cleanStyle, pageStyleOf } from './render.js';
@@ -202,8 +203,8 @@ const app = {
     canvasView.render();
     renderRight();
     updateMarks();
-    pageLabel.textContent = file || 'no page';
-    if (this.settings.leftTab === 'files') renderLeft();
+    updateStatus();
+    if (this.settings.leftTab === 'files' || this.settings.leftTab === 'pages') renderLeft();
     const page = this.pkg.site.pages.find(p => p.file === file);
     if (page) preview.showPage(page.path);
     else if (file && file.includes('/')) {
@@ -473,72 +474,127 @@ function blurEditing() {
 
 // ---------------------------------------------------------------- layout
 
-const leftTabs = el('div.left-tabs');
+/** A title bar button: icon, label (hidden on small windows) and a tooltip with its shortcut. */
+function ghost(iconName, label, onclick, tip = label, key = '') {
+  const b = el('button.ghost', { type: 'button', onclick, dataset: { tip, key } }, iconName ? icon(iconName) : null, el('span.lbl', { text: label }));
+  b.setAttribute('aria-label', label);
+  return b;
+}
+
 const leftBody = el('div.left-body');
-const checkBadge = el('span.badge', { text: '0' });
-const saveState = el('span.save-state', { text: '' });
+const panelTitle = el('span.panel-title');
+const panelSub = el('span.panel-sub');
+const saveState = el('span.sb-item', { text: 'not saved yet' });
+const saveDot = el('span.dot');
 const tabStrip = el('div.tab-strip');
 const canvasHost = el('div.canvas-host');
 const codeHost = el('div.editor-host.code-host');
 const propsHost = el('div.props-host');
 const previewHost = el('div.preview-host');
-const pageLabel = el('span.file-label', { text: '' });
-const undoButton = button('↶ Undo', () => undo(), '.btn-small');
-const redoButton = button('Redo ↷', () => redo(), '.btn-small');
-undoButton.title = 'Undo (Ctrl+Z)';
-redoButton.title = 'Redo (Ctrl+Y)';
-const viewToggle = el('button.btn.btn-small.view-toggle', { type: 'button', onclick: () => setView(app.settings.view === 'markup' ? 'blocks' : 'markup') });
+const pageLabel = el('span.work-title', { text: '' });
+const pageSub = el('span.work-sub');
+const pageMeta = el('span');
+const docName = el('span.doc', { text: '' });
+const docDirty = el('span.dirty', { title: 'Changes since the last export' });
+const undoButton = ghost('undo', 'Undo', () => undo(), 'Undo', 'Ctrl+Z');
+const redoButton = ghost('redo', 'Redo', () => redo(), 'Redo', 'Ctrl+Y');
+const viewToggle = el('button.mini.view-toggle', { type: 'button', dataset: { tip: 'Show the page\'s XML, or go back to blocks' }, onclick: () => setView(app.settings.view === 'markup' ? 'blocks' : 'markup') });
 const floatBar = el('div.float-bar', { style: { display: 'none' } });
+const checkBadge = el('span.rail-badge.ok');
+const statusIssues = el('button.sb-link', { type: 'button', dataset: { tip: 'Open the Check panel', key: 'Alt+6' }, onclick: () => setLeft('check') });
+const statusPages = el('span.sb-item');
+const statusPage = el('span.sb-item');
+const statusRepo = el('span.sb-item');
+const tip = el('div.tip');
 
 const zipInput = el('input', { type: 'file', accept: '.zip,application/zip', style: { display: 'none' } });
 const folderInput = el('input', { type: 'file', webkitdirectory: true, multiple: true, style: { display: 'none' } });
 
-const themeSelect = select(Object.values(THEMES).map(t => [t.id, t.label]), app.settings.theme, { title: 'Which computer the page is opened on' });
-const colonyInput = textInput(app.settings.colony, { title: '{colony} becomes this name', className: 'input input-small' });
-const mapInput = textInput(app.settings.mapFolder, { placeholder: 'map folder', title: 'Map id or colony folder: shows that colony\'s version of a page when the package has one', className: 'input input-small' });
-const boardSelect = select([['sample', 'Board: sample post'], ['reader', 'Board: reader'], ['empty', 'Board: empty']], app.settings.boardMode, { title: 'How a board\'s postings are shown under its index page' });
+const themeSelect = select(Object.values(THEMES).map(t => [t.id, t.label]), app.settings.theme, { dataset: { tip: 'Which computer opens the page' } });
+const colonyInput = textInput(app.settings.colony, { className: 'input input-small', dataset: { tip: '{colony} on pages becomes this name' } });
+const mapInput = textInput(app.settings.mapFolder, { placeholder: 'map folder', className: 'input input-small', dataset: { tip: 'A map id or colony folder: shows that colony\'s own version of a page when the package has one' } });
+const boardSelect = select([['sample', 'Board: sample post'], ['reader', 'Board: reader'], ['empty', 'Board: empty']], app.settings.boardMode, { dataset: { tip: 'How a board\'s postings show under the front page' } });
 
-function header() {
-  return el('header.topbar', {},
-    el('div.brand', {}, el('span.brand-mark', { text: '>_' }), el('span.brand-name', { text: 'EXTRANET EDITOR' }), el('span.brand-sub', { text: 'build sites for the colony network' })),
-    el('nav.top-actions', {},
-      button('New site', newSite),
-      button('Open zip', () => zipInput.click()),
-      button('Open folder', openFolder),
-      button('Export zip', exportPackage, '.btn-primary'),
-      el('span.top-sep'),
-      undoButton, redoButton,
-      el('span.top-sep'),
-      button('Repo', repoSettings),
-      button('Help', help)),
-    saveState, zipInput, folderInput);
+const PANELS = [
+  { id: 'blocks', icon: 'blocks', title: 'Blocks', sub: 'Drag onto the page, or click to add', key: 'Alt+1' },
+  { id: 'pages', icon: 'pages', title: 'Pages', sub: 'Each page is a tab of the site', key: 'Alt+2' },
+  { id: 'site', icon: 'site', title: 'Site', sub: 'Address, look, tabs and board', key: 'Alt+3' },
+  { id: 'images', icon: 'image', title: 'Images', sub: 'Banners and uploaded art', key: 'Alt+4' },
+  { id: 'files', icon: 'files', title: 'Files', sub: 'Every file in the package', key: 'Alt+5' },
+  { id: 'check', icon: 'checklist', title: 'Check', sub: 'The game\'s rules for pages', key: 'Alt+6' },
+];
+const railButtons = new Map();
+
+/** Switches the left panel; picking the open one again folds the panel away. */
+function setLeft(id, { toggle = false } = {}) {
+  const app_ = document.querySelector('.app');
+  if (toggle && app.settings.leftTab === id && app_) {
+    const narrow = window.matchMedia('(max-width: 1100px)').matches;
+    app_.classList.toggle(narrow ? 'panel-open' : 'panel-closed');
+    return;
+  }
+  app.settings.leftTab = id;
+  saveSettings();
+  if (app_) {
+    app_.classList.remove('panel-closed');
+    if (window.matchMedia('(max-width: 1100px)').matches) app_.classList.add('panel-open');
+  }
+  renderLeft();
 }
 
-const LEFT_TABS = [['blocks', 'Blocks'], ['site', 'Site'], ['images', 'Images'], ['files', 'Files'], ['check', 'Check']];
+function header() {
+  const glyph = el('button.glyph-btn#glyph', { type: 'button', dataset: { tip: 'CMU' }, onclick: () => setWoke(!document.documentElement.classList.contains('woke')) },
+    el('img.glyph', { src: 'img/cmu.png', alt: '' }));
+  return el('header.titlebar', {},
+    el('div.brand', {}, glyph, el('span.name', { text: 'ExtraNet Editor' }), el('span.sep', { text: '/' }), docName, docDirty),
+    el('nav.title-actions', {},
+      ghost(null, 'New site', newSite, 'Start a new site from a layout'),
+      ghost(null, 'Open zip', () => zipInput.click(), 'Open a site package zip (or drop one on the window)'),
+      ghost(null, 'Open folder', openFolder, 'Open a site package folder'),
+      ghost(null, 'Export zip', exportPackage, 'Download the package as a zip to unzip into Packages/', 'Ctrl+S saves in the browser'),
+      el('span.top-sep'),
+      undoButton, redoButton),
+    el('div.title-right', {}, ghost('help', 'Help', help, 'How to use the editor')),
+    zipInput, folderInput);
+}
+
+function rail() {
+  const top = PANELS.map(p => {
+    const b = el('button.rail-btn', { type: 'button', dataset: { tip: `${p.title}: ${p.sub}`, key: p.key }, onclick: () => setLeft(p.id, { toggle: true }) }, icon(p.icon), p.id === 'check' ? checkBadge : null);
+    b.setAttribute('aria-label', p.title);
+    railButtons.set(p.id, b);
+    return b;
+  });
+  return el('nav.rail', {}, ...top,
+    el('div.rail-bottom', {},
+      el('button.rail-btn', { type: 'button', dataset: { tip: 'Banner Studio: design a banner for the site' }, onclick: () => app.openBannerStudio() }, icon('spark')),
+      el('button.rail-btn', { type: 'button', dataset: { tip: 'Repository: where game art is read from' }, onclick: () => repoSettings() }, icon('repo')),
+      el('button.rail-btn', { type: 'button', dataset: { tip: 'Help', key: 'F1' }, onclick: () => help() }, icon('help'))));
+}
 
 function renderLeft() {
   app.off('site-form');
-  leftTabs.replaceChildren(...LEFT_TABS.map(([id, label]) => el(`button.left-tab${app.settings.leftTab === id ? '.active' : ''}`, { type: 'button', onclick: () => {
-    app.settings.leftTab = id;
-    saveSettings();
-    renderLeft();
-  } }, label, id === 'check' ? checkBadge : null)));
-  const tab = app.settings.leftTab;
+  const tab = PANELS.some(p => p.id === app.settings.leftTab) ? app.settings.leftTab : 'blocks';
+  const meta = PANELS.find(p => p.id === tab);
+  panelTitle.textContent = meta.title;
+  panelSub.textContent = meta.sub;
+  for (const [id, b] of railButtons) b.classList.toggle('on', id === tab);
   if (tab === 'site') renderSiteForm(leftBody, app);
   else if (tab === 'files') renderPages(leftBody, app);
   else if (tab === 'images') renderImages(leftBody, app);
   else if (tab === 'check') renderChecks();
+  else if (tab === 'pages') renderPagesPanel();
   else renderPalette();
 }
 
 function renderPalette() {
-  leftBody.replaceChildren(el('p.note', { text: 'Drag a block onto the page, or click it to add it after the selected block.' }));
+  leftBody.replaceChildren(el('p.note', {}, 'Drag a block onto the page, or click one to add it after the selected block. Drop blocks into boxes, panels and columns too.'));
   for (const group of PALETTE_GROUPS) {
     const items = Object.entries(BLOCK_TYPES).filter(([, m]) => m.group === group);
     if (!items.length) continue;
     const grid = el('div.palette-grid');
     for (const [type, meta] of items) {
-      const card = el('div.palette-item', { draggable: true, title: `${meta.label}: ${meta.tag}`, tabIndex: 0, dataset: { type } },
+      const card = el('div.palette-item', { draggable: true, tabIndex: 0, dataset: { type, tip: `${meta.label}: written as ${meta.tag}` } },
         el('span.palette-icon', { text: meta.icon }), el('span.palette-label', { text: meta.label }));
       card.addEventListener('dragstart', e => startPaletteDrag(e, type));
       card.addEventListener('dragend', endDrag);
@@ -548,9 +604,62 @@ function renderPalette() {
       });
       grid.append(card);
     }
-    leftBody.append(el('h3.section-title', { text: group === 'Live' ? 'Live game widgets' : group }), grid);
+    leftBody.append(el('div.palette-group', {}, el('h3.section-title', { text: group === 'Live' ? 'Live game widgets' : group }), grid));
   }
-  leftBody.append(el('p.note', { text: 'Starter layouts: + Page next to the tabs adds a page from one; New site starts a whole site from one.' }));
+}
+
+/** Pages: one row per page, in tab order. Click to open, drag to reorder. */
+function renderPagesPanel() {
+  const site = app.pkg.site;
+  leftBody.replaceChildren();
+  leftBody.append(el('div.section-title', {}, el('span', { text: 'Pages' }), el('button.mini.accent', { type: 'button', text: '+ Add page', onclick: () => addPageDialog() })));
+  const list = el('div.page-list-rows');
+  let dragFrom = null;
+  for (const path of orderedPaths()) {
+    const page = pageForPath(site, path);
+    if (!page) continue;
+    const tab = site.tabs.find(t => normalizePath(t.path || '') === path);
+    const home = path === '';
+    const row = el(`div.page-row${app.currentFile === page.file ? '.active' : ''}`, { draggable: true, dataset: { tip: `${page.file}${tab ? '' : ' (not in the tab strip)'}` } },
+      el(`span.kdot${home ? '.home' : tab ? '.tab' : ''}`),
+      el('span.page-main', {}, el('span.page-name', { text: tab ? tab.title || '(no title)' : path || 'Home page' }), el('span.page-path', { text: home ? 'home' : `/${path}` })),
+      el('span.row-btns', {},
+        home ? null : el('button.row-btn', { type: 'button', dataset: { tip: 'Make this the home page' }, onclick: e => {
+          e.stopPropagation();
+          pageOp({ op: 'makeHome', path });
+        } }, icon('home')),
+        home ? null : el('button.row-btn.danger', { type: 'button', dataset: { tip: 'Delete this page' }, onclick: e => {
+          e.stopPropagation();
+          pageOp({ op: 'delete', path });
+        } }, icon('trash'))));
+    row.addEventListener('click', () => app.openFile(page.file));
+    row.addEventListener('dragstart', e => {
+      dragFrom = path;
+      e.dataTransfer.setData('text/plain', `page:${path}`);
+      row.classList.add('dragging');
+    });
+    row.addEventListener('dragend', () => row.classList.remove('dragging'));
+    row.addEventListener('dragover', e => {
+      if (dragFrom === null) return;
+      e.preventDefault();
+      const r = row.getBoundingClientRect();
+      row.classList.toggle('drop-above', e.clientY < r.top + r.height / 2);
+      row.classList.toggle('drop-below', e.clientY >= r.top + r.height / 2);
+    });
+    row.addEventListener('dragleave', () => row.classList.remove('drop-above', 'drop-below'));
+    row.addEventListener('drop', e => {
+      e.preventDefault();
+      const r = row.getBoundingClientRect();
+      const after = e.clientY >= r.top + r.height / 2;
+      row.classList.remove('drop-above', 'drop-below');
+      const from = dragFrom;
+      dragFrom = null;
+      if (from !== null && from !== path) pageOp({ op: 'reorder', path: from, before: path, after });
+    });
+    list.append(row);
+  }
+  leftBody.append(list,
+    el('p.note', {}, 'The dot shows the home page (green), pages in the tab strip (blue) and pages reached only by links (grey). Rename a page by double clicking its tab above the page; its address and colours are in the page settings (click empty space on the page).'));
 }
 
 function renderTabs() {
@@ -562,20 +671,140 @@ function renderRight() {
   renderProps(propsHost, app);
 }
 
+/** The status bar and title: autosave, checks, pages and the page on screen. */
+function updateStatus() {
+  const site = app.pkg.site;
+  docName.textContent = site.title || app.pkg.folder || 'untitled';
+  const { errors, warnings } = counts();
+  const notes = app.issues.length - errors - warnings;
+  statusIssues.replaceChildren(
+    el(`span${errors ? '.sb-err' : ''}`, { text: `${errors} error${errors === 1 ? '' : 's'}` }),
+    el(`span${warnings ? '.sb-warn' : ''}`, { text: `${warnings} warning${warnings === 1 ? '' : 's'}` }),
+    el('span', { text: `${notes} note${notes === 1 ? '' : 's'}` }));
+  statusPages.textContent = `${site.pages.length} page${site.pages.length === 1 ? '' : 's'}`;
+  const page = app.currentPageEntry();
+  statusPage.textContent = page ? `${page.path ? `/${page.path}` : 'home'}  ${page.file}` : app.currentFile || '';
+  try {
+    statusRepo.textContent = new URL(getRepoBase()).host + new URL(getRepoBase()).pathname.split('/').slice(0, 3).join('/');
+  } catch {
+    statusRepo.textContent = getRepoBase();
+  }
+  const tab = page && site.tabs.find(t => normalizePath(t.path || '') === normalizePath(page.path));
+  pageLabel.textContent = tab ? tab.title : page ? page.path || 'Home page' : app.currentFile || 'No page';
+  pageSub.textContent = page ? `${site.address}${page.path ? `/${page.path}` : ''}` : '';
+  const model = app.pages.get(app.currentFile);
+  let count = 0;
+  if (model) walkBlocks(model.blocks, b => {
+    if (b.type !== 'style') count++;
+  });
+  pageMeta.textContent = model ? `${count} block${count === 1 ? '' : 's'}` : '';
+}
+
 function build() {
-  const main = el('main.panes', {},
-    el('section.pane.pane-left', {}, leftTabs, leftBody),
-    el('section.pane.pane-editor', {},
-      el('div.tabs-row', {}, tabStrip),
-      el('div.page-bar', {}, el('span.muted', { text: 'Page' }), pageLabel, viewToggle),
-      canvasHost, codeHost),
-    el('section.pane.pane-right', {},
-      el('div.pane-head', {}, el('span.pane-title', { text: 'SETTINGS' })),
-      propsHost,
-      el('div.pane-head.preview-head', {}, el('span.pane-title', { text: 'IN GAME' }), themeSelect, colonyInput, mapInput, boardSelect,
-        button('↻', () => refreshPreview.flush(), '.btn-icon')),
-      previewHost));
-  document.body.append(header(), main, floatBar);
+  const appEl = el('div.app', {},
+    header(),
+    rail(),
+    el('aside.side-panel', {}, el('section.card.panel-card', {}, el('div.panel-head', {}, panelTitle, panelSub), leftBody)),
+    el('main.center', {},
+      el('section.card.work-card', {},
+        el('header.work-head', {}, pageLabel, pageSub, el('div.work-meta', {}, pageMeta, viewToggle)),
+        el('div.tabs-row', {}, tabStrip),
+        canvasHost, codeHost)),
+    el('aside.inspector', {},
+      el('section.card.preview-card', {},
+        el('div.card-head', {}, el('span', { text: 'In game' }), el('button.mini', { type: 'button', text: '↻ Reload', dataset: { tip: 'Draw the preview again' }, onclick: () => refreshPreview.flush() })),
+        el('div.preview-tools', {}, themeSelect, boardSelect, colonyInput, mapInput),
+        previewHost),
+      el('section.card.props-card', {}, propsHost)),
+    el('footer.statusbar', {},
+      saveDot, saveState, el('span.sb-sep'),
+      statusIssues, el('span.sb-sep'),
+      statusPages, el('span.sb-sep'),
+      statusPage,
+      el('span.grow'),
+      statusRepo));
+  document.body.append(appEl, floatBar, tip);
+  wireTooltips();
+}
+
+/** Tooltips from data-tip (and data-key for a shortcut), placed beside the rail or under the control. */
+function wireTooltips() {
+  let timer = null;
+  document.addEventListener('mouseover', e => {
+    const target = e.target.closest && e.target.closest('[data-tip]');
+    clearTimeout(timer);
+    if (!target) {
+      tip.classList.remove('on');
+      return;
+    }
+    timer = setTimeout(() => {
+      tip.replaceChildren(target.dataset.tip, target.dataset.key ? el('kbd', { text: target.dataset.key }) : '');
+      const r = target.getBoundingClientRect();
+      const beside = target.closest('.rail');
+      const left = beside ? r.right + 10 : Math.max(8, Math.min(innerWidth - tip.offsetWidth - 10, r.left));
+      const below = r.bottom + 8 + tip.offsetHeight > innerHeight ? r.top - tip.offsetHeight - 8 : r.bottom + 8;
+      tip.style.left = `${left}px`;
+      tip.style.top = `${beside ? r.top + r.height / 2 - tip.offsetHeight / 2 : below}px`;
+      tip.classList.add('on');
+    }, 380);
+  });
+  document.addEventListener('mousedown', () => {
+    clearTimeout(timer);
+    tip.classList.remove('on');
+  });
+}
+
+const WOKE_KEY = 'extranet-editor-woke';
+
+/** The CMU emblem's colours, and the app's theme with them (as in Open Vehicles). */
+function setWoke(on) {
+  document.documentElement.classList.toggle('woke', on);
+  const btn = document.getElementById('glyph');
+  if (btn) {
+    btn.classList.remove('pop');
+    void btn.offsetWidth;
+    if (on) btn.classList.add('pop');
+  }
+  try {
+    localStorage.setItem(WOKE_KEY, on ? '1' : '0');
+  } catch {
+    // the choice lasts for this visit
+  }
+}
+
+try {
+  if (localStorage.getItem(WOKE_KEY) === '1') document.documentElement.classList.add('woke');
+} catch {
+  // storage blocked: default theme
+}
+
+/** First visit: three ways to start. */
+function showWelcome() {
+  const center = document.querySelector('.center');
+  if (!center || center.querySelector('.welcome')) return;
+  const close = () => {
+    overlay.remove();
+    try {
+      localStorage.setItem('extranet-editor-welcomed', '1');
+    } catch {
+      // shown again next visit
+    }
+  };
+  const option = (iconName, title, text, fn, primary = false) => el(`button.welcome-option${primary ? '.primary' : ''}`, { type: 'button', onclick: () => {
+    close();
+    fn();
+  } }, icon(iconName), el('strong', { text: title }), el('span', { text }));
+  const overlay = el('div.welcome', {},
+    el('section.card.welcome-card', {},
+      el('div.welcome-title', {}, el('img', { src: 'img/cmu.png', alt: '' }), 'Build a site for the colony network'),
+      el('p.welcome-sub', { text: 'Make an in-game ExtraNet site from blocks, see it as players will, and export a zip that drops straight into the game.' }),
+      el('div.welcome-options', {},
+        option('blocks', 'Start from a layout', 'A forum, a shop, news, a fan page, a cult board or an 80s page.', newSite, true),
+        option('folder', 'Open a zip or folder', 'Keep editing a package you exported or wrote by hand.', () => zipInput.click()),
+        option('write', 'Edit the example site', 'The Colony Lost and Found board, ready to change.', () => {})),
+      el('div.welcome-foot', {}, el('span', { text: 'Everything you do is saved in this browser. Export a zip to keep a copy.' }),
+        el('button.mini', { type: 'button', text: 'Close', onclick: close }))));
+  center.append(overlay);
 }
 
 // ---------------------------------------------------------------- floating text toolbar
@@ -1061,8 +1290,9 @@ function counts() {
 
 function updateChecks() {
   const { errors, warnings } = counts();
-  checkBadge.textContent = errors ? String(errors) : warnings ? String(warnings) : 'OK';
-  checkBadge.className = `badge ${errors ? 'badge-error' : warnings ? 'badge-warn' : 'badge-ok'}`;
+  checkBadge.textContent = errors ? String(errors) : warnings ? String(warnings) : '';
+  checkBadge.className = `rail-badge ${errors ? 'bad' : warnings ? 'warn' : 'ok'}`;
+  updateStatus();
   updateMarks();
   if (app.settings.leftTab === 'check') renderChecks();
   if (app.selected && app.selected !== '@board') renderRight();
@@ -1202,11 +1432,14 @@ function afterChange(group) {
   revalidate();
   refreshPreview();
   if (group) record(group);
+  docDirty.classList.add('on');
+  updateStatus();
 }
 
 const autosave = debounce(async () => {
   const where = await saveWorking(app.pkg);
   saveState.textContent = where ? `autosaved ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 'autosave unavailable';
+  saveDot.className = `dot ${where ? 'ready' : 'error'}`;
   saveState.title = where === 'localstorage' ? 'Saved to localStorage: images are not kept across reloads.' : where ? 'Saved in this browser (IndexedDB).' : 'This browser blocks storage; export a zip to keep your work.';
 }, 600);
 
@@ -1224,6 +1457,8 @@ function setPackage(pkg, message) {
   updateUndoButtons();
   autosave();
   revalidate.flush();
+  docDirty.classList.remove('on');
+  updateStatus();
   if (message) toast(message);
 }
 
@@ -1276,6 +1511,7 @@ async function exportPackage() {
   try {
     const blob = await exportZip(app.pkg);
     download(blob, `${app.pkg.folder || 'Package'}.zip`);
+    docDirty.classList.remove('on');
     toast(`Exported ${app.pkg.folder}.zip: unzip it into Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Packages/.`);
   } catch (e) {
     toast(`Export failed: ${e.message}`, 'error');
@@ -1322,6 +1558,16 @@ document.addEventListener('paste', e => {
 
 document.addEventListener('keydown', e => {
   const mod = e.ctrlKey || e.metaKey;
+  if (e.key === 'F1') {
+    e.preventDefault();
+    help();
+    return;
+  }
+  if (e.altKey && !mod && /^[1-6]$/.test(e.key) && !document.querySelector('dialog[open], .studio')) {
+    e.preventDefault();
+    setLeft(PANELS[Number(e.key) - 1].id);
+    return;
+  }
   if (mod && e.key.toLowerCase() === 's') {
     e.preventDefault();
     autosave.flush();
@@ -1383,8 +1629,13 @@ function repoSettings() {
 function help() {
   modal('How to use', body => {
     body.append(el('div.help', { html: `
+      <p><b>The screen.</b> The rail on the left switches the panel next to it: Blocks, Pages, Site, Images, Files
+        and Check (<kbd>Alt+1</kbd> to <kbd>Alt+6</kbd>; click the open one again to fold it away). The page you build
+        is in the middle. On the right are the page as the game draws it, and the settings of what you selected. The
+        bar at the bottom shows autosave, the checks (click them to open Check) and the page on screen.</p>
       <p><b>1. Pages are tabs.</b> The strip above the page holds one tab per page. Click to open, double click to
-        rename, drag to reorder, &#8962; to make one the home page, <b>+ Page</b> to add one from a starter layout.</p>
+        rename, drag to reorder, &#8962; to make one the home page, <b>+ Page</b> to add one from a starter layout. The
+        <b>Pages</b> panel lists them too.</p>
       <p><b>2. Blocks.</b> Drag blocks from the <b>Blocks</b> list onto the page, between other blocks or into boxes,
         panels and columns. Drag a block by its &#10303; handle to move it. Click a block to edit its settings on the
         right; type straight onto headings, paragraphs and lists. Select text for bold, italic, colour and links.</p>
@@ -1394,9 +1645,11 @@ function help() {
         backgrounds, and give each a licence (it goes into attributions.yml).</p>
       <p><b>5. Check and export.</b> Fix every error in <b>Check</b> (the block with the problem is outlined in red),
         then <b>Export zip</b> and unzip it into <code>Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Packages/</code>.</p>
-      <p><b>Keys:</b> Ctrl+Z undo, Ctrl+Y redo, Del deletes the selected block, Ctrl+D duplicates it, Alt+Up/Down
-        moves it. Paste page markup onto the page to turn it into blocks. <b>Show markup</b> shows the page's XML;
-        edits there come back as blocks.</p>` }));
+      <p><b>6. Banner.</b> The &#10022; button on the rail opens the Banner Studio for the site's banner.</p>
+      <p><b>Keys:</b> <kbd>Ctrl+Z</kbd> undo, <kbd>Ctrl+Y</kbd> redo, <kbd>Del</kbd> deletes the selected block,
+        <kbd>Ctrl+D</kbd> duplicates it, <kbd>Alt+Up/Down</kbd> moves it, <kbd>Ctrl+S</kbd> saves in the browser,
+        <kbd>F1</kbd> this help. Paste page markup onto the page to turn it into blocks. <b>Show markup</b> shows the
+        page's XML; edits there come back as blocks.</p>` }));
   });
 }
 
@@ -1414,9 +1667,17 @@ setView(app.settings.view === 'markup' ? 'markup' : 'blocks');
   if (restored && restored.pkg && restored.pkg.site) {
     setPackage(normalisePackage(restored.pkg));
     saveState.textContent = 'restored from this browser';
+    saveDot.className = 'dot ready';
   } else {
     await fromExample();
   }
+  let welcomed = false;
+  try {
+    welcomed = localStorage.getItem('extranet-editor-welcomed') === '1';
+  } catch {
+    welcomed = false;
+  }
+  if (!welcomed || /[?&]welcome/.test(location.search)) showWelcome();
 })();
 
 // For tests from the console.

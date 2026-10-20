@@ -57,11 +57,25 @@ Open <http://localhost:8000/Content.CMU/Tools/ExtraNetEditor/>, click **Repo** a
 
 ## Building a site
 
-The screen has three columns:
+![The editor: rail, Blocks panel, the page being built, the in-game preview and the block's settings](docs/editor.png)
 
-- **Left:** the block palette, plus the Site, Images, Files and Check tabs.
-- **Middle:** the page you are building, with its tab strip.
-- **Right:** the settings of whatever is selected, and the in-game browser preview.
+The screen follows the CMU Open Vehicles tool:
+
+- **Title bar:** the CMU emblem, the site's name (a dot means changes since the last export), then New site,
+  Open zip, Open folder, Export zip, Undo and Redo. Help is on the right. Click the emblem for its colours.
+- **Rail** (far left): switches the panel beside it between Blocks, Pages, Site, Images, Files and Check
+  (`Alt+1` to `Alt+6`). Clicking the open one again folds the panel away. At the bottom: the Banner Studio, the
+  repository setting and help (`F1`). Every button has a tooltip with its shortcut.
+- **Middle:** the page you are building, in its in-game look, with the site's tab strip above it.
+- **Right:** the page as the game's browser draws it, and below it the settings of the selected block (or of the
+  page, when nothing is selected).
+- **Status bar:** autosave, the errors, warnings and notes (click to open Check), the page count and the page on
+  screen.
+
+On a first visit a welcome card offers three ways to start: a layout, a zip or folder, or the example site. Add
+`?welcome` to the address to see it again.
+
+![The welcome card](docs/welcome.png)
 
 1. **Start.** **New site** offers starter layouts modelled on the game's own sites:
    - blank page;
@@ -99,6 +113,8 @@ The screen has three columns:
    - Errors fail the game's tests. A block with a problem is outlined in red on the page, and its problem is
      listed in its settings.
 7. **Export zip.**
+
+![Check: a broken sprite state and a link to a missing page, outlined on their blocks](docs/check.png)
 
 Other tools:
 
@@ -209,7 +225,9 @@ Differences:
 
 | File | What it does |
 |------|--------------|
-| `index.html`, `css/editor.css`, `css/builder.css` | The editor's interface |
+| `index.html`, `css/editor.css`, `css/builder.css` | The editor's interface. `editor.css` holds the design tokens (colours, radii, spacing), taken from the CMU Open Vehicles tool |
+| `js/icons.js`, `img/cmu.png` | Line icons and the CMU emblem, shared with the Open Vehicles tool |
+| `docs/` | The screenshots in this README |
 | `css/preview.css` | The in-game look |
 | `js/main.js` | Wires everything: block operations, pages and tabs, undo, checks, autosave, import and export |
 | `js/blocks.js` | Block types, page XML to blocks and back |
@@ -243,7 +261,9 @@ The snapshots in `data/` come from scanning the prototypes:
 
 The Banner Studio makes a site's banner PNG.
 
-**Opening it:** **Make banner** in the Images tab, **Design a banner...** in a Banner / image block's settings, or
+![The Banner Studio](docs/banner-studio.png)
+
+**Opening it:** the spark button on the rail, **Make banner** in the Images tab, **Design a banner...** in a Banner / image block's settings, or
 the tick box in **New site**.
 
 **The canvas:** it works at the real banner size. Most banners in the game are 528x136, which is the default;

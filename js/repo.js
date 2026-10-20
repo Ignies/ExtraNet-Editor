@@ -52,8 +52,9 @@ export function resourceUrls(path) {
   let p = path.trim();
   if (!p.startsWith('/')) p = '/' + p;
   const urls = [`${repoBase}Content.CMU/Resources${p}`, `${repoBase}Resources${p}`];
-  // The game's fonts all live in Resources/Fonts; asking there first saves a 404 per face.
-  return p.startsWith('/Fonts/') ? urls.reverse() : urls;
+  // Both folders are tried, but the likely one first saves a 404 per file. Content.CMU/Resources/Textures only
+  // holds CMU14, _RuMC14 and Shaders, so everything else (the fonts, the upstream _RMC14 art) is in Resources.
+  return /^\/(Textures\/(CMU14|_RuMC14|Shaders)\/|ServerInfo\/|Fonts\/ComicNeue\/)/.test(p) ? urls : urls.reverse();
 }
 
 /** A file in the repository by its path from the repository root. */
