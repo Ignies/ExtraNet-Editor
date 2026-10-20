@@ -26,7 +26,7 @@ import { linkChipNode } from './richedit.js';
 import { normalizePath, lineCol } from './markup.js';
 import { attributionFor, setAttribution } from './package.js';
 import { renderLibrary } from './ui-library.js';
-import { openEntry, exportChanges } from './library.js';
+import { openEntry, exportChanges, userEntry } from './library.js';
 
 const SETTINGS_KEY = 'extranet-editor-settings';
 
@@ -1740,7 +1740,7 @@ setView(app.settings.view === 'markup' ? 'markup' : 'blocks');
   } catch {
     welcomed = false;
   }
-  if (!welcomed || /[?&]welcome/.test(location.search)) showWelcome();
+  if ((!welcomed && !/[?&]linkcheck/.test(location.search)) || /[?&]welcome/.test(location.search)) showWelcome();
 })();
 
 // ---------------------------------------------------------------- emulator
@@ -1751,6 +1751,8 @@ async function routeEmulator() {
   const module = await import('./emulator/emulator.js');
   if (location.hash === '#emulator') {
     module.openEmulator({
+      // The site open in the editor is live on the emulator's ExtraNet, over a game site at the same address.
+      userSites: () => (app.pkg && app.pkg.site && app.pkg.site.address ? [userEntry(app.pkg)] : []),
       onClose: () => {
         history_.replaceState(null, '', location.pathname + location.search);
         module.closeEmulator();
@@ -1764,5 +1766,18 @@ const history_ = window.history;
 window.addEventListener('hashchange', routeEmulator);
 routeEmulator();
 
+// The link sweep: ?linkcheck shows its report; extranetEditor.linkCheck() returns it.
+async function linkCheck() {
+  const { linkCheck: run, formatReport } = await import('./emulator/linkcheck.js');
+  const report = await run({ extraSites: () => (app.pkg && app.pkg.site.address ? [userEntry(app.pkg)] : []) });
+  return { report, text: formatReport(report) };
+}
+if (/[?&]linkcheck/.test(location.search)) {
+  linkCheck().then(({ text }) => {
+    console.log(text);
+    modal('Link check', body => body.append(el('pre.linkcheck', { text })), { wide: true });
+  }).catch(e => toast(`Link check failed: ${e.message}`, 'error'));
+}
+
 // For tests from the console.
-window.extranetEditor = { app, siteYaml: () => siteYaml(app.pkg), preview, editor, canvas: canvasView, history, undo, redo, setView, pageOp, addBlock, pasteMarkup, packageFromTemplate, setPackage };
+window.extranetEditor = { app, siteYaml: () => siteYaml(app.pkg), preview, editor, canvas: canvasView, history, undo, redo, setView, pageOp, addBlock, pasteMarkup, packageFromTemplate, setPackage, linkCheck };

@@ -84,19 +84,20 @@ function sessionValue(key, make) {
 }
 
 export class Network {
-  /** entries: the library index. theme: the OS theme. colony: { id, name }. strings: locale. */
-  constructor(entries, theme, colony, strings, { deep = true } = {}) {
+  /**
+   * entries: the library index. theme: the OS theme. colony: { id, name }. strings: locale.
+   * extraSites(): the user's own sites as library entries (see userEntry); asked again on every lookup, so edits
+   * show the next time a page loads. They take over a game site at the same address.
+   */
+  constructor(entries, theme, colony, strings, { deep = true, extraSites = () => [] } = {}) {
     this.entries = entries;
+    this.extraSites = extraSites;
     this.theme = theme;
     this.colony = colony;
     this.strings = strings;
     this.deepAccess = deep;
-    this.byAddress = new Map(entries.map(e => [e.address, e]));
     this.seed = sessionValue('extranet-emulator-seed', () => (Math.random() * 2 ** 31) | 0);
-    const rng = new Rng(this.seed);
-    this.aliases = new Map();
-    for (const e of entries) if (e.networks.includes(DEEP)) this.aliases.set(newAlias(rng, e.site.aliasSuffix || '.deep'), e);
-    this.aliasOf = new Map([...this.aliases].map(([alias, e]) => [e.key, alias]));
+    this.aliasCache = new Map();
     this.state = sessionValue('extranet-emulator-deep', () => ({ discovered: [], unlocked: [] }));
     this.mazeBuilt = null;
   }
@@ -109,15 +110,48 @@ export class Network {
     }
   }
 
+  /** Every site: the user's first, then the game's whose address they do not take. */
+  sites() {
+    let extra = [];
+    try {
+      extra = this.extraSites() || [];
+    } catch {
+      extra = [];
+    }
+    const taken = new Set(extra.map(e => e.address));
+    return [...extra, ...this.entries.filter(e => !taken.has(e.address))];
+  }
+
+  byAddress(host) {
+    return this.sites().find(e => e.address === host) || null;
+  }
+
+  /** This session's random address of a deep site (CMUDeepAliasSystem), steady for the site's id. */
+  alias(entry) {
+    if (!this.aliasCache.has(entry.id)) this.aliasCache.set(entry.id, newAlias(new Rng((this.seed ^ hash(entry.id)) >>> 0), entry.site.aliasSuffix || '.deep'));
+    return this.aliasCache.get(entry.id);
+  }
+
+  /** The deep site at an alias, or null. */
+  aliased(host) {
+    return this.sites().find(e => e.networks.includes(DEEP) && this.alias(e) === host) || null;
+  }
+
+  aliasOfKey(key) {
+    const entry = this.sites().find(e => e.key === key);
+    return entry ? this.alias(entry) : null;
+  }
+
+  /** CMUExtraNetSystem.CanReach for the browser asking: the ExtraNet browser leaves the deep network out. */
   reaches(entry, deeps) {
-    if (entry.networks.includes(DEEP)) return deeps && this.deepAccess;
-    return entry.networks.some(n => this.theme.networks.includes(n));
+    if (entry.networks.includes(DEEP) && deeps && this.deepAccess) return true;
+    return entry.networks.some(n => n !== DEEP && this.theme.networks.includes(n));
   }
 
   /** Listed sites this computer reaches, for the directory and net://random. */
   directory() {
-    return this.entries.filter(e => !e.unlisted && !e.networks.includes(DEEP) && this.reaches(e, false))
-      .sort((a, b) => a.title.localeCompare(b.title));
+    return this.sites().filter(e => !e.unlisted && !e.networks.includes(DEEP) && this.reaches(e, false))
+      .sort((a, b) => this.title(a).localeCompare(this.title(b)));
   }
 
   title(entry) {
@@ -125,54 +159,75 @@ export class Network {
   }
 
   /**
-   * What an address shows. deeps: in The deeps.exi. Returns one of
-   * { kind: 'page', entry, path, file, address } | { kind: 'ad', host, address } | { kind: 'directory' } |
-   * { kind: 'random', address } | { kind: 'deephome' } | { kind: 'denied', address } | { kind: 'unknown', address } |
-   * { kind: 'missing', entry, address }
+   * What an address shows, as CMUNetBrowser.Navigate, Show and Resolve decide it. deeps: in The deeps.exi.
+   * fromPage: the address came from a link on a page, where deep sites' fixed names still work.
+   * Returns one of { kind: 'page', entry, path, file, address } | { kind: 'ad', host, address } |
+   * { kind: 'directory' } | { kind: 'deephome' } | { kind: 'denied', entry, address } |
+   * { kind: 'unknown', address } | { kind: 'missing', entry, address }
    */
-  resolve(raw, deeps = false) {
+  resolve(raw, deeps = false, fromPage = false) {
     const address = (raw || '').trim();
     const lower = address.toLowerCase();
-    if (lower.startsWith('sys://')) return { kind: 'directory' };
-    if (lower.startsWith('net://')) {
+    const deep = deeps && this.deepAccess;
+    if (lower === 'net://random') {
       const list = this.directory();
       if (!list.length) return { kind: 'unknown', address };
-      const pick = list[Math.floor(Math.random() * list.length)];
-      return this.resolve(pick.address, deeps);
+      return this.resolve(list[Math.floor(Math.random() * list.length)].address, deeps, fromPage);
     }
-    if (lower.startsWith('deeps://')) return deeps && this.deepAccess ? { kind: 'deephome' } : { kind: 'unknown', address: lower };
+    if (deep && lower === 'deeps://home') return { kind: 'deephome' };
     const { host, path } = splitAddress(address);
-    const shown = path ? `${host}/${path}` : host;
-    if (isAd(host)) {
-      if (!deeps || !this.deepAccess) return { kind: 'unknown', address: shown };
-      return { kind: 'ad', host, address: host };
+    if (deep && isAd(host)) return { kind: 'ad', host, address: host };
+    if (lower === 'sys://directory') return { kind: 'directory' };
+
+    const normalized = path ? `${host}/${path}` : host;
+    let entry = null;
+    let shownHost = host;
+    // A deep site's alias, in The deeps.exi.
+    if (deep) {
+      entry = this.aliased(host);
+      if (entry) shownHost = host;
     }
-    let entry = this.aliases.get(host) || null;
-    if (entry) {
-      if (!deeps || !this.deepAccess) return { kind: 'unknown', address: shown };
-      if (entry.hidden && !this.state.unlocked.includes(entry.key)) return { kind: 'unknown', address: shown };
-    } else {
-      entry = this.byAddress.get(host) || null;
-      if (!entry) return { kind: 'unknown', address: shown };
-      // Deep sites answer only at this session's alias.
-      if (entry.networks.includes(DEEP)) return { kind: 'unknown', address: shown };
-      if (!this.reaches(entry, deeps)) return { kind: 'denied', address: shown };
+    if (!entry) {
+      entry = this.byAddress(host);
+      if (!entry) return { kind: 'unknown', address: normalized };
+      if (entry.networks.includes(DEEP)) {
+        // Fixed names of deep sites work in links on pages in The deeps.exi, never typed or elsewhere.
+        if (!fromPage || !deep) return { kind: 'unknown', address: normalized };
+        shownHost = this.alias(entry);
+      } else if (!this.reaches(entry, deeps)) {
+        return { kind: 'denied', entry, address: normalized };
+      }
     }
-    const want = path.replace(/^\/+|\/+$/g, '').toLowerCase();
-    const page = entry.site.pages.find(p => p.path.trim().replace(/^\/+|\/+$/g, '').toLowerCase() === want);
-    const base = entry.networks.includes(DEEP) ? this.aliasOf.get(entry.key) : entry.address;
-    const full = want ? `${base}/${want}` : base;
-    if (!page) return { kind: 'missing', entry, address: full };
-    return { kind: 'page', entry, path: want, file: page.file.replace(/^\.\//, ''), address: full };
+    const shown = path ? `${shownHost}/${path}` : shownHost;
+    // A hidden site does not exist until this computer has followed the ads to it.
+    if (entry.hidden && !this.state.unlocked.includes(entry.key)) return { kind: 'unknown', address: shown };
+    const page = entry.site.pages.find(p => p.path.trim().replace(/^\/+|\/+$/g, '').toLowerCase() === path);
+    if (!page) return { kind: 'missing', entry, address: shown };
+    return { kind: 'page', entry, path, file: page.file.replace(/^\.\//, ''), address: shown };
   }
 
-  /** A page's text, the colony's own version first (ColonyFile), with {colony} filled. */
+  /** A page's text as stored, or null. */
+  async rawText(entry, file) {
+    if (entry.kind === 'user') return file in entry.pkg.texts ? entry.pkg.texts[file] : null;
+    return pageText(entry, file);
+  }
+
+  /**
+   * A page's text as the game loads it: the colony's own version first (ColonyFile), {colony} filled, and "./"
+   * paths turned into paths under the site's root (CMUExtraNetSystem.LocalPaths). The user's own site keeps "./",
+   * which the editor serves from the package.
+   */
   async pageText(entry, file) {
     const variant = `${this.colony.id}/${file}`;
-    const own = entry.files.includes(variant) ? await pageText(entry, variant) : null;
-    const textValue = own ?? await pageText(entry, file);
+    const own = entry.files.includes(variant) ? await this.rawText(entry, variant) : null;
+    let textValue = own ?? await this.rawText(entry, file);
     if (textValue === null) return null;
-    return textValue.split('{colony}').join(this.colony.name);
+    textValue = textValue.split('{colony}').join(this.colony.name);
+    if (entry.kind !== 'user' && entry.repoDir) {
+      const root = '/' + entry.repoDir.replace(/^Content\.CMU\/Resources\//, '').replace(/\/$/, '');
+      textValue = textValue.split('"./').join(`"${root}/`);
+    }
+    return textValue;
   }
 
   /** A document (Files): a rooted /ServerInfo path. */
@@ -191,8 +246,10 @@ export class Network {
   async scan() {
     await this.buildMaze();
     const found = [];
-    for (const [alias, entry] of this.aliases) {
-      if (!entry.hidden && !this.state.discovered.includes(alias)) found.push(alias);
+    for (const entry of this.sites()) {
+      if (!entry.networks.includes(DEEP) || entry.hidden) continue;
+      const alias = this.alias(entry);
+      if (!this.state.discovered.includes(alias)) found.push(alias);
     }
     for (const entry of this.maze.entries) if (!this.state.discovered.includes(entry)) found.push(entry);
     const pick = found.length && Math.random() >= 0.25 ? found[Math.floor(Math.random() * found.length)] : newAlias(new Rng((Math.random() * 2 ** 31) | 0), AD_SUFFIX);
@@ -203,7 +260,7 @@ export class Network {
 
   /** Title of something found: the site's, or "sponsored page". */
   foundTitle(address) {
-    const entry = this.aliases.get(address);
+    const entry = this.aliased(address);
     return entry ? this.title(entry) : L(this.strings, 'cmu-deep-home-ad');
   }
 
@@ -257,7 +314,7 @@ export class Network {
           const chain = [];
           const length = rng.next(2, 4);
           for (let i = 0; i < length; i++) chain.push(newAlias(rng, AD_SUFFIX));
-          chain.forEach((host, i) => doors.set(host, i + 1 < chain.length ? chain[i + 1] : this.aliasOf.get(entry.key)));
+          chain.forEach((host, i) => doors.set(host, i + 1 < chain.length ? chain[i + 1] : this.alias(entry)));
           ends.set(chain[chain.length - 1], entry.key);
           entries.push(chain[0]);
           chainPages.push(...chain);

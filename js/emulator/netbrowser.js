@@ -48,13 +48,13 @@ export class NetBrowser {
     const button = (label, title, onclick) => el('button.term-btn', { type: 'button', text: label, title, onclick });
     this.back = button('<', this.t('cmu-pc-browser-back'), () => this.goHistory(-1));
     this.forward = button('>', this.t('cmu-pc-browser-forward'), () => this.goHistory(1));
-    this.home = button(this.t('cmu-pc-browser-home'), '', () => this.navigate(this.homeAddress));
-    this.dir = button(this.t('cmu-pc-browser-directory'), this.t('cmu-pc-browser-directory-title'), () => this.navigate('sys://directory'));
+    this.home = button(this.t('cmu-pc-browser-home'), '', () => this.navigate(this.homeAddress, true));
+    this.dir = button(this.t('cmu-pc-browser-directory'), this.t('cmu-pc-browser-directory-title'), () => this.navigate('sys://directory', true));
     this.address = el('input.term-address', { type: 'text', spellcheck: false, placeholder: this.t('cmu-pc-browser-address-placeholder') });
     this.address.addEventListener('keydown', e => {
       if (e.key === 'Enter') this.navigate(this.address.value);
     });
-    this.go = button(this.t('cmu-pc-browser-go'), '', () => this.navigate(this.address.value));
+    this.go = button(this.t('cmu-pc-browser-go'), '', () => this.navigate(this.address.value, true));
     this.save = button(this.t('cmu-pc-browser-save'), this.t('cmu-pc-browser-save-tooltip'), () => {
       if (this.current && this.hooks.onSave) {
         this.hooks.onSave({ title: this.currentTitle || this.current, address: this.current });
@@ -88,9 +88,19 @@ export class NetBrowser {
     return themeColours(this.theme);
   }
 
-  navigate(address) {
-    const trimmed = (address || '').trim();
+  /**
+   * fromPage: a link, tab or button on the page (CMUNetBrowser.Click), where deep sites' fixed names work; the
+   * address bar's Enter is not.
+   */
+  navigate(address, fromPage = false) {
+    let trimmed = (address || '').trim();
     if (!trimmed) return;
+    // The webring link picks its site before it reaches the history, as in game.
+    if (trimmed.toLowerCase() === 'net://random') {
+      const list = this.net.directory();
+      if (!list.length) return;
+      trimmed = list[Math.floor(Math.random() * list.length)].address;
+    }
     if (/^cam:\/\//i.test(trimmed)) {
       this.status.textContent = 'CAMERA FEED: opens the camera console in game';
       return;
@@ -98,14 +108,14 @@ export class NetBrowser {
     if (this.index < this.history.length - 1) this.history.splice(this.index + 1);
     this.history.push(trimmed);
     this.index = this.history.length - 1;
-    this.show(trimmed);
+    this.show(trimmed, fromPage);
   }
 
   goHistory(offset) {
     const index = this.index + offset;
     if (index < 0 || index >= this.history.length) return;
     this.index = index;
-    this.show(this.history[index]);
+    this.show(this.history[index], false);
   }
 
   setTitle(title) {
@@ -113,16 +123,17 @@ export class NetBrowser {
     if (this.hooks.onTitle) this.hooks.onTitle(title);
   }
 
-  async show(address) {
+  async show(address, fromPage = false) {
     const serial = ++this.serial;
     this.back.disabled = this.index <= 0;
     this.forward.disabled = this.index >= this.history.length - 1;
     this.status.textContent = this.t('cmu-pc-browser-status-loading');
     if (this.hooks.busy) this.hooks.busy(0.5);
-    const page = this.net.resolve(address, this.deeps);
+    const page = this.net.resolve(address, this.deeps, fromPage);
     const shown = page.address || address.trim();
     this.address.value = page.kind === 'directory' ? 'sys://directory' : page.kind === 'deephome' ? 'deeps://home' : shown;
-    if (page.address && this.index >= 0) this.history[this.index] = page.address;
+    // History keeps the address as shown, so going back to a deep page needs no fixed name.
+    if (page.address && page.kind !== 'unknown' && this.index >= 0) this.history[this.index] = page.address;
     this.current = this.address.value;
     this.showTabs(null);
 
@@ -131,7 +142,7 @@ export class NetBrowser {
       this.systemPage(this.t('cmu-pc-browser-directory-title'), null, box => {
         const style = this.colours().defaultStyle;
         for (const entry of this.net.directory()) {
-          box.append(el('div.dir-row', {}, el('span.dir-cell', {}, netLink(entry.address, entry.address, style.link, style.background, a => this.navigate(a))),
+          box.append(el('div.dir-row', {}, el('span.dir-cell', {}, netLink(entry.address, entry.address, style.link, style.background, a => this.navigate(a, true))),
             el('span', { text: this.net.title(entry) })));
         }
       });
@@ -153,7 +164,7 @@ export class NetBrowser {
       return;
     }
     if (page.kind === 'missing') {
-      this.showTabs(page.entry, null);
+      this.showTabs(page.entry, page.address.split('/').slice(1).join('/'));
       this.setTitle(this.net.title(page.entry));
       this.systemPage(this.t('cmu-pc-browser-missing-page-title'), this.t('cmu-pc-browser-missing-page-body', { address: shown }), null, true);
       this.status.textContent = this.t('cmu-pc-browser-status-error');
@@ -179,7 +190,7 @@ export class NetBrowser {
     if (page.entry) this.showTabs(page.entry, page.path);
     const rendered = renderDocument(markup, siteStyle, {
       colours: this.colours(),
-      onLink: link => this.navigate(link),
+      onLink: link => this.navigate(link, true),
       widget: this.hooks.widget,
       onWallpaper: this.hooks.onWallpaper,
     });
@@ -222,7 +233,7 @@ export class NetBrowser {
     page.append(el('div.page-heading.h-heading', { text: title }));
     if (body) page.append(el('div.page-text.sys-body', { text: body }));
     if (build) build(page);
-    if (homeLink) page.append(el('div.sys-home', {}, netLink(this.t('cmu-pc-browser-return-home'), this.homeAddress, style.link, style.background, a => this.navigate(a))));
+    if (homeLink) page.append(el('div.sys-home', {}, netLink(this.t('cmu-pc-browser-return-home'), this.homeAddress, style.link, style.background, a => this.navigate(a, true))));
     this.mount({ page, popups: [], timers: [], style });
   }
 
@@ -236,11 +247,10 @@ export class NetBrowser {
     const style = over(cleanStyle(entry.site.style), this.colours().defaultStyle);
     const link = colourCss(style.link);
     const background = colourCss(style.background);
-    const base = this.current.split('/')[0];
     for (const tab of tabs) {
       const path = (tab.path || '').trim().replace(/^\/+|\/+$/g, '').toLowerCase();
       const active = path === openPath;
-      const button = el('button.term-btn.term-tab', { type: 'button', text: text(this.strings, tab.title), onclick: () => this.navigate(path ? `${base}/${path}` : base) });
+      const button = el('button.term-btn.term-tab', { type: 'button', text: text(this.strings, tab.title), onclick: () => this.navigate(path ? `${entry.address}/${path}` : entry.address, true) });
       button.style.background = active ? link : background;
       button.style.color = active ? background : link;
       button.style.borderColor = link;
@@ -262,7 +272,7 @@ export class NetBrowser {
       if (!list.length) found.append(el('div.page-text', { text: this.t('cmu-deep-home-nothing') }));
       for (let i = list.length - 1; i >= 0; i--) {
         found.append(el('div.emu-deep-node', {}, el('div', { text: this.net.foundTitle(list[i]) }),
-          el('div', {}, netLink(list[i], list[i], style.link, style.background, a => this.navigate(a)))));
+          el('div', {}, netLink(list[i], list[i], style.link, style.background, a => this.navigate(a, true)))));
       }
     };
     const tick = () => {

@@ -39,3 +39,4 @@
 .lib-mark[data-status="reviewed"] { background: var(--accent); }
 .lib-mark[data-status="work"] { background: var(--warn); }
 .lib-mark[data-status="hidden"] { background: var(--danger); }
+.linkcheck { max-height: 70vh; overflow: auto; margin: 0; font: 12px/1.5 var(--mono); white-space: pre-wrap; color: var(--text-2); }

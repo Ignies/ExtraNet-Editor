@@ -343,3 +343,28 @@ export function setCuration(key, value) {
     // kept for this visit only
   }
 }
+
+// ---------------------------------------------------------------- the user's own site
+
+/** The site open in the editor as a library entry, for the emulator. Its pages come straight from the package. */
+export function userEntry(pkg) {
+  const site = pkg.site;
+  return {
+    key: `user:${site.id}`,
+    kind: 'user',
+    id: site.id,
+    site,
+    title: site.title || site.id,
+    address: site.address.trim().toLowerCase(),
+    networks: site.networks,
+    group: 'Packages',
+    repoDir: null,
+    packageDir: null,
+    files: Object.keys(pkg.texts),
+    pageCount: site.pages.length,
+    source: 'editor',
+    unlisted: site.unlisted,
+    hidden: site.hidden,
+    pkg,
+  };
+}

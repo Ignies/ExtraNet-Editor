@@ -209,6 +209,13 @@ computer full window, built from the game's own code and art:
   sent mail kept), System (terminal, user, networks, uptime, and the wallpapers).
 - **Every site of the Library** answers at its address, with `{colony}` filled and the colony's own versions of
   pages. Networks apply: a Seegson terminal is refused at `intranet.wy`, a W-Y terminal is let in.
+- **The site open in the editor** is on the emulator's ExtraNet too, with its pages, tabs, board and `./` images,
+  listed in the directory and reachable from links, `net://random` and the address bar. It takes over a game
+  site at the same address, so a site being curated shows its edited version. Edits show the next time a page
+  loads.
+- **Links resolve as `CMUNetBrowser` resolves them**: links, tabs and the HOME, DIR and GO buttons may use a deep
+  site's fixed name (`wyleaks.deep`), which opens the site under its random alias in The deeps.exi; typed into
+  the address bar a fixed name goes nowhere, as in game.
 - **Deep web access** (in the bar) makes it a hacked machine: a corrupted boot and The deeps.exi on the desktop.
   Its scan turns up the deep sites under new random aliases each browser session, and the ad maze that hides the
   hidden ones, generated as `CMUDeepMazeSystem` does: follow the links ending in `::` to unlock a hidden site.
@@ -216,6 +223,10 @@ computer full window, built from the game's own code and art:
   matches with a wallet to bet from, the arcade cabinets play Hugger Run and Tracker Reflex, SpaceGPT answers
   from its roster, the Galley cookbook lists the food recipes (only `Kind="Food"`), and the deep market and the
   Marshals' panels show sample data.
+
+**Link check**: open the editor with `?linkcheck` in the address (or run `extranetEditor.linkCheck()` in the
+console) to resolve every link, tab, pop up link and `./` file of every page of every site, colony versions
+included, through the emulator's resolver, and list what goes nowhere.
 
 What happens on the emulator stays in this browser (notes, mail, links, board posts, the wallet, high scores);
 **Reset** in the bar clears it. In game the server keeps those for the round and other players fill the boards,
@@ -322,7 +333,7 @@ Differences:
 | `js/library.js`, `js/ui-library.js`, `css/library.css` | The Library: the site index, opening YAML sites and packages, curation marks, the changes export |
 | `js/emulator/emulator.js`, `css/emulator.css` | The emulator's screen: the bar, the machine on its stage, power, card and the live widgets |
 | `js/emulator/machine.js`, `boot.js`, `desktop.js`, `netbrowser.js`, `boards.js` | The machine, the boot splash, the desktop and its programs, the browser, the boards |
-| `js/emulator/net.js`, `data.js` | The ExtraNet as a computer sees it (addresses, networks, deep aliases, the ad maze) and the OS, colony and wallpaper data |
+| `js/emulator/net.js`, `data.js`, `linkcheck.js` | The ExtraNet as a computer sees it (addresses, networks, deep aliases, the ad maze), the OS, colony and wallpaper data, and the link check |
 | `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook, the arcade games, SpaceGPT, the recipes, the deep market and the CMB panels |
 | `game/`, `tools/snapshot.py` | The bundled snapshot of the game's ExtraNet content, and the script that refreshes it |
 | `js/editor.js` | The markup view's code editor |

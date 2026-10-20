@@ -45,10 +45,13 @@ function terminalNumber() {
 
 let current = null;
 
-/** Opens the emulator over the editor. onClose: called when its back button is pressed. */
-export async function openEmulator({ onClose } = {}) {
+/**
+ * Opens the emulator over the editor. onClose: called when its back button is pressed. userSites(): the user's
+ * own sites as library entries, asked for on every page load so edits show up.
+ */
+export async function openEmulator({ onClose, userSites = () => [] } = {}) {
   if (current) return current;
-  const emu = new Emulator(onClose);
+  const emu = new Emulator(onClose, userSites);
   current = emu;
   document.body.append(emu.root);
   document.documentElement.classList.add('emu-open');
@@ -65,7 +68,8 @@ export function closeEmulator() {
 }
 
 class Emulator {
-  constructor(onClose) {
+  constructor(onClose, userSites) {
+    this.userSites = userSites;
     this.settings = loadSettings();
     this.onClose = onClose;
     this.state = 'off';
@@ -116,18 +120,35 @@ class Emulator {
       this.status.textContent = `Could not read the game data: ${e.message}`;
       return;
     }
-    for (const os of this.data.systems) this.osSelect.append(el('option', { value: os.id, text: `${os.id.replace('CMUOs', '')}: ${this.data.strings[os.name] || os.name}` }));
     for (const colony of this.data.colonies) this.colonySelect.append(el('option', { value: colony.id, text: colony.name }));
+    this.fillOsNames();
     this.osSelect.value = this.settings.os;
     this.colonySelect.value = this.settings.colony;
+    this.fillOsNames();
+    this.osSelect.value = this.settings.os;
     if (!this.osSelect.value) this.osSelect.value = this.data.systems[0].id;
     if (!this.colonySelect.value) this.colonySelect.value = 'StableGarrison';
     await this.configure();
     this.fit();
-    this.status.textContent = `${this.entries.length} sites on the ExtraNet. Press the power key.`;
+    this.status.textContent = this.idleStatus();
+  }
+
+  idleStatus() {
+    const own = this.net ? this.net.sites().filter(e => e.kind === 'user') : [];
+    const mine = own.length ? `, your ${own.map(e => e.address).join(', ')} included` : '';
+    return `${this.net ? this.net.sites().length : this.entries.length} sites on the ExtraNet${mine}. Press the power key.`;
+  }
+
+  /** The OS names as the game shows them on this colony: Seegson takes the colony's (GARRISONLINK). */
+  fillOsNames() {
+    const colony = this.data.colonies.find(c => c.id === this.colonySelect.value) || this.data.colonies[0];
+    const value = this.osSelect.value;
+    this.osSelect.replaceChildren(...this.data.systems.map(os => el('option', { value: os.id, text: makeTheme(os, this.data.strings, colony).name })));
+    if (value) this.osSelect.value = value;
   }
 
   async configure() {
+    this.fillOsNames();
     this.settings.os = this.osSelect.value;
     this.settings.colony = this.colonySelect.value;
     this.settings.deep = this.deepToggle.checked;
@@ -136,7 +157,7 @@ class Emulator {
     this.colony = this.data.colonies.find(c => c.id === this.settings.colony) || this.data.colonies[0];
     this.theme = makeTheme(os, this.data.strings, this.colony);
     this.deepTheme = makeTheme(this.data.deepOs, this.data.strings, null);
-    this.net = new Network(this.entries, this.theme, this.colony, this.data.strings, { deep: this.settings.deep });
+    this.net = new Network(this.entries, this.theme, this.colony, this.data.strings, { deep: this.settings.deep, extraSites: this.userSites });
     const s = this.machine.screen.style;
     s.setProperty('--phosphor', this.theme.phosphor);
     s.setProperty('--os-bg', this.theme.background);
@@ -188,7 +209,7 @@ class Emulator {
   }
 
   shutDown() {
-    if (this.data) this.status.textContent = `${this.entries.length} sites on the ExtraNet. Press the power key.`;
+    if (this.data) this.status.textContent = this.idleStatus();
     this.state = 'off';
     this.machine.on = false;
     this.desktop = null;
