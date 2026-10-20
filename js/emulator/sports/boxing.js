@@ -9,6 +9,7 @@ import {
   Arena, ArenaWidth, ArenaHeight, Bar, Dir, BLOOD, DARK_BLOOD, GOLD, kitCss, rect, frameRect, circle, line, poly, texture,
 } from './arena.js';
 import { loadRsi, loadStateSheet, stateFrames } from '../../sprites.js';
+import { stateCanvas } from './dolls.js';
 
 const T = {
   round: round => `ROUND ${round}`,
@@ -383,29 +384,167 @@ function hexAlpha(hex, alpha) {
   return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${alpha})`;
 }
 
-/** The stands, worked out once: who sits where and what they wear. */
-const CROWD = (() => {
-  const jackets = ['#3B3550', '#4A2A2A', '#27384A', '#3D4A2C', '#4E4234', '#2E2E36', '#5A3046', '#30464A'];
-  const faces = ['#E2B08A', '#C68C62', '#8D5A3B', '#F0C8A8', '#5E3B28'];
-  const fans = [];
+/** The seats in the stands, worked out once: where each fan sits, how they bob, whether they throw their arms up. */
+const SEATS = (() => {
+  const seats = [];
   let seed = 12345;
   const next = () => {
     seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
     return (seed >>> 8) / 16777216;
   };
   for (let row = 0; row < RowY.length; row++) {
-    const light = 0.35 + row * 0.13;
-    const radius = 3.4 + row * 0.5;
     const spacing = 10.5 + row * 1.4;
     for (let x = 4 + (row % 2) * spacing / 2; x < ArenaWidth; x += spacing) {
-      const jacket = jackets[Math.trunc(next() * jackets.length) % jackets.length];
-      const face = faces[Math.trunc(next() * faces.length) % faces.length];
+      next();
+      next();
       const fx = x + (next() - 0.5) * 2;
-      fans.push({ x: fx, row, radius, jacket: rgb(jacket, light), face: rgb(face, light), phase: next(), arms: next() < 0.3 });
+      seats.push({ x: fx, row, phase: next(), arms: next() < 0.3 });
     }
   }
-  return fans;
+  return seats;
 })();
+
+// The fans are the game's people: body parts, eyes, hair and clothes in layer order, as Hugger Run builds them.
+const FAN_PARTS = '/Textures/Mobs/Species/Human/parts.rsi';
+const FAN_EYES = '/Textures/Mobs/Customization/eyes.rsi';
+const FAN_HAIR = '/Textures/Mobs/Customization/human_hair.rsi';
+const FAN_CLOTHES = '/Textures/_RMC14/Objects/Clothing/';
+const FAN_COLOUR_SUIT = '/Textures/Clothing/Uniforms/Jumpsuits/Color/color.rsi';
+const FAN_CIVILIAN = [
+  'Uniforms/Civilian/blue_jumpsuit.rsi', 'Uniforms/Civilian/brown_utility.rsi', 'Uniforms/Civilian/khaki_workwear.rsi',
+  'Uniforms/Civilian/grey_jumpsuit.rsi', 'Uniforms/Civilian/green_utility.rsi', 'Uniforms/Civilian/blue_workwear.rsi',
+  'Uniforms/Civilian/lightbrown_jumpsuit.rsi', 'Uniforms/Civilian/doctor.rsi', 'Uniforms/Civilian/emt.rsi',
+  'Uniforms/Civilian/red_utility.rsi', 'Uniforms/Civilian/yellow_jumpsuit.rsi', 'Uniforms/Civilian/sanitation.rsi',
+  'Uniforms/Civilian/weyamart.rsi', 'Uniforms/Civilian/daily_grind.rsi', 'Uniforms/Civilian/tartarus_mining.rsi',
+  'Uniforms/Civilian/scientist_jumpsuit.rsi', 'Uniforms/Civilian/pizza_galaxy.rsi', 'Uniforms/Civilian/white_jumpsuit_alt.rsi',
+];
+const FAN_MARINE = ['Uniforms/Marine/standard.rsi', 'Uniforms/Marine/engineer.rsi', 'Uniforms/Marine/medic.rsi'];
+const FAN_HATS = [
+  'Head/Beanies/beanie.rsi', 'Head/Beanies/gray.rsi', 'Head/Beanies/green.rsi', 'Head/Hats/blue_trucker_cap.rsi',
+  'Head/Hats/cargo_cap.rsi', 'Head/Hats/bucket.rsi', 'Head/Hats/durag.rsi', 'Head/Hats/pizza_galaxy_cap.rsi',
+];
+const FAN_MARINE_CAP = 'Head/Hats/cap.rsi';
+const FAN_MALE_HAIR = ['crewcut', 'business', 'bedhead', 'buzzcut', 'afro', 'sidecut', 'bald'];
+const FAN_FEMALE_HAIR = ['ponytail', 'bob', 'bun', 'longstraightponytail', 'long', 'pixie', 'bobcurl', 'ponytail2'];
+const FAN_HAIR_COLOURS = ['#2A1A10', '#5A3A20', '#C89A50', '#1A1A1A', '#8A3A1A', '#D8C078', '#8C8C8C'];
+const FAN_EYE_COLOUR = '#2B1A10';
+// the corners' jumpsuits, ClothingUniformJumpsuitColorRed and Blue, for the fans who came for one fighter
+const FAN_CORNERS = ['#eb0c07', '#52aecc'];
+/** Fans are drawn this size per row, back to front, and darker the further back they sit. */
+const FAN_SCALE = [0.8, 0.9, 1, 1.1, 1.2];
+const FAN_LIGHT = [0.22, 0.29, 0.36, 0.43, 0.5];
+const FAN_COLUMNS = 32;
+
+/** The game's human skin tones (HumanTonedSkinColoration.FromUnary), 0 the lightest and 100 the darkest. */
+function skinTone(tone) {
+  const offset = tone - 20;
+  const hue = (offset <= 0 ? 25 - offset : 25) / 360;
+  const sat = (offset <= 0 ? 20 : 20 + offset) / 100;
+  const val = (offset <= 0 ? 100 : 100 - offset) / 100;
+  const i = Math.floor(hue * 6);
+  const fr = hue * 6 - i;
+  const p = val * (1 - sat);
+  const q = val * (1 - fr * sat);
+  const u = val * (1 - (1 - fr) * sat);
+  const [r, g, b] = [[val, u, p], [q, val, p], [p, val, u], [p, q, val], [u, p, val], [val, p, q]][i % 6];
+  const hex = v => Math.round(v * 255).toString(16).padStart(2, '0');
+  return `#${hex(r)}${hex(g)}${hex(b)}`;
+}
+
+/**
+ * What the fan in a seat looks like in a match: the same for every client, from the match id and the seat. Returns
+ * the layers in drawing order as [rsi, state, tint, arm], and whether they came for the red (0) or blue (1) corner.
+ */
+function fanLook(matchId, seat) {
+  let s = (Math.imul(matchId, 2654435761 | 0) ^ Math.imul(seat + 1, 40503)) >>> 0;
+  const next = () => {
+    s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+    return (s >>> 8) / 16777216;
+  };
+  next();
+  const female = next() < 0.45;
+  const skin = skinTone(next() * 90);
+  const outfitRoll = next();
+  const outfitPick = next();
+  const hairPick = next();
+  const hairColourPick = next();
+  const hatRoll = next();
+  const hatPick = next();
+  const pick = (list, x) => list[Math.trunc(x * list.length)];
+  const corner = outfitRoll < 0.11 ? 0 : outfitRoll < 0.22 ? 1 : -1;
+  const marine = corner < 0 && outfitRoll < 0.36;
+  const sex = female ? '_f' : '_m';
+  const layers = [
+    [FAN_PARTS, `torso${sex}`, skin, false], [FAN_PARTS, `head${sex}`, skin, false], [FAN_EYES, 'eyes', FAN_EYE_COLOUR, false],
+    [FAN_PARTS, 'r_arm', skin, true], [FAN_PARTS, 'l_arm', skin, true],
+  ];
+  if (corner >= 0) layers.push([FAN_COLOUR_SUIT, 'equipped-INNERCLOTHING', FAN_CORNERS[corner], false]);
+  else layers.push([FAN_CLOTHES + pick(marine ? FAN_MARINE : FAN_CIVILIAN, outfitPick), 'equipped-INNERCLOTHING', null, false]);
+  layers.push([FAN_PARTS, 'l_hand', skin, true], [FAN_PARTS, 'r_hand', skin, true]);
+  layers.push([FAN_HAIR, pick(female ? FAN_FEMALE_HAIR : FAN_MALE_HAIR, hairPick), pick(FAN_HAIR_COLOURS, hairColourPick), false]);
+  if (marine && hatRoll < 0.5) layers.push([FAN_CLOTHES + FAN_MARINE_CAP, 'equipped-HELMET', null, false]);
+  else if (!marine && hatRoll < 0.15) layers.push([FAN_CLOTHES + pick(FAN_HATS, hatPick), 'equipped-HELMET', null, false]);
+  return { layers, corner, skin };
+}
+
+/** The stands of one match as an atlas: two cells per seat, arms down and arms up, already darkened for its row. */
+let fanAtlas = { id: null, canvas: null };
+function crowdAtlas(matchId) {
+  if (fanAtlas.id === matchId) return fanAtlas.canvas;
+  const looks = SEATS.map((_, seat) => fanLook(matchId, seat));
+  fanAtlas = { id: matchId, canvas: null, corners: looks.map(look => look.corner) };
+  const wanted = new Map();
+  for (const look of looks) for (const [rsi, state, tint] of look.layers) wanted.set(`${rsi}|${state}|${tint}`, [rsi, state, tint]);
+  const keys = [...wanted.keys()];
+  Promise.all(keys.map(key => stateCanvas(...wanted.get(key)))).then(canvases => {
+    if (fanAtlas.id !== matchId) return;
+    const images = new Map(keys.map((key, i) => [key, canvases[i]]));
+    const atlas = document.createElement('canvas');
+    atlas.width = FAN_COLUMNS * 32;
+    atlas.height = Math.ceil(SEATS.length * 2 / FAN_COLUMNS) * 32;
+    const c = atlas.getContext('2d');
+    c.imageSmoothingEnabled = false;
+    const cell = document.createElement('canvas');
+    cell.width = cell.height = 32;
+    const cc = cell.getContext('2d', { willReadFrequently: true });
+    const dark = document.createElement('canvas');
+    dark.width = dark.height = 32;
+    const dc = dark.getContext('2d');
+    looks.forEach((look, seat) => {
+      for (let pose = 0; pose < 2; pose++) {
+        cc.clearRect(0, 0, 32, 32);
+        for (const [rsi, state, tint, arm] of look.layers) {
+          const image = images.get(`${rsi}|${state}|${tint}`);
+          if (image && !(arm && pose === 1)) cc.drawImage(image, 0, 0);
+        }
+        if (pose === 1) {
+          // arms thrown up: the sleeves from the shoulders past the head, the hands at the top
+          const [r, g, b] = cc.getImageData(16, 15, 1, 1).data;
+          cc.fillStyle = `rgb(${r},${g},${b})`;
+          cc.fillRect(8, 6, 2, 8);
+          cc.fillRect(22, 6, 2, 8);
+          cc.fillStyle = look.skin;
+          cc.fillRect(8, 4, 2, 2);
+          cc.fillRect(22, 4, 2, 2);
+        }
+        // darker the further back the seat, keeping the outline
+        const light = Math.round(FAN_LIGHT[SEATS[seat].row] * 255);
+        dc.globalCompositeOperation = 'source-over';
+        dc.clearRect(0, 0, 32, 32);
+        dc.drawImage(cell, 0, 0);
+        dc.globalCompositeOperation = 'multiply';
+        dc.fillStyle = `rgb(${light},${light},${light})`;
+        dc.fillRect(0, 0, 32, 32);
+        dc.globalCompositeOperation = 'destination-in';
+        dc.drawImage(cell, 0, 0);
+        const index = seat * 2 + pose;
+        c.drawImage(dark, (index % FAN_COLUMNS) * 32, Math.trunc(index / FAN_COLUMNS) * 32);
+      }
+    });
+    fanAtlas.canvas = atlas;
+  });
+  return null;
+}
 
 /** The impact star frames of attacks.rsi "punch", loaded once. */
 let sparkFrames = null;
@@ -1219,15 +1358,18 @@ export class BoxingArena extends Arena {
 
     // the stands: more of them on their feet and bouncing the louder it gets
     const hype = clampTo(this.hype, 0, 1.2);
-    for (const fan of CROWD) {
-      const bob = Math.abs(Math.sin(now * (5 + fan.phase) + fan.phase * 7)) * (0.6 + hype * 3.2);
-      const y = RowY[fan.row] - bob;
-      rect(c, fan.x - fan.radius - 1, y + fan.radius * 0.6, fan.radius * 2 + 2, 10, fan.jacket);
-      circle(c, fan.x, y, fan.radius, fan.face);
-      if (!fan.arms || hype < 0.45) continue;
-      const reach = 7 + bob * 0.8;
-      line(c, fan.x - fan.radius, y + fan.radius, fan.x - fan.radius - 2, y - reach, fan.jacket);
-      line(c, fan.x + fan.radius, y + fan.radius, fan.x + fan.radius + 2, y - reach, fan.jacket);
+    const atlas = crowdAtlas(this.match.id);
+    if (atlas) {
+      for (let seat = 0; seat < SEATS.length; seat++) {
+        const fan = SEATS[seat];
+        const bob = Math.abs(Math.sin(now * (5 + fan.phase) + fan.phase * 7)) * (0.6 + hype * 3.2);
+        // the hyped throw their arms up; the ones in a corner's colours wave for their fighter
+        const up = (fan.arms && hype >= 0.45) || (fanAtlas.corners[seat] >= 0 && hype >= 0.3 && Math.sin(now * 4 + fan.phase * 9) > 0);
+        const cell = seat * 2 + (up ? 1 : 0);
+        const scale = FAN_SCALE[fan.row];
+        c.drawImage(atlas, (cell % FAN_COLUMNS) * 32, Math.trunc(cell / FAN_COLUMNS) * 32, 32, 32,
+          fan.x - 16 * scale, RowY[fan.row] - bob - 7 * scale, 32 * scale, 32 * scale);
+      }
     }
 
     for (const flash of this.flashes) {

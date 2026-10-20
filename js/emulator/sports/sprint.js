@@ -8,6 +8,7 @@ import { Sport, Action, SprintStart, defineSport, f, roundEven, range, ev, kitCo
 import {
   Arena, ArenaWidth, ArenaHeight, Bar, Dir, BLOOD, DARK_BLOOD, clamp, kitCss, shortName, rect, frameRect, circle, line, poly, texture,
 } from './arena.js';
+import { layerCanvas } from './dolls.js';
 
 const T = {
   marks: 'On your marks',
@@ -203,8 +204,35 @@ const BRONZE = '#D9944A';
 const ALARM = '#FF4A3A';
 const WHITE = '#FFFFFF';
 
-const SKINS = ['#F1C27D', '#E0AC69', '#C68642', '#8D5524', '#FFDBAC', '#5C3A21'];
-const SHIRTS = ['#E04040', '#4080FF', '#40C060', '#F0D040', '#F09030', '#A060E0', '#DDDDDD', '#555A66', '#2E3440', '#7A4A2A'];
+// the crowd, dressed from the game's sprites (paths under /Textures)
+const PARTS = 'Mobs/Species/Human/parts.rsi';
+const EYES = 'Mobs/Customization/eyes.rsi';
+const HAIR = 'Mobs/Customization/human_hair.rsi';
+const COLOUR_JUMPSUIT = 'Clothing/Uniforms/Jumpsuits/Color/color.rsi';
+const CLOTHING = '_RMC14/Objects/Clothing/';
+const MARINE_UNIFORM = `${CLOTHING}Uniforms/Marine/standard.rsi`;
+const MARINE_CAP = `${CLOTHING}Head/Hats/cap.rsi`;
+const FanCell = 16;
+const FanHeight = 12;
+const AtlasColumns = 16;
+const SKINS = ['#FFE1CC', '#EDC2A0', '#D9A577', '#C08A62', '#8A5634', '#5C3A21'];
+const HAIR_COLOURS = ['#2A1A10', '#5A3A20', '#C89A50', '#1A1A1A', '#8A3A1A', '#D8C8A8', '#6A6A6A'];
+const EYE_COLOUR = '#2B1A10';
+/** The colony jumpsuit's colours, as the game's coloured jumpsuits tint it. */
+const JUMPSUIT_TINTS = ['#EB0C07', '#52AECC', '#9ED63A', '#FFE14D', '#FF8C19', '#9F70CC', '#A17229'];
+const CIVILIAN = [
+  'blue_jumpsuit', 'brown_utility', 'khaki_workwear', 'grey_jumpsuit', 'green_utility', 'blue_workwear',
+  'lightbrown_jumpsuit', 'red_utility', 'yellow_jumpsuit', 'white_jumpsuit_alt', 'tartarus_mining', 'weyamart',
+  'pizza_galaxy', 'sanitation', 'scientist_jumpsuit', 'doctor', 'emt', 'steward', 'daily_grind',
+];
+const HATS = [
+  'Hats/blue_trucker_cap', 'Hats/red_trucker_cap', 'Hats/beret_red', 'Hats/cargo_cap', 'Hats/weyamart_cap',
+  'Hats/pizza_galaxy_cap', 'Hats/ushanka', 'Hats/durag', 'Beanies/beanie', 'Beanies/gray', 'Beanies/green', 'Beanies/tan',
+];
+const MALE_HAIR = ['crewcut', 'business', 'bedhead', 'buzzcut', 'afro', 'combover', 'cornrows', 'dreads', 'emo', 'curls'];
+const FEMALE_HAIR = ['ponytail', 'bob', 'bun', 'longstraightponytail', 'curls', 'doublebun', 'braid', 'beehive', 'bobcurl'];
+/** The stands get darker towards the back. */
+const ROW_SHADE = [0.55, 0.68, 0.8];
 const FLAGS = [34, 150, 372, 478];
 
 const Mishap = { None: 0, Fall: 1, Hamstring: 2, Stagger: 3 };
@@ -250,20 +278,96 @@ const CROWD = (() => {
   const fans = [];
   const step = lcg(0x5EED);
   const next = () => (step() >>> 8) / 16777216;
+  // in floats like the C#, so the seats line up the same
   for (let row = 0; row < 3; row++) {
-    const shade = 0.7 + row * 0.15;
-    for (let x = 4 + (row % 2) * 4; x < ArenaWidth; x += 8.5 + next() * 2) {
+    for (let x = f(4 + (row % 2) * 4); x < ArenaWidth; x = f(x + f(8.5 + f(next() * 2)))) {
       if (x > ScreenX - 6 && x < ScreenX + ScreenW + 6) continue;
-      const skin = SKINS[Math.trunc(next() * SKINS.length) % SKINS.length];
-      const shirt = SHIRTS[Math.trunc(next() * SHIRTS.length) % SHIRTS.length];
-      fans.push({
-        x, y: 41 + row * 8 + next(), skin: dim(skin, shade), shirt: dim(shirt, shade), phase: next() * TAU, speed: next() * 3,
-        arms: next(), size: 2.6 + row * 0.3,
-      });
+      fans.push({ x, y: f(41 + row * 8 + next()), row });
     }
   }
   return fans;
 })();
+
+/** A steady pseudo-random number for a seat of a match, the same as the C#'s Roll. */
+function roll(match, seat, salt) {
+  let h = Math.imul(Math.imul(match, 73856093) ^ Math.imul(seat, 19349663) ^ Math.imul(salt, 83492791), 0x9E3779B1) >>> 0;
+  h ^= h >>> 15;
+  h = Math.imul(h, 0x85EBCA77) >>> 0;
+  h ^= h >>> 13;
+  h = Math.imul(h, 0xC2B2AE3D) >>> 0;
+  h ^= h >>> 16;
+  return h >>> 0;
+}
+
+const layers = new Map();
+
+/** A tinted sprite layer facing south, loaded once. */
+function crowdLayer(rsi, state, tint) {
+  const key = `${rsi}|${state}|${tint}`;
+  if (!layers.has(key)) layers.set(key, layerCanvas(rsi, state, 0, tint).catch(() => null));
+  return layers.get(key);
+}
+
+/** Who sits in a seat at a match, and what they wear, as the C#'s SeatFans picks it. */
+function dressFan(id, i, lanes) {
+  const isFemale = roll(id, i, 1) % 100 < 45;
+  const skin = SKINS[roll(id, i, 2) % SKINS.length];
+  const outfit = roll(id, i, 3) % 100;
+  const marine = outfit >= 68 && outfit < 84;
+  const sex = isFemale ? '_f' : '_m';
+  const list = [
+    [PARTS, `torso${sex}`, skin], [PARTS, `head${sex}`, skin], [EYES, 'eyes', EYE_COLOUR], [PARTS, 'r_arm', skin], [PARTS, 'l_arm', skin],
+  ];
+  if (marine) list.push([MARINE_UNIFORM, 'equipped-INNERCLOTHING', null]);
+  else if (outfit >= 50) list.push([COLOUR_JUMPSUIT, 'equipped-INNERCLOTHING', JUMPSUIT_TINTS[roll(id, i, 4) % JUMPSUIT_TINTS.length]]);
+  else list.push([`${CLOTHING}Uniforms/Civilian/${CIVILIAN[roll(id, i, 4) % CIVILIAN.length]}.rsi`, 'equipped-INNERCLOTHING', null]);
+  list.push([PARTS, 'l_hand', skin], [PARTS, 'r_hand', skin]);
+  const styles = isFemale ? FEMALE_HAIR : MALE_HAIR;
+  const style = marine ? (roll(id, i, 7) % 2 === 0 ? 'buzzcut' : 'crewcut') : styles[roll(id, i, 7) % styles.length];
+  list.push([HAIR, style, HAIR_COLOURS[roll(id, i, 8) % HAIR_COLOURS.length]]);
+  const hat = roll(id, i, 5) % 100;
+  if (marine && hat < 65) list.push([MARINE_CAP, 'equipped-HELMET', null]);
+  else if (!marine && hat < 22) list.push([`${CLOTHING}Head/${HATS[roll(id, i, 6) % HATS.length]}.rsi`, 'equipped-HELMET', null]);
+  const shade = ROW_SHADE[CROWD[i].row];
+  return {
+    layers: list, shade, skin: dim(skin, shade),
+    phase: (roll(id, i, 11) & 0xFFFF) / 65535 * TAU,
+    speed: (roll(id, i, 12) & 0xFFFF) / 65535 * 3,
+    arms: (roll(id, i, 13) & 0xFFFF) / 65535,
+    flag: roll(id, i, 9) % 100 < 10 ? roll(id, i, 10) % Math.max(1, lanes) : -1,
+  };
+}
+
+/** The whole crowd of a match dressed into one atlas canvas: one 16 x 16 cell a fan, darkened for their row. */
+async function seatFans(seats) {
+  const rows = Math.ceil(CROWD.length / AtlasColumns);
+  const atlas = document.createElement('canvas');
+  atlas.width = AtlasColumns * FanCell;
+  atlas.height = rows * FanCell;
+  const ctx = atlas.getContext('2d');
+  const fan = document.createElement('canvas');
+  fan.width = 32;
+  fan.height = 32;
+  const fanCtx = fan.getContext('2d');
+  fanCtx.imageSmoothingEnabled = false;
+  // every layer starts loading at once; the fans are then dressed in seat order
+  const loads = seats.map(seat => Promise.all(seat.layers.map(([rsi, state, tint]) => crowdLayer(rsi, state, tint))));
+  for (let i = 0; i < seats.length; i++) {
+    const images = await loads[i];
+    fanCtx.clearRect(0, 0, 32, 32);
+    for (const image of images) if (image) fanCtx.drawImage(image, 0, 0);
+    const x = (i % AtlasColumns) * FanCell;
+    const y = Math.trunc(i / AtlasColumns) * FanCell;
+    // halved like the C#'s 2 by 2 average, then darkened for the row
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(fan, x, y, FanCell, FanCell);
+    ctx.globalCompositeOperation = 'source-atop';
+    ctx.fillStyle = `rgba(0,0,0,${1 - seats[i].shade})`;
+    ctx.fillRect(x, y, FanCell, FanCell);
+    ctx.globalCompositeOperation = 'source-over';
+  }
+  return atlas;
+}
 
 const GRAIN = (() => {
   const step = lcg(0x7A11);
@@ -396,6 +500,13 @@ const rankColour = rank => (rank === 1 ? GOLD : rank === 2 ? SILVER : rank === 3
 export class SprintArena extends Arena {
   build(match) {
     this.lanes = match.entrants.length;
+    // the crowd is dressed once a match; the stands stay empty for the moment that takes
+    this.seats = CROWD.map((_, i) => dressFan(match.id, i, this.lanes));
+    this.crowd = null;
+    const id = match.id;
+    seatFans(this.seats).then(atlas => {
+      if (this.match?.id === id) this.crowd = atlas;
+    });
     this.runners = [];
     this.stance = [];
     this.snap = [];
@@ -1092,15 +1203,23 @@ export class SprintArena extends Arena {
 
     const excite = this.excite ?? 0.3;
     const clock = this.clockTime ?? 0;
-    for (const fan of CROWD) {
-      const bob = Math.max(0, Math.sin(clock * (4 + fan.speed) + fan.phase)) * 3 * excite;
+    for (let i = 0; i < CROWD.length && this.crowd; i++) {
+      const fan = CROWD[i];
+      const seat = this.seats[i];
+      const bob = Math.max(0, Math.sin(clock * (4 + seat.speed) + seat.phase)) * 3 * excite;
       const y = fan.y - bob;
-      rect(c, fan.x - 3.5, y + 2.5, 7, 7, fan.shirt);
-      circle(c, fan.x, y, fan.size, fan.skin);
-      if (excite <= 0.55 || fan.arms >= (excite - 0.55) * 2.2) continue;
-      const wave = Math.sin(clock * 9 + fan.phase) * 1.5;
-      line(c, fan.x - 3, y + 3, fan.x - 5 + wave, y - 5, fan.skin);
-      line(c, fan.x + 3, y + 3, fan.x + 5 + wave, y - 5, fan.skin);
+      c.drawImage(this.crowd, (i % AtlasColumns) * FanCell, Math.trunc(i / AtlasColumns) * FanCell, FanCell, FanHeight,
+        fan.x - FanCell / 2, y - 3, FanCell, FanHeight);
+      const wave = Math.sin(clock * 9 + seat.phase) * 1.5;
+      if (seat.flag >= 0 && this.match) {
+        // a little flag in a lane's colour, waved harder as the crowd gets up
+        const tx = fan.x + 5 + wave * excite, ty = y - 6;
+        line(c, fan.x + 4, y + 5, tx, ty, '#8A8F99');
+        rect(c, tx, ty + Math.sin(clock * 12 + seat.phase) * excite, 4, 3, dim(kitCss(this.match, seat.flag), ROW_SHADE[fan.row] + 0.15));
+      }
+      if (excite <= 0.55 || seat.arms >= (excite - 0.55) * 2.2) continue;
+      line(c, fan.x - 3, y + 4, fan.x - 5 + wave, y - 4, seat.skin);
+      line(c, fan.x + 3, y + 4, fan.x + 5 + wave, y - 4, seat.skin);
     }
 
     if (this.match) {

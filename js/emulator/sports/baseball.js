@@ -4,7 +4,8 @@
 // on its feet. Beanballs, broken bats, foul balls into the stands and collisions at the plate draw blood that
 // stays in the dirt. Everything is posed from the match's events, so a late joiner sees the same field.
 
-import { Sport, Action, Innings, L, defineSport, f, ev, kitColour, matchName, sportLength } from './core.js';
+import { Sport, Action, Innings, L, Colours, defineSport, f, ev, kitColour, matchName, sportLength } from './core.js';
+import { layerCanvas } from './dolls.js';
 import {
   Arena, ArenaWidth, ArenaHeight, Bar, Dir, GOLD, BLOOD, DARK_BLOOD, lerp, clamp, shortName, kitCss, rect, circle,
   line, texture,
@@ -499,6 +500,94 @@ const FoulSeats = (() => {
   return foul;
 })();
 
+// The fans in the nearer seats are dressed like the game's people, from the same sprites. Up in the far deck a
+// dressed sprite would shrink to a smudge of a few pixels, so those fans stay simple blocks of shirt and face.
+const PartsRsi = '/Textures/Mobs/Species/Human/parts.rsi';
+const EyesRsi = '/Textures/Mobs/Customization/eyes.rsi';
+const HairRsi = '/Textures/Mobs/Customization/human_hair.rsi';
+const SuitRsi = '/Textures/Clothing/Uniforms/Jumpsuits/Color/color.rsi';
+const Civilians = '/Textures/_RMC14/Objects/Clothing/Uniforms/Civilian/';
+/** Seats this low on screen or lower get dressed sprite fans. */
+const SpriteRows = 96;
+/** How many different fans a match dresses; every seat wears one of them. */
+const Looks = 40;
+const CivilianSuits = [
+  'blue_jumpsuit.rsi', 'brown_utility.rsi', 'khaki_workwear.rsi', 'grey_jumpsuit.rsi', 'green_utility.rsi',
+  'blue_workwear.rsi', 'lightbrown_jumpsuit.rsi', 'doctor.rsi', 'emt.rsi',
+];
+const MaleHair = ['crewcut', 'business', 'bedhead', 'buzzcut', 'afro'];
+const FemaleHair = ['ponytail', 'bob', 'bun', 'longstraightponytail'];
+const FanSkins = ['#FFE1CC', '#EDC2A0', '#C08A62', '#8A5634'];
+const HairColours = ['#2A1A10', '#5A3A20', '#C89A50', '#1A1A1A', '#8A3A1A'];
+const EyeColour = '#2B1A10';
+/** The coloured jumpsuit's tint per kit colour, from the ClothingUniformJumpsuitColor prototypes. */
+const SuitTints = {
+  Red: '#eb0c07', Blue: '#52aecc', Green: '#9ed63a', Yellow: '#ffe14d', Orange: '#ff8c19', Purple: '#9f70cc', White: null, Brown: '#a17229',
+};
+
+/** The match's fans: sex, skin, hairstyle and colour, and what they wear (-1 home colours, -2 away, else a civilian suit). */
+function fanLooks(id) {
+  const looks = [];
+  for (let look = 0; look < Looks; look++) {
+    const h = hash((Math.imul(id, 131) + look * 7 + 1) | 0);
+    const female = h % 100 < 45;
+    const kind = (h >> 16) % 10;
+    looks.push({
+      female, skin: (h >> 7) % FanSkins.length, hair: (h >> 9) % (female ? FemaleHair.length : MaleHair.length),
+      hairColour: (h >> 13) % HairColours.length, outfit: kind < 4 ? -1 : kind < 6 ? -2 : (h >> 20) % CivilianSuits.length,
+    });
+  }
+  return looks;
+}
+
+/** A fan's sprite layers in the order the game draws a person: body, eyes, clothes, hands, hair. */
+function fanLayers(look, homeSuit, awaySuit) {
+  const skin = FanSkins[look.skin];
+  const layers = [
+    [PartsRsi, look.female ? 'torso_f' : 'torso_m', skin], [PartsRsi, look.female ? 'head_f' : 'head_m', skin],
+    [EyesRsi, 'eyes', EyeColour], [PartsRsi, 'r_arm', skin], [PartsRsi, 'l_arm', skin],
+  ];
+  if (look.outfit < 0) {
+    layers.push([SuitRsi, 'equipped-INNERCLOTHING', look.outfit === -1 ? homeSuit : awaySuit], [SuitRsi, 'trinkets-equipped-INNERCLOTHING', null]);
+  } else {
+    layers.push([Civilians + CivilianSuits[look.outfit], 'equipped-INNERCLOTHING', null]);
+  }
+  layers.push([PartsRsi, 'l_hand', skin], [PartsRsi, 'r_hand', skin]);
+  layers.push([HairRsi, look.female ? FemaleHair[look.hair] : MaleHair[look.hair], HairColours[look.hairColour]]);
+  return layers;
+}
+
+/** Fans in the stands left of home look right to the field (east), fans on the right look left (west). */
+const fanFacing = seat => (seat.at[0] < HomeX ? Dir.East : Dir.West);
+
+/** Composites one fan facing a direction into a 32 x 32 canvas, from each layer's own frame for that direction. */
+async function fanCanvas(layers, direction) {
+  const images = await Promise.all(layers.map(([rsi, state, tint]) => layerCanvas(rsi, state, direction, tint).catch(e => {
+    console.warn(`baseball fans: ${e.message}`);
+    return null;
+  })));
+  const canvas = document.createElement('canvas');
+  canvas.width = 32;
+  canvas.height = 32;
+  const c = canvas.getContext('2d');
+  for (const image of images) if (image) c.drawImage(image, 0, 0);
+  return canvas;
+}
+
+/**
+ * Draws a fan's head and shoulders (the top 22 rows of the sprite: the seat in front hides the rest) with the head
+ * on the seat, turned by rotation radians.
+ */
+function drawFan(c, image, x, y, size, rotation = 0) {
+  // the sprite's head spans rows 3 to 11, centred on column 16
+  const k = size * 0.14;
+  c.save();
+  c.translate(x, y - size);
+  if (rotation) c.rotate(rotation);
+  c.drawImage(image, 0, 0, 32, 22, -16 * k, -3 * k, 32 * k, 22 * k);
+  c.restore();
+}
+
 const smooth = x => {
   x = clamp(x, 0, 1);
   return x * x * (3 - 2 * x);
@@ -939,6 +1028,20 @@ export class BaseballArena extends Arena {
     this.matchup = T.matchup(this.teams[1], this.teams[0]);
 
     this.hurtFans = new Set();
+    // the crowd's faces and clothes are the match's own, the same for everyone watching it
+    const looks = fanLooks(match.id);
+    this.fanSkins = looks.map(look => FanSkins[look.skin]);
+    this.seatLooks = Seats.map((_, seat) => hash((Math.imul(match.id, 7919) + seat) | 0) % Looks);
+    this.fans = null;
+    const homeSuit = SuitTints[Colours[kitColour(match.sport, 0, match.entrants[0])]];
+    const awaySuit = SuitTints[Colours[kitColour(match.sport, 1, match.entrants[1])]];
+    const dressing = direction => Promise.all(looks.map(look => fanCanvas(fanLayers(look, homeSuit, awaySuit), direction)));
+    Promise.all([dressing(Dir.East), dressing(Dir.West)]).then(([east, west]) => {
+      // the stands are drawn again once the fans are dressed
+      if (this.match !== match) return;
+      this.fans = { [Dir.East]: east, [Dir.West]: west };
+      this.layers = null;
+    });
     this.excite = 0;
     this.cheerUntil = 0;
     this.smallUntil = 0;
@@ -1820,16 +1923,23 @@ export class BaseballArena extends Arena {
 
   drawCrowd(c, excite, phase) {
     const up = excite > 0.55 ? 1.5 : 0;
-    for (const seat of Seats) {
+    Seats.forEach((seat, i) => {
       const bob = excite * 2.4 * Math.max(0, Math.sin(seat.phase + phase));
       const x = seat.at[0];
       const y = seat.at[1] - bob - up;
       const size = seat.size;
-      rect(c, x - size * 0.75, y, size * 1.5, size * 1.2, this.shirts[seat.shirt]);
-      rect(c, x - size * 0.5, y - size, size, size, Skins[seat.skin]);
+      let skin = Skins[seat.skin];
+      if (seat.at[1] >= SpriteRows && this.fans) {
+        const look = this.seatLooks[i];
+        skin = this.fanSkins[look];
+        drawFan(c, this.fans[fanFacing(seat)][look], x, y, size);
+      } else {
+        rect(c, x - size * 0.75, y, size * 1.5, size * 1.2, this.shirts[seat.shirt]);
+        rect(c, x - size * 0.5, y - size, size, size, skin);
+      }
       // arms up when the place goes wild
-      if (excite > 0.5 && seat.shirt % 3 === 0) rect(c, x + size * 0.5, y - size * 2, 1, size * 1.6, Skins[seat.skin]);
-    }
+      if (excite > 0.5 && seat.shirt % 3 === 0) rect(c, x + size * 0.6, y - size * 2, 1, size * 1.6, skin);
+    });
   }
 
   drawField(c) {
@@ -1841,7 +1951,11 @@ export class BaseballArena extends Arena {
     for (const index of this.hurtFans) {
       const seat = Seats[index];
       const size = seat.size;
-      rect(c, seat.at[0] - size, seat.at[1] - size * 2.2, size * 2, size * 2.2, '#262A31');
+      rect(c, seat.at[0] - size * 1.1, seat.at[1] - size * 2.4, size * 2.2, size * 2.4, '#262A31');
+      if (seat.at[1] >= SpriteRows && this.fans) {
+        drawFan(c, this.fans[fanFacing(seat)][this.seatLooks[index]], seat.at[0] - size * 0.6, seat.at[1] + size * 0.9, size, -1.3);
+        continue;
+      }
       rect(c, seat.at[0] - size * 0.75, seat.at[1], size * 1.5, size * 1.2, this.shirts[seat.shirt]);
       rect(c, seat.at[0] - size, seat.at[1] + size * 0.2, size * 1.1, size * 0.8, Skins[seat.skin]);
     }
