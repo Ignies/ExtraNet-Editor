@@ -8,6 +8,7 @@ import { HuggerRun } from './arcade/hugger.js';
 import { TrackerReflex } from './arcade/tracker.js';
 import { TEXT } from './arcade/screen.js';
 import { setGameColours, createTabs, createSoundButton } from './gameui.js';
+import { createDownloadRow } from './gamedownloads.js';
 
 export { ArcadeScreen, Key, mapKey, SCREEN_W, SCREEN_H } from './arcade/screen.js';
 
@@ -18,7 +19,7 @@ const GAMES = {
 };
 
 // CMUArcadeLimits.MaxScore; the emulator keeps a top 5 (the server keeps CMUArcadeLimits.Board = 10).
-const MAX_SCORE = 9999;
+const MAX_SCORE = 99999;
 const BOARD = 5;
 const DEFAULT_GREEN = '#3FE05A';
 const DEFAULT_DIM = '#1F8A33';
@@ -105,7 +106,7 @@ function createCabinet(game, colors) {
   const root = el('div', 'emu-arcade-cabinet');
   root.dataset.game = game;
   root.append(el('div', 'emu-arcade-heading', info.title), el('div', 'emu-arcade-help', screen.help), screen.canvas,
-    el('div', 'emu-arcade-key', TEXT.scores));
+    createDownloadRow(game), el('div', 'emu-arcade-key', TEXT.scores));
   const scoresBox = el('div', 'emu-arcade-scores');
   root.appendChild(scoresBox);
 
@@ -117,6 +118,14 @@ function createCabinet(game, colors) {
   showScores(loadScores(game));
   screen.onGameOver = (score) => showScores(submitScore(game, score));
   return { root, screen };
+}
+
+/** A downloaded game's screen for its desktop window (gamedownloads.js), scoring on the same board. */
+export function createGameScreen(game) {
+  injectStyle();
+  const screen = new GAMES[game].Screen({ green: DEFAULT_GREEN, greenRgb: hexToRgb(DEFAULT_GREEN), dim: DEFAULT_DIM });
+  screen.onGameOver = (score) => submitScore(game, score);
+  return screen;
 }
 
 /**

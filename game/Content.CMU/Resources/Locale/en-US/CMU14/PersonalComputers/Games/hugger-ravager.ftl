@@ -1,0 +1,31 @@
+# hugger, stage 5 (CMUHuggerRun.Ravager.cs): the ravager rampage. The stage's title and hint keys are in hugger.ftl.
+
+cmu-game-hugger-ravager-keys = SPACE: SLASH    ARROW+SPACE: CHARGE
+cmu-game-hugger-ravager-wave = WAVE {$wave}
+cmu-game-hugger-ravager-wave-count = WAVE {$wave}/{$waves}
+cmu-game-hugger-ravager-final = FINAL WAVE
+cmu-game-hugger-ravager-heavy = HEAVY SQUAD INBOUND
+cmu-game-hugger-ravager-go = GO
+cmu-game-hugger-ravager-hp = HP
+cmu-game-hugger-ravager-rage = RAGE
+cmu-game-hugger-ravager-frenzy = FRENZY!
+cmu-game-hugger-ravager-combo = {$count} KILLS X{$mult}
+cmu-game-hugger-ravager-kills = {$count} KILLS
+cmu-game-hugger-ravager-points = +{$points}
+cmu-game-hugger-ravager-points-mult = +{$points} X{$mult}
+cmu-game-hugger-ravager-blocked = BLOCKED
+cmu-game-hugger-ravager-shield = SHIELD BROKEN
+cmu-game-hugger-ravager-friendly = FRIENDLY FIRE
+cmu-game-hugger-ravager-brutal = BRUTAL!
+cmu-game-hugger-ravager-savage = SAVAGE!
+cmu-game-hugger-ravager-carnage = CARNAGE!
+cmu-game-hugger-ravager-unstoppable = UNSTOPPABLE!
+cmu-game-hugger-ravager-stencil = USCM
+cmu-game-hugger-ravager-dead = BROUGHT DOWN
+cmu-game-hugger-ravager-purged = COLONY PURGED
+cmu-game-hugger-ravager-tally-campaign = CAMPAIGN
+cmu-game-hugger-ravager-tally-rampage = RAMPAGE
+cmu-game-hugger-ravager-tally-kills = MARINES SLAIN
+cmu-game-hugger-ravager-tally-combo = BEST COMBO BONUS
+cmu-game-hugger-ravager-tally-health = HEALTH BONUS
+cmu-game-hugger-ravager-tally-total = TOTAL

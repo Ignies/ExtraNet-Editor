@@ -31,6 +31,19 @@ cmu-os-weyland-boot-4 = ENCRYPTION KEYS LOADED ........ OK
 cmu-os-weyland-boot-5 = CORPORATE INTRANET HANDSHAKE ........ ACCEPTED
 cmu-os-weyland-boot-6 = ALL ACTIVITY ON THIS TERMINAL IS MONITORED.
 
+## Desktop shells
+
+cmu-os-shell-terminal = TERMINAL #{ $id }
+cmu-os-shell-user = USER: { $name }
+cmu-os-seegson-menu = Main menu
+cmu-os-seegson-active = ACTIVE:
+cmu-os-seegson-maker = SEEGSON
+cmu-os-weyland-company = WEYLAND-YUTANI CORPORATION
+cmu-os-weyland-slogan = BUILDING BETTER WORLDS
+cmu-os-weyland-station = WORKSTATION { $id }
+cmu-os-weyland-directory = DIRECTORY
+cmu-os-weyland-inquiry = INTERFACE { $id } READY FOR INQUIRY
+
 ## Browser
 
 cmu-pc-browser-home = HOME
@@ -848,17 +861,12 @@ cmu-arcade-HuggerRun = Hugger Run
 cmu-arcade-TrackerReflex = Tracker Reflex
 cmu-arcade-record-title = NEW ARCADE RECORD
 cmu-arcade-record-body = {$name} has set a new colony record of {$score} on {$game}. The Herald salutes you, champ.
-cmu-arcade-start = START
 cmu-arcade-score = SCORE {$score}
-cmu-arcade-time = TIME {$seconds}
 cmu-arcade-over = GAME OVER - SCORE {$score}
 cmu-arcade-scores = HIGH SCORES
 cmu-arcade-no-scores = No scores yet. Be the first.
 cmu-arcade-score-line = {$rank}. {$name} {$score}
-cmu-arcade-help-hugger = Click the screen, then steer with the arrow keys or the buttons. Eat eggs, do not bite your tail.
-cmu-arcade-help-tracker = Click the blips before they fade. Thirty seconds on the clock.
 cmu-bet-slip = ${$amount} on {$team} ({$sport})
-cmu-bet-open = {$sport}: {$entrants}
 cmu-bet-kickoff = Betting closes in {$seconds}s
 cmu-bet-closed = In play, betting closed
 cmu-bet-result = {$sport}: {$winner} won, {$result}

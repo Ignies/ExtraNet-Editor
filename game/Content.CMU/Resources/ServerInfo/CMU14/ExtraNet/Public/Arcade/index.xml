@@ -6,8 +6,7 @@
   </CMUNetBlink>
   # THE BREAK ROOM ARCADE
   Two cabinets, one high score board per shift. Beat the colony record and the Herald puts your name on the wire.
+  Click a screen to take the controls: arrows, WASD or the numpad, Space to start, Esc to let go.
 
-  <CMUNetArcade Game="HuggerRun"/>
-
-  <CMUNetArcade Game="TrackerReflex"/>
+  <CMUNetArcade/>
 </Document>

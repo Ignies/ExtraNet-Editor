@@ -1,6 +1,7 @@
 - type: cmuComputerOs
   id: CMUOsSeegson
   name: cmu-os-seegson-name
+  shell: Seegson
   startLabel: cmu-os-seegson-start
   # Named after the colony's network, like Sevastopol's Sevastolink: Stable Garrison boots GARRISONLINK.
   namedAfterColony: true
@@ -44,6 +45,7 @@
 - type: cmuComputerOs
   id: CMUOsWeyland
   name: cmu-os-weyland-name
+  shell: Weyland
   startLabel: cmu-os-weyland-start
   logos:
   - /Textures/CMU14/PersonalComputers/Logos/weyland.png

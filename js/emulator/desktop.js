@@ -7,6 +7,7 @@ import { imageUrl } from '../repo.js';
 import { renderDocument, themeColours } from '../render.js';
 import { L } from './data.js';
 import { NetBrowser } from './netbrowser.js';
+import { gameIcons } from './gamedownloads.js';
 
 const ICON_ROOT = '/Textures/CMU14/PersonalComputers/Icons/';
 const SIZES = { browser: [640, 440], files: [560, 380], mail: [620, 420], deeps: [640, 440], system: [560, 300] };
@@ -170,6 +171,7 @@ export class Desktop {
       });
       this.icons.append(icon);
     }
+    this.icons.append(...gameIcons(this));
   }
 
   icon(app, label, open, tip = label) {
