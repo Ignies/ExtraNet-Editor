@@ -141,6 +141,7 @@ Other tools:
 | Marquee | `<CMUNetMarquee Text Speed Color/>` |
 | Pop up | `<CMUNetPopup Title Text Link LinkText X Y Delay Background Accent Icon/>` |
 | Product ad | `<CMUNetAd Id Flip/>` (ads from `deep_ads.yml`) |
+| Shop | `<CMUNetShop Catalog Text Accent Muted Panel/>`: WeyBay's shop, the card's balance and orders, then a catalogue from `shop.yml` (`CMUWeyBayCatalog`) by heading, each item with BUY; the colours are optional |
 | Columns (2 or 3) | `<Box HorizontalAlignment="Stretch">` holding one `<Box Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="4">` per column. Stretched boxes expand, so the game shares the width between them. |
 | Row / centred box | `<Box>` (a centred row by default: good for a row of sprites) |
 | Board postings | the `board:` block in `site.yml`; postings always run under the front page |
@@ -204,6 +205,11 @@ computer full window, built from the game's own code and art:
   `Textures/CMU14/PersonalComputers/Machine/` and the ATM's reader and lights, sliced and scaled as
   `CMUComputerMachine` and `CMUComputerPanel` do. The power key boots it; the card reader takes an ID card in and
   out (logging in and off).
+- **Guest browsing**: on an OS with `allowGuests` (only Seegson's colony terminals), the login screen offers
+  BROWSE AS GUEST, as `CMUComputerLogin` does. A guest gets the browser, Files and System but no Mail (and no
+  console programs, which the emulator has none of); Sevastolink's menu says USER: GUEST and System shows no user.
+  Log off goes back to the login screen; a card put in turns the guest session into the card's own, on a clean
+  screen. Weyland-Yutani and CMB terminals stay ID only.
 - **The OS**: pick Seegson, Weyland-Yutani or CMB and the colony in the bar. The boot splash, login screen,
   desktop icons, start menu, taskbar and shift clock follow `CMUComputerBootSplash`, `CMUComputerSessionUi`
   and `CMUComputerDesktop`, in the OS's colours (`operating_systems.yml`). Seegson takes the colony's name
@@ -240,8 +246,11 @@ computer full window, built from the game's own code and art:
   included), YouTape plays random tapes told from `youtape.yml` with their dressed presenters, props, captions,
   straps, crawls and weather maps (a seed makes the same tape as in game), sports recaps replayed in the real
   arenas (the sportsbook's finished matches, or made up ones), Let's Plays with the arcade games playing themselves
-  under a streamer, Reels, and Trending tapes that play from their titles, and its live list answers as a round
-  with nobody broadcasting does, the Galley cookbook lists the food recipes (only `Kind="Food"`), and the deep market and the
+  under a streamer, Reels laid out like phone clips (the game on top, the streamer under it, no deck), and
+  Trending tapes that play from their titles, and its live list answers as a round with nobody broadcasting does,
+  WeyBay (`weybay.shop`) sells its catalogue with the items' own sprites and charges the card in the reader from
+  the sportsbook's wallet, its orders moving from packed to the freight run to waiting at the pickup in Logistics
+  in real time, with WeyBay's mails in the inbox (with no card, as a guest, it asks for one), the Galley cookbook lists the food recipes (only `Kind="Food"`), and the deep market and the
   Marshals' panels show sample data.
 - **Sounds**, as the game plays them (`CMUPersonalComputerBui`): the boot sound when the power key is pressed
   (with a glitch over it on a hacked machine), then after the OS's `bootSoundLength` the running hum, looping
@@ -254,9 +263,10 @@ computer full window, built from the game's own code and art:
 console) to resolve every link, tab, pop up link and `./` file of every page of every site, colony versions
 included, through the emulator's resolver, and list what goes nowhere.
 
-What happens on the emulator stays in this browser (notes, mail, links, board posts, the wallet, high scores);
+What happens on the emulator stays in this browser (notes, mail, links, board posts, the wallet, WeyBay orders,
+high scores);
 **Reset** in the bar clears it. In game the server keeps those for the round and other players fill the boards,
-the market and the Marshals' alerts.
+the market and the Marshals' alerts, and a WeyBay order is a real crate on the pickup pallet.
 
 ### Sound credits
 
@@ -306,9 +316,11 @@ It replaces `game/` with the checkout's current pages, prototypes and art, and p
 pages reference that the checkout lacks. `--master <ref>` sets the branch whose files need no copy (default
 `origin/master`; fetch it first). Commit `game/` with the editor.
 
-`data/` ships two snapshots:
+`data/` ships three snapshots:
 - `ad_sprites.json`: the sprite layers of each ad's entity, following `parent:`.
 - `jobs.json`: the job ids, for a board's posters.
+- `shop_items.json`: the name, description and sprite layers of every item a shop catalogue sells, following
+  `parent:`. `tools/snapshot.py` rewrites it from the checkout (it needs PyYAML).
 
 ## Getting a package into the game
 
@@ -380,6 +392,7 @@ Differences:
 | `js/emulator/net.js`, `data.js`, `linkcheck.js` | The ExtraNet as a computer sees it (addresses, networks, deep aliases, the ad maze), the OS, colony and wallpaper data, and the link check |
 | `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook tag (schedule, wallet, a tab per sport), the arcade tag (cabinets, tabs), SpaceGPT, the recipes, the deep market and the CMB panels |
 | `js/emulator/search.js` | The search box tag (CMUNetSearch.cs): the index of every listed page, scoring and snippets |
+| `js/emulator/shop.js`, `wallet.js` | WeyBay's shop tag (CMUNetShop.cs) with the orders, freight runs and mail CMUShopSystem keeps, and the wallet it shares with the sportsbook |
 | `js/emulator/youtape.js`, `youtape/generator.js`, `player.js`, `looks.js` | The tape player, tape link and reels tags (CMUNetTape.cs, CMUNetTapeLink.cs, CMUNetReels.cs), the tapes and reels told from the grammar (CMUTapeGenerator.cs), the screen with its arenas, games and streamer (CMUTapePlayer.cs), and the dolls' looks, outfits and props as their sprites |
 | `js/emulator/sports/core.js`, `arena.js`, `dolls.js` | The leagues and match simulation dispatch (CMUSports.cs), the arena base with its effects (CMUSportsArena.cs), the dolls and item sprites |
 | `js/emulator/sports/sprint.js`, `boxing.js`, `baseball.js`, `zerog.js` | Each sport's simulation and arena |
@@ -400,6 +413,7 @@ These follow the game's code and need updating when a tag is added or changed:
 The snapshots in `data/` come from scanning the prototypes:
 - `ad_sprites.json`: each `cmuDeepAd` entity's `Sprite` layers.
 - `jobs.json`: every `type: job` id.
+- `shop_items.json`: each `cmuShopCatalog` item's name, description and `Sprite` layers (written by `tools/snapshot.py`).
 
 ## Banner Studio
 

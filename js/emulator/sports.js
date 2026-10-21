@@ -2,7 +2,7 @@
 // CMUComputerFunUi.cs (a tab per sport, each with its arena and its betting board). The leagues and the match
 // simulation are in sports/core.js, the arena in sports/arena.js and each sport in its own module beside them.
 // The schedule the server keeps (CMUComputerFunSystem.Schedule) is worked out here from the date instead, and
-// bets come out of a local wallet.
+// bets come out of the emulator's local wallet (wallet.js), the one WeyBay charges too.
 
 import {
   NetRandom, f, roundEven, SPORTS, Teams, Athletes, L, SPORT_NAMES, usesTeams, entrantCount, sportLength, matchName, playMatch,
@@ -13,6 +13,7 @@ import './sports/boxing.js';
 import './sports/baseball.js';
 import './sports/zerog.js';
 import { setGameColours, createTabs, createSoundButton } from './gameui.js';
+import { readBalance, writeBalance } from './wallet.js';
 
 export { NetRandom, Sport, playMatch } from './sports/core.js';
 
@@ -132,35 +133,11 @@ export function finishedMatches(now = Date.now() / 1000) {
   return boardState(now).filter(m => m.result !== null && m.winner >= 0);
 }
 
-// ---------------------------------------------------------------- wallet
+// ---------------------------------------------------------------- bets
 
-const WALLET_KEY = 'extranet-emulator-wallet';
 const BETS_KEY = 'extranet-emulator-sportsbook-slips';
 /** Bets on the old single chain of matches, whose ids no longer find them. */
 const OLD_BETS_KEY = 'extranet-emulator-sportsbook-bets';
-const START_BALANCE = 500;
-
-function readBalance() {
-  try {
-    const raw = localStorage.getItem(WALLET_KEY);
-    if (raw === null) return START_BALANCE;
-    const value = Number(raw);
-    if (Number.isFinite(value)) return Math.floor(value);
-    const parsed = JSON.parse(raw);
-    const nested = Number(parsed?.balance ?? parsed?.credits);
-    return Number.isFinite(nested) ? Math.floor(nested) : START_BALANCE;
-  } catch {
-    return START_BALANCE;
-  }
-}
-
-function writeBalance(value) {
-  try {
-    localStorage.setItem(WALLET_KEY, String(value));
-  } catch {
-    // the wallet lives for this page only
-  }
-}
 
 let memoryBets = [];
 

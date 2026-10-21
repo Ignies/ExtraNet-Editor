@@ -31,6 +31,7 @@
   - type: CMUPersonalComputer
     casing: Security
     homePage: security.seegson.net
+    allowGuests: false
     networks:
     - CMUNetPublic
     - CMUNetSecurity
@@ -46,6 +47,7 @@
   components:
   - type: CMUPersonalComputer
     casing: Rangers
+    allowGuests: false
 
 - type: entity
   parent: RMCPersonalDesktop
@@ -56,3 +58,4 @@
   components:
   - type: CMUPersonalComputer
     casing: Nspa
+    allowGuests: false

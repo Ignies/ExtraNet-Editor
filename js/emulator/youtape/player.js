@@ -137,7 +137,7 @@ export class TapePlayer {
 
   /** How big the game is drawn: as big as the screen allows, the way a stream fills the frame. */
   get gameZoom() {
-    return Math.min((this.width - 8) / SCREEN_W, (this.height - 8) / SCREEN_H);
+    return this.narrow ? (this.width - 8) / SCREEN_W : Math.min((this.width - 8) / SCREEN_W, (this.height - 8) / SCREEN_H);
   }
 
   get gameSize() {
@@ -147,13 +147,16 @@ export class TapePlayer {
   /** Where a let's play's game sits, clear of the streamer's facecam. */
   get gameAt() {
     const [w, h] = this.gameSize;
-    return [(this.width - w) / 2, (this.height - h) / 2];
+    // a reel puts the game at the top, the way a phone stream does
+    return this.narrow ? [(this.width - w) / 2, 8] : [(this.width - w) / 2, (this.height - h) / 2];
   }
 
   /** Where the streamer is cut in over the game: its bottom right corner. [left, top, width, height] */
   get facecam() {
     const [gw, gh] = this.gameSize;
     const [gx, gy] = this.gameAt;
+    // A tall reel stacks like a phone stream: the game on top, the streamer under it, the width of the screen.
+    if (this.narrow) return [8, gy + gh + 4, this.width - 16, 88];
     const w = Math.min(110, gw * 0.36);
     const h = Math.min(84, gh * 0.4);
     return [gx + gw - w, gy + gh - h, w, h];
@@ -425,16 +428,21 @@ export class TapePlayer {
       this.text(small, x, bottom - band + 1, scene.ticker, '#FFFFFF');
       bottom -= band;
     }
+    let above = bottom;
     if (scene.strap) {
+      // the strap wraps to the screen's width, and the caption sits above it
       const font = SANS(this.narrow ? 9 : 11);
-      const height = 18;
-      const top = bottom - 44;
-      const width = Math.min(W - 20, this.measure(font, scene.strap) + 20);
+      const lines = this.wrap(font, scene.strap, W - 40);
+      const { lineHeight } = this.metrics(font);
+      const height = lines.length * lineHeight + 4;
+      const top = bottom - (this.narrow ? 8 : 26) - height;
+      const width = Math.max(0, ...lines.map(line => this.measure(font, line)));
       const ad = scene.kind === 'ad';
-      this.rect(10, top, 10 + width, top + height, ad ? '#E8C020' : '#B01818');
-      this.text(font, 20, top + 2, scene.strap, ad ? '#000000' : '#FFFFFF');
+      this.rect(10, top, 10 + width + 20, top + height, ad ? '#E8C020' : '#B01818');
+      lines.forEach((line, i) => this.text(font, 20, top + 2 + i * lineHeight, line, ad ? '#000000' : '#FFFFFF'));
+      above = top;
     }
-    this.drawCaption(scene, at, bottom);
+    this.drawCaption(scene, at, above);
     if (scene.kind === 'ad') {
       const advert = this.t('cmu-tape-advert');
       const font = VHS(10);
@@ -456,12 +464,11 @@ export class TapePlayer {
     const shown = line.slice(0, Math.min(line.length, Math.trunc((at - index * each) * TYPE_SPEED)));
     const font = SANS(this.narrow ? 9 : 10);
     // A let's play keeps its captions clear of the facecam.
-    const right = scene.kind === 'play' ? W - this.facecam[0] + 6 : 12;
+    const right = scene.kind === 'play' && !this.narrow ? W - this.facecam[0] + 6 : 12;
     const lines = this.wrap(font, shown, W - right - 28);
     const { lineHeight } = this.metrics(font);
     const height = lines.length * lineHeight + 8;
-    let top = bottom - height - 4;
-    if (scene.strap) top = Math.min(top, bottom - 44 - height - 4);
+    const top = bottom - height - 4;
     if (lines.length > 0) this.rect(12, top, W - right, top + height, 'rgba(0, 0, 0, 0.65)');
     lines.forEach((value, i) => this.text(font, 20, top + 4 + i * lineHeight, value, '#FFF6C8'));
   }
@@ -485,6 +492,8 @@ export class TapePlayer {
 
   /** PLAY or PAUSE and the tape counter, top left, the way a deck shows them. */
   drawDeck() {
+    // a reel is a clip, not a tape in a deck
+    if (this.narrow) return;
     const font = VHS(11);
     const state = this.t(this.playing ? 'cmu-tape-play' : 'cmu-tape-pause');
     const t = Math.trunc(this.time);

@@ -7,7 +7,7 @@ import { ARCADE_GAMES } from './blocks.js';
 
 const PLACEHOLDER_TAGS = new Set([
   'CMUNetRecipes', 'CMUNetArcade', 'CMUNetSportsbook', 'CMUNetSpaceGpt', 'CMUNetMarket', 'CMUNetCmbPanel',
-  'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CMUGuideZoomImage', 'CMUGuideOutfitEmbed', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed',
+  'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CMUNetShop', 'CMUGuideZoomImage', 'CMUGuideOutfitEmbed', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed',
   'GuideLawsetListEmbed', 'GuideMicrowaveEmbed', 'GuideMicrowaveGroupEmbed', 'GuideReagentEmbed',
   'GuideReagentGroupEmbed', 'GuideTechDisciplineEmbed', 'GuideTechnologyEmbed',
 ]);
@@ -36,7 +36,11 @@ const KNOWN_ATTRIBUTES = {
   CMUNetTape: ['Shelf', 'Live', 'Autoplay'],
   CMUNetReels: [],
   CMUNetTapeLink: ['Title', 'Channel', 'Genre', 'Number'],
+  CMUNetShop: ['Catalog', 'Text', 'Accent', 'Muted', 'Panel'],
 };
+
+/** The shop catalogues the game has (cmuShopCatalog in shop.yml). */
+export const SHOP_CATALOGS = ['CMUWeyBayCatalog'];
 
 /** The genres a tape can be made in (CMUTapeGenerator.Generate's switch and the grammar's titles). */
 export const TAPE_GENRES = ['news', 'weather', 'food', 'bunk', 'doc', 'sports', 'play', 'static'];
@@ -129,6 +133,13 @@ export function checkTag(node) {
       needs('Title');
       if (has('Genre') && !TAPE_GENRES.includes(a.Genre)) warnings.push(`Genre="${a.Genre}" in <CMUNetTapeLink> is not one of ${TAPE_GENRES.join(', ')}`);
       break;
+    case 'CMUNetShop':
+      // TryParseTag fails without a Catalog, or with one the prototypes do not have; a colour it cannot read
+      // falls back on the tag's default
+      needs('Catalog');
+      if (has('Catalog') && !SHOP_CATALOGS.includes(a.Catalog)) errors.push(`Catalog="${a.Catalog}" in <CMUNetShop> is not a shop catalogue (${SHOP_CATALOGS.join(', ')})`);
+      for (const key of ['Text', 'Accent', 'Muted', 'Panel']) colour(key, warnings);
+      break;
     case 'CMUGuideImage':
       needs('Path');
       if (has('MaxHeight') && !(parseFloatInvariant(a.MaxHeight) > 0)) warnings.push(`MaxHeight="${a.MaxHeight}" in <CMUGuideImage> is not a positive number and is ignored`);
@@ -155,7 +166,7 @@ export function checkTag(node) {
       break;
   }
 
-  if (node.children.length && ['CMUNetStyle', 'CMUNetSprite', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUGuideImage', 'CMUNetWallpaper', 'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink'].includes(node.name)) {
+  if (node.children.length && ['CMUNetStyle', 'CMUNetSprite', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUGuideImage', 'CMUNetWallpaper', 'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CMUNetShop'].includes(node.name)) {
     warnings.push(`<${node.name}> is meant to be self closing (<${node.name} .../>); its children are added as controls inside it`);
   }
   return { errors, warnings };

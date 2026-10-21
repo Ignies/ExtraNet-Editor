@@ -15,6 +15,10 @@ Copies, at their repository paths:
     in a string in js/emulator/ (with the attributions.yml of its folder).
 Then writes game/index.json, the list of bundled files. Anything else the editor reads (most game sprites)
 comes from GitHub master. Files are copied as they are; text files get LF line endings.
+
+It also writes data/shop_items.json: the name, description and sprite layers of every item an ExtraNet shop
+catalogue (cmuShopCatalog) sells, following parent: as the game does, for the shop's pictures. That needs PyYAML;
+without it the file is left as it is.
 """
 
 import argparse
@@ -86,6 +90,105 @@ def resolve(checkout, rooted):
     return None
 
 
+ENTITY_ID = re.compile(r'^\s*(?:-\s+)?id:\s*([A-Za-z0-9_]+)\s*$', re.M)
+
+
+def load_yaml(text):
+    """The game's YAML, its !type: tags read as plain values. None without PyYAML."""
+    try:
+        import yaml
+    except ImportError:
+        return None
+
+    class Loader(yaml.SafeLoader):
+        pass
+
+    def tagged(loader, suffix, node):
+        if isinstance(node, yaml.MappingNode):
+            return loader.construct_mapping(node, deep=True)
+        if isinstance(node, yaml.SequenceNode):
+            return loader.construct_sequence(node, deep=True)
+        return loader.construct_scalar(node)
+
+    Loader.add_multi_constructor('!', tagged)
+    try:
+        return yaml.load(text, Loader=Loader) or []
+    except yaml.YAMLError:
+        return []
+
+
+def shop_items(checkout, catalogs):
+    """
+    { entity id: { name, description, layers: [{ rsi, state }] } } for every item the catalogues sell: what
+    EntityPrototypeView draws, the Sprite component merged down the parents, its hidden layers left out.
+    """
+    if load_yaml('[]') is None:
+        return None
+    files = {}
+    for root in (CMU + 'Prototypes/', UPSTREAM + 'Prototypes/'):
+        for path in walk(os.path.join(checkout, root)):
+            if not path.endswith('.yml'):
+                continue
+            with open(path, encoding='utf-8', errors='replace') as f:
+                for found in ENTITY_ID.findall(f.read()):
+                    files.setdefault(found, []).append(path)
+    parsed = {}
+    entities = {}
+
+    def entity(ident):
+        if ident in entities:
+            return entities[ident]
+        entities[ident] = None
+        for path in files.get(ident, []):
+            if path not in parsed:
+                with open(path, encoding='utf-8', errors='replace') as f:
+                    parsed[path] = load_yaml(f.read())
+            for proto in parsed[path] if isinstance(parsed[path], list) else []:
+                if isinstance(proto, dict) and proto.get('type') == 'entity' and proto.get('id') == ident:
+                    entities[ident] = proto
+                    return proto
+        return None
+
+    def merged(ident, seen=()):
+        proto = entity(ident)
+        if not proto or ident in seen:
+            return {'components': {}}
+        parents = proto.get('parent') or []
+        if isinstance(parents, str):
+            parents = [parents]
+        out = {'components': {}}
+        for parent in parents:
+            base = merged(parent, seen + (ident,))
+            for key in ('name', 'description'):
+                if key in base:
+                    out[key] = base[key]
+            for kind, data in base['components'].items():
+                out['components'][kind] = {**out['components'].get(kind, {}), **data}
+        for key in ('name', 'description'):
+            if key in proto:
+                out[key] = proto[key]
+        for component in proto.get('components') or []:
+            if isinstance(component, dict) and component.get('type'):
+                kind = component['type']
+                out['components'][kind] = {**out['components'].get(kind, {}), **component}
+        return out
+
+    items = {}
+    for ident in sorted({item for catalog in catalogs for item in catalog}):
+        data = merged(ident)
+        sprite = data['components'].get('Sprite', {})
+        rsi = sprite.get('sprite')
+        layers = []
+        for layer in sprite.get('layers') or ([{'state': sprite['state']}] if sprite.get('state') else []):
+            if not isinstance(layer, dict) or layer.get('visible') is False or not layer.get('state'):
+                continue
+            path = layer.get('sprite') or rsi
+            if path:
+                layers.append({'rsi': str(path), 'state': str(layer['state'])})
+        items[ident] = {'name': str(data.get('name') or ident), 'description': str(data.get('description') or ''), 'layers': layers}
+    return items
+
+
 def emulator_sounds():
     """Every /Audio/...ogg path written out in a string literal in the emulator's scripts."""
     sounds = set()
@@ -125,11 +228,31 @@ def main():
             text = f.read()
         references.update(REFERENCE.findall(text))
         references.update('/Textures/' + r.lstrip('/') if not r.startswith('/') else r for r in RSI_ATTR.findall(text))
-    sprites = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'ad_sprites.json')
-    if os.path.exists(sprites):
+    # What the shops sell, for their pictures (CMUNetShop).
+    catalogs = []
+    for path in sorted(wanted):
+        if path.startswith(CMU + 'Prototypes/') and path.endswith('.yml'):
+            with open(os.path.join(checkout, path), encoding='utf-8', errors='replace') as f:
+                text = f.read()
+            if 'cmuShopCatalog' not in text:
+                continue
+            for proto in load_yaml(text) or []:
+                if isinstance(proto, dict) and proto.get('type') == 'cmuShopCatalog':
+                    catalogs.append([e['item'] for e in proto.get('entries') or [] if isinstance(e, dict) and e.get('item')])
+    shop = os.path.join(EDITOR, 'data', 'shop_items.json')
+    items = shop_items(checkout, catalogs)
+    if items is None:
+        print('warning: PyYAML is not installed; data/shop_items.json is left as it is', file=sys.stderr)
+    else:
+        with open(shop, 'w', encoding='utf-8', newline='\n') as f:
+            json.dump(items, f, indent=1, ensure_ascii=False)
+            f.write('\n')
+    for sprites in (os.path.join(EDITOR, 'data', 'ad_sprites.json'), shop):
+        if not os.path.exists(sprites):
+            continue
         with open(sprites, encoding='utf-8') as f:
             for layers in json.load(f).values():
-                for layer in layers:
+                for layer in layers['layers'] if isinstance(layers, dict) else layers:
                     if layer.get('rsi'):
                         references.add('/Textures/' + layer['rsi'].lstrip('/'))
 

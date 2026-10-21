@@ -228,6 +228,7 @@ export class BlockCanvas {
       case 'tape':
       case 'tapelink':
       case 'reels':
+      case 'shop':
         return [this.widget(b)];
       case 'image':
         if (!b.attrs.Path) return [el('div.media-empty', { text: 'Banner or image: choose an uploaded PNG or a game texture in the settings on the right.' })];
@@ -240,7 +241,8 @@ export class BlockCanvas {
   widget(b) {
     const names = { arcade: b.attrs.Game ? `Arcade cabinet: ${b.attrs.Game}` : 'Arcade: every game in tabs', sportsbook: 'Zero-g ball sportsbook', spacegpt: 'SpaceGPT, answered by ghosts', recipes: `Cookbook: ${b.attrs.Group || 'all'} food recipes`,
       search: 'Search box: every listed page the terminal reaches', tape: 'YouTape player: random tapes, a shelf and live broadcasts',
-      tapelink: `Tape link: ${b.attrs.Number ? b.attrs.Number + ' ' : ''}${b.attrs.Title || '(no title)'}`, reels: 'YouTape Reels: short tall tapes, one after another' };
+      tapelink: `Tape link: ${b.attrs.Number ? b.attrs.Number + ' ' : ''}${b.attrs.Title || '(no title)'}`, reels: 'YouTape Reels: short tall tapes, one after another',
+      shop: `Shop: the ${b.attrs.Catalog || '(no catalogue)'} catalogue, bought with the card in the reader` };
     return el('div.tag-placeholder.widget', {}, el('strong', { text: names[b.type] }), el('div.tag-placeholder-note', { text: 'Drawn live by the game in play.' }));
   }
 

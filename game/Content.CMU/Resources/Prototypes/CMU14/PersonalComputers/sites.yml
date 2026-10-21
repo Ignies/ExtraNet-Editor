@@ -589,6 +589,28 @@
   - title: cmu-net-tab-retro-spacegpt-terms
     path: terms
 
+# The colony's shop: real items, charged to the card in the reader, delivered as crates to the pickup pallet.
+- type: cmuNetSite
+  id: CMUNetSiteRetroWeyBay
+  address: weybay.shop
+  title: cmu-net-site-retro-weybay
+  networks:
+  - CMUNetPublic
+  root: /ServerInfo/CMU14/ExtraNet/Retro/WeyBay/
+  style:
+    background: "#FFFDF6"
+    text: "#1C1C1C"
+    heading: "#D4342C"
+    link: "#1A55C4"
+    font: Sans
+  pages:
+    "": index.xml
+    help: help.xml
+  tabs:
+  - title: cmu-net-tab-retro-weybay-shop
+  - title: cmu-net-tab-retro-weybay-help
+    path: help
+
 # Web portal and hand-kept directory, with a question and answer board.
 - type: cmuNetSite
   id: CMUNetSiteRetroYotta

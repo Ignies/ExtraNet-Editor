@@ -1,0 +1,9 @@
+<Document>
+  # How WeyBay works
+  - [bold]Pay.[/bold] Orders come out of the account on the card in this terminal's reader. No card, no shopping.
+  - [bold]Wait.[/bold] Each item says how long the freight run takes. You can have five orders on the way at once.
+  - [bold]Collect.[/bold] Your crate is left on the WeyBay pickup pallet, usually in Logistics. If your colony has no pallet, it is left by the terminal you ordered from. Your crate has your name on it.
+  - [bold]Track.[/bold] Your orders are listed at the top of the shop, and WeyBay mails you when one is paid for and when it lands.
+
+  [netlink="Back to the shop" link="weybay.shop"]
+</Document>

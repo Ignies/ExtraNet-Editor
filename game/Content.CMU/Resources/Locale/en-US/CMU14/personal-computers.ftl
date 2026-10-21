@@ -1122,3 +1122,53 @@ cmu-tape-link-tooltip = Play this tape
 cmu-tape-reel-up = UP
 cmu-tape-reel-down = DOWN
 cmu-tape-reel-likes = { $likes } likes
+
+## WeyBay
+
+cmu-net-site-retro-weybay = WeyBay
+cmu-net-tab-retro-weybay-shop = Shop
+cmu-net-tab-retro-weybay-help = How it works
+cmu-shop-category-food = FOOD AND DRINK
+cmu-shop-category-home = FOR THE BUNK
+cmu-shop-category-fun = FUN
+cmu-shop-category-tools = TOOLS
+cmu-shop-category-misc = EVERYTHING ELSE
+cmu-shop-blurb-pizza = Frozen on Gateway, thawed on the way. Mostly.
+cmu-shop-blurb-cake = For a birthday, a promotion, or a Tuesday.
+cmu-shop-blurb-mre = The same one the marines get. Do not tell the marines.
+cmu-shop-blurb-mug = Coffee not included. Coffee never included.
+cmu-shop-blurb-plant = Something green in a place with no green. Water it.
+cmu-shop-blurb-duck = Squeaks. Floats. Listens.
+cmu-shop-blurb-camera = Go live on YouTape from anywhere in the colony.
+cmu-shop-buy = BUY
+cmu-shop-price = ${ $price }  -  arrives in about { $minutes } min
+cmu-shop-balance = Card in the reader: ${ $balance }
+cmu-shop-balance-none = Put your ID card in the reader to shop.
+cmu-shop-your-orders = YOUR ORDERS
+cmu-shop-no-orders = No orders yet.
+cmu-shop-order-line = #{ $id } { $item }: { $status }
+cmu-shop-order-processing = being packed, about { $minutes } min
+cmu-shop-order-transit = on the freight run, about { $minutes } min
+cmu-shop-order-arrived = waiting at { $where }
+cmu-shop-no-card = WeyBay needs an ID card in the reader.
+cmu-shop-no-funds = Not enough on the card.
+cmu-shop-too-many = You already have { $count } orders on the way.
+cmu-shop-bought = Ordered: { $item }.
+cmu-shop-mail-from = WeyBay
+cmu-shop-mail-paid-subject = Order confirmed: { $item }
+cmu-shop-mail-paid-body = Thanks for shopping with WeyBay. { $item } is paid for (${ $price }) and on its way, in about { $minutes } min. We will mail you when it lands.
+cmu-shop-mail-arrived-subject = Your { $item } has arrived
+cmu-shop-mail-arrived-body = Your { $item } is waiting on the WeyBay pickup pallet at { $where }, in a crate with your name on it. Please collect it soon.
+cmu-shop-mail-arrived-terminal-body = Your { $item } is waiting at { $where }, by the terminal you ordered from, in a crate with your name on it. This colony has no WeyBay pickup pallet.
+cmu-shop-parcel-name = WeyBay parcel for { $buyer }
+cmu-shop-parcel-desc = A WeyBay crate. The label says { $buyer }, and inside, { $item }.
+
+## Guest browsing
+
+cmu-pc-login-or = or
+cmu-pc-login-guest = BROWSE AS GUEST
+cmu-pc-login-guest-hint = The ExtraNet and files only. No mail, no account, no programs.
+cmu-pc-guest-name = Guest
+cmu-pc-log-guest = Guest session started.
+cmu-pc-log-guest-out = Guest session ended.
+cmu-pc-examine-guest = Someone is browsing it as a guest.

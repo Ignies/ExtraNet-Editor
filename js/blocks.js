@@ -34,6 +34,7 @@ export const BLOCK_TYPES = {
   popup: { group: 'Effects', label: 'Pop up', icon: '\u2750', tag: 'CMUNetPopup', make: () => ({ attrs: { Title: 'NOTICE', Text: 'You have one new message.', X: '0.6', Y: '0.2', Delay: '1.5' } }) },
 
   ad: { group: 'Commerce', label: 'Product ad', icon: '$', tag: 'CMUNetAd', make: () => ({ attrs: { Id: 'CMUDeepAdMre' } }) },
+  shop: { group: 'Commerce', label: 'Shop', icon: '\u2302', tag: 'CMUNetShop', make: () => ({ attrs: { Catalog: 'CMUWeyBayCatalog' } }) },
 
   columns: { group: 'Layout', label: 'Columns', icon: '\u2016', tag: 'Box + Box', container: 'columns', make: () => columnsPreset(2) },
   box: { group: 'Layout', label: 'Row / centred box', icon: '\u2B1A', tag: 'Box', container: 'children', make: () => ({ attrs: {}, children: [] }) },
@@ -61,7 +62,7 @@ const TAG_OF = {
   image: 'CMUGuideImage', sprite: 'CMUNetSprite', wallpaper: 'CMUNetWallpaper', marquee: 'CMUNetMarquee',
   popup: 'CMUNetPopup', ad: 'CMUNetAd', arcade: 'CMUNetArcade', sportsbook: 'CMUNetSportsbook',
   spacegpt: 'CMUNetSpaceGpt', recipes: 'CMUNetRecipes', search: 'CMUNetSearch', tape: 'CMUNetTape', tapelink: 'CMUNetTapeLink',
-  reels: 'CMUNetReels', style: 'CMUNetStyle',
+  reels: 'CMUNetReels', shop: 'CMUNetShop', style: 'CMUNetStyle',
   divider: 'ColorBox',
 };
 const TYPE_OF_TAG = Object.fromEntries(Object.entries(TAG_OF).filter(([t]) => t !== 'divider').map(([t, tag]) => [tag, t]));

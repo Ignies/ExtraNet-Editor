@@ -7,7 +7,7 @@ import { PROTOTYPES, fill } from '../library.js';
 import { rgba, mix } from '../util.js';
 
 const FALLBACK_OS = [
-  { id: 'CMUOsSeegson', name: 'cmu-os-seegson-name', shell: 'Seegson', startLabel: 'cmu-os-seegson-start', namedAfterColony: true, logos: ['/Textures/CMU14/PersonalComputers/Logos/seegson.png', 'name'], documents: [{ name: 'README.TXT', path: '/ServerInfo/CMU14/ExtraNet/Documents/seegson_readme.xml' }], homePage: 'colony.seegson.net', networks: ['CMUNetPublic'], phosphor: '#3FE05A', background: '#0A0E12', bootLines: [1, 2, 3, 4, 5, 6].map(i => `cmu-os-seegson-boot-${i}`) },
+  { id: 'CMUOsSeegson', name: 'cmu-os-seegson-name', allowGuests: true, shell: 'Seegson', startLabel: 'cmu-os-seegson-start', namedAfterColony: true, logos: ['/Textures/CMU14/PersonalComputers/Logos/seegson.png', 'name'], documents: [{ name: 'README.TXT', path: '/ServerInfo/CMU14/ExtraNet/Documents/seegson_readme.xml' }], homePage: 'colony.seegson.net', networks: ['CMUNetPublic'], phosphor: '#3FE05A', background: '#0A0E12', bootLines: [1, 2, 3, 4, 5, 6].map(i => `cmu-os-seegson-boot-${i}`) },
   { id: 'CMUOsWeyland', name: 'cmu-os-weyland-name', shell: 'Weyland', startLabel: 'cmu-os-weyland-start', logos: ['/Textures/CMU14/PersonalComputers/Logos/weyland.png'], documents: [{ name: 'SECURITY.DOC', path: '/ServerInfo/CMU14/ExtraNet/Documents/weyland_security.xml' }], homePage: 'intranet.wy', casing: 'Weyland', networks: ['CMUNetPublic', 'CMUNetWeylandYutani'], phosphor: '#FFB547', background: '#120A02', bootLines: [1, 2, 3, 4, 5, 6].map(i => `cmu-os-weyland-boot-${i}`) },
   { id: 'CMUOsCMB', name: 'cmu-os-cmb-name', startLabel: 'cmu-os-cmb-start', homePage: 'cmb.bureau', casing: 'Cmb', networks: ['CMUNetPublic', 'CMUNetCMB'], phosphor: '#8FC4FF', background: '#050A14', bootLines: [1, 2, 3].map(i => `cmu-os-cmb-boot-${i}`) },
 ];
@@ -16,7 +16,7 @@ const FALLBACK_COLONIES = ['StableGarrison', 'BarkersLament', 'BosenmoriBasho', 
   'Flight', 'FortMcNeil', 'GixensCaverns', 'GreenHell', 'HopesRetreat', 'Hybrisa', 'Kutjevo', 'OxleysButte', 'PortNereid', 'ShepherdsPride',
   'ShivasSnowball', 'SolarisGulch', 'SolarisRidge', 'SorokyneStrata'];
 
-async function prototypes(file, type) {
+export async function prototypes(file, type) {
   const { data } = await fetchRepoFile(PROTOTYPES + file, 'text');
   const { value } = parseYaml(data);
   return (Array.isArray(value) ? value : []).filter(v => v && v.type === type);
@@ -106,5 +106,7 @@ export function theme(os, strings, colony) {
     logos: os.logos || ['name'],
     documents: os.documents || [],
     bootLines: (os.bootLines || []).map(id => L(strings, id)),
+    // CMUComputerOsPrototype.AllowGuests: its login screen offers BROWSE AS GUEST (the colony's own OS does)
+    allowGuests: os.allowGuests === true || String(os.allowGuests).toLowerCase() === 'true',
   };
 }

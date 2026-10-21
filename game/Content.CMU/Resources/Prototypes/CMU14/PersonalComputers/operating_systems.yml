@@ -1,6 +1,8 @@
 - type: cmuComputerOs
   id: CMUOsSeegson
   name: cmu-os-seegson-name
+  # Colony terminals are public: anyone can browse as a guest without a card.
+  allowGuests: true
   shell: Seegson
   startLabel: cmu-os-seegson-start
   # Named after the colony's network, like Sevastopol's Sevastolink: Stable Garrison boots GARRISONLINK.

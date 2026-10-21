@@ -7,7 +7,8 @@
 // - Weyland (a MU/TH/UR style Company workstation): the logo and slogan across the top, Semiotic Standard tiles
 //   down a dock, thin double ruled windows, and along the bottom the directory, the open programs and the
 //   inquiry line.
-// Also the login screen that waits for an ID card.
+// A guest (browsing without a card, on an OS that allows it) gets the browser, the files and the system screen,
+// but no mail and no console programs. Also the login screen that waits for an ID card, with BROWSE AS GUEST.
 
 import { el } from '../util.js';
 import { imageUrl } from '../repo.js';
@@ -16,6 +17,7 @@ import { renderDocument, themeColours } from '../render.js';
 import { L } from './data.js';
 import { NetBrowser } from './netbrowser.js';
 import { gameIcons } from './gamedownloads.js';
+import { MAIL_KEY } from './shop.js';
 
 const ICON_ROOT = '/Textures/CMU14/PersonalComputers/Icons/';
 const SIZES = { browser: [640, 440], files: [560, 380], mail: [620, 420], deeps: [640, 440], system: [560, 300] };
@@ -113,8 +115,9 @@ function tilePlate(art) {
 
 export class Desktop {
   /**
-   * ctx = { net, theme, deepTheme, strings, user: { name, job }, terminal, colony, deep, widget(name, args, style),
-   *         wallpapers: Map, onShutDown(), onLogOff(), busy(seconds), poweredAt }
+   * ctx = { net, theme, deepTheme, strings, user: { name, job }, guest, terminal, colony, deep,
+   *         widget(name, args, style), wallpapers: Map, onShutDown(), onLogOff(), busy(seconds), poweredAt }
+   * guest: browsing as a guest, with no card: no user, no mail (CMUComputerDesktop's host.Guest).
    */
   constructor(ctx) {
     this.ctx = ctx;
@@ -206,7 +209,7 @@ export class Desktop {
       el('div.emu-sg-heading', { text: ` ${this.t('cmu-os-seegson-menu').toUpperCase()}` }),
       el('div.emu-sg-scroll', {}, this.icons),
       el('div.emu-rule.emu-sg-menu-rule'),
-      el('div.emu-sg-user', { text: this.t('cmu-os-shell-user', { name: this.ctx.user.name.toUpperCase() }) }),
+      el('div.emu-sg-user', { text: this.t('cmu-os-shell-user', { name: this.userName().toUpperCase() }) }),
       ...this.sessionButtons());
     const strip = el('div.emu-sg-strip', {},
       el('span.emu-sg-dim', { text: this.t('cmu-os-seegson-active') }),
@@ -248,6 +251,16 @@ export class Desktop {
       el('div.emu-wy-bar', {}, directory, this.tasks, inquiry));
   }
 
+  /** Who the shell says is on: the card's name, or Guest. */
+  userName() {
+    return this.ctx.guest ? this.t('cmu-pc-guest-name') : this.ctx.user.name;
+  }
+
+  /** The shift clock as it reads now, for the time on a mail. */
+  clockText() {
+    return shiftClock(this.clockFrom);
+  }
+
   /** Log off and shut down: the start menu's last entries, and under Sevastolink's menu. */
   sessionButtons() {
     const logOff = el('button.emu-btn.emu-shell-btn', { type: 'button', text: this.letter(this.t('cmu-pc-start-log-off')), onclick: () => {
@@ -258,11 +271,17 @@ export class Desktop {
     return [logOff, shutDown];
   }
 
-  /** The sample inbox, and a notice that arrives a little after login with the mail sound, as new mail does. */
+  /**
+   * The sample inbox, with the mail sent to this card on the ExtraNet (WeyBay's), and a notice that arrives a little
+   * after login with the mail sound, as new mail does. A guest has no mailbox.
+   */
   startMail() {
     const user = this.ctx.user.name;
     this.mailViews = new Set();
+    this.inbox = [];
+    if (this.ctx.guest) return;
     this.inbox = [
+      ...store(MAIL_KEY, []).filter(mail => mail && mail.to === user),
       { from: 'Colony Administration', to: user, subject: 'Shift rota for this week', body: `${user}, you are on the day shift until further notice. Report to your supervisor at 06:00.`, time: '05:58' },
       { from: 'Weyland-Yutani Payroll', to: user, subject: 'Your wage statement', body: 'Your wages for the last cycle have been credited, less company store deductions and the housing levy.', time: '06:03' },
       { from: 'The Colony Herald', to: user, subject: 'Tips wanted', body: 'Seen something the notices will not tell you? File it with the Herald at herald.colony.news.', time: '06:10' },
@@ -274,6 +293,14 @@ export class Desktop {
       for (const redraw of this.mailViews) redraw();
     };
     setTimeout(arrive, 20000);
+  }
+
+  /** New mail for whoever is logged in: into the inbox, with the mail sound. */
+  deliver(mail) {
+    if (this.ctx.guest || mail.to !== this.ctx.user.name || !this.root.isConnected) return;
+    this.inbox.unshift({ ...mail, time: mail.time || shiftClock(this.clockFrom) });
+    if (this.ctx.sounds) this.ctx.sounds.mail();
+    for (const redraw of this.mailViews) redraw();
   }
 
   // ------------------------------------------------------------ wallpaper and icons
@@ -305,7 +332,9 @@ export class Desktop {
   /** Programs, then saved links, then downloaded games: on the desktop in columns, or down the shell's menu or dock. */
   buildIcons() {
     this.icons.replaceChildren();
-    const programs = [['browser', 'cmu-pc-app-browser'], ['files', 'cmu-pc-app-files'], ['system', 'cmu-pc-app-system'], ['mail', 'cmu-pc-app-mail']];
+    const programs = [['browser', 'cmu-pc-app-browser'], ['files', 'cmu-pc-app-files'], ['system', 'cmu-pc-app-system']];
+    // a guest has no mailbox
+    if (!this.ctx.guest) programs.push(['mail', 'cmu-pc-app-mail']);
     if (this.ctx.deep) programs.push(['deeps', 'cmu-pc-app-deeps']);
     for (const [app, label] of programs) this.icons.append(this.icon(app, this.t(label), () => this.open(app)));
     for (const shortcut of this.shortcuts()) {
@@ -573,7 +602,7 @@ export class Desktop {
         let win = null;
         if (saved.app === 'browser') win = this.openLink(saved.address || this.theme.home, false).win;
         else if (saved.app === 'deeps' && this.ctx.deep) win = this.openLink(saved.address || 'deeps://home', true).win;
-        else if (saved.app === 'files' || saved.app === 'mail' || saved.app === 'system') win = this.open(saved.app).win;
+        else if (saved.app === 'files' || saved.app === 'system' || (saved.app === 'mail' && !this.ctx.guest)) win = this.open(saved.app).win;
         if (!win) continue;
         const [left, top] = saved.position || [];
         const [width, height] = saved.size || [];
@@ -708,7 +737,8 @@ export class Desktop {
       el('div.emu-rule'),
       el('div', { text: this.t('cmu-pc-system-terminal', { name: this.ctx.terminalName }) }),
       el('div', { text: this.t('cmu-pc-system-terminal-id', { id: this.ctx.terminal }) }),
-      el('div', { text: this.t('cmu-pc-system-user', { name: this.ctx.user.name, job: this.ctx.user.job }) }),
+      // a guest is nobody: no user line
+      this.ctx.guest ? null : el('div', { text: this.t('cmu-pc-system-user', { name: this.ctx.user.name, job: this.ctx.user.job }) }),
       el('div', { text: this.t('cmu-pc-system-networks') }),
       ...networks.map(n => el('div', { text: `  ${n}` })),
       uptime);
@@ -730,12 +760,21 @@ export class Desktop {
   }
 }
 
-/** CMUComputerLogin: the OS name, the terminal number and a blinking prompt to insert a card. */
-export function loginScreen(theme, strings, terminal) {
+/**
+ * CMUComputerLogin: the OS name, the terminal number and a blinking prompt to insert a card; on an OS whose
+ * terminals allow it (allowGuests), "or", BROWSE AS GUEST and what a guest gets. onGuest(): the button pressed.
+ */
+export function loginScreen(theme, strings, terminal, { onGuest } = {}) {
   const prompt = el('div.emu-login-prompt', { text: L(strings, 'cmu-pc-login-prompt') });
+  const guest = theme.allowGuests && onGuest ? [
+    el('div.emu-dim', { text: L(strings, 'cmu-pc-login-or') }),
+    el('button.emu-btn.emu-login-guest', { type: 'button', text: L(strings, 'cmu-pc-login-guest'), onclick: () => onGuest() }),
+    el('div.emu-dim.emu-login-hint', { text: L(strings, 'cmu-pc-login-guest-hint') }),
+  ] : [];
   return el('div.emu-login', {},
     el('div.emu-login-name', { text: theme.name }),
     el('div.emu-rule'),
     el('div.emu-strong', { text: L(strings, 'cmu-pc-login-title', { id: terminal }) }),
-    prompt);
+    prompt,
+    ...guest);
 }

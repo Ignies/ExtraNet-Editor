@@ -4,7 +4,7 @@ import { el } from './util.js';
 import { field, textInput, select, colourInput, button, buttonRow } from './ui-dialog.js';
 import { BLOCK_TYPES, ARCADE_GAMES, RECIPE_GROUPS, columnAttrs, block as newBlock } from './blocks.js';
 import { FONTS, H_ALIGN, V_ALIGN } from './markup.js';
-import { TAPE_GENRES } from './tags.js';
+import { TAPE_GENRES, SHOP_CATALOGS } from './tags.js';
 import { pickSprite, pickAd, pickWallpaper } from './ui-sprites.js';
 
 /** A select of the site's pages (by tab title) plus net://random and a typed address. */
@@ -260,6 +260,14 @@ export function renderProps(host, app) {
         attrSelect(b, 'Genre', 'Genre', [['', 'Random'], ...TAPE_GENRES.map(g => [g, g])], app),
         attrText(b, 'Number', 'Number', app, 'Shown before the title, like 1.'),
         el('p.note', { text: 'Plays the tape in the page\'s tape player and scrolls up to it.' }));
+      break;
+    case 'shop':
+      body.append(attrSelect(b, 'Catalog', 'Catalogue', SHOP_CATALOGS.map(c => [c, c]), app),
+        attrColour(b, 'Text', 'Text', app, 'Balance, names and orders. Default #1C1C1C.'),
+        attrColour(b, 'Accent', 'Accent', app, 'Headings, prices and BUY. Default #D4342C.'),
+        attrColour(b, 'Muted', 'Muted', app, 'Item lines. Default #6A6A6A.'),
+        attrColour(b, 'Panel', 'Panel', app, 'Behind each item. Default #F2EEE4.'),
+        el('p.note', { text: 'An ExtraNet shop: the card\'s balance and orders, then the catalogue (shop.yml) by heading. BUY charges the card in the reader; the item comes in on the freight run as a crate on the pickup pallet.' }));
       break;
     case 'reels':
     case 'sportsbook':

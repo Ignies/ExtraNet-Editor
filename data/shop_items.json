@@ -1,0 +1,190 @@
+{
+ "CMMRE": {
+  "name": "MRE",
+  "description": "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy.",
+  "layers": [
+   {
+    "rsi": "_RMC14/Objects/Consumable/Food/mre.rsi",
+    "state": "closed"
+   }
+  ]
+ },
+ "ClothingHeadHatWelding": {
+  "name": "welding mask",
+  "description": "A head-mounted face cover designed to protect the wearer completely from space-arc eye.",
+  "layers": [
+   {
+    "rsi": "Clothing/Head/Welding/welding.rsi",
+    "state": "icon"
+   }
+  ]
+ },
+ "DrinkMugBlack": {
+  "name": "black mug",
+  "description": "A sleek black mug.",
+  "layers": [
+   {
+    "rsi": "Objects/Consumable/Drinks/mug_black.rsi",
+    "state": "icon"
+   }
+  ]
+ },
+ "FoodCakePlain": {
+  "name": "cake",
+  "description": "A plain cake, not a lie.",
+  "layers": [
+   {
+    "rsi": "Objects/Consumable/Food/Baked/cake.rsi",
+    "state": "plain"
+   }
+  ]
+ },
+ "FoodDonutPlain": {
+  "name": "plain donut",
+  "description": "Goes great with robust coffee.",
+  "layers": [
+   {
+    "rsi": "Objects/Consumable/Food/Baked/donut.rsi",
+    "state": "plain"
+   }
+  ]
+ },
+ "FoodPieApple": {
+  "name": "apple pie",
+  "description": "A pie containing sweet, sweet love... or apple.",
+  "layers": [
+   {
+    "rsi": "Objects/Consumable/Food/Baked/pie.rsi",
+    "state": "tin"
+   },
+   {
+    "rsi": "Objects/Consumable/Food/Baked/pie.rsi",
+    "state": "apple"
+   }
+  ]
+ },
+ "FoodPizzaMargherita": {
+  "name": "margherita pizza",
+  "description": "The flavor of Italy.",
+  "layers": [
+   {
+    "rsi": "Objects/Consumable/Food/Baked/pizza.rsi",
+    "state": "margherita"
+   }
+  ]
+ },
+ "FoodSnackChips": {
+  "name": "chips",
+  "description": "Commander Riker's What-The-Crisps.",
+  "layers": [
+   {
+    "rsi": "Objects/Consumable/Food/snacks.rsi",
+    "state": "chips"
+   }
+  ]
+ },
+ "FoodTinBeans": {
+  "name": "tin of beans",
+  "description": "Musical fruit in a slightly less musical container.",
+  "layers": [
+   {
+    "rsi": "Objects/Consumable/Food/Tins/beans.rsi",
+    "state": "icon"
+   }
+  ]
+ },
+ "LampGold": {
+  "name": "desk lamp",
+  "description": "A light emitting device that would look great on a desk.",
+  "layers": [
+   {
+    "rsi": "Objects/Misc/Lights/lampgreen.rsi",
+    "state": "lampgreen"
+   }
+  ]
+ },
+ "Lantern": {
+  "name": "lantern",
+  "description": "The holy light guides the way.",
+  "layers": [
+   {
+    "rsi": "Objects/Tools/lantern.rsi",
+    "state": "lantern"
+   }
+  ]
+ },
+ "PlushieCarp": {
+  "name": "carp plushie",
+  "description": "An adorable stuffed toy that resembles the monstrous space carp.",
+  "layers": [
+   {
+    "rsi": "Objects/Fun/Plushies/carp.rsi",
+    "state": "carpplush"
+   }
+  ]
+ },
+ "PottedPlant1": {
+  "name": "potted plant",
+  "description": "A little bit of nature contained in a pot.",
+  "layers": [
+   {
+    "rsi": "Structures/Furniture/potted_plants.rsi",
+    "state": "plant-01"
+   }
+  ]
+ },
+ "PottedPlantRandom": {
+  "name": "random potted plant spawner",
+  "description": "",
+  "layers": [
+   {
+    "rsi": "Markers/cross.rsi",
+    "state": "red"
+   },
+   {
+    "rsi": "Structures/Furniture/potted_plants.rsi",
+    "state": "random"
+   }
+  ]
+ },
+ "RMCCameraBroadcasting": {
+  "name": "broadcasting camera",
+  "description": "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below.",
+  "layers": [
+   {
+    "rsi": "_RMC14/Objects/Devices/broadcasting_camera.rsi",
+    "state": "icon"
+   }
+  ]
+ },
+ "RMCFlashlight": {
+  "name": "flashlight",
+  "description": "A hand-held emergency light.",
+  "layers": [
+   {
+    "rsi": "_RMC14/Objects/Tools/Light/flashlight.rsi",
+    "state": "flashlight"
+   }
+  ]
+ },
+ "ToyRubberDuck": {
+  "name": "rubber ducky",
+  "description": "Not carried here by ocean currents.",
+  "layers": [
+   {
+    "rsi": "Objects/Fun/ducky.rsi",
+    "state": "icon"
+   }
+  ]
+ },
+ "WelderIndustrial": {
+  "name": "industrial welding tool",
+  "description": "An industrial welder with over double the fuel capacity.",
+  "layers": [
+   {
+    "rsi": "Objects/Tools/welder_industrial.rsi",
+    "state": "icon"
+   }
+  ]
+ }
+}

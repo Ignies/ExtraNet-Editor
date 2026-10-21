@@ -1,0 +1,11 @@
+<Document>
+  <CMUNetMarquee Text="WEYBAY  ///  IF IT FITS IN A CRATE, IT SHIPS  ///  NOW DELIVERING TO {colony}  ///  PARCELS LEFT AT THE PICKUP PALLET IN LOGISTICS  ///  PAY WITH THE CARD IN YOUR READER" Speed="60" Color="#D4342C"/>
+  # WeyBay
+  [italic]Buy it on the relay. Pick it up in Logistics. Things, delivered, eventually.[/italic]
+
+  Put your ID card in the reader, pick something, press BUY. It comes off your account straight away and in on the next freight run, in a crate with your name on it, on the pickup pallet. We mail you when it lands.
+
+  <CMUNetShop Catalog="CMUWeyBayCatalog" Text="#1C1C1C" Accent="#D4342C" Muted="#6A6A6A" Panel="#F2EEE4"/>
+
+  [color=#6A6A6A]WeyBay is not affiliated with Weyland-Yutani, whatever the name suggests, and has been asked twice. Crates are the property of whoever opens them first, legally speaking, so please collect promptly.[/color]
+</Document>

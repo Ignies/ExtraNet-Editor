@@ -1,0 +1,95 @@
+# WeyBay, the ExtraNet shop: what it sells, for how much, and how long the freight run takes.
+- type: cmuShopCatalog
+  id: CMUWeyBayCatalog
+  entries:
+  - item: FoodPizzaMargherita
+    price: 45
+    minutes: 4
+    category: cmu-shop-category-food
+    blurb: cmu-shop-blurb-pizza
+  - item: FoodDonutPlain
+    price: 12
+    minutes: 3
+    category: cmu-shop-category-food
+  - item: FoodCakePlain
+    price: 60
+    minutes: 5
+    category: cmu-shop-category-food
+    blurb: cmu-shop-blurb-cake
+  - item: FoodPieApple
+    price: 40
+    minutes: 5
+    category: cmu-shop-category-food
+  - item: FoodSnackChips
+    price: 8
+    minutes: 2
+    category: cmu-shop-category-food
+  - item: FoodTinBeans
+    price: 10
+    minutes: 3
+    category: cmu-shop-category-food
+  - item: CMMRE
+    price: 25
+    minutes: 3
+    category: cmu-shop-category-food
+    blurb: cmu-shop-blurb-mre
+  - item: DrinkMugBlack
+    price: 15
+    minutes: 3
+    category: cmu-shop-category-home
+    blurb: cmu-shop-blurb-mug
+  - item: LampGold
+    price: 80
+    minutes: 6
+    category: cmu-shop-category-home
+  - item: PottedPlant1
+    price: 55
+    minutes: 6
+    category: cmu-shop-category-home
+    blurb: cmu-shop-blurb-plant
+  - item: PottedPlantRandom
+    price: 50
+    minutes: 6
+    category: cmu-shop-category-home
+  - item: ToyRubberDuck
+    price: 18
+    minutes: 3
+    category: cmu-shop-category-fun
+    blurb: cmu-shop-blurb-duck
+  - item: PlushieCarp
+    price: 35
+    minutes: 4
+    category: cmu-shop-category-fun
+  - item: RMCCameraBroadcasting
+    price: 400
+    minutes: 10
+    category: cmu-shop-category-fun
+    blurb: cmu-shop-blurb-camera
+  - item: Lantern
+    price: 30
+    minutes: 4
+    category: cmu-shop-category-tools
+  - item: RMCFlashlight
+    price: 25
+    minutes: 4
+    category: cmu-shop-category-tools
+  - item: WelderIndustrial
+    price: 150
+    minutes: 8
+    category: cmu-shop-category-tools
+  - item: ClothingHeadHatWelding
+    price: 40
+    minutes: 5
+    category: cmu-shop-category-tools
+
+# Where WeyBay leaves parcels. Put one in the colony's logistics area; without one, parcels are left at the
+# terminal they were ordered from. The cargo pallet's own sprite.
+- type: entity
+  parent: [ BaseCargoPallet, StructureHealthMachineWeak ]
+  id: CMUShopPickupPallet
+  name: WeyBay pickup pallet
+  description: Where the freight run leaves WeyBay parcels. Each crate has a name on it. Please only take yours.
+  components:
+  - type: CMUShopPickup
+  - type: Damageable
+    damageModifierSet: SteelMod

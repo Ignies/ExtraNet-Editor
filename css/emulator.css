@@ -33,6 +33,10 @@
 .emu-login-name { font: 700 29px "GameDisplay", "Noto Sans Display", sans-serif; color: var(--accent); }
 .emu-login-prompt { font-weight: 700; animation: emu-blink 1.2s steps(1) infinite; }
 @keyframes emu-blink { 0%, 66% { visibility: visible; } 67%, 100% { visibility: hidden; } }
+/* BROWSE AS GUEST: CMUComputerTheme.Button, bold, at least 180 wide, centred; the hint under it in the small font. */
+.emu-login-guest { min-width: 180px; justify-content: center; font-weight: 700; }
+.emu-login-hint { font-size: 13.33px; }
+.emu-login-popup.emu-caution { border-color: #E04040; color: #FF8080; }
 .emu-login-popup { position: absolute; z-index: 60; left: 50%; top: 18px; transform: translateX(-50%); padding: 6px 14px; background: var(--os-bg); border: 2px solid var(--accent); color: var(--phosphor); font-weight: 700; }
 
 /* ---------------------------------------------------------------- desktop */

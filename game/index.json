@@ -1,6 +1,6 @@
 {
-"generated": "2026-10-21T09:12:32Z",
-"commit": "e90248e500",
+"generated": "2026-10-21T10:23:50Z",
+"commit": "75f1bac296",
 "files": [
 "Content.CMU/Resources/Audio/CMU14/Medical/attributions.yml",
 "Content.CMU/Resources/Audio/CMU14/Medical/bone_crack_1.ogg",
@@ -76,6 +76,7 @@
 "Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/deep_web.yml",
 "Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/networks.yml",
 "Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/operating_systems.yml",
+"Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/shop.yml",
 "Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/sites.yml",
 "Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/sounds.yml",
 "Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/sports_kits.yml",
@@ -408,6 +409,8 @@
 "Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Retro/VectorQuest/index.xml",
 "Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Retro/VectorQuest/lanes.xml",
 "Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Retro/VectorQuest/satellite.xml",
+"Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Retro/WeyBay/help.xml",
+"Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Retro/WeyBay/index.xml",
 "Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Retro/Yotta/answers.xml",
 "Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Retro/Yotta/coolsites.xml",
 "Content.CMU/Resources/ServerInfo/CMU14/ExtraNet/Retro/Yotta/directory.xml",
