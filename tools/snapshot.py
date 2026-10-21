@@ -53,7 +53,11 @@ EDITOR_NEEDS = [
     '/Textures/CMU14/Interface/VerbIcons/relay_format.svg.192dpi.png',
 ]
 # Resources the emulator's games use, bundled even when master has them, so the games play offline.
-GAME_NEEDS = ['/Textures/Fluids/splatter.rsi']
+GAME_NEEDS = [
+    '/Textures/Fluids/splatter.rsi', '/Audio/Machines/printer.ogg', '/Audio/_RMC14/Handling/paper_pickup.ogg',
+    '/Textures/_RMC14/Objects/Misc/paper.rsi', '/Textures/_RMC14/Interface/map_blips.rsi',
+    '/Textures/Interface/Paper/paper_background_default.svg.96dpi.png',
+]
 EDITOR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 SOUND = re.compile(r'''['"`](/Audio/[^'"`\s$]+\.ogg)['"`]''')
 TEXT = re.compile(r'\.(xml|yml|yaml|ftl|json|txt|md)$', re.I)
