@@ -1,0 +1,516 @@
+# YouTape's random tapes: the grammar their titles and stories are told in, and what each kind of scene
+# shows. Read by CMUTapeGenerator; #rule# expands to a random line of that rule, {colony} to the round's map.
+- type: cmuTapeGrammar
+  id: CMUTapeGrammar
+  backgrounds:
+    studio:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_news_desk.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_news_network.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_tvstudio.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_desk.png
+    field:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_field_colony.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_field_landing.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_skyline.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_dunes.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_hangar.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_neonstreet.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_stationwindow.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_ridge.png
+    weather:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_weather_map.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_weather_orbit.png
+    ad:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_ad_bright_1.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_ad_bright_2.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_ad_bright_3.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_ad_bright_4.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_synthwave.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_sunset.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_corporate.png
+    food:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_galley.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_workbench.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_shelf.png
+    bunk:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_bunk.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_locker.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_corkboard.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_curtain.png
+    wild:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_jungle.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_swamp.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_aurora.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_shore.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_dunes.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_ridge.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_starfield.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_nebula.png
+    card:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_test_card.png
+    standby:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_stand_by.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_static.png
+  outfits:
+    anchor:
+    - AU14GearCivilianJournalist
+    - AU14GearCivilianColonyAdministrator
+    - AU14GearCivilianEthicsAndWellnessAdvisor
+    - AU14GearCivilianHeadOfService
+    reporter:
+    - AU14GearCivilianJournalist
+    - AU14GearCivilianColonyAdminAssistant
+    - AU14GearCivilianFreightSystemsSpecialist
+    presenter:
+    - AU14GearCivilianJournalist
+    - AU14GearCivilianHeadOfService
+    - AU14GearCivilianColonyAdminAssistant
+    host:
+    - AU14GearCivilianColonist
+    - AU14GearCivilianFoodServiceWorker
+    - AU14GearCivilianMiner
+    - AU14GearCivilianEngineer
+    - AU14GearCivilianShopkeep
+    - AU14GearCivilianWasteManagementSpecialist
+    guest:
+    - AU14GearCivilianColonist
+    - AU14GearCivilianMiner
+    - AU14GearCivilianForeman
+    - AU14GearCivilianNurse
+    - AU14GearCivilianPhysician
+    - AU14GearCivilianEngineer
+  props:
+    field:
+    - RMCCameraBroadcasting
+    - CrateGenericSteel
+    - Lantern
+    - PottedPlantRandom
+    food:
+    - CMMRE
+    - FoodTinBeans
+    - FoodPizzaMargherita
+    - FoodBurgerCheese
+    - FoodDonutPlain
+    - FoodCakePlain
+    - FoodPieApple
+    - FoodSnackChips
+    - FoodSnackRaisins
+    - DrinkMugBlack
+    - FoodBreadBaguette
+    bunk:
+    - RMCMobCat
+    - ToyRubberDuck
+    - PlushieCarp
+    - LampGold
+    - DrinkMugBlack
+    - RMCTelevision
+    doc:
+    - RMCMobCat
+    - MobMonkey
+    - MobCorgi
+    - MonkeyCube
+    - PottedPlant1
+    ad:
+    - CMMRE
+    - DrinkMugBlack
+    - ToyRubberDuck
+    - RMCFlashlight
+    - WelderIndustrial
+    - FoodSnackChips
+    - PlushieCarp
+  ads:
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_01.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_02.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_03.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_04.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_05.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_06.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_07.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_08.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_09.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_10.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_11.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_12.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_13.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_14.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_15.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_16.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_17.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_18.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_19.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_20.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_21.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_22.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_23.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_24.png
+  - /Textures/CMU14/PersonalComputers/Sites/Ads/banner_25.png
+  weather:
+    sun: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/sun.png
+    cloud: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/cloud.png
+    rain: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/rain.png
+    storm: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/storm.png
+    snow: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/snow.png
+    fog: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/fog.png
+    wind: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/wind.png
+    dust: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/dust.png
+    night: /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Weather/night.png
+  rules:
+    first:
+    - "Dana"
+    - "Rex"
+    - "Marta"
+    - "Tobias"
+    - "Ines"
+    - "Gus"
+    - "Priya"
+    - "Hollis"
+    - "June"
+    - "Bram"
+    - "Odette"
+    - "Sol"
+    - "Kit"
+    - "Wendell"
+    - "Fran"
+    - "Mikhail"
+    - "Yusuf"
+    - "Carla"
+    - "Ezra"
+    - "Noor"
+    last:
+    - "Okafor"
+    - "Lindqvist"
+    - "Bishop-Hale"
+    - "Moreau"
+    - "Tanaka"
+    - "Reyes"
+    - "Pike"
+    - "Varga"
+    - "Achebe"
+    - "Holloway"
+    - "Castell"
+    - "Dunmore"
+    - "Sato"
+    - "Brannigan"
+    - "Kowal"
+    person:
+    - "#first# #last#"
+    job:
+    - "a hydroponics tech"
+    - "a loader operator"
+    - "the night shift foreman"
+    - "a retired miner"
+    - "the colony dentist"
+    - "a freight clerk"
+    - "an atmosphere processor engineer"
+    - "the bar owner"
+    - "a schoolteacher"
+    - "a dropship mechanic"
+    - "a waste management specialist"
+    - "the duty nurse"
+    place:
+    - "the north airlock"
+    - "Hab Block C"
+    - "the mess hall"
+    - "the landing pad"
+    - "the processor annex"
+    - "the cargo bay"
+    - "the colony chapel"
+    - "the motor pool"
+    - "the greenhouse"
+    - "Ops"
+    - "the medbay"
+    - "the old mine head"
+    - "the shuttle depot"
+    - "the rec room"
+    thing:
+    - "a crate of spare filters"
+    - "the good coffee machine"
+    - "a forklift"
+    - "the community garden"
+    - "the payroll terminal"
+    - "a pallet of MREs"
+    - "the recycler"
+    - "the only working jukebox"
+    - "a ship's cat"
+    - "the shift roster"
+    - "the colony mascot"
+    - "a rover"
+    - "the water reclaimer"
+    object:
+    - "a sock"
+    - "a wrench"
+    - "a single boot"
+    - "a lunch tin"
+    - "a harmonica"
+    - "a lost ID tag"
+    - "half a sandwich"
+    - "a commendation certificate"
+    - "a rubber duck"
+    company:
+    - "Weyland-Yutani"
+    - "Seegson"
+    - "Hyperdyne Systems"
+    - "Kelland Mining"
+    - "LaSalle Bionational"
+    - "Gateway Freight"
+    title.news:
+    - "{colony} TONIGHT: #news.headline#"
+    - "COLONY NEWS AT SIX, #weekday# EDITION"
+    - "Relay Evening Report: #news.headline#"
+    - "#newsdesk# Bulletin (taped off the relay)"
+    - "NEWS: #news.headline# (FULL BROADCAST)"
+    title.weather:
+    - "{colony} Weather: The Week Ahead"
+    - "Forecast For #weekday#, Dubbed Off The Relay"
+    - "Will It Rain Indoors Again? Weather With #person#"
+    - "AtmoCast Weekend Outlook"
+    - "Dust Season Special Forecast"
+    title.food:
+    - "Every MRE Ranked, Part #number#"
+    - "I Tried Cooking #food# In A Galley With No Cook"
+    - "Taste Test: #food# vs #food#"
+    - "Mess Hall Secrets The Cook Will Not Tell You"
+    - "Rating Vending Machine Food Until I Feel Something"
+    title.bunk:
+    - "A Day In My Bunk (Night Shift Edition)"
+    - "Bunk Tour 2184!!"
+    - "Why I Have Not Slept Since #weekday#"
+    - "My Cat Reviews The Colony"
+    - "Answering Your Letters From Gateway"
+    title.doc:
+    - "Life On {colony}: A Documentary"
+    - "The Quiet Fauna Of The Outer Rim"
+    - "Colony Pets Of The Frontier"
+    - "How {colony} Was Built (Part #number#)"
+    - "Wonders Of The Atmosphere Processor"
+    channel.news:
+    - "#newsdesk#"
+    channel.weather:
+    - "AtmoCast Weather Desk"
+    - "Colony Weather Service"
+    - "WEATHER WITH #first#"
+    channel.food:
+    - "ChowHound_#first#"
+    - "GalleyGrub"
+    - "mess_hall_critic"
+    - "MREmaxxing"
+    channel.bunk:
+    - "bunkbound_#first#"
+    - "nightshift_#first#"
+    - "frontier_diaries"
+    - "orbit_kitty"
+    channel.doc:
+    - "Rim Nature Tapes"
+    - "Colony Heritage Society"
+    - "Gateway Educational"
+    - "#first#Explores"
+    newsdesk:
+    - "Colony News Network"
+    - "Relay Six News"
+    - "Frontier Broadcasting"
+    - "Gateway Evening Report"
+    - "Outer Rim Report"
+    weekday:
+    - "Monday"
+    - "Tuesday"
+    - "Wednesday"
+    - "Thursday"
+    - "Friday"
+    - "Saturday"
+    - "Sunday"
+    number:
+    - "2"
+    - "3"
+    - "4"
+    - "7"
+    - "12"
+    - "31"
+    food:
+    - "Menu 4 Chili Mac"
+    - "the Mystery Loaf"
+    - "protein bars"
+    - "reconstituted eggs"
+    - "chocolate pudding"
+    - "hydroponic tomatoes"
+    - "Seegson Instant Noodles"
+    - "the Tuesday Stew"
+    news.headline:
+    - "#thing# MISSING FROM #place#"
+    - "SHIFT CHANGE DELAYED AT #place#"
+    - "#company# ANNOUNCES \"EXCITING CHANGES\""
+    - "POWER RESTORED TO #place# AFTER #number# HOURS"
+    - "RECORD HARVEST IN THE GREENHOUSE"
+    - "COLONY VOTES ON NEW MESS HALL MENU"
+    - "SUPPLY RUN ARRIVES #number# DAYS LATE"
+    - "LOCAL CAT PROMOTED TO SAFETY OFFICER"
+    - "DUST STORM SEASON BEGINS EARLY"
+    news.crawl:
+    - "#company# shares steady"
+    - "Supply run due #weekday#"
+    - "Lost and found: #object#, see #place#"
+    - "Mess hall closed for cleaning #weekday#"
+    - "Shift roster posted in #place#"
+    - "Reminder: report all vent noises to maintenance"
+    - "Water rationing lifted in Hab Block C"
+    news.open:
+    - "Good evening, {colony}. I am #person# and this is the news."
+    - "This is #newsdesk#. Tonight's top story."
+    - "Good evening. Here is what happened on {colony} today."
+    - "You are watching #newsdesk#. Let's get straight to it."
+    news.story:
+    - "#thing# went missing from #place# this morning, and nobody will say who signed it out."
+    - "Workers at #place# say #thing# has been acting strangely since #weekday#."
+    - "#company# says the changes at #place# are routine. Workers say nothing about them is routine."
+    - "After #number# hours without power, #place# is back online, mostly."
+    - "The colony council met for #number# hours to discuss #thing#. They will meet again."
+    news.reporter:
+    - "#person#, reporting from #place#"
+    - "LIVE: #place#"
+    - "#person#, field reporter"
+    news.field:
+    - "I'm standing at #place#, where #thing# was last seen."
+    - "Behind me, workers are still trying to work out what happened."
+    - "Witnesses describe a loud bang, then a long silence, then a smaller bang."
+    - "Officials have not commented, but one of them did wave."
+    - "The scene is calm now, apart from #thing#."
+    - "Nobody here has slept since #weekday#."
+    news.witness:
+    - "I heard it from #place#. I thought it was the recycler again."
+    - "I've worked here #number# years and never seen #thing# do that."
+    - "Honestly I just want my #object# back."
+    - "My supervisor told me not to talk to you. Hi, Mum."
+    news.followup:
+    - "In other news, #news.story#"
+    - "Elsewhere on {colony}, #news.story#"
+    - "An update now: #news.story#"
+    news.toss:
+    - "Let's get a look at the weather."
+    - "Now, the forecast."
+    - "We go now to the weather desk."
+    news.close:
+    - "That is the news. Stay safe, {colony}, and lock your airlocks."
+    - "For #newsdesk#, I'm #person#. Good night."
+    - "That's all for tonight. Remember: report anything unusual. Good night."
+    weather.strap:
+    - "{colony} FORECAST"
+    - "WEATHER: #weekday#"
+    - "COLONY CONDITIONS"
+    weather.outlook:
+    - "THE WEEK AHEAD"
+    - "EXTENDED OUTLOOK"
+    - "FIVE DAY FORECAST"
+    weather.open:
+    - "Good evening, here is your weather for {colony}."
+    - "Let's look at the map. It's a busy one."
+    - "Thanks. A mixed picture across the colony tonight."
+    weather.place:
+    - "North Ridge"
+    - "The Flats"
+    - "Landing Zone"
+    - "Processor Hill"
+    - "Mine Road"
+    - "Hab Ring"
+    - "South Basin"
+    - "The Spine"
+    weather.days:
+    - "MON, TUE, WED, THU"
+    - "TUE, WED, THU, FRI"
+    - "FRI, SAT, SUN, MON"
+    - "SAT, SUN, MON, TUE"
+    weather.sun:
+    - "Clear skies over {place}, a pleasant {temp} degrees."
+    - "{place} stays bright and dry, around {temp}."
+    weather.cloud:
+    - "Cloud building over {place}, {temp} degrees."
+    - "A grey one in {place}. {temp} and dull."
+    weather.rain:
+    - "Rain moving into {place}. Bring your coat inside the hab, too, the roof leaks."
+    - "Wet in {place} tonight, {temp} degrees."
+    weather.storm:
+    - "Storms over {place}. Stay indoors and away from the antenna."
+    - "A strong storm cell near {place}, {temp} degrees and rising winds."
+    weather.snow:
+    - "Snow on the high ground at {place}, {temp} degrees."
+    - "Cold enough for snow around {place}. {temp}."
+    weather.fog:
+    - "Thick fog at {place}. Drivers, use your lights."
+    - "Visibility poor around {place}, {temp} degrees."
+    weather.wind:
+    - "Gusts at {place} strong enough to move a cargo loader."
+    - "Windy around {place}, {temp} degrees."
+    weather.dust:
+    - "Dust warning for {place}. Close your vents."
+    - "A dust front crossing {place}, {temp}. Masks on."
+    weather.night:
+    - "A clear, still night at {place}, {temp}."
+    - "Calm overnight around {place}."
+    weather.close:
+    - "That's the weather. Whatever it does, the processor keeps going."
+    - "Back to you. Dress warm, {colony}."
+    - "And that's your outlook. Have a good shift."
+    ad.product:
+    - "SEEGSON INSTANT NOODLES"
+    - "WEYLAND-YUTANI: BUILDING BETTER WORLDS"
+    - "GATEWAY FREIGHT"
+    - "ORBITAL COLA"
+    - "HYPERDYNE HOME HELPER"
+    - "KELLAND MINING: NOW HIRING"
+    - "SOUTHERN CROSS CIGARETTES"
+    - "DROPDASH: HOT FOOD FROM ORBIT"
+    - "ORE-MATCH: FIND YOUR MATCH"
+    ad.slogan:
+    - "Ask your quartermaster today!"
+    - "Now with #number#% more protein!"
+    - "Available wherever things are available."
+    - "Because the frontier deserves better. Or at least the same."
+    - "Trusted by colonists in #number# systems!"
+    - "Side effects are rare and mostly temporary."
+    - "Call now. Operators are probably standing by."
+    food.open:
+    - "Hey everyone, #first# here, and today we are eating #food#."
+    - "Welcome back to the galley. I found #food# behind the freezer."
+    - "Okay. Today I eat #food# so you don't have to."
+    food.story:
+    - "First bite. It tastes like #food#, which is a start."
+    - "The texture is... I want to say \"load bearing\"."
+    - "The packet says to add water. I added coffee. Bold choice."
+    - "I'm giving it a #number# out of 10. The 10 is a lie."
+    - "Somebody in the comments asked if it is meant to fizz. It is fizzing."
+    food.close:
+    - "That's it for today. If I don't post next week, it was the #food#."
+    - "Thanks for watching. Like the tape, rewind it, mail it to a friend."
+    - "Next time: #food#. Pray for me."
+    bunk.open:
+    - "Hi, it's #first#. Welcome to my bunk. Mind the cat."
+    - "Night shift starts in an hour, so this is a quick one."
+    - "You asked for a bunk tour, so here it is. All four square metres."
+    bunk.story:
+    - "This is my #object#. It has been with me since Earth."
+    - "The vent above my bunk makes a noise at night. Maintenance says that is normal."
+    - "My bunkmate #first# says hi. My bunkmate is asleep."
+    - "This is where I keep the good snacks. You did not see this."
+    - "Somebody keeps leaving #object# on my pillow. I have questions."
+    bunk.close:
+    - "That's my bunk! Rewind for more!"
+    - "Okay, I have to go fix #thing#. Bye!"
+    - "Thanks for watching. Write in. I read every letter. Eventually."
+    doc.open:
+    - "On the edge of settled space lies {colony}. This is its story."
+    - "Here, far from Earth, life has found a way to carry on."
+    - "In the shadow of the atmosphere processor, a colony wakes."
+    doc.story:
+    - "Every morning, #number# workers report to #place#."
+    - "The colony's animals have adapted well. Mostly to the mess hall bins."
+    - "Water here is recycled #number# times before anyone drinks it."
+    - "Some say #place# was built in a week. It looks it."
+    - "At night, the processor hums a low note heard in every bunk."
+    doc.close:
+    - "And so {colony} goes on, one shift at a time."
+    - "This has been a Gateway Educational tape."
+    - "Tomorrow, the processor will hum again."
+    card.line:
+    - "PLEASE ADJUST TRACKING"
+    - "TAPE RECORDED OFF THE RELAY"
+    standby.line:
+    - "PLEASE STAND BY"
+    - "WE ARE EXPERIENCING TECHNICAL DIFFICULTIES"

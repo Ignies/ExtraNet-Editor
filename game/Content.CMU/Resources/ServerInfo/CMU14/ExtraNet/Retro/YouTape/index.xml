@@ -9,6 +9,10 @@
 
   YouTape is the frontier's home tape library. Record anything on any camcorder, mail the tape to our sorting office on Gateway Station, and we copy it onto the relay for every colony to watch. Views are counted each time a tape is rewound.
 
+  ## NOW PLAYING
+  [italic]Every tape on the relay, picked at random. Press NEXT TAPE for another, or pick one off the shelf. Anyone with a broadcasting camera is on LIVE while it is switched on.[/italic]
+  <CMUNetTape/>
+
   ## FEATURED TAPE
   <Box>
     <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_rainbow" Scale="3"/>

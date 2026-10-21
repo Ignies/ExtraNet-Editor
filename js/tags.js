@@ -7,7 +7,7 @@ import { ARCADE_GAMES } from './blocks.js';
 
 const PLACEHOLDER_TAGS = new Set([
   'CMUNetRecipes', 'CMUNetArcade', 'CMUNetSportsbook', 'CMUNetSpaceGpt', 'CMUNetMarket', 'CMUNetCmbPanel',
-  'CMUGuideZoomImage', 'CMUGuideOutfitEmbed', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed',
+  'CMUNetSearch', 'CMUNetTape', 'CMUGuideZoomImage', 'CMUGuideOutfitEmbed', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed',
   'GuideLawsetListEmbed', 'GuideMicrowaveEmbed', 'GuideMicrowaveGroupEmbed', 'GuideReagentEmbed',
   'GuideReagentGroupEmbed', 'GuideTechDisciplineEmbed', 'GuideTechnologyEmbed',
 ]);
@@ -32,6 +32,8 @@ const KNOWN_ATTRIBUTES = {
   CMUNetWallpaper: ['Id'],
   CMUNetArcade: ['Game'],
   CMUNetSportsbook: [],
+  CMUNetSearch: ['Text', 'Link', 'Background', 'Muted'],
+  CMUNetTape: ['Shelf', 'Live'],
 };
 
 const csharpFloat = value => parseFloatInvariant(value) !== null;
@@ -106,6 +108,16 @@ export function checkTag(node) {
       // no Game puts every cabinet in tabs; a Game the enum does not know fails TryParseTag
       oneOf('Game', ARCADE_GAMES);
       break;
+    case 'CMUNetSearch':
+      // Color.TryFromHex: a colour it cannot read falls back on the tag's default
+      for (const key of ['Text', 'Link', 'Background', 'Muted']) colour(key, warnings);
+      break;
+    case 'CMUNetTape':
+      // int.TryParse, clamped to 0..12; anything but "false" keeps the live list
+      if (has('Shelf') && !/^\s*[-+]?\d+\s*$/.test(a.Shelf)) warnings.push(`Shelf="${a.Shelf}" in <CMUNetTape> is not a whole number and is ignored (6 tapes)`);
+      else if (has('Shelf') && (parseInt(a.Shelf, 10) < 0 || parseInt(a.Shelf, 10) > 12)) warnings.push(`Shelf="${a.Shelf}" in <CMUNetTape> is kept between 0 and 12`);
+      if (has('Live') && !/^(true|false)$/i.test(a.Live)) warnings.push(`Live="${a.Live}" in <CMUNetTape> should be true or false; only false hides the live list`);
+      break;
     case 'CMUGuideImage':
       needs('Path');
       if (has('MaxHeight') && !(parseFloatInvariant(a.MaxHeight) > 0)) warnings.push(`MaxHeight="${a.MaxHeight}" in <CMUGuideImage> is not a positive number and is ignored`);
@@ -132,7 +144,7 @@ export function checkTag(node) {
       break;
   }
 
-  if (node.children.length && ['CMUNetStyle', 'CMUNetSprite', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUGuideImage', 'CMUNetWallpaper'].includes(node.name)) {
+  if (node.children.length && ['CMUNetStyle', 'CMUNetSprite', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUGuideImage', 'CMUNetWallpaper', 'CMUNetSearch', 'CMUNetTape'].includes(node.name)) {
     warnings.push(`<${node.name}> is meant to be self closing (<${node.name} .../>); its children are added as controls inside it`);
   }
   return { errors, warnings };

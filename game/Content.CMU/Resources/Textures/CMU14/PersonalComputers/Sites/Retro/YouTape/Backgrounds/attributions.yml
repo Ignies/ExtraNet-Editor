@@ -1,0 +1,184 @@
+- files: ["bg_skyline.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'City skyline' (js/banner/backgrounds/scenery/skyline.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_dunes.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Desert dunes' (js/banner/backgrounds/scenery/dunes.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_jungle.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Jungle treeline' (js/banner/backgrounds/scenery/jungle.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_aurora.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Snowfield aurora' (js/banner/backgrounds/scenery/aurora.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_shore.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Ocean shore' (js/banner/backgrounds/scenery/shore.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_ridge.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Mountains and moons' (js/banner/backgrounds/scenery/ridge.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_neonstreet.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Rainy neon street' (js/banner/backgrounds/scenery/neonstreet.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_stationwindow.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Station window' (js/banner/backgrounds/scenery/stationwindow.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_hangar.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Starship hangar' (js/banner/backgrounds/scenery/hangar.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_swamp.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Foggy swamp' (js/banner/backgrounds/scenery/swamp.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_tvstudio.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'TV studio set' (js/banner/backgrounds/stages/tvstudio.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_desk.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Desk with lamplight' (js/banner/backgrounds/stages/desk.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_curtain.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Curtain stage' (js/banner/backgrounds/stages/curtain.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_workbench.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Workbench' (js/banner/backgrounds/stages/workbench.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_locker.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Locker alcove' (js/banner/backgrounds/stages/locker.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_shelf.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Shop shelf' (js/banner/backgrounds/stages/shelf.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_corkboard.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Poster board' (js/banner/backgrounds/stages/corkboard.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_synthwave.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Synthwave sun' (js/banner/backgrounds/synthwave.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_starfield.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Starfield' (js/banner/backgrounds/starfield.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_nebula.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Nebula' (js/banner/backgrounds/nebula.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_static.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Static noise' (js/banner/backgrounds/static.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_corporate.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Corporate hex' (js/banner/backgrounds/corporate.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_sunset.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Tropical sunset' (js/banner/backgrounds/sunset.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_news_desk.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'News desk' (js/banner/backgrounds/scenery/newsdesk.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_news_network.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Network newsroom' (js/banner/backgrounds/scenery/newsroom.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_weather_map.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Weather map' (js/banner/backgrounds/scenery/weathermap.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_weather_orbit.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Satellite view' (js/banner/backgrounds/scenery/orbit.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_field_colony.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Colony plaza' (js/banner/backgrounds/scenery/colonyplaza.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_field_landing.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Landing pad' (js/banner/backgrounds/scenery/landingpad.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_galley.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Galley' (js/banner/backgrounds/scenery/galley.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_bunk.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Bunk room' (js/banner/backgrounds/scenery/bunk.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_ad_bright_1.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'TV commercial' (js/banner/backgrounds/stages/commercial.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_ad_bright_2.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'TV commercial' (js/banner/backgrounds/stages/commercial.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_ad_bright_3.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'TV commercial' (js/banner/backgrounds/stages/commercial.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_ad_bright_4.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'TV commercial' (js/banner/backgrounds/stages/commercial.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_test_card.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Test card' (js/banner/backgrounds/stages/testcard.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"
+
+- files: ["bg_stand_by.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "YouTape video background drawn for CMU: the ExtraNet Editor Banner Studio background 'Please stand by' (js/banner/backgrounds/stages/standby.js, https://github.com/Ignies/ExtraNet-Editor), rendered at 240x135 by Content.CMU/Design/PersonalComputers/YouTapeArt/youtape_backgrounds.mjs"
+  source: "https://github.com/Ignies/ColonialMarinesUniverse"

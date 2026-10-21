@@ -8,7 +8,8 @@
   # Yotta!
   [italic]Your starting point for the ExtraNet. Good morning, {colony}. Or evening. We cannot tell from here.[/italic]
 
-  [bold]Search the ExtraNet:[/bold] ____________________ (SEARCH) [color=#7A6A90]Search is down for maintenance. Try the directory, which is a list we keep by hand.[/color]
+  [bold]Search the ExtraNet:[/bold]
+  <CMUNetSearch Text="#1A1030" Link="#0033CC" Background="#F4F0FF" Muted="#7A6A90"/>
 
   ## TODAY ON YOTTA!
   - [netlink="Ask the thinking machine everyone is talking about" link="spacegpt.ai"]

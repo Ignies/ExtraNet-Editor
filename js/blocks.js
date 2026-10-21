@@ -43,6 +43,8 @@ export const BLOCK_TYPES = {
   arcade: { group: 'Live', label: 'Arcade', icon: '\u265F', tag: 'CMUNetArcade', make: () => ({ attrs: {} }) },
   sportsbook: { group: 'Live', label: 'Sportsbook', icon: '\u26BD', tag: 'CMUNetSportsbook', make: () => ({ attrs: {} }) },
   spacegpt: { group: 'Live', label: 'SpaceGPT', icon: '?', tag: 'CMUNetSpaceGpt', make: () => ({ attrs: {} }) },
+  search: { group: 'Live', label: 'Search box', icon: '\u2315', tag: 'CMUNetSearch', make: () => ({ attrs: {} }) },
+  tape: { group: 'Live', label: 'Tape player', icon: '\u25B6', tag: 'CMUNetTape', make: () => ({ attrs: {} }) },
   recipes: { group: 'Live', label: 'Cookbook', icon: '\u2668', tag: 'CMUNetRecipes Kind="Food"', make: () => ({ attrs: { Kind: 'Food' } }) },
 
   raw: { group: 'Advanced', label: 'Raw markup', icon: '</>', tag: 'anything', make: () => ({ markup: '<Box>\n  Any markup the game understands.\n</Box>' }) },
@@ -56,7 +58,8 @@ export const PALETTE_GROUPS = ['Text', 'Media', 'Effects', 'Commerce', 'Layout',
 const TAG_OF = {
   image: 'CMUGuideImage', sprite: 'CMUNetSprite', wallpaper: 'CMUNetWallpaper', marquee: 'CMUNetMarquee',
   popup: 'CMUNetPopup', ad: 'CMUNetAd', arcade: 'CMUNetArcade', sportsbook: 'CMUNetSportsbook',
-  spacegpt: 'CMUNetSpaceGpt', recipes: 'CMUNetRecipes', style: 'CMUNetStyle', divider: 'ColorBox',
+  spacegpt: 'CMUNetSpaceGpt', recipes: 'CMUNetRecipes', search: 'CMUNetSearch', tape: 'CMUNetTape', style: 'CMUNetStyle',
+  divider: 'ColorBox',
 };
 const TYPE_OF_TAG = Object.fromEntries(Object.entries(TAG_OF).filter(([t]) => t !== 'divider').map(([t, tag]) => [tag, t]));
 

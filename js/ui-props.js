@@ -242,6 +242,16 @@ export function renderProps(host, app) {
       body.append(attrSelect(b, 'Group', 'Recipes', RECIPE_GROUPS.map(g => [g, g || 'All food']), app),
         el('p.note', { text: 'The cookbook, built live from the game\'s microwave recipes.' }));
       break;
+    case 'search':
+      body.append(attrColour(b, 'Text', 'Text', app, 'Snippets. Default #1A1030.'), attrColour(b, 'Link', 'Link', app, 'Result links. Default #0033CC.'),
+        attrColour(b, 'Background', 'Link background', app, 'Behind a link on hover. Default #F4F0FF.'), attrColour(b, 'Muted', 'Muted', app, 'The count and the addresses. Default #7A6A90.'),
+        el('p.note', { text: 'A search box over the words of every listed page the reader\'s terminal reaches. Deep, hidden and unlisted sites are never found.' }));
+      break;
+    case 'tape':
+      body.append(attrSelect(b, 'Shelf', 'Shelf', [['', '6 tapes (default)'], ...Array.from({ length: 13 }, (_, n) => [String(n), n === 0 ? 'No shelf' : `${n} tapes`])], app),
+        attrSelect(b, 'Live', 'Live broadcasts', [['', 'Shown (default)'], ['false', 'Hidden']], app),
+        el('p.note', { text: 'YouTape\'s player: random tapes told from youtape.yml, a shelf of more, and the broadcasting cameras on air in the round.' }));
+      break;
     case 'sportsbook':
     case 'spacegpt':
       body.append(el('p.note', { text: 'Drawn and run by the game. It has no settings.' }));

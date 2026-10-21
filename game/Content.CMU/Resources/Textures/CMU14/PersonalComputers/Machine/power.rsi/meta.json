@@ -114,6 +114,150 @@
         },
         {
             "name": "nspa_on_pressed"
+        },
+        {
+            "name": "upp_off"
+        },
+        {
+            "name": "upp_off_hover"
+        },
+        {
+            "name": "upp_off_pressed"
+        },
+        {
+            "name": "upp_on"
+        },
+        {
+            "name": "upp_on_hover"
+        },
+        {
+            "name": "upp_on_pressed"
+        },
+        {
+            "name": "uscm_off"
+        },
+        {
+            "name": "uscm_off_hover"
+        },
+        {
+            "name": "uscm_off_pressed"
+        },
+        {
+            "name": "uscm_on"
+        },
+        {
+            "name": "uscm_on_hover"
+        },
+        {
+            "name": "uscm_on_pressed"
+        },
+        {
+            "name": "twe_off"
+        },
+        {
+            "name": "twe_off_hover"
+        },
+        {
+            "name": "twe_off_pressed"
+        },
+        {
+            "name": "twe_on"
+        },
+        {
+            "name": "twe_on_hover"
+        },
+        {
+            "name": "twe_on_pressed"
+        },
+        {
+            "name": "iasf_off"
+        },
+        {
+            "name": "iasf_off_hover"
+        },
+        {
+            "name": "iasf_off_pressed"
+        },
+        {
+            "name": "iasf_on"
+        },
+        {
+            "name": "iasf_on_hover"
+        },
+        {
+            "name": "iasf_on_pressed"
+        },
+        {
+            "name": "hyperdyne_off"
+        },
+        {
+            "name": "hyperdyne_off_hover"
+        },
+        {
+            "name": "hyperdyne_off_pressed"
+        },
+        {
+            "name": "hyperdyne_on"
+        },
+        {
+            "name": "hyperdyne_on_hover"
+        },
+        {
+            "name": "hyperdyne_on_pressed"
+        },
+        {
+            "name": "prodigy_off"
+        },
+        {
+            "name": "prodigy_off_hover"
+        },
+        {
+            "name": "prodigy_off_pressed"
+        },
+        {
+            "name": "prodigy_on"
+        },
+        {
+            "name": "prodigy_on_hover"
+        },
+        {
+            "name": "prodigy_on_pressed"
+        },
+        {
+            "name": "kelland_off"
+        },
+        {
+            "name": "kelland_off_hover"
+        },
+        {
+            "name": "kelland_off_pressed"
+        },
+        {
+            "name": "kelland_on"
+        },
+        {
+            "name": "kelland_on_hover"
+        },
+        {
+            "name": "kelland_on_pressed"
+        },
+        {
+            "name": "lasalle_off"
+        },
+        {
+            "name": "lasalle_off_hover"
+        },
+        {
+            "name": "lasalle_off_pressed"
+        },
+        {
+            "name": "lasalle_on"
+        },
+        {
+            "name": "lasalle_on_hover"
+        },
+        {
+            "name": "lasalle_on_pressed"
         }
     ]
 }

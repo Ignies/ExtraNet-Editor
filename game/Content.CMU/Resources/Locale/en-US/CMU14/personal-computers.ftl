@@ -1083,3 +1083,37 @@ cmu-security-status-logged-in = logged in
 cmu-security-status-off = switched off
 cmu-security-status-unpowered = no power
 cmu-security-status-dark = offline
+
+## Search
+
+cmu-net-search-placeholder = Type words and press enter
+cmu-net-search-button = SEARCH
+cmu-net-search-none = Yotta! found nothing for "{ $query }". Try fewer words, or the directory.
+cmu-net-search-count = Yotta! found { $count ->
+    [one] one page
+   *[other] { $count } pages
+} for "{ $query }":
+
+## YouTape
+
+cmu-tape-play-button = PLAY
+cmu-tape-pause-button = PAUSE
+cmu-tape-rewind = REWIND
+cmu-tape-next = NEXT TAPE
+cmu-tape-play = PLAY >
+cmu-tape-pause = PAUSE ||
+cmu-tape-advert = ADVERTISEMENT
+cmu-tape-no-tape = NO TAPE
+cmu-tape-ended = END OF TAPE. PLEASE REWIND.
+cmu-tape-default-colony = the colony
+cmu-tape-byline = { $channel }  -  { $rewinds } rewinds
+cmu-tape-shelf = MORE TAPES
+cmu-tape-shelf-entry = { $title }  ({ $channel })
+cmu-tape-live = LIVE NOW
+cmu-tape-live-asking = Checking the relay for live broadcasts...
+cmu-tape-live-none = Nobody is broadcasting right now. Pick up a broadcasting camera and you could be.
+cmu-tape-live-feed = { $holder }, at { $location }
+cmu-tape-live-feed-unattended = Camera left running at { $location }
+cmu-tape-live-dot = (LIVE)
+cmu-tape-live-watch = WATCH
+cmu-tape-live-refresh = REFRESH

@@ -13,7 +13,8 @@ import { boardView } from './boards.js';
 export class NetBrowser {
   /**
    * net: Network. theme: the OS theme (or the deeps skin). deeps: The deeps.exi. home: the home address.
-   * hooks: { onTitle(title), onSave({ title, address }), widget(name, args, style), onWallpaper(id), user, click() }
+   * hooks: { onTitle(title), onSave({ title, address }), widget(name, args, style, { navigate(address), deeps }),
+   *          onWallpaper(id), user, click() }
    */
   constructor(net, theme, strings, { deeps = false, home, hooks = {} } = {}) {
     this.net = net;
@@ -191,7 +192,8 @@ export class NetBrowser {
     const rendered = renderDocument(markup, siteStyle, {
       colours: this.colours(),
       onLink: link => this.navigate(link, true),
-      widget: this.hooks.widget,
+      // live tags that follow links or look across the ExtraNet are told which browser they are in
+      widget: this.hooks.widget && ((name, args, style) => this.hooks.widget(name, args, style, { navigate: a => this.navigate(a, true), deeps: this.deeps })),
       onWallpaper: this.hooks.onWallpaper,
     });
     this.mount(rendered);

@@ -374,7 +374,7 @@ class Emulator {
       colony: this.colony,
       deep: this.settings.deep,
       wallpapers: this.data.wallpapers,
-      widget: (name, args, style) => this.widget(name, args, style),
+      widget: (name, args, style, browser) => this.widget(name, args, style, browser),
       onShutDown: () => this.shutDown(),
       onLogOff: () => this.reader(),
       busy: seconds => this.machine.pulse(seconds),
@@ -404,8 +404,11 @@ class Emulator {
     setTimeout(() => popup.remove(), 2500);
   }
 
-  /** Live page tags: drawn by the emulator's own ports of the game's widgets. */
-  widget(name, args, style) {
+  /**
+   * Live page tags: drawn by the emulator's own ports of the game's widgets. browser: { navigate(address), deeps },
+   * the browser showing the page.
+   */
+  widget(name, args, style, browser = {}) {
     const options = {
       phosphor: style.link, background: style.background, text: style.text, link: style.link, heading: style.heading,
       font: fontStack(style.font || 'Sans'),
@@ -418,6 +421,8 @@ class Emulator {
       CMUNetRecipes: () => import('./widgets.js').then(m => m.createRecipes(args, options)),
       CMUNetMarket: () => import('./widgets.js').then(m => m.createMarket(options)),
       CMUNetCmbPanel: () => import('./widgets.js').then(m => m.createCmbPanel(args.Kind, options)),
+      CMUNetSearch: () => import('./search.js').then(m => m.createSearch(args, style, { net: this.net, strings: this.data.strings, ...browser })),
+      CMUNetTape: () => import('./youtape.js').then(m => m.createTape(args, style, { strings: this.data.strings, colony: this.colony.name })),
     }[name];
     if (!make) return null;
     make().then(node => holder.replaceChildren(node)).catch(e => {
