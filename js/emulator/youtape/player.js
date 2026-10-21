@@ -1,17 +1,32 @@
 // YouTape's screen, ported from CMUTapePlayer in Content.CMU/Client/PersonalComputers/YouTape/CMUTapePlayer.cs:
-// a 480 by 270 picture with each scene's background and ad picture, the people in it as dressed dolls and its props
+// a widescreen (520 by 292, wide enough for a sportsbook arena at its own size) or a reel's portrait (190 by 338)
+// picture with each scene's background and ad picture, a match replayed in its real arena or an arcade game playing
+// itself, the people in it as dressed dolls (a streamer cut in from the chest up over the game's corner) and its props
 // as their sprites, then over them the weather symbols, the news crawl, the strap across the lower third, the caption
 // typed out line by line, the channel's bug or ADVERTISEMENT, and the deck's overlay: PLAY or PAUSE, the counter,
 // tracking noise and the roll at the start of every scene.
+//
+// The game stacks controls: the screen draws the background, then its children (the arena or game, the actors), then
+// the overlay. Here that is three layers: a canvas behind, the arena's or game's own canvas, and a canvas in front.
 
 import { imageUrl } from '../../repo.js';
-import { ensureFont, FONT_FACES } from '../../fonts.js';
+import { ensureFont, fontStack, FONT_FACES } from '../../fonts.js';
 import { dollCanvas, propLayers, frameAt, lookSeed } from './looks.js';
+import { Arena, ArenaWidth, ArenaHeight } from '../sports/arena.js';
+import { HuggerRun } from '../arcade/hugger.js';
+import { TrackerReflex } from '../arcade/tracker.js';
+import { SCREEN_W, SCREEN_H } from '../arcade/screen.js';
 
-export const SCREEN_WIDTH = 480;
-export const SCREEN_HEIGHT = 270;
+/** Wide enough for a sportsbook arena at its own size: its dolls cannot be scaled crisply. */
+export const WIDESCREEN = [ArenaWidth, 292];
+/** A reel's tall screen. */
+export const PORTRAIT = [190, 338];
 
 const TYPE_SPEED = 34;
+/** A streamer's doll is drawn this big, and cut off at the chest by the facecam. */
+const BUST_SCALE = 5;
+/** The arcade games' own phosphor, as CMUHuggerRun and CMUTrackerReflex draw by default. */
+const GAME_COLOURS = { green: '#3FE05A', greenRgb: [63, 224, 90], dim: '#1F8A33' };
 // Robust sizes fonts in points at 96 DPI.
 const pt = size => (size * 96) / 72;
 const VHS = size => `${pt(size)}px ${FONT_FACES.Terminal.family}, ${FONT_FACES.Terminal.fallback}`;
@@ -55,27 +70,50 @@ function ready(cache, key, make) {
 
 const propReady = new Map();
 
+function layerCanvas(className) {
+  const canvas = document.createElement('canvas');
+  canvas.className = className;
+  return canvas;
+}
+
 export class TapePlayer {
-  /** strings: the locale. weatherIcons: the grammar's icon per condition. onEnded: the tape ran out. */
-  constructor(strings = {}, { onEnded = () => {} } = {}) {
+  /**
+   * strings: the locale. size: WIDESCREEN or PORTRAIT. onEnded: the tape ran out. weatherIcons (set later): the
+   * grammar's icon per condition.
+   */
+  constructor(strings = {}, { onEnded = () => {}, size = WIDESCREEN } = {}) {
     this.strings = strings;
     this.weatherIcons = {};
     this.onEnded = onEnded;
+    this.width = size[0];
+    this.height = size[1];
     this.tape = null;
     this.time = 0;
     this.playing = false;
     // the characters' dolls, by outfit and look, as CMUTapePlayer keeps one dummy per character
     this.dolls = new Map();
+    // a tape's matches and games, by sport and game, as CMUTapePlayer keeps them while the tape is loaded
+    this.arenas = new Map();
+    this.games = new Map();
+    this.embedded = null;
+    this.sceneIndex = -1;
     ensureFont('Terminal');
     ensureFont('Sans');
-    this.canvas = document.createElement('canvas');
-    this.canvas.className = 'emu-tape-screen';
-    this.ctx = this.canvas.getContext('2d');
+    this.back = layerCanvas('emu-tape-layer');
+    this.front = layerCanvas('emu-tape-layer');
+    this.embeds = document.createElement('div');
+    this.embeds.className = 'emu-tape-embeds';
+    this.element = document.createElement('div');
+    this.element.className = 'emu-tape-screen';
+    this.element.style.width = `${this.width}px`;
+    this.element.style.height = `${this.height}px`;
+    this.element.append(this.back, this.embeds, this.front);
+    this.ctx = this.back.getContext('2d');
     this.scale = 0;
     this.last = performance.now();
     let seen = false;
     const loop = now => {
-      if (this.canvas.isConnected) seen = true;
+      if (this.element.isConnected) seen = true;
       else if (seen) return;
       this.frame(now);
       requestAnimationFrame(loop);
@@ -87,12 +125,52 @@ export class TapePlayer {
     return this.strings[id] ?? FALLBACK[id] ?? id;
   }
 
+  /** A reel's tall screen, which letters smaller and leaves the channel to the page. */
+  get narrow() {
+    return this.width < 300;
+  }
+
+  /** Where a match's arena sits, under the deck's counter. */
+  get arenaAt() {
+    return [0, this.height - ArenaHeight - 6];
+  }
+
+  /** How big the game is drawn: as big as the screen allows, the way a stream fills the frame. */
+  get gameZoom() {
+    return Math.min((this.width - 8) / SCREEN_W, (this.height - 8) / SCREEN_H);
+  }
+
+  get gameSize() {
+    return [SCREEN_W * this.gameZoom, SCREEN_H * this.gameZoom];
+  }
+
+  /** Where a let's play's game sits, clear of the streamer's facecam. */
+  get gameAt() {
+    const [w, h] = this.gameSize;
+    return [(this.width - w) / 2, (this.height - h) / 2];
+  }
+
+  /** Where the streamer is cut in over the game: its bottom right corner. [left, top, width, height] */
+  get facecam() {
+    const [gw, gh] = this.gameSize;
+    const [gx, gy] = this.gameAt;
+    const w = Math.min(110, gw * 0.36);
+    const h = Math.min(84, gh * 0.4);
+    return [gx + gw - w, gy + gh - h, w, h];
+  }
+
   load(tape) {
     this.tape = tape;
     // forget the dolls of characters the new tape does not have
     const cast = new Set();
     for (const scene of tape.scenes) for (const actor of scene.actors) if (actor.outfit) cast.add(this.dollKey(tape, actor));
     for (const key of [...this.dolls.keys()]) if (!cast.has(key)) this.dolls.delete(key);
+    // A new tape brings its own matches and games; the old ones go.
+    this.embeds.replaceChildren();
+    this.embedded = null;
+    this.arenas.clear();
+    this.games.clear();
+    this.sceneIndex = -1;
     this.time = 0;
     this.playing = true;
   }
@@ -117,15 +195,16 @@ export class TapePlayer {
     this.playing = false;
   }
 
-  /** The scene playing now and how far into it. */
+  /** The scene playing now, its place in the tape and how far into it. */
   current() {
-    if (!this.tape) return { scene: null, at: 0 };
+    if (!this.tape) return { scene: null, index: -1, at: 0 };
     let start = 0;
-    for (const scene of this.tape.scenes) {
-      if (this.time < start + scene.duration) return { scene, at: this.time - start };
+    for (let i = 0; i < this.tape.scenes.length; i++) {
+      const scene = this.tape.scenes[i];
+      if (this.time < start + scene.duration) return { scene, index: i, at: this.time - start };
       start += scene.duration;
     }
-    return { scene: null, at: 0 };
+    return { scene: null, index: -1, at: 0 };
   }
 
   frame(now) {
@@ -139,7 +218,61 @@ export class TapePlayer {
         this.onEnded();
       }
     }
-    this.draw(now / 1000);
+    const { scene, index, at } = this.current();
+    if (index !== this.sceneIndex) {
+      this.sceneIndex = index;
+      this.showScene(scene, now / 1000);
+    }
+    // the arena runs on its own clock, as the game's control does, whether the tape plays or not
+    if (this.embedded && this.embedded.arena) this.embedded.arena.frame(now / 1000);
+    this.draw(scene, at, now / 1000);
+  }
+
+  /** CMUTapePlayer.ShowScene: puts the scene's arena or game up when the scene changes. */
+  showScene(scene, now) {
+    // off screen, a game waits where it is (its loop pauses while it is not on show) and an arena is shown afresh
+    for (const child of this.embeds.children) child.style.display = 'none';
+    this.embedded = null;
+    if (!scene) return;
+    if (scene.match) {
+      let arena = this.arenas.get(scene.match.sport);
+      if (!arena) {
+        arena = Arena.create(scene.match.sport, fontStack('Sans'));
+        Object.assign(arena.canvas.style, { position: 'absolute', width: `${ArenaWidth}px`, height: `${ArenaHeight}px` });
+        this.arenas.set(scene.match.sport, arena);
+        this.embeds.append(arena.canvas);
+      }
+      const [x, y] = this.arenaAt;
+      Object.assign(arena.canvas.style, { left: `${x}px`, top: `${y}px`, display: 'block' });
+      arena.show(scene.match, now, true, scene.matchFrom);
+      this.embedded = { arena, element: arena.canvas };
+    } else if (scene.game) {
+      // One game per tape, carried on from scene to scene; it freezes while a scene without it is up.
+      let screen = this.games.get(scene.game);
+      if (!screen) {
+        screen = scene.game === 'TrackerReflex' ? new TrackerReflex(GAME_COLOURS) : new HuggerRun(GAME_COLOURS);
+        screen.demo = true;
+        this.games.set(scene.game, screen);
+        this.embeds.append(screen.canvas);
+      }
+      this.fitGame(screen);
+      screen.canvas.style.display = 'block';
+      this.embedded = { screen, element: screen.canvas };
+    }
+  }
+
+  /** Enlarges a game screen to fill the frame: device pixels per game unit, as a downloaded game's window does. */
+  fitGame(screen) {
+    const ratio = window.devicePixelRatio || 1;
+    const perUnit = this.gameZoom * ratio;
+    const [w, h] = this.gameSize;
+    const [x, y] = this.gameAt;
+    if (screen.dpr !== perUnit) {
+      screen.dpr = perUnit;
+      screen.canvas.width = Math.round(SCREEN_W * perUnit);
+      screen.canvas.height = Math.round(SCREEN_H * perUnit);
+    }
+    Object.assign(screen.canvas.style, { position: 'absolute', left: `${x}px`, top: `${y}px`, width: `${w}px`, height: `${h}px` });
   }
 
   // ---------------------------------------------------------------- drawing
@@ -148,15 +281,21 @@ export class TapePlayer {
     const scale = Math.max(1, Math.round(window.devicePixelRatio || 1));
     if (scale !== this.scale) {
       this.scale = scale;
-      this.canvas.width = SCREEN_WIDTH * scale;
-      this.canvas.height = SCREEN_HEIGHT * scale;
+      for (const canvas of [this.back, this.front]) {
+        canvas.width = this.width * scale;
+        canvas.height = this.height * scale;
+      }
     }
-    this.ctx.setTransform(scale, 0, 0, scale, 0, 0);
-    this.ctx.imageSmoothingEnabled = false;
+    for (const canvas of [this.back, this.front]) {
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(scale, 0, 0, scale, 0, 0);
+      ctx.imageSmoothingEnabled = false;
+      ctx.clearRect(0, 0, this.width, this.height);
+    }
   }
 
   /** Width of a string in a font. */
-  width(font, text) {
+  measure(font, text) {
     this.ctx.font = font;
     return this.ctx.measureText(text).width;
   }
@@ -184,35 +323,47 @@ export class TapePlayer {
     this.ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
   }
 
-  draw(seconds) {
+  draw(scene, at, seconds) {
     this.fit();
-    const ctx = this.ctx;
-    const W = SCREEN_WIDTH;
-    const H = SCREEN_HEIGHT;
-    // CMUTapePlayer.Draw: black, the background and an ad's picture, behind the actors
+    const W = this.width;
+    const H = this.height;
+    // CMUTapePlayer.Draw, behind the arena, the game and the actors: black, the background, a stream's monitor, an ad
+    this.ctx = this.back.getContext('2d');
     this.rect(0, 0, W, H, '#000000');
-    const { scene, at } = this.current();
     if (scene) {
       const background = picture(scene.background);
-      if (background) ctx.drawImage(background, 0, 0, W, H);
+      if (background) this.ctx.drawImage(background, 0, 0, W, H);
+      if (scene.kind === 'play') {
+        // A stream is the game filling the frame, with the streamer cut in over its corner.
+        this.rect(0, 0, W, H, '#0E0B14');
+        const [x, y] = this.gameAt;
+        const [w, h] = this.gameSize;
+        this.rect(x, y, x + w, y + h, '#050805');
+      }
       const ad = scene.ad ? picture(scene.ad) : null;
       if (ad) {
         const width = Math.min(W * 0.7, ad.naturalWidth * 2);
         const height = (width * ad.naturalHeight) / ad.naturalWidth;
-        ctx.drawImage(ad, (W - width) / 2, H * 0.18, width, height);
+        this.ctx.drawImage(ad, (W - width) / 2, H * 0.18, width, height);
       }
-      this.drawActors(scene, at, seconds);
     }
+    // in front of them: the actors, then the overlay
+    this.ctx = this.front.getContext('2d');
+    if (scene) this.drawActors(scene, at, seconds);
     this.drawOverlay(scene, at);
   }
 
   /** The scene's people and props, feet where the scene puts them, the talkers bobbing while the tape plays. */
   drawActors(scene, at, seconds) {
     for (const actor of scene.actors) {
-      const size = 32 * actor.scale;
       const bob = actor.talking && this.playing ? Math.abs(Math.sin(at * 9)) * 2 : 0;
-      const left = actor.at[0] * SCREEN_WIDTH - size / 2;
-      const top = actor.at[1] * SCREEN_HEIGHT - size - bob;
+      if (actor.bust) {
+        this.drawBust(actor, bob);
+        continue;
+      }
+      const size = 32 * actor.scale;
+      const left = actor.at[0] * this.width - size / 2;
+      const top = actor.at[1] * this.height - size - bob;
       if (actor.prop) {
         const layers = ready(propReady, actor.prop, () => propLayers(actor.prop));
         if (!layers) continue;
@@ -224,16 +375,34 @@ export class TapePlayer {
           this.ctx.drawImage(layer.image, frame.sx, frame.sy, layer.w, layer.h, left + (size - w) / 2, top + (size - h) / 2, w, h);
         }
       } else if (actor.outfit) {
-        const doll = ready(this.dolls, this.dollKey(this.tape, actor), () => dollCanvas(actor.outfit, lookSeed(this.tape.seed, actor.character)));
+        const doll = this.doll(actor);
         if (doll) this.ctx.drawImage(doll, left, top, size, size);
       }
     }
   }
 
+  doll(actor) {
+    return ready(this.dolls, this.dollKey(this.tape, actor), () => dollCanvas(actor.outfit, lookSeed(this.tape.seed, actor.character)));
+  }
+
+  /** CMUTapeBust: the streamer sits in the facecam, head and shoulders, with nothing behind, and bobs inside it. */
+  drawBust(actor, bob) {
+    const doll = actor.outfit ? this.doll(actor) : null;
+    if (!doll) return;
+    const [x, y, w, h] = this.facecam;
+    const size = 32 * BUST_SCALE;
+    this.ctx.save();
+    this.ctx.beginPath();
+    this.ctx.rect(x, y, w, h);
+    this.ctx.clip();
+    this.ctx.drawImage(doll, x + (w - size) / 2, y - 0.06 * size - bob, size, size);
+    this.ctx.restore();
+  }
+
   /** CMUTapeOverlay.Draw */
   drawOverlay(scene, at) {
-    const W = SCREEN_WIDTH;
-    const H = SCREEN_HEIGHT;
+    const W = this.width;
+    const H = this.height;
     const tape = this.tape;
     if (!tape) {
       this.centre(VHS(14), this.t('cmu-tape-no-tape'), '#FFFFFF');
@@ -251,16 +420,16 @@ export class TapePlayer {
     if (scene.ticker) {
       const band = 14;
       this.rect(0, bottom - band, W, bottom, 'rgba(16, 16, 48, 0.9)');
-      const width = this.width(small, scene.ticker);
+      const width = this.measure(small, scene.ticker);
       const x = W - ((this.time * 45) % (W + width));
       this.text(small, x, bottom - band + 1, scene.ticker, '#FFFFFF');
       bottom -= band;
     }
     if (scene.strap) {
-      const font = SANS(11);
+      const font = SANS(this.narrow ? 9 : 11);
       const height = 18;
       const top = bottom - 44;
-      const width = Math.min(W - 20, this.width(font, scene.strap) + 20);
+      const width = Math.min(W - 20, this.measure(font, scene.strap) + 20);
       const ad = scene.kind === 'ad';
       this.rect(10, top, 10 + width, top + height, ad ? '#E8C020' : '#B01818');
       this.text(font, 20, top + 2, scene.strap, ad ? '#000000' : '#FFFFFF');
@@ -269,9 +438,9 @@ export class TapePlayer {
     if (scene.kind === 'ad') {
       const advert = this.t('cmu-tape-advert');
       const font = VHS(10);
-      this.text(font, W - this.width(font, advert) - 14, 8, advert, 'rgba(255, 255, 255, 0.8)');
-    } else if (tape.channel.length > 0 && scene.kind !== 'card' && scene.kind !== 'standby') {
-      this.text(small, W - this.width(small, tape.channel) - 10, 8, tape.channel, 'rgba(255, 255, 255, 0.7)');
+      this.text(font, W - this.measure(font, advert) - 14, 8, advert, 'rgba(255, 255, 255, 0.8)');
+    } else if (!this.narrow && tape.channel.length > 0 && scene.kind !== 'card' && scene.kind !== 'standby') {
+      this.text(small, W - this.measure(small, tape.channel) - 10, 8, tape.channel, 'rgba(255, 255, 255, 0.7)');
     }
     this.drawDeck();
     this.drawNoise(at);
@@ -280,18 +449,20 @@ export class TapePlayer {
   /** The line being said now, typed out, in a box over the bottom of the picture. */
   drawCaption(scene, at, bottom) {
     if (!scene.lines.length) return;
-    const W = SCREEN_WIDTH;
+    const W = this.width;
     const each = scene.duration / scene.lines.length;
     const index = Math.min(scene.lines.length - 1, Math.trunc(at / each));
     const line = scene.lines[index];
     const shown = line.slice(0, Math.min(line.length, Math.trunc((at - index * each) * TYPE_SPEED)));
-    const font = SANS(10);
-    const lines = this.wrap(font, shown, W - 40);
+    const font = SANS(this.narrow ? 9 : 10);
+    // A let's play keeps its captions clear of the facecam.
+    const right = scene.kind === 'play' ? W - this.facecam[0] + 6 : 12;
+    const lines = this.wrap(font, shown, W - right - 28);
     const { lineHeight } = this.metrics(font);
     const height = lines.length * lineHeight + 8;
     let top = bottom - height - 4;
     if (scene.strap) top = Math.min(top, bottom - 44 - height - 4);
-    if (lines.length > 0) this.rect(12, top, W - 12, top + height, 'rgba(0, 0, 0, 0.65)');
+    if (lines.length > 0) this.rect(12, top, W - right, top + height, 'rgba(0, 0, 0, 0.65)');
     lines.forEach((value, i) => this.text(font, 20, top + 4 + i * lineHeight, value, '#FFF6C8'));
   }
 
@@ -299,12 +470,12 @@ export class TapePlayer {
     const font = SANS(9);
     const { lineHeight } = this.metrics(font);
     for (const weather of scene.weather) {
-      const cx = weather.at[0] * SCREEN_WIDTH;
-      const cy = weather.at[1] * SCREEN_HEIGHT;
+      const cx = weather.at[0] * this.width;
+      const cy = weather.at[1] * this.height;
       const icon = picture(this.weatherIcons[weather.icon]);
       const size = 24 * 2;
       if (icon) this.ctx.drawImage(icon, cx - size / 2, cy - size / 2, size, size);
-      const width = this.width(font, weather.label);
+      const width = this.measure(font, weather.label);
       const x = cx - width / 2;
       const y = cy + size / 2;
       this.rect(x - 3, y - 1, x - 3 + width + 6, y - 1 + lineHeight + 2, 'rgba(0, 0, 0, 0.55)');
@@ -325,21 +496,21 @@ export class TapePlayer {
 
   /** Tracking lines, and a roll for the first moment of every scene. */
   drawNoise(at) {
-    const H = SCREEN_HEIGHT;
+    const H = this.height;
     for (let i = 0; i < 3; i++) {
       const y = Math.random() * H;
-      this.rect(0, y, SCREEN_WIDTH, y + 1, `rgba(255, 255, 255, ${0.06 + Math.random() * 0.08})`);
+      this.rect(0, y, this.width, y + 1, `rgba(255, 255, 255, ${0.06 + Math.random() * 0.08})`);
     }
     if (at < 0.25) {
       const band = H * (1 - at / 0.25);
-      this.rect(0, band, SCREEN_WIDTH, Math.min(H, band + 18), 'rgba(255, 255, 255, 0.25)');
+      this.rect(0, band, this.width, Math.min(H, band + 18), 'rgba(255, 255, 255, 0.25)');
     }
   }
 
   centre(font, value, colour) {
-    const width = this.width(font, value);
+    const width = this.measure(font, value);
     const { lineHeight } = this.metrics(font);
-    this.text(font, SCREEN_WIDTH / 2 - width / 2, SCREEN_HEIGHT / 2 - lineHeight / 2, value, colour);
+    this.text(font, this.width / 2 - width / 2, this.height / 2 - lineHeight / 2, value, colour);
   }
 
   wrap(font, value, width) {
@@ -347,7 +518,7 @@ export class TapePlayer {
     let line = '';
     for (const word of value.split(' ')) {
       const next = line.length === 0 ? word : `${line} ${word}`;
-      if (line.length > 0 && this.width(font, next) > width) {
+      if (line.length > 0 && this.measure(font, next) > width) {
         lines.push(line);
         line = word;
       } else {

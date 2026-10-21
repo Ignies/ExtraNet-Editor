@@ -20,14 +20,20 @@
   [bold]Cat Gets Into Cryo Bay (UNCUT)[/bold] by orbit_kitty. 2,104,551 rewinds. A ship's cat called Admiral finds an open hypersleep pod and refuses to leave it for eleven minutes. The crew try everything. At minute nine somebody offers a tin of tuna. Admiral looks at the camera. You will never forget the look.
 
   ## RECOMMENDED FOR {colony}
-  - [bold]MRE Taste Test: Every Menu, Ranked[/bold] by ChowHound_Gus. 48 tapes in the series. Gus is on menu 31. Gus has asked for a medic in the comments.
-  - [bold]Relaxing Processor Hum, 8 Hours[/bold] by sleepwave. A full tape of an atmosphere processor at night. Tape 2 has a knocking sound at hour six. sleepwave says it was not there when they recorded it.
-  - [bold]Rex Maddox Gets Collected Again (fan cut)[/bold] by not_lost_just_thorough. Every time a garrison has picked Rex up, set to music.
-  - [bold]How To Fix A Seegson Terminal By Hitting It[/bold] by fixit_fran. Part one of one. There is no part two. It works.
-  - [bold]Unboxing: Weyland-Yutani Welcome Kit[/bold] by newhire_2184. Pen, mug, lanyard, a forty page contract and a smaller, darker contract under the first one.
+  <CMUNetTapeLink Title="MRE Taste Test: Every Menu, Ranked" Channel="ChowHound_Gus" Genre="food"/>
+  by ChowHound_Gus. 48 tapes in the series. Gus is on menu 31. Gus has asked for a medic in the comments.
+  <CMUNetTapeLink Title="Relaxing Processor Hum, 8 Hours" Channel="sleepwave" Genre="doc"/>
+  by sleepwave. A full tape of an atmosphere processor at night. Tape 2 has a knocking sound at hour six. sleepwave says it was not there when they recorded it.
+  <CMUNetTapeLink Title="Rex Maddox Gets Collected Again (fan cut)" Channel="not_lost_just_thorough" Genre="news"/>
+  by not_lost_just_thorough. Every time a garrison has picked Rex up, set to music.
+  <CMUNetTapeLink Title="How To Fix A Seegson Terminal By Hitting It" Channel="fixit_fran" Genre="bunk"/>
+  by fixit_fran. Part one of one. There is no part two. It works.
+  <CMUNetTapeLink Title="Unboxing: Weyland-Yutani Welcome Kit" Channel="newhire_2184" Genre="bunk"/>
+  by newhire_2184. Pen, mug, lanyard, a forty page contract and a smaller, darker contract under the first one.
 
   ## WATCH MORE
   - [netlink="Trending on the relay this week" link="youtape.vhs/trending"]
+  - [netlink="Reels: short tapes, one after another" link="youtape.vhs/reels"]
   - [netlink="Channel: ChowHound_Gus" link="youtape.vhs/channel"]
   - [netlink="How to upload your tape" link="youtape.vhs/upload"]
 

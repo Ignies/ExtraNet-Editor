@@ -4,6 +4,7 @@ import { el } from './util.js';
 import { field, textInput, select, colourInput, button, buttonRow } from './ui-dialog.js';
 import { BLOCK_TYPES, ARCADE_GAMES, RECIPE_GROUPS, columnAttrs, block as newBlock } from './blocks.js';
 import { FONTS, H_ALIGN, V_ALIGN } from './markup.js';
+import { TAPE_GENRES } from './tags.js';
 import { pickSprite, pickAd, pickWallpaper } from './ui-sprites.js';
 
 /** A select of the site's pages (by tab title) plus net://random and a typed address. */
@@ -250,8 +251,17 @@ export function renderProps(host, app) {
     case 'tape':
       body.append(attrSelect(b, 'Shelf', 'Shelf', [['', '6 tapes (default)'], ...Array.from({ length: 13 }, (_, n) => [String(n), n === 0 ? 'No shelf' : `${n} tapes`])], app),
         attrSelect(b, 'Live', 'Live broadcasts', [['', 'Shown (default)'], ['false', 'Hidden']], app),
+        attrSelect(b, 'Autoplay', 'Autoplay', [['', 'Plays a tape at once (default)'], ['false', 'Waits for a tape link']], app),
         el('p.note', { text: 'YouTape\'s player: random tapes told from youtape.yml, a shelf of more, and the broadcasting cameras on air in the round.' }));
       break;
+    case 'tapelink':
+      body.append(attrText(b, 'Title', 'Title', app, 'The tape is made from its title, so the same title always plays the same tape.'),
+        attrText(b, 'Channel', 'Channel', app, 'Empty: the channel the tape makes up.'),
+        attrSelect(b, 'Genre', 'Genre', [['', 'Random'], ...TAPE_GENRES.map(g => [g, g])], app),
+        attrText(b, 'Number', 'Number', app, 'Shown before the title, like 1.'),
+        el('p.note', { text: 'Plays the tape in the page\'s tape player and scrolls up to it.' }));
+      break;
+    case 'reels':
     case 'sportsbook':
     case 'spacegpt':
       body.append(el('p.note', { text: 'Drawn and run by the game. It has no settings.' }));

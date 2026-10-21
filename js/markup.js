@@ -8,7 +8,7 @@ export const DOCUMENT_TAGS = new Set([
   'Document', 'Box', 'ColorBox', 'Table', 'CMUGuideImage', 'CMUGuideZoomImage', 'CMUGuideOutfitEmbed',
   'CMUNetStyle', 'CMUNetSprite', 'CMUNetBlink', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUNetWallpaper',
   'CMUNetRecipes', 'CMUNetArcade', 'CMUNetSportsbook', 'CMUNetSpaceGpt', 'CMUNetMarket', 'CMUNetCmbPanel',
-  'CMUNetSearch', 'CMUNetTape', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed', 'GuideLawsetListEmbed', 'GuideMicrowaveEmbed',
+  'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed', 'GuideLawsetListEmbed', 'GuideMicrowaveEmbed',
   'GuideMicrowaveGroupEmbed', 'GuideReagentEmbed', 'GuideReagentGroupEmbed', 'GuideTechDisciplineEmbed',
   'GuideTechnologyEmbed',
 ]);

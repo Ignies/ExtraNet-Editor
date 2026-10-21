@@ -147,7 +147,9 @@ Other tools:
 | Arcade | `<CMUNetArcade/>` (every game in its own tab, with a sound button), or `<CMUNetArcade Game="HuggerRun"/>` / `TrackerReflex` for one cabinet |
 | Sportsbook, SpaceGPT | `<CMUNetSportsbook/>`, `<CMUNetSpaceGpt/>` |
 | Search box | `<CMUNetSearch Text Link Background Muted/>`: Yotta!'s search over every listed page the terminal reaches (the colours are optional) |
-| Tape player | `<CMUNetTape Shelf Live/>`: YouTape's player of random tapes, with a shelf of `Shelf` more (default 6, `0` for none) and the live broadcasts (`Live="false"` hides them) |
+| Tape player | `<CMUNetTape Shelf Live Autoplay/>`: YouTape's player of random tapes, with a shelf of `Shelf` more (default 6, `0` for none) and the live broadcasts (`Live="false"` hides them); `Autoplay="false"` waits for a tape link |
+| Tape link | `<CMUNetTapeLink Title Channel Genre Number/>`: a tape's title as a link that plays that tape, made from the title, in the page's tape player |
+| Reels | `<CMUNetReels/>`: YouTape's short tall tapes, one after another, flicked with UP and DOWN |
 | Cookbook | `<CMUNetRecipes Kind="Food" Group/>` (food only) |
 | Raw markup | written exactly as typed |
 | (page colours) | the page's `<CMUNetStyle .../>` line, set in the page settings |
@@ -236,7 +238,9 @@ computer full window, built from the game's own code and art:
   their Sound button), SpaceGPT answers
   from its roster, Yotta!'s search finds the pages of every listed site this terminal reaches (the editor's site
   included), YouTape plays random tapes told from `youtape.yml` with their dressed presenters, props, captions,
-  straps, crawls and weather maps (a seed makes the same tape as in game), and its live list answers as a round
+  straps, crawls and weather maps (a seed makes the same tape as in game), sports recaps replayed in the real
+  arenas (the sportsbook's finished matches, or made up ones), Let's Plays with the arcade games playing themselves
+  under a streamer, Reels, and Trending tapes that play from their titles, and its live list answers as a round
   with nobody broadcasting does, the Galley cookbook lists the food recipes (only `Kind="Food"`), and the deep market and the
   Marshals' panels show sample data.
 - **Sounds**, as the game plays them (`CMUPersonalComputerBui`): the boot sound when the power key is pressed
@@ -376,7 +380,7 @@ Differences:
 | `js/emulator/net.js`, `data.js`, `linkcheck.js` | The ExtraNet as a computer sees it (addresses, networks, deep aliases, the ad maze), the OS, colony and wallpaper data, and the link check |
 | `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook tag (schedule, wallet, a tab per sport), the arcade tag (cabinets, tabs), SpaceGPT, the recipes, the deep market and the CMB panels |
 | `js/emulator/search.js` | The search box tag (CMUNetSearch.cs): the index of every listed page, scoring and snippets |
-| `js/emulator/youtape.js`, `youtape/generator.js`, `player.js`, `looks.js` | The tape player tag (CMUNetTape.cs), the tapes told from the grammar (CMUTapeGenerator.cs), the screen (CMUTapePlayer.cs), and the dolls' outfits and props as their sprites |
+| `js/emulator/youtape.js`, `youtape/generator.js`, `player.js`, `looks.js` | The tape player, tape link and reels tags (CMUNetTape.cs, CMUNetTapeLink.cs, CMUNetReels.cs), the tapes and reels told from the grammar (CMUTapeGenerator.cs), the screen with its arenas, games and streamer (CMUTapePlayer.cs), and the dolls' looks, outfits and props as their sprites |
 | `js/emulator/sports/core.js`, `arena.js`, `dolls.js` | The leagues and match simulation dispatch (CMUSports.cs), the arena base with its effects (CMUSportsArena.cs), the dolls and item sprites |
 | `js/emulator/sports/sprint.js`, `boxing.js`, `baseball.js`, `zerog.js` | Each sport's simulation and arena |
 | `js/emulator/arcade/screen.js`, `hugger.js`, `tracker.js` | The arcade screen base with its keyboard (CMUArcadeScreen), and each game |

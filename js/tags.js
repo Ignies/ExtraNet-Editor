@@ -7,7 +7,7 @@ import { ARCADE_GAMES } from './blocks.js';
 
 const PLACEHOLDER_TAGS = new Set([
   'CMUNetRecipes', 'CMUNetArcade', 'CMUNetSportsbook', 'CMUNetSpaceGpt', 'CMUNetMarket', 'CMUNetCmbPanel',
-  'CMUNetSearch', 'CMUNetTape', 'CMUGuideZoomImage', 'CMUGuideOutfitEmbed', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed',
+  'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CMUGuideZoomImage', 'CMUGuideOutfitEmbed', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed',
   'GuideLawsetListEmbed', 'GuideMicrowaveEmbed', 'GuideMicrowaveGroupEmbed', 'GuideReagentEmbed',
   'GuideReagentGroupEmbed', 'GuideTechDisciplineEmbed', 'GuideTechnologyEmbed',
 ]);
@@ -33,8 +33,13 @@ const KNOWN_ATTRIBUTES = {
   CMUNetArcade: ['Game'],
   CMUNetSportsbook: [],
   CMUNetSearch: ['Text', 'Link', 'Background', 'Muted'],
-  CMUNetTape: ['Shelf', 'Live'],
+  CMUNetTape: ['Shelf', 'Live', 'Autoplay'],
+  CMUNetReels: [],
+  CMUNetTapeLink: ['Title', 'Channel', 'Genre', 'Number'],
 };
+
+/** The genres a tape can be made in (CMUTapeGenerator.Generate's switch and the grammar's titles). */
+export const TAPE_GENRES = ['news', 'weather', 'food', 'bunk', 'doc', 'sports', 'play', 'static'];
 
 const csharpFloat = value => parseFloatInvariant(value) !== null;
 
@@ -117,6 +122,12 @@ export function checkTag(node) {
       if (has('Shelf') && !/^\s*[-+]?\d+\s*$/.test(a.Shelf)) warnings.push(`Shelf="${a.Shelf}" in <CMUNetTape> is not a whole number and is ignored (6 tapes)`);
       else if (has('Shelf') && (parseInt(a.Shelf, 10) < 0 || parseInt(a.Shelf, 10) > 12)) warnings.push(`Shelf="${a.Shelf}" in <CMUNetTape> is kept between 0 and 12`);
       if (has('Live') && !/^(true|false)$/i.test(a.Live)) warnings.push(`Live="${a.Live}" in <CMUNetTape> should be true or false; only false hides the live list`);
+      if (has('Autoplay') && !/^(true|false)$/i.test(a.Autoplay)) warnings.push(`Autoplay="${a.Autoplay}" in <CMUNetTape> should be true or false; only false waits for a tape link`);
+      break;
+    case 'CMUNetTapeLink':
+      // TryParseTag fails without a Title; a Genre the grammar has no rules for makes a tape of empty lines
+      needs('Title');
+      if (has('Genre') && !TAPE_GENRES.includes(a.Genre)) warnings.push(`Genre="${a.Genre}" in <CMUNetTapeLink> is not one of ${TAPE_GENRES.join(', ')}`);
       break;
     case 'CMUGuideImage':
       needs('Path');
@@ -144,7 +155,7 @@ export function checkTag(node) {
       break;
   }
 
-  if (node.children.length && ['CMUNetStyle', 'CMUNetSprite', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUGuideImage', 'CMUNetWallpaper', 'CMUNetSearch', 'CMUNetTape'].includes(node.name)) {
+  if (node.children.length && ['CMUNetStyle', 'CMUNetSprite', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUGuideImage', 'CMUNetWallpaper', 'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink'].includes(node.name)) {
     warnings.push(`<${node.name}> is meant to be self closing (<${node.name} .../>); its children are added as controls inside it`);
   }
   return { errors, warnings };

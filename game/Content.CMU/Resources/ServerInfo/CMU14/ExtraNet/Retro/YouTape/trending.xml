@@ -6,28 +6,29 @@
     <CMUNetSprite Rsi="/Textures/_RMC14/Objects/Devices/cassette_player.rsi" State="cassette_green" Scale="2"/>
   </Box>
   # TRENDING ON THE RELAY
-  [italic]The most rewound tapes this relay cycle. Charts are six weeks behind the Core and three weeks ahead of the Outer Veil.[/italic]
+  [italic]The most rewound tapes this relay cycle. Charts are six weeks behind the Core and three weeks ahead of the Outer Veil. Click a title to play the tape.[/italic]
+  <CMUNetTape Autoplay="false" Shelf="0" Live="false"/>
 
-  ## 1. Marine Tries To Explain His Tattoo
+  <CMUNetTapeLink Number="1." Title="Marine Tries To Explain His Tattoo" Channel="dropship_dad" Genre="bunk"/>
   by dropship_dad. 911,004 rewinds. He has a tattoo of a skull with a beret on. He says it has a meaning. Eight minutes later he is still working on it.
 
   [color=#9A9A9A]Top comment, seeker_of_the_veil: the beret is on the wrong side. that is how you know it is real[/color]
 
-  ## 2. Chroma Sleep, Neon Over Titan (live, from row 40)
+  <CMUNetTapeLink Number="2." Title="Chroma Sleep, Neon Over Titan (live, from row 40)" Channel="methane_kid_88" Genre="doc"/>
   by methane_kid_88. 740,212 rewinds. Shot on a camcorder held above a crowd for the whole song. You cannot see the band. You can hear four thousand people sing the chorus. It is the best tape on YouTape.
 
-  ## 3. My Working Joe Learns To Wave
+  <CMUNetTapeLink Number="3." Title="My Working Joe Learns To Wave" Channel="hydro_hannah" Genre="bunk"/>
   by hydro_hannah. 603,377 rewinds. It took three weeks. It is a very slow wave. The Joe has been waving since the tape was made and Seegson support has been asked how to make it stop.
 
-  ## 4. Weather Report But It Is Just A Man Looking Out A Window
+  <CMUNetTapeLink Number="4." Title="Weather Report But It Is Just A Man Looking Out A Window" Channel="AtmoCast_unofficial" Genre="weather"/>
   by AtmoCast_unofficial. 412,890 rewinds. Better than the real one, according to the comments. For the real one, see [netlink="AtmoCast" link="atmocast.wx"].
 
-  ## 5. Something In The Background At Minute Four
+  <CMUNetTapeLink Number="5." Title="Something In The Background At Minute Four" Channel="birthday_tapes_lena" Genre="bunk"/>
   by birthday_tapes_lena. 388,011 rewinds. A child's fifth birthday in a colony canteen. At minute four, top left, behind the cake, something moves along the ceiling. The family have asked people to stop sending them letters and to enjoy the cake.
 
   [color=#9A9A9A]This tape has been flagged for review by the Company. It is still trending.[/color]
 
-  ## 6. Ten Hours Of Static
+  <CMUNetTapeLink Number="6." Title="Ten Hours Of Static" Channel="uploader_unknown" Genre="static"/>
   by uploader_unknown. 0 rewinds. Nobody has rewound it. It is on the chart anyway. It was not sent to the sorting office. It was already in the library when we opened this morning.
 
   [netlink="Back to YouTape" link="youtape.vhs"]

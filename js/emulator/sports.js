@@ -124,6 +124,14 @@ function boardState(now) {
   return shown.map(m => publicMatch(m, now));
 }
 
+/**
+ * The round's finished matches, as a page sees them in the bet state (CMUNetTape.OnBets keeps the ones with a
+ * result and a winner): for YouTape's sports tapes to replay.
+ */
+export function finishedMatches(now = Date.now() / 1000) {
+  return boardState(now).filter(m => m.result !== null && m.winner >= 0);
+}
+
 // ---------------------------------------------------------------- wallet
 
 const WALLET_KEY = 'extranet-emulator-wallet';

@@ -8,6 +8,16 @@
     - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_news_network.png
     - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_tvstudio.png
     - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_desk.png
+    sports:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_news_network.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_tvstudio.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_neonstreet.png
+    play:
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_bunk.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_neonstreet.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_synthwave.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_starfield.png
+    - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_locker.png
     field:
     - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_field_colony.png
     - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_field_landing.png
@@ -52,6 +62,17 @@
     - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_stand_by.png
     - /Textures/CMU14/PersonalComputers/Sites/Retro/YouTape/Backgrounds/bg_static.png
   outfits:
+    sportscaster:
+    - AU14GearCivilianJournalist
+    - AU14GearCivilianHeadOfService
+    - AU14GearCivilianForeman
+    streamer:
+    - AU14GearCivilianColonist
+    - AU14GearCivilianMiner
+    - AU14GearCivilianEngineer
+    - AU14GearCivilianShopkeep
+    - AU14GearCivilianWasteManagementSpecialist
+    - AU14GearCivilianFoodServiceWorker
     anchor:
     - AU14GearCivilianJournalist
     - AU14GearCivilianColonyAdministrator
@@ -508,6 +529,132 @@
     - "And so {colony} goes on, one shift at a time."
     - "This has been a Gateway Educational tape."
     - "Tomorrow, the processor will hum again."
+    title.sports:
+    - "{sport} HIGHLIGHTS: {match}"
+    - "Full Match Replay: {match}"
+    - "The Big One: {match} ({sport})"
+    - "Taped Off The Relay: {sport}, {match}"
+    - "#sportsdesk# Presents: {match}"
+    channel.sports:
+    - "#sportsdesk#"
+    sportsdesk:
+    - "Rim Sports Network"
+    - "Gateway Sports Desk"
+    - "Colony Sports Hour"
+    - "The Bleachers"
+    - "Frontier Sports Tonight"
+    sports.open:
+    - "Welcome to #sportsdesk#. Tonight, the full {sport} match everyone has been talking about: {match}."
+    - "Good evening, sports fans. We have the whole thing on tape, start to finish. {match}."
+    - "If you missed it live, here it is. {sport}: {match}. Pull up a crate."
+    - "Did you bet on this one? Of course you did. Here is {match}, in full."
+    sports.close:
+    - "And there it is. {winner} takes it. Collect your winnings, or do not."
+    - "{winner} wins. The bookmakers on Gateway are already crying."
+    - "What a match. {winner}, ladies and gentlemen. That is all from #sportsdesk#."
+    - "Final result: {winner}. We will see you for the next one. Rewind and watch it again."
+    title.play:
+    - "{game} no-death attempt #number#"
+    - "I Played {game} For #number# Hours Straight"
+    - "{game} SPEEDRUN (world record?? on Gateway)"
+    - "Rage Quitting {game}, Part #number#"
+    - "{game}: Beating My Bunkmate's High Score"
+    - "First Time Playing {game}!!"
+    - "Can You Beat {game} With Your Eyes Shut? (no)"
+    channel.play:
+    - "#first#Plays"
+    - "xX_#first#_Xx"
+    - "arcade_#first#"
+    - "#first#TV"
+    - "nightshift_gamer"
+    - "joystick_#first#"
+    play.open:
+    - "Hey everyone, #first# here, and today we are playing {game}."
+    - "Okay, chat, new record attempt. Let's go."
+    - "Welcome back to the stream. Somebody asked for {game}, so here it is."
+    - "Right. {game}. My supervisor thinks I am doing inventory."
+    play.story:
+    - "Okay okay okay, watch this. Watch this."
+    - "No. No no no. That one was lag, I swear."
+    - "Chat says go left. Chat is wrong, but okay."
+    - "I have played this #number# times today and I am not tired."
+    - "This bit always gets me. Every single time."
+    - "If I beat this I am buying everyone in the rec room a coffee."
+    - "Somebody in chat says they got further. Prove it."
+    - "The trick here is to not panic. I am panicking."
+    play.close:
+    - "That is the stream! Like, rewind, mail the tape to a friend."
+    - "Okay I have to go, shift starts. See you next tape."
+    - "New personal best! Probably. I lost count."
+    - "GG. Not the game, I mean me. Good game, me."
+    reel.food.title:
+    - "POV: you open #food# on night shift"
+    - "Rating #food# in 10 seconds"
+    - "Do NOT eat #food# like this"
+    - "The galley hack nobody told you"
+    reel.food.line:
+    - "Okay. First bite."
+    - "Chat, it is worse than it looks."
+    - "Somebody explain the texture."
+    - "Ten out of ten. Lying."
+    - "This is my lunch now. Forever."
+    reel.bunk.title:
+    - "POV: the vent above your bunk at 3 AM"
+    - "Things in my bunk that make no sense"
+    - "Bunk glow up, frontier edition"
+    - "My cat vs the recycler"
+    reel.bunk.line:
+    - "Wait for it."
+    - "Nobody believes me about the noise."
+    - "Four square metres. Make it work."
+    - "Do not tell my supervisor."
+    - "That is not my #object#."
+    reel.doc.title:
+    - "The cutest thing on {colony}"
+    - "Colony animals doing colony things"
+    - "Found this by #place#"
+    - "Nature is healing (it is in the mess hall)"
+    reel.doc.line:
+    - "Look at it."
+    - "It lives here now."
+    - "Nobody knows where it came from."
+    - "It has seen things."
+    - "Ten out of ten. Would let it into my bunk."
+    reel.weather.title:
+    - "60 second forecast"
+    - "Will it rain indoors? Find out"
+    - "Dust warning in 10 seconds"
+    - "Weather, but quick"
+    reel.weather.line:
+    - "Here is your weather, fast."
+    - "Short version: stay inside."
+    - "That is it. That is the forecast."
+    reel.play.title:
+    - "{game} clutch moment"
+    - "This {game} run should not be possible"
+    - "Wait for the end ({game})"
+    - "The {game} trick nobody uses"
+    reel.play.line:
+    - "Watch this. WATCH THIS."
+    - "No way. No way!"
+    - "Clip it. Somebody clip it."
+    - "Chat did not believe me."
+    - "One more try."
+    title.static:
+    - "Ten Hours Of Static"
+    channel.static:
+    - "uploader_unknown"
+    static.line:
+    - "PLEASE STAND BY"
+    - "NO SIGNAL"
+    - "TRACKING"
+    - "PLEASE ADJUST TRACKING"
+    - "TAPE RECORDED OFF THE RELAY"
+    static.last:
+    - "WE CAN SEE YOU REWINDING"
+    - "IT IS STILL IN THE LIBRARY"
+    - "MINUTE FOUR. TOP LEFT."
+    - "PLEASE STOP SENDING LETTERS"
     card.line:
     - "PLEASE ADJUST TRACKING"
     - "TAPE RECORDED OFF THE RELAY"

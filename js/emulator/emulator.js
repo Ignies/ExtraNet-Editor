@@ -423,6 +423,9 @@ class Emulator {
       CMUNetCmbPanel: () => import('./widgets.js').then(m => m.createCmbPanel(args.Kind, options)),
       CMUNetSearch: () => import('./search.js').then(m => m.createSearch(args, style, { net: this.net, strings: this.data.strings, ...browser })),
       CMUNetTape: () => import('./youtape.js').then(m => m.createTape(args, style, { strings: this.data.strings, colony: this.colony.name })),
+      CMUNetReels: () => import('./youtape.js').then(m => m.createReels(args, style, { strings: this.data.strings, colony: this.colony.name })),
+      CMUNetTapeLink: () => import('./youtape.js').then(m => m.createTapeLink(args, style, { strings: this.data.strings })
+        || Object.assign(document.createElement('div'), { textContent: '<CMUNetTapeLink> needs Title="..."' })),
     }[name];
     if (!make) return null;
     make().then(node => holder.replaceChildren(node)).catch(e => {

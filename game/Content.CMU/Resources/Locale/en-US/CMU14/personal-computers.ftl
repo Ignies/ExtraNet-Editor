@@ -924,6 +924,7 @@ cmu-net-tab-retro-yotta-coolsites = Cool Sites
 cmu-net-site-retro-youtape = YouTape
 cmu-net-tab-retro-youtape-home = Home
 cmu-net-tab-retro-youtape-trending = Trending
+cmu-net-tab-retro-youtape-reels = Reels
 cmu-net-tab-retro-youtape-channel = Channels
 cmu-net-tab-retro-youtape-upload = Upload
 
@@ -1117,3 +1118,7 @@ cmu-tape-live-feed-unattended = Camera left running at { $location }
 cmu-tape-live-dot = (LIVE)
 cmu-tape-live-watch = WATCH
 cmu-tape-live-refresh = REFRESH
+cmu-tape-link-tooltip = Play this tape
+cmu-tape-reel-up = UP
+cmu-tape-reel-down = DOWN
+cmu-tape-reel-likes = { $likes } likes

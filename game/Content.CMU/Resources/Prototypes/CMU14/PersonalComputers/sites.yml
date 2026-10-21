@@ -636,10 +636,13 @@
     trending: trending.xml
     channel: channel.xml
     upload: upload.xml
+    reels: reels.xml
   tabs:
   - title: cmu-net-tab-retro-youtape-home
   - title: cmu-net-tab-retro-youtape-trending
     path: trending
+  - title: cmu-net-tab-retro-youtape-reels
+    path: reels
   - title: cmu-net-tab-retro-youtape-channel
     path: channel
   - title: cmu-net-tab-retro-youtape-upload
