@@ -48,6 +48,14 @@ import sceneNeonStreet from './scenery/neonstreet.js';
 import sceneStationWindow from './scenery/stationwindow.js';
 import sceneHangar from './scenery/hangar.js';
 import sceneSwamp from './scenery/swamp.js';
+import sceneNewsDesk from './scenery/newsdesk.js';
+import sceneNewsroom from './scenery/newsroom.js';
+import sceneWeatherMap from './scenery/weathermap.js';
+import sceneOrbit from './scenery/orbit.js';
+import sceneColonyPlaza from './scenery/colonyplaza.js';
+import sceneLandingPad from './scenery/landingpad.js';
+import sceneGalley from './scenery/galley.js';
+import sceneBunk from './scenery/bunk.js';
 import stageShelf from './stages/shelf.js';
 import stagePedestal from './stages/pedestal.js';
 import stageWindow from './stages/window.js';
@@ -58,6 +66,9 @@ import stageMuseumCase from './stages/museumcase.js';
 import stageTvStudio from './stages/tvstudio.js';
 import stageCurtain from './stages/curtain.js';
 import stageDesk from './stages/desk.js';
+import stageCommercial from './stages/commercial.js';
+import stageTestCard from './stages/testcard.js';
+import stageStandBy from './stages/standby.js';
 import splitBands from './split/bands.js';
 import splitDiagonal from './split/diagonal.js';
 import splitStripes from './split/stripes.js';
@@ -99,6 +110,14 @@ export const BACKGROUNDS = [
   sceneStationWindow,
   sceneHangar,
   sceneSwamp,
+  sceneNewsDesk,
+  sceneNewsroom,
+  sceneWeatherMap,
+  sceneOrbit,
+  sceneColonyPlaza,
+  sceneLandingPad,
+  sceneGalley,
+  sceneBunk,
   // Stages: modules in stages/ that set group themselves.
   stageShelf,
   stagePedestal,
@@ -110,6 +129,9 @@ export const BACKGROUNDS = [
   stageTvStudio,
   stageCurtain,
   stageDesk,
+  stageCommercial,
+  stageTestCard,
+  stageStandBy,
   // Split colours: modules in split/ that set group themselves.
   splitBands,
   splitDiagonal,
