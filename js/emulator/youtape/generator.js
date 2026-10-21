@@ -48,6 +48,7 @@ class Teller {
     this.grammar = grammar;
     this.random = random;
     this.colony = colony;
+    this.castCount = 0;
   }
 
   chance(p) {
@@ -65,6 +66,11 @@ class Teller {
   outfit(role) {
     const outfits = this.grammar.outfits[role];
     return outfits && outfits.length > 0 ? this.pick(outfits) : '';
+  }
+
+  /** Casts someone for a role: an outfit, and the next place in the cast (CMUTapeGenerator.Teller.Cast). */
+  cast(role) {
+    return { outfit: this.outfit(role), character: this.castCount++ };
   }
 
   ad() {
@@ -89,7 +95,7 @@ class Teller {
     if (!props || props.length === 0) return;
     for (let i = 0; i < count; i++) {
       const x = f(f(0.45) + f(f(this.random.nextDouble()) * f(0.45)));
-      into.actors.push({ outfit: null, prop: this.pick(props), at: [x, f(0.88)], scale: 3, talking: false });
+      into.actors.push({ outfit: null, character: 0, prop: this.pick(props), at: [x, f(0.88)], scale: 3, talking: false });
     }
   }
 
@@ -119,12 +125,13 @@ class Teller {
   }
 }
 
-function person(outfit, x, y, talking = true) {
-  return { outfit, prop: null, at: [f(x), f(y)], scale: 4, talking };
+/** Someone cast in the tape, standing in a scene. */
+function person(cast, x, y, talking = true) {
+  return { outfit: cast.outfit, character: cast.character, prop: null, at: [f(x), f(y)], scale: 4, talking };
 }
 
 function news(tape, teller) {
-  const anchor = teller.outfit('anchor');
+  const anchor = teller.cast('anchor');
   const headline = teller.say('#news.headline#');
   const crawl = [];
   for (let i = 0; i < 4; i++) crawl.push(teller.say('#news.crawl#'));
@@ -138,14 +145,14 @@ function news(tape, teller) {
   open.actors.push(person(anchor, 0.5, 0.86));
   tape.scenes.push(open);
 
-  const reporter = teller.outfit('reporter');
+  const reporter = teller.cast('reporter');
   const field = teller.scene('field', 10);
   field.strap = teller.say('#news.reporter#');
   field.lines.push(teller.say('#news.field#'));
   field.lines.push(teller.say('#news.field#'));
   field.lines.push(teller.say('#news.witness#'));
   field.actors.push(person(reporter, 0.3, 0.9));
-  if (teller.chance(0.7)) field.actors.push(person(teller.outfit('guest'), 0.62, 0.9, false));
+  if (teller.chance(0.7)) field.actors.push(person(teller.cast('guest'), 0.62, 0.9, false));
   teller.props(field, 'field', 1);
   tape.scenes.push(field);
 
@@ -169,7 +176,7 @@ function news(tape, teller) {
 
 /** A weather report: the presenter, the map with its symbols, and on a full show an outlook after an ad. */
 function forecast(tape, teller, full) {
-  const presenter = teller.outfit('presenter');
+  const presenter = teller.cast('presenter');
   const map = teller.scene('weather', 10);
   map.strap = teller.say('#weather.strap#');
   map.lines.push(teller.say('#weather.open#'));
@@ -205,7 +212,7 @@ function forecast(tape, teller, full) {
 
 /** A home tape: a host in their own place telling it, with props, and an ad dubbed in halfway. */
 function show(tape, teller, genre) {
-  const host = teller.outfit('host');
+  const host = teller.cast('host');
   const place = genre === 'food' ? 'food' : genre === 'bunk' ? 'bunk' : 'wild';
   const segments = teller.range(3, 5);
   for (let i = 0; i < segments; i++) {

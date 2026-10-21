@@ -105,6 +105,13 @@ export class HuggerStage {
   /** The keys went elsewhere: let go of anything held. */
   onRelease() {}
 
+  /**
+   * Plays the stage in a demo (a "Let's Play" tape): called every frame the stage is in play, before it updates. Look
+   * at the stage and press keys with run.bot(key, down) or run.botTap(key), like a decent human: react a beat late,
+   * sometimes fumble. The default does nothing, so the stage just runs.
+   */
+  demoThink(dt) {}
+
   /** The stage is over and the next one is about to enter. */
   exit() {}
 

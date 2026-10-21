@@ -68,11 +68,20 @@ export class Vent extends HuggerStage {
     this.shed = false;
     this.rewarded = false;
     this.larvaX = 90;
+    this.botSkip = -1;
   }
 
   onKey(input) {
     if (!input.down || input.key !== Key.Action || this.time < SKIP_AFTER) return;
     this.finish();
+  }
+
+  /** The demo bot mostly lets the evolution play, and now and then skips it like an impatient player. */
+  demoThink(dt) {
+    if (this.botSkip < 0) this.botSkip = Math.random() < 0.3 ? 1.8 + Math.random() * 3 : Infinity;
+    if (this.time < this.botSkip) return;
+    this.botSkip = Infinity;
+    this.run.botTap(Key.Action);
   }
 
   /** Done or skipped: the runner gets its bonus and the run goes on. */

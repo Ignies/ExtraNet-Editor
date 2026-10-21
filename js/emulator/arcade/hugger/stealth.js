@@ -64,6 +64,13 @@ const HEAR_RATE = 1.1;
 const FACE_ANGLE = 0.95;
 /** Below this much "!", a marine has not really noticed the runner yet, and a pounce still takes him. */
 const UNAWARE = 0.3;
+
+// the demo bot: how often it replans, how long it waits in cover, how far it pounces, how wide a berth it gives cones
+const BOT_REPLAN = 0.3;
+const BOT_PATIENCE = 5;
+const BOT_POUNCE_REACH = 46;
+const BOT_CONE_MARGIN = 0.25;
+const BOT_RANGE_MARGIN = 14;
 const LOSE_TIME = 2.2;
 const SEARCH_TIME = 5.5;
 const AIM_TIME = 0.45;
@@ -635,6 +642,190 @@ export class Stealth extends HuggerStage {
   }
 
   // Tiles ------------------------------------------------------------------------------------------------------
+
+  // Demo bot -------------------------------------------------------------------------------------------------------
+
+  // The demo's runner: a planner over the tiles that finds a way to the exit keeping out of every marine's view,
+  // waits in cover when there is none (until it loses patience and makes a dash), and pounces any marine it can reach
+  // from behind or who has not noticed it. Once a marine is on to it, it runs for the exit.
+
+  demoThink(dt) {
+    const run = this.run;
+    if (this.dead || this.clearing >= 0 || run.over || this.maul > 0) {
+      this.botSteer(0, 0);
+      return;
+    }
+    if (!this.botPath) {
+      this.botPath = new Int32Array(MAX_PATH);
+      this.botMark = new Int32Array(MAX_W * MAX_H);
+      this.botDanger = new Uint8Array(MAX_W * MAX_H);
+      this.botStamp = 0;
+      this.botRoom = -1;
+    }
+    if (this.botRoom !== this.room) {
+      // a look round the new room before moving
+      this.botRoom = this.room;
+      this.botLength = 0;
+      this.botStep = 0;
+      this.botWait = 0;
+      this.botThink = 0.6 + Math.random() * 0.5;
+      this.botPause = this.botThink;
+    }
+    if (this.botPause > 0) {
+      this.botPause -= dt;
+      this.botSteer(0, 0);
+      return;
+    }
+
+    const prey = this.pounce <= 0 && this.pounceCool <= 0 && this.stun <= 0 ? this.botPrey() : null;
+    if (prey) {
+      const tx = prey.x - this.px;
+      const ty = prey.y - this.py;
+      this.botSteer(tx, ty);
+      const along = tx * Math.cos(this.facing) + ty * Math.sin(this.facing);
+      const across = Math.abs(tx * Math.sin(this.facing) - ty * Math.cos(this.facing));
+      if (along > 4 && along < POUNCE_SPEED * POUNCE_TIME && across < CONTACT - 3) run.botTap(Key.Action);
+      return;
+    }
+
+    this.botThink -= dt;
+    if (this.botThink <= 0) {
+      this.botThink = BOT_REPLAN + Math.random() * 0.15;
+      const alerted = this.anyCombat();
+      if (!this.botPlan(!alerted && this.botWait < BOT_PATIENCE)) {
+        this.botWait += BOT_REPLAN;
+        if (Math.random() < 0.06) this.botPause = 0.3 + Math.random() * 0.5;
+      } else {
+        this.botWait = 0;
+      }
+    }
+
+    if (this.botStep >= this.botLength) {
+      this.botSteer(0, 0);
+      return;
+    }
+    const tile = this.botPath[this.botStep];
+    const cx = this.ox + (tile % MAX_W + 0.5) * TILE;
+    const cy = (Math.floor(tile / MAX_W) + 0.5) * TILE;
+    if (Math.hypot(cx - this.px, cy - this.py) < 5) {
+      this.botStep++;
+      return;
+    }
+    this.botSteer(cx - this.px, cy - this.py);
+  }
+
+  /** Holds the arrow keys that head the runner along a direction, or lets them all go. */
+  botSteer(dx, dy) {
+    const run = this.run;
+    run.bot(Key.Right, dx > 3);
+    run.bot(Key.Left, dx < -3);
+    run.bot(Key.Down, dy > 3);
+    run.bot(Key.Up, dy < -3);
+  }
+
+  /** A marine close enough to pounce who is turned away or has not noticed the runner. */
+  botPrey() {
+    for (const m of this.marines) {
+      if (m.state === DEAD || m.tower || Math.hypot(m.x - this.px, m.y - this.py) > BOT_POUNCE_REACH) continue;
+      const approach = Math.atan2(this.py - m.y, this.px - m.x);
+      const behind = Math.abs(wrap(approach - m.facing)) > FACE_ANGLE + 0.15;
+      const unaware = (m.state === PATROL || m.state === RETURN) && m.meter < UNAWARE * 0.6 && !m.sees;
+      if (behind || unaware) return m;
+    }
+    return null;
+  }
+
+  /** Whether a tile's middle is in, or about to be in, a living marine's view. */
+  botDangerous(tile) {
+    if (this.botMark[tile] === this.botStamp) return this.botDanger[tile] === 1;
+    this.botMark[tile] = this.botStamp;
+    const ax = this.ox + (tile % MAX_W + 0.5) * TILE;
+    const ay = (Math.floor(tile / MAX_W) + 0.5) * TILE;
+    let danger = false;
+    for (const m of this.marines) {
+      if (danger) break;
+      if (m.state === DEAD) continue;
+      const dx = ax - m.x;
+      const dy = ay - m.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < 20 && !m.tower) {
+        danger = true;
+        break;
+      }
+      if (dist > this.rangeOf(m) + BOT_RANGE_MARGIN) continue;
+      const angle = Math.atan2(dy, dx);
+      if (Math.abs(wrap(angle - m.facing)) > (m.tower ? TOWER_HALF : CONE_HALF) + BOT_CONE_MARGIN) continue;
+      danger = this.cast(m.x, m.y, angle, dist, m.tower) >= dist - 2;
+    }
+    this.botDanger[tile] = danger ? 1 : 0;
+    return danger;
+  }
+
+  /**
+   * Plans the shortest way over the tiles to the exit (breadth first, eight ways), keeping out of view when careful.
+   * With no safe way it heads for the nearest tile out of view instead. False when it had to settle for that.
+   */
+  botPlan(careful) {
+    this.botStamp++;
+    this.botLength = 0;
+    this.botStep = 0;
+    const sx = Math.floor((this.px - this.ox) / TILE);
+    const sy = Math.floor(this.py / TILE);
+    if (sx < 0 || sy < 0 || sx >= this.w || sy >= this.h) return false;
+    const start = sy * MAX_W + sx;
+    const exit = this.botSearch(start, careful, false);
+    if (exit >= 0) {
+      this.botTrace(start, exit);
+      return true;
+    }
+    // nowhere safe to go: get out of view and wait
+    if (careful && this.botDangerous(start)) {
+      const cover = this.botSearch(start, false, true);
+      if (cover >= 0) this.botTrace(start, cover);
+    }
+    return false;
+  }
+
+  /** Breadth first from a tile to the exit (or, with cover, to the nearest tile out of view). */
+  botSearch(start, careful, cover) {
+    this.prev.fill(-1);
+    this.prev[start] = start;
+    let head = 0;
+    let tail = 0;
+    this.queue[tail++] = start;
+    while (head < tail) {
+      const at = this.queue[head++];
+      const x = at % MAX_W;
+      const y = (at - x) / MAX_W;
+      if (cover ? at !== start && !this.botDangerous(at) : this.tile(x, y) === EXIT) return at;
+      for (let k = 0; k < 8; k++) {
+        const nx = x + (k === 0 || k === 4 || k === 5 ? 1 : k === 1 || k === 6 || k === 7 ? -1 : 0);
+        const ny = y + (k === 2 || k === 4 || k === 6 ? 1 : k === 3 || k === 5 || k === 7 ? -1 : 0);
+        if (nx < 0 || ny < 0 || nx >= this.w || ny >= this.h) continue;
+        const next = ny * MAX_W + nx;
+        if (this.prev[next] >= 0 || this.solid(this.grid[next], false)) continue;
+        // no cutting corners round a solid tile
+        if (nx !== x && ny !== y && (this.solid(this.tile(nx, y), false) || this.solid(this.tile(x, ny), false))) continue;
+        if (careful && this.botDangerous(next)) continue;
+        this.prev[next] = at;
+        this.queue[tail++] = next;
+      }
+    }
+    return -1;
+  }
+
+  botTrace(start, end) {
+    let count = 0;
+    for (let at = end; at !== start && count < MAX_PATH; at = this.prev[at]) count++;
+    if (count >= MAX_PATH) return;
+    let step = end;
+    for (let i = count - 1; i >= 0; i--) {
+      this.botPath[i] = step;
+      step = this.prev[step];
+    }
+    this.botLength = count;
+    this.botStep = 0;
+  }
 
   tile(x, y) {
     if (x < 0 || y < 0 || x >= this.w || y >= this.h) return ROCK;

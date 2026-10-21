@@ -96,14 +96,15 @@ export class Arena {
     this.live = false;
   }
 
-  /** Shows a match, live from its kickoff, or from now when replay is set. */
-  show(match, now, replay = false) {
+  /** Shows a match, live from its kickoff, or from now when replay is set, optionally starting `from` seconds in. */
+  show(match, now, replay = false, from = 0) {
     const known = this.match && this.match.id === match.id && this.match.winner === match.winner;
     this.match = match;
     if (known && !replay && !this.replaying) return;
     this.replaying = replay;
     this.play = match.winner >= 0 ? playMatch(match.sport, match.seed, match.entrants.length, match.winner) : null;
-    this.start = replay ? now : match.kickoff;
+    // a replay can start part-way for highlights; what came before leaves its marks silently
+    this.start = replay ? now - clamp(from, 0, sportLength(match.sport)) : match.kickoff;
     this.#rebuild();
   }
 

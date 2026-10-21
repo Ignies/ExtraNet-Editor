@@ -540,6 +540,119 @@ export class Ravager extends HuggerStage {
     this.tapKey = Key.None;
   }
 
+  // Demo bot -------------------------------------------------------------------------------------------------------
+
+  // The demo's ravager: it wades into the nearest marine, lines up on his lane and claws in chains, charges down a
+  // lane with two or more marines in it when the meter is full, steps out of a gunman's lane when a round is coming,
+  // goes round the front of a raised riot shield, claws the APC, and walks on up the street between waves.
+
+  demoThink(dt) {
+    const run = this.run;
+    this.botSlash = (this.botSlash ?? 0) - dt;
+    this.botDodge = (this.botDodge ?? 0) - dt;
+    this.botCharge = (this.botCharge ?? 0) - dt;
+    if (!this.hostile || this.pose === Pose.Windup || this.pose === Pose.Charge || this.pose === Pose.Skid || this.pose === Pose.Roar) {
+      this.botHold(0, 0);
+      return;
+    }
+
+    const target = this.botTarget();
+    if (!target && (this.apc === 1 || this.apc === 2)) {
+      // the APC: get alongside and claw it
+      const gap = this.apcX - this.x;
+      if (Math.abs(gap) < APC_HALF + SLASH_REACH * 0.4 && this.y - APC_Y < 26 && Math.sign(gap) === Math.sign(this.facing)) {
+        this.botHold(0, 0);
+        if (this.botSlash <= 0) {
+          run.botTap(Key.Action);
+          this.botSlash = 0.2 + Math.random() * 0.12;
+        }
+        return;
+      }
+      this.botHold(Math.abs(gap) > APC_HALF + 10 ? Math.sign(gap) : Math.sign(gap) * (Math.sign(gap) === Math.sign(this.facing) ? 0 : 1),
+        this.y - APC_Y > 20 ? -1 : 0);
+      return;
+    }
+    if (!target) {
+      const centre = this.cam + SCREEN_W / 2;
+      this.botHold(this.waveState === WaveState.Advance ? 1 : Math.abs(centre - this.x) > 30 ? Math.sign(centre - this.x) : 0, 0);
+      return;
+    }
+
+    if (this.botDodge <= 0 && this.botIncoming()) {
+      this.botDodge = 0.4 + Math.random() * 0.2;
+      this.botDodgeDir = this.y > (STREET_TOP + STREET_BOTTOM) / 2 ? -1 : 1;
+    }
+
+    const dx = target.x - this.x;
+    const dy = target.y - this.y;
+
+    // a lane with a crowd in it and a full meter: charge it
+    if ((this.chargeMeter >= 100 || this.frenzy > 0) && this.botCharge <= 0 && Math.abs(dy) < 12 && Math.abs(dx) > 50 && Math.abs(dx) < 220
+      && this.botLane(target) >= 2) {
+      this.botCharge = 1.5;
+      this.botHold(Math.sign(dx), 0);
+      run.botTap(Key.Action);
+      return;
+    }
+
+    // stand just short of him on our side, or round the back of a raised shield
+    let stand = target.x - Math.sign(dx === 0 ? this.facing : dx) * 34;
+    if (target.kind === RIOT && target.armed && target.facing * (this.x - target.x) > 0 && this.chargeMeter < 100) stand = target.x - target.facing * 34;
+
+    const ahead = (target.x - this.x) * this.facing;
+    if (ahead > -6 && ahead < SLASH_REACH - 10 && Math.abs(dy) < SLASH_DEPTH - 4 && this.botSlash <= 0) {
+      // keys off so the claw does not turn into a charge
+      this.botHold(0, 0);
+      run.botTap(Key.Action);
+      this.botSlash = (this.frenzy > 0 ? 0.1 : 0.17) + Math.random() * 0.14;
+      return;
+    }
+
+    const mx = Math.abs(stand - this.x) > 6 ? Math.sign(stand - this.x) : Math.abs(ahead) < 1 || ahead < 0 ? Math.sign(dx) : 0;
+    const my = this.botDodge > 0 ? this.botDodgeDir : Math.abs(dy) > 4 ? Math.sign(dy) : 0;
+    this.botHold(mx, my);
+  }
+
+  botHold(x, y) {
+    const run = this.run;
+    run.bot(Key.Right, x > 0);
+    run.bot(Key.Left, x < 0);
+    run.bot(Key.Down, y > 0);
+    run.bot(Key.Up, y < 0);
+  }
+
+  /** The nearest marine still standing on this stretch of street. */
+  botTarget() {
+    let best = null;
+    let bestDistance = Infinity;
+    for (const t of this.troopers) {
+      if (!alive(t) || t.x < this.cam - 20 || t.x > this.cam + SCREEN_W + 20) continue;
+      const distance = Math.abs(t.x - this.x) + Math.abs(t.y - this.y) * 2;
+      if (distance >= bestDistance) continue;
+      best = t;
+      bestDistance = distance;
+    }
+    return best;
+  }
+
+  /** How many marines stand in a target's lane, for deciding whether a charge is worth it. */
+  botLane(target) {
+    let count = 0;
+    for (const t of this.troopers) {
+      if (alive(t) && Math.abs(t.y - target.y) < 14 && Math.sign(t.x - this.x) === Math.sign(target.x - this.x)) count++;
+    }
+    return count;
+  }
+
+  /** Whether a marine's round is coming down the ravager's lane. */
+  botIncoming() {
+    return this.bullets.some(b => {
+      if (b.passed || Math.abs(b.y - this.y) > 9 || b.vx === 0) return false;
+      const eta = (this.x - b.x) / b.vx;
+      return eta > 0 && eta < 0.45 && Math.random() < 0.9;
+    });
+  }
+
   axis(negative, positive) {
     return (this.run.held(positive) ? 1 : 0) - (this.run.held(negative) ? 1 : 0);
   }

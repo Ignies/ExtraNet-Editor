@@ -6,7 +6,7 @@
 
 import { imageUrl } from '../../repo.js';
 import { ensureFont, FONT_FACES } from '../../fonts.js';
-import { dollCanvas, propLayers, frameAt } from './looks.js';
+import { dollCanvas, propLayers, frameAt, lookSeed } from './looks.js';
 
 export const SCREEN_WIDTH = 480;
 export const SCREEN_HEIGHT = 270;
@@ -53,7 +53,6 @@ function ready(cache, key, make) {
   return cache.get(key).value;
 }
 
-const dollReady = new Map();
 const propReady = new Map();
 
 export class TapePlayer {
@@ -65,6 +64,8 @@ export class TapePlayer {
     this.tape = null;
     this.time = 0;
     this.playing = false;
+    // the characters' dolls, by outfit and look, as CMUTapePlayer keeps one dummy per character
+    this.dolls = new Map();
     ensureFont('Terminal');
     ensureFont('Sans');
     this.canvas = document.createElement('canvas');
@@ -88,8 +89,16 @@ export class TapePlayer {
 
   load(tape) {
     this.tape = tape;
+    // forget the dolls of characters the new tape does not have
+    const cast = new Set();
+    for (const scene of tape.scenes) for (const actor of scene.actors) if (actor.outfit) cast.add(this.dollKey(tape, actor));
+    for (const key of [...this.dolls.keys()]) if (!cast.has(key)) this.dolls.delete(key);
     this.time = 0;
     this.playing = true;
+  }
+
+  dollKey(tape, actor) {
+    return `${actor.outfit}|${lookSeed(tape.seed, actor.character)}`;
   }
 
   togglePlay() {
@@ -215,7 +224,7 @@ export class TapePlayer {
           this.ctx.drawImage(layer.image, frame.sx, frame.sy, layer.w, layer.h, left + (size - w) / 2, top + (size - h) / 2, w, h);
         }
       } else if (actor.outfit) {
-        const doll = ready(dollReady, actor.outfit, () => dollCanvas(actor.outfit));
+        const doll = ready(this.dolls, this.dollKey(this.tape, actor), () => dollCanvas(actor.outfit, lookSeed(this.tape.seed, actor.character)));
         if (doll) this.ctx.drawImage(doll, left, top, size, size);
       }
     }

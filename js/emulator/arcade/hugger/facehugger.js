@@ -4,7 +4,7 @@
 // tumbles out, which hands the run to stage 2. Running into a human's legs gets the hugger kicked flat; a tracer
 // bursts it.
 
-import { CorridorStage, HumanState, FLOOR_Y, PLAYER_X, HISSES, BODY_FALL } from './corridor.js';
+import { CorridorStage, HumanState, FLOOR_Y, PLAYER_X, HISSES, BODY_FALL, MARINE_BACKPEDAL, hittable } from './corridor.js';
 import {
   Outfit, EAST, WEST, PARASITE, LARVA, ACID, BLOOD, DARK_BLOOD, ALARM, WHITE, SMOKE, clamp, lerp, sprite,
 } from './stage.js';
@@ -129,6 +129,31 @@ export class Facehugger extends CorridorStage {
     this.run.playAny(PUNCHES);
     this.run.flash(WHITE, 0.2, 0.12);
     this.killPlayer({ x: PLAYER_X + 8, y: FLOOR_Y - this.y - 12 }, { x: -1, y: -0.4 }, { x: -40, y: 420 }, -14, DIES, T.kicked, 16);
+  }
+
+  /**
+   * The demo bot goes for faces: it times a held leap from how fast the human is closing, so it comes down on the
+   * head, and now and then misjudges it and is kicked flat or sails past.
+   */
+  botStage(plan) {
+    // getting under fire comes first
+    if (plan.duck) return;
+    for (const human of this.humans) {
+      if (!hittable(human)) continue;
+      const d = human.x - this.scroll - PLAYER_X;
+      if (d <= 0 || d > 170) continue;
+      let closing = this.speed;
+      if (human.state === HumanState.Walk) closing += human.walk;
+      else if (human.state === HumanState.Flee) closing -= 48;
+      else if ((human.state === HumanState.Stand || human.state === HumanState.Aim) && human.outfit === Outfit.Rifleman) closing -= MARINE_BACKPEDAL;
+      let leap = 27 + closing * 0.27 + (human.botSeed - 0.5) * 18;
+      if (human.botSeed < 0.1) leap += human.botSeed < 0.05 ? -38 : 42;
+      if (d > leap) continue;
+      plan.jump = true;
+      plan.hold = 0.34;
+      plan.duck = false;
+      return;
+    }
   }
 
   onShot(hit, dir) {

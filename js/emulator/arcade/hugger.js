@@ -278,6 +278,8 @@ export class HuggerRun extends ArcadeScreen {
     this.flashLife = 0;
     this.card = CARD_TIME;
     this.camera = { x: 0, y: 0 };
+    // a demo's bot starts each stage with its hands off the keys
+    if (this.demo) this.keys.fill(false);
     this.stages[stage].enter();
   }
 
@@ -294,17 +296,35 @@ export class HuggerRun extends ArcadeScreen {
     if (this.flow === Flow.Playing) this.stages[this.stage].onKey(input);
   }
 
+  /** A demo plays itself: the stage on screen gets to think and press keys while it is in play. */
+  demoThink(dt) {
+    if (this.flow === Flow.Playing && !this.paused) this.stages[this.stage].demoThink(Math.min(dt, 0.05));
+  }
+
+  /** For a stage's demo bot: holds or lets go of a key, pressing it through the normal key handling like a player. */
+  bot(key, down) {
+    if (this.held(key) !== down) this.demoKey(key, down);
+  }
+
+  /** For a stage's demo bot: taps a key down and up. */
+  botTap(key) {
+    this.demoKey(key, true);
+    this.demoKey(key, false);
+  }
+
   onFocusLost() {
     this.keys.fill(false);
     this.stages[this.stage].onRelease();
   }
 
   update(dt) {
+    // a demo starts itself straight away rather than waiting on the title
+    if (this.demo && this.flow === Flow.Attract) this.start();
     const real = Math.min(dt, 0.05);
     this.clock += real;
 
     // a run without the keys waits for them instead of running into the next bullet
-    this.paused = (this.flow === Flow.Playing || this.flow === Flow.FadeIn || this.flow === Flow.FadeOut) && !this.focused;
+    this.paused = (this.flow === Flow.Playing || this.flow === Flow.FadeIn || this.flow === Flow.FadeOut) && !this.playing;
     if (this.paused) return;
 
     if (this.slow > 0) this.slow -= real;

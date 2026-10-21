@@ -5,7 +5,7 @@
 // over it dives in and hands on to the vent crawl, and a vent missed comes round again later.
 
 import {
-  CorridorStage, CEILING_Y, FLOOR_Y, PLAYER_X, FLESH, PROP_TINT, OUTLINE, DARK, MID, HIGH, overlap,
+  CorridorStage, HumanState, CEILING_Y, FLOOR_Y, PLAYER_X, FLESH, PROP_TINT, OUTLINE, DARK, MID, HIGH, STAB_REACH_FAR, overlap,
 } from './corridor.js';
 import {
   Outfit, Key, SOUTH, EAST, LARVA, SCREEN_W, ACID, AMBER, ALARM, BLACK, WHITE, DUST, SMOKE, SPARK, TEXT_FONT, SMALL_FONT,
@@ -108,7 +108,7 @@ export class Larva extends CorridorStage {
     if (this.obstacles.length >= 3) return;
     const x = this.bareSlot(this.scroll + SCREEN_W + 40) - (vent ? 0 : AIRLOCK_WIDTH / 2);
     this.obstacles.push({
-      vent, x, heard: false, phase: AirlockPhase.Raised, bottom: CEILING_Y + 6, speed: 0, timer: 0, first: !vent && this.airlocks++ === 0,
+      vent, x, heard: false, phase: AirlockPhase.Raised, bottom: CEILING_Y + 6, speed: 0, timer: 0, first: !vent && this.airlocks++ === 0, seed: Math.random(),
     });
   }
 
@@ -143,6 +143,30 @@ export class Larva extends CorridorStage {
     if (this.nextShot > 0) return;
     this.firePattern();
     this.nextShot = this.fireGap(FIRE_RATE);
+  }
+
+  /**
+   * The demo bot jumps a knifeman's stab once it sees the wind-up, ducks under a dropping airlock, and dives into
+   * most vents (it lets one go by now and then, and once in a while it forgets to duck).
+   */
+  botStage(plan) {
+    for (const human of this.humans) {
+      if (!human.active || human.outfit !== Outfit.Knifeman || human.botDone || human.state !== HumanState.WindUp) continue;
+      if (human.timer < 0.08 + human.botSeed * 0.1 || human.x - this.scroll - PLAYER_X > STAB_REACH_FAR + 40 || !this.grounded) continue;
+      human.botDone = true;
+      if (human.botSeed < 0.05) continue;
+      plan.jump = true;
+      plan.hold = 0.3;
+    }
+    for (const obstacle of this.obstacles) {
+      const x = obstacle.x - this.scroll;
+      if (obstacle.vent) {
+        if (obstacle.seed >= 0.2 && Math.abs(x - PLAYER_X) < 16) plan.duck = true;
+        continue;
+      }
+      if (obstacle.phase >= AirlockPhase.Falling && obstacle.seed >= 0.03 && x - PLAYER_X <= 30 + this.speed * 0.2
+        && x + AIRLOCK_WIDTH > PLAYER_X - this.halfWidth - 4) plan.duck = true;
+    }
   }
 
   /** Something this small goes between the legs. */

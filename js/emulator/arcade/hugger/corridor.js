@@ -39,7 +39,7 @@ const TRACER = 16;
 const ALERT_RANGE = 130;
 const MARINE_AIM = 0.45;
 const MARINE_REACH = 80;
-const MARINE_BACKPEDAL = 40;
+export const MARINE_BACKPEDAL = 40;
 
 // locker traps: the tell starts this many seconds before the player gets there and lasts this long before the door goes
 const MAX_LOCKERS = 2;
@@ -49,10 +49,25 @@ const LOCKER_TELL = 0.55;
 const SHOTGUN_BRACE = 0.4;
 const SHOTGUN_PUMP_TIME = 0.65;
 const SHOTGUN_RANGE = 230;
+const SHOTGUN_CLOSEST = 70;
 const SHOTGUN_PELLETS = 6;
 const SHOTGUN_SPEED = 420;
 const SHOTGUN_LOW = [2, 14];
 const SHOTGUN_HIGH = [17, 52];
+
+// the demo bot's reactions: a reaction time drawn per threat, the odd fumble, and how it times and holds its jumps
+const BOT_REACT_MIN = 0.14;
+const BOT_REACT_SPREAD = 0.16;
+const BOT_FUMBLE = 0.05;
+const BOT_FUMBLE_LATE = 0.2;
+const BOT_LEAD = 0.17;
+const BOT_TAP = 0.07;
+const BOT_LONG_HOLD = 0.24;
+
+/** A threat's reaction time, from its own random draw: a human beat, and now and then a fumble. */
+export function botReaction(seed) {
+  return BOT_REACT_MIN + seed * BOT_REACT_SPREAD + (seed < BOT_FUMBLE ? BOT_FUMBLE_LATE : 0);
+}
 export const KICK_TIME = 0.32;
 export const STRUGGLE = 0.35;
 export const FALL_TIME = 0.5;
@@ -63,7 +78,7 @@ const WIND_UP_TIME = 0.32;
 const STAB_TIME = 0.22;
 const RECOVER_TIME = 0.7;
 const STAB_REACH_NEAR = 8;
-const STAB_REACH_FAR = 64;
+export const STAB_REACH_FAR = 64;
 const STAB_HEIGHT = 34;
 
 /** How long the corridor takes to skid to a stop when the run halts, so the scene stays on screen. */
@@ -496,7 +511,7 @@ export class CorridorStage extends HuggerStage {
 
   /** A tracer or pellet in flight; life is how long it lasts (pellets are short range). */
   addBullet(x, y, vx, vy, life = Infinity) {
-    if (this.bullets.length < MAX_BULLETS) this.bullets.push({ x, y, vx, vy, life });
+    if (this.bullets.length < MAX_BULLETS) this.bullets.push({ x, y, vx, vy, life, age: 0, seed: Math.random() });
   }
 
   addFlash(x, y) {
@@ -514,6 +529,7 @@ export class CorridorStage extends HuggerStage {
       bullet.x += bullet.vx * dt;
       bullet.y += bullet.vy * dt;
       bullet.life -= dt;
+      bullet.age += dt;
       if (bullet.life <= 0) {
         // a pellet at the end of its range
         this.run.emit(this.world(bullet.x, bullet.y), 2, DUST, 0.4, 10, 0.3, 1.5, 0, TAU, -10, { kind: SMOKE });
@@ -614,7 +630,8 @@ export class CorridorStage extends HuggerStage {
 
   /** A shotgunner braces, shows where the blast will go, then fires a spread of pellets and pumps another round. */
   brace(human, x, dt) {
-    if (!this.playing || x < PLAYER_X + 24) {
+    // too close to level the gun at something underfoot
+    if (!this.playing || x < PLAYER_X + SHOTGUN_CLOSEST) {
       human.state = HumanState.Stand;
       human.timer = 0;
       return;
@@ -625,7 +642,8 @@ export class CorridorStage extends HuggerStage {
     const band = human.high ? SHOTGUN_HIGH : SHOTGUN_LOW;
     for (let k = 0; k < SHOTGUN_PELLETS; k++) {
       const ty = FLOOR_Y - (band[0] + (band[1] - band[0]) * (k + Math.random() * 0.6) / SHOTGUN_PELLETS);
-      const dir = normalize(PLAYER_X - muzzle.x, ty - muzzle.y);
+      // aimed through the back of the player, so a band clears (or fills) the whole of its box
+      const dir = normalize(PLAYER_X - this.halfWidth - 4 - muzzle.x, ty - muzzle.y);
       const speed = SHOTGUN_SPEED * (0.92 + Math.random() * 0.16);
       this.addBullet(muzzle.x, muzzle.y, dir.x * speed, dir.y * speed, (muzzle.x - PLAYER_X + 40) / SHOTGUN_SPEED);
     }
@@ -678,6 +696,90 @@ export class CorridorStage extends HuggerStage {
     }
   }
 
+  // Demo bot -------------------------------------------------------------------------------------------------------
+
+  // The demo's player: it reads each threat a human beat after it shows (a reaction time drawn per threat), jumps
+  // low fire, ducks mid fire and high shotgun blasts, and leaves the rest to the stage. Now and then it fumbles a
+  // threat by reacting late, so runs end.
+
+  demoThink(dt) {
+    const run = this.run;
+    if (!this.playing) {
+      run.bot(Key.Up, false);
+      run.bot(Key.Down, false);
+      this.botHold = 0;
+      return;
+    }
+    const plan = { jump: false, hold: BOT_TAP, duck: false };
+    this.botBullets(plan);
+    this.botBrace(plan);
+    this.botStage(plan);
+    if (this.botHold > 0) {
+      this.botHold -= dt;
+      if (this.botHold <= 0) run.bot(Key.Up, false);
+    }
+    if (plan.jump && this.grounded && !(this.botHold > 0)) {
+      run.bot(Key.Down, false);
+      run.bot(Key.Up, true);
+      this.botHold = plan.hold;
+      return;
+    }
+    // ducking in the air is a fast fall, into whatever it was jumping
+    run.bot(Key.Down, plan.duck && this.grounded);
+  }
+
+  /** The stage's own reads for its bot: faces to leap at, knives, airlocks, vents. Sets plan.jump/hold/duck. */
+  botStage(plan) {}
+
+  botBullets(plan) {
+    for (const bullet of this.bullets) {
+      if (bullet.vx >= 0 || bullet.age < botReaction(bullet.seed)) continue;
+      const eta = (bullet.x - PLAYER_X) / -bullet.vx;
+      if (eta < -0.12 || eta > 1) continue;
+      // how high it will be when it reaches the player
+      const height = FLOOR_Y - (bullet.y + bullet.vy * Math.max(0, eta));
+      if (height > this.height + 3) continue;
+      if (height > this.duckHeight + 2) {
+        if (eta < 0.32) plan.duck = true;
+        continue;
+      }
+      const lead = BOT_LEAD + (bullet.seed - 0.5) * 0.08;
+      if (eta <= 0 || eta > lead) continue;
+      plan.jump = true;
+      if (this.lowFireAfter(eta)) plan.hold = Math.max(plan.hold, BOT_LONG_HOLD);
+    }
+  }
+
+  /** Whether more low fire follows close behind, so the jump wants holding (a burst). */
+  lowFireAfter(eta) {
+    return this.bullets.some(b => {
+      if (b.vx >= 0) return false;
+      const next = (b.x - PLAYER_X) / -b.vx;
+      return next > eta + 0.02 && next < eta + 0.45 && FLOOR_Y - b.y <= this.duckHeight + 2;
+    });
+  }
+
+  /**
+   * A braced shotgunner: get down under a high blast and stay down while the pellets go over, or time a held jump over
+   * a low one from when it will reach the player. The red zone is read a beat after he braces, later on a fumble.
+   */
+  botBrace(plan) {
+    for (const h of this.humans) {
+      if (!h.active || !(h.state === HumanState.Brace || (h.state === HumanState.Pump && h.timer < 0.3))) continue;
+      const x = h.x - this.scroll;
+      if (x - PLAYER_X > SHOTGUN_RANGE) continue;
+      if (h.state === HumanState.Brace && h.timer < 0.1 + h.botSeed * 0.15 + (h.botSeed < BOT_FUMBLE ? BOT_FUMBLE_LATE : 0)) continue;
+      if (h.high) {
+        plan.duck = true;
+        continue;
+      }
+      const arrival = (h.state === HumanState.Brace ? SHOTGUN_BRACE - h.timer : -h.timer) + (x - 46 - PLAYER_X) / SHOTGUN_SPEED;
+      if (arrival < -0.05 || arrival > BOT_LEAD + (h.botSeed - 0.5) * 0.06) continue;
+      plan.jump = true;
+      plan.hold = Math.max(plan.hold, BOT_LONG_HOLD);
+    }
+  }
+
   // Humans ---------------------------------------------------------------------------------------------------------
 
   /** A human walks (or stands) in from the right. Null when all are in use. */
@@ -697,6 +799,8 @@ export class CorridorStage extends HuggerStage {
     human.fall = 1;
     human.cooldown = 0;
     human.shots = 0;
+    human.botSeed = Math.random();
+    human.botDone = false;
     human.x = this.scroll + SCREEN_W + 60;
     human.state = standing || outfit === Outfit.Rifleman ? HumanState.Stand : HumanState.Walk;
     human.walk = human.state === HumanState.Walk ? 10 + Math.random() * 24 : 0;

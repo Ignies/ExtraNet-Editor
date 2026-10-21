@@ -56,6 +56,8 @@ const DEMO_GAP = 1.4;
 
 const BANNER_WIDTH = 176;
 
+const BOT_LOOK_AWAY = 0.5;
+
 const MAX_DECALS = 90;
 const MAX_GLASS = 40;
 const MAX_STREAKS = 18;
@@ -211,6 +213,24 @@ function inBand(value, band, tolerance) {
   return value > THIRD - tolerance;
 }
 
+function sectorOf(at) {
+  const column = at.x < -THIRD ? 0 : at.x > THIRD ? 2 : 1;
+  const row = at.y < -THIRD ? 0 : at.y > THIRD ? 2 : 1;
+  return (2 - row) * 3 + column + 1;
+}
+
+/** A key next to this one on the keypad, for a fumbled press. */
+function neighbour(sector) {
+  const column = (sector - 1) % 3;
+  const row = Math.floor((sector - 1) / 3);
+  for (;;) {
+    const c = Math.min(2, Math.max(0, column + Math.floor(Math.random() * 3) - 1));
+    const r = Math.min(2, Math.max(0, row + Math.floor(Math.random() * 3) - 1));
+    const other = r * 3 + c + 1;
+    if (other !== sector) return other;
+  }
+}
+
 function angleGap(a, b) {
   const gap = Math.abs(a - b) % TAU;
   return gap > Math.PI ? TAU - gap : gap;
@@ -292,6 +312,7 @@ export class TrackerReflex extends ArcadeScreen {
     this.female = false;
 
     this.wave = 0;
+    this.lastId = 0;
     this.toSpawn = 0;
     this.spawnTimer = 0;
     this.lastSpawnAngle = 0;
@@ -338,7 +359,7 @@ export class TrackerReflex extends ArcadeScreen {
   }
 
   /** Xenos can reach you and you can shoot. */
-  get playing() {
+  get inPlay() {
     return this.phase === Phase.Intro || this.phase === Phase.Wave || this.phase === Phase.Clear;
   }
 
@@ -375,6 +396,7 @@ export class TrackerReflex extends ArcadeScreen {
     this.pingPeriod = PING_IDLE;
     this.range = -1;
 
+    this.resetBot();
     this.sound(POWER_ON, -2);
     this.sound(LOAD);
     this.nextWave();
@@ -384,7 +406,7 @@ export class TrackerReflex extends ArcadeScreen {
 
   update(dt) {
     // a game left without the keys waits for them
-    this.paused = this.running && !this.focused;
+    this.paused = this.running && !this.playing;
     if (this.paused) return;
 
     dt = Math.min(dt, 0.1);
@@ -393,6 +415,9 @@ export class TrackerReflex extends ArcadeScreen {
       this.freeze -= dt;
       return;
     }
+
+    // a demo plays from its very first frame, not from the title screen
+    if (this.demo && this.phase === Phase.Attract) this.start();
 
     this.time += dt;
     this.updatePhase(dt);
@@ -489,6 +514,7 @@ export class TrackerReflex extends ArcadeScreen {
           : Kind.Drone;
     const pace = kind === Kind.Runner ? 1.75 : kind === Kind.Lurker ? 0.9 : kind === Kind.Brute ? 0.6 : 1;
     this.xenos.push({
+      id: ++this.lastId,
       kind,
       angle,
       distance: SPAWN_RADIUS,
@@ -498,6 +524,9 @@ export class TrackerReflex extends ArcadeScreen {
       // where the last ping (or muzzle flash) saw it: the display only knows that
       shown: { x: 0, y: 0 },
       shownAge: 99,
+      // how many times the display has shown it, and the last showing the demo's bot acted on
+      reveal: 0,
+      handled: 0,
       pinged: false,
       lunging: false,
       hurt: 0,
@@ -521,13 +550,13 @@ export class TrackerReflex extends ArcadeScreen {
 
       // the lunge: once in the middle cell it is coming for you, and only 5 can stop it
       const lunging = inSector(TrackerReflex.at(xeno), 5, 0);
-      if (lunging && !xeno.lunging && this.playing) this.soundAny(CHARGES, -4);
+      if (lunging && !xeno.lunging && this.inPlay) this.soundAny(CHARGES, -4);
       xeno.lunging = lunging;
 
-      this.danger ||= xeno.lunging && this.playing;
+      this.danger ||= xeno.lunging && this.inPlay;
       if (xeno.distance <= MAUL_RADIUS) {
         xeno.distance = MAUL_RADIUS;
-        if (!this.playing) {
+        if (!this.inPlay) {
           this.xenos.splice(i, 1);
           continue;
         }
@@ -548,6 +577,7 @@ export class TrackerReflex extends ArcadeScreen {
       xeno.pinged = true;
       xeno.shown = TrackerReflex.at(xeno);
       xeno.shownAge = 0;
+      xeno.reveal++;
     }
     if (this.pingAge >= this.pingPeriod) this.ping();
   }
@@ -564,7 +594,7 @@ export class TrackerReflex extends ArcadeScreen {
     if (closest > 1) {
       this.pingPeriod = PING_IDLE;
       this.range = -1;
-      if (this.playing) this.sound(PING_EMPTY, -7);
+      if (this.inPlay) this.sound(PING_EMPTY, -7);
       return;
     }
 
@@ -573,7 +603,7 @@ export class TrackerReflex extends ArcadeScreen {
     this.range = Math.round(closest * RANGE_METRES);
 
     // fast pings overlap their tails, so they come down a little to stay under the gunfire
-    if (this.playing) this.sound(PING_CONTACT, -5 + 3 * near - (near > 0.6 ? 2 : 0), 1 + 0.3 * near);
+    if (this.inPlay) this.sound(PING_CONTACT, -5 + 3 * near - (near > 0.6 ? 2 : 0), 1 + 0.3 * near);
   }
 
   updateGun(dt) {
@@ -650,13 +680,13 @@ export class TrackerReflex extends ArcadeScreen {
   }
 
   startReload() {
-    if (!this.playing || this.reload > 0 || this.ammo === MAGAZINE) return;
+    if (!this.inPlay || this.reload > 0 || this.ammo === MAGAZINE) return;
     this.reload = RELOAD_TIME;
     this.sound(UNLOAD);
   }
 
   fire(sector) {
-    if (!this.playing || this.cooldown > 0) return;
+    if (!this.inPlay || this.cooldown > 0) return;
 
     if (this.reload > 0 || this.ammo === 0) {
       this.sound(DRY_FIRE);
@@ -679,6 +709,7 @@ export class TrackerReflex extends ArcadeScreen {
       if (xeno.distance > 1 || !inSector(at, sector, TOLERANCE)) continue;
       xeno.shown = at;
       xeno.shownAge = 0;
+      xeno.reveal++;
       if (target < 0 || xeno.distance < this.xenos[target].distance) target = i;
     }
 
@@ -721,6 +752,7 @@ export class TrackerReflex extends ArcadeScreen {
       xeno.distance = Math.min(1, xeno.distance + 0.08);
       xeno.shown = TrackerReflex.at(xeno);
       xeno.shownAge = 0;
+      xeno.reveal++;
       this.spray(at, outward, 0.9, 8, 30, 70, ACID, false, 0.4);
       this.addDecal(this.acid, at.x, at.y, 18 + Math.random() * 8, ACID_STAIN, MAX_DECALS);
       this.soundAny(FLESH, -3);
@@ -807,6 +839,79 @@ export class TrackerReflex extends ArcadeScreen {
     this.freeze = 0.2;
     this.reload = 0;
     this.banner = null;
+  }
+
+  // Demo ---------------------------------------------------------------------------------------------------------
+  // The demo's bot: a decent player, not a perfect one. It only sees what the display shows, reacts after a human
+  // delay, sometimes hits the key next to the right one, sometimes reloads late, and now and then looks away (at the
+  // stream chat) for a moment. The waves outpace it after a few.
+
+  /** A new run is a new mood: how quick, how sloppy and how patient the bot is this time. */
+  resetBot() {
+    this.botWait = 0;
+    this.botPad = 0;
+    this.botLapse = 0;
+    this.botNextLapse = 5 + Math.random() * 10;
+    this.botReaction = 0.26 + Math.random() * 0.12;
+    this.botWrong = 0.06 + Math.random() * 0.06;
+    this.botLate = 0.25 + Math.random() * 0.2;
+    this.botEngage = 0.7 + Math.random() * 0.2;
+  }
+
+  demoThink(frameTime) {
+    if (!this.inPlay || this.freeze > 0) return;
+    const dt = Math.min(frameTime, 0.1);
+    this.botLapse -= dt;
+    this.botNextLapse -= dt;
+    if (this.botNextLapse <= 0) {
+      this.botLapse = BOT_LOOK_AWAY + Math.random();
+      this.botNextLapse = 7 + Math.random() * 12;
+    }
+
+    // a key it has decided on goes down once its reaction time is up
+    if (this.botWait > 0) {
+      this.botWait -= dt;
+      if (this.botWait <= 0) this.botPress();
+      return;
+    }
+    if (this.botLapse > 0 || this.reload > 0) return;
+
+    let visible = 0;
+    let threat = false;
+    let best = null;
+    let bestScore = Infinity;
+    for (const xeno of this.xenos) {
+      if (xeno.shownAge >= BLIP_FADE * 0.9 || xeno.reveal === 0) continue;
+      visible++;
+      const distance = Math.hypot(xeno.shown.x, xeno.shown.y);
+      threat ||= distance < 0.85;
+      if (xeno.reveal <= xeno.handled || distance > this.botEngage) continue;
+      // whatever is in the middle comes first
+      const score = inSector(xeno.shown, 5, 0) ? distance - 1 : distance;
+      if (score >= bestScore) continue;
+      best = xeno;
+      bestScore = score;
+    }
+
+    if (this.ammo === 0 || (this.ammo <= 3 && !threat) || (this.phase === Phase.Clear && this.ammo < Math.floor(MAGAZINE * 6 / 10))) {
+      this.botPad = 0;
+      this.botWait = this.ammo === 0 && Math.random() < this.botLate ? 0.9 + Math.random() * 0.8 : 0.25 + Math.random() * 0.35;
+      return;
+    }
+    if (!best) return;
+    best.handled = best.reveal;
+
+    // the more there are on the display, the slower and sloppier it gets
+    let sector = sectorOf(best.shown);
+    if (Math.random() < this.botWrong + 0.03 * visible) sector = neighbour(sector);
+    this.botPad = sector;
+    this.botWait = (this.botReaction * (0.75 + 0.5 * Math.random()) + 0.05 * visible) * (sector === 5 ? 0.75 : 1);
+  }
+
+  botPress() {
+    const key = this.botPad === 0 ? Key.Action : Key.None;
+    this.demoKey(key, true, this.botPad);
+    this.demoKey(key, false, this.botPad);
   }
 
   // Effects ------------------------------------------------------------------------------------------------------
@@ -1209,7 +1314,7 @@ export class TrackerReflex extends ArcadeScreen {
   drawDanger(ctx) {
     let alpha = 0;
     if (this.danger) alpha = 0.18 + 0.14 * Math.sin(this.time * 18);
-    else if (this.health === 1 && this.playing) alpha = 0.08 * Math.max(0, Math.sin(this.time * 5));
+    else if (this.health === 1 && this.inPlay) alpha = 0.08 * Math.max(0, Math.sin(this.time * 5));
     if (alpha <= 0) return;
     for (let layer = 1; layer <= 2; layer++) {
       const edge = 6 * layer;

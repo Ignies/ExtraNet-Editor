@@ -54,6 +54,9 @@ function codeOf(key) {
   return key;
 }
 
+/** How long a demo waits on its game over screen before it plays again. */
+const DEMO_RESTART_MS = 3000;
+
 export class ArcadeScreen {
   /** colors: { green, dim, greenRgb } in the page's phosphor. */
   constructor(colors) {
@@ -63,6 +66,8 @@ export class ArcadeScreen {
     this.status = '';
     /** Called with the score when a game ends. */
     this.onGameOver = null;
+    this.demoValue = false;
+    this.overAt = 0;
 
     const canvas = document.createElement('canvas');
     canvas.className = 'emu-arcade-screen';
@@ -73,7 +78,7 @@ export class ArcadeScreen {
     canvas.height = Math.round(SCREEN_H * this.dpr);
     this.ctx = canvas.getContext('2d');
 
-    canvas.addEventListener('pointerdown', () => canvas.focus());
+    canvas.addEventListener('pointerdown', () => { if (!this.demoValue) canvas.focus(); });
     canvas.addEventListener('blur', () => this.onFocusLost());
     canvas.addEventListener('keydown', event => this.#key(event, true));
     canvas.addEventListener('keyup', event => this.#key(event, false));
@@ -85,6 +90,34 @@ export class ArcadeScreen {
     return document.activeElement === this.canvas;
   }
 
+  /**
+   * Plays the game by itself, for a "Let's Play" tape or an attract screen: each game's bot presses its keys through
+   * demoKey(), the game starts again a moment after it ends, it never takes the keys and never sends a score.
+   */
+  get demo() {
+    return this.demoValue;
+  }
+
+  set demo(value) {
+    this.demoValue = value;
+    this.canvas.tabIndex = value ? -1 : 0;
+    this.canvas.style.pointerEvents = value ? 'none' : '';
+    if (value) this.release();
+  }
+
+  /** Whether the game should run rather than pause: it has the keys, or it plays itself. */
+  get playing() {
+    return this.demoValue || this.focused;
+  }
+
+  /** Called every frame while a demo plays, before the game's own update: the bot looks and presses keys here. */
+  demoThink(dt) {}
+
+  /** The demo's bot presses or lets go of a key, exactly as a player would. */
+  demoKey(key, down, pad = 0) {
+    if (this.demoValue && this.running) this.onKey({ key, pad, down, repeat: false });
+  }
+
   /** How to play, shown above the screen. */
   get help() {
     return '';
@@ -94,13 +127,14 @@ export class ArcadeScreen {
     this.score = 0;
     this.running = true;
     this.status = '';
-    this.canvas.focus();
+    if (!this.demoValue) this.canvas.focus();
   }
 
   gameOver() {
     this.running = false;
     this.status = TEXT.over(this.score);
-    if (this.onGameOver) this.onGameOver(this.score);
+    this.overAt = performance.now();
+    if (!this.demoValue && this.onGameOver) this.onGameOver(this.score);
   }
 
   setStatus(status) {
@@ -166,6 +200,11 @@ export class ArcadeScreen {
         // clamped so a screen coming back on show does not take one giant step
         const dt = last ? Math.min((now - last) / 1000, 0.25) : 0;
         last = now;
+        if (this.demoValue) {
+          // a demo waits on its game over screen for a moment, then plays again
+          if (!this.running && now - this.overAt > DEMO_RESTART_MS) this.start();
+          else if (this.running) this.demoThink(dt);
+        }
         this.update(dt);
         this.draw();
       }
@@ -191,7 +230,7 @@ export class ArcadeScreen {
     ctx.textBaseline = 'top';
     ctx.textAlign = 'left';
     ctx.fillText(this.status.length > 0 ? this.status : TEXT.score(this.score), 6, 4);
-    if (this.focused) return;
+    if (this.demoValue || this.focused) return;
 
     // without the keys the game cannot hear you, so say how to give them back
     const prompt = this.running ? TEXT.resume : TEXT.focus;
