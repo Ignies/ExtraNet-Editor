@@ -49,6 +49,8 @@ EDITOR_NEEDS = [
     '/Fonts/Cozette/CozetteVectorBold.ttf',
     '/Textures/CMU14/ColonyEconomy/atm_reader.rsi', '/Textures/CMU14/ColonyEconomy/atm_leds.rsi',
     '/Textures/_RMC14/Objects/CMIDs/id.rsi',
+    '/Textures/CMU14/Interface/VerbIcons/relay_bug.svg.192dpi.png',
+    '/Textures/CMU14/Interface/VerbIcons/relay_format.svg.192dpi.png',
 ]
 # Resources the emulator's games use, bundled even when master has them, so the games play offline.
 GAME_NEEDS = ['/Textures/Fluids/splatter.rsi']

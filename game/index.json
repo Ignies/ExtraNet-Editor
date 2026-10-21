@@ -1,5 +1,5 @@
 {
-"generated": "2026-10-21T14:19:51Z",
+"generated": "2026-10-21T14:28:17Z",
 "commit": "fe7664a5bf",
 "files": [
 "Content.CMU/Resources/Audio/CMU14/Medical/attributions.yml",
@@ -494,6 +494,8 @@
 "Content.CMU/Resources/Textures/CMU14/Decals/weyufloorflag.rsi/wy_left.png",
 "Content.CMU/Resources/Textures/CMU14/Decals/weyufloorflag.rsi/wy_mid.png",
 "Content.CMU/Resources/Textures/CMU14/Decals/weyufloorflag.rsi/wy_right.png",
+"Content.CMU/Resources/Textures/CMU14/Interface/VerbIcons/relay_bug.svg.192dpi.png",
+"Content.CMU/Resources/Textures/CMU14/Interface/VerbIcons/relay_format.svg.192dpi.png",
 "Content.CMU/Resources/Textures/CMU14/Items/DeskFlags/uadeskflag.rsi/meta.json",
 "Content.CMU/Resources/Textures/CMU14/Items/DeskFlags/uadeskflag.rsi/uaflag.png",
 "Content.CMU/Resources/Textures/CMU14/Items/DeskFlags/uscmdeskflag.rsi/meta.json",
