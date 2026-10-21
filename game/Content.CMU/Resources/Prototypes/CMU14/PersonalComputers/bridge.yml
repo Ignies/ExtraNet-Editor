@@ -1,6 +1,8 @@
 # The console bridge: which consoles on colony maps run the PC OS, with their own screen as a desktop program.
-# A console counts if its prototype is, or inherits from, anything under include, and nothing under exclude.
-# Consoles made from these parents are bridged without any change to their prototypes.
+# Every computer counts: anything anchored that opens an interface and whose prototype or a parent is named like a
+# computer (keywords), or is, or inherits from, anything under include; except anything excluded by name or keyword.
+# So a new console, or monitor, or terminal is bridged with no change to its prototype. A computer that is already a PC
+# opened by a verb, like the Marshals' camera monitors, gets its own window as a program too.
 # Admins switch the whole bridge with the cmu.pc.bridge cvar.
 
 - type: cmuComputerBridge
@@ -13,13 +15,20 @@
   - CMUResearchDataTerminal
   - BaseComputer                 # upstream SS14 computers placed on colonies
   - VehicleSupplyConsole
+  keywords:
+  - Console
+  - Computer
+  - Terminal
+  - Monitor
+  # Dropship consoles fly the dropship: they stay as they are.
+  excludeKeywords:
+  - Dropship
   exclude:
-  # Combat consoles stay as they are.
-  - RMCOverwatchConsole
-  - RMCGroundsideOperationsConsole
+  # A map table and a television are not computers, and medical machines keep their own screens.
   - RMCTacticalMapTable
-  - CMComputerDropship
   - ComputerTelevision
+  - CMUAutodocConsole
+  - CMUBodyScannerConsole
   os:
     AU14CorporateConsoleBase: CMUOsWeyland
     AU14CorporateASRSConsole: CMUOsWeyland
@@ -27,6 +36,7 @@
     CMUMonitorCameraColonyWEYU: CMUOsWeyland
     CMUMonitorCameraColonyWEYUSpy: CMUOsWeyland
     RMCAIConsoleHERMES: CMUOsWeyland
+    RMCOverwatchConsoleWeYa: CMUOsWeyland
   # Colony security's own consoles also reach its network: the terminal map and the unauthorized use log.
   networks:
     AUDepartmentConsoleSecurity: [CMUNetSecurity]

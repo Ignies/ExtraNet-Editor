@@ -1056,6 +1056,41 @@ cmu-pc-system-dark = {"  "}OFFLINE: tuned off the colony network
 cmu-mail-dark = Offline. This terminal is tuned off the colony network.
 cmu-cmb-trace-dark = TRACE LOST: the terminal dropped off the colony network
 
+## Insurgent relay bugs
+
+cmu-pc-tool-bug = Bug terminal
+cmu-pc-tool-format = Format terminal
+cmu-relay-already = This terminal is already carrying a relay.
+cmu-relay-not-clean = This terminal reaches no colony network to route through.
+cmu-relay-planted = The relay is in. This terminal's traffic will carry the insurgents'.
+cmu-relay-format-no-skill = You don't know how to format this terminal.
+cmu-relay-format-nothing = Nothing to format: this terminal is clean.
+cmu-relay-format-done = The terminal wipes and reboots. The screen is clean again.
+cmu-relay-format-log = Terminal formatted.
+cmu-relay-heading = RELAYS
+cmu-relay-intro = Bugged terminals you can route this terminal's deep traffic through. Lookups then land on the relay.
+cmu-relay-refresh = Refresh relays
+cmu-relay-none = No relays. Bug a public terminal with an access tuner.
+cmu-relay-nobody = no one logged in
+cmu-relay-online = online
+cmu-relay-offline = offline
+cmu-relay-row = Terminal #{$id} — {$location} — {$who} ({$status})
+cmu-relay-route = Route
+cmu-relay-routing = Routing
+cmu-relay-plant = Plant
+cmu-relay-plant-tooltip = Drop an incriminating file onto this terminal, framing whoever uses it.
+cmu-relay-plant-done = The file is on terminal #{$id}. Sooner or later, someone finds it.
+cmu-relay-plant-log = Downloaded {$file}
+cmu-relay-plant-author = guest
+cmu-relay-plant-manifesto-name = MANIFESTO.TXT
+cmu-relay-plant-manifesto-body = We are the Colonial Liberation Front. The Company bleeds this rock dry and calls it order. Every hand that works for them digs its own grave. Rise, or be buried.
+cmu-relay-plant-order-name = ORDER-7714.TXT
+cmu-relay-plant-order-body = DEEP MARKET // ORDER CONFIRMED: 2x breaching charge, 1x detonator kit, 1x forged Marshal ID. Drop at the cache. Paid in full. Do not reply.
+cmu-relay-plant-contacts-name = CONTACTS.TXT
+cmu-relay-plant-contacts-body = Cell contacts, keep off the network. Sapper runs the traps. Quartermaster holds the cache. Dead drop behind the lockers, east sublevel. Burn after reading.
+cmu-relay-plant-plan-name = PLAN.TXT
+cmu-relay-plant-plan-body = Tower goes first. No tower, no Marshals, no cameras. Hit it at shift change, then take the armoury while they are blind. Signal is three taps.
+
 cmu-net-network-security = Colony Security Network
 cmu-net-site-colony-security = Colony Security
 cmu-net-tab-security-log = Unauthorized Use
@@ -1172,3 +1207,71 @@ cmu-pc-guest-name = Guest
 cmu-pc-log-guest = Guest session started.
 cmu-pc-log-guest-out = Guest session ended.
 cmu-pc-examine-guest = Someone is browsing it as a guest.
+
+## SpaceGPT, for ghosts
+
+cmu-spacegpt-ghost-alert = SpaceGPT has a question for you
+cmu-spacegpt-ghost-alert-many = SpaceGPT has { $count } questions for you
+cmu-spacegpt-ghost-answer = ANSWER
+cmu-spacegpt-ghost-ignore = IGNORE
+cmu-spacegpt-ghost-follow = FOLLOW
+
+## SpaceGPT, for admins
+
+cmu-spacegpt-admin-asked = [bold]SpaceGPT:[/bold] { $name } asked on terminal #{ $terminal }: "{ $question }" { $links }
+cmu-spacegpt-admin-held = [bold]SpaceGPT:[/bold] question { $id } held by { $admin }. { $links }
+cmu-spacegpt-admin-released = [bold]SpaceGPT:[/bold] question { $id } released to the ghosts by { $admin }.
+cmu-spacegpt-admin-denied = [bold]SpaceGPT:[/bold] question { $id } denied by { $admin }; the safeties answered.
+cmu-spacegpt-admin-options = Custom options
+cmu-spacegpt-admin-follow = Follow
+cmu-spacegpt-admin-hold = Hold
+cmu-spacegpt-admin-release = Release
+cmu-spacegpt-admin-deny = Deny question
+cmu-spacegpt-admin-options-title = SpaceGPT question { $id }: answers
+cmu-spacegpt-admin-options-asked = { $name } asked:
+cmu-spacegpt-admin-options-blank = (empty: left out)
+cmu-spacegpt-admin-options-save = Save and send to the ghosts
+cmu-spacegpt-denied = I'm sorry, but I can't help with that. This request was flagged by SpaceGPT safety systems. Please rephrase your question or contact your colony administrator.
+cmu-spacegpt-safeties = Answered by SpaceGPT safety systems.
+cmu-spacegpt-stall-1 = Gathering intelligence...
+cmu-spacegpt-stall-2 = Browsing the ExtraNet...
+cmu-spacegpt-stall-3 = Turning off safeties...
+cmu-spacegpt-stall-4 = Consulting the colony archives...
+cmu-spacegpt-stall-5 = Asking a Working Joe...
+cmu-spacegpt-stall-6 = Cross-referencing Company records...
+cmu-spacegpt-stall-7 = Rerouting through Gateway...
+cmu-spacegpt-stall-8 = Thinking very hard...
+cmu-cmd-spacegpt-desc = Holds, releases, denies or rewrites the answers to a SpaceGPT question.
+cmu-cmd-spacegpt-help = Usage: spacegpt <hold|release|deny|options> <question>
+cmu-cmd-spacegpt-gone = There is no SpaceGPT question { $id } waiting, or it is already in that state.
+
+## Printing
+
+cmu-notes-print = Print
+cmu-print-name = printout ({ $name })
+cmu-print-signed = Printed for { $author }
+cmu-print-none = This machine has no printer.
+cmu-print-busy = The printer is still busy with the last sheet.
+
+## WeyBay receipts
+
+cmu-shop-receipt = RECEIPT
+cmu-shop-receipt-tooltip = Save the receipt to this terminal's Files.
+cmu-shop-receipt-print = PRINT
+cmu-shop-receipt-print-tooltip = Print a copy of the receipt.
+cmu-shop-receipt-name = WEYBAY-RECEIPT-{ $id }
+cmu-shop-receipt-saved = Receipt saved to Files as { $name }.TXT.
+cmu-shop-receipt-body =
+    WEYBAY - SALES RECEIPT
+    Order no. { $id }
+    ----------------------------------
+    { $item }
+    Total paid: ${ $price }
+    ----------------------------------
+    Customer: { $buyer }
+    Card: { $card }
+    Ordered at { $time } (shift time)
+
+    Thank you for shopping with WeyBay.
+    Delivered by the Company freight run.
+    No refunds once the crate is opened.
