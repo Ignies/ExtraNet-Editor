@@ -1,8 +1,9 @@
 // The emulator: the in-game personal computer in the browser, at #emulator. The machine is drawn from the game's
 // art; its power key boots the chosen OS, its card reader logs in, and the desktop browses every site of the
-// library with the live widgets running in the page.
+// library with the live widgets running in the page. The bar picks the computer (a desk, the laptop, or a bridged
+// console whose own window is a program on it), its OS and its casing; a desk prints onto paper from its printer.
 
-import { el } from '../util.js';
+import { el, hash } from '../util.js';
 import { icon } from '../icons.js';
 import { fontStack } from '../fonts.js';
 import { errorBox } from '../render.js';
@@ -13,16 +14,33 @@ import { Machine, CHROME } from './machine.js';
 import { bootSplash } from './boot.js';
 import { Desktop, loginScreen } from './desktop.js';
 import * as sound from './pcsound.js';
+import { MACHINES, CASINGS, machineById, casingOf } from './computers.js';
+import { Printer, say as printSay } from './printer.js';
+import { consolePrograms } from './consoles.js';
+import { seatFor } from './sim/colony.js';
 
 const SETTINGS = 'extranet-emulator-settings';
 
+const DEFAULTS = { os: 'CMUOsSeegson', colony: 'StableGarrison', deep: true, name: 'Alex Reyes', job: 'Colonist', machine: 'RMCPersonalDesktop', casing: '' };
+
 function loadSettings() {
   try {
-    return { os: 'CMUOsSeegson', colony: 'StableGarrison', deep: true, name: 'Alex Reyes', job: 'Colonist', ...JSON.parse(localStorage.getItem(SETTINGS) || '{}') };
+    return { ...DEFAULTS, ...JSON.parse(localStorage.getItem(SETTINGS) || '{}') };
   } catch {
-    return { os: 'CMUOsSeegson', colony: 'StableGarrison', deep: true, name: 'Alex Reyes', job: 'Colonist' };
+    return { ...DEFAULTS };
   }
 }
+
+/** The card's bank account (IdCardComponent.AccountNumber): six digits, the same for the same name. */
+function accountOf(name) {
+  return 100000 + (hash(name || 'card') % 900000);
+}
+
+/** CMUNoteLimits: a terminal's Files hold this many notes, names cut to this length. */
+const NOTE_COUNT = 12;
+const NOTE_NAME = 32;
+const NOTE_TEXT = 2000;
+const NOTES_KEY = 'extranet-emulator-notes';
 
 function saveSettings(settings) {
   try {
@@ -57,6 +75,9 @@ let kept = null;
 
 /** A machine switched on this recently boots again for whoever opens it (CMUPersonalComputerWindow.JustSwitchedOn). */
 const JUST_SWITCHED_ON = 2;
+
+/** Room under the machine for the paper its printer puts on the desk. */
+const DESK_ROOM = 40;
 
 /**
  * Opens the emulator over the editor. onClose: called when its back button is pressed. userSites(): the user's
@@ -94,7 +115,9 @@ class Emulator {
     this.guest = false;
     this.terminal = terminalNumber();
     this.status = el('span.emu-bar-status', { text: 'Reading the ExtraNet…' });
+    this.machineSelect = el('select.input.emu-bar-select', { title: 'The computer: a desk, the laptop, or a colony console running the OS with its own window as a program' });
     this.osSelect = el('select.input.emu-bar-select', { title: 'Operating system' });
+    this.casingSelect = el('select.input.emu-bar-select', { title: "The casing: the computer's own, else its OS's (CMUPersonalComputerComponent.Casing); or any casing the game has" });
     this.colonySelect = el('select.input.emu-bar-select', { title: 'Colony: fills {colony} and picks colony versions of pages' });
     this.deepToggle = el('input', { type: 'checkbox', checked: this.settings.deep });
     this.nameInput = el('input.input.emu-bar-name', { value: this.settings.name, title: 'The name on the ID card', maxLength: 30 });
@@ -103,7 +126,11 @@ class Emulator {
       onReader: () => this.reader(),
       tips: { power: 'Power', reader: 'Card reader: insert or take out an ID card' },
     });
-    this.stage = el('div.emu-stage', {}, this.machine.root);
+    // where printed sheets land, in front of the printer, and where windows of their own open (paper, consoles)
+    this.desk = el('div.emu-desk');
+    this.machine.root.append(this.desk);
+    this.overlay = el('div.emu-overlay');
+    this.stage = el('div.emu-stage', {}, this.machine.root, this.overlay);
     const back = el('button.btn.btn-small', { type: 'button', onclick: () => this.onClose && this.onClose() }, icon('undo'), ' Editor');
     this.muteButton = el('button.btn.btn-small.emu-mute', { type: 'button', dataset: { tip: 'Mute the computer\'s sounds' }, onclick: () => {
       sound.setMuted(!sound.isMuted());
@@ -120,7 +147,9 @@ class Emulator {
     this.bar = el('header.emu-bar', {},
       back,
       el('span.emu-bar-title', { text: 'Emulator' }),
+      el('label.emu-bar-field', {}, el('span', { text: 'Computer' }), this.machineSelect),
       el('label.emu-bar-field', {}, el('span', { text: 'OS' }), this.osSelect),
+      el('label.emu-bar-field', {}, el('span', { text: 'Casing' }), this.casingSelect),
       el('label.emu-bar-field', {}, el('span', { text: 'Colony' }), this.colonySelect),
       el('label.emu-bar-field', {}, el('span', { text: 'Card' }), this.nameInput),
       el('label.emu-bar-check', { title: 'A computer hacked with an access tuner: The deeps.exi on the desktop, and a corrupted boot' }, this.deepToggle, el('span', { text: 'Deep web access' })),
@@ -130,7 +159,13 @@ class Emulator {
     this.root = el('div.emu', {}, this.bar, this.stage);
     this.onResize = () => this.fit();
     window.addEventListener('resize', this.onResize);
-    for (const control of [this.osSelect, this.colonySelect, this.deepToggle]) control.addEventListener('change', () => this.reconfigure());
+    for (const control of [this.osSelect, this.casingSelect, this.colonySelect, this.deepToggle]) control.addEventListener('change', () => this.reconfigure());
+    // a computer comes with its own OS, where it has one (the bar's OS can still be changed after)
+    this.machineSelect.addEventListener('change', () => {
+      const machine = machineById(this.machineSelect.value);
+      if (machine.os) this.osSelect.value = machine.os;
+      this.reconfigure();
+    });
     // Keys typed into the computer's fields and clicks on its controls make its sounds (OnKeyTyped, OnClicked).
     this.machine.screen.addEventListener('keydown', e => {
       if (!e.target.matches || !e.target.matches('input, textarea')) return;
@@ -175,11 +210,49 @@ class Emulator {
   shopContext() {
     return {
       strings: this.data.strings,
-      session: () => (this.state === 'on' && this.cardIn ? { buyer: this.settings.name } : null),
+      session: () => (this.state === 'on' && this.cardIn ? { buyer: this.settings.name, account: accountOf(this.settings.name) } : null),
       mail: mail => this.desktop && this.desktop.deliver(mail),
       popup: (text, caution) => this.popup(text, caution),
       time: () => (this.desktop ? this.desktop.clockText() : ''),
+      // ICMUComputerHost.CanPrint, and the receipt going to Files or the printer (CMUShopSystem.OnReceipt)
+      canPrint: () => this.printer.canPrint,
+      print: (name, text, author) => this.printer.print(name, text, author),
+      saveNote: (name, text, author) => this.addNote(name, text, author),
     };
+  }
+
+  /**
+   * CMUPersonalComputerSystem.AddNote: into the terminal's Files, replacing a note of the same name, the oldest
+   * going when it is full.
+   */
+  addNote(name, text, author) {
+    let notes = [];
+    try {
+      notes = JSON.parse(localStorage.getItem(NOTES_KEY) || '[]');
+    } catch {
+      // a fresh list
+    }
+    const cut = name.slice(0, NOTE_NAME);
+    notes = notes.filter(n => n.name.toLowerCase() !== cut.toLowerCase());
+    if (notes.length >= NOTE_COUNT) notes.shift();
+    notes.push({ id: Date.now(), name: cut, text: text.slice(0, NOTE_TEXT), author });
+    try {
+      localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+    } catch {
+      // this visit only
+    }
+    if (this.desktop) this.desktop.refreshFiles();
+  }
+
+  /** CMUComputerPrintSystem.OnPrintNote: the note's sheet, NAME.TXT; quietly nothing while the printer is busy. */
+  printNote(note) {
+    const name = /\.txt$/i.test(note.name) ? note.name : `${note.name}.TXT`;
+    this.printer.print(name, note.text, note.author || '');
+  }
+
+  /** The computer picked in the bar (computers.js). */
+  get computer() {
+    return machineById(this.settings.machine);
   }
 
   /** A popup over the screen, as the game pops one over the computer for whoever uses it. */
@@ -211,6 +284,12 @@ class Emulator {
       return;
     }
     for (const colony of this.data.colonies) this.colonySelect.append(el('option', { value: colony.id, text: colony.name }));
+    const group = (label, list) => el('optgroup', { label }, ...list.map(m => el('option', { value: m.id, text: m.suffix ? `${m.name} (${m.suffix})` : m.name, title: m.note || m.id })));
+    this.machineSelect.append(group('Desks', MACHINES.filter(m => m.group === 'desk')), group('Consoles running the OS', MACHINES.filter(m => m.group === 'console')));
+    this.machineSelect.value = this.computer.id;
+    this.casingSelect.append(el('option', { value: '', text: 'As built' }), ...CASINGS.map(([id, label]) => el('option', { value: id, text: label })));
+    this.casingSelect.value = this.settings.casing || '';
+    this.printer = new Printer({ machine: this.machine, desk: this.desk, overlay: this.overlay, strings: this.data.strings });
     this.fillOsNames();
     this.osSelect.value = this.settings.os;
     this.colonySelect.value = this.settings.colony;
@@ -219,11 +298,13 @@ class Emulator {
     if (!this.osSelect.value) this.osSelect.value = this.data.systems[0].id;
     if (!this.colonySelect.value) this.colonySelect.value = 'StableGarrison';
     await this.configure();
+    import('./sim/dock.js').then(m => m.simDock(this)).catch(() => {});
     this.fit();
     this.status.textContent = this.idleStatus();
     const left = kept;
     kept = null;
-    if (left && left.os === this.settings.os && left.colony === this.settings.colony && left.deep === this.settings.deep) this.resume(left);
+    if (left && left.os === this.settings.os && left.colony === this.settings.colony && left.deep === this.settings.deep
+      && left.machine === this.settings.machine && left.casing === this.settings.casing) this.resume(left);
   }
 
   /** The terminal's state for whoever comes to it next: see kept. */
@@ -232,6 +313,8 @@ class Emulator {
       os: this.settings.os,
       colony: this.settings.colony,
       deep: this.settings.deep,
+      machine: this.settings.machine,
+      casing: this.settings.casing,
       on: this.state !== 'off',
       poweredAt: this.poweredAt,
       cardIn: this.cardIn,
@@ -281,7 +364,14 @@ class Emulator {
   fillOsNames() {
     const colony = this.data.colonies.find(c => c.id === this.colonySelect.value) || this.data.colonies[0];
     const value = this.osSelect.value;
-    this.osSelect.replaceChildren(...this.data.systems.map(os => el('option', { value: os.id, text: makeTheme(os, this.data.strings, colony).name })));
+    const option = os => el('option', { value: os.id, text: makeTheme(os, this.data.strings, colony).name });
+    this.osSelect.replaceChildren(
+      el('optgroup', { label: "The game's" }, ...this.data.systems.map(option)),
+      el('optgroup', { label: 'Shell previews (no OS uses them yet)' }, ...this.data.previews.map(os => {
+        const node = option(os);
+        node.textContent = `${node.textContent} - ${os.shell}`;
+        return node;
+      })));
     if (value) this.osSelect.value = value;
   }
 
@@ -290,13 +380,36 @@ class Emulator {
     this.settings.os = this.osSelect.value;
     this.settings.colony = this.colonySelect.value;
     this.settings.deep = this.deepToggle.checked;
+    this.settings.machine = this.machineSelect.value || this.settings.machine;
+    this.settings.casing = this.casingSelect.value;
     saveSettings(this.settings);
-    const os = this.data.systems.find(o => o.id === this.settings.os) || this.data.systems[0];
+    const os = [...this.data.systems, ...this.data.previews].find(o => o.id === this.settings.os) || this.data.systems[0];
     this.sounds = await sound.soundsOf(os);
     this.colony = this.data.colonies.find(c => c.id === this.settings.colony) || this.data.colonies[0];
     this.theme = makeTheme(os, this.data.strings, this.colony);
+    // The computer's own settings beat its OS's: its home page, networks (a bridged console's go on top of its
+    // OS's), guests and casing (CMUPersonalComputerComponent, CMUComputerBridgeServerSystem.Bridge).
+    const computer = this.computer;
+    if (computer.home) this.theme.home = computer.home;
+    if (computer.networks) this.theme.networks = [...computer.networks];
+    if (computer.extraNetworks) this.theme.networks = [...new Set([...this.theme.networks, ...computer.extraNetworks])];
+    if (computer.guests === false) this.theme.allowGuests = false;
+    // the colony simulator's seat (sim/): its terminal number, and retuned dark it reaches no colony network
+    const seat = seatFor(computer.id);
+    if (seat) this.terminal = seat.id;
+    if (seat && seat.dark) this.theme.networks = [];
+    this.theme.casing = casingOf(computer, os, this.settings.casing).toLowerCase();
+    if (this.consoles) this.consoles.closeAll();
+    this.consoles = consolePrograms(computer, {
+      overlay: this.overlay,
+      colony: this.colony.id,
+      // OnOpenConsole: the machine on, and a card in the reader
+      allowed: () => this.state === 'on' && this.cardIn,
+    });
+    if (this.printer) this.printer.clear();
     this.deepTheme = makeTheme(this.data.deepOs, this.data.strings, null);
     this.net = new Network(this.entries, this.theme, this.colony, this.data.strings, { deep: this.settings.deep, extraSites: this.userSites });
+    this.net.dark = !!(seat && seat.dark);
     const s = this.machine.screen.style;
     s.setProperty('--phosphor', this.theme.phosphor);
     s.setProperty('--os-bg', this.theme.background);
@@ -322,7 +435,7 @@ class Emulator {
     const width = this.stage.clientWidth || window.innerWidth;
     const height = this.stage.clientHeight || window.innerHeight - 52;
     const w = Math.max(560, Math.min(1200, width - 32 - CHROME.x));
-    const h = Math.max(380, Math.min(760, height - 24 - CHROME.y));
+    const h = Math.max(380, Math.min(760, height - 24 - DESK_ROOM - CHROME.y));
     this.machine.resize(Math.floor(w), Math.floor(h));
   }
 
@@ -381,8 +494,9 @@ class Emulator {
     }
     this.state = 'off';
     this.machine.on = false;
-    // switching off ends a guest's session too (SwitchOff, EndSession)
+    // switching off ends a guest's session too (SwitchOff, EndSession), and closes the console's windows
     this.guest = false;
+    if (this.consoles) this.consoles.closeAll();
     this.desktop = null;
     this.screenKept = [];
     this.machine.screen.replaceChildren();
@@ -391,6 +505,8 @@ class Emulator {
   reader() {
     this.cardIn = !this.cardIn;
     this.machine.setCard(this.cardIn);
+    // the card out ends the session: the console's windows close (CloseConsoleApps)
+    if (!this.cardIn && this.consoles) this.consoles.closeAll();
     // A card put in at a guest session turns it into this user's own, on a clean screen (LogIn).
     if (this.cardIn && this.guest) {
       this.guest = false;
@@ -443,7 +559,14 @@ class Emulator {
       user: { name: this.settings.name, job: this.settings.job },
       guest,
       terminal: this.terminal,
-      terminalName: 'personal desktop',
+      terminalName: this.computer.name,
+      // the console's own windows, as programs; the printer, where the machine has one
+      consoleApps: this.consoles ? this.consoles.programs : [],
+      printer: {
+        canPrint: this.printer.canPrint,
+        label: printSay(this.data.strings, 'cmu-notes-print'),
+        printNote: note => this.printNote(note),
+      },
       colony: this.colony,
       deep: this.settings.deep,
       wallpapers: this.data.wallpapers,
@@ -464,7 +587,7 @@ class Emulator {
       this.screenKept = [];
       requestAnimationFrame(() => desktop.restoreScreen(screen));
     }
-    const how = this.theme.shell === 'Seegson' ? 'Click a menu entry' : 'Double click an icon';
+    const how = ['Classic', 'Weyland'].includes(this.theme.shell) ? 'Double click an icon' : 'Click a menu entry';
     this.status.textContent = guest
       ? `Browsing as a guest: no mail, no account. ${how}; log off from the menu, or insert a card to log in.`
       : `Logged in as ${this.settings.name}. ${how}; the card reader logs off.`;
@@ -494,7 +617,8 @@ class Emulator {
       CMUNetSpaceGpt: () => import('./widgets.js').then(m => m.createSpaceGpt(options)),
       CMUNetRecipes: () => import('./widgets.js').then(m => m.createRecipes(args, options)),
       CMUNetMarket: () => import('./widgets.js').then(m => m.createMarket(options)),
-      CMUNetCmbPanel: () => import('./widgets.js').then(m => m.createCmbPanel(args.Kind, options)),
+      CMUNetCmbPanel: () => import('./widgets.js').then(m => m.createCmbPanel(args.Kind, { ...options, colony: this.colony.id })),
+      CMUNetSecurityPanel: () => import('./widgets.js').then(m => m.createSecurityPanel(args.Kind, options, { colony: this.colony.id, networks: this.theme.networks, strings: this.data.strings })),
       CMUNetSearch: () => import('./search.js').then(m => m.createSearch(args, style, { net: this.net, strings: this.data.strings, ...browser })),
       CMUNetTape: () => import('./youtape.js').then(m => m.createTape(args, style, { strings: this.data.strings, colony: this.colony.name })),
       CMUNetReels: () => import('./youtape.js').then(m => m.createReels(args, style, { strings: this.data.strings, colony: this.colony.name })),
@@ -520,6 +644,7 @@ class Emulator {
     } catch {
       // nothing kept
     }
+    if (this.printer) this.printer.clear();
     this.reconfigure();
     this.status.textContent = 'Emulator storage cleared; deep aliases are new.';
   }

@@ -156,6 +156,13 @@ export class NetBrowser {
       this.status.textContent = this.t('cmu-pc-browser-status-done');
       return;
     }
+    // A dark terminal is not refused: nothing on the colony network hears it at all (sim/colony.js retunes it).
+    if (page.kind === 'denied' && this.net.dark) {
+      this.setTitle(this.t('cmu-pc-browser-dark-title'));
+      this.systemPage(this.t('cmu-pc-browser-dark-title'), this.t('cmu-pc-browser-dark-body', { address: shown }), null, true);
+      this.status.textContent = this.t('cmu-pc-browser-status-error');
+      return;
+    }
     if (page.kind === 'unknown' || page.kind === 'denied') {
       const denied = page.kind === 'denied';
       this.setTitle(this.t(denied ? 'cmu-pc-browser-denied-title' : 'cmu-pc-browser-unknown-host-title'));

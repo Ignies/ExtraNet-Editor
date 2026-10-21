@@ -7,6 +7,9 @@
 // to waiting at the pickup in real time, and WeyBay's mails land in the terminal's inbox. In game the parcel is a
 // real crate on the pickup pallet; here it only says where it would be. The catalogue is the game's shop.yml, and
 // the pictures are the items' sprites (data/shop_items.json, from the snapshot).
+//
+// Each order has its receipt (CMUShopSystem.OnReceipt): RECEIPT saves it to the terminal's Files, PRINT prints a copy
+// on a desk terminal's printer (a laptop shows no PRINT). Only the card that paid gets it, its number masked.
 
 import { el } from '../util.js';
 import { hexColour } from '../markup.js';
@@ -37,7 +40,35 @@ const FALLBACK = {
   'cmu-shop-mail-paid-body': 'Thanks for shopping with WeyBay. { $item } is paid for (${ $price }) and on its way, in about { $minutes } min. We will mail you when it lands.',
   'cmu-shop-mail-arrived-subject': 'Your { $item } has arrived',
   'cmu-shop-mail-arrived-body': 'Your { $item } is waiting on the WeyBay pickup pallet at { $where }, in a crate with your name on it. Please collect it soon.',
+  'cmu-shop-receipt': 'RECEIPT',
+  'cmu-shop-receipt-tooltip': "Save the receipt to this terminal's Files.",
+  'cmu-shop-receipt-print': 'PRINT',
+  'cmu-shop-receipt-print-tooltip': 'Print a copy of the receipt.',
+  'cmu-shop-receipt-name': 'WEYBAY-RECEIPT-{ $id }',
+  'cmu-shop-receipt-saved': 'Receipt saved to Files as { $name }.TXT.',
+  'cmu-print-none': 'This machine has no printer.',
+  'cmu-print-busy': 'The printer is still busy with the last sheet.',
 };
+
+/**
+ * cmu-shop-receipt-body, as personal-computers.ftl has it. The editor's locale reader joins a value's lines and
+ * stops at its blank line, so the receipt keeps its own copy of the lines.
+ */
+const RECEIPT_BODY = [
+  'WEYBAY - SALES RECEIPT',
+  'Order no. { $id }',
+  '----------------------------------',
+  '{ $item }',
+  'Total paid: ${ $price }',
+  '----------------------------------',
+  'Customer: { $buyer }',
+  'Card: { $card }',
+  'Ordered at { $time } (shift time)',
+  '',
+  'Thank you for shopping with WeyBay.',
+  'Delivered by the Company freight run.',
+  'No refunds once the crate is opened.',
+].join('\n');
 
 /** CMUShopLimits.OpenOrders: orders an account can have on their way at once. */
 const OPEN_ORDERS = 5;
@@ -63,6 +94,9 @@ const STYLE = `
 .emu-shop-words { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; }
 .emu-shop-buy { flex: none; align-self: center; border: 0; padding: 3px 10px; font: inherit; color: #FFFFFF; cursor: pointer; white-space: pre; }
 .emu-shop-buy:hover { filter: brightness(1.12); }
+.emu-shop-order { display: flex; flex-direction: row; align-items: center; gap: 6px; min-width: 0; }
+.emu-shop-order > .emu-shop-label { flex: 1 1 auto; }
+.emu-shop-order > .emu-shop-buy { padding: 3px 10px; }
 `;
 
 function injectStyle() {
@@ -258,9 +292,51 @@ export async function createShop(args = {}, style = {}, ctx = {}) {
       const status = o.state === 'arrived'
         ? t('cmu-shop-order-arrived', { where: o.where })
         : o.state === 'transit' ? t('cmu-shop-order-transit', { minutes }) : t('cmu-shop-order-processing', { minutes });
-      orders.append(label(t('cmu-shop-order-line', { id: o.id, item: nameOf(o.item), status }), o.state === 'arrived' ? accent : text));
+      const line = label(t('cmu-shop-order-line', { id: o.id, item: nameOf(o.item), status }), o.state === 'arrived' ? accent : text);
+      const buttons = [button(t('cmu-shop-receipt'), t('cmu-shop-receipt-tooltip'), () => receipt(o.id, false))];
+      if (ctx.canPrint && ctx.canPrint()) buttons.push(button(t('cmu-shop-receipt-print'), t('cmu-shop-receipt-print-tooltip'), () => receipt(o.id, true)));
+      orders.append(el('div.emu-shop-order', {}, line, ...buttons));
     }
   };
+
+  /** CMUNetShop.Button: the accent with white lettering. */
+  function button(value, tip, onClick) {
+    const node = el('button.emu-shop-buy', { type: 'button', text: value, title: tip });
+    node.style.background = accent;
+    node.addEventListener('click', onClick);
+    return node;
+  }
+
+  /** CMUShopSystem.Receipt: what was bought, for how much, by whom and when, the card number masked. */
+  function receiptText(order) {
+    const card = String(order.account ?? '');
+    const masked = card.length > 4 ? '*'.repeat(card.length - 4) + card.slice(-4) : card;
+    return L({}, RECEIPT_BODY, {
+      id: String(order.id).padStart(4, '0'),
+      item: nameOf(order.item),
+      price: order.price ?? 0,
+      buyer: order.buyer,
+      card: masked,
+      time: order.time || '--:--',
+    });
+  }
+
+  /** CMUShopSystem.OnReceipt: for the card that paid only; to Files, or onto the printer's paper. */
+  function receipt(id, print) {
+    const session = ctx.session ? ctx.session() : null;
+    const order = session && readOrders().orders.find(o => o.id === id && (o.account === undefined ? o.buyer === session.buyer : o.account === session.account));
+    if (!order) return;
+    const name = t('cmu-shop-receipt-name', { id: String(order.id).padStart(4, '0') });
+    const from = t('cmu-shop-mail-from');
+    if (!print) {
+      if (ctx.saveNote) ctx.saveNote(name, receiptText(order), from);
+      popup(t('cmu-shop-receipt-saved', { name }));
+      return;
+    }
+    const printed = ctx.print ? ctx.print(`${name}.TXT`, receiptText(order), from) : 'none';
+    if (printed === 'none') popup(t('cmu-print-none'), true);
+    else if (printed === 'busy') popup(t('cmu-print-busy'), true);
+  }
 
   const popup = (value, caution = false) => ctx.popup && ctx.popup(value, caution);
 
@@ -287,7 +363,7 @@ export async function createShop(args = {}, style = {}, ctx = {}) {
     writeBalance(money - price);
     const now = Date.now();
     const minutes = Number(entry.minutes ?? 5);
-    state.orders.push({ id: state.next++, buyer: session.buyer, item: entry.item, ordered: now, due: now + minutes * 60000, state: 'processing', where: '' });
+    state.orders.push({ id: state.next++, buyer: session.buyer, account: session.account, item: entry.item, price, time: ctx.time ? ctx.time() : '', ordered: now, due: now + minutes * 60000, state: 'processing', where: '' });
     writeOrders(state);
     const name = nameOf(entry.item);
     sendMail({

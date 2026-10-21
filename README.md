@@ -152,15 +152,16 @@ Other tools:
 | Tape link | `<CMUNetTapeLink Title Channel Genre Number/>`: a tape's title as a link that plays that tape, made from the title, in the page's tape player |
 | Reels | `<CMUNetReels/>`: YouTape's short tall tapes, one after another, flicked with UP and DOWN |
 | Cookbook | `<CMUNetRecipes Kind="Food" Group/>` (food only) |
+| (raw markup only) | `<CMUNetCmbPanel Kind="Alerts\|Map\|Faxes\|Records"/>` (the Marshals' panels), `<CMUNetSecurityPanel Kind="Map\|Log"/>` (colony security's terminal map and unauthorized-use log), `<CMUNetMarket/>` (the deep market): checked (a `Kind` the tag's enum lacks fails the page, as in game) but kept as raw markup blocks |
 | Raw markup | written exactly as typed |
 | (page colours) | the page's `<CMUNetStyle .../>` line, set in the page settings |
 
 **Importing.** Pages that are read in (a zip, a folder, pasted markup, or the markup view) become these blocks.
-Anything else becomes a raw markup block, so nothing is lost. That includes `<Table>`, CMB panels, the market,
+Anything else becomes a raw markup block, so nothing is lost. That includes `<Table>`, CMB and security panels, the market,
 chemistry recipes and nested documents. A `<!-- comment -->` between two blocks is kept as long as those two
 blocks stay next to each other.
 
-**Round trips.** Blocks that are not touched are written back byte for byte. All 302 pages in the repository
+**Round trips.** Blocks that are not touched are written back byte for byte. All 347 pages in the repository
 come back identical, and still equivalent when every block is regenerated from scratch.
 
 **What blocks cannot express:**
@@ -241,8 +242,7 @@ computer full window, built from the game's own code and art:
 - **Live widgets** run in the pages: boards take postings and comments, the Zero-G Ball sportsbook plays each
   sport's matches in its own tab with a wallet to bet from, the arcade's tabs play Hugger Run and Tracker Reflex
   from the keyboard (click a screen, then Space; Esc lets go), the games play the game's own sounds (muted with
-  their Sound button), SpaceGPT answers
-  from its roster, Yotta!'s search finds the pages of every listed site this terminal reaches (the editor's site
+  their Sound button), SpaceGPT takes questions through its moderation (see below), Yotta!'s search finds the pages of every listed site this terminal reaches (the editor's site
   included), YouTape plays random tapes told from `youtape.yml` with their dressed presenters, props, captions,
   straps, crawls and weather maps (a seed makes the same tape as in game), sports recaps replayed in the real
   arenas (the sportsbook's finished matches, or made up ones), Let's Plays with the arcade games playing themselves
@@ -252,6 +252,25 @@ computer full window, built from the game's own code and art:
   the sportsbook's wallet, its orders moving from packed to the freight run to waiting at the pickup in Logistics
   in real time, with WeyBay's mails in the inbox (with no card, as a guest, it asks for one), the Galley cookbook lists the food recipes (only `Kind="Food"`), and the deep market and the
   Marshals' panels show sample data.
+- **SpaceGPT's moderation** (`CMUSpaceGptSystem`, `CMUSpaceGptUi`, `CMUSpaceGptOptionsEui`), as a simulator: the
+  emulator's user is the asker at this terminal, and the **SpaceGPT simulator** card (bottom right, once a SpaceGPT
+  page has been open; **Fold** tucks it away) switches who you play:
+  - **Colonist**: the page as the asker sees it. A held question fills the wait with SpaceGPT pretending to work
+    (a stalling line every three seconds), an answer shows its votes, a denied one the safeties' refusal.
+  - **Admin**: admin chat, in its red, gets each question first with **Custom options**, **Follow**, **Hold** and
+    **Deny question**; a held one offers **Release** and **Deny question**. Custom options holds the question and
+    opens the answers window (six lines, blank ones dropped; saving sends it to the ghosts, closing leaves it
+    held). A link for a question already gone or in that state prints the command's error. **Admin ghost
+    (aghost)** makes the admin a ghost too, so they also get the ghosts' list, as an observing admin does.
+  - **Ghost**: the button at the top of the screen (*SpaceGPT has 2 questions for you*) opens the list, newest
+    first, with **ANSWER** (the answers to vote for), **IGNORE** and **FOLLOW**. As in game, a ghost only gets the
+    questions sent to the ghosts while they are one, and loses them on going back into a body.
+  - **Queue sample questions** adds three other colonists' questions at other terminals: one fresh, one already
+    held by another admin, one already with the ghosts. A few simulated ghosts vote on every question too.
+  - The game's timings: five seconds for the admins, then 25 seconds of voting, 30 seconds between your questions
+    (one asked sooner is dropped by the server without a word, as in game). **Slow timers** makes the first two
+    four times longer. Follow and FOLLOW say where they would take you. The card lists every open question and
+    its state; its **Reset** clears them, and so does the bar's Reset.
 - **Sounds**, as the game plays them (`CMUPersonalComputerBui`): the boot sound when the power key is pressed
   (with a glitch over it on a hacked machine), then after the OS's `bootSoundLength` the running hum, looping
   without a gap until the machine goes off; the shutdown sound; a random keystroke for each key typed in the
@@ -264,7 +283,7 @@ console) to resolve every link, tab, pop up link and `./` file of every page of 
 included, through the emulator's resolver, and list what goes nowhere.
 
 What happens on the emulator stays in this browser (notes, mail, links, board posts, the wallet, WeyBay orders,
-high scores);
+high scores, the SpaceGPT simulator's questions and admin chat);
 **Reset** in the bar clears it. In game the server keeps those for the round and other players fill the boards,
 the market and the Marshals' alerts, and a WeyBay order is a real crate on the pickup pallet.
 
@@ -359,8 +378,8 @@ Differences:
 - Text is laid out by the browser, so line breaks can differ by a few pixels.
 - On the canvas, pop ups sit in line and blink frames do not blink. The preview shows them as in game.
 - Ads that dress a person (`gear:`) show a placeholder.
-- Live game widgets (arcade, sportsbook, SpaceGPT, cookbook, search box, tape player, CMB panels, market) show a
-  labelled box.
+- Live game widgets (arcade, sportsbook, SpaceGPT, cookbook, search box, tape player, CMB and security panels,
+  market) show a labelled box.
 - Links to other sites show the unknown host page. `net://random` shows a placeholder page, and deep sites get a
   made-up address.
 
@@ -390,7 +409,8 @@ Differences:
 | `js/emulator/machine.js`, `boot.js`, `desktop.js`, `netbrowser.js`, `boards.js` | The machine, the boot splash, the desktop and its programs, the browser, the boards |
 | `js/emulator/pcsound.js` | The computer's own sounds (boot, running hum, shutdown, keys, clicks, mail, error) with the mute and volume |
 | `js/emulator/net.js`, `data.js`, `linkcheck.js` | The ExtraNet as a computer sees it (addresses, networks, deep aliases, the ad maze), the OS, colony and wallpaper data, and the link check |
-| `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook tag (schedule, wallet, a tab per sport), the arcade tag (cabinets, tabs), SpaceGPT, the recipes, the deep market and the CMB panels |
+| `js/emulator/sports.js`, `arcade.js`, `widgets.js` | Ports of the sportsbook tag (schedule, wallet, a tab per sport), the arcade tag (cabinets, tabs), the recipes, the deep market and the CMB panels |
+| `js/emulator/spacegpt.js` | The SpaceGPT tag (CMUSpaceGptUi.cs) and its moderation simulator: the server's questions, holds, custom options, denials and votes (CMUSpaceGptSystem.cs, CMUSpaceGptCommand.cs), admin chat, the options window (CMUSpaceGptOptionsEui.cs) and the ghosts' button and list (CMUSpaceGptGhostSystem) |
 | `js/emulator/search.js` | The search box tag (CMUNetSearch.cs): the index of every listed page, scoring and snippets |
 | `js/emulator/shop.js`, `wallet.js` | WeyBay's shop tag (CMUNetShop.cs) with the orders, freight runs and mail CMUShopSystem keeps, and the wallet it shares with the sportsbook |
 | `js/emulator/youtape.js`, `youtape/generator.js`, `player.js`, `looks.js` | The tape player, tape link and reels tags (CMUNetTape.cs, CMUNetTapeLink.cs, CMUNetReels.cs), the tapes and reels told from the grammar (CMUTapeGenerator.cs), the screen with its arenas, games and streamer (CMUTapePlayer.cs), and the dolls' looks, outfits and props as their sprites |

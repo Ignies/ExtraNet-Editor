@@ -1,18 +1,19 @@
-// Browser ports of the ExtraNet page widgets that the game draws itself: the SpaceGPT chat, the colony cookbook,
-// the deep market and the Marshals' panels. In game these talk to the server; here they run on their own with
+// Browser ports of the ExtraNet page widgets that the game draws itself: the colony cookbook, the deep market and
+// the Marshals' panels (SpaceGPT is in spacegpt.js). In game these talk to the server; here they run on their own with
 // data read from the repository (answers, recipes, handles) or clearly marked sample data.
 //
-// Sources: Content.CMU/Client/PersonalComputers/CMUSpaceGptUi.cs, CMUNetRecipes.cs, CMUNetCmbPanel.cs and
-// DeepWeb/CMUNetMarket.cs.
+// Sources: Content.CMU/Client/PersonalComputers/CMUNetRecipes.cs, CMUNetCmbPanel.cs,
+// DeepWeb/CMUNetMarket.cs and CMUNetSecurityPanel.cs (fed by the colony simulator, sim/colony.js).
 
 import { fetchRepoFile, locale, scanPrototypes } from '../repo.js';
 import { spriteCanvas } from '../sprites.js';
 import { parseYaml } from '../yaml.js';
+import { colonyGrid, colonyMapView, tileFor } from './colonymap.js';
+import { AREAS, STATUS, EVENT, entries as securityEntries, mapTerminals, clock as securityClock } from './sim/colony.js';
 
 // ---------------------------------------------------------------- data files
 
 const PC_PROTOTYPES = 'Content.CMU/Resources/Prototypes/CMU14/PersonalComputers/';
-const NETWORKS_FILE = PC_PROTOTYPES + 'networks.yml';
 const DEEP_WEB_FILE = PC_PROTOTYPES + 'deep_web.yml';
 
 /**
@@ -118,14 +119,6 @@ const RECIPE_PAGE = 12;
 // ---------------------------------------------------------------- locale
 
 const FALLBACK = {
-  'cmu-spacegpt-placeholder': 'Ask SpaceGPT anything...',
-  'cmu-spacegpt-ask': 'ASK',
-  'cmu-spacegpt-greeting': 'SpaceGPT: Hello, colonist. How can I help you today?',
-  'cmu-spacegpt-you': 'You: {$question}',
-  'cmu-spacegpt-thinking': 'SpaceGPT is thinking...',
-  'cmu-spacegpt-answer': 'SpaceGPT: {$answer}',
-  'cmu-spacegpt-votes': '({$votes} {$votes -> [one] voice *[other] voices } agreed)',
-  'cmu-spacegpt-no-votes': '(the line was quiet; SpaceGPT answered alone)',
   'cmu-net-recipes-search': 'Search recipes or ingredients...',
   'cmu-net-recipes-more': 'Show more',
   'cmu-net-recipes-count': '{$shown} of {$total}',
@@ -368,103 +361,8 @@ function blocks(text) {
 
 // ---------------------------------------------------------------- 1. SpaceGPT
 
-const FALLBACK_ANSWERS = [
-  'It is certain.',
-  'Reply hazy. Check your antenna.',
-  'My sources say no.',
-  'The Company already knows.',
-  'Have you tried turning it off and on again?',
-  'Error: the dead are not available right now.',
-];
-
-/** The roster the ghosts choose from: the CMUSpaceGptAnswers localized dataset. */
-async function spaceGptRoster() {
-  const table = await strings();
-  let prefix = 'cmu-spacegpt-answer-';
-  let count = 0;
-  try {
-    const { data } = await fetchRepoFile(NETWORKS_FILE, 'text');
-    for (const block of blocks(data)) {
-      if (!/^\s*id:\s*CMUSpaceGptAnswers\s*$/m.test(block)) continue;
-      prefix = unquote((/^\s+prefix:\s*(.+)$/m.exec(block) || [])[1] || prefix);
-      count = Number((/^\s+count:\s*(\d+)/m.exec(block) || [])[1] || 0);
-    }
-  } catch {
-    // Offline: count whatever answers the locale has.
-  }
-  const answers = [];
-  if (count > 0) {
-    for (let i = 1; i <= count; i++) if (table[prefix + i]) answers.push(table[prefix + i]);
-  } else {
-    for (let i = 1; table[prefix + i]; i++) answers.push(table[prefix + i]);
-  }
-  return answers.length ? answers : FALLBACK_ANSWERS;
-}
-
-/**
- * The SpaceGPT chat, <CMUNetSpaceGpt/>. In game the question goes to the server and the dead vote on an answer
- * from the roster; here a short thinking pause plays and an answer is drawn from the same roster.
- */
-export function createSpaceGpt(options = {}) {
-  const root = makeRoot('gpt', options);
-  const life = lifetime(root);
-  const log = h('div', { class: 'emu-w-log' });
-  const input = h('input', { class: 'emu-w-input', type: 'text', maxlength: '140' });
-  const ask = h('button', { class: 'emu-w-btn', type: 'button' });
-  const box = h('div', { class: 'emu-w-col' },
-    h('div', { class: 'emu-w-panel' }, log),
-    h('div', { class: 'emu-w-row' }, input, ask),
-    h('div', { class: 'emu-w-dim', style: 'font-size:.8em', text: 'Emulator: answers are drawn at random from the game\'s roster. In game, ghosts vote on them.' }));
-  root.append(box);
-
-  let table = {};
-  let roster = FALLBACK_ANSWERS;
-  let waiting = false;
-  const line = (text, cls) => {
-    log.append(h('div', { class: 'emu-w-plain' + (cls ? ' ' + cls : ''), text }));
-    log.scrollTop = log.scrollHeight;
-  };
-
-  const submit = () => {
-    const text = input.value.trim();
-    if (!text || waiting || text.length > 140) return;
-    waiting = true;
-    ask.disabled = true;
-    input.value = '';
-    line(fmt(table, 'cmu-spacegpt-you', { question: text }));
-    const thinking = h('div', { text: fmt(table, 'cmu-spacegpt-thinking') });
-    log.append(thinking);
-    log.scrollTop = log.scrollHeight;
-    life.timeout(() => {
-      waiting = false;
-      ask.disabled = false;
-      thinking.remove();
-      line(fmt(table, 'cmu-spacegpt-answer', { answer: pick(roster) }));
-      const votes = Math.random() < 0.4 ? 0 : 1 + Math.floor(Math.random() * 4);
-      line(votes > 0 ? fmt(table, 'cmu-spacegpt-votes', { votes }) : fmt(table, 'cmu-spacegpt-no-votes'), 'emu-w-dim');
-    }, 1800 + Math.random() * 2700);
-  };
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') submit();
-  });
-  input.addEventListener('input', () => input.classList.toggle('emu-w-bad', input.value.length > 140));
-  ask.addEventListener('click', submit);
-
-  const label = () => {
-    input.placeholder = fmt(table, 'cmu-spacegpt-placeholder');
-    ask.textContent = fmt(table, 'cmu-spacegpt-ask');
-  };
-  label();
-  const greeting = h('div', { text: fmt(table, 'cmu-spacegpt-greeting') });
-  log.append(greeting);
-  strings().then(t => {
-    table = t;
-    label();
-    greeting.textContent = fmt(table, 'cmu-spacegpt-greeting');
-  });
-  spaceGptRoster().then(r => (roster = r)).catch(() => {});
-  return root;
-}
+// The chat tag and its moderation simulator (admins, ghosts) live in spacegpt.js.
+export { createSpaceGpt } from './spacegpt.js';
 
 // ---------------------------------------------------------------- 2. Recipes
 
@@ -1115,6 +1013,17 @@ export function createCmbPanel(kind, options = {}) {
   }
 
   function map() {
+    // CMUColonyMapView: the colony's own map with the terminals pinned on it (colonymap.js), alerted ones flagged
+    if (options.colony) {
+      const grid = colonyGrid(options.colony, SAMPLE_AREAS);
+      const pins = cmbSample.terminals.map(t => ({ ...tileFor(grid, { room: t.area, seed: t.id }), colour: t.alerted ? '#E0303A' : '#8FC4FF', flagged: t.alerted, title: fmt(table, 'cmu-cmb-map-terminal', { id: t.id }), terminal: t }));
+      const nodes = [sample(), h('div', { text: fmt(table, 'cmu-cmb-map-hint') }), colonyMapView({ grid, pins, background: 'background_cmb', onPick: pin => trace(pin.terminal) })];
+      if (tracing) nodes.push(h('div', { class: 'emu-w-dim', text: `Tracing terminal #${tracing.id}...` }));
+      for (const t of cmbSample.terminals) if (t.alerted) nodes.push(h('div', { class: 'emu-w-red', text: fmt(table, 'cmu-cmb-map-terminal', { id: t.id }) }));
+      const traced = cmbSample.alerts.find(a => a.trace);
+      if (traced) nodes.push(plain(alertLine(traced), 'emu-w-dim'));
+      return nodes;
+    }
     const ns = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(ns, 'svg');
     svg.setAttribute('viewBox', '0 0 560 420');
@@ -1222,5 +1131,111 @@ export function createCmbPanel(kind, options = {}) {
       }, 10000);
     }, 600);
   });
+  return root;
+}
+
+// ---------------------------------------------------------------- 5. Colony security panels
+
+const SECURITY_KINDS = ['Map', 'Log'];
+const SECURITY_NETWORK = 'CMUNetSecurity';
+/** CMUNetSecurityPanel.Refresh */
+const SECURITY_REFRESH = 10000;
+const SECURITY_COLOURS = { Online: '#3FE05A', LoggedIn: '#8FC4FF', Off: '#6B7480', Unpowered: '#FFB000', Dark: '#E0303A', Hacked: '#C04CFF' };
+const SECURITY_CSS = `
+.emu-w-security .emu-colony-map{position:relative;width:100%;background:#000}
+.emu-w-security .emu-colony-map canvas{display:block;width:100%;height:100%}
+`;
+
+const SECURITY_EVENTS = {
+  [EVENT.LoginRefused]: 'cmu-security-event-refused',
+  [EVENT.WentDark]: 'cmu-security-event-dark',
+  [EVENT.Rejoined]: 'cmu-security-event-rejoined',
+  [EVENT.HackStarted]: 'cmu-security-event-hack',
+  [EVENT.LogWiped]: 'cmu-security-event-wiped',
+  [EVENT.LogForged]: 'cmu-security-event-forged',
+  [EVENT.DeepLookup]: 'cmu-security-event-lookup',
+};
+
+const SECURITY_STATUS = {
+  [STATUS.LoggedIn]: 'cmu-security-status-logged-in',
+  [STATUS.Off]: 'cmu-security-status-off',
+  [STATUS.Unpowered]: 'cmu-security-status-unpowered',
+  [STATUS.Dark]: 'cmu-security-status-dark',
+  [STATUS.Online]: 'cmu-security-status-online',
+};
+
+/**
+ * A live panel of the colony security network, <CMUNetSecurityPanel Kind="Map|Log"/>, answered by the colony
+ * simulator. It asks when it comes on the page and every 10 seconds while there; off the security network nothing
+ * answers and it stays at its loading line, as in game. ctx: { colony, networks, strings }.
+ */
+export function createSecurityPanel(kind, options = {}, ctx = {}) {
+  const root = makeRoot('security', options);
+  root.append(h('style', { text: SECURITY_CSS }));
+  const life = lifetime(root);
+  const body = h('div', { class: 'emu-w-col', style: 'gap:4px' });
+  root.append(body);
+  const table = ctx.strings || {};
+  const t = (key, args) => fmt(table, key, args);
+  if (!SECURITY_KINDS.includes(kind)) {
+    body.append(h('div', { class: 'emu-w-notice', text: `Unknown security panel "${kind}". Use Map or Log.` }));
+    return root;
+  }
+  body.append(h('div', { text: t('cmu-security-loading') }));
+  if (!(ctx.networks || []).includes(SECURITY_NETWORK)) return root;
+  const plain = text => h('div', { class: 'emu-w-plain', text });
+  const sample = () => h('div', { class: 'emu-w-sample', text: 'SIMULATED COLONY - EMULATOR' });
+
+  /** One log line: when, which terminal, where, what, and the card's name where known. */
+  const line = entry => {
+    const what = t(SECURITY_EVENTS[entry.kind] || '', { address: entry.detail || '' });
+    const vars = { time: securityClock(entry.time), id: entry.id, location: entry.location, event: what, name: entry.name };
+    return entry.name ? t('cmu-security-entry-named', vars) : t('cmu-security-entry', vars);
+  };
+
+  const log = () => {
+    const list = securityEntries();
+    const nodes = [sample()];
+    if (!list.length) nodes.push(h('div', { text: t('cmu-security-log-empty') }));
+    for (const entry of list) nodes.push(plain(line(entry)));
+    return nodes;
+  };
+
+  const colourOf = terminal => (terminal.status === STATUS.Dark ? SECURITY_COLOURS.Dark : terminal.hacked ? SECURITY_COLOURS.Hacked : SECURITY_COLOURS[terminal.status]);
+
+  const describe = terminal => {
+    const dark = terminal.status === STATUS.Dark;
+    const id = dark ? (terminal.hacked ? 'cmu-security-map-terminal-dark-hacked' : 'cmu-security-map-terminal-dark')
+      : terminal.hacked ? 'cmu-security-map-terminal-hacked' : 'cmu-security-map-terminal';
+    const text = t(id, { id: terminal.id, status: t(SECURITY_STATUS[terminal.status]), location: terminal.location });
+    return h('div', { style: `color:${colourOf(terminal)}`, text });
+  };
+
+  const map = () => {
+    const terminals = mapTerminals();
+    const grid = colonyGrid(ctx.colony || 'colony', AREAS);
+    // Clicking a pin names the terminal and what it is doing under the map.
+    const picked = h('div', { class: 'emu-w-col', style: 'gap:2px' });
+    const pins = terminals.map(terminal => ({
+      ...tileFor(grid, { room: terminal.area, seed: terminal.id }),
+      colour: colourOf(terminal),
+      flagged: terminal.status === STATUS.Dark || terminal.hacked,
+      title: describe(terminal).textContent,
+      terminal,
+    }));
+    const view = colonyMapView({ grid, pins, background: 'background_mp', onPick: pin => picked.replaceChildren(describe(pin.terminal)) });
+    const nodes = [sample(), h('div', { text: t('cmu-security-map-hint') }), h('div', { text: t('cmu-security-map-legend') }), view, picked];
+    // Dark and hacked terminals under the map, so they can be found on foot.
+    const flagged = terminals.filter(terminal => terminal.status === STATUS.Dark || terminal.hacked);
+    if (flagged.length) nodes.push(h('div', { class: 'emu-w-key', text: t('cmu-security-map-check') }), ...flagged.map(describe));
+    return nodes;
+  };
+
+  const render = () => body.replaceChildren(...(kind === 'Log' ? log() : map()));
+  // the first request goes as soon as the panel is on screen, the answer a moment later
+  life.timeout(() => {
+    render();
+    life.interval(render, SECURITY_REFRESH);
+  }, 400);
   return root;
 }

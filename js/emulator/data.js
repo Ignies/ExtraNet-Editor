@@ -5,6 +5,7 @@ import { parseYaml } from '../yaml.js';
 import { fetchRepoFile, locale } from '../repo.js';
 import { PROTOTYPES, fill } from '../library.js';
 import { rgba, mix } from '../util.js';
+import { PREVIEW_SYSTEMS } from './computers.js';
 
 const FALLBACK_OS = [
   { id: 'CMUOsSeegson', name: 'cmu-os-seegson-name', allowGuests: true, shell: 'Seegson', startLabel: 'cmu-os-seegson-start', namedAfterColony: true, logos: ['/Textures/CMU14/PersonalComputers/Logos/seegson.png', 'name'], documents: [{ name: 'README.TXT', path: '/ServerInfo/CMU14/ExtraNet/Documents/seegson_readme.xml' }], homePage: 'colony.seegson.net', networks: ['CMUNetPublic'], phosphor: '#3FE05A', background: '#0A0E12', bootLines: [1, 2, 3, 4, 5, 6].map(i => `cmu-os-seegson-boot-${i}`) },
@@ -24,7 +25,10 @@ export async function prototypes(file, type) {
 
 let loaded = null;
 
-/** { strings, systems: [os], colonies: [{ id, name }], wallpapers: Map, deepOs } */
+/**
+ * { strings, systems: [os], previews: [os], colonies: [{ id, name }], wallpapers: Map, deepOs }. previews: the
+ * emulator's own OSes for the shells no game OS uses yet (computers.js).
+ */
 export function gameData() {
   if (!loaded) {
     loaded = (async () => {
@@ -39,6 +43,7 @@ export function gameData() {
       return {
         strings,
         systems: systems.length ? systems : FALLBACK_OS,
+        previews: PREVIEW_SYSTEMS,
         colonies: ids.map(id => ({ id, name: colonyName(id) })),
         wallpapers: new Map(wallpapers.map(w => [w.id, w])),
         deepOs: deep[0] || { id: 'CMUOsDeeps', name: 'cmu-os-deeps-name', phosphor: '#E0303A', background: '#0A0405' },
@@ -76,7 +81,7 @@ function hex(c) {
 }
 
 /** CMUComputerShell: how the desktop is laid out. */
-const SHELLS = ['Classic', 'Seegson', 'Weyland'];
+export const SHELLS = ['Classic', 'Seegson', 'Weyland', 'Tactical', 'Ministry', 'Clinical', 'Police'];
 
 /** CMUComputerTheme for an OS: colours, names, casing and the desktop shell. */
 export function theme(os, strings, colony) {
@@ -106,6 +111,15 @@ export function theme(os, strings, colony) {
     logos: os.logos || ['name'],
     documents: os.documents || [],
     bootLines: (os.bootLines || []).map(id => L(strings, id)),
+    // the newer shells' own lines (CMUComputerOsPrototype.ShellTitle and the rest), filled by the shell with { id }
+    shellTitle: os.shellTitle ? L(strings, os.shellTitle) : null,
+    shellSubtitle: os.shellSubtitle ? L(strings, os.shellSubtitle) : null,
+    shellStatus: os.shellStatus || null,
+    shellTicker: Array.isArray(os.shellTicker) ? os.shellTicker : [],
+    shellMark: os.shellMark || '*',
+    // Icons/<os id>_<program>.png; an emulator preview may borrow another OS's
+    iconPrefix: (os.icons || os.id).toLowerCase(),
+    preview: !!os.preview,
     // CMUComputerOsPrototype.AllowGuests: its login screen offers BROWSE AS GUEST (the colony's own OS does)
     allowGuests: os.allowGuests === true || String(os.allowGuests).toLowerCase() === 'true',
   };

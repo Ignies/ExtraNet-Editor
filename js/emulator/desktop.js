@@ -7,6 +7,8 @@
 // - Weyland (a MU/TH/UR style Company workstation): the logo and slogan across the top, Semiotic Standard tiles
 //   down a dock, thin double ruled windows, and along the bottom the directory, the open programs and the
 //   inquiry line.
+// - Tactical, Ministry, Clinical and Police: the newer shells (CMUComputerShellStyle), laid out by shells.js.
+// A bridged console's own windows are programs on its desktop, named after the console (CMUComputerApp.Console).
 // A guest (browsing without a card, on an OS that allows it) gets the browser, the files and the system screen,
 // but no mail and no console programs. Also the login screen that waits for an ID card, with BROWSE AS GUEST.
 
@@ -18,6 +20,7 @@ import { L } from './data.js';
 import { NetBrowser } from './netbrowser.js';
 import { gameIcons } from './gamedownloads.js';
 import { MAIL_KEY } from './shop.js';
+import { shellStyle } from './shells.js';
 
 const ICON_ROOT = '/Textures/CMU14/PersonalComputers/Icons/';
 const SIZES = { browser: [640, 440], files: [560, 380], mail: [620, 420], deeps: [640, 440], system: [560, 300] };
@@ -60,7 +63,7 @@ function glyph(app) {
 }
 
 async function appIcon(theme, app) {
-  for (const name of [`${theme.id.toLowerCase()}_${app}.png`, `${app}.png`]) {
+  for (const name of [`${theme.iconPrefix || theme.id.toLowerCase()}_${app}.png`, `${app}.png`]) {
     try {
       return await imageUrl(ICON_ROOT + name);
     } catch {
@@ -124,6 +127,8 @@ export class Desktop {
     this.theme = ctx.theme;
     this.strings = ctx.strings;
     this.shell = (this.theme.shell || 'Classic').toLowerCase();
+    // the newer shells' own layout, frames and icons (CMUComputerTheme.Style), else null
+    this.style = shellStyle(this.shell);
     this.windows = [];
     this.z = 10;
     this.booted = performance.now();
@@ -135,12 +140,15 @@ export class Desktop {
       ensureFont('Terminal');
     }
     if (this.shell === 'weyland') ensureFont('Display');
+    for (const font of this.style ? this.style.fonts : []) ensureFont(font);
+    this.watermark = this.style ? this.style.watermark(this.theme) : null;
+    this.fileViews = new Set();
     this.area = el('div.emu-area');
     this.icons = el('div.emu-icons');
     this.tasks = el('div.emu-tasks');
     this.clock = el('span.emu-clock');
-    // Sevastolink's menu is always on screen: no start button, no start menu.
-    this.startMenu = this.shell === 'seegson' ? null : this.buildStartMenu();
+    // Sevastolink's menu is always on screen: no start button, no start menu; so are the menus of shells without one.
+    this.startMenu = this.shell === 'seegson' || (this.style && !this.style.hasStartMenu) ? null : this.buildStartMenu();
     if (this.startMenu) {
       this.startMenu.hidden = true;
       this.area.append(this.startMenu);
@@ -153,7 +161,8 @@ export class Desktop {
     });
     this.root = el(`div.emu-desktop.emu-shell-${this.shell}`);
     this.root.style.setProperty('--bright', this.theme.bright || this.theme.heading);
-    if (this.shell === 'seegson') this.buildSeegson();
+    if (this.style) this.style.build(this);
+    else if (this.shell === 'seegson') this.buildSeegson();
     else if (this.shell === 'weyland') this.buildWeyland();
     else this.buildClassic();
     this.applyWallpaper();
@@ -251,6 +260,11 @@ export class Desktop {
       el('div.emu-wy-bar', {}, directory, this.tasks, inquiry));
   }
 
+  /** The OS's logo for a shell's header (shells.js). */
+  logo(spec, min, maxHeight) {
+    return shellLogo(this.theme, spec, min, maxHeight);
+  }
+
   /** Who the shell says is on: the card's name, or Guest. */
   userName() {
     return this.ctx.guest ? this.t('cmu-pc-guest-name') : this.ctx.user.name;
@@ -311,7 +325,7 @@ export class Desktop {
     const wallpaper = id && this.ctx.wallpapers.get(id);
     const path = wallpaper ? wallpaper.path : this.theme.os.wallpaper;
     this.area.classList.toggle('emu-gridded', !path);
-    this.area.dataset.osname = this.theme.name;
+    this.area.dataset.osname = this.watermark || this.theme.name;
     this.area.style.backgroundImage = '';
     if (path) {
       imageUrl(path).then(url => {
@@ -337,6 +351,10 @@ export class Desktop {
     if (!this.ctx.guest) programs.push(['mail', 'cmu-pc-app-mail']);
     if (this.ctx.deep) programs.push(['deeps', 'cmu-pc-app-deeps']);
     for (const [app, label] of programs) this.icons.append(this.icon(app, this.t(label), () => this.open(app)));
+    // A colony console's own screens, each opening the console's own window. Not for guests.
+    for (const program of this.ctx.guest ? [] : this.ctx.consoleApps || []) {
+      this.icons.append(this.icon('console', program.name, () => program.open()));
+    }
     for (const shortcut of this.shortcuts()) {
       const deep = this.ctx.deep && (/^deeps:\/\//.test(shortcut.address) || /\.ad$|\.deep$/.test(shortcut.address.split('/')[0]));
       const icon = this.icon(deep ? 'deeps' : 'browser', shortcut.title, () => this.openLink(shortcut.address, deep), `${shortcut.title}\n${shortcut.address}`);
@@ -361,8 +379,8 @@ export class Desktop {
    * plate with its name in capitals under it, double click opens.
    */
   icon(app, label, open, tip = label) {
-    const max = this.shell === 'weyland' ? 11 : 13;
-    const text = this.letter(label);
+    const max = this.style ? this.style.labelLength : this.shell === 'weyland' ? 11 : 13;
+    const text = this.style ? this.style.letter(label) : this.letter(label);
     const short = text.length <= max ? text : text.slice(0, max - 1) + '~';
     const art = iconNode(this.theme, app);
     const name = el('span.emu-icon-label', { text: short });
@@ -370,15 +388,17 @@ export class Desktop {
       ? el('button.emu-icon.emu-tile', { type: 'button', title: tip }, tilePlate(art), name)
       : el('button.emu-icon', { type: 'button', title: tip }, art, name);
     if (this.shell === 'seegson') node.classList.add('emu-row');
+    if (this.style) node.classList.add(this.style.icon);
+    const single = this.shell === 'seegson' || (this.style && this.style.singleClick);
     node.addEventListener('click', () => {
       this.select(node);
       // a terminal menu: one press picks the entry
-      if (this.shell === 'seegson') {
+      if (single) {
         this.ctx.busy(0.4);
         open();
       }
     });
-    if (this.shell !== 'seegson') {
+    if (!single) {
       node.addEventListener('dblclick', () => {
         this.ctx.busy(0.4);
         open();
@@ -436,12 +456,12 @@ export class Desktop {
   addWindow(app, title, content, [w, h]) {
     const area = this.area.getBoundingClientRect();
     const count = this.windows.length % 6;
-    const left = (this.shell === 'classic' ? 110 : 14) + count * 26;
+    const left = (this.style ? this.style.windowOffset : this.shell === 'classic' ? 110 : 14) + count * 26;
     const top = 14 + count * 22;
     const width = Math.min(w, Math.max(260, area.width - left - 6));
     const height = Math.min(h, Math.max(160, area.height - 40));
     const titleText = el('span.emu-win-title', { text: title });
-    const control = text => (this.shell === 'seegson' ? `[${text}]` : text);
+    const control = text => (this.shell === 'seegson' ? `[${text}]` : this.shell === 'clinical' ? (text === 'X' ? 'x' : '-') : text);
     const min = el('button.emu-win-btn', { type: 'button', text: control('_'), title: this.t('cmu-pc-window-minimize') });
     const close = el('button.emu-win-btn', { type: 'button', text: control('X'), title: this.t('cmu-pc-window-close') });
     const bar = el('div.emu-win-bar', {}, iconNode(this.theme, app), titleText, min, close);
@@ -670,12 +690,25 @@ export class Desktop {
         reader.replaceChildren();
         draw();
       } });
+      // Print, on a machine with a printer (ICMUComputerHost.CanPrint): a laptop has no button
+      const printer = this.ctx.printer;
+      const print = note && printer && printer.canPrint ? el('button.emu-btn', { type: 'button', text: printer.label, onclick: () => {
+        const saved = notes().find(n => n.id === note.id) || note;
+        printer.printNote(saved);
+      } }) : null;
       reader.replaceChildren(name, body,
         note && note.author ? el('div.emu-dim', { text: this.t('cmu-notes-by', { author: note.author }) }) : null,
-        el('div.emu-row', {}, saveButton, note ? remove : null));
+        el('div.emu-row', {}, saveButton, note ? remove : null, print));
     };
     draw();
+    // a receipt saved from WeyBay shows up in an open Files at once
+    this.fileViews.add(draw);
     return el('div.emu-app.emu-split', {}, list, reader);
+  }
+
+  /** The terminal's notes changed (a receipt saved to Files): the open Files windows list them again. */
+  refreshFiles() {
+    for (const draw of this.fileViews) draw();
   }
 
   /** Mail: a sample inbox, the sent folder and a compose form. */
@@ -721,6 +754,8 @@ export class Desktop {
       el('button.emu-btn', { type: 'button', text: this.t('cmu-mail-sent'), onclick: () => { folder = 'sent'; draw(); } }),
       el('button.emu-btn', { type: 'button', text: this.t('cmu-mail-compose'), onclick: () => compose() }));
     draw();
+    // a terminal tuned dark (sim/colony.js) says so where the mail would show
+    if (this.ctx.net.dark) reader.append(el('div', { text: this.t('cmu-mail-dark') }));
     this.mailViews.add(() => {
       if (folder === 'inbox') draw();
     });
@@ -740,6 +775,8 @@ export class Desktop {
       // a guest is nobody: no user line
       this.ctx.guest ? null : el('div', { text: this.t('cmu-pc-system-user', { name: this.ctx.user.name, job: this.ctx.user.job }) }),
       el('div', { text: this.t('cmu-pc-system-networks') }),
+      // tuned dark: the Fluent literal {"  "} is its indent, in the accent colour
+      this.ctx.net.dark ? el('div', { style: { color: 'var(--accent)' }, text: this.t('cmu-pc-system-dark').replace(/\{\s*"([^"]*)"\s*\}/g, '$1') }) : null,
       ...networks.map(n => el('div', { text: `  ${n}` })),
       uptime);
     const wallpapers = el('div.emu-row.emu-wrap');

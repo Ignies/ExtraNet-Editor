@@ -239,7 +239,7 @@ export class BlockCanvas {
   }
 
   widget(b) {
-    const names = { arcade: b.attrs.Game ? `Arcade cabinet: ${b.attrs.Game}` : 'Arcade: every game in tabs', sportsbook: 'Zero-g ball sportsbook', spacegpt: 'SpaceGPT, answered by ghosts', recipes: `Cookbook: ${b.attrs.Group || 'all'} food recipes`,
+    const names = { arcade: b.attrs.Game ? `Arcade cabinet: ${b.attrs.Game}` : 'Arcade: every game in tabs', sportsbook: 'Zero-g ball sportsbook', spacegpt: 'SpaceGPT: admins see each question first, ghosts vote on the answer', recipes: `Cookbook: ${b.attrs.Group || 'all'} food recipes`,
       search: 'Search box: every listed page the terminal reaches', tape: 'YouTape player: random tapes, a shelf and live broadcasts',
       tapelink: `Tape link: ${b.attrs.Number ? b.attrs.Number + ' ' : ''}${b.attrs.Title || '(no title)'}`, reels: 'YouTape Reels: short tall tapes, one after another',
       shop: `Shop: the ${b.attrs.Catalog || '(no catalogue)'} catalogue, bought with the card in the reader` };

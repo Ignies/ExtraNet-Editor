@@ -7,7 +7,7 @@ import { ARCADE_GAMES } from './blocks.js';
 
 const PLACEHOLDER_TAGS = new Set([
   'CMUNetRecipes', 'CMUNetArcade', 'CMUNetSportsbook', 'CMUNetSpaceGpt', 'CMUNetMarket', 'CMUNetCmbPanel',
-  'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CMUNetShop', 'CMUGuideZoomImage', 'CMUGuideOutfitEmbed', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed',
+  'CMUNetSecurityPanel', 'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CMUNetShop', 'CMUGuideZoomImage', 'CMUGuideOutfitEmbed', 'CommandButton', 'GuideEntityEmbed', 'GuideLawsetEmbed',
   'GuideLawsetListEmbed', 'GuideMicrowaveEmbed', 'GuideMicrowaveGroupEmbed', 'GuideReagentEmbed',
   'GuideReagentGroupEmbed', 'GuideTechDisciplineEmbed', 'GuideTechnologyEmbed',
 ]);
@@ -32,12 +32,26 @@ const KNOWN_ATTRIBUTES = {
   CMUNetWallpaper: ['Id'],
   CMUNetArcade: ['Game'],
   CMUNetSportsbook: [],
+  CMUNetSpaceGpt: [],
+  CMUNetMarket: [],
+  CMUNetRecipes: ['Kind', 'Group'],
+  CMUNetCmbPanel: ['Kind'],
+  CMUNetSecurityPanel: ['Kind'],
   CMUNetSearch: ['Text', 'Link', 'Background', 'Muted'],
   CMUNetTape: ['Shelf', 'Live', 'Autoplay'],
   CMUNetReels: [],
   CMUNetTapeLink: ['Title', 'Channel', 'Genre', 'Number'],
   CMUNetShop: ['Catalog', 'Text', 'Accent', 'Muted', 'Panel'],
 };
+
+/** What a recipe book lists (CMUNetRecipes.TryParseTag's switch). */
+export const RECIPE_KINDS = ['Food', 'Chemistry'];
+
+/** The Marshals' panels (the CMUCmbPanel enum). */
+export const CMB_PANELS = ['Alerts', 'Map', 'Faxes', 'Records'];
+
+/** Colony security's panels (the CMUSecurityPanel enum). */
+export const SECURITY_PANELS = ['Map', 'Log'];
 
 /** The shop catalogues the game has (cmuShopCatalog in shop.yml). */
 export const SHOP_CATALOGS = ['CMUWeyBayCatalog'];
@@ -117,6 +131,20 @@ export function checkTag(node) {
       // no Game puts every cabinet in tabs; a Game the enum does not know fails TryParseTag
       oneOf('Game', ARCADE_GAMES);
       break;
+    case 'CMUNetRecipes':
+      // TryParseTag fails without a Kind or with one it has no list for
+      needs('Kind');
+      oneOf('Kind', RECIPE_KINDS);
+      break;
+    case 'CMUNetCmbPanel':
+      // Enum.TryParse on Kind: no Kind, or one the enum does not have, fails the tag
+      needs('Kind');
+      oneOf('Kind', CMB_PANELS);
+      break;
+    case 'CMUNetSecurityPanel':
+      needs('Kind');
+      oneOf('Kind', SECURITY_PANELS);
+      break;
     case 'CMUNetSearch':
       // Color.TryFromHex: a colour it cannot read falls back on the tag's default
       for (const key of ['Text', 'Link', 'Background', 'Muted']) colour(key, warnings);
@@ -166,7 +194,7 @@ export function checkTag(node) {
       break;
   }
 
-  if (node.children.length && ['CMUNetStyle', 'CMUNetSprite', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUGuideImage', 'CMUNetWallpaper', 'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CMUNetShop'].includes(node.name)) {
+  if (node.children.length && ['CMUNetStyle', 'CMUNetSprite', 'CMUNetMarquee', 'CMUNetPopup', 'CMUNetAd', 'CMUGuideImage', 'CMUNetWallpaper', 'CMUNetSearch', 'CMUNetTape', 'CMUNetReels', 'CMUNetTapeLink', 'CMUNetShop', 'CMUNetSecurityPanel', 'CMUNetCmbPanel'].includes(node.name)) {
     warnings.push(`<${node.name}> is meant to be self closing (<${node.name} .../>); its children are added as controls inside it`);
   }
   return { errors, warnings };

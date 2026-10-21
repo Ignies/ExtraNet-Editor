@@ -269,9 +269,11 @@ export function renderProps(host, app) {
         attrColour(b, 'Panel', 'Panel', app, 'Behind each item. Default #F2EEE4.'),
         el('p.note', { text: 'An ExtraNet shop: the card\'s balance and orders, then the catalogue (shop.yml) by heading. BUY charges the card in the reader; the item comes in on the freight run as a crate on the pickup pallet.' }));
       break;
+    case 'spacegpt':
+      body.append(el('p.note', { text: 'Drawn and run by the game. It has no settings. Each question goes to the admins first (they can hold it, rewrite its answers or deny it), then to the ghosts, who vote on the answer. The emulator\'s SpaceGPT simulator plays all three sides.' }));
+      break;
     case 'reels':
     case 'sportsbook':
-    case 'spacegpt':
       body.append(el('p.note', { text: 'Drawn and run by the game. It has no settings.' }));
       break;
     default:
