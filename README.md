@@ -59,7 +59,7 @@ Open <http://localhost:8000/Content.CMU/Tools/ExtraNetEditor/>, click **Repo** a
 
 ![The editor: rail, Blocks panel, the page being built, the in-game preview and the block's settings](docs/editor.png)
 
-The screen follows the CMU Open Vehicles tool:
+The screen follows the CMU Open Vehicles tool adjusted to extranet:
 
 - **Title bar:** the CMU emblem, the site's name (a dot means changes since the last export), then New site,
   Open zip, Open folder, Export zip, Undo and Redo. Help is on the right. Click the emblem for its colours.
